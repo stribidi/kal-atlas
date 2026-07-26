@@ -7283,10 +7283,19 @@
             ? `<div>${documented}</div>` : ""}`)}`;
     }
 
+    /* Skill costs are stored as reverse-Polish expressions over the grade.
+       A bare number is the value; anything longer depends on the grade and is
+       shown as the expression rather than a wrong single number. The internal
+       verification status becomes a plain "not confirmed" note. */
     function formulaField(label, value, status = "") {
       const parsed = parseJson(value, []);
       if (!parsed.length) return "";
-      return `<div class="definition"><dt>${escapeHtml(label)}</dt><dd><span class="mono">${escapeHtml(parsed.join(" "))}</span>${status ? `<br><span class="tag ${status.includes("verified") && !status.includes("unverified") ? "accent" : "gold"}">${escapeHtml(status)}</span>` : ""}</dd></div>`;
+      const literal = parsed.length === 1 && Number.isFinite(Number(parsed[0]));
+      const unconfirmed = String(status).includes("unverified");
+      return `<div class="definition"><dt>${escapeHtml(label)}</dt><dd>${
+        literal ? `<b>${prettyNumber(parsed[0])}</b>`
+          : `<span class="mono">${escapeHtml(parsed.join(" "))}</span>`
+      }${unconfirmed ? `<br><small class="dim">not confirmed</small>` : ""}</dd></div>`;
     }
 
     function renderSkill(id) {
