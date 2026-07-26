@@ -68,7 +68,18 @@
      "name": "[Ha-Wogoo]"
     }
    },
-   "image": null
+   "image": {
+    "file": "analysis/quest_maps/map-naroo.jpg",
+    "bytes": 455654,
+    "sha256": "da2eafa55d7173db56d65a76ddda856ea15fa928560b32d637a8908e978750d3",
+    "width": 1176,
+    "height": 1310
+   },
+   "credit": {
+    "name": "mystic-city.de",
+    "url": "https://mystic-city.de/System/viewpage.php?page_id=48",
+    "note": "KalOnline quest guides and maps"
+   }
   },
   {
    "id": "jook",
@@ -121,7 +132,18 @@
      "name": "Ja-Gan"
     }
    },
-   "image": null
+   "image": {
+    "file": "analysis/quest_maps/map-jook.jpg",
+    "bytes": 280557,
+    "sha256": "bb76447190471ae6ab9adefb3bc67472a0d346506978fbd31c95ea19c13ee584",
+    "width": 1000,
+    "height": 1199
+   },
+   "credit": {
+    "name": "mystic-city.de",
+    "url": "https://mystic-city.de/System/viewpage.php?page_id=48",
+    "note": "KalOnline quest guides and maps"
+   }
   },
   {
    "id": "geum",
@@ -164,7 +186,18 @@
      "name": "Master, Jin-Pyung"
     }
    },
-   "image": null
+   "image": {
+    "file": "analysis/quest_maps/map-geum.jpg",
+    "bytes": 403658,
+    "sha256": "6632fec8f5a9905e888080577a87874a466b2365f64d2a441b7121b4d068a471",
+    "width": 1000,
+    "height": 1368
+   },
+   "credit": {
+    "name": "mystic-city.de",
+    "url": "https://mystic-city.de/System/viewpage.php?page_id=48",
+    "note": "KalOnline quest guides and maps"
+   }
   },
   {
    "id": "fort",
@@ -297,7 +330,18 @@
      "name": "[Ma-Gill]"
     }
    },
-   "image": null
+   "image": {
+    "file": "analysis/quest_maps/map-fort.jpg",
+    "bytes": 461465,
+    "sha256": "9235170d4156a6311e57387bfcc29b3e178ca404543bdafd0929b8ec731da9d9",
+    "width": 1361,
+    "height": 1221
+   },
+   "credit": {
+    "name": "mystic-city.de",
+    "url": "https://mystic-city.de/System/viewpage.php?page_id=48",
+    "note": "KalOnline quest guides and maps"
+   }
   },
   {
    "id": "pub",
@@ -315,7 +359,18 @@
      "name": "Tomb Keeper [Gang-Man]"
     }
    },
-   "image": null
+   "image": {
+    "file": "analysis/quest_maps/map-pub.jpg",
+    "bytes": 182153,
+    "sha256": "5c5fcef3ec76ed257e914fe1a1e7f55defa991879339749cdff84dceffdc71c8",
+    "width": 886,
+    "height": 719
+   },
+   "credit": {
+    "name": "mystic-city.de",
+    "url": "https://mystic-city.de/System/viewpage.php?page_id=48",
+    "note": "KalOnline quest guides and maps"
+   }
   },
   {
    "id": "cop",
@@ -343,7 +398,18 @@
      "name": "Element Collecting Official [Hwa-Eun]"
     }
    },
-   "image": null
+   "image": {
+    "file": "analysis/quest_maps/map-cop.jpg",
+    "bytes": 462861,
+    "sha256": "a85367dc6b8d52829bd6109c60dc64cd2eb9b1feff571afab4141b94db464f68",
+    "width": 1159,
+    "height": 1236
+   },
+   "credit": {
+    "name": "mystic-city.de",
+    "url": "https://mystic-city.de/System/viewpage.php?page_id=48",
+    "note": "KalOnline quest guides and maps"
+   }
   },
   {
    "id": "wild",
@@ -427,6 +493,11 @@
     "sha256": "06c2ac7506a778d6b3ff7a93a4e32402739665070048c8b0dca6ad96ce145365",
     "width": 538,
     "height": 514
+   },
+   "credit": {
+    "name": "Vresko.com",
+    "url": "",
+    "note": "world map artwork"
    }
   },
   {
@@ -446,6 +517,11 @@
     "sha256": "f3d2065e1b64082423da7166d497887c8d29f523ea7352ae1510de8b74186193",
     "width": 346,
     "height": 457
+   },
+   "credit": {
+    "name": "Vresko.com",
+    "url": "",
+    "note": "world map artwork"
    }
   },
   {
@@ -495,6 +571,11 @@
     "sha256": "bd56f48e43d1b4870d38df1fe9711449dcd4464f8111e8ebc157f106e273191e",
     "width": 385,
     "height": 610
+   },
+   "credit": {
+    "name": "Vresko.com",
+    "url": "",
+    "note": "world map artwork"
    }
   }
  ],

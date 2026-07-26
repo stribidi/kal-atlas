@@ -1,43 +1,56 @@
-# Quest map images — what is here and what is missing
+# Quest map images and their credits
 
 `QUEST_MAPS.json` carries all 80 pins and every quest→pin link. Pin positions
-are **percentages of their own map image**, so a pin only lands correctly on the
-exact artwork it was placed against. Substituting a different map of the same
-place puts every pin in the wrong spot.
+are **percentages of their own map image**, so a pin only lands correctly on
+the exact artwork it was placed against. Substituting a different map of the
+same place puts every pin in the wrong spot.
 
-## Present (3 of 9 maps, 22 of 80 pins)
+All nine maps are present.
 
-Extracted from the guide file itself, where they are embedded as data URIs:
+## Credits
+
+This artwork is other people's work. The site names its author under every map
+it draws, and the quest pages repeat the credit in their source note.
+
+| Maps | By | Where it came from |
+|---|---|---|
+| `naroo`, `jook`, `geum`, `fort`, `pub`, `cop` — the six town maps | **mystic-city.de** | [KalOnline quest guides and maps](https://mystic-city.de/System/viewpage.php?page_id=48) |
+| `wild`, `wildcargo`, `forest` — the three out-of-town crops | **Vresko.com** | world map artwork, republished by mystic-city.de and embedded in the guide |
+
+The quest text and the route itself also originate with mystic-city.de's
+guides; the pin placement and the level ordering are the friend's own work on
+top of them.
+
+Rafael's call, 2026-07-26: the maps may be published with the credit shown.
+
+## Files
 
 | Map | File | Size |
 |---|---|---|
+| `naroo` — Narootuh | `map-naroo.jpg` | 1176 × 1310 |
+| `jook` — Jook-Suh Cargo Station | `map-jook.jpg` | 1000 × 1199 |
+| `geum` — Geum-Oh Mine | `map-geum.jpg` | 1000 × 1368 |
+| `fort` — Temporary Fort of Geum-Ohee Castle | `map-fort.jpg` | 1361 × 1221 |
+| `pub` — Pub of the Giant Bird | `map-pub.jpg` | 886 × 719 |
+| `cop` — City of Priest | `map-cop.jpg` | 1159 × 1236 |
 | `wild` — Forsaken Fort area | `map-wild.jpg` | 538 × 514 |
 | `wildcargo` — Cargo / Geum-Oh Mine area | `map-wildcargo.jpg` | 385 × 610 |
 | `forest` — Forest of Elements / Tower of Priest | `map-forest.jpg` | 346 × 457 |
 
-## Missing (6 of 9 maps, 58 of 80 pins)
-
-The six town maps — `naroo`, `jook`, `geum`, `fort`, `pub`, `cop` — are not in
-the guide file. It hot-links them from `mystic-city.de`, and that artwork is
-**not the guide author's to license**, which is why nothing was copied here.
-This is the open item already recorded in `MEMORY.md`.
-
-The site handles their absence rather than breaking: those maps show their pin
-list with the same click-to-highlight behaviour in both directions, and say the
-image is not included.
-
-## To add them
-
-Rafael's call, not the agent's. If the answer is yes:
+## Regenerating
 
 ```
-python tools\quest_map_ingest\fetch_town_maps.py
+python tools\quest_map_ingest\fetch_town_maps.py          # only if a town map is missing
+python tools\quest_map_ingest\extract_quest_maps.py "<guide>.html"
+python tools\knowledge_base_site\build_site_manifest.py
+python tools\knowledge_base_site\build_deploy.py
 ```
 
-It downloads the six JPEGs into this folder under the names the site already
-looks for (`map-naroo.jpg` and so on), then rebuild the manifest and bundle.
-Nothing else changes — the pins are already correct for that artwork.
+`extract_quest_maps.py` picks up whichever map images are already on disk, so
+the fetch only ever has to run once.
 
-If the answer is no, the alternative is to re-place 58 pins against the Bango
-client's own map textures under `data\HyperText\MiniMap\`, which is manual work
-per pin and would need a `.gtx` → PNG converter first.
+## Remaining gap
+
+Ten quest steps are `F()` landmarks — dungeons and field locations with no town
+map at all. They render as plain labels rather than pins, which is what the
+original guide does too.

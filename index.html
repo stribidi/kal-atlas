@@ -2017,6 +2017,14 @@
       color: var(--dim);
       font-size: 12px;
     }
+    .map-credit {
+      margin: 7px 0 0;
+      color: var(--dim);
+      font-size: 11px;
+    }
+    .map-credit a { color: var(--muted); text-decoration: underline; }
+    .map-credit a:hover { color: var(--accent); }
+
     .map-legend {
       max-height: 210px;
       overflow-y: auto;
@@ -3719,6 +3727,12 @@
               </div>`
             : `<p class="map-missing">The image for this map is not included, so the pins
                 below are listed instead of placed. They work the same way.</p>`}
+            ${entry.image && entry.credit ? `<p class="map-credit">Map by ${
+              entry.credit.url
+                ? `<a href="${escapeAttr(entry.credit.url)}" target="_blank"
+                     rel="noopener noreferrer">${escapeHtml(entry.credit.name)}</a>`
+                : `<strong>${escapeHtml(entry.credit.name)}</strong>`}${
+              entry.credit.note ? ` — ${escapeHtml(entry.credit.note)}` : ""}</p>` : ""}
             <ul class="map-legend">${pins.map(([pin, data]) => `
               <li><button type="button" class="map-legend-pin"
                 data-map-pin="${escapeAttr(`${entry.id}-${pin}`)}">${escapeHtml(pin)}</button>
@@ -7756,7 +7770,10 @@
         ${provenanceFooter(`
           <p>Rewards and steps come from the current Bango client tables. The walkthrough and
             map pins come from the player-authored route guide, matched to this quest by name
-            and level.</p>
+            and level. Its quest text and maps come in turn from
+            <a href="https://mystic-city.de/System/viewpage.php?page_id=48" target="_blank"
+               rel="noopener noreferrer">mystic-city.de</a>, with world map artwork by
+            Vresko.com.</p>
           ${routeRows.length ? `<div class="table-wrap"><table>
             <thead><tr><th>Route quest</th><th>Stage</th><th>Match</th><th>Status</th></tr></thead>
             <tbody>${routeRows.map(entry => `<tr>
