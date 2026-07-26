@@ -2137,6 +2137,29 @@
     }
     .panel h4:first-child, .versus-grid h4 { margin-top: 0; }
 
+    .model-viewer { margin: -2px 0 0; }
+    .model-viewer canvas {
+      display: block;
+      width: 100%;
+      height: 240px;
+      border: 1px solid #bfa77f;
+      border-radius: var(--radius-sm);
+      background:
+        radial-gradient(circle at 50% 38%, rgba(255, 250, 240, .85), transparent 62%),
+        linear-gradient(160deg, #efe8da, #ded5c3);
+      cursor: grab;
+      touch-action: none;
+    }
+    .model-viewer canvas:active { cursor: grabbing; }
+    .model-viewer-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      margin-top: 7px;
+      font-size: 11.5px;
+    }
+
     .link-list { margin: 0; padding: 0; list-style: none; }
     .link-list li { padding: 3px 0; border-bottom: 1px dotted var(--line-soft); font-size: 13px; }
     .link-list li:last-child { border-bottom: 0; }
@@ -2229,6 +2252,7 @@
       legacyDrops: "data/DROPS.csv",
       legacyPrefixes: "data/PREFIXES.csv",
       legacySkills: "data/SKILLS.csv",
+      legacyQuests: "data/QUESTS.csv",
       positions: "data/POSITIONS.csv",
       levelPlayers: "data/LVL_PLAYERS.csv",
       levelEggs: "data/LVL_EGGS.csv",
@@ -2786,6 +2810,7 @@
         await loadCombatFixture();
         await loadServerProfile();
         await loadQuestMaps();
+        await loadModelCatalogue();
         renderLoading("Reading registered reference articles…", 81);
         await loadArticles();
         renderLoading("Building reciprocal entity links…", 89);
@@ -3286,6 +3311,7 @@
         npcs: ix.npcs.length,
         zones: state.zones.length,
         talismans: talismanRows().length,
+        repeatable: repeatableQuests().length,
         data: state.availableFiles.filter(path => path.endsWith(".csv")).length
       } : {};
       return [
@@ -3307,6 +3333,7 @@
           ["build", "Character Creation", ""],
           ["weapon-calculator", "Weapon calculator", ""],
           ["levels", "Levelling", ""],
+          ["repeatable", "Repeatable quests", counts.repeatable],
           ["system", "Game system", ""]
         ]},
         { label: "Evidence", links: [
@@ -4531,6 +4558,7 @@
       const documented = documentedItemDropEvidence(row, drops);
       const articles = relatedArticles("item", id, row.ita_name || "");
       const isArmorSet = previewName?.startsWith("kalenc-armor-preview-");
+      const model = modelForItem(id);
       const headline = [
         row.ita_class || classes.join(" / "),
         row.ita_grade ? displayGrade(row.ita_grade) : "",
@@ -4580,6 +4608,8 @@
               ${isArmorSet ? "" : `<div><strong>${escapeHtml(row.ita_name || "")}</strong>
                 ${headline ? `<br><span class="dim">${headline}</span>` : ""}</div>`}
             </div>
+            ${model ? panel("3D model", modelViewerHtml(model),
+              { aside: `<span class="panel-aside">Drag to turn</span>` }) : ""}
             ${articles ? panel("Guides", articles) : ""}
           </div>
         </div>
@@ -4596,6 +4626,7 @@
           ${codes.length || limits.length ? `<p>Client codes ${escapeHtml(codes.join(" · ") || "—")};
             native limits ${escapeHtml(limits.join(" · ") || "—")}.</p>` : ""}
           ${documented && !/class="empty"/.test(documented) ? `<div>${documented}</div>` : ""}`)}`;
+      if (model) wireModelViewer(el.main, model);
     }
 
     function legacyMonsterStats(row) {
@@ -5216,6 +5247,263 @@
         + (fallback ? ` data-icon-fallback="${escapeAttr(String(fallback).toLowerCase())}"` : "")
         + ` width="${size}" height="${size}" alt="${escapeAttr(label)}"`
         + ` title="${escapeAttr(label)}">`;
+    }
+
+    /* ===================================================================
+       3D model viewer
+
+       KalEncyclopedia's item page has a Show 3D button that loads the
+       client's own mesh and texture. This is the same feature: the models are
+       converted offline by tools/client_models/convert_models.py into a
+       compact binary, and drawn here with plain WebGL — no library, matching
+       the project's one-file, no-build-step rule.
+
+       Only weapons have models. Armour is shown as the full-set portrait,
+       which is what the original did too.
+       =================================================================== */
+    async function loadModelCatalogue() {
+      try {
+        const text = await state.source.read("assets/models/MODELS.json");
+        const parsed = JSON.parse(text);
+        state.models = parsed;
+        // Normalized item name -> model key. Name, never id: the converter
+        // reads the legacy item table, whose ita_azon space is unrelated to
+        // Bango's — only 2 of 704 ids name the same item — so an id join
+        // would put every model on the wrong weapon.
+        state.models.byName = new Map();
+        Object.entries(parsed.models || {}).forEach(([key, entry]) =>
+          (entry.items || []).forEach(name => state.models.byName.set(String(name), key)));
+      } catch (error) {
+        state.models = null;
+      }
+    }
+
+    function modelForItem(id) {
+      const row = state.indexes.itemsById.get(String(id));
+      if (!row) return null;
+      const key = state.models?.byName?.get(normalizeName(row.ita_name));
+      return key ? { key, ...state.models.models[key] } : null;
+    }
+
+    /* The .mdl layout, written by the converter:
+         u32 magic, u32 vertexCount, u32 indexCount, u32 reserved
+         f32 positions[3n], f32 normals[3n], f32 uvs[2n], u16 indices[m]  */
+    function decodeModel(buffer) {
+      const header = new Uint32Array(buffer, 0, 4);
+      const vertexCount = header[1];
+      const indexCount = header[2];
+      let offset = 16;
+      const positions = new Float32Array(buffer, offset, vertexCount * 3);
+      offset += vertexCount * 12;
+      const normals = new Float32Array(buffer, offset, vertexCount * 3);
+      offset += vertexCount * 12;
+      const uvs = new Float32Array(buffer, offset, vertexCount * 2);
+      offset += vertexCount * 8;
+      const indices = new Uint16Array(buffer.slice(offset, offset + indexCount * 2));
+      return { positions, normals, uvs, indices, vertexCount, indexCount };
+    }
+
+    const MODEL_VERTEX_SHADER = `
+      attribute vec3 aPosition; attribute vec3 aNormal; attribute vec2 aUv;
+      uniform mat4 uModel; uniform mat4 uProjection;
+      varying vec3 vNormal; varying vec2 vUv;
+      void main() {
+        vNormal = mat3(uModel) * aNormal;
+        vUv = aUv;
+        gl_Position = uProjection * uModel * vec4(aPosition, 1.0);
+      }`;
+
+    const MODEL_FRAGMENT_SHADER = `
+      precision mediump float;
+      uniform sampler2D uTexture; uniform bool uHasTexture;
+      varying vec3 vNormal; varying vec2 vUv;
+      void main() {
+        vec3 normal = normalize(vNormal);
+        // Two fixed lights: a warm key from the front-right and a cool fill,
+        // so an untextured mesh still reads as a solid object.
+        float key = max(dot(normal, normalize(vec3(0.5, 0.7, 0.9))), 0.0);
+        float fill = max(dot(normal, normalize(vec3(-0.6, -0.2, -0.5))), 0.0);
+        vec3 base = uHasTexture ? texture2D(uTexture, vUv).rgb : vec3(0.72, 0.63, 0.48);
+        gl_FragColor = vec4(base * (0.34 + 0.72 * key + 0.20 * fill), 1.0);
+      }`;
+
+    function compileShader(gl, type, source) {
+      const shader = gl.createShader(type);
+      gl.shaderSource(shader, source);
+      gl.compileShader(shader);
+      if (!gl.getShaderParameter(shader, gl.COMPILE_STATUS)) {
+        throw new Error(gl.getShaderInfoLog(shader) || "shader failed to compile");
+      }
+      return shader;
+    }
+
+    function modelMatrix(rotationX, rotationY, scale, centre) {
+      const cx = Math.cos(rotationX), sx = Math.sin(rotationX);
+      const cy = Math.cos(rotationY), sy = Math.sin(rotationY);
+      // Rotate Y then X, scale to fit, and translate the mesh's own centre to
+      // the origin first so it spins about itself rather than about (0,0,0).
+      const m = [
+        cy * scale, sy * sx * scale, -sy * cx * scale, 0,
+        0, cx * scale, sx * scale, 0,
+        sy * scale, -cy * sx * scale, cy * cx * scale, 0,
+        0, 0, -3.2, 1
+      ];
+      const [tx, ty, tz] = centre;
+      m[12] -= m[0] * tx + m[4] * ty + m[8] * tz;
+      m[13] -= m[1] * tx + m[5] * ty + m[9] * tz;
+      m[14] -= m[2] * tx + m[6] * ty + m[10] * tz;
+      return new Float32Array(m);
+    }
+
+    function perspective(aspect) {
+      const f = 1 / Math.tan(Math.PI / 8);
+      const near = 0.1, far = 100;
+      return new Float32Array([
+        f / aspect, 0, 0, 0,
+        0, f, 0, 0,
+        0, 0, (far + near) / (near - far), -1,
+        0, 0, (2 * far * near) / (near - far), 0
+      ]);
+    }
+
+    async function startModelViewer(canvas, entry) {
+      const gl = canvas.getContext("webgl", { antialias: true, alpha: true });
+      if (!gl) throw new Error("This browser has no WebGL.");
+      const buffer = await (await state.source.file(entry.mesh)).arrayBuffer();
+      const mesh = decodeModel(buffer);
+
+      let minimum = [Infinity, Infinity, Infinity];
+      let maximum = [-Infinity, -Infinity, -Infinity];
+      for (let i = 0; i < mesh.vertexCount; i += 1) {
+        for (let axis = 0; axis < 3; axis += 1) {
+          const value = mesh.positions[i * 3 + axis];
+          if (value < minimum[axis]) minimum[axis] = value;
+          if (value > maximum[axis]) maximum[axis] = value;
+        }
+      }
+      const centre = minimum.map((value, axis) => (value + maximum[axis]) / 2);
+      const extent = Math.max(...maximum.map((value, axis) => value - minimum[axis]), 0.001);
+      const scale = 2.1 / extent;
+
+      const program = gl.createProgram();
+      gl.attachShader(program, compileShader(gl, gl.VERTEX_SHADER, MODEL_VERTEX_SHADER));
+      gl.attachShader(program, compileShader(gl, gl.FRAGMENT_SHADER, MODEL_FRAGMENT_SHADER));
+      gl.linkProgram(program);
+      if (!gl.getProgramParameter(program, gl.LINK_STATUS)) {
+        throw new Error(gl.getProgramInfoLog(program) || "shader program failed to link");
+      }
+      gl.useProgram(program);
+
+      const bind = (data, size, name) => {
+        const vbo = gl.createBuffer();
+        gl.bindBuffer(gl.ARRAY_BUFFER, vbo);
+        gl.bufferData(gl.ARRAY_BUFFER, data, gl.STATIC_DRAW);
+        const location = gl.getAttribLocation(program, name);
+        gl.enableVertexAttribArray(location);
+        gl.vertexAttribPointer(location, size, gl.FLOAT, false, 0, 0);
+      };
+      bind(mesh.positions, 3, "aPosition");
+      bind(mesh.normals, 3, "aNormal");
+      bind(mesh.uvs, 2, "aUv");
+      const ibo = gl.createBuffer();
+      gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, ibo);
+      gl.bufferData(gl.ELEMENT_ARRAY_BUFFER, mesh.indices, gl.STATIC_DRAW);
+
+      let hasTexture = false;
+      if (entry.texture) {
+        try {
+          const blob = await state.source.file(entry.texture);
+          const image = await createImageBitmap(blob);
+          const texture = gl.createTexture();
+          gl.bindTexture(gl.TEXTURE_2D, texture);
+          gl.pixelStorei(gl.UNPACK_FLIP_Y_WEBGL, true);
+          gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, gl.RGBA, gl.UNSIGNED_BYTE, image);
+          gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.LINEAR);
+          gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_S, gl.REPEAT);
+          gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_T, gl.REPEAT);
+          hasTexture = true;
+        } catch (error) {
+          // An unreadable texture is not worth failing the whole viewer for.
+        }
+      }
+      gl.uniform1i(gl.getUniformLocation(program, "uHasTexture"), hasTexture ? 1 : 0);
+      gl.uniform1i(gl.getUniformLocation(program, "uTexture"), 0);
+
+      gl.enable(gl.DEPTH_TEST);
+      gl.clearColor(0, 0, 0, 0);
+
+      const view = { rotationX: -0.25, rotationY: 0.7, spinning: true };
+      const uModel = gl.getUniformLocation(program, "uModel");
+      const uProjection = gl.getUniformLocation(program, "uProjection");
+
+      const draw = () => {
+        const width = canvas.clientWidth || 320;
+        const height = canvas.clientHeight || 260;
+        const ratio = Math.min(window.devicePixelRatio || 1, 2);
+        if (canvas.width !== width * ratio || canvas.height !== height * ratio) {
+          canvas.width = width * ratio;
+          canvas.height = height * ratio;
+        }
+        gl.viewport(0, 0, canvas.width, canvas.height);
+        gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
+        gl.uniformMatrix4fv(uProjection, false, perspective(width / height));
+        gl.uniformMatrix4fv(uModel, false,
+          modelMatrix(view.rotationX, view.rotationY, scale, centre));
+        gl.drawElements(gl.TRIANGLES, mesh.indexCount, gl.UNSIGNED_SHORT, 0);
+      };
+
+      let frame = 0;
+      const loop = () => {
+        if (!canvas.isConnected) return cancelAnimationFrame(frame);
+        if (view.spinning) view.rotationY += 0.012;
+        draw();
+        frame = requestAnimationFrame(loop);
+      };
+      loop();
+
+      let dragging = false, lastX = 0, lastY = 0;
+      canvas.onpointerdown = event => {
+        dragging = true; view.spinning = false;
+        lastX = event.clientX; lastY = event.clientY;
+        canvas.setPointerCapture(event.pointerId);
+      };
+      canvas.onpointermove = event => {
+        if (!dragging) return;
+        view.rotationY += (event.clientX - lastX) * 0.01;
+        view.rotationX = Math.max(-1.5, Math.min(1.5,
+          view.rotationX + (event.clientY - lastY) * 0.01));
+        lastX = event.clientX; lastY = event.clientY;
+      };
+      canvas.onpointerup = () => { dragging = false; };
+      return { mesh, hasTexture, toggleSpin: () => (view.spinning = !view.spinning) };
+    }
+
+    function modelViewerHtml(entry) {
+      return `<div class="model-viewer">
+        <canvas data-model-canvas aria-label="Rotatable 3D model"></canvas>
+        <div class="model-viewer-bar">
+          <span class="dim">${prettyNumber(entry.triangles)} triangles</span>
+          <button type="button" class="button small" data-model-spin>Pause</button>
+        </div>
+      </div>`;
+    }
+
+    async function wireModelViewer(root, entry) {
+      if (!root || typeof root.querySelector !== "function") return;
+      const canvas = root.querySelector("[data-model-canvas]");
+      if (!canvas) return;
+      try {
+        const viewer = await startModelViewer(canvas, entry);
+        const button = root.querySelector("[data-model-spin]");
+        if (button) button.onclick = () => {
+          const spinning = viewer.toggleSpin();
+          button.textContent = spinning ? "Pause" : "Spin";
+        };
+      } catch (error) {
+        canvas.replaceWith(Object.assign(document.createElement("p"), {
+          className: "dim", textContent: `The model could not be drawn: ${error.message}`
+        }));
+      }
     }
 
     /* Monster portraits. The Bango client names monsters but ships no 2D
@@ -7653,6 +7941,7 @@
         </nav>
         ${tab === "eggs" ? renderEggTable() : renderPlayerLevels(levels, selected, below, above)}`;
 
+      if (typeof el.main.querySelectorAll !== "function") return;
       el.main.querySelectorAll("[data-level-input]").forEach(control => {
         control.onchange = () => {
           const params = new URLSearchParams({
@@ -7783,6 +8072,166 @@
           { key: "agi", label: "Agility", align: true,
             sort: row => Number(row.agility) || "", cell: row => escapeHtml(row.agility || "—") }
         ], rows, { defaultSort: { key: "grade", dir: "asc" } })}`, { wide: true });
+    }
+
+    /* ===================================================================
+       Repeatable quests — KalEncyclopedia's frmQuests calculator.
+
+       A repeatable quest is a grind: hand in N of an item, get XP, repeat.
+       The only question worth answering is how many items — and how many
+       geons — stand between you and the next level. The original made you
+       type the XP and item count in; both are in the quest row, so they are
+       filled in for you and stay editable.
+
+         items = Round(needed x (1000 - progress) / 1000 / xpPerTurnIn) x itemsPerTurnIn
+         cost  = Round(items x pricePerItem)
+
+       `progress` is per mille in the original, which is a strange unit to
+       ask a player for; it is a percentage here and converted on the way in.
+       =================================================================== */
+    function repeatableQuests() {
+      if (state.indexes.repeatableQuests) return state.indexes.repeatableQuests;
+      const parseNumber = text => Number(String(text || "").replace(/[^\d]/g, "")) || 0;
+      state.indexes.repeatableQuests = (state.optional.legacyQuests || [])
+        .filter(row => row.que_type === "RQ")
+        .map(row => {
+          // "25 Head of Big Handed" — the count and the item are one string.
+          const match = /^\s*(\d+)\s+(.*)$/.exec(row.que_item || "");
+          return {
+            id: row.que_id,
+            level: Number(row.que_lvl) || 0,
+            name: row.que_name || "",
+            monster: row.que_monst || "",
+            // "+ 1.110 XP" uses a dot as the thousands separator.
+            experience: parseNumber(row.que_rew),
+            itemCount: match ? Number(match[1]) : 0,
+            itemName: match ? match[2] : (row.que_item || ""),
+            text: cleanText(row.que_text)
+          };
+        })
+        .sort((left, right) => left.level - right.level || left.id.localeCompare(right.id));
+      return state.indexes.repeatableQuests;
+    }
+
+    function repeatableCalcState() {
+      state.repeatableCalc ||= { questId: "", level: 0, progress: 0, price: 0 };
+      return state.repeatableCalc;
+    }
+
+    function renderRepeatableQuests(query) {
+      const quests = repeatableQuests();
+      if (!quests.length) {
+        el.main.innerHTML = pageHeader({
+          eyebrow: "Quests", title: "Repeatable quests",
+          crumbs: [["Overview", "#/home"], ["Repeatable quests", ""]]
+        }) + emptyState("No repeatable quest rows are available.");
+        return;
+      }
+      const calc = repeatableCalcState();
+      const selected = quests.find(quest => quest.id === (query.get("q") || calc.questId))
+        || quests[0];
+      calc.questId = selected.id;
+      const level = calc.level || selected.level || Number(currentBuild()?.level) || 1;
+      const levelRow = playerLevelTable().find(entry => entry.level === level);
+      const needed = Math.max(0, Math.round((levelRow?.need || 0)
+        * (100 - Math.min(100, Math.max(0, calc.progress))) / 100));
+      const turnIns = selected.experience > 0 ? Math.round(needed / selected.experience) : null;
+      const items = turnIns === null ? null : turnIns * selected.itemCount;
+      const cost = items === null ? null : Math.round(items * calc.price);
+
+      el.main.innerHTML = `
+        ${pageHeader({
+          eyebrow: "Quests",
+          title: "Repeatable quests",
+          lede: "What a grind actually costs: how many hand-ins, how many items, how many geons.",
+          crumbs: [["Overview", "#/home"], ["Repeatable quests", ""]]
+        })}
+        <div class="detail-grid">
+          <div>
+            ${panel("Pick one", sortableTable("repeatableTable", [
+              {
+                key: "level", label: "Level", align: true,
+                sort: quest => quest.level, cell: quest => String(quest.level)
+              },
+              {
+                key: "name", label: "Quest",
+                sort: quest => quest.name,
+                cell: quest => `<a href="#/repeatable?q=${escapeAttr(quest.id)}"${
+                  quest.id === selected.id ? ` class="accent"` : ""}>${escapeHtml(quest.name)}</a>`
+              },
+              {
+                key: "monster", label: "From",
+                sort: quest => quest.monster, cell: quest => escapeHtml(quest.monster || "—")
+              },
+              {
+                key: "item", label: "Hand in", align: true,
+                sort: quest => quest.itemCount,
+                cell: quest => `${quest.itemCount} × <span class="dim">${escapeHtml(quest.itemName)}</span>`
+              },
+              {
+                key: "xp", label: "Experience", align: true,
+                sort: quest => quest.experience || "",
+                cell: quest => quest.experience
+                  ? prettyNumber(quest.experience) : `<span class="dim">—</span>`
+              }
+            ], quests, { defaultSort: { key: "level", dir: "asc" } }), { wide: true })}
+          </div>
+          <div class="detail-side">
+            ${panel("How much of it", `
+              <div class="field-grid" style="grid-template-columns:repeat(2,minmax(0,1fr))">
+                <label class="field"><span>Your level</span>
+                  <input type="number" min="1" max="${playerLevelTable().at(-1)?.level || 99}"
+                    data-repeat-calc="level" value="${escapeAttr(level)}"></label>
+                <label class="field"><span>Already done (%)</span>
+                  <input type="number" min="0" max="99" data-repeat-calc="progress"
+                    value="${escapeAttr(calc.progress)}"></label>
+                <label class="field"><span>Experience per hand-in</span>
+                  <input type="number" min="0" data-repeat-calc="experience"
+                    value="${escapeAttr(selected.experience)}"></label>
+                <label class="field"><span>Items per hand-in</span>
+                  <input type="number" min="1" data-repeat-calc="itemCount"
+                    value="${escapeAttr(selected.itemCount)}"></label>
+                <label class="field" style="grid-column:1/-1"><span>Price per item (geons)</span>
+                  <input type="number" min="0" data-repeat-calc="price"
+                    value="${escapeAttr(calc.price)}"></label>
+              </div>
+              ${statLines([
+                ["Experience still needed", prettyNumber(needed)],
+                ["Hand-ins", turnIns === null ? "—" : prettyNumber(turnIns)],
+                ["Items to collect", items === null
+                  ? "—" : `<b>${prettyNumber(items)}</b>`],
+                ["Geons", cost ? `<b>${prettyNumber(cost)}</b>` : ""]
+              ])}
+              ${selected.experience > 0 ? "" : `<p class="dim" style="margin:10px 0 0">
+                <small>This quest's reward is not recorded, so enter the experience it gives
+                to get a count.</small></p>`}`,
+              { aside: `<span class="panel-aside">${escapeHtml(selected.name)}</span>` })}
+            ${panel("This quest", statLines([
+              ["Level", String(selected.level)],
+              ["Hand in", `${selected.itemCount} × ${escapeHtml(selected.itemName)}`],
+              ["Killed from", escapeHtml(selected.monster)],
+              ["Experience", selected.experience ? prettyNumber(selected.experience) : ""]
+            ]) + (selected.text
+              ? `<p class="item-flavour">${escapeHtml(selected.text)}</p>` : ""))}
+          </div>
+        </div>
+        ${provenanceFooter(`<p>Repeatable quest rewards and item counts come from the
+          KalEncyclopedia database. Experience needed for your level follows the project's
+          server experience rate.</p>`)}`;
+
+      if (typeof el.main.querySelectorAll !== "function") return;
+      el.main.querySelectorAll("[data-repeat-calc]").forEach(control => {
+        control.onchange = event => {
+          const key = event.currentTarget.dataset.repeatCalc;
+          const value = Number(event.currentTarget.value) || 0;
+          // The two quest-derived fields stay editable without being saved
+          // back onto the quest: they belong to this calculation only.
+          if (key === "experience") selected.experience = value;
+          else if (key === "itemCount") selected.itemCount = value;
+          else calc[key] = value;
+          renderRepeatableQuests(query);
+        };
+      });
     }
 
     /* ===================================================================
@@ -7977,6 +8426,7 @@
           own weapon calculator. Bango may have retuned them; nothing here has been measured
           in play.</p>`)}`;
 
+      if (typeof el.main.querySelectorAll !== "function") return;
       el.main.querySelectorAll("[data-weapon-calc]").forEach(control => {
         control.onchange = event => {
           const key = event.currentTarget.dataset.weaponCalc;
@@ -8578,6 +9028,7 @@
           case "talismans": renderTalismans(route.query); break;
           case "talisman": renderTalisman(route.id); break;
           case "levels": renderLevels(route.query); break;
+          case "repeatable": renderRepeatableQuests(route.query); break;
           case "weapon-calculator": renderWeaponCalculator(); break;
           case "system": renderGameSystem(); break;
           case "prefix": renderPrefix(route.id); break;
