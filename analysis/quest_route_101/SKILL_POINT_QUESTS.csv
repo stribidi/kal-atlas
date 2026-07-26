@@ -1,0 +1,15 @@
+que_id,que_lvl,que_name,bango_experience,bango_contribution,bango_skill_points,bango_prerequisite,provenance,source_file,source_line
+7,11,Won-Jung and Yae-Jin's Love,2500,0,1,,bango-file,questlist.dat,16
+11,15,Undelivered Rice Cake,4000,0,1,6,bango-file,questlist.dat,20
+12,16,Wa-Ryu's Talisman,8000,1,2,8,bango-file,questlist.dat,22
+13,17,Finding Yae-Jin's Father,4500,0,1,10,bango-file,questlist.dat,23
+14,18,Collecting Yang-Do's Bamboo Poles,9600,1,2,10,bango-file,questlist.dat,24
+16,20,Ja-Gan's Good Conduct,7000,0,1,14,bango-file,questlist.dat,26
+19,25,Demon's Drum,12000,0,1,18,bango-file,questlist.dat,29
+21,27,Collecting Clothes Stained with Blood,16300,1,1,7,bango-file,questlist.dat,31
+22,28,Materials of Winter Clothes,19000,1,1,20,bango-file,questlist.dat,32
+23,29,Hunting the Demon Mad Knight,22000,1,1,19,bango-file,questlist.dat,33
+24,33,Helping Yang-Do,47000,0,2,20,bango-file,questlist.dat,40
+33,38,Dilemma of Jae-Ga Troop's Scouts,90000,0,1,,bango-file,questlist.dat,45
+77,76,Precious recovery,70183730,0,1,72,bango-file,questlist.dat,93
+79,77,Guard of D'evah,84222881,0,1,78,bango-file,questlist.dat,99

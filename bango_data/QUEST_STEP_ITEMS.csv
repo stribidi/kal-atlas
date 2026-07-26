@@ -1,0 +1,183 @@
+que_id,step_index,item_ordinal,item_id,item_name,count,provenance,source_file,source_line
+1,1,1,132,Gwang-Chun's Letter,1,bango-file,questlist.dat,3
+1,2,1,142,MyungJoo,1,bango-file,questlist.dat,3
+2,1,1,140,Shee-Geun's Message,1,bango-file,questlist.dat,4
+3,1,1,146,Demon's Strategic Map,1,bango-file,questlist.dat,5
+3,2,1,133,Mak-AnSoo's Letter,1,bango-file,questlist.dat,5
+3,3,1,134,Sae-Won General's Letter,1,bango-file,questlist.dat,5
+54,1,1,396,Demon Vulgar's Head,1,bango-file,questlist.dat,6
+55,1,1,397,Demon Scout's Head,1,bango-file,questlist.dat,7
+56,1,1,398,Demon Spearhead's Head,1,bango-file,questlist.dat,8
+9001,2,1,169,Chun-SooIn's Stirrup,1,bango-file,questlist.dat,9
+9002,2,1,170,Escort Soldier's Head,30,bango-file,questlist.dat,10
+9002,4,1,171,Big Handed Inhabitant's Head,1,bango-file,questlist.dat,10
+9002,6,1,172,In-Pill's Scabbard,1,bango-file,questlist.dat,10
+9003,1,1,173,Big Handed Warrior's Head,40,bango-file,questlist.dat,11
+57,1,1,237,Goby,1,bango-file,questlist.dat,12
+4,2,1,147,Demon's Bow,10,bango-file,questlist.dat,13
+5,1,1,135,Nou-Woong's Letter,1,bango-file,questlist.dat,14
+5,2,1,148,Suicide Bomber's Oil,10,bango-file,questlist.dat,14
+5,3,1,143,Nou-Woong's Money,1,bango-file,questlist.dat,14
+6,4,1,149,Big Handed Inhabitant's Tooth,15,bango-file,questlist.dat,15
+6,5,1,151,Straw Rice Bag,2,bango-file,questlist.dat,15
+7,1,1,136,Won-Jung's Letter,1,bango-file,questlist.dat,16
+7,2,1,153,White Peony,10,bango-file,questlist.dat,16
+7,2,2,154,Milk Vetch,10,bango-file,questlist.dat,16
+7,3,1,137,Yae-Jin's Letter,1,bango-file,questlist.dat,16
+7,3,2,144,SipJunDaeBoTang,1,bango-file,questlist.dat,16
+8,1,1,152,Demon's Carcass,25,bango-file,questlist.dat,17
+9,2,1,153,White Peony,12,bango-file,questlist.dat,18
+9,2,2,154,Milk Vetch,12,bango-file,questlist.dat,18
+9,3,1,144,SipJunDaeBoTang,1,bango-file,questlist.dat,18
+10,2,1,150,Demon Soldier's Teeth,20,bango-file,questlist.dat,19
+10,3,1,145,Rice Wine,1,bango-file,questlist.dat,19
+11,2,1,155,Rice Cake,25,bango-file,questlist.dat,20
+11,3,1,155,Rice Cake,25,bango-file,questlist.dat,20
+37,1,1,336,Keg of Talisman from Chang,1,bango-file,questlist.dat,21
+12,1,1,156,Wa-Ryu's Talisman,1,bango-file,questlist.dat,22
+13,2,1,157,Joo-Nong's Gold,30,bango-file,questlist.dat,23
+14,1,1,159,Piece of Bamboo Pole,30,bango-file,questlist.dat,24
+14,2,1,138,Yoo-An's Letter,1,bango-file,questlist.dat,24
+14,4,1,138,Yoo-An's Letter,1,bango-file,questlist.dat,24
+14,4,2,139,Father's Letter,1,bango-file,questlist.dat,24
+15,2,1,160,Statue,30,bango-file,questlist.dat,25
+16,1,1,158,Ja-Gan's Gold,30,bango-file,questlist.dat,26
+16,2,1,158,Ja-Gan's Gold,30,bango-file,questlist.dat,26
+17,1,1,161,Red Flag,35,bango-file,questlist.dat,27
+18,1,1,162,Demon Water Dragon's Head,35,bango-file,questlist.dat,28
+19,1,1,165,Demon's Drum,40,bango-file,questlist.dat,29
+20,1,1,166,Demon's Armor,40,bango-file,questlist.dat,30
+21,1,1,167,Bloodstained Clothes,40,bango-file,questlist.dat,31
+22,1,1,164,Demon Water Dragon's Skin,40,bango-file,questlist.dat,32
+23,1,1,163,Demon Mad Knight's Head,40,bango-file,questlist.dat,33
+9004,2,1,181,Demon Commander's Head,1,bango-file,questlist.dat,35
+9005,3,1,226,Sealed Talisman with Spirits,100,bango-file,questlist.dat,36
+9006,1,1,234,Petition of A Farmer,1,bango-file,questlist.dat,37
+9006,1,2,235,Petition of A Smith,1,bango-file,questlist.dat,37
+9006,1,3,236,Petition of A Parents,1,bango-file,questlist.dat,37
+9006,2,1,227,Devil Soldier's Head,1,bango-file,questlist.dat,37
+9006,2,2,228,Devil Soldier Twin Blades' Head,1,bango-file,questlist.dat,37
+9006,2,3,229,Devil Soldier Bow's Head,1,bango-file,questlist.dat,37
+9006,2,4,230,Devil Soldier Sword's Head,1,bango-file,questlist.dat,37
+9006,2,5,231,Devil Soldier Spear's Head,1,bango-file,questlist.dat,37
+9006,3,1,232,Devil Soldier Sub-boss' Head,1,bango-file,questlist.dat,37
+9006,3,2,233,Devil Soldier Boss' Head,1,bango-file,questlist.dat,37
+28,1,1,209,Wolf Tooth Necklace,1,bango-file,questlist.dat,38
+29,1,1,210,Ghost's Bead,10,bango-file,questlist.dat,39
+29,1,2,217,Talisman of Purification,1,bango-file,questlist.dat,39
+24,1,1,141,Demon Troop's Confidential Document,1,bango-file,questlist.dat,40
+30,1,1,211,Ghost of Blacksmith's Bead,10,bango-file,questlist.dat,41
+31,1,1,212,Ghost of Guard's Bead,10,bango-file,questlist.dat,42
+25,1,1,168,Demon Water Dragon Commander's Skin,1,bango-file,questlist.dat,43
+32,1,1,213,Ghost of Fellow Traveler's Bead,10,bango-file,questlist.dat,44
+33,1,1,214,Sealed Ghost Troop's Bead,10,bango-file,questlist.dat,45
+34,1,1,215,Devil Soldier's Bow,10,bango-file,questlist.dat,46
+35,1,1,216,Devil Soldier's Spear,10,bango-file,questlist.dat,47
+9007,1,1,448,Green Crystal of Doggebi Forest,1,bango-file,questlist.dat,48
+36,2,1,335,Head of Huhn-Woong's Enemy,1,bango-file,questlist.dat,49
+39,1,1,346,Devil Troop of Pain's Mask,100,bango-file,questlist.dat,50
+38,2,1,340,Secret Letter of Hong-Jun,1,bango-file,questlist.dat,51
+38,4,1,341,Head of Heuk-Yong,1,bango-file,questlist.dat,51
+38,4,2,342,Head of Dae-Ill,1,bango-file,questlist.dat,51
+38,4,3,343,Head of Goon-Sangji,1,bango-file,questlist.dat,51
+38,4,4,344,Head of Yoo,1,bango-file,questlist.dat,51
+38,4,5,345,Head of Ma-Gwang,1,bango-file,questlist.dat,51
+40,1,1,347,Devil Troop of Greed's Mask,100,bango-file,questlist.dat,52
+41,1,1,348,Devil Troop of Jealousy's Mask,100,bango-file,questlist.dat,53
+45,3,1,357,Head Skin of Yong-Chun,1,bango-file,questlist.dat,54
+45,3,2,358,Secret Letter,1,bango-file,questlist.dat,54
+45,4,1,357,Head Skin of Yong-Chun,1,bango-file,questlist.dat,54
+45,4,2,358,Secret Letter,1,bango-file,questlist.dat,54
+42,1,1,349,Devil Troop of Hatred's Mask,100,bango-file,questlist.dat,55
+46,1,1,359,Rope,1,bango-file,questlist.dat,56
+9008,2,1,449,Spirit of Doggebi of Monster Face,1,bango-file,questlist.dat,57
+9008,2,2,450,Spirit of Doggebi with a Gong,1,bango-file,questlist.dat,57
+9008,2,3,451,Spirit of Drunken Doggebi,1,bango-file,questlist.dat,57
+9008,2,4,452,Spirit of Doggebi with a Mask of Black Crow,1,bango-file,questlist.dat,57
+9008,2,5,453,Spirit of Doggebi with a Mask of Black Panther,1,bango-file,questlist.dat,57
+9008,2,6,454,Spirit of Giant Doggebi,1,bango-file,questlist.dat,57
+9008,2,7,455,Spirit of Guardian of Doggebi,1,bango-file,questlist.dat,57
+9008,3,1,456,Chief of Angry Doggebi Troop's Dead Body,1,bango-file,questlist.dat,57
+43,1,1,350,Devil Troop of Madness' Mask,100,bango-file,questlist.dat,58
+44,1,1,355,Defective Doggebi's Doll,1,bango-file,questlist.dat,59
+44,2,1,355,Defective Doggebi's Doll,1,bango-file,questlist.dat,59
+44,3,1,356,Doggebi's Doll,1,bango-file,questlist.dat,59
+47,1,1,387,Blood of Big Handed,5,bango-file,questlist.dat,60
+47,1,2,389,Doggebi of Monster Face's Broom,1,bango-file,questlist.dat,60
+48,1,1,387,Blood of Big Handed,5,bango-file,questlist.dat,61
+48,1,2,390,Doggebi with a Gong's Broom,1,bango-file,questlist.dat,61
+49,1,1,387,Blood of Big Handed,5,bango-file,questlist.dat,62
+49,1,2,391,Drunken Doggebi's Broom,1,bango-file,questlist.dat,62
+50,1,1,387,Blood of Big Handed,5,bango-file,questlist.dat,63
+50,1,2,392,Doggebi with a Mask of Black Crow's Broom,1,bango-file,questlist.dat,63
+51,1,1,387,Blood of Big Handed,5,bango-file,questlist.dat,64
+51,1,2,393,Doggebi with a Mask of Black Panther's Broom,1,bango-file,questlist.dat,64
+52,1,1,387,Blood of Big Handed,5,bango-file,questlist.dat,66
+52,1,2,394,Giant Doggebi's Broom,1,bango-file,questlist.dat,66
+53,1,1,388,Blood of Water Dragon,5,bango-file,questlist.dat,67
+53,1,2,395,Guardian of Doggebi's Stone,1,bango-file,questlist.dat,67
+58,2,1,432,Skeleton Warrior's Head,5,bango-file,questlist.dat,68
+59,1,1,433,Skeleton Warrior's Ribs,5,bango-file,questlist.dat,69
+60,1,1,434,Royal Tomb Keeper's Book,5,bango-file,questlist.dat,70
+61,1,1,435,Royal Tomb Keeper's Lute,5,bango-file,questlist.dat,71
+62,1,1,436,Royal Tomb Keeper's Sword,5,bango-file,questlist.dat,72
+63,1,1,437,Royal Tomb Keeper's Shield,5,bango-file,questlist.dat,73
+64,1,1,438,Royal Tomb Keeper's Spear,5,bango-file,questlist.dat,74
+65,1,1,439,Royal Tomb Keeper's Iron Hammer,5,bango-file,questlist.dat,75
+9010,1,1,1471,"Jea-Ga, letters of introduction",1,bango-file,questlist.dat,76
+9010,2,1,1461,element of fire,20,bango-file,questlist.dat,76
+9010,2,2,1462,element of water,20,bango-file,questlist.dat,76
+9010,2,3,1463,element of wood,20,bango-file,questlist.dat,76
+9010,2,4,1464,element of iron,20,bango-file,questlist.dat,76
+9010,2,5,1465,element of ground,20,bango-file,questlist.dat,76
+9010,3,1,1466,the purified element of fire,1,bango-file,questlist.dat,76
+9010,3,2,1467,the purified element of water,1,bango-file,questlist.dat,76
+9010,3,3,1468,the purified element of wood,1,bango-file,questlist.dat,76
+9010,3,4,1469,the purified element of iron,1,bango-file,questlist.dat,76
+9010,3,5,1470,the purified element of ground,1,bango-file,questlist.dat,76
+9010,4,1,1493,Necklace of Evil,1,bango-file,questlist.dat,76
+9010,4,2,1494,Lord's Jaw,1,bango-file,questlist.dat,76
+9010,4,3,1495,Monster's Right Arm,1,bango-file,questlist.dat,76
+9010,4,4,1496,Sword of the Chief Defender,1,bango-file,questlist.dat,76
+9010,5,1,1497,Complete E-moogy's Scale,1,bango-file,questlist.dat,76
+9010,5,2,1498,Horn of Doggebi Lord,1,bango-file,questlist.dat,76
+10001,1,1,1612,Essence of fire element,1,bango-file,questlist.dat,78
+10001,1,2,1613,Essence of water element,1,bango-file,questlist.dat,78
+10001,1,3,1614,Essence of wood element,1,bango-file,questlist.dat,78
+10001,1,4,1615,Essence of iron element,1,bango-file,questlist.dat,78
+10001,1,5,1616,Essence of earth element,1,bango-file,questlist.dat,78
+10002,1,1,1617,Essence of undead,100,bango-file,questlist.dat,79
+10003,1,1,1619,I'Lryer's ring,1,bango-file,questlist.dat,80
+66,1,1,1693,Crazy Demon Worker's Axe,20,bango-file,questlist.dat,83
+70,1,1,1715,Yun-Hwa's Letter,1,bango-file,questlist.dat,84
+70,1,2,1716,Elite Skeleton Head,50,bango-file,questlist.dat,84
+71,1,1,1717,Elite Skeletion Archer Head,10,bango-file,questlist.dat,85
+72,1,1,1740,Wolf Fur,20,bango-file,questlist.dat,86
+80,1,1,1736,Water Bag,50,bango-file,questlist.dat,87
+10007,4,1,1692,Demon Troop's Catapult lever,10,bango-file,questlist.dat,88
+10009,2,1,1694,Sealed Stone with Village Headman's Spirit,1,bango-file,questlist.dat,89
+67,1,1,1712,Poppy,10,bango-file,questlist.dat,90
+77,1,1,1733,Blue Bead,1,bango-file,questlist.dat,93
+77,1,2,1734,Treasure Sword,1,bango-file,questlist.dat,93
+77,1,3,1735,Book,1,bango-file,questlist.dat,93
+78,1,1,1737,Bear Head,30,bango-file,questlist.dat,94
+20017,1,1,1740,Wolf Fur,100,bango-file,questlist.dat,95
+69,1,1,1714,Soo-Ryun's Letter,1,bango-file,questlist.dat,96
+73,1,1,1739,Degenarated Twisted Demon Nail,20,bango-file,questlist.dat,97
+75,1,1,1729,Scorpions Poisoned needle,5,bango-file,questlist.dat,98
+75,1,2,1730,Bear's gall,5,bango-file,questlist.dat,98
+91,1,1,1783,Wild Boar's horn,50,bango-file,questlist.dat,100
+20018,1,1,2647,Wild Boar Fur,100,bango-file,questlist.dat,101
+76,1,1,1732,Goblin of Strategic Book,1,bango-file,questlist.dat,102
+81,1,1,1772,Goblin's Decoder,1,bango-file,questlist.dat,103
+86,1,1,1775,Wolf Commander Head,1,bango-file,questlist.dat,104
+92,1,1,2646,Degenarated Twisted Demon Jaw,80,bango-file,questlist.dat,105
+93,1,1,1785,Poisonous liquid,1,bango-file,questlist.dat,106
+93,1,2,1786,Diluted Poisonous Liquid,50,bango-file,questlist.dat,106
+20020,1,1,1730,Bear's gall,10,bango-file,questlist.dat,108
+82,1,1,1795,Goblin's pocket,10,bango-file,questlist.dat,109
+87,1,1,1776,Scorpion Shell,10,bango-file,questlist.dat,111
+88,1,1,1794,Properly Brown Bear meat,10,bango-file,questlist.dat,112
+94,1,1,1788,Secret document,50,bango-file,questlist.dat,113
+84,1,1,1773,Crazy Demon Worker's Leader Head,1,bango-file,questlist.dat,114
+95,1,1,1789,Guard of D'evah's Commander Head,1,bango-file,questlist.dat,118

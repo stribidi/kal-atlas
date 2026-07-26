@@ -1,0 +1,32 @@
+source_file,sha256,bytes,source_kind,classification,record_count,parsed_count,status,notes,provenance
+Dic-e.dat,2888916a84fdd42a46ff385735da63d84568628c319c15ee7f73694b06751e41,406,decoded-bytes-complete,plain-text-lines,55,55,reported,Non-tabular language/settings content retained line-for-line.,bango-file
+Dic.dat,f3eb1c7e3042f8952b2fcfac31f21b935d25b8e68652bd36901043fd6e2c5ab3,58842,inspection-text-partial,plain-text-lines,5586,5586,reported,Non-tabular language/settings content retained line-for-line.,bango-file
+Dic_Change.dat,db2a9ef317f58df9136758faffb11de050f3f3b9706923c75d0e314cb46ac164,1782,decoded-bytes-complete,plain-text-lines,214,214,reported,Non-tabular language/settings content retained line-for-line.,bango-file
+droplist.dat,5f92974da6acc17a6b2cc98924afdf9e5babb6e650b43d92fdbfeaab6befdad7,252195,decoded-bytes-complete,monster-header line table,24271,24271,parsed,709 monster headers; value and n/y/q flag preserved without guessing probability semantics.,bango-file
+event.dat,f8c76e14410fe05b540942aec3cd9fd48d49081ca832b907fa40a3528fda3338,15776,decoded-bytes-complete,s-expression,73,73,parsed,,bango-file
+eventscript-e.dat,32a0791a4be548bc5c4c9487549d4e2317ba31d9f2cae8d82c88d6e3fdfb7b45,42321,inspection-text-partial,s-expression,1,1,parsed,,bango-file
+eventscript-k.dat,41bd830194ac3eea548f11bd916a03abf88d06bf245c7902439235e8831ef7a4,42843,decoded-bytes-complete,s-expression,1,1,parsed,,bango-file
+guidebook-e.dat,2dc6ce38a78bb608c47e32cd7e196ec00f2bddd24b5c0c62be7e5c445c44dccf,15601,decoded-bytes-complete,s-expression,1,1,parsed,,bango-file
+guidebook-k.dat,92ab4b782985d8e4d025275a9638213f2074c0ad444ea00fd1ad0490d539ca21,14492,decoded-bytes-complete,s-expression,1,1,parsed,,bango-file
+initevent.dat,0f3acc8be7355d66471d84e3f9fca0275869410de7fcc0dba77653f48a65f862,9331,inspection-text-partial,s-expression,6,6,parsed,,bango-file
+inititem.dat,0e5159ebb918902581b012c5bf16d38f08b80d8aaffa8288d61351300894bd9c,561548,decoded-bytes-complete,s-expression,1838,1838,parsed,,bango-file
+jobsystem.dat,7667fd8b56ce0084a87953bb6afcdaf09bd241326293bf874dd0d3ba89679801,269488,decoded-bytes-complete,s-expression,549,549,parsed,,bango-file
+KGameSystem.dat,4443a14729805a76d0a9a4f93ec4cbd9269c0e51786c7fe0587b481e85f5dfcc,307,decoded-bytes-complete,plain-text-lines,15,15,reported,Non-tabular language/settings content retained line-for-line.,bango-file
+macro.dat,ccc85ed6179aece456c109e8d3119b606ccbe0d3fea78530293823fe02cfbbed,397212,inspection-text-partial,s-expression,2407,2407,parsed,,bango-file
+md5.dat,78cf65557b3c8ed8f3225d1d6686f4a1f64ba26e2a9c59db8f7f77da69c6232c,20750,decoded-bytes-complete,s-expression,250,250,parsed,,bango-file
+message.dat,6b6767e881d1385607774ed06574e2b14a6807cabd784f79ecef042accb05f00,663428,decoded-bytes-complete,s-expression,10312,10312,parsed,,bango-file
+monster-quest-indicator.dat,fb4ef0e7424581ac9f7797545e03703295a6ab950cdc3b8519093bba046c9fb6,3811,decoded-bytes-complete,three-column integer table,369,369,parsed,,bango-file
+namefilter.dat,78969ce67c33811fcae82b7950698b9e3b41e22f7754820b9c3103a061bf4411,8603,inspection-text-partial,plain-text-lines,673,673,reported,Non-tabular language/settings content retained line-for-line.,bango-file
+object.dat,3492e14b3e68d342dc5c3385c0c08e8a00fdaf1c4097b9b9464bc6fc1fea9182,82581,decoded-bytes-complete,s-expression,1174,1174,parsed,,bango-file
+prefix.dat,7af71fcaa15f3b1cc12d17265216940d1f1e87b66d11c2147db0f6ad6e4f8181,43219,inspection-text-partial,s-expression,682,682,parsed,,bango-file
+questlist.dat,41588e926ac5e7780dd46431f53dc2f1ee05cbba6ff6bb583c97fd15fb5dc62d,33720,decoded-bytes-complete,tab-separated quest table,116,116,parsed,187 steps and 182 step-item requirements normalized.,bango-file
+sound.dat,b241533d7f1b0155e1e335e06df535042a00b8d73cda1d0d395703e68510465f,483,decoded-bytes-complete,s-expression,9,9,parsed,,bango-file
+swapItem.dat,9a9f06128ed948f58391aec692356d69473fb886b9eea5b7d2e4175fab87f5b3,7234,decoded-bytes-complete,s-expression,54,54,parsed,,bango-file
+task-e.dat,f01a815b4a1d75cb20af427a629c6228021f90b65e96a5d7af8f2937b85ff287,217469,decoded-bytes-complete,s-expression,206,206,parsed,,bango-file
+task-k.dat,edcbf683d8c85099e9c2b3f7e635f4ee668de6da142081635fd8a4b97ac8fb10,93207,decoded-bytes-complete,s-expression,131,131,parsed-with-reported-anomaly,task-k.dat:2851:1: unmatched top-level ')' (byte offset 91574),bango-file
+taskquest.dat,16959d5d88e04c6b71c6df506a10e29e2c3b41d30a7d7b45a1f02225aa96d360,5841,decoded-bytes-complete,s-expression,76,76,parsed,,bango-file
+tipsystem-e.dat,a69d0f53b326174dfa83056fd6600f1413e37657f40f1c3143a537066034db66,978,inspection-text-partial,s-expression,3,3,parsed,,bango-file
+tipsystem-k.dat,062f3f0efd38a82f6e10184a925c87e5b7cf3a948f922e9ecee91c610235018c,23239,decoded-bytes-complete,s-expression,156,156,parsed,,bango-file
+tipsystem.dat,38e9c2b903f42ef7e90ee4c53b2c6536608f3ccecb0cb5e1b4df8509b2eb46cf,24133,decoded-bytes-complete,s-expression,156,156,parsed,,bango-file
+xlate-e.dat,250d472539e06a20d68b2576df277e6a46ddbec9e982241d13348d28f2fab77c,1141,decoded-bytes-complete,s-expression,2,2,parsed,,bango-file
+xlate-k.dat,ac3ff5f88a07a82b4a22100eadc15560d8b14c7381838d40423943a9a5a023ba,886,decoded-bytes-complete,s-expression,6,6,parsed,,bango-file

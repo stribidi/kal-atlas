@@ -1,0 +1,336 @@
+sk_megn,sk_type,sk_poz,sk_desc,sk_order,sk_pic,sk_lvl,sk_pre,sk_form,sk_pars,sk_maxpars,sk_mana,sk_charge,sk_coold,sk_range,sk_lasting,sk_honor
+"Parry","1",10,"By using your weapon, you can parry the enemy's attack.
+Two Hand Sword must be equipped",2,53,"50|1","|0","Defense + ?? % Add. Long-range Defense + ?? %","0","0","0","0","0","0","0",0
+"Powerful Arrow of Silence","2",17,"Block the opponent's magic, and consume the target's MP for 10 seconds",6,16,"53 63|1 1","|0","MP Consumption per 1 sec : #0","0 20 - sk_lvl 70 * +","0","80 sk_lvl 20 * +","0","0","0","10",0
+"Passive Attack","2",15,"Skill that decreases the opponent's hostility",5,4,"18|3","|0","Hostility ?? % Decrease","0","0","sk_lvl 2 *","0","0","0","0",0
+"Perfect Cure","2",4,"Recover the health of the selected target instantly
+Recover 35% of Max Health",6,110,"52 62 69|1 1 1","Restore|1","-","0","0","190 sk_lvl 30 * +","0","900000","180","0",0
+"Perfect Evasion","1",16,"Evade opponent's physical attack perfectly",2,7,"38 60|10 2","|0","Chance Perfect Evasion + #0 %","sk_lvl 7 +","0","0","0","0","0","0",1
+"Perfect Evasion 2","1",17,"Evade opponent's physical attack perfectly",7,17,"54 62 68|1 1 1","Perfect Evasion|10","Chance Perfect Evasion + #0 % (+ Perfect Evasion 1)","sk_lvl 0 +","0","0","0","0","0","0",0
+"Perfect Group Cure 2","2",4,"Recover the Health of your group members in the effective area.
+Recover 30% of Max HP of all group members instantly",16,120,"59 69|1 1","Group Cure 2|1","-","0","0","400 sk_lvl 40 * +","0","900000","128","0",0
+"Perfect Healing","2",4,"Recover 100% of HP of selected target.
+But, it takes a long time to reactivate.",18,122,"68|1","|0","-","0","0","596","0","1800000","210","0",0
+"Poison Arrow","2",16,"Use poison on the end of the arrow.
+Poison item is needed for using",4,9,"43|5","|0","Damage + #0 Continuous Time #1 Sec","ch_lvl sk_lvl 10 * +|10 sk_lvl 10 * +","0|0","15","0","0","0","0",0
+"Poison Cloud","2",18,"Spread the poison cloud and give continuous damage 
+to all the player in the poison cloud.
+Poison cloud stays for 12 seconds",14,35,"59 70|1 1","|0","-","0","0","100 sk_lvl 16 * +","0","0","0","12",0
+"Protect","2",14,"Decrease the fury point on selected group member",1,71,"15|1","|0","-","0","0","25 sk_lvl 25 * +","0","10000","190","300 sk_lvl 300 * +",0
+"Provocation","2",9,"Provokes the opponent for increasing hostility",4,49,"41|3","Mockery|5","Hostility + #0","800 sk_lvl 200 * +","0","24 sk_lvl 4 * +","0","5000","136 sk_lvl 8 * +","0",0
+"Purification","2",4,"Disable all debuffs of the selected target
+Except the Revival Sequela",2,106,"50|1","|0","-","0","0","74","2000","5000","170","0",0
+"Powerful Upward Slash","2",10,"After stabbing the weapon deeply in to the body, lifting up strongly.
+When making a hit, you get 1 Death Blow Point",1,52,"50 57 63 68|1 1 1 1","|0","Add. Attack Point + 1","0","0","24 sk_lvl 2 * +","0","4600","0","0",0
+"Range Extension","1",17,"Attack longer distance than the weapon's effective distance",2,12,"51 58 67|1 1 1","|0","Add. Range : #0","sk_lvl 20 *","0","0","0","0","0","0",0
+"Refining Weapon","2",3,"Give additional Attack point & Magic attack point
+on the selected weapon for a while",1,92,"50 57 62 66 69|1 1 1 1 1","|0","Add. Attack Point and Magic Attack Point + #0","16 sk_lvl 8 * +","0","50 sk_lvl 12 * +","1500","5000","100","900",0
+"Restore","2",2,"Recover the selected one's all health point instantly",11,89,"42|1","Revival (M)|1","Recovering Point : 25 %","0","0","112","0","90000","180","0",0
+"Revival (M)","2",2,"Revive one who is unable to fight with minimum health point",10,88,"37 60|1 1","Cure|1","-","0","0","240","0","0","0","0",1
+"Revival (knight)","2",11,"Revive one who is unable to fight with minimum health point",13,70,"59 69|1 1","|0","HP recovered of Target #0 %
+MP recovered of Target #1 %","sk_lvl 3 *|sk_lvl 2 *","0|0","240 sk_lvl 80 * +","3700","40000","64","0",0
+"Rush","2",10,"Rushing to the enemy and enemy gets stiff instantly.
+But distance must be more than 60",3,54,"52 62|1 1","|0","Instant Stiffness : #0","sk_lvl 1 +","0","46 sk_lvl 4 * +","1","14000 sk_lvl 2000 * -","60 sk_lvl 20 * +","0",0
+"Sacrifice","2",11,"Using you HP to recover the target HP",4,61,"52 61|1 1","|0","HP used : #0 % HP recovered : #1 %","5 sk_lvl 5 * +|50 sk_lvl 25 * +","0|0","0","0","40000","120","0",0
+"Sight Blockade","2",18,"Block the target's sight and make the target blind",16,37,"62|1","|0","-","0","0","100","0","0","0","10",0
+"Soul Destruction","2",4,"Throw luminary to the selected target",5,109,"52 63|1 4","|0","Magic Attack Point + #0","3 ch_lvl * 4 / 3 ch_wis * sk_lvl * 2 / +","0","29 sk_lvl 8 * +","1200","6000","150","0",0
+"Shield Attack","2",14,"Attack with the shield to impede the opponent.
+It can't be used on monsters",2,72,"25|1","|0","-","0","0","58","0","10000","36","0",0
+"Shield Offense","2",11,"Pushing away the enemy with the shield.
+One who gets pushed become faint for a short amount of time",3,60,"52 59 64 68|1 1 1 1","|0","Faint Time : #0","sk_lvl 4 *","0","72 sk_lvl 7 * +","0","15000","0","0",0
+"Speed of Movement Reducer","2",18,"Reduce the opponent's movement instantly by 50%",5,26,"53 58 69|1 1 1","|0","-","0","0","68","0","0","0","sk_lvl 8 *",0
+"Arrow of Silence","2",21,"Block the opponent's magic temporally
+It can't be used on monsters",1,39,"25|1","|0","-","0","0","72","0","0","0","0",0
+"Speed Up","2",2,"Run faster for certain amount of time",9,87,"36|3","|0","-","0","0","82 sk_lvl 8 * +","2300","600","160","sk_lvl 600 *",0
+"Splashy Ice","2",2,"Attack with splashy ice wave
+All that is hit may get slow by the Ice Mastery",7,85,"34|5","Ice Magic|10","Magic Attack Point + #0","5 ch_lvl * 6 / 5 ch_int * sk_lvl * 14 / +","320","42 sk_lvl 6 * +","900","600","64","0",0
+"Staggering Blow","2",15,"Draw a bow longer for more powerful attack",2,1,"5|10","|0","Add. Attack Point + #0 Add. On-target Point + #1
+Hostility 100% Increase
+Chance of Fatal Blow 10% Increase","50 7 ch_agi * sk_lvl * 8 / +|sk_lvl 2 /","900|0","16 3 sk_lvl * +","3000 sk_lvl 100 * -","0","0","0",0
+"Summons","2",4,"Revive one player who's not able to fight
+Revived character will be brought up to you",1,105,"50 61 68|1 1 1","Revival (M)|1","Revived character will get only #0 % of EXP loss","75 sk_lvl 25 * -","0","230 sk_lvl 30 * +","3000 sk_lvl 400 * -","5000","128 sk_lvl 16 * +","0",0
+"Survival Instinct","2",11,"When remaining MP is 10%, converting MP to HP",11,68,"56 63|1 1","|0","Converts Remaining MP * #0 to HP","sk_lvl 2 *","0","0","1500","1800000","0","0",0
+"Shock Wave","2",2,"Give the strong Shock Wave to the opponent",4,82,"31|5","Lightning Magic|5","Min Magic Attack Point + #0
+Max Magic Attack Point + #1 (+ Lightening Mastery * 20)","50 5 sk_lvl * 6 / + 3 ch_int * sk_lvl * 4 / +|150 5 sk_lvl * 6 / + 11 ch_int * sk_lvl * 6 / +","500|1200","56 sk_lvl 6 * +","0","1200","32","0",0
+"Thunder","2",3,"Drop thunderbolt to the selected target",9,100,"63 66|1 1","Lightning Summons|2","Min Magic Attack Point + #0
+Max Magic Attack Point + #1","360 3 ch_lvl * 2 / + 5 ch_int * sk_lvl * 4 / +|700 3 ch_lvl * 2 / + 15 ch_int * sk_lvl * 4 / +","600|1500","40 sk_lvl 8 * +","1000","600","190","0",0
+"Transcendental Blow","2",9,"Controls vigor in the body for attacking supreme damage to the enemy",1,46,"30|5","|0","Add. Attack Point + #0 Add.On-target Point + #1
+Hostility 200 % Increase
+fatal attack opportunity 5 % increase","150 sk_lvl 50 * +|sk_lvl 2 *","0|0","28 sk_lvl 3 * +","550 sk_lvl 50 * -","3300","0","0",0
+"Thunder Storm","2",3,"Thunderbolts are dropping for certain amount of time on the selected area.
+Attack every target in the area every 2 seconds for 16 seconds",11,102,"65|1","Chain Lightning|1","Min Magic Attack Point + #0
+Max Magic Attack Point + #1 (+ Lightening Mastery * 12)","216 9 ch_lvl * 10 / + 3 ch_int * sk_lvl * 4 / +|420 9 ch_lvl * 10 / + 9 ch_int * sk_lvl * 4 / +","0|0","352","4000","180000","190","0",0
+"Upward Slash","2",8,"After Lightning Slash, raise the sword for attacking upward",5,45,"24|5","Lightning Slash|5","Add. Attack Point + #0 Add. On-target Point + #1
+Hostility 50 % Increase","60 sk_lvl 20 * +|sk_lvl","0|0","sk_lvl 15 +","0","700","0","0",0
+"Weapon Mastery","1",8,"Handles weapon well for giving more damage to the enemy",1,42,"1 60|20 2","|0","On-target Point + #0
+Min/Max Attack + #1","sk_lvl 2 /|1 sk_lvl 2 / +","0|0","0","0","0","0","0",1
+"Widening Wound","2",9,"It's a next attack after Upward Slash",6,51,"43|5","Upward Slash|1","Add. Attack Point + #0 Add.On-target Point + #1
+Hostility 100 % Increase","80 sk_lvl 24 * +|sk_lvl 2 *","0|0","sk_lvl 15 +","0","700","0","0",0
+"Critical Hit (K)","2",10,"The power of attack is increased
+And the percentage of activation remains same as 15%",7,2,"61|1","|0","-","0","0","0","0","0","0","0",0
+"Attack Power Up","1",22,"Increase your basic Power",1,125,"1 60|10 2","|0","Min Attack + #0
+Max Attack + #1","sk_lvl|sk_lvl","0|0","0","0","0","0","0",1
+"Increase Target Rate","1",22,"Increase your basic Target Points",2,126,"10 60|10 2","|0","On-target Point + #0","sk_lvl 2 *","0","0","0","0","0","0",1
+"Hiding","2",22,"Conceal yourself from the detection of enemy.
+This skill reduces your Movement.",3,127,"15|3","|0","Move speed : 70 %","0","0","10 sk_lvl 10 * +","0","60000","0","15 sk_lvl 5 * +",0
+"Assault","2",22,"Deliver a powerful blow to an enemy; can be used only while Hiding.",4,128,"19|5","Hiding|1","Add Power + #0
+On-target Point + #1
+Fatal attack percentage is increased: 10 %","50 7 ch_agi * sk_lvl * 8 / +|sk_lvl 2 *","0|0","25 sk_lvl 20 * +","0","30000","0","0",0
+"Increase Critical Rate","1",22,"Increase your basic Critical Attack Rate.",5,2,"19 60|10 2","|0","Fatal attack percentage is increased: #0 %","sk_lvl","0","0","0","0","0","0",1
+"Increase Critical Damage","1",22,"Increase your basic Critical Attack damage.",6,2,"24 60|10 2","|0","-","0","0","0","0","0","0","0",1
+"Weapon Defend","1",12,"Create a chance of blocking attacks with your weapon.
+Damage is waived when an attack is successfully blocked.",2,129,"70|1","|0","-","0","0","0","0","0","0","0",0
+"Spin Slash","2",12,"Spin and inflict damage to all enemies around you with
+Level 5 Critical Point. 
+Requires a two-handed weapon.",3,130,"70|6","|0","Enemys Defense - #0","sk_lvl 10 *","0","50 ch_lvl 2 * + sk_lvl ch_lvl 2 * 50 + * 10 / +","0","30000","0","0",0
+"Defense Strengthening","1",13,"Increase your defense in proportion to your
+strength and level.",2,131,"70|1","|0","-","0","0","0","0","0","0","0",0
+"Perfect Defense","2",13,"Reduce all physical and magical damage by 90%. 
+Requires a shield. This damage reduction applies to every type
+of attack damage without exception.",3,132,"70|6","|0","-","0","0","20 ch_lvl 4 * + sk_lvl ch_lvl 4 * * 10 / +","0","320000 sk_lvl 20000 * -","0","35 sk_lvl 5 * +",0
+"Sharpness","1",19,"Increases the movement speed of the Sprint skills; 
+does not apply to basic movement speed.",2,133,"70|1","|0","-","0","0","90","0","0","0","30",0
+"Arrow Rain","2",19,"Shower an area with arrows for a 10 second duration.
+The skill is canceled if you move during the casting of the skill.",3,134,"70|6","|0","-","0","0","20 ch_lvl 4 * +","1500","320000 sk_lvl 20000 * -","0","0",0
+"Shrewdness","1",20,"Increase your basic Evasion Point.",2,135,"70|1","|0","-","0","0","0","0","0","0","0",0
+"Arrow Explosion","2",20,"Attack a single target with an explosive arrow
+that detonates shortly after impact.
+Enemies within a certain radius around the target are inflicted
+with splashed damage upon explosion.",3,136,"70|6","|0","-","0","0","20 ch_lvl 4 * +","1500","320000 sk_lvl 20000 * -","0","0",0
+"Stun","2",23,"Stun an enemy, can be used only while Hiding. 
+Failing to stun a target reduces your Defense for 5 seconds. 
+The Stun effect lasts for a set duration, 
+but is canceled if the target receives damage.",1,143,"30|3","Assault|1","Defense decrease : -50","0","0","10 sk_lvl 10 * +","0","10000","0","0",0
+"Confusion","2",23,"Confuse a target. When confused, 
+enemy cannot attack you for a set duration, 
+but can perform other actions except attack.",2,144,"30|3","Assault|1","-","0","0","10 sk_lvl 20 * +","0","300000","0","0",0
+"Strangle","2",23,"Strangle an enemy to inflict damage and cause
+the Stun effect.
+Can be used only while Hiding.",3,145,"35|5","Assault|2","Add Power + #0
+On-target Point + #1","50 sk_lvl 10 * +|9 sk_lvl +","0|0","10 sk_lvl 5 * +","0","20000","0","sk_lvl 1 +",0
+"Dual Shadow","2",23,"Inflict damage and increase your Evasion Rate.
+Can be used only while Hiding.",4,146,"40|5","Strangle|1","Add Power + #0
+On-target Point + #1
+Evasion + #2","sk_lvl 12 *|sk_lvl 2 *|sk_lvl 3 *","0|0|0","10 sk_lvl 10 * +","0","600000","0","15",0
+"Fatal Wound","2",24,"Ambush an enemy to inflict fatal wound that causes continuous 
+damage for a set duration",1,147,"53|3","|0","-","0","0","15 sk_lvl 30 * +","0","30000","0","0",0
+"Ankle Amputate","2",24,"Attack the ankle of an enemy to slow down the Movement Speed.",2,148,"54|3","Fatal Wound|1","-","0","0","45 sk_lvl 10 * +","0","20000","0","0",0
+"Suicidal Blow","2",24,"Consume a certain amount of your HP to deliver a powerful attack; 
+has high Hit Rate, but can be used only when your HP is 60% or higher.",3,149,"56|5","|0","-","0","0","45 sk_lvl 40 * +","3","600000","0","0",0
+"Magic Intensification","2",5,"Cast offensive spells whose powers are not limited
+by levels.",2,137,"70|6","|0","-","0","0","ch_lvl 5 *","0","320000 sk_lvl 20000 * -","0","24 sk_lvl 3 * +",0
+"Flame Injection","2",5,"Shoot flames whose attack range is limited to the area directly
+in front of the caster. This skills effect lasts for a 10 second duration,
+but is canceled if you move. Inflicts both initial and continuous damage.",3,138,"70|6","Fire Storm|1","-","0","0","120 ch_lvl 4 * +","1000","320000 sk_lvl 20000 * -","0","0",0
+"Icicle","2",5,"Summon icicles on random areas on the ground that will damage
+enemies around you. This skills effect lasts for a 10 second duration,
+but is canceled if you move. Inflicts continuous damage.",4,139,"70|6","Ice Storm|1","-","0","0","120 ch_lvl 4 * +","1000","320000 sk_lvl 20000 * -","0","0",0
+"Lightning Arrow","2",5,"Shoot a lightning arrow that debuffs a target and inflicts damage. 
+If a Lightning buff magic spell was cast on the target, the target receives more damage from this skill. 
+This skill also inflicts splashed damage to enemies around the target.",5,140,"70|6","Thunder Storm|1","-","0","0","120 ch_lvl 4 * +","1000","320000 sk_lvl 20000 * -","0","0",0
+"Healing Intensification","1",6,"Increase the restorative effect of your healing skills.",2,141,"70|1","|0","-","0","0","0","0","0","0","0",0
+"Blessing","2",6,"Endow invincibility to yourself and a friendly target.",3,142,"70|6","|0","-","0","0","400 sk_lvl 10 * +","0","320000 sk_lvl 20000 * -","0","3 sk_lvl 3 * +",0
+"Vital Strike","2",24,"When a targets HP is 30% or lower, 
+attack the weak spot to inflict great damage and cause the Stun effect. 
+If the targetˇŻs HP is higher than 30%, this skill only inflicts damage.",4,150,"56|3","|0","-","0","0","35 sk_lvl 30 * +","0","30000","0","0",0
+"Rupture","2",24,"Deliver a powerful blow that inflicts continuous damage.",5,151,"58|5","Ankle Amputate|1","-","0","0","35 sk_lvl 30 * +","2","120000","0","0",0
+"Final Blow","2",24,"When a targets HP is 30% or lower, spend all of your energy to deliver a critical blow.",6,152,"60|2","Rupture|2","-","0","0","0","2","600000","0","0",0
+"Dance of Killing","2",25,"Momentarily intensify your energy to deliver a shower of attacks to an enemy.",1,153,"50|2","|0","Lasting time: #0 sec","sk_lvl 15 *","0","80 sk_lvl 20 * +","0","40000","0","0",0
+"Spin Attack","2",25,"Inflict area-effective damage to surrounding enemies.",2,154,"50|3","|0","On-target Point + #0","5","0","25 sk_lvl 50 * +","0","20000","0","0",0
+"Counter attack","2",25,"When attacked, reflect a certain amount of damage
+to the attacker for this skills duration.",3,155,"53|5","|0","Critical hit rate increased : #0","45 sk_lvl 30 * +","0","45 sk_lvl 30 * +","0","60000","0","0",0
+"Armor Breaker","2",25,"Attack the armor of an enemy to decrease the Defense for a set duration.",4,156,"54|5","|0","Enemy defense - #0 %
+Lasting time: #1 sec","23|10","0|0","35 sk_lvl 30 * +","0","30000","0","0",0
+"Twin Blade Strike","2",25,"Inflict great damage with dual daggers.",5,157,"60|1","|0","-","0","0","65","0","600000","0","0",0
+"Life Extension (T)","1",28,"Add more Health Points to your original HP forever",1,41,"50 55 60 65 70|1 1 1 1 1","|0","Hp Revision: + #0 %","14 sk_lvl 10 * +","0","0","0","0","0","0",0
+"Amnesia","2",4,"Make the anger point of selected target to zero",17,121,"59|1","|0","-","0","0","50","1500","5000","190","0",0
+"Speed of Attack Reducer","2",18,"Reduce the target's speed of physical attack for a while",3,24,"52 61|1 1","|0","Speed of Attack reduces by #0 %","sk_lvl 30 *","0","20","0","0","0","15",0
+"Berserk","2",10,"Offensive power increases but Defensive power decreases",5,56,"53 56 59 62 65 70|1 1 1 1 1 1","|0","Short Range Attack + #0 % Defense - #1 %","5 sk_lvl 6 * +|3 sk_lvl 2 * +","0|0","200 sk_lvl 15 * +","0","600000","0","60",0
+"Blessing of Agility","2",4,"Increase the Agility of the selected target",11,115,"55 64|1 1","|0","Agility + #0","3 sk_lvl 8 * +","0","67 sk_lvl 26 * +","2000","5000","94","1200",0
+"Blessing of Health","2",4,"Increase the health of the selected target",10,114,"54 64|1 1","|0","Health + #0","3 sk_lvl 8 * +","0","60 sk_lvl 27 * +","2000","5000","94","1200",0
+"Blessing of Intelligence","2",4,"Increase the Intelligence of the selected target",12,116,"56 65|1 1","|0","Intelligence + #0","2 sk_lvl 6 * +","0","64 sk_lvl 32 * +","2000","5000","94","1200",0
+"Blessing of Strength","2",4,"Increase the strength of the selected target",9,113,"54 63|1 1","|0","Strength + #0","2 sk_lvl 6 * +","0","64 sk_lvl 32 * +","2000","5000","94","1200",0
+"Blow-up Arrow","2",16,"Arrow blows up after the arrow gets on target",5,10,"46|5","Flamy Arrow|5","Add. Attack Point + #0 Add. On-target Point + #1
+Hostility 75 % Increase","sk_lvl 19 *|sk_lvl 2 *","0|0","7 sk_lvl 2 * +","0","0","0","0",0
+"Bow Mastery","1",15,"Use a bow more effectively",1,0,"1 60|10 2","|0","Min Attack Point + #0
+Max Attack Point + #1","sk_lvl 2 /|sk_lvl","0|0","0","0","0","0","0",1
+"Brutal Attack","2",10,"By using the Death Blow Points, Making a Brutal Attack to the enemy.
+Death Blow Point is needed. Damage increases depending on the Death Blow Points",4,55,"53 56 63 67 70|1 1 1 1 1","|0","Add. Attack Point + ??","0","0","12 sk_lvl 3 * +","0","700","0","0",0
+"Buff Remover","2",18,"Disable all the buffs from the target",17,38,"63|1","|0","-","0","0","68","0","0","0","0",0
+"Call of Defense","2",11,"Increasing group members' defense.
+Its effectiveness disappears if another chant is used",2,59,"51 57 63|1 1 1","|0","Add. Close Defense : #0 %
+Add. Log-range Defense : #1 %","7 sk_lvl 7 * + 2 +|9 sk_lvl 3 * +","0|0","0","0","10000","0","0",0
+"Call of Fire Defense","2",11,"Increase Fire defense of all member of group.
+Effectiveness disappears when other chant is used.",5,62,"53 57 64|1 1 1","|0","Fire Resistance + #0 %","2 sk_lvl 3 * +","0","0","0","10000","0","0",0
+"Call of Ice Defense","2",11,"Increase Ice defense of all member of group.
+Effectiveness disappears when other chant is used",6,63,"53 57 64|1 1 1","|0","Ice Resistance + #0 %","2 sk_lvl 3 * +","0","0","0","10000","0","0",0
+"Call of Lightning Defense","2",11,"Increase Lightning defense of all member of group.
+Effectiveness disappears when other chant is used",7,64,"53 57 64|1 1 1","|0","Lightning Resistance + #0 %","2 sk_lvl 3 * +","0","0","0","10000","0","0",0
+"Call of On Target Point","2",11,"Increase On Target Point of all member of group.
+Effectiveness disappears when other chant is used",8,65,"54 58 65|1 1 1","|0","On-target Point + #0","5 sk_lvl 5 * +","0","0","0","10000","0","0",0
+"Call of Physical Attack","2",11,"Increase the Min and Max Physical Attack Point of all member of group.
+Effectiveness disappears when other chant is used",9,66,"54 60 66|1 1 1","|0","Close Attack + #0","25 sk_lvl 25 * +","0","0","0","10000","0","0",0
+"Call of Recovery","2",11,"Recovering group members' HP little by little.
+Its effectiveness disappears if another chant is used",10,67,"55 61 67|1 1 1","|0","Recovers minimum of #0 HP in every 3 seconds","4 sk_lvl 8 * +","0","0","0","10000","0","0",0
+"Chain Lightning","2",3,"Deliver the lightning effect to the selected target
+and the near the target continuously",7,98,"59|1","Lightning Blow|10","Min Magic Attack Point + #0
+Max Magic Attack Point + #1","360 3 ch_lvl * 2 / + 7 ch_int * sk_lvl * 6 / +|700 3 ch_lvl * 2 / + 5 ch_int * sk_lvl * 4 / +","400|700","174","2200","300","190","0",0
+"Chance Capture","2",21,"Increase the chance of Fatal Blow with its potential power",2,40,"30 35 40 45 50|1 1 1 1 1","|0","Chance of Fatal Blow + #0 % Add. On-target Point + #1","3 sk_lvl 2 * +|sk_lvl","0|0","56","0","0","0","300 sk_lvl 300 * +",0
+"Cold Binding","2",3,"Freeze up to 5 enemies in the effective area with cold frost",5,96,"54 58 63 68|1 1 1 1","Frost|1","-","0","0","60 sk_lvl 6 * +","1200","800","210","6 sk_lvl 2 * +",0
+"Concentration","1",15,"Concentrate mind for increasing the on-target point permanently",4,3,"15 60|10 2","|0","On-target Point + #0","sk_lvl 2 *","0","0","0","0","0","0",1
+"Critical Hit (A)","1",17,"The power of attack is increased
+And the percentage of activation remains same as 15%",12,2,"61|1","|0","Chance of Fatal Blow ?? % Increase","0","0","0","0","0","0","0",0
+"Critical Hit (knight)","1",8,"Enable the skill that giving additional damage to the enemy",3,2,"10 34 47 60|5 5 5 2","|0","Chance of Operation : #0 % Add. Attack : #1 %","sk_lvl|50 sk_lvl 2 * +","10|0","0","0","0","0","0",1
+"Cure","2",1,"Recover some health points of one who is selected",5,77,"16|10","Heal|3","Amount of recovering : #0","70 30 sk_lvl * + 7 ch_lvl * 22 / + 3 ch_wis * sk_lvl * 22 / +","500","8 sk_lvl 3 * +","1800","600","130 sk_lvl 3 * +","0",0
+"Cure 2","2",2,"Recover some health points of one who is selected",8,86,"36|5","Cure|10","Recovering Point : #0","500 50 sk_lvl * + 4 ch_lvl * 11 / + 5 ch_wis * sk_lvl * 18 / +","900","39 sk_lvl 3 * +","1500","600","170 sk_lvl 4 * +","0",0
+"Ice Restriction","2",3,"Call the ice to the selected target and give the damage
+to the target and reduce the moving speed",6,97,"56|1","Splashy Ice|2","Min Magic Attack Point + #0","480 3 ch_lvl * 2 / + 1 ch_int * sk_lvl * 6 / +","500","126","800","600","190","0",0
+"Ice Storm","2",3,"Ice and snow are dropping for certain amount of time on the selected area.
+Attack every target in the area every 2 seconds for 16 seconds",12,103,"65|1","Ice Restriction|1","Magic Attack Point + #0","144 9 ch_lvl * 10 / + 3 ch_int * sk_lvl * 4 / +","0","392","4000","180000","190","0",0
+"Lightning Blow","2",1,"Lightning get blow up when it hits the target",6,78,"21|10","Lightning Magic|10","Min Magic Attack Point + #0
+Max Magic Attack Point + #1 (+ Lightening Mastery * 20)","3 ch_lvl * 4 / 3 ch_int * sk_lvl * 40 / +|3 ch_lvl * 4 / 5 ch_int * sk_lvl * 16 / +","450|600","sk_lvl 12 +","700","600","120 sk_lvl 6 * +","0",0
+"Life Absorption","2",18,"Reduce the target's HP and absorb some part of the HP",1,22,"50 57 66|1 1 1","|0","Absorb Rate ??","0","0","20 sk_lvl 6 * +","0","0","0","0",0
+"Life Extension (A)","1",21,"Add more Health Points to your original HP forever",3,41,"50 55 60 65 70|1 1 1 1 1","|0","Hp Revision: + #0 %","14 sk_lvl 10 * +","0","0","0","0","0","0",0
+"Life Extension (K)","1",14,"Add more Health Points to your original HP forever",3,41,"50 55 60 65 70|1 1 1 1 1","|0","Hp Revision: + #0%","14 sk_lvl 10 * +","0","0","0","0","0","0",0
+"Life Extension (magician)","1",7,"Add more Health Points to your original HP forever",3,41,"50 55 60 65 70|1 1 1 1 1","|0","Hp Revision: + #0%","14 sk_lvl 10 * +","0","0","0","0","0","0",0
+"Lightning Resistance","2",17,"Increase the resistance on Lightning",5,15,"52 64|1 1","|0","Lightning Resistance + #0 %","10 sk_lvl 5 * +","0","42 sk_lvl 11 * +","0","0","0","900",0
+"Lightning Magic","2",1,"Throw lightning to the enemy to give lightning damage",1,73,"1|10","|0","Min Magic Attack Point + #0
+Max Magic Attack Point + #1 (+ Lightening Mastery * 20)","3 ch_lvl * 4 / ch_int sk_lvl * 16 / +|3 ch_lvl * 4 / ch_int sk_lvl * 16 / +","150|300","2 sk_lvl 2 / +","600","600","110 sk_lvl 6 * +","0",0
+"Loss of Confidence","2",18,"Decrease the target's On-Target Point temporally",15,36,"61|1","|0","On-target Point - 50 %","0","0","98","0","0","0","10",0
+"Long-range Protection","2",7,"Perfect defense from log range attack by one time.
+Efficiency disappears after defense",1,123,"25|1","|0","-","0","0","64","800","5000","180","240",0
+"Lightning Slash","2",8,"Using normal sword skills with controlling of wrist for more powerful attack",2,43,"5|10","|0","Add. Attack Point + #0
+Add. On-target Point + #1","sk_lvl 8 *|sk_lvl 2 /","0|0","sk_lvl 10 +","0","700","0","0",0
+"Lightning Summons","2",3,"Striking the lightning to the selected object from the sky",4,95,"53 57|1 1","Lightning Blow|10","Min Magic Attack Point + #0
+Max Magic Attack Point + #1 (+ Lightening Mastery * 20)","320 3 ch_lvl * 2 / + 1 ch_int * sk_lvl * 7 / +|320 3 ch_lvl * 2 / + 7 ch_int * sk_lvl * 8 / +","451|900","22 sk_lvl 4 * +","800","600","190","0",0
+"Meditation","2",2,"Recover one's own energy point slowly",5,83,"32 60|3 2","|0","Maximum #0 mana points per tick","5 sk_lvl 5 * +","0","0","0","0","0","0",1
+"Magic Mastery: Fire","1",2,"Decrease the incantation time on fire magic",3,81,"30 60|5 2","|0","Charge time decrease #0","sk_lvl 65 *","0","0","0","0","0","0",1
+"Magic Mastery: Ice","1",2,"Increase the chance of making the enemy slow",2,80,"30 60|5 2","|0","-","0","0","0","0","0","0","0",1
+"Magic Mastery: Lightning","1",2,"Max magic attack of lightning is increased",1,79,"30 60|5 2","|0","Max Magic Attack Point + #0","sk_lvl 20 *","0","0","0","0","0","0",1
+"Mockery","2",8,"Mocks the opponent for increasing the hostility",4,44,"18|5","|0","Hostility + #0","100 sk_lvl 120 * +","0","sk_lvl 10 +","0","60000","115 sk_lvl 7 * +","0",0
+"MP Vaporization","2",18,"Vaporize the target's MP for certain amount of time",6,27,"53 65|1 1","|0","MP Consumption for #0","100 sk_lvl 250 * +","0","40 sk_lvl 16 * +","0","0","0","0",0
+"Muscle Solidation","2",16,"Solidate muscles for increasing Min attack point for a while",3,8,"42|1","|0","Min Attack Point + 5","0","0","92","0","0","0","900",0
+"Mysterious Arrow","2",17,"Shoot several arrows to the target. When it hit the target,
+it explodes and the target gets continuous damage for 5 seconds",10,20,"57 67 70|1 1 1","|0","Shoot #0 arrows to the target continuously","sk_lvl 2 +","0","31 sk_lvl 11 * +","0","0","0","0",0
+"Non-Attribution Resistance","2",17,"Increase the resistance on Non-Attribution",9,19,"56 65|1 1","|0","Non-Attribution Resistance + #0 %","10 sk_lvl 5 * +","0","22 sk_lvl 14 * +","0","0","0","900",0
+"Pain","2",18,"Give mental pain to the selected target continuously",2,23,"51 56 62 68|1 1 1 1","|0","Damage ??","0","0","40 sk_lvl 8 * +","0","0","0","0",0
+"Cure 3","2",4,"Recover the selected target's HP",3,107,"51 60 66|1 1 1","|0","Recovering Point : #0","750 100 sk_lvl * + 11 ch_wis * 3 / +","0","39 sk_lvl 4 * +","1500","600","190","0",0
+"Curse of Agility","2",18,"Decrease the target's Agility temporally",10,31,"56 64|1 1","|0","Agility - #0 %","sk_lvl 20 *","0","42","0","0","0","50 sk_lvl 20 * +",0
+"Curse of Critical Hit","2",18,"Decrease the activation percentage of Critical Hit temporally",7,28,"54 67|1 1","|0","Percentage of Critical Hit - #0 %","25 sk_lvl 25 * +","0","26","0","0","0","50 sk_lvl 20 * +",0
+"Curse of Defense","2",18,"Decrease the target's Defense temporally",13,34,"59 67|1 1","|0","Short Range Defense - #0 %
+Long-Range Defense - #1 %","4 sk_lvl 8 * +|2 sk_lvl 6 * +","0|0","83","0","0","0","30 sk_lvl 10 * +",0
+"Curse of Health","2",18,"Decrease the target's health temporally",9,30,"56 63|1 1","|0","Health - #0 %","sk_lvl 12 *","0","38","0","0","0","50 sk_lvl 20 * +",0
+"Curse of Intelligence","2",18,"Decrease the target's Intelligence temporally",11,32,"57 64|1 1","|0","Intelligence - #0 %","sk_lvl 24 *","0","42","0","0","0","50 sk_lvl 20 * +",0
+"Curse Resistance","2",17,"Increase the resistance on Curse",8,18,"55 65|1 1","|0","Curse Resistance + #0 %","10 sk_lvl 5 * +","0","22 sk_lvl 14 * +","0","0","0","900",0
+"Curse of Strength","2",18,"Decrease the target's strength temporally",8,29,"55 63|1 1","|0","Strength - #0 %","sk_lvl 24 *","0","38","0","0","0","50 sk_lvl 20 * +",0
+"Curse of Wisdom","2",18,"Decrease the target's Wisdom temporally",12,33,"58 66|1 1","|0","Wisdom - #0 %","sk_lvl 16 *","0","38","0","0","0","50 sk_lvl 20 * +",0
+"Decrease of Target Range","2",18,"Decrease 50% 0f the range of selected target",4,25,"52|1","|0","-","0","0","50","0","0","0","15",0
+"Defense","1",9,"Defend the opponent’s attack with the shield.
+Shield must be equipped",2,47,"30 35 40 45 50 60|3 3 3 3 3 2","|0","Short distance Defense + #0 %
+Long distance Defense + #1 %","sk_lvl|sk_lvl 3 +","0|0","0","0","0","0","0",1
+"Defense Improvement","2",4,"Increase the selected target's defense",7,111,"53 62|1 1","|0","Add. Close Defense : #0 Add. Long-range Defense : #1","5 sk_lvl 30 * +|5 sk_lvl 20 * +","0|0","41 sk_lvl 31 * +","2000","5000","128","600",0
+"Defensive incantation","2",7,"Protect one's body with power of earth.",2,124,"30 35 40 45 50 60|1 1 1 1 1 1","|0","Absorption Rate + (1,1,2,2,2,3), Defense + (3,5,7,10,15,21)","0","0","0","0","0","0","900",0
+"Distance Control","1",4,"Increase the range of [Soul Destruction]",15,119,"58|1","|0","Add. Range + ??","0","0","0","0","0","0","0",0
+"Emergency Escape","2",17,"Run fastly to escape from the danger temporally.
+It effects on all your group members who are near you",11,21,"59|1","|0","-","0","0","350","0","0","0","30",0
+"Elastic Shield","2",11,"Increase the Defense of all member of group instantly",12,69,"58|1","|0","Close Defense + 350
+Long Distance Defense + 300","0","0","475","0","1800000","0","15",0
+"Explosive Burst","2",3,"Big explosion is made on the selected area.
+All enemies get damages",10,101,"64|1","Fire Blow|5","Magic Attack Point + #0","580 3 ch_lvl * + 2 ch_int * sk_lvl * 5 / +","860","142","1800","2200","180","0",0
+"Explosion","2",3,"The selected target gets hot wind and it's exploded and burned",8,99,"62 68|1 1","Flame Bomb|2","Magic Attack Point + #0","380 3 ch_lvl * 2 / + 7 ch_int * sk_lvl * 3 / +","790","32 sk_lvl 4 * +","1400","600","180","0",0
+"Fatal Blow","1",15,"Additional damage to the normal attack will be operating",3,2,"10 34 47 60|5 5 5 2","|0","Chance of Operation : #0 % Add. Attack : #1 %","sk_lvl|50 sk_lvl 2 * +","10|0","0","0","0","0","0",1
+"Fire Blow","2",2,"When the Fire Blow is active
+All the enemies get fired",6,84,"33|5","Fire Magic|10","Magic Attack Point + #0","5 ch_lvl * 6 / 3 ch_int * sk_lvl * 5 / +","500","32 sk_lvl 6 * +","2100","600","180","0",0
+"Flame Bomb","2",3,"Explode and fire up the selected target",3,94,"52 59|1 1","Fire Magic|20","Magic Attack Point + #0","380 3 ch_lvl * 2 / + 1 ch_int * sk_lvl * 2 / +","720","16 sk_lvl 4 * +","1300","600","180","0",0
+"Fire Resistance","2",17,"Increase the resistance on Fire",3,13,"52 64|1 1","|0","Fire Resistance + #0 %","10 sk_lvl 5 * +","0","42 sk_lvl 11 * +","0","0","0","900",0
+"Flamy Arrow","2",16,"Shoot the arrow with flame to the opponent continuously",1,6,"30|5","|0","Add. Attack Point + #0 Add. On-target Point + #1","sk_lvl 12 *|sk_lvl 2 *","0|0","4 sk_lvl +","800","0","0","0",0
+"Fire Magic","2",1,"Throw fire ball to the enemy to give fire damage",3,75,"8|20","|0","Magic Attack Point + #0","3 ch_lvl * 4 / 3 ch_int * sk_lvl * 20 / +","450","7 sk_lvl 4 / +","1300","600","110 sk_lvl 3 * +","0",0
+"Focus Shot","2",17,"Focus the target slowly for more accurate and powerful attack
+Attack Power is depend on the time you focus",1,11,"50 56 60 66 69|1 1 1 1 1","|0","Add. Attack Point + ??","0","0","25 sk_lvl 5 * +","0","0","0","0",0
+"Force of Defense","2",11,"Increasing your defense for a while",1,58,"50 56 62 70|1 1 1 1","|0","Add. Close Defense : #0 %
+Add. Log-range Defense : #1 %","14 sk_lvl 7 * +|14 sk_lvl 3 * +","0|0","300 sk_lvl 20 * +","0","30000","0","1200",0
+"Frost","2",2,"Freeze the targeted enemy for a while of time
+However, it canceled when it gets attacked",12,90,"43|1","Splashy Ice|1","Continuation time 5 sec","0","0","47","2000","600","230","0",0
+"Flashing Slash","2",9,"Stiffens the enemy for a short amount of time",3,48,"39|3","Transcendental Blow|1","Add. Attack Point + #0 Add. On-target Point + #1
+Hostility 100 % Increase","50 sk_lvl 10 * +|sk_lvl 9 +","0|0","19 sk_lvl 2 * +","750 sk_lvl 50 * -","3300","0","0",0
+"Fire Storm","2",3,"Fire is dropping for certain amount of time on the selected area.
+Attack every target in the area every 2 seconds for 16 seconds",13,104,"65|1","Explosive Burst|1","Magic Attack Point + #0","228 9 ch_lvl * 10 / + 7 ch_int * sk_lvl * 5 / +","0","327","4000","180000","180","0",0
+"Group Cure","2",2,"Recover the health point of all the group members",13,91,"47|3","Cure 2|5","Recovering Point : #0","100 ch_lvl 4 / + 4 ch_wis * sk_lvl * 7 / + 60 sk_lvl * +","540","58 sk_lvl 4 * +","1200","600","0","0",0
+"Group Cure 2","2",4,"Recover the health point of all the group members",14,118,"58 67|1 1","Group Cure|3","Recovering Point : ??","0","0","72 sk_lvl 12 * +","1300","600","128","0",0
+"Hail","2",3,"Drop pieces of sharp ice from the sky",2,93,"51 58 64 67|1 1 1 1","Ice Magic|20","Magic Attack Point + #0","240 3 ch_lvl * 2 / + 5 ch_int * sk_lvl * 12 / +","680","0","0","0","0","0",0
+"Half Swing","2",10,"Swing a weapon and attack the front of 180 degree enemies.You must equip two handed sword.
+You get a Death Blow Point if you hit more than one enemy",6,57,"54 58 62 66 69|1 1 1 1 1","|0","Add. Attack Point + ??","0","0","49 sk_lvl 9 * +","0","10000","0","0",0
+"Hearth Breaker","2",15,"Put the arrow deeply to stop the opponent for a while",6,5,"26|5","Staggering Blow|5","Add. Attack Point + #0 Add. On-target Point + #1
+Hostility 50 % Increase","sk_lvl 12 *|sk_lvl 2 *","0|0","50 sk_lvl +","3000 sk_lvl 100 * -","0","0","0",0
+"Heal","2",1,"Recover one's own health points",4,76,"7|5","|0","Health recovered : #0","100 3 ch_lvl * 4 / + sk_lvl ch_wis * 4 / +","300","6 sk_lvl 6 * +","0","4200","0","0",0
+"Hypnotism","2",4,"Make the enemies who are in the effective area to fall in a sleep.
+Target can't do anything while it's under hypnosis, but when it get attacked,
+the effectiveness of magic will be gone away",4,108,"51 56 61 67 70|1 1 1 1 1","|0","-","0","0","98 sk_lvl 4 * +","2500 sk_lvl 100 * -","600","190 sk_lvl 10 * +","4 sk_lvl 4 * +",0
+"Ice Resistance","2",17,"Increase the resistance on Ice",4,14,"52 64|1 1","|0","Ice Resistance + #0 %","10 sk_lvl 5 * +","0","42 sk_lvl 11 * +","0","0","0","900",0
+"Ice Magic","2",1,"Throw a lump of ice to the enemy to give ice damage",2,74,"3|20","|0","Magic Attack Point + #0","3 ch_lvl * 4 / 3 ch_int * sk_lvl * 26 / +","350","6 sk_lvl 4 / +","800","600","120 sk_lvl 4 * +","0",0
+"Increase of Critical Hit (magician)","2",4,"Increase the appearance of Critical Hit of the selected target",13,117,"57 66|1 1","|0","Critical Hit + #0","2 sk_lvl 3 * +","0","64 sk_lvl 36 * +","2000","5000","94","900",0
+"Increasing Concentration","2",9,"Increases on-target point for a short while",5,50,"42 60|1 1","|0","Add. On-target Point + #0","sk_lvl 3 *","0","86","0","90000","0","0",1
+"Increase of Target Range","1",4,"Increase the range of all kinds of cure magic",8,112,"53|1","|0","Add. Range + ??
+Application of Magic : [Cure, Cure 2, Cure 3, Restore]","0","0","0","0","0","0","0",0
+"Blessing of son of the Sky (MA)","1",5,"Adds attack power",1,158,"70 75 80 85 90|1 1 1 1 1","|0","Add attack power + #0%","4 sk_lvl 4 * +","0","0","0","0","0","0",0
+"Blessing of son of the Sky (MM)","1",6,"Adds defense strength",1,158,"70 75 80 85 90|1 1 1 1 1","|0","Defense + #0%","8 sk_lvl 4 * +","0","0","0","0","0","0",0
+"Blessing of son of the Sky (KV)","1",12,"Adds attack power",1,158,"70 75 80 85 90|1 1 1 1 1","|0","Add attack power + #0%","4 sk_lvl 4 * +","0","0","0","0","0","0",0
+"Blessing of son of the Sky (KC)","1",13,"Adds attack power",1,158,"70 75 80 85 90|1 1 1 1 1","|0","Add attack power + #0%","4 sk_lvl 4 * +","0","0","0","0","0","0",0
+"Blessing of son of the Sky (AE)","1",19,"Adds attack power",1,158,"70 75 80 85 90|1 1 1 1 1","|0","Add attack power + #0%","4 sk_lvl 4 * +","0","0","0","0","0","0",0
+"Blessing of son of the Sky (AI)","1",20,"Adds attack power",1,158,"70 75 80 85 90|1 1 1 1 1","|0","Add attack power + #0%","4 sk_lvl 4 * +","0","0","0","0","0","0",0
+"Artillery","1",4,"You may assemble and control weapon of castle siege",20,177,"50|1","|0","-","0","0","0","0","0","0","0",0
+"Powerful Widening Wound","2",11,"It's a continuous attack after Upward Slash,
+more powerful Widening Wound.",14,51,"56|5","Widening Wound|1","-","0","0","0","0","700","0","0",0
+"Acrobatic","1",23,"Increase úr physical damage.",6,159,"30 35 40 45 50|1 1 1 1 1","|0","Physical damage increased by 10 % with its probability of #0 %","3 sk_lvl 2 * +","0","0","0","0","0","0",0
+"Weak Point Detection","1",23,"Increase the chance of Fatal Blow with skill rank.",7,160,"60|8","|0","Chance of Fatal Blow + #0 %","sk_lvl","0","0","0","0","0","0",0
+"Deep Breath","1",22,"This is a secret method of breathing.
+It makes the duration of hiding skill increased.",7,161,"25|1","|0","Hiding +10 sec","0","0","0","0","0","0","0",0
+"Silence Step","1",26,"By improving the way of walking, movement speed of a character in 
+hiding gets higher. 
+This is only available for the character in hiding.",2,162,"70|1","|0","-","0","0","0","0","0","0","0",0
+"Wrath of Heaven","2",26,"This is only available for the character in hiding and to attack an 
+enemy silently and impetuously with a sword on which virulent 
+poison is painted.
+Poison damage will be added when fatal attack has applied.",3,163,"70|6","|0","-","0","0","260","1000","320000 sk_lvl 20000 * -","0","0",0
+"Blessing of son of the Sky (TU)","1",27,"Adds attack power",1,158,"70 75 80 85 90|1 1 1 1 1","|0","Add attack power + #0%","4 sk_lvl 4 * +","0","0","0","0","0","0",0
+"High Grade Acrobatic","1",27,"This is the upgraded skill of Acrobatic and some of the physical 
+damage reduce with higher chance than Acrobatic.",2,164,"70|1","|0","Physical damage reduces by 25% with probability of 5%","0","0","0","0","0","0","0",0
+"Lightning Slash","2",27,"This skill is to make a series of attacks in rapid succession to enemy. 
+The number of attacking per sigle use gets increased by 
+the increase of skill level.",3,165,"70|6","|0","-","0","0","ch_lvl 4 * 10 -","1000","320000 sk_lvl 20000 * -","0","0",0
+"Blessing of son of the Sky (TH)","1",26,"Adds attack power",1,158,"70 75 80 85 90|1 1 1 1 1","|0","Add attack power + #0%","4 sk_lvl 4 * +","0","0","0","0","0","0",0
+"Sword Dance","2",12,"Attack in rapid succession with a rapid sword-wielding",4,166,"75|5","|0","Attacks the enemy #0 time(s)","sk_lvl","0","sk_lvl 1 - 20 + sk_lvl * 120 + 7 4 / *","0","20000","0","0",0
+"Provocation of Blow","2",13,"Increase enemy's hostility by giving a strong blow. 
+Hostility increases in proportion to its skill-level.",4,167,"75|5","|0","-","0","0","sk_lvl 1 - 20 + sk_lvl * 120 +","0","50000","0","0",0
+"Combative Spirit","2",19,"Administer a severe blow by consuming all amount of the MP. Enemies between a shooter and a target are also shot through their bodies.",4,168,"75|5","|0","Penetration chance: #0 %","sk_lvl 20 *","0","sk_lvl 1 - 20 + sk_lvl * 200 + 185 100 / *","0","200000 sk_lvl 20000 * -","0","0",0
+"Virulent Arrow","2",20,"Venom explodes and its influence spreads around the moment that 
+Virulent Arrow is striken. 
+The influence affects enemies within the range of it over a certain period of time.
+2 Poison bag item is needed for using.",4,169,"75|5","|0","-","0","0","sk_lvl 1 - 25 + sk_lvl * 230 + 98 100 / *","0","200000 sk_lvl 20000 * -","0","0",0
+"Fireball","2",5,"The more the skill is used, the bigger it becomes. 5 Fireballs in total can be put together and a joined Fireball can be used before 5 Fireballs complete the biggest one.",6,170,"75|5","Flame Injection|1","-","0","0","sk_lvl 1 - 30 + sk_lvl * 300 + 79 100 / *","1000","200000 sk_lvl 20000 * -","0","0",0
+"Ice Arrow","2",5,"Ice Arrows are brought up around your character. 
+can be shot until they are used up whenever you want.",7,171,"75|5","Icicle|1","Number of Arrows: #0","sk_lvl","0","sk_lvl 1 - 100 + sk_lvl * 450 + 42 100 / *","1000","200000 sk_lvl 20000 * -","0","0",0
+"Thunderbolt","2",5,"Shoot 6 lightening balls consecutively.
+Will be canceled if your character moves while the balls are being shot.",8,172,"75|5","Lightning Arrow|1","-","0","0","sk_lvl 1 - 45 + sk_lvl * 280 + 3 4 / *","2500","200000 sk_lvl 20000 * -","0","0",0
+"Therapeutic touch","2",6,"HP is recovered every 2 seconds for 12 seconds.",4,173,"75|5","|0","-","0","0","100 sk_lvl 50 sk_lvl 1 - + * + 198 100 / *","0","150000","0","10",0
+"Spin Blade","2",26,"A kind of wide-ranging attack with a sword dance.
+The higher skill-level, the more number of hits at once. 
+According as its skill-level increses, extra on-target points are added.",4,174,"75|5","|0","-","0","0","290","500","200000 sk_lvl 20000 * -","0","0",0
+"Shadow Slash","2",27,"Give a penetrating attack to the enemy in line with your character, 
+with the effect of stunning.",4,175,"75|5","|0","-","0","0","sk_lvl 1 - 50 + sk_lvl * 232 + 98 100 / *","500","200000 sk_lvl 20000 * -","0","0",0
+"Artillery","1",3,"You may assemble and control weapon of castle siege",14,177,"50|1","|0","-","0","0","0","0","0","0","0",0
+"Artillery","1",10,"You may assemble and control weapon of castle siege",8,177,"50|1","|0","-","0","0","0","0","0","0","0",0
+"Artillery","1",11,"You may assemble and control weapon of castle siege",15,177,"50|1","|0","-","0","0","0","0","0","0","0",0
+"Artillery","1",17,"You may assemble and control weapon of castle siege",13,177,"50|1","|0","-","0","0","0","0","0","0","0",0
+"Artillery","1",18,"You may assemble and control weapon of castle siege",18,177,"50|1","|0","-","0","0","0","0","0","0","0",0
+"Artillery","1",24,"You may assemble and control weapon of castle siege",7,177,"50|1","|0","-","0","0","0","0","0","0","0",0
+"Artillery","1",25,"You may assemble and control weapon of castle siege",7,177,"50|1","|0","-","0","0","0","0","0","0","0",0
+"Counter Damage","2",4,"If you received damage, this skill will be return some of damage to attacker.
+It skill applied properly, its effect will be disappeared.",19,176,"50|5","|0","-","0","0","640","45 sk_lvl 5 * -","300","0","0",0
+"Mystery skill oSotS (EVA)","1",21,"Consists of 3 kinds of skills and only one skill is allowed to choose!",4,178,"81|6","|0","Evasion points + #0","5 sk_lvl *","0","0","0","0","0","0",0
+"Mystery skill oSotS (EVA)","1",14,"Consists of 3 kinds of skills and only one skill is allowed to choose!",4,178,"81|6","|0","Evasion points + #0","5 sk_lvl *","0","0","0","0","0","0",0
+"Mystery skill oSotS (EVA)","1",7,"Consists of 3 kinds of skills and only one skill is allowed to choose!",4,178,"81|6","|0","Evasion points + #0","5 sk_lvl *","0","0","0","0","0","0",0
+"Mystery skill oSotS (EVA)","1",28,"Consists of 3 kinds of skills and only one skill is allowed to choose!",2,178,"81|6","|0","Evasion points + #0","5 sk_lvl *","0","0","0","0","0","0",0
+"Counter Offensive","2",25,"If Counter offensive is activated, some amount of received damage
+will be reflected to enemies within a certain range.
+to the attacker for this skills duration.",6,179,"63|5","|0","-","0","0","50 sk_lvl 30 * +","0","90000","0","0",0

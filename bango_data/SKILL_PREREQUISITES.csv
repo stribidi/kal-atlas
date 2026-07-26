@@ -1,0 +1,69 @@
+skill_key,skill_name,skill_action_ids_json,skill_limit_json,prerequisite_action_id,required_grade,prerequisite_skill_key,prerequisite_skill_name,resolution_status,candidate_skill_keys_json,condition_json,provenance,source_file,source_line
+thief-7,Assault,"[""7""]","[""thief""]",6,1,thief-6,Hiding,resolved,"[""thief-6""]","[""condition"",""6"",""1""]",bango-file,jobsystem.dat,210
+thief-8,Stun,"[""8""]","[""thief""]",7,1,thief-7,Assault,resolved,"[""thief-7""]","[""condition"",""7"",""1""]",bango-file,jobsystem.dat,212
+thief-9,Confusion,"[""9""]","[""thief""]",7,1,thief-7,Assault,resolved,"[""thief-7""]","[""condition"",""7"",""1""]",bango-file,jobsystem.dat,213
+thief-10,Strangle,"[""10""]","[""thief""]",7,2,thief-7,Assault,resolved,"[""thief-7""]","[""condition"",""7"",""2""]",bango-file,jobsystem.dat,214
+thief-12,Dual Shadow,"[""12""]","[""thief""]",10,1,thief-10,Strangle,resolved,"[""thief-10""]","[""condition"",""10"",""1""]",bango-file,jobsystem.dat,215
+thief-15,Ankle Amputate,"[""15""]","[""thief""]",14,1,thief-14,Fatal Wound,resolved,"[""thief-14""]","[""condition"",""14"",""1""]",bango-file,jobsystem.dat,218
+thief-17,Rupture,"[""17""]","[""thief""]",15,1,thief-15,Ankle Amputate,resolved,"[""thief-15""]","[""condition"",""15"",""1""]",bango-file,jobsystem.dat,220
+thief-18,Final Blow,"[""18""]","[""thief""]",17,2,thief-17,Rupture,resolved,"[""thief-17""]","[""condition"",""17"",""2""]",bango-file,jobsystem.dat,221
+thief-27,Silence Step,"[""27""]","[""thief""]",6,1,thief-6,Hiding,resolved,"[""thief-6""]","[""condition"",""6"",""1""]",bango-file,jobsystem.dat,314
+thief-33,Wrath of Heaven,"[""33""]","[""thief""]",6,1,thief-6,Hiding,resolved,"[""thief-6""]","[""condition"",""6"",""1""]",bango-file,jobsystem.dat,329
+knight-7,Upward Slash,"[""7""]","[""knight""]",3,5,knight-3,Lightning Slash,resolved,"[""knight-3""]","[""condition"",""3"",""5""]",bango-file,jobsystem.dat,836
+knight-8,Provocation,"[""8""]","[""knight""]",4,5,knight-4,Mockery ,resolved,"[""knight-4""]","[""condition"",""4"",""5""]",bango-file,jobsystem.dat,861
+knight-9,Flashing Slash,"[""9""]","[""knight""]",5,1,knight-5,Transcendental Blow,resolved,"[""knight-5""]","[""condition"",""5"",""1""]",bango-file,jobsystem.dat,886
+knight-12,Widening Wound,"[""13""]","[""knight""]",7,1,knight-7,Upward Slash,resolved,"[""knight-7""]","[""condition"",""7"",""1""]",bango-file,jobsystem.dat,950
+knight-35,Increase of Critical Hit,"[""36""]","[""knight""]",12,15,knight-11,Critical Hit,resolved,"[""knight-11""]","[""condition"",""12"",""15""]",bango-file,jobsystem.dat,1466
+knight-41,Powerful Widening Wound,"[""41""]","[""knight""]",13,1,knight-12,Widening Wound,resolved,"[""knight-12""]","[""condition"",""13"",""1""]",bango-file,jobsystem.dat,1579
+mage-9,Shock Wave,"[""9""]","[""mage""]",4,5,mage-4,Lightning Magic,resolved,"[""mage-4""]","[""condition"",""4"",""5""]",bango-file,jobsystem.dat,2081
+mage-10,Cure,"[""10""]","[""mage""]",8,3,mage-8,Heal,resolved,"[""mage-8""]","[""condition"",""8"",""3""]",bango-file,jobsystem.dat,2109
+mage-15,Revival,"[""16""]","[""mage""]",10,1,mage-10,Cure,resolved,"[""mage-10""]","[""condition"",""10"",""1""]",bango-file,jobsystem.dat,2195
+mage-21,Cure 2,"[""22""]","[""mage""]",10,10,mage-10,Cure,resolved,"[""mage-10""]","[""condition"",""10"",""10""]",bango-file,jobsystem.dat,2309
+mage-22,Lightning Blow,"[""23""]","[""mage""]",4,10,mage-4,Lightning Magic,resolved,"[""mage-4""]","[""condition"",""4"",""10""]",bango-file,jobsystem.dat,2336
+mage-23,Splashy Ice,"[""24""]","[""mage""]",3,10,mage-3,Ice Magic,resolved,"[""mage-3""]","[""condition"",""3"",""10""]",bango-file,jobsystem.dat,2365
+mage-24,Fire Blow,"[""25""]","[""mage""]",2,10,mage-2,Fire Magic,resolved,"[""mage-2""]","[""condition"",""2"",""10""]",bango-file,jobsystem.dat,2392
+mage-26,Frost,"[""27""]","[""mage""]",24,1,mage-23,Splashy Ice,resolved,"[""mage-23""]","[""condition"",""24"",""1""]",bango-file,jobsystem.dat,2444
+mage-27,Group Cure,"[""28""]","[""mage""]",22,5,mage-21,Cure 2,resolved,"[""mage-21""]","[""condition"",""22"",""5""]",bango-file,jobsystem.dat,2468
+mage-28,Restore,"[""29""]","[""mage""]",16,1,mage-15,Revival,resolved,"[""mage-15""]","[""condition"",""16"",""1""]",bango-file,jobsystem.dat,2495
+mage-29,Lightning Summons,"[""31""]","[""mage""]",23,10,mage-22,Lightning Blow,resolved,"[""mage-22""]","[""condition"",""23"",""10""]",bango-file,jobsystem.dat,2521
+mage-30,Hail,"[""32""]","[""mage""]",3,20,mage-3,Ice Magic,resolved,"[""mage-3""]","[""condition"",""3"",""20""]",bango-file,jobsystem.dat,2547
+mage-31,Flame Bomb,"[""33""]","[""mage""]",2,20,mage-2,Fire Magic,resolved,"[""mage-2""]","[""condition"",""2"",""20""]",bango-file,jobsystem.dat,2572
+mage-33,Summons,"[""34""]","[""mage""]",16,1,mage-15,Revival,resolved,"[""mage-15""]","[""condition"",""16"",""1""]",bango-file,jobsystem.dat,2614
+mage-36,Cold Binding,"[""37""]","[""mage""]",27,1,mage-26,Frost,resolved,"[""mage-26""]","[""condition"",""27"",""1""]",bango-file,jobsystem.dat,2690
+mage-40,Chain Lightning,"[""41""]","[""mage""]",23,10,mage-22,Lightning Blow,resolved,"[""mage-22""]","[""condition"",""23"",""10""]",bango-file,jobsystem.dat,2795
+mage-41,Thunder,"[""42""]","[""mage""]",31,2,mage-29,Lightning Summons,resolved,"[""mage-29""]","[""condition"",""31"",""2""]",bango-file,jobsystem.dat,2832
+mage-42,Thunder Storm,"[""43""]","[""mage""]",41,1,mage-40,Chain Lightning,resolved,"[""mage-40""]","[""condition"",""41"",""1""]",bango-file,jobsystem.dat,2872
+mage-43,Ice Restriction,"[""44""]","[""mage""]",24,2,mage-23,Splashy Ice,resolved,"[""mage-23""]","[""condition"",""24"",""2""]",bango-file,jobsystem.dat,2897
+mage-44,Ice Storm,"[""45""]","[""mage""]",44,1,mage-43,Ice Restriction,resolved,"[""mage-43""]","[""condition"",""44"",""1""]",bango-file,jobsystem.dat,2920
+mage-45,Explosion,"[""46""]","[""mage""]",33,2,mage-31,Flame Bomb,resolved,"[""mage-31""]","[""condition"",""33"",""2""]",bango-file,jobsystem.dat,2944
+mage-46,Explosive Burst,"[""47""]","[""mage""]",25,5,mage-24,Fire Blow,resolved,"[""mage-24""]","[""condition"",""25"",""5""]",bango-file,jobsystem.dat,2968
+mage-47,Fire Storm,"[""48""]","[""mage""]",47,1,mage-46,Explosive Burst,resolved,"[""mage-46""]","[""condition"",""47"",""1""]",bango-file,jobsystem.dat,2991
+mage-54,Perfect Cure,"[""55""]","[""mage""]",29,1,mage-28,Restore,resolved,"[""mage-28""]","[""condition"",""29"",""1""]",bango-file,jobsystem.dat,3158
+mage-56,Group Cure 2,"[""57""]","[""mage""]",28,3,mage-27,Group Cure,resolved,"[""mage-27""]","[""condition"",""28"",""3""]",bango-file,jobsystem.dat,3202
+mage-57,Perfect Group Cure 2,"[""58""]","[""mage""]",57,1,mage-56,Group Cure 2,resolved,"[""mage-56""]","[""condition"",""57"",""1""]",bango-file,jobsystem.dat,3224
+mage-66,Flame Injection,"[""65""]","[""mage""]",48,1,mage-47,Fire Storm,resolved,"[""mage-47""]","[""condition"",""48"",""1""]",bango-file,jobsystem.dat,3425
+mage-67,Icicle,"[""66""]","[""mage""]",45,1,mage-44,Ice Storm,resolved,"[""mage-44""]","[""condition"",""45"",""1""]",bango-file,jobsystem.dat,3455
+mage-68,Lightning Arrow,"[""67""]","[""mage""]",43,1,mage-42,Thunder Storm,resolved,"[""mage-42""]","[""condition"",""43"",""1""]",bango-file,jobsystem.dat,3484
+archer-9,Heart Breaker,"[""9""]","[""archer""]",3,5,archer-3,Staggering Blow,resolved,"[""archer-3""]","[""condition"",""3"",""5""]",bango-file,jobsystem.dat,3993
+archer-13,Blow-up Arrow,"[""14""]","[""archer""]",6,5,archer-6,Flamy Arrow,resolved,"[""archer-6""]","[""condition"",""6"",""5""]",bango-file,jobsystem.dat,4077
+archer-20,Perfect Evasion 2,"[""20""]","[""archer""]",8,10,archer-8,Perfect Evasion,resolved,"[""archer-8""]","[""condition"",""8"",""10""]",bango-file,jobsystem.dat,4255
+mage-73,Fireball,"[""73""]","[""mage""]",65,1,mage-66,Flame Injection,resolved,"[""mage-66""]","[""condition"",""65"",""1""]",bango-file,jobsystem.dat,5297
+mage-74,Ice Arrow,"[""74""]","[""mage""]",66,1,mage-67,Icicle,resolved,"[""mage-67""]","[""condition"",""66"",""1""]",bango-file,jobsystem.dat,5319
+mage-75,Thunderbolt,"[""75""]","[""mage""]",67,1,mage-68,Lightning Arrow,resolved,"[""mage-68""]","[""condition"",""67"",""1""]",bango-file,jobsystem.dat,5341
+shaman-14,Ghost Flash,"[""14""]","[""shaman""]",13,5,shaman-13,Ghost Blade,resolved,"[""shaman-13""]","[""condition"",""13"",""5""]",bango-file,jobsystem.dat,5476
+shaman-20,Divine Shield,"[""20""]","[""shaman""]",15,3,shaman-15,Soul Shield,resolved,"[""shaman-15""]","[""condition"",""15"",""3""]",bango-file,jobsystem.dat,5482
+shaman-25,Entangling,"[""25""]","[""shaman""]",22,3,shaman-22,Pain of Soul,resolved,"[""shaman-22""]","[""condition"",""22"",""3""]",bango-file,jobsystem.dat,5487
+shaman-28,Drain Blood,"[""28""]","[""shaman""]",22,5,shaman-22,Pain of Soul,resolved,"[""shaman-22""]","[""condition"",""22"",""5""]",bango-file,jobsystem.dat,5490
+shaman-29,Mental Breakdown,"[""29""]","[""shaman""]",27,2,shaman-27,Summoning Soul,resolved,"[""shaman-27""]","[""condition"",""27"",""2""]",bango-file,jobsystem.dat,5491
+shaman-54,Magical Explosion,"[""54""]","[""shaman""]",27,3,shaman-27,Summoning Soul,resolved,"[""shaman-27""]","[""condition"",""27"",""3""]",bango-file,jobsystem.dat,5492
+shaman-36,JigukKing,"[""36""]","[""shaman""]",20,3,shaman-20,Divine Shield,resolved,"[""shaman-20""]","[""condition"",""20"",""3""]",bango-file,jobsystem.dat,5497
+shaman-37,JeungjangKing,"[""37""]","[""shaman""]",20,4,shaman-20,Divine Shield,resolved,"[""shaman-20""]","[""condition"",""20"",""4""]",bango-file,jobsystem.dat,5498
+shaman-38,Amplification of Blood,"[""38""]","[""shaman""]",36,2,shaman-36,JigukKing,resolved,"[""shaman-36""]","[""condition"",""36"",""2""]",bango-file,jobsystem.dat,5499
+shaman-39,Wave of Emperor,"[""39""]","[""shaman""]",37,2,shaman-37,JeungjangKing,resolved,"[""shaman-37""]","[""condition"",""37"",""2""]",bango-file,jobsystem.dat,5500
+shaman-44,Collapse,"[""44""]","[""shaman""]",29,5,shaman-29,Mental Breakdown,resolved,"[""shaman-29""]","[""condition"",""29"",""5""]",bango-file,jobsystem.dat,5505
+shaman-45,Ruler,"[""45""]","[""shaman""]",27,5,shaman-27,Summoning Soul,resolved,"[""shaman-27""]","[""condition"",""27"",""5""]",bango-file,jobsystem.dat,5506
+shaman-46,Six Souls,"[""46""]","[""shaman""]",54,3,shaman-54,Magical Explosion,resolved,"[""shaman-54""]","[""condition"",""54"",""3""]",bango-file,jobsystem.dat,5507
+shaman-47,Exploding Spirit,"[""47""]","[""shaman""]",27,7,shaman-27,Summoning Soul,resolved,"[""shaman-27""]","[""condition"",""27"",""7""]",bango-file,jobsystem.dat,5508
+shaman-50,JigukKing of Taein,"[""50""]","[""shaman""]",36,3,shaman-36,JigukKing,resolved,"[""shaman-36""]","[""condition"",""36"",""3""]",bango-file,jobsystem.dat,5511
+shaman-51,JeungjangKing of Taein,"[""51""]","[""shaman""]",37,5,shaman-37,JeungjangKing,resolved,"[""shaman-37""]","[""condition"",""37"",""5""]",bango-file,jobsystem.dat,5512
+shaman-52,Soul Blow,"[""52""]","[""shaman""]",39,5,shaman-39,Wave of Emperor,resolved,"[""shaman-39""]","[""condition"",""39"",""5""]",bango-file,jobsystem.dat,5513

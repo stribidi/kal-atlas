@@ -1,0 +1,14 @@
+legacy_csv,verdict,bango_source,scope
+CASTS.csv,legacy-fallback-unverified,jobsystem.dat limits (partial coverage),"Bango skills confirm class tokens, but there is no Bango class master table."
+POSITIONS.csv,legacy-fallback-unverified,jobsystem.dat,"Bango exposes skill keys and limits, not a directly equivalent advancement table."
+LVL_PLAYERS.csv,legacy-fallback-unverified,,No level-XP curve exists in the recovered client config.
+LVL_EGGS.csv,legacy-fallback-unverified,,No directly equivalent pet-grade table exists in the recovered config.
+SKILLS.csv,superseded-for-client-skill-definitions,jobsystem.dat,"Bango names, limits, schedules, formulas, costs and descriptions win; legacy planner tree IDs remain annotation only."
+ITEMS.csv,superseded-for-client-item-definitions,inititem.dat + message.dat,"Bango item IDs, stats, grade, requirements and prices win; legacy type taxonomy is annotation only."
+PREFIXES.csv,superseded,prefix.dat + message.dat,Bango prefix IDs and stat records win. Some high IDs lack an English name string.
+EBS.csv,legacy-fallback-unverified,"prefix.dat (stats only, not costs)",Recovered client data does not contain the equivalent enhancement-cost table.
+MONSTERS.csv,partially-superseded,message.dat monstername,Bango IDs and names win. Combat stats remain legacy fallback and are not confirmed Bango values.
+DROPS.csv,split-authority-rates-confirmed,config.pk:droplist.dat + player-confirmed KalEncyclopedia equivalence,"Bango monster-item associations and n/y/q flags win. For a matching normalized monster-item pair, legacy chance1/chance2 and drp_rev rows are Bango-applicable rate/talisman variants; unmatched pairs have no mapped rate."
+QUESTS.csv,superseded-for-listed-fields,questlist.dat + task-e.dat,"Bango level, names, rewards, prerequisites and steps win; legacy viewer-only type/picture fields remain annotation."
+OPTIONS.csv,not-game-data,,KalEncyclopedia program settings; no Bango authority question.
+PL_SAVE.csv,user-data-not-reconciled,,"Saved planner builds, not server/client entity data."

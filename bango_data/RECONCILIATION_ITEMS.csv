@@ -1,0 +1,1550 @@
+normalized_name,status,legacy_ids,bango_ids,legacy_names,bango_names,legacy_grades,bango_grades,grade_equal,legacy_levels,bango_levels,level_equal,legacy_buy_prices,bango_buy_prices,price_equal
+100cashticketexchangeableforsilvercash,bango-only-name,,1608,,100 Cash Ticket (Exchangeable for Silver Cash),,,,,,,,0,
+10cashticketexchangeableforsilvercash,bango-only-name,,1605,,10 Cash Ticket (Exchangeable for Silver Cash),,,,,,,,0,
+30cashticketexchangeableforsilvercash,bango-only-name,,1606,,30 Cash Ticket (Exchangeable for Silver Cash),,,,,,,,0,
+3cashticketexchangeableforsilvercash,bango-only-name,,1603,,3 Cash Ticket (Exchangeable for Silver Cash),,,,,,,,0,
+50cashticketexchangeableforsilvercash,bango-only-name,,1607,,50 Cash Ticket (Exchangeable for Silver Cash),,,,,,,,0,
+5cashticketexchangeableforsilvercash,bango-only-name,,1604,,5 Cash Ticket (Exchangeable for Silver Cash),,,,,,,,0,
+a,bango-only-name,,943|1096,,[ A ],,,,,,,,0,
+ablazehealthy,legacy-only-name,354,,"""Ablaze"" / ""Healthy""",,,,,0,,,,,
+absolutekeen,legacy-only-name,338,,"""Absolute"" / ""Keen""",,,,,0,,,,,
+ambitiousnecklace,bango-only-name,,2448,,Ambitious Necklace,,G75,,,,,,0,
+anchovy,bango-only-name,,1273|1276|1279|1282,,Anchovy,,,,,,,,0,
+ancientbird,bango-only-name,,338,,Ancient Bird,,,,,,,,0,
+ancientdagger,matched-name,596,1426,Ancient Dagger,Ancient dagger,G56,G56,True,56,56,True,,0,False
+ancientdrum,bango-only-name,,183,,Ancient Drum,,,,,,,,0,
+ancientdynastyoftribalmacsbow,matched-name,242,568|711|822|1238,Ancient Dynasty of Tribal Macs Bow,Ancient Dynasty of Tribal Mac's Bow,G56,G56,True,56,56,True,0,0,True
+ancientdynastysdagger,matched-name,598,1428,Ancient Dynastys Dagger,Ancient Dynasty's dagger,G56,G56,True,56,56,True,,0,False
+ancientdynastysgiantsword,matched-name,209,565|708|819|1235,Ancient Dynastys Giant Sword,Ancient Dynasty's Giant Sword|Ancient Dynasty's Giant sword,G56,G56,True,56,56,True,0,0,True
+ancientdynastysstick,matched-name,272,571|714|825|1241,Ancient Dynastys Stick,Ancient Dynasty's Stick,G56,G56,True,56,56,True,0,0,True
+ancientdynastystreasuresword,matched-name,206,562|705|816|1232,Ancient Dynastys Treasure Sword,Ancient Dynasty's Treasure Sword,G56,G56,True,56,56,True,0,0,True
+ancientgiantsword,matched-name,207,563|706|817|1233,Ancient Giant Sword,Ancient Giant Sword|Ancient Giant sword,G56,G56,True,56,56,True,0,0,True
+ancientpanther,bango-only-name,,339,,Ancient Panther,,,,,,,,0,
+ancientstick,matched-name,270,569|712|823|1239,Ancient Stick,Ancient Stick,G56,G56,True,56,56,True,0,0,True
+ancienttiger,bango-only-name,,337,,Ancient Tiger,,,,,,,,0,
+ancienttreasuresword,matched-name,204,560|703|814|1230,Ancient Treasure Sword,Ancient Treasure Sword,G56,G56,True,56,56,True,0,0,True
+ancienttribalmacsbow,matched-name,240,566|709|820|1236,Ancient Tribal Macs Bow,Ancient Tribal Mac's Bow,G56,G56,True,56,56,True,0,0,True
+angola,bango-only-name,,923,,Angola,,,,,,,,0,
+apprenticearcherstrinket,matched-name,391,203,Apprentice Archers Trinket,Apprentice Archer's Trinket,G0,,False,0,,False,,0,False
+apprenticeknightstrinket,bango-only-name,,202,,Apprentice Knight's Trinket,,,,,,,,0,
+apprenticeknighttrinket,legacy-only-name,392,,Apprentice Knight Trinket,,G0,,,0,,,,,
+apprenticescholarstrinket,legacy-only-name,393,,Apprentice Scholars Trinket,,G0,,,0,,,,,
+apprenticethiefstrinket,bango-only-name,,1595,,Apprentice thief's Trinket,,,,,,,,0,
+apprenticethieftrinket,legacy-only-name,612,,Apprentice Thief Trinket,,G0,,,0,,,,,
+argentina,bango-only-name,,917,,Argentina,,,,,,,,0,
+armorofdarkness,matched-name,497|498|503|504|509|510,678,Armor of Darkness,Armor of Darkness,G90,G60,False,90,60,False,0,0,True
+armorofdoggebi,matched-name,127|128,626|735|846|1204|1509,Armor of Doggebi,Armor of Doggebi,G55,G55,True,51|55,55,False,0,0,True
+artilleryflag,bango-only-name,,879|887,,Artillery Flag,,,,,,,,0|1,
+artisansfixingtool,bango-only-name,,992,,Artisan's Fixing Tool,,,,,,,,12000,
+auctioncertificate1day,bango-only-name,,1827,,Auction Certificate(1 day),,,,,,,,0,
+auctioncertificate3day,bango-only-name,,1828,,Auction Certificate(3 day),,,,,,,,0,
+auctioncertificate7day,bango-only-name,,1829,,Auction Certificate(7 day),,,,,,,,0,
+australia,bango-only-name,,931,,Australia,,,,,,,,0,
+automaticfirstjobquestcompletion,bango-only-name,,2638,,Automatic First Job Quest Completion,,,,,,,,0,
+automaticsecondjobquestcompletion1,bango-only-name,,2639,,Automatic Second Job Quest Completion (1),,,,,,,,0,
+automaticsecondjobquestcompletion2,bango-only-name,,2640,,Automatic Second Job Quest Completion (2),,,,,,,,0,
+automaticthirdjobquestcompletion,bango-only-name,,2641,,Automatic Third Job Quest Completion,,,,,,,,0,
+autopick15days,bango-only-name,,2611,,Auto Pick - 15 days,,,,,,,,0,
+axepumpkinhead,bango-only-name,,996|1011,,Axe Pumpkin Head,,G01,,,1,,,30000,
+b,bango-only-name,,944,,[ B ],,,,,,,,0,
+babybackribs,bango-only-name,,2171,,Baby Back Ribs,,,,,,,,0,
+baekdaesteelbow,matched-name,229,109,Baek Dae Steel Bow,Baek Dae Steel Bow,G45,G45,True,40,40,True,0,0,True
+bakedcarpwithsilverscalesofgeumohvalley,bango-only-name,,1628,,Baked Carp with silver scales of Geum-Oh Valley,,G72,,,72,,,243,
+bakedeel,bango-only-name,,271,,Baked Eel,,,,,,,,0,
+bakedmackerelinsoysauce,bango-only-name,,266,,Baked Mackerel in Soy Sauce,,,,,,,,0,
+bakedmackerelwithspicysauce,bango-only-name,,267,,Baked Mackerel with Spicy Sauce,,,,,,,,0,
+balcksesamefood,bango-only-name,,878,,balck sesame food,,,,,,,,0,
+bamboo,bango-only-name,,1283,,Bamboo,,,,,,,,0,
+bambookeg,bango-only-name,,445,,Bamboo Keg,,,,,,,,98,
+bamboostick,matched-name,246,90,Bamboo Stick,Bamboo Stick,G01,G01,True,1,1,True,4,4,True
+bangchoohyungironstick,matched-name,251,95,BangChooHyung Iron Stick,BangChooHyung Iron Stick,G21,G21,True,1,1,True,10.826,10826,False
+bangosupportbox,bango-only-name,,2634,,Bango Support Box,,,,,,,,0,
+barbaricharsh,legacy-only-name,332,,"""Barbaric"" / ""Harsh""",,,,,0,,,,,
+barrelofwhitetigercannon,bango-only-name,,765,,Barrel of White Tiger Cannon,,,,,,,,0,
+basicrewardpack,bango-only-name,,2090,,Basic Reward pack,,,,,,,,0,
+basicspiritwater,bango-only-name,,2094,,Basic Spirit water,,,,,,,,0,
+battlepass15days,bango-only-name,,2631,,Battle Pass - 15 days,,,,,,,,0,
+beadoffire,bango-only-name,,942|1029|1165,,Bead of Fire,,,,,,,,0,
+bearfur,bango-only-name,,1780,,Bear fur,,,,,,,,0,
+bearhead,bango-only-name,,1737,,Bear Head,,,,,,,,0,
+bearsgall,bango-only-name,,1730,,Bear's gall,,,,,,,,0,
+beedanbootsofhighclassthief,bango-only-name,,1578,,BeeDan Boots of High class thief,,G46,,,37,,,0,
+beedanbootsoflowclassthief,bango-only-name,,1558,,BeeDan Boots of low class thief,,G16,,,1,,,1169,
+beedanbootsofthief,bango-only-name,,1568,,BeeDan Boots of thief,,G32,,,1,,,15745,
+beedandaechangeau,matched-name,103,261,BeeDan DaeChangEau,BeeDan DaeChangEau,G46,G46,True,35,43,False,695.600,0,False
+beedandaechangeauboots,legacy-only-name,105,,BeeDan DaeChangEau Boots,,G46,,,37,,,102.400,,
+beedandaechangeauclothes,legacy-only-name,104,,BeeDan DaeChangEau Clothes,,G46,,,43,,,210.800,,
+beedandaechangeaugloves,matched-name,106,263,BeeDan DaeChangEau Gloves,BeeDan DaeChangEau Gloves,G46,G46,True,35,35,True,87.200,0,False
+beedandaechangeauhairdecoration,matched-name,107,262,BeeDan DaeChangEau Hair Decoration,BeeDan DaeChangEau Hair Decoration,G46,G46,True,39,39,True,117.200,0,False
+beedandaechangeaushoes,bango-only-name,,264,,BeeDan DaeChangEau Shoes,,G46,,,37,,,0,
+beedandaechangeaushorts,matched-name,108,265,BeeDan DaeChangEau Shorts,BeeDan DaeChangEau Shorts,G46,G46,True,41,41,True,178.000,0,False
+beedanglovesofhighclassthief,bango-only-name,,1577,,BeeDan Gloves of High class thief,,G46,,,35,,,0,
+beedanglovesoflowclassthief,bango-only-name,,1557,,BeeDan Gloves of low class thief,,G16,,,1,,,531,
+beedanglovesofthief,bango-only-name,,1567,,BeeDan Gloves of thief,,G32,,,1,,,7157,
+beedanhakchangeau,legacy-only-name,31,,BeeDan HakChangEau,,G16,,,1,,,5.419,,
+beedanhakchangeauboots,matched-name,33,78,BeeDan HakChangEau Boots,BeeDan HakChangEau Boots,G16,G16,True,1,1,True,1.169,1169,False
+beedanhakchangeauclothes,matched-name,32,75,BeeDan HakChangEau Clothes,BeeDan HakChangEau Clothes,G16,G16,True,1,1,True,2.126,2126,False
+beedanhakchangeaugloves,matched-name,34,77,BeeDan HakChangEau Gloves,BeeDan HakChangEau Gloves,G16,G16,True,1,1,True,531,531,True
+beedanhakchangeauhairdecoration,matched-name,35,76,BeeDan HakChangEau Hair Decoration,BeeDan HakChangEau Hair Decoration,G16,G16,True,1,1,True,956,956,True
+beedanhakchangeaushorts,matched-name,36,79,BeeDan HakChangEau Shorts,BeeDan HakChangEau Shorts,G16,G16,True,1,1,True,637,637,True
+beedanhoodofhighclassthief,bango-only-name,,1576,, BeeDan Hood of High class thief,,G46,,,39,,,0,
+beedanhoodoflowclassthief,bango-only-name,,1556,,BeeDan Hood of low class thief,,G16,,,1,,,956,
+beedanhoodofthief,bango-only-name,,1566,,BeeDan Hood of thief,,G32,,,1,,,12883,
+beedansochangeau,legacy-only-name,67,,BeeDan SoChangEau,,G32,,,1,,,73.002,,
+beedansochangeauboots,matched-name,69,88,BeeDan SoChangEau Boots,BeeDan SoChangEau Boots,G32,G32,True,1,1,True,15.745,15745,False
+beedansochangeauclothes,matched-name,68,85,BeeDan SoChangEau Clothes,BeeDan SoChangEau Clothes,G32,G32,True,1,1,True,28.629,28629,False
+beedansochangeaugloves,matched-name,70,87,BeeDan SoChangEau Gloves,BeeDan SoChangEau Gloves,G32,G32,True,1,1,True,7.157,7157,False
+beedansochangeauhairdecoration,matched-name,71,86,BeeDan SoChangEau Hair Decoration,BeeDan SoChangEau Hair Decoration,G32,G32,True,1,1,True,12.883,12883,False
+beedansochangeaushorts,matched-name,72,89,BeeDan SoChangEau Shorts,BeeDan SoChangEau Shorts,G32,G32,True,1,1,True,8.588,8588,False
+beedansuitofhct,legacy-only-name,551|552,,BeeDan suit of hcT,,G46,,,43,,,210.800|695.600,,
+beedansuitofhctboots,legacy-only-name,553,,BeeDan suit of hcT Boots,,G46,,,37,,,102.400,,
+beedansuitofhctgloves,legacy-only-name,554,,BeeDan suit of hcT Gloves,,G46,,,35,,,87.200,,
+beedansuitofhcthelmet,legacy-only-name,555,,BeeDan suit of hcT Helmet,,G46,,,39,,,117.200,,
+beedansuitofhctshorts,legacy-only-name,556,,BeeDan suit of hcT Shorts,,G46,,,41,,,178.000,,
+beedansuitofhighclassthief,bango-only-name,,1575,,BeeDan suit of High class thief,,G46,,,43,,,0,
+beedansuitoflct,legacy-only-name,527|528,,BeeDan suit of lcT,,G16,,,1,,,2.126|5.419,,
+beedansuitoflctboots,legacy-only-name,529,,BeeDan suit of lcT Boots,,G16,,,,,,1.169,,
+beedansuitoflctgloves,legacy-only-name,530,,BeeDan suit of lcT Gloves,,G16,,,1,,,531,,
+beedansuitoflcthelmet,legacy-only-name,531,,BeeDan suit of lcT Helmet,,G16,,,1,,,956,,
+beedansuitoflctshorts,legacy-only-name,532,,BeeDan suit of lcT Shorts,,G16,,,1,,,637,,
+beedansuitoflowclassthief,bango-only-name,,1555,,BeeDan suit of  low class thief,,G16,,,1,,,2126,
+beedansuitoft,legacy-only-name,539|540,,BeeDan suit of T,,G32,,,1,,,28.629|73.002,,
+beedansuitoftboots,legacy-only-name,541,,BeeDan suit of T Boots,,G32,,,1,,,15.745,,
+beedansuitoftgloves,legacy-only-name,542,,BeeDan suit of T Gloves,,G32,,,1,,,7.157,,
+beedansuitofthelmet,legacy-only-name,543,,BeeDan suit of T Helmet,,G32,,,1,,,12.883,,
+beedansuitofthief,bango-only-name,,1565,,BeeDan suit of thief,,G32,,,1,,,28629,
+beedansuitoftshorts,legacy-only-name,544,,BeeDan suit of T Shorts,,G32,,,1,,,8.588,,
+beedansuitshortsofhighclassthief,bango-only-name,,1579,,BeeDan suit Shorts of High class thief,,G46,,,41,,,0,
+beedansuitshortsoflowclassthief,bango-only-name,,1559,,BeeDan suit Shorts of low class thief,,G16,,,1,,,637,
+beedansuitshortsofthief,bango-only-name,,1569,,BeeDan suit Shorts of thief,,G32,,,1,,,8588,
+bestboilingwater,legacy-only-name,312,,Best Boiling Water,,G64,,,0,,,,,
+bestboillingwater,bango-only-name,,428,,Best Boilling Water,,G64,,,64,,,1020,
+bestrefiningwater,matched-name,309,425,Best Refining Water,Best Refining Water,G52,G52,True,0,52,False,,789,False
+bestwaterofgeumohmountain,matched-name,301,417,Best Water of Geum-Oh Mountain,Best Water of Geum-Oh Mountain,G20,G20,True,0,20,False,,132,False
+bestwaterofgeumohvalley,matched-name,305,421,Best Water of Geum-Oh Valley,Best Water of Geum-Oh Valley,G36,G36,True,0,36,False,,384,False
+bighandedinhabitantshead,bango-only-name,,171,,Big Handed Inhabitant's Head,,,,,,,,0,
+bighandedinhabitantstooth,bango-only-name,,149,,Big Handed Inhabitant's Tooth,,,,,,,,0,
+bighandedwarriorshead,bango-only-name,,173,,Big Handed Warrior's Head,,,,,,,,0,
+bigoakbow,matched-name,218,24,Big Oak Bow,Big Oak Bow,G09,G09,True,1,1,True,1650,1650,True
+bigpieceofmeat,matched-name,292,409,Big Piece of Meat,Big Piece of Meat,G48,G48,True,0,48,False,,123,False
+bigpotato,matched-name,283,401,Big Potato,Big Potato,G16,G16,True,0,16,False,,21,False
+bigsteelsword,matched-name,180,21,Big Steel Sword,Big Steel Sword,G25,G25,True,1,1,True,14.680,14680,False
+bigsteelswordwithpatternofleaf,matched-name,182,61,Big Steel Sword with Pattern of Leaf,Big Steel Sword with Pattern of Leaf,G33,G33,True,1,1,True,39.560,39560,False
+bigstoneofexp1hour,bango-only-name,,2633,,Big Stone of EXP - 1 hour,,,,,,,,0,
+bigsweetpotato,matched-name,287,405,Big Sweet Potato,Big Sweet Potato,G32,G32,True,0,32,False,,72,False
+birchbow,matched-name,216,22,Birch Bow,Birch Bow,G01,G01,True,1,1,True,4,4,True
+bird,legacy-only-name,453|454|455|456,,Bird,,G11|G21|G31|G41,,,11|21|31|41,,,,,
+blackgoldentreasuresword,matched-name,194,244,Black Golden Treasure Sword,Black Golden Treasure Sword,G50,G50,True,50,50,True,0,0,True
+blackgoldentresureswordimperial,legacy-only-name,403,,Black Golden Tresure Sword (Imperial),,G50,,,50,,,0,,
+blooddragonarmor,legacy-only-name,145|146|615,,Blood Dragon Armor,,G65|G65b,,,65,,,0,,
+blooddragonboots,legacy-only-name,147,,Blood Dragon Boots,,G65,,,62,,,0,,
+blooddragondeachangeau,legacy-only-name,157,,Blood Dragon DeaChangEau,,G65,,,65,,,0,,
+blooddragondeachangeauboots,legacy-only-name,159,,Blood Dragon DeaChangEau Boots,,G65,,,62,,,0,,
+blooddragondeachangeauclothes,legacy-only-name,158|617,,Blood Dragon DeaChangEau Clothes,,G65|G65b,,,65,,,0,,
+blooddragondeachangeaudecoration,legacy-only-name,161,,Blood Dragon DeaChangEau Decoration,,G65,,,63,,,0,,
+blooddragondeachangeaugloves,legacy-only-name,160,,Blood Dragon DeaChangEau Gloves,,G65,,,61,,,0,,
+blooddragondeachangeaushorts,legacy-only-name,162|618,,Blood Dragon DeaChangEau Shorts,,G65|G65b,,,64,,,0,,
+blooddragongloves,legacy-only-name,148,,Blood Dragon Gloves,,G65,,,61,,,0,,
+blooddragonhood,legacy-only-name,149,,Blood Dragon Hood,,G65,,,63,,,0,,
+blooddragonimperialstickofhell,bango-only-name,,1824,,Blood Dragon Imperial Stick of Hell,,G70,,,70,,,0,
+blooddragonimperialstickofimmortality,bango-only-name,,1710,,Blood Dragon Imperial Stick of Immortality,,G70,,,70,,,0,
+blooddragonimperialstickofpain,matched-name,644,1853,Blood Dragon Imperial Stick of Pain,Blood Dragon Imperial Stick of pain,G65,G70,False,65,70,False,0,0,True
+blooddragonimperialstickofruin,matched-name,645,1823,Blood Dragon Imperial Stick of Ruin,Blood Dragon Imperial Stick of Ruin,G65,G70,False,65,70,False,0,0,True
+blooddragonsarmor,bango-only-name,,1483|1635|1636,,Blood Dragon's Armor,,G65,,,65,,,0,
+blooddragonsarmorgloves,bango-only-name,,1485,,Blood Dragon's Armor Gloves,,G65,,,61,,,0,
+blooddragonsarmorhelmet,bango-only-name,,1484,,Blood Dragon's Armor Helmet,,G65,,,63,,,0,
+blooddragonsarmorshoes,bango-only-name,,1486,,Blood Dragon's Armor Shoes,,G65,,,62,,,0,
+blooddragonsarmorskirts,bango-only-name,,1487|1637|1638,,Blood Dragon's Armor Skirts,,G65,,,61|64,,,0,
+blooddragonsbootsofthief,bango-only-name,,1768,,Blood Dragon's Boots of thief,,G65,,,62,,,0,
+blooddragonsbow,matched-name,626,1697,Blood Dragons Bow,Blood Dragon's Bow,G70,G70,True,70,70,True,0,0,True
+blooddragonscaledarmor,legacy-only-name,151|152|613,,Blood Dragon Scaled Armor,,G65|G65b,,,65,,,0,,
+blooddragonscaledboots,legacy-only-name,153,,Blood Dragon Scaled Boots,,G65,,,62,,,0,,
+blooddragonscaledgloves,legacy-only-name,154,,Blood Dragon Scaled Gloves,,G65,,,61,,,0,,
+blooddragonscaledhelmet,legacy-only-name,155,,Blood Dragon Scaled Helmet,,G65,,,63,,,0,,
+blooddragonscaledshorts,legacy-only-name,156|614,,Blood Dragon Scaled Shorts,,G65|G65b,,,64,,,0,,
+blooddragonsdaechangeau,bango-only-name,,1488|1639|1640,,Blood Dragon's DaeChangEau,,G65,,,65,,,0,
+blooddragonsdaechangeaugloves,bango-only-name,,1490,,Blood Dragon's DaeChangEau Gloves,,G65,,,61,,,0,
+blooddragonsdaechangeauhairdecoration,bango-only-name,,1489,,Blood Dragon's DaeChangEau Hair Decoration,,G65,,,63,,,0,
+blooddragonsdaechangeaushoes,bango-only-name,,1491,,Blood Dragon's DaeChangEau Shoes,,G65,,,62,,,0,
+blooddragonsdaechangeaushorts,bango-only-name,,1492|1641|1642,,Blood Dragon's DaeChangEau Shorts,,G65,,,64,,,0,
+blooddragonsdagger,matched-name,630,1699,Blood Dragons Dagger,Blood Dragon's Dagger,G70,G70,True,70,70,True,0,0,True
+blooddragonsgiantsword,matched-name,624,1696,Blood Dragons Giant Sword,Blood Dragon's Giant sword,G70,G70,True,70,70,True,0,0,True
+blooddragonsglovesofthief,bango-only-name,,1767,,Blood Dragon's Gloves of thief,,G65,,,61,,,0,
+blooddragonshield,bango-only-name,,1609,,Blood Dragon shield,,G65,,,65,,,0,
+blooddragonshoodofthief,bango-only-name,,1766,,Blood Dragon's Hood of thief,,G65,,,63,,,0,
+blooddragonshorts,legacy-only-name,150|616,,Blood Dragon Shorts,,G65|G65b,,,64,,,0,,
+blooddragonsimperialstickofhell,legacy-only-name,651,,Blood Dragons Imperial Stick of Hell,,G70,,,70,,,0,,
+blooddragonsimperialstickofpain,legacy-only-name,649,,Blood Dragons Imperial Stick Of pain,,G70,,,70,,,0,,
+blooddragonsimperialstickofruin,legacy-only-name,650,,Blood Dragons Imperial Stick of Ruin,,G70,,,70,,,0,,
+blooddragonsscaledarmor,bango-only-name,,1478|1631|1632,,Blood Dragon's Scaled Armor,,G65,,,65,,,0,
+blooddragonsscaledarmorgloves,bango-only-name,,1480,,Blood Dragon's Scaled Armor Gloves,,G65,,,61,,,0,
+blooddragonsscaledarmorhelmet,bango-only-name,,1479,,Blood Dragon's Scaled Armor Helmet,,G65,,,63,,,0,
+blooddragonsscaledarmorshoes,bango-only-name,,1481,,Blood Dragon's Scaled Armor Shoes,,G65,,,62,,,0,
+blooddragonsscaledarmorshorts,bango-only-name,,1482|1633|1634,,Blood Dragon's Scaled Armor Shorts,,G65,,,64,,,0,
+blooddragonsshield,legacy-only-name,625,,Blood Dragons Shield,,G65,,,65,,,0,,
+blooddragonsstick,matched-name,627,1698,Blood Dragons Stick,Blood Dragon's Stick,G70,G70,True,70,70,True,0,0,True
+blooddragonsstickofhell,legacy-only-name,629,,Blood Dragons Stick of Hell,,G70,,,70,,,0,,
+blooddragonsstickofruin,legacy-only-name,628,,Blood Dragons Stick of Ruin,,G70,,,70,,,0,,
+blooddragonssuitofthief,bango-only-name,,1763|1764|1765,,Blood Dragon's Suit of thief,,G65,,,65,,,0,
+blooddragonssuitshortsofthief,bango-only-name,,1769|1770|1771,,Blood Dragon's Suit Shorts of thief,,G65,,,64,,,0,
+blooddragonssword,matched-name,623,1695,Blood Dragons Sword,Blood Dragon's Sword,G70,G70,True,70,70,True,0,0,True
+blooddragonstickofhell,bango-only-name,,1706,,Blood Dragon Stick of Hell,,G70,,,70,,,0,
+blooddragonstickofruin,bango-only-name,,1705,,Blood Dragon Stick of Ruin,,G70,,,70,,,0,
+blooddragonsuitoft,legacy-only-name,636|641,,Blood Dragon Suit of T,,G65|G65b,,,65,,,,,
+blooddragonsuitoftboots,legacy-only-name,637,,Blood Dragon Suit of T Boots,,G65,,,62,,,,,
+blooddragonsuitoftgloves,legacy-only-name,638,,Blood Dragon Suit of T Gloves,,G65,,,61,,,,,
+blooddragonsuitofthelmet,legacy-only-name,639,,Blood Dragon Suit of T Helmet,,G65,,,63,,,,,
+blooddragonsuitofthief,legacy-only-name,635,,Blood Dragon Suit of Thief,,G65,,,65,,,,,
+blooddragonsuitoftshorts,legacy-only-name,640|642,,Blood Dragon Suit of T Shorts,,G65|G65b,,,64,,,,,
+bloodofbighanded,matched-name,389,387,Blood of Big Handed,Blood of Big Handed,,,True,0,,False,,0,False
+bloodofwaterdragon,matched-name,390,388,Blood of Water Dragon,Blood of Water Dragon,,,True,0,,False,,0,False
+bloodstainedclothes,bango-only-name,,167,,Bloodstained Clothes,,,,,,,,0,
+bloodyfightsunlawful,legacy-only-name,317,,"""Bloody Fights"" / ""Unlawful""",,,,,0,,,,,
+bluebead,bango-only-name,,1733,,Blue Bead,,,,,,,,0,
+bluebeastofdemoncracktroopshead,bango-only-name,,1398,,Blue Beast of Demon Crack Troop's head,,,,,,,,0,
+bluebox,bango-only-name,,522,,Blue Box,,,,,,,,0,
+bluedragoncannon,bango-only-name,,880|881|882|888|889|890,,Blue Dragon Cannon,,,,,,,,0|1,
+bluewitchhat,bango-only-name,,999|1014,,Blue Witch Hat,,G01,,,1,,,30000,
+book,bango-only-name,,1735,,Book,,,,,,,,0,
+bootsofdarkness,legacy-only-name,499|505|511,,Boots of Darkness,,G90,,,90,,,0,,
+bootsofdoggebi,legacy-only-name,129,,Boots of Doggebi,,G55,,,52,,,0,,
+bowofdarkness,bango-only-name,,2616,,Bow of Darkness,,G62,,,60,,,0,
+bowofdoggebi,matched-name,243,590|751|862|1224,Bow of Doggebi,Bow of Doggebi,G59,G59,True,59,59,True,0,0,True
+bowofdoggebilord,matched-name,245,592|753|864|1226,Bow of Doggebi Lord,Bow of Doggebi Lord,G59,G59,True,59,59,True,0,0,True
+bowofhighclassdoggebi,matched-name,244,591|752|863|1225,Bow of High Class Doggebi,Bow of High Class Doggebi,G59,G59,True,59,59,True,0,0,True
+bowofhighclassdoggebiimperial,legacy-only-name,417,,Bow of High Class Doggebi (Imperial),,G59,,,59,,,0,,
+brazil,bango-only-name,,929,,Brazil,,,,,,,,0,
+breakthroughsstrongestmans,legacy-only-name,344,,"""Breakthroughs"" / ""Strongest Mans""",,,,,0,,,,,
+breastmeatofcheonjiyeonbear,bango-only-name,,2058,,Breast Meat of Cheonjiyeon bear,,G72,,,72,,,300,
+brownbearmeat,bango-only-name,,1781,,Brown Bear meat,,,,,,,,0,
+butterflykite,bango-only-name,,1287,,Butterfly Kite,,,,,,,,0,
+butterflyshapeddagger,matched-name,591,1421,Butterfly-Shaped Dagger,Butterfly-Shaped dagger,G50,G50,True,50,50,True,,0,False
+butterflyshapedgiantsword,matched-name,197,442,Butterfly-Shaped Giant Sword,Butterfly-Shaped Giant Sword,G50,G50,True,50,50,True,0,0,True
+butterflyshapedgiantswordimperial,legacy-only-name,404,,Butterfly-Shaped Giant Sword (Imperial),,G50,,,50,,,0,,
+butterflyshapedtreasuresword,matched-name,193,243,Butterfly-Shaped Treasure Sword,Butterfly-Shaped Treasure Sword,G50,G50,True,50,50,True,0,0,True
+c,bango-only-name,,945|1097,,[ C ],,,,,,,,0,
+candy,bango-only-name,,1003,,Candy,,,,,,,,0,
+candybasket,bango-only-name,,1006,,Candy Basket,,,,,,,,0,
+cannonballofwhitetigercannon,bango-only-name,,767,,Cannon Ball of White Tiger Cannon,,,,,,,,0,
+carp,bango-only-name,,2074,,Carp,,,,,,,,0,
+castedmediumlironshield,bango-only-name,,67,,Casted Mediuml Iron Shield,,G35,,,1,,,2306,
+castedmediumsteelshield,bango-only-name,,69,,Casted Medium Steel Shield,,G56,,,1,,,0,
+celebratedfixed,legacy-only-name,358,,"""Celebrated"" / ""Fixed""",,,,,0,,,,,
+certificateofgoblin,bango-only-name,,2084,,Certificate of Goblin,,,,,,,,0,
+certificateofmasterskeleton,bango-only-name,,2087,,Certificate of Master Skeleton,,,,,,,,0,
+certificateofsonofthesky1hr,bango-only-name,,1178|1264|2609,,Certificate of Son of the Sky[1Hr.],,,,,,,,0,
+certificateofsonofthesky3hr,bango-only-name,,1179|1265,,Certificate of Son of the Sky[3Hr.],,,,,,,,0,
+certificateofsonofthesky5hr,bango-only-name,,1180|1266,,Certificate of Son of the Sky[5Hr.],,,,,,,,0,
+certificateofxill,bango-only-name,,2083,,Certificate of Xill,,,,,,,,0,
+certificateofzombie,bango-only-name,,2086,,Certificate of Zombie,,,,,,,,0,
+chamberofcannonbarrel,bango-only-name,,764,,Chamber of Cannon Barrel,,,,,,,,0,
+chickenskewer,bango-only-name,,2175|2368,,Chicken Skewer,,,,,,,,0,
+chiefofangrydoggebitroopsdeadbody,bango-only-name,,456,,Chief of Angry Doggebi Troop's Dead Body,,,,,,,,0,
+chiefofdemoncracktroopshead,bango-only-name,,1386,,Chief of Demon Crack Troop's head,,,,,,,,0,
+chinesebellflower,bango-only-name,,198,,Chinese Bellflower,,,,,,,,0,
+chopofmeat,matched-name,291,408,Chop of Meat,Chop of Meat,G44,G44,True,0,44,False,,108,False
+christmascake,bango-only-name,,1030,,Christmas cake,,,,,,,,0,
+christmaspudding,bango-only-name,,1032,,Christmas pudding,,,,,,,,0,
+christmaswine,bango-only-name,,1034,,Christmas wine,,,,,,,,0,
+chrysanthemum,bango-only-name,,197,,Chrysanthemum,,,,,,,,0,
+chultaebow,matched-name,228,108|941,ChulTae Bow,ChulTae Bow,G40,G40,True,1,1,True,0,159092,False
+chultaebowimperial,legacy-only-name,395,,ChulTae Bow (Imperial),,G40,,,1,,,0,,
+chunsooinsstirrup,bango-only-name,,169,,Chun-SooIn's Stirrup,,,,,,,,0,
+completeemoogysscale,bango-only-name,,1497,,Complete E-moogy's Scale,,,,,,,,0,
+completesuitofarmor,bango-only-name,,1778,,Complete suit of armor.,,,,,,,,0,
+cookedcarp,bango-only-name,,2079,,Cooked carp,,G70,,,70,,,0,
+cookedchopofmeat,matched-name,293,410,Cooked Chop of Meat,Cooked Chop of Meat,G52,G52,True,0,52,False,,141,False
+cookedpotato,matched-name,284,402,Cooked Potato,Cooked Potato,G20,G20,True,0,20,False,,36,False
+cookedshad,bango-only-name,,2076,,Cooked shad,,G70,,,70,,,0,
+cookedsweetpotato,matched-name,288,406,Cooked Sweet Potato,Cooked Sweet Potato,G36,G36,True,0,36,False,,81,False
+coppermarble,bango-only-name,,2177,,Copper Marble,,,,,,,,0,
+corruptednecklaceofspirit,bango-only-name,,2247,,Corrupted necklace of spirit,,,,,,,,0,
+corruptedringofspirit,bango-only-name,,2246,,Corrupted ring of spirit,,,,,,,,0,
+corruptedtrinketofspirit,bango-only-name,,2250,,Corrupted trinket of spirit,,,,,,,,0,
+costarica,bango-only-name,,910,,Costa Rica,,,,,,,,0,
+cotedivoire,bango-only-name,,918,,Cote d`Ivoire,,,,,,,,0,
+cottoncandy,bango-only-name,,1005,,Cotton Candy,,,,,,,,0,
+crazydemonhead,bango-only-name,,1711,,Crazy Demon Head,,,,,,,,0,
+crazydemonworkersaxe,bango-only-name,,1693,,Crazy Demon Worker's Axe,,,,,,,,0,
+crazydemonworkershead,bango-only-name,,1713,,Crazy Demon Worker's Head,,,,,,,,0,
+crazydemonworkersleaderhead,bango-only-name,,1773,,Crazy Demon Worker's Leader Head,,,,,,,,0,
+croatia,bango-only-name,,930,,Croatia,,,,,,,,0,
+crownofsunrising,bango-only-name,,186,,Crown of Sun Rising,,,,,,,,0,
+crystal,bango-only-name,,1022,,Crystal,,,,,,,,0,
+czechrepublic,bango-only-name,,928,,Czech Republic,,,,,,,,0,
+d,bango-only-name,,1098,,[ D ],,,,,,,,0,
+daechangeauarmorofdoggebi,legacy-only-name,139,,DaeChangEau Armor of Doggebi,,G55,,,51,,,0,,
+daechangeaubootsofdoggebi,legacy-only-name,141,,DaeChangEau Boots of Doggebi,,G55,,,52,,,0,,
+daechangeauclothesofdoggebi,legacy-only-name,140,,DaeChangEau Clothes of Doggebi,,G55,,,55,,,0,,
+daechangeauglovesofdarkness,bango-only-name,,685,,DaeChangEau Gloves of Darkness,,G60,,,56,,,0,
+daechangeauglovesofdoggebi,matched-name,142,633|742|853|1211|1516,DaeChangEau Gloves of Doggebi,DaeChangEau Gloves of Doggebi,G55,G55,True,51,51,True,0,0,True
+daechangeauhairdecorationofdoggebi,legacy-only-name,143,,DaeChangEau Hair Decoration of Doggebi,,G55,,,53,,,0,,
+daechangeauofdarkness,bango-only-name,,683,,DaeChangEau of Darkness,,G60,,,60,,,0,
+daechangeauofdoggebi,bango-only-name,,631|740|851|1209|1514,,DaeChangEau of Doggebi,,G55,,,55,,,0,
+daechangeaushoesofdarkness,bango-only-name,,686,,DaeChangEau Shoes of Darkness,,G60,,,57,,,0,
+daechangeaushoesofdoggebi,bango-only-name,,634|743|854|1212|1517,,DaeChangEau Shoes of Doggebi,,G55,,,52,,,0,
+daechangeaushortsofdarkness,bango-only-name,,687,,DaeChangEau Shorts of Darkness,,G60,,,59,,,0,
+daechangeaushortsofdoggebi,matched-name,144,635|744|855|1213|1518,DaeChangEau Shorts of Doggebi,DaeChangEau Shorts of Doggebi,G55,G55,True,54,54,True,0,0,True
+daggerofdarkness,bango-only-name,,2618,,Dagger of Darkness,,G62,,,60,,,0,
+daggerofdoggebi,matched-name,599,1429,Dagger of Doggebi,dagger of Doggebi,G59,G59,True,59,59,True,,0,False
+daggerofhighclassdoggebi,matched-name,600,1430,Dagger of High Class Doggebi,dagger of High Class Doggebi,G59,G59,True,59,59,True,,0,False
+daggerofhighclassdoggebiimperial,legacy-only-name,609,,Dagger of High Class Doggebi (Imperial),,G59,,,59,,,,,
+dandelion,bango-only-name,,200,,Dandelion,,,,,,,,0,
+darknessbootsofthief,bango-only-name,,2627,,Darkness Boots of thief,,G60,,,57,,,0,
+darknessdaechangeauhairdecoration,bango-only-name,,1261,,Darkness DaeChangEau Hair Decoration,,G63,,,58,,,0,
+darknessglovesofthief,bango-only-name,,2626,,Darkness Gloves of thief,,G60,,,56,,,0,
+darknesshoodofthief,bango-only-name,,2625,,Darkness Hood of thief,,G60,,,58,,,0,
+darknessscaledarmorhelmet,bango-only-name,,1262,,Darkness Scaled Armor Helmet,,G63,,,58,,,0,
+darknesssuitofthief,bango-only-name,,2624,,Darkness suit of thief,,G60,,,60,,,0,
+darknesssuitshortsofthief,bango-only-name,,2628,,Darkness suit Shorts of thief,,G60,,,59,,,0,
+dashyagile,legacy-only-name,363,,"""Dashy"" / ""Agile""",,,,,0,,,,,
+decisionaldashy,legacy-only-name,345,,"""Decisional"" / ""Dashy""",,,,,0,,,,,
+defectivedoggebisdoll,bango-only-name,,355,,Defective Doggebi's Doll,,,,,,,,0,
+degenaratedtwisteddemonhead,bango-only-name,,1784,,Degenarated Twisted Demon Head,,,,,,,,0,
+degenaratedtwisteddemonjaw,bango-only-name,,2646,,Degenarated Twisted Demon Jaw,,,,,,,,0,
+degenaratedtwisteddemonnail,bango-only-name,,1739,,Degenarated Twisted Demon Nail,,,,,,,,0,
+demonarmoredknightshead,bango-only-name,,180,,Demon Armored Knight's Head,,,,,,,,0,
+demonbandshead,bango-only-name,,179,,Demon Band's Head,,,,,,,,0,
+demoncommandershead,bango-only-name,,181,,Demon Commander's Head,,,,,,,,0,
+demoncracksoldiershead,bango-only-name,,1384,,Demon Crack Soldier's head,,,,,,,,0,
+demonflagbearershead,bango-only-name,,178,,Demon Flag Bearer's Head,,,,,,,,0,
+demonmadknightshead,bango-only-name,,163,,Demon Mad Knight's Head,,,,,,,,0,
+demonsarmor,bango-only-name,,166,,Demon's Armor,,,,,,,,0,
+demonsblood,matched-name,277,443,Demons Blood,Demon's blood,,,True,0,,False,20,0,False
+demonsbow,bango-only-name,,147,,Demon's Bow,,,,,,,,0,
+demonscarcass,bango-only-name,,152,,Demon's Carcass,,,,,,,,0,
+demonscoutshead,bango-only-name,,397,,Demon Scout's Head,,,,,,,,0,
+demonsdrum,bango-only-name,,165,,Demon's Drum,,,,,,,,0,
+demonshocktroopershead,bango-only-name,,177,,Demon Shock Trooper's Head,,,,,,,,0,
+demonsoldiershead,bango-only-name,,174,,Demon Soldier's Head,,,,,,,,0,
+demonsoldiersteeth,bango-only-name,,150,,Demon Soldier's Teeth,,,,,,,,0,
+demonspearheadshead,bango-only-name,,398,,Demon Spearhead's Head,,,,,,,,0,
+demonsstrategicmap,bango-only-name,,146,,Demon's Strategic Map,,,,,,,,0,
+demonssword,bango-only-name,,906|1168|1293,,Demon's Sword,,,,,,,,0,
+demonthrowingsoldiershead,bango-only-name,,175,,Demon Throwing Soldier's Head,,,,,,,,0,
+demontroopscatapultlever,bango-only-name,,1692,,Demon Troop's Catapult lever,,,,,,,,0,
+demontroopsconfidentialdocument,bango-only-name,,141,,Demon Troop's Confidential Document,,,,,,,,0,
+demonvulgarshead,bango-only-name,,396,,Demon Vulgar's Head,,,,,,,,0,
+demonwaterdragoncommandersskin,bango-only-name,,168,,Demon Water Dragon Commander's Skin,,,,,,,,0,
+demonwaterdragonshead,bango-only-name,,162,,Demon Water Dragon's Head,,,,,,,,0,
+demonwaterdragonsskin,bango-only-name,,164,,Demon Water Dragon's Skin,,,,,,,,0,
+despoticforced,legacy-only-name,367,,"""Despotic"" / ""Forced""",,,,,0,,,,,
+devilsoldierbosshead,bango-only-name,,233,,Devil Soldier Boss' Head,,,,,,,,0,
+devilsoldierbowshead,bango-only-name,,229,,Devil Soldier Bow's Head,,,,,,,,0,
+devilsoldiersbow,bango-only-name,,215,,Devil Soldier's Bow,,,,,,,,0,
+devilsoldiershead,bango-only-name,,227,,Devil Soldier's Head,,,,,,,,0,
+devilsoldierspearshead,bango-only-name,,231,,Devil Soldier Spear's Head,,,,,,,,0,
+devilsoldiersspear,bango-only-name,,216,,Devil Soldier's Spear,,,,,,,,0,
+devilsoldiersubbosshead,bango-only-name,,232,,Devil Soldier Sub-boss' Head,,,,,,,,0,
+devilsoldierswordshead,bango-only-name,,230,,Devil Soldier Sword's Head,,,,,,,,0,
+devilsoldiertwinbladeshead,bango-only-name,,228,,Devil Soldier Twin Blades' Head,,,,,,,,0,
+deviltroopofabsorbinggreenmask,bango-only-name,,1370,,Devil Troop of Absorbing Green Mask,,,,,,,,0,
+deviltroopofangermask,bango-only-name,,1369,,Devil Troop of Anger Mask,,,,,,,,0,
+deviltroopofgreedsmask,bango-only-name,,347,,Devil Troop of Greed's Mask,,,,,,,,0,
+deviltroopofhatredmask,bango-only-name,,1367,,Devil Troop of Hatred Mask,,,,,,,,0,
+deviltroopofhatredsmask,bango-only-name,,349,,Devil Troop of Hatred's Mask,,,,,,,,0,
+deviltroopofjealousymask,bango-only-name,,1366,,Devil Troop of Jealousy Mask,,,,,,,,0,
+deviltroopofjealousysmask,bango-only-name,,348,,Devil Troop of Jealousy's Mask,,,,,,,,0,
+deviltroopofmadnessmask,bango-only-name,,350|1368,,Devil Troop of Madness Mask|Devil Troop of Madness' Mask,,,,,,,,0,
+deviltroopofpainsmask,bango-only-name,,346,,Devil Troop of Pain's Mask,,,,,,,,0,
+diamondarmor,matched-name,109|110,377|720|831,Diamond Armor,Diamond Armor,G50,G50,True,46|50,50,False,0,0,True
+diamondboots,legacy-only-name,111,,Diamond Boots,,G50,,,47,,,0,,
+diamondbootsofthief,bango-only-name,,1583,,Diamond Boots of thief,,G50,,,47,,,0,
+diamondbow,matched-name,237,463|697|808,Diamond Bow,Diamond Bow,G53,G53,True,53,53,True,0,0,True
+diamondbowofpain,matched-name,238,464|698|809,Diamond Bow of Pain,Diamond Bow of Pain,G53,G53,True,53,53,True,0,0,True
+diamondbowofphantom,matched-name,239,465|699|810,Diamond Bow of Phantom,Diamond Bow of Phantom,G53,G53,True,53,53,True,0,0,True
+diamondbowofphantomimperial,legacy-only-name,409,,Diamond Bow of Phantom (Imperial),,G53,,,53,,,0,,
+diamonddagger,matched-name,593,1423,Diamond Dagger,Diamond dagger,G53,G53,True,53,53,True,,0,False
+diamonddaggerofpain,matched-name,594,1424,Diamond Dagger of Pain,Diamond dagger of Pain,G53,G53,True,53,53,True,,0,False
+diamonddaggerofpainimperial,legacy-only-name,607,,Diamond Dagger of Pain (Imperial),,G53,,,53,,,,,
+diamonddaggerofphantom,matched-name,595,1425,Diamond Dagger of Phantom,Diamond dagger of Phantom,G53,G53,True,53,53,True,,0,False
+diamondgiantsword,matched-name,201,460|694|805,Diamond Giant Sword,Diamond Giant Sword,G53,G53,True,53,53,True,0,0,True
+diamondgiantswordofpain,matched-name,202,461|695|806,Diamond Giant Sword of Pain,Diamond Giant Sword of Pain|Diamond Giant Sword of Pain ,G53,G53,True,53,53,True,0,0,True
+diamondgiantswordofpainimperial,legacy-only-name,408,,Diamond Giant Sword of Pain (Imperial),,G53,,,53,,,0,,
+diamondgiantswordofphantom,matched-name,203,462|696|807,Diamond Giant Sword of Phantom,Diamond Giant Sword of Phantom,G53,G53,True,53,53,True,0,0,True
+diamondgloves,matched-name,112,379|722|833,Diamond Gloves,Diamond Gloves,G50,G50,True,46,46,True,0,0,True
+diamondglovesofthief,bango-only-name,,1582,,Diamond Gloves of thief,,G50,,,46,,,0,
+diamondhelmet,bango-only-name,,378|721|832,,Diamond Helmet,,G50,,,48,,,0,
+diamondheroic,legacy-only-name,339,,"""Diamond"" / ""Heroic""",,,,,0,,,,,
+diamondhood,legacy-only-name,113,,Diamond Hood,,G50,,,48,,,0,,
+diamondhoodofthief,bango-only-name,,1581,,Diamond Hood of thief,,G50,,,48,,,0,
+diamondscaledarmor,matched-name,115|116,372|715|826,Diamond Scaled Armor,Diamond Scaled Armor,G50,G50,True,46|50,50,False,0,0,True
+diamondscaledboots,legacy-only-name,117,,Diamond Scaled Boots,,G50,,,47,,,0,,
+diamondscaledgloves,matched-name,118,374|717|828,Diamond Scaled Gloves,Diamond Scaled Gloves,G50,G50,True,46,46,True,0,0,True
+diamondscaledhelmet,matched-name,119,373|716|827,Diamond Scaled Helmet,Diamond Scaled Helmet,G50,G50,True,48,48,True,0,0,True
+diamondscaledshoes,bango-only-name,,375|718|829,,Diamond Scaled Shoes,,G50,,,47,,,0,
+diamondscaledshorts,matched-name,120,376|719|830,Diamond Scaled Shorts,Diamond Scaled Shorts,G50,G50,True,49,49,True,0,0,True
+diamondshoes,bango-only-name,,380|723|834,,Diamond Shoes,,G50,,,47,,,0,
+diamondshorts,matched-name,114,381|724|835,Diamond Shorts,Diamond Shorts,G50,G50,True,49,49,True,0,0,True
+diamondstick,matched-name,267,466|700|811,Diamond Stick,Diamond Stick,G53,G53,True,53,53,True,0,0,True
+diamondstickofpain,matched-name,268,467|701|812,Diamond Stick of Pain,Diamond Stick of Pain,G53,G53,True,53,53,True,0,0,True
+diamondstickofpainimperial,legacy-only-name,410,,Diamond Stick of Pain (Imperial),,G53,,,53,,,0,,
+diamondstickofphantom,matched-name,269,468|702|813,Diamond Stick of Phantom,Diamond Stick of Phantom,G53,G53,True,53,53,True,0,0,True
+diamondsuitoft,legacy-only-name,557|558,,Diamond suit of T,,G50,,,50,,,,,
+diamondsuitoftboots,legacy-only-name,559,,Diamond suit of T Boots,,G50,,,47,,,,,
+diamondsuitoftgloves,legacy-only-name,560,,Diamond suit of T Gloves,,G50,,,46,,,,,
+diamondsuitofthelmet,legacy-only-name,561,,Diamond suit of T Helmet,,G50,,,48,,,,,
+diamondsuitofthief,bango-only-name,,1580,,Diamond suit of thief,,G50,,,50,,,0,
+diamondsuitoftshorts,legacy-only-name,562,,Diamond suit of T Shorts,,G50,,,49,,,,,
+diamondsuitshortsofthief,bango-only-name,,1584,,Diamond suit Shorts of thief,,G50,,,49,,,0,
+diamondswordofpain,matched-name,199,458|692|803,Diamond Sword of Pain,Diamond Sword of Pain|Diamond Sword of Pain ,G53,G53,True,53,53,True,0,0,True
+diamondswordofpainimperial,legacy-only-name,407,,Diamond Sword of Pain (Imperial),,G53,,,53,,,0,,
+diamondswordofphantom,matched-name,200,459|693|804,Diamond Sword of Phantom,Diamond Sword of Phantom,G53,G53,True,53,53,True,0,0,True
+diamondtreasuresword,matched-name,198,457|691|802,Diamond Treasure Sword,Diamond Treasure Sword|Diamond Treasure Sword ,G53,G53,True,53,53,True,0,0,True
+dignifiedfixed,legacy-only-name,359,,"""Dignified"" / ""Fixed""",,,,,0,,,,,
+dilutedpoisonousliquid,bango-only-name,,1786,,Diluted Poisonous Liquid,,,,,,,,0,
+distinctmerciful,legacy-only-name,342,,"""Distinct"" / ""Merciful""",,,,,0,,,,,
+doggebibootsofthief,bango-only-name,,1588,,Doggebi Boots of thief,,G55,,,52,,,0,
+doggebiglovesofthief,bango-only-name,,1587,,Doggebi Gloves of thief,,G55,,,51,,,0,
+doggebihoodofthief,bango-only-name,,1586,,Doggebi Hood of thief,,G55,,,53,,,0,
+doggebimask,bango-only-name,,1323|1446|1447,,Doggebi Mask,,,,,,,,0|150000,
+doggebiofmonsterfacefire,bango-only-name,,1373,,Doggebi of Monster Face Fire,,,,,,,,0,
+doggebiofmonsterfacesbroom,bango-only-name,,389,,Doggebi of Monster Face's Broom,,,,,,,,0,
+doggebiscaledarmor,bango-only-name,,1199,,Doggebi Scaled Armor,,G55,,,55,,,0,
+doggebiscaledarmorgloves,bango-only-name,,1201,,Doggebi Scaled Armor Gloves,,G55,,,51,,,0,
+doggebiscaledarmorhelmet,bango-only-name,,1200,,Doggebi Scaled Armor Helmet,,G55,,,53,,,0,
+doggebiscaledarmorshoes,bango-only-name,,1202,,Doggebi Scaled Armor Shoes,,G55,,,52,,,0,
+doggebiscaledarmorshorts,bango-only-name,,1203,,Doggebi Scaled Armor Shorts,,G55,,,54,,,0,
+doggebiscertificate1,bango-only-name,,1118,,Doggebi's Certificate(1),,,,,,,,0,
+doggebiscertificate10,bango-only-name,,1121,,Doggebi's Certificate(10),,,,,,,,0,
+doggebiscertificate3,bango-only-name,,1119,,Doggebi's Certificate(3),,,,,,,,0,
+doggebiscertificate5,bango-only-name,,1120,,Doggebi's Certificate(5),,,,,,,,0,
+doggebisdoll,bango-only-name,,356,,Doggebi's Doll,,,,,,,,0,
+doggebisfixingtool,bango-only-name,,993,,Doggebi's Fixing Tool,,,,,,,,0,
+doggebisuitoft,legacy-only-name,563|564,,Doggebi suit of T,,G55,,,55,,,,,
+doggebisuitoftboots,legacy-only-name,565,,Doggebi suit of T Boots,,G55,,,52,,,,,
+doggebisuitoftgloves,legacy-only-name,566,,Doggebi suit of T Gloves,,G55,,,51,,,,,
+doggebisuitofthelmet,legacy-only-name,567,,Doggebi suit of T Helmet,,G55,,,53,,,,,
+doggebisuitofthief,bango-only-name,,1585,,Doggebi suit of thief,,G55,,,55,,,0,
+doggebisuitoftshorts,legacy-only-name,568,,Doggebi suit of T Shorts,,G55,,,54,,,,,
+doggebisuitshortsofthief,bango-only-name,,1589,,Doggebi suit Shorts of thief,,G55,,,54,,,0,
+doggebiwithagongfire,bango-only-name,,1374,,Doggebi with a Gong Fire,,,,,,,,0,
+doggebiwithagongsbroom,bango-only-name,,390,,Doggebi with a Gong's Broom,,,,,,,,0,
+doggebiwithamaskofblackcrowsbroom,bango-only-name,,392,,Doggebi with a Mask of Black Crow's Broom,,,,,,,,0,
+doggebiwithamaskofblackfire,bango-only-name,,1376,,Doggebi with a Mask of Black Fire,,,,,,,,0,
+doggebiwithamaskofblackpantherfire,bango-only-name,,1377,,Doggebi with a Mask of Black Panther Fire,,,,,,,,0,
+doggebiwithamaskofblackpanthersbroom,bango-only-name,,393,,Doggebi with a Mask of Black Panther's Broom,,,,,,,,0,
+doojungpeegaparmor,matched-name,19|20,37,DooJungPeeGap Armor,DooJungPeeGap Armor,G16,G16,True,1,1,True,2.126|5.419,2126,False
+doojungpeegapboots,matched-name,21,40,DooJungPeeGap Boots,DooJungPeeGap Boots,G16,G16,True,1,1,True,1.169,1169,False
+doojungpeegapgloves,matched-name,22,39,DooJungPeeGap Gloves,DooJungPeeGap Gloves,G16,G16,True,1,1,True,531,531,True
+doojungpeegaphood,matched-name,23,38,DooJungPeeGap Hood,DooJungPeeGap Hood,G16,G16,True,1,1,True,956,956,True
+doojungpeegapshorts,matched-name,24,41,DooJungPeeGap Shorts,DooJungPeeGap Shorts,G16,G16,True,1,1,True,637,637,True
+doosuklinboots,matched-name,75,125,DooSukLin Boots,DooSukLin Boots,G42,G42,True,1,1,True,82.705,82705,False
+doosuklingaparmor,matched-name,73|74,122,DooSukLinGap Armor,DooSukLinGap Armor,G42,G42,True,1,1,True,148.872|374.830,148870,False
+doosuklingaparmorhood,matched-name,77,123,DooSukLinGap Armor Hood,DooSukLinGap Armor Hood,G42,G42,True,1,1,True,67.668,67668,False
+doosuklingapshorts,matched-name,78,126,DooSukLinGap Shorts,DooSukLinGap Shorts,G42,G42,True,1,1,True,38.368,38368,False
+doosuklingloves,matched-name,76,124,DooSukLin Gloves,DooSukLin Gloves,G42,G42,True,1,1,True,37.217,37217,False
+dragonbowofsky,matched-name,487,671,Dragon Bow of Sky,Dragon Bow of Sky,G65,G65,True,65,65,True,0,0,True
+dragonbowofskyimperial,legacy-only-name,491,,Dragon Bow of Sky (Imperial),,G65,,,65,,,0,,
+dragondaggerofsky,matched-name,602,1432,Dragon Dagger of Sky,Dragon dagger of Sky,G65,G65,True,65,65,True,,0,False
+dragondaggerofskyimperial,legacy-only-name,611,,Dragon Dagger of Sky (Imperial),,G65,,,65,,,,,
+dragongiantswordofsky,matched-name,486,670,Dragon Giant Sword of Sky,Dragon Giant Sword of Sky,G65,G65,True,65,65,True,0,0,True
+dragongiantswordofskyimperial,legacy-only-name,490,,Dragon Giant Sword of Sky (Imperial),,G65,,,65,,,0,,
+dragonsfurystickofsky,matched-name,634,1678,Dragons Fury Stick of Sky,Dragon's Fury Stick of Sky,G65,G65,True,65,65,True,0,0,True
+dragonsimperialstickoffury,bango-only-name,,1822,,Dragon's Imperial Stick Of Fury,,G65,,,65,,,0,
+dragonsimperialstickofimmortality,matched-name,653,1709,Dragons Imperial Stick of Immortality,Dragon's Imperial Stick Of Immortality,G65,G65,True,65,65,True,0,0,True
+dragonsimperialstickofinsight,bango-only-name,,1821,,Dragon's Imperial Stick Of Insight,,G65,,,65,,,0,
+dragonsimperialstickofpain,bango-only-name,,1852,,Dragon's Imperial Stick Of pain,,G65,,,65,,,0,
+dragonsinsightstickofsky,matched-name,633,1677,Dragons Insight Stick of Sky,Dragon's Insight Stick of Sky,G65,G65,True,65,65,True,0,0,True
+dragonstickofsky,matched-name,488,672,Dragon Stick of Sky,Dragon Stick of Sky,G65,G65,True,65,65,True,0,0,True
+dragonswordofsky,matched-name,485,669,Dragon Sword of Sky,Dragon Sword of Sky,G65,G65,True,65,65,True,0,0,True
+dragonswordofskyimperial,legacy-only-name,489,,Dragon Sword of Sky (Imperial),,G65,,,65,,,0,,
+driedfish,bango-only-name,,2174|2367,,Dried Fish,,,,,,,,0,
+drunkendoggebifire,bango-only-name,,1375,,Drunken Doggebi Fire,,,,,,,,0,
+drunkendoggebisbroom,bango-only-name,,391,,Drunken Doggebi's Broom,,,,,,,,0,
+e,bango-only-name,,946|1099,,[ E ],,,,,,,,0,
+eagle,legacy-only-name,619|620|621|622,,Eagle,,G11|G21|G31|G41,,,11|21|31|41,,,,,
+ecuador,bango-only-name,,912,,Ecuador,,,,,,,,0,
+eel,bango-only-name,,241,,Eel,,,,,,,,0,
+eelsoup,bango-only-name,,272,,Eel Soup,,,,,,,,0,
+eighthpieceofbronzemirror,matched-name,388,648,Eighth Piece of Bronze Mirror,Eighth Piece of Bronze Mirror,,,True,0,,False,,0,False
+elementoffire,bango-only-name,,1461,,element of fire,,,,,,,,0,
+elementofground,bango-only-name,,1465,,element of ground,,,,,,,,0,
+elementofiron,bango-only-name,,1464,,element of iron,,,,,,,,0,
+elementofwater,bango-only-name,,1462,,element of water,,,,,,,,0,
+elementofwood,bango-only-name,,1463,,element of wood,,,,,,,,0,
+eliteskeletionarcherhead,bango-only-name,,1717,,Elite Skeletion Archer Head,,,,,,,,0,
+eliteskeletonhead,bango-only-name,,1716,,Elite Skeleton Head,,,,,,,,0,
+emokislandblacksmithsrings,bango-only-name,,1387,,E-Mok Island Blacksmith's rings,,,,,,,,0,
+emokislandsealedghostsring,bango-only-name,,1391,,E-Mok Island Sealed Ghost's ring,,,,,,,,0,
+emperorguardianbowwithalotusflower,bango-only-name,,1453,,Emperor Guardian Bow with a Lotus Flower,,G62,,,62,,,0,
+emperorguardiangiantswordwithalotusflower,bango-only-name,,1452,,Emperor Guardian Giant sword with a Lotus Flower,,G62,,,62,,,0,
+emperorguardianswordwithalotusflower,bango-only-name,,1451,,Emperor Guardian Sword with a Lotus Flower,,G62,,,62,,,0,
+emptysoulfragmentofdevah,bango-only-name,,1825,,Empty soul fragment of D'evah,,,,,,,,0,
+encampmentbuildingscroll,bango-only-name,,1324,,Encampment Building Scroll,,,,,,,,50000,
+engeanfirecake,bango-only-name,,873,,ENGean fire cake,,,,,,,,0,
+engeangreenbeancake,bango-only-name,,874,,ENGean green bean cake,,,,,,,,0,
+engeanleekcake,bango-only-name,,872,,ENGean leek cake,,,,,,,,0,
+england,bango-only-name,,913,,England,,,,,,,,0,
+escortsoldiershead,bango-only-name,,170,,Escort Soldier's Head,,,,,,,,0,
+essenceofearthelement,bango-only-name,,1616,,Essence of earth element,,,,,,,,0,
+essenceoffireelement,bango-only-name,,1612,,Essence of fire element,,,,,,,,0,
+essenceofironelement,bango-only-name,,1615,,Essence of iron element,,,,,,,,0,
+essenceofundead,bango-only-name,,1617,,Essence of undead,,,,,,,,0,
+essenceofwaterelement,bango-only-name,,1613,,Essence of water element,,,,,,,,0,
+essenceofwoodelement,bango-only-name,,1614,,Essence of wood element,,,,,,,,0,
+explosiveblowimprovement,bango-only-name,,601|1152,,Explosive Blow Improvement,,,,,,,,0,
+explosivedestructive,legacy-only-name,330,,"""Explosive"" / ""Destructive""",,,,,0,,,,,
+f,bango-only-name,,1100,,[ F ],,,,,,,,0,
+fantasticeelskewer,bango-only-name,,2078,,Fantastic eel skewer,,G70,,,70,,,0,
+fathersletter,bango-only-name,,139,,Father's Letter,,,,,,,,0,
+featheryhealthy,legacy-only-name,364,,"""Feathery"" / ""Healthy""",,,,,0,,,,,
+fiercereflective,legacy-only-name,325,,"""Fierce"" / ""Reflective""",,,,,0,,,,,
+fifthpieceofbronzemirror,matched-name,385,645,Fifth Piece of Bronze Mirror,Fifth Piece of Bronze Mirror,,,True,0,,False,,0,False
+firmamentalpillar,bango-only-name,,1454,,Firmamental Pillar,,,,,,,,10000,
+firstjobitemspack,bango-only-name,,2635,,First Job Items Pack,,,,,,,,0,
+firstpieceofbronzemirror,matched-name,381,641,First Piece of Bronze Mirror,First Piece of Bronze Mirror,,,True,0,,False,,0,False
+fishhook,bango-only-name,,238,,Fish hook,,,,,,,,40,
+flagofdefense,bango-only-name,,506,,Flag of Defense,,,,,,,,12000,
+flagofimpregnableness,bango-only-name,,508,,Flag of Impregnableness,,,,,,,,12000,
+flagofintelligence,bango-only-name,,507,,Flag of Intelligence,,,,,,,,12000,
+flagofmagic,bango-only-name,,505,,Flag of Magic,,,,,,,,12000,
+flagofspeed,bango-only-name,,503,,Flag of Speed,,,,,,,,12000,
+flagofstruggle,bango-only-name,,504,,Flag of Struggle,,,,,,,,12000,
+flashyreflective,legacy-only-name,329,,"""Flashy"" / ""Reflective""",,,,,0,,,,,
+flexibleagile,legacy-only-name,362,,"""Flexible"" / ""Agile""",,,,,0,,,,,
+flowwercake,bango-only-name,,2373,,flowwer cake,,,,,,,,0,
+foreseeableconfirmatory,legacy-only-name,323,,"""Foreseeable"" / ""Confirmatory""",,,,,0,,,,,
+forgedmediumironshield,bango-only-name,,66,,Forged Medium Iron Shield,,G30,,,1,,,1413,
+forgedmediumsteelshield,bango-only-name,,68,,Forged Medium Steel Shield,,G53,,,1,,,0,
+forgedsmallironshield,bango-only-name,,65,,Forged Small Iron Shield,,G17,,,1,,,300,
+forthpieceofbronzemirror,matched-name,384,644,Forth Piece of Bronze Mirror,Forth Piece of Bronze Mirror,,,True,0,,False,,0,False
+france,bango-only-name,,933,,France,,,,,,,,0,
+freashpancake,bango-only-name,,877,,freash pan cake,,,,,,,,0,
+fundamentalhighclass,legacy-only-name,315,,"""Fundamental"" / ""High Class""",,,,,0,,,,,
+gangchulgaparmor,matched-name,79|80,117,GangChulGap Armor,GangChulGap Armor,G42,G42,True,1,1,True,148.872|374.830,148870,False
+gangchulgaparmorboots,matched-name,81,120,GangChulGap Armor Boots,GangChulGap Armor Boots,G42,G42,True,1,1,True,82.705,82705,False
+gangchulgaparmorgloves,matched-name,82,119,GangChulGap Armor Gloves,GangChulGap Armor Gloves,G42,G42,True,1,1,True,37.217,37217,False
+gangchulgaparmorhelmet,matched-name,83,118,GangChulGap Armor Helmet,GangChulGap Armor Helmet,G42,G42,True,1,1,True,67.668,67668,False
+gangchulgaparmorshorts,matched-name,84,121,GangChulGap Armor Shorts,GangChulGap Armor Shorts,G42,G42,True,1,1,True,38.368,38368,False
+ganggakbow,matched-name,222,27,GangGak Bow,GangGak Bow,G25,G25,True,1,1,True,14.680,14680,False
+generalofancienttribalmacsbow,matched-name,241,567|710|821|1237,General of Ancient Tribal Macs Bow,General of Ancient Tribal Mac's Bow,G56,G56,True,56,56,True,0,0,True
+generalofancienttribalmacsbowimperial,legacy-only-name,413,,General of Ancient Tribal Macs Bow (Imperial),,G56,,,56,,,0,,
+generalsdagger,matched-name,597,1427,Generals Dagger,General's dagger,G56,G56,True,56,56,True,,0,False
+generalsdaggerimperial,legacy-only-name,608,,Generals Dagger (Imperial),,G56,,,56,,,,,
+generalsgiantsword,matched-name,208,564|707|818|1234,Generals Giant Sword,General's Giant Sword,G56,G56,True,56,56,True,0,0,True
+generalsgiantswordimperial,legacy-only-name,412,,Generals Giant Sword (Imperial),,G56,,,56,,,0,,
+generalsstick,matched-name,271,570|713|824|1240,Generals Stick,General's Stick,G56,G56,True,56,56,True,0,0,True
+generalsstickimperial,legacy-only-name,414,,Generals Stick (Imperial),,G56,,,56,,,0,,
+generalstreasuresword,matched-name,205,561|704|815|1231,Generals Treasure Sword,General's Treasure Sword,G56,G56,True,56,56,True,0,0,True
+generalstreasureswordimperial,legacy-only-name,411,,Generals Treasure Sword (Imperial),,G56,,,56,,,0,,
+geons,legacy-only-name,276,,Geons,,,,,0,,,1,,
+germany,bango-only-name,,909,,Germany,,,,,,,,0,
+geumohsfixingtool,bango-only-name,,224,,Geum-Oh's Fixing Tool,,,,,,,,800,
+ghana,bango-only-name,,926,,Ghana,,,,,,,,0,
+ghostclothwithbolts,bango-only-name,,1001|1016,,Ghost Cloth with Bolts,,G01,,,1,,,30000,
+ghostclothwithstraw,bango-only-name,,1002|1017,,Ghost Cloth with Straw,,G01,,,1,,,30000,
+ghostofblacksmithsbead,bango-only-name,,211,,Ghost of Blacksmith's Bead,,,,,,,,0,
+ghostoffellowtravelersbead,bango-only-name,,213,,Ghost of Fellow Traveler's Bead,,,,,,,,0,
+ghostofguardsbead,bango-only-name,,212,,Ghost of Guard's Bead,,,,,,,,0,
+ghostsbead,bango-only-name,,210,,Ghost's Bead,,,,,,,,0,
+ghostshapedironshield,matched-name,167,430,Ghost Shaped Iron Shield,Ghost Shaped Iron Shield,G48,G48,True,45,45,True,0,0,True
+ghostshapedsteelshield,matched-name,434,1088,Ghost Shaped Steel Shield,Ghost Shaped Steel Shield,G55,G55,True,55,55,True,0,0,True
+giantdoggebifire,bango-only-name,,1378,,Giant Doggebi Fire,,,,,,,,0,
+giantdoggebisbroom,bango-only-name,,394,,Giant Doggebi's Broom,,,,,,,,0,
+giantsword,matched-name,195,440,Giant Sword,Giant Sword,G50,G50,True,50,50,True,0,0,True
+giantswordofdarkness,bango-only-name,,2615,,Giant Sword of Darkness,,G62,,,60,,,0,
+giantswordofdoggebi,matched-name,213,587|748|859|1221,Giant Sword of Doggebi,Giant Sword of Doggebi,G59,G59,True,59,59,True,0,0,True
+giantswordofdoggebilord,matched-name,215,589|750|861|1223,Giant Sword of Doggebi Lord,Giant Sword of Doggebi Lord,G59,G59,True,59,59,True,0,0,True
+giantswordofhighclassdoggebi,matched-name,214,588|749|860|1222,Giant Sword of High Class Doggebi,Giant Sword of High Class Doggebi,G59,G59,True,59,59,True,0,0,True
+giantswordofhighclassdoggebiimperial,legacy-only-name,416,,Giant Sword of High Class Doggebi (Imperial),,G59,,,59,,,0,,
+glassbottle,bango-only-name,,2056,,Glass bottle,,,,,,,,1200,
+glidinginstant,legacy-only-name,341,,"""Gliding"" / ""Instant""",,,,,0,,,,,
+gloriousfixed,legacy-only-name,371,,"""Glorious"" / ""Fixed""",,,,,0,,,,,
+glovesofdarkness,matched-name,500|506|512,680,Gloves of Darkness,Gloves of Darkness,G90,G60,False,90,56,False,0,0,True
+glovesofdoggebi,matched-name,130,628|737|848|1206|1511,Gloves of Doggebi,Gloves of Doggebi,G55,G55,True,51,51,True,0,0,True
+goblinconjuratorhead,bango-only-name,,1738,,Goblin Conjurator Head,,,,,,,,0,
+goblinhead,bango-only-name,,1792,,Goblin Head,,,,,,,,0,
+goblinofstrategicbook,bango-only-name,,1732,,Goblin of Strategic Book,,,,,,,,0,
+goblinsdecoder,bango-only-name,,1772,,Goblin's Decoder,,,,,,,,0,
+goblinspocket,bango-only-name,,1795,,Goblin's pocket,,,,,,,,0,
+goby,bango-only-name,,237,,Goby,,,,,,,,0,
+goldenarmor,matched-name,467|468,184|1129|1189|1247|1524,Golden Armor,Golden Armor,G60,G60,True,56|60,60,False,0,0,True
+goldenarmorgloves,bango-only-name,,1131|1191|1249|1297|1526,,Golden Armor Gloves,,G60,,,56,,,0,
+goldenarmorhelmet,bango-only-name,,1130|1190|1248|1525,,Golden Armor Helmet,,G60,,,58,,,0,
+goldenarmorshoes,bango-only-name,,1132|1192|1250|1527,,Golden Armor Shoes,,G60,,,57,,,0,
+goldenarmorskirts,bango-only-name,,1133|1193|1251|1528,,Golden Armor Skirts,,G60,,,59,,,0,
+goldenbell,bango-only-name,,1023,,Golden Bell,,,,,,,,0,
+goldenboots,legacy-only-name,469,,Golden Boots,,G60,,,57,,,0,,
+goldenbootsofthief,bango-only-name,,1593,,Golden Boots of thief,,G60,,,57,,,0,
+goldenbow,matched-name,170,667|1216|1259,Golden Bow,Golden Bow,G62,G62,True,60,60,True,0,0,True
+goldenbowimperial,legacy-only-name,421,,Golden Bow (Imperial),,G62,,,60,,,0,,
+goldencoin,bango-only-name,,649,,Golden Coin,,,,,,,,0,
+goldendaechangeau,matched-name,479,1134|1194|1252|1529,Golden DaeChangEau,Golden DaeChangEau,G60,G60,True,56,60,False,0,0,True
+goldendaechangeauboots,legacy-only-name,481,,Golden DaeChangEau Boots,,G60,,,57,,,0,,
+goldendaechangeauclothes,legacy-only-name,480,,Golden DaeChangEau Clothes,,G60,,,60,,,0,,
+goldendaechangeaugloves,matched-name,482,1136|1196|1254|1298|1531,Golden DaeChangEau Gloves,Golden DaeChangEau Gloves,G60,G60,True,56,56,True,0,0,True
+goldendaechangeauhairdecoration,matched-name,483,1135|1195|1253|1530,Golden DaeChangEau Hair Decoration,Golden DaeChangEau Hair Decoration,G60,G60,True,58,58,True,0,0,True
+goldendaechangeaushoes,bango-only-name,,1137|1197|1255|1532,,Golden DaeChangEau Shoes,,G60,,,57,,,0,
+goldendaechangeaushorts,matched-name,484,1138|1198|1256|1533,Golden DaeChangEau Shorts,Golden DaeChangEau Shorts,G60,G60,True,59,59,True,0,0,True
+goldendagger,matched-name,601,1431,Golden dagger,Golden dagger,G62,G62,True,62,60,False,,0,False
+goldendaggerimperial,legacy-only-name,610,,Golden dagger (Imperial),,G62,,,62,,,,,
+goldengiantsword,matched-name,173,666|1215|1258,Golden Giant Sword,Golden Giant Sword|Golden Giant sword,G62,G62,True,60,60,True,0,0,True
+goldengiantswordimperial,legacy-only-name,420,,Golden Giant Sword (Imperial),,G62,,,60,,,0,,
+goldengloves,legacy-only-name,470,,Golden Gloves,,G60,,,56,,,0,,
+goldenglovesofthief,bango-only-name,,1592,,Golden Gloves of thief,,G60,,,56,,,0,
+goldenhelmet,legacy-only-name,471,,Golden Helmet,,G60,,,58,,,0,,
+goldenhoodofthief,bango-only-name,,1591,,Golden Hood of thief,,G60,,,58,,,0,
+goldenscaledarmor,matched-name,473|474,1124|1184|1242|1519,Golden Scaled Armor,Golden Scaled Armor,G60,G60,True,56|60,60,False,0,0,True
+goldenscaledarmorboots,legacy-only-name,475,,Golden Scaled Armor Boots,,G60,,,57,,,0,,
+goldenscaledarmorgloves,matched-name,476,1126|1186|1244|1296|1521,Golden Scaled Armor Gloves,Golden Scaled Armor Gloves,G60,G60,True,56,56,True,0,0,True
+goldenscaledarmorhelmet,matched-name,477,1125|1185|1243|1520,Golden Scaled Armor Helmet,Golden Scaled Armor Helmet,G60,G60,True,58,58,True,0,0,True
+goldenscaledarmorshoes,bango-only-name,,1127|1187|1245|1522,,Golden Scaled Armor Shoes,,G60,,,57,,,0,
+goldenscaledarmorshorts,matched-name,478,1128|1188|1246|1523,Golden Scaled Armor Shorts,Golden Scaled Armor Shorts,G60,G60,True,59,59,True,0,0,True
+goldenshield,matched-name,169,1320,Golden Shield,Golden Shield,G60,G60,True,60,60,True,0,0,True
+goldenshorts,legacy-only-name,472,,Golden Shorts,,G60,,,59,,,0,,
+goldenstar,bango-only-name,,1024,,Golden Star,,,,,,,,0,
+goldenstick,matched-name,171,668|1217|1260,Golden Stick,Golden Stick,G62,G62,True,60,60,True,0,0,True
+goldenstickimperial,legacy-only-name,422,,Golden Stick (Imperial),,G62,,,60,,,0,,
+goldenstickofdistress,matched-name,631,1675,Golden Stick of Distress,Golden Stick of Distress,G62,G62,True,62,60,False,0,0,True
+goldenstickofsabbath,matched-name,632,1676,Golden Stick of Sabbath,Golden Stick of Sabbath,G62,G62,True,62,60,False,0,0,True
+goldensuitoft,legacy-only-name,569|570,,Golden suit of T,,G60,,,60,,,,,
+goldensuitoftboots,legacy-only-name,571,,Golden suit of T Boots,,G60,,,57,,,,,
+goldensuitoftgloves,legacy-only-name,572,,Golden suit of T Gloves,,G60,,,56,,,,,
+goldensuitofthelmet,legacy-only-name,573,,Golden suit of T Helmet,,G60,,,58,,,,,
+goldensuitofthief,bango-only-name,,1590,,Golden suit of thief,,G60,,,60,,,0,
+goldensuitoftshorts,legacy-only-name,574,,Golden suit of T Shorts,,G60,,,59,,,,,
+goldensuitshortsofthief,bango-only-name,,1594,,Golden suit Shorts of thief,,G60,,,59,,,0,
+goldensword,matched-name,172,665|1214|1257,Golden Sword,Golden Sword,G62,G62,True,60,60,True,0,0,True
+goldenswordimperial,legacy-only-name,419,,Golden Sword (Imperial),,G62,,,60,,,0,,
+goldentreasuredagger,matched-name,590,1420,Golden Treasure Dagger,Golden Treasure dagger,G50,G50,True,50,50,True,,0,False
+goldentreasuredaggerimperial,legacy-only-name,606,,Golden Treasure Dagger (Imperial),,G50,,,50,,,,,
+goldentreasuresword,matched-name,192,242,Golden Treasure Sword,Golden Treasure Sword,G50,G50,True,50,50,True,0,0,True
+goldkalcash,bango-only-name,,2607,,Gold KalCash,,,,,,,,0,
+goldmarble,bango-only-name,,2179,,Gold Marble,,,,,,,,0,
+goldpot,bango-only-name,,689,,Gold Pot,,,,,,,,0,
+grape,bango-only-name,,369,,Grape,,G40,,,40,,,0,
+greencrystalofdoggebiforest,bango-only-name,,448,,Green Crystal of Doggebi Forest,,,,,,,,0,
+greenpeppercake,bango-only-name,,871|2371,,green pepper cake,,,,,,,,0,
+greenwitchhat,bango-only-name,,998|1013,,Green Witch Hat,,G01,,,1,,,30000,
+guardianbowwithalotusflower,matched-name,517,1450,Guardian Bow with a Lotus Flower,Guardian Bow with a Lotus Flower,G62,G62,True,62,62,True,0,0,True
+guardianbowwithalotusflowerimperial,legacy-only-name,520,,Guardian Bow with a Lotus Flower (Imperial),,G62,,,62,,,0,,
+guardiandaggerwithalotusflower,bango-only-name,,1668,,Guardian Dagger with a Lotus Flower,,G62,,,62,,,0,
+guardiangiantswordwithalotusflower,matched-name,516,1449,Guardian Giant Sword with a Lotus Flower,Guardian Giant sword with a Lotus Flower,G62,G62,True,62,62,True,0,0,True
+guardiangiantswordwithalotusflowerimperial,legacy-only-name,519,,Guardian Giant Sword with a Lotus Flower (Imperial,,G62,,,62,,,0,,
+guardianofdoggebisstone,bango-only-name,,395,,Guardian of Doggebi's Stone,,,,,,,,0,
+guardianstickwithabluegem,matched-name,493,1442,Guardian Stick with a Blue Gem,Guardian Stick with a Blue Gem,G59,G59,True,59,59,True,0,0,True
+guardianstickwithabluegemimperial,legacy-only-name,495,,Guardian Stick with a Blue Gem (Imperial),,G59,,,59,,,0,,
+guardianstickwithalotusflower,matched-name,494,1444,Guardian Stick with a Lotus Flower,Guardian Stick with a Lotus Flower,G62,G62,True,62,62,True,0,0,True
+guardianstickwithalotusflowerimperial,legacy-only-name,496,,Guardian Stick with a Lotus Flower (Imperial),,G62,,,62,,,0,,
+guardianswordwithalotusflower,matched-name,515,1448,Guardian Sword with a Lotus Flower,Guardian Sword with a Lotus Flower,G62,G62,True,62,62,True,0,0,True
+guardianswordwithalotusflowerimperial,legacy-only-name,518,,Guardian Sword with a Lotus Flower (Imperial),,G62,,,62,,,0,,
+guardofdevahhead,bango-only-name,,1793,,Guard of D'evah Head,,,,,,,,0,
+guardofdevahscommanderhead,bango-only-name,,1789,,Guard of D'evah's Commander Head,,,,,,,,0,
+guardofthetraitorshangoutstalisman,bango-only-name,,1392,,Guard of the Traitors Hangout's Talisman,,,,,,,,0,
+guildtimereset,bango-only-name,,2643,,Guild Time Reset,,,,,,,,0,
+gujulpancake,bango-only-name,,875,,gu-jul pan cake,,,,,,,,0,
+gwangchunsletter,bango-only-name,,132,,Gwang-Chun's Letter,,,,,,,,0,
+gyungbungaparmor,matched-name,25|26,11,GyungBunGap Armor,GyungBunGap Armor,G16,G16,True,1,1,True,2.126|5.419,2126,False
+gyungbungapboots,matched-name,27,14,GyungBunGap Boots,GyungBunGap Boots,G16,G16,True,1,1,True,1.169,1169,False
+gyungbungapgloves,matched-name,28,13,GyungBunGap Gloves,GyungBunGap Gloves,G16,G16,True,1,1,True,531,531,True
+gyungbungaphelmet,matched-name,29,12,GyungBunGap Helmet,GyungBunGap Helmet,G16,G16,True,1,1,True,956,956,True
+gyungbungapshorts,matched-name,30,15,GyungBunGap Shorts,GyungBunGap Shorts,G16,G16,True,1,1,True,637,637,True
+h,bango-only-name,,947|1101,,[ H ],,,,,,,,0,
+hairdecorationofdarkness,bango-only-name,,684,,Hair Decoration of Darkness,,G60,,,58,,,0,
+hairdecorationofdoggebi,bango-only-name,,632|741|852|1210|1515,,Hair Decoration of Doggebi,,G55,,,53,,,0,
+hairyfish,bango-only-name,,1272|1275|1278|1281,,Hairy Fish,,,,,,,,0,
+hallowenticket,bango-only-name,,1814,,Hallowen Ticket,,,,,,,,0,
+hammerencampmentbuildingscroll,bango-only-name,,1327,,Hammer(Encampment Building Scroll),,,,,,,,10000,
+handleofcannonbarrel,bango-only-name,,761,,Handle of Cannon Barrel,,,,,,,,0,
+hardboiledmackerel,bango-only-name,,268,,Hard-boiled Mackerel,,,,,,,,0,
+hardboiledsalmonwithbeanpaste,bango-only-name,,270,,Hard-boiled Salmon with Bean Paste,,,,,,,,0,
+harmoniousnecklace,bango-only-name,,2450,,Harmonious Necklace,,G75,,,,,,0,
+harshforced,legacy-only-name,349,,"""Harsh"" / ""Forced""",,,,,0,,,,,
+head,legacy-only-name,280,,Head,,,,,0,,,,,
+headofdaeill,bango-only-name,,342,,Head of Dae-Ill,,,,,,,,0,
+headofgoonsangji,bango-only-name,,343,,Head of Goon-Sangji,,,,,,,,0,
+headofheukyong,bango-only-name,,341,,Head of Heuk-Yong,,,,,,,,0,
+headofhuhnwoongsenemy,bango-only-name,,335,,Head of Huhn-Woong's Enemy,,,,,,,,0,
+headofknoll,bango-only-name,,2085,,Head of Knoll,,,,,,,,0,
+headofmagwang,bango-only-name,,345,,Head of Ma-Gwang,,,,,,,,0,
+headofmasterwraith,bango-only-name,,2088,,Head of Master Wraith,,,,,,,,0,
+headoftwisteddemonwarrior,bango-only-name,,2082,,Head of Twisted Demon warrior,,,,,,,,0,
+headofyoo,bango-only-name,,344,,Head of Yoo,,,,,,,,0,
+headskinofyongchun,bango-only-name,,357,,Head Skin of Yong-Chun,,,,,,,,0,
+healthnecklace,bango-only-name,,2461,,Health Necklace,,G60,,,,,,0,
+heartchocolate,bango-only-name,,1008,,Heart Chocolate,,,,,,,,0,
+heavenlyexecutionerarmor,matched-name,671|672|677|678|683|684|689|690|692|693|695|696,1887|1888|1889,Heavenly Executioner Armor,Heavenly Executioner Armor,G70|G70b,G70,False,70,70,True,0,0,True
+heavenlyexecutionerarmorgloves,bango-only-name,,1891,,Heavenly Executioner Armor Gloves,,G70,,,66,,,0,
+heavenlyexecutionerarmorhelmet,bango-only-name,,1890,,Heavenly Executioner Armor Helmet,,G70,,,68,,,0,
+heavenlyexecutionerarmorshoes,bango-only-name,,1892,,Heavenly Executioner Armor Shoes,,G70,,,67,,,0,
+heavenlyexecutionerarmorskirts,bango-only-name,,1893|1894|1895,,Heavenly Executioner Armor Skirts,,G70,,,69,,,0,
+heavenlyexecutionerboots,legacy-only-name,673|679|685,,Heavenly Executioner Boots,,G70,,,70,,,0,,
+heavenlyexecutionerbootsofthief,bango-only-name,,1910,,Heavenly Executioner Boots of thief,,G70,,,67,,,0,
+heavenlyexecutionerbow,matched-name,659,1916,Heavenly Executioner Bow,Heavenly Executioner Bow,G75,G75,True,75,75,True,0,0,True
+heavenlyexecutionerbowimperial,legacy-only-name,666,,Heavenly Executioner Bow (Imperial),,G75,,,75,,,0,,
+heavenlyexecutionerdaechangeau,bango-only-name,,1896|1897|1898,,Heavenly Executioner DaeChangEau,,G70,,,70,,,0,
+heavenlyexecutionerdaechangeaugloves,bango-only-name,,1900,,Heavenly Executioner DaeChangEau Gloves,,G70,,,66,,,0,
+heavenlyexecutionerdaechangeauhairdecoration,bango-only-name,,1899,,Heavenly Executioner DaeChangEau Hair Decoration,,G70,,,68,,,0,
+heavenlyexecutionerdaechangeaushoes,bango-only-name,,1901,,Heavenly Executioner DaeChangEau Shoes,,G70,,,67,,,0,
+heavenlyexecutionerdaechangeaushorts,bango-only-name,,1902|1903|1904,,Heavenly Executioner DaeChangEau Shorts,,G70,,,69,,,0,
+heavenlyexecutionerdagger,matched-name,660,1920,Heavenly Executioner Dagger,Heavenly Executioner Dagger,G75,G75,True,75,75,True,0,0,True
+heavenlyexecutionerdaggerimperial,legacy-only-name,667,,Heavenly Executioner Dagger (Imperial),,G75,,,75,,,0,,
+heavenlyexecutionergiantsword,matched-name,658,1915,Heavenly Executioner Giant Sword,Heavenly Executioner Giant Sword,G75,G75,True,75,75,True,0,0,True
+heavenlyexecutionergiantswordimperial,legacy-only-name,665,,Heavenly Executioner Giant Sword (Imperial),,G75,,,75,,,0,,
+heavenlyexecutionergloves,legacy-only-name,674|680|686,,Heavenly Executioner Gloves,,G70,,,70,,,0,,
+heavenlyexecutionerglovesofthief,bango-only-name,,1909,,Heavenly Executioner Gloves of thief,,G70,,,66,,,0,
+heavenlyexecutionerhelmet,legacy-only-name,675|681|687,,Heavenly Executioner Helmet,,G70,,,70,,,0,,
+heavenlyexecutionerhoodofthief,bango-only-name,,1908,,Heavenly Executioner Hood of thief,,G70,,,68,,,0,
+heavenlyexecutionerscaledarmor,bango-only-name,,1878|1879|1880,,Heavenly Executioner Scaled Armor,,G70,,,70,,,0,
+heavenlyexecutionerscaledarmorgloves,bango-only-name,,1882,,Heavenly Executioner Scaled Armor Gloves,,G70,,,66,,,0,
+heavenlyexecutionerscaledarmorhelmet,bango-only-name,,1881,,Heavenly Executioner Scaled Armor Helmet,,G70,,,68,,,0,
+heavenlyexecutionerscaledarmorshoes,bango-only-name,,1883,,Heavenly Executioner Scaled Armor Shoes,,G70,,,67,,,0,
+heavenlyexecutionerscaledarmorshorts,bango-only-name,,1884|1885|1886,,Heavenly Executioner Scaled Armor Shorts,,G70,,,69,,,0,
+heavenlyexecutionershield,matched-name,656,1928,Heavenly Executioner Shield,Heavenly Executioner shield,G70,G70,True,70,70,True,0,0,True
+heavenlyexecutionershorts,legacy-only-name,676|682|688|691|694|697,,Heavenly Executioner Shorts,,G70|G70b,,,70,,,0,,
+heavenlyexecutionerstick,matched-name,661,1917,Heavenly Executioner Stick,Heavenly Executioner Stick,G75,G75,True,75,75,True,0,0,True
+heavenlyexecutionerstickimperial,legacy-only-name,668,,Heavenly Executioner Stick (Imperial),,G75,,,75,,,0,,
+heavenlyexecutionerstickofhell,matched-name,663,1919,Heavenly Executioner Stick of Hell,Heavenly Executioner Stick of Hell,G75,G75,True,75,75,True,0,0,True
+heavenlyexecutionerstickofhellimperial,legacy-only-name,670,,Heavenly Executioner Stick of Hell (Imperial),,G75,,,75,,,0,,
+heavenlyexecutionerstickofruin,matched-name,662,1918,Heavenly Executioner Stick of Ruin,Heavenly Executioner Stick of Ruin,G75,G75,True,75,75,True,0,0,True
+heavenlyexecutionerstickofruinimperial,legacy-only-name,669,,Heavenly Executioner Stick of Ruin (Imperial),,G75,,,75,,,0,,
+heavenlyexecutionersuitoft,legacy-only-name,699|705,,Heavenly Executioner Suit of T,,G70|G70b,,,70,,,0,,
+heavenlyexecutionersuitoftboots,legacy-only-name,700,,Heavenly Executioner Suit of T Boots,,G70,,,70,,,0,,
+heavenlyexecutionersuitoftgloves,legacy-only-name,701,,Heavenly Executioner Suit of T Gloves,,G70,,,70,,,0,,
+heavenlyexecutionersuitofthelmet,legacy-only-name,702,,Heavenly Executioner Suit of T Helmet,,G70,,,70,,,0,,
+heavenlyexecutionersuitofthief,matched-name,698|704,1905|1906|1907,Heavenly Executioner Suit of Thief,Heavenly Executioner Suit of thief,G70|G70b,G70,False,70,70,True,0,0,True
+heavenlyexecutionersuitoftshorts,legacy-only-name,703|706,,Heavenly Executioner Suit of T Shorts,,G70|G70b,,,70,,,0,,
+heavenlyexecutionersuitshortsofthief,bango-only-name,,1911|1912|1913,,Heavenly Executioner Suit Shorts of thief,,G70,,,69,,,0,
+heavenlyexecutionersword,matched-name,657,1914,Heavenly Executioner Sword,Heavenly Executioner Sword,G75,G75,True,75,75,True,0,0,True
+heavenlyexecutionerswordimperial,legacy-only-name,664,,Heavenly Executioner Sword (Imperial),,G75,,,75,,,0,,
+heavyblowsextreme,legacy-only-name,314,,"""Heavy Blows"" / ""Extreme""",,,,,0,,,,,
+helmetofdarkness,matched-name,501|507|513,679,Helmet of Darkness,Helmet of Darkness,G90,G60,False,90,58,False,0,0,True
+helmetofdoggebi,bango-only-name,,627|736|847|1205|1510,,Helmet of Doggebi,,G55,,,53,,,0,
+hempcloth,bango-only-name,,1021,,Hemp Cloth,,,,,,,,0,
+hermitsnecklace,bango-only-name,,1058,,Hermit's Necklace,,,,,,,,0,
+hermitsring,bango-only-name,,1057,,Hermit's Ring,,,,,,,,0,
+hermitswater,bango-only-name,,1062|1172,,Hermit's Water,,,,,,,,0,
+heroichealthy,legacy-only-name,352,,"""Heroic"" / ""Healthy""",,,,,0,,,,,
+herring,bango-only-name,,1271|1274|1277|1280,,Herring,,,,,,,,0,
+highclassdoggebiwithagongfire,bango-only-name,,1379,,High Class Doggebi with a Gong Fire,,,,,,,,0,
+highclassdoggebiwithamaskofblackcrowfire,bango-only-name,,1383,,High Class Doggebi with a Mask of Black Crow Fire,,,,,,,,0,
+highclassdrunkendoggebifire,bango-only-name,,1381,,High Class Drunken Doggebi  Fire,,,,,,,,0,
+highgradescrollofrebirth,bango-only-name,,482|1147|1665,,High-Grade Scroll of Rebirth,,,,,,,,0,
+highgradestoneofchance,bango-only-name,,661,,High-Grade Stone of Chance,,,,,,,,0,
+highrewardpack,bango-only-name,,2092,,High Reward pack,,,,,,,,0,
+highskillbookattackpowerup,bango-only-name,,1683,,High Skill Book [Attack Power Up],,,,,60,,,0,
+highskillbookbowmastery,bango-only-name,,1071,,High Skill Book [Bow Mastery],,,,,60,,,0,
+highskillbookconcentration,bango-only-name,,1075,,High Skill Book [Concentration],,,,,60,,,0,
+highskillbookcriticalhit,bango-only-name,,1066,,High Skill Book [Critical Hit],,,,,60,,,0,
+highskillbookdefense,bango-only-name,,1069,,High Skill Book [Defense],,,,,60,,,0,
+highskillbookfatalblow,bango-only-name,,1073,,High Skill Book [Fatal Blow],,,,,60,,,0,
+highskillbookincreasecriticaldamage,bango-only-name,,1689,,High Skill Book [Increase Critical Damage],,,,,60,,,0,
+highskillbookincreasecriticalrate,bango-only-name,,1687,,High Skill Book [Increase Critical Rate],,,,,60,,,0,
+highskillbookincreasetargetrate,bango-only-name,,1685,,High Skill Book [Increase Target Rate],,,,,60,,,0,
+highskillbookmagicmasteryfire,bango-only-name,,1083,,High Skill Book [Magic Mastery  : Fire],,,,,60,,,0,
+highskillbookmagicmasteryice,bango-only-name,,1081,,High Skill Book [Magic Mastery : Ice],,,,,60,,,0,
+highskillbookmagicmasterylightning,bango-only-name,,1079,,High Skill Book [Magic Mastery : Lightning],,,,,60,,,0,
+highskillbookmeditation,bango-only-name,,1085,,High Skill Book [Meditation],,,,,60,,,0,
+highskillbookperfectevasion,bango-only-name,,1077,,High Skill Book [Perfect Evasion],,,,,60,,,0,
+highskillbookweaponmastery,bango-only-name,,1064,,High Skill Book [Weapon Mastery],,,,,60,,,0,
+highspiritwater,bango-only-name,,2096,,High Spirit water,,,,,,,,0,
+holland,bango-only-name,,920,,Holland,,,,,,,,0,
+homeegakbow,matched-name,225,105,HoMeeGak Bow,HoMee Gak Bow,G37,G37,True,1,1,True,51.320,51320,False
+honeyricecake,bango-only-name,,869|2369,,honey rice cake,,,,,,,,0,
+honortalismanagility,bango-only-name,,1060,,Honor Talisman [Agility],,,,,,,,7500,
+honortalismanhealth,bango-only-name,,1095,,Honor Talisman [Health],,,,,,,,7500,
+honortalismanintelegence,bango-only-name,,1061,,Honor Talisman [Intelegence],,,,,,,,7500,
+honortalismanstrength,bango-only-name,,1059,,Honor Talisman  [Strength],,,,,,,,7500,
+honortalismanwisdom,bango-only-name,,1094,,Honor Talisman [Wisdom],,,,,,,,7500,
+hoodofdoggebi,legacy-only-name,131,,Hood of Doggebi,,G55,,,53,,,0,,
+horn,bango-only-name,,513,,Horn,,,,,,,,0,
+hornofdoggebilord,bango-only-name,,1498,,Horn of Doggebi Lord,,,,,,,,0,
+hornofspirit,bango-only-name,,515|1160|1292,,Horn of Spirit,,,,,,,,0,
+hwandoobigsword,matched-name,183,99,HwanDoo Big Sword,HwanDoo Big Sword,G37,G37,True,1,1,True,51.320,51320,False
+hwandoodagger,matched-name,583,1413,HwanDoo Dagger,HwanDoo dagger,G37,G37,True,1,1,True,,51320,False
+hwandoosaehyungbigsword,matched-name,186,102,HwanDoo SaeHyung Big Sword,HwanDoo SaeHyung Big Sword,G40,G40,True,1,1,True,159.092,159092,False
+hwandoosaehyungbigswordimperial,legacy-only-name,394,,HwanDoo SaeHyung Big Sword (Imperial),,G40,,,1,,,0,,
+hwandoosaehyungbigswordwithpatternofleaf,bango-only-name,,104,,Hwandoo Saehyung Big Sword with Pattern of Leaf,,G45,,,40,,,0,
+hwandoosaehyungbigswordwithpol,legacy-only-name,188,,Hwandoo Saehyung Big Sword with PoL,,G45,,,40,,,0,,
+hwandoosaehyungbigswordwithpolimperial,legacy-only-name,397,,Hwandoo Saehyung Big Sword with PoL (Imperial),,G45,,,40,,,0,,
+hwandoosaehyungdagger,matched-name,585,1415,HwanDoo SaeHyung Dagger,HwanDoo SaeHyung dagger,G40,G40,True,1,1,True,,0,False
+hwandoosaehyungdaggerimperial,legacy-only-name,603,,HwanDoo SaeHyung Dagger (Imperial),,G40,,,1,,,,,
+hwandoosaehyungdaggerwithpatternofleaf,bango-only-name,,1417,,Hwandoo Saehyung dagger with Pattern of Leaf,,G45,,,40,,,0,
+hwandoosaehyungdaggerwithpol,legacy-only-name,587,,Hwandoo Saehyung Dagger with PoL,,G45,,,40,,,,,
+hwandoosaehyungdaggerwithpolimperial,legacy-only-name,604,,Hwandoo Saehyung Dagger with PoL (Imperial),,G45,,,45,,,,,
+hwandoostick,matched-name,252,96,HwanDoo Stick,HwanDoo Stick,G25,G25,True,1,1,True,14.680,14680,False
+hwanraehwandoostick,matched-name,254,98,HwanRaeHwanDoo Stick,HwanRaeHwanDoo Stick,G33,G33,True,1,1,True,39.560,39560,False
+i,bango-only-name,,948|1102,,[ I ],,,,,,,,0,
+ignitiontube,bango-only-name,,763,,Ignition Tube,,,,,,,,0,
+ilryersnecklace,bango-only-name,,1618,,I'Lryer's necklace,,,,,,,,0,
+ilryersring,bango-only-name,,1619,,I'Lryer's ring,,,,,,,,0,
+impblooddragonsgiantsword,legacy-only-name,647,,Imp. Blood Dragons Giant Sword,,G70,,,70,,,0,,
+imperfectelementoffire,bango-only-name,,1499,,Imperfect element of fire,,,,,,,,0,
+imperfectelementofground,bango-only-name,,1503,,Imperfect element of ground,,,,,,,,0,
+imperfectelementofiron,bango-only-name,,1502,,Imperfect element of iron,,,,,,,,0,
+imperfectelementofwater,bango-only-name,,1500,,Imperfect element of water,,,,,,,,0,
+imperfectelementofwood,bango-only-name,,1501,,Imperfect element of wood,,,,,,,,0,
+imperialblackgoldendagger,bango-only-name,,1436,,Imperial Black Golden dagger,,G50,,,50,,,0,
+imperialblackgoldentreasuresword,bango-only-name,,778,,Imperial Black Golden Treasure Sword,,G50,,,50,,,0,
+imperialblooddragonsbow,matched-name,648,1702,Imperial Blood Dragons Bow,Imperial Blood Dragon's Bow,G70,G70,True,70,70,True,0,0,True
+imperialblooddragonsdagger,matched-name,652,1704,Imperial Blood Dragons Dagger,Imperial Blood Dragon's Dagger,G70,G70,True,70,70,True,0,0,True
+imperialblooddragonsgiantsword,bango-only-name,,1701,,Imperial Blood Dragon's Giant Sword,,G70,,,70,,,0,
+imperialblooddragonsstick,matched-name,654,1703,Imperial Blood Dragons Stick,Imperial Blood Dragon's Stick,G70,G70,True,70,70,True,0,0,True
+imperialblooddragonssword,matched-name,646,1700,Imperial Blood Dragons Sword,Imperial Blood Dragon's Sword,G70,G70,True,70,70,True,0,0,True
+imperialbowofdarkness,bango-only-name,,2621,,Imperial Bow of Darkness,,G62,,,60,,,0,
+imperialbowofdoggebi,bango-only-name,,792,,Imperial Bow of Doggebi,,G59,,,59,,,0,
+imperialbutterflyshapedgiantsword,bango-only-name,,779,,Imperial Butterfly-Shaped Giant Sword,,G50,,,50,,,0,
+imperialchultaebow,bango-only-name,,770,,Imperial ChulTae Bow,,G40,,,1,,,0,
+imperialdaggerofdarkness,bango-only-name,,2623,,Imperial Dagger of Darkness,,G62,,,60,,,0,
+imperialdaggerofdoggebi,bango-only-name,,1439,,Imperial dagger of Doggebi,,G59,,,59,,,0,
+imperialdiamondbowofphantom,bango-only-name,,784,,Imperial Diamond Bow of Phantom,,G53,,,53,,,0,
+imperialdiamonddaggerofpain,bango-only-name,,1437,,Imperial Diamond dagger of Pain,,G53,,,53,,,0,
+imperialdiamondgiantswordofpain,bango-only-name,,783,,Imperial Diamond Giant Sword of Pain,,G53,,,53,,,0,
+imperialdiamondstickofpain,bango-only-name,,785,,Imperial Diamond Stick of Pain,,G53,,,53,,,0,
+imperialdiamondswordofpain,bango-only-name,,782,,Imperial Diamond Sword of Pain,,G53,,,53,,,0,
+imperialdragonbowofsky,bango-only-name,,800,,Imperial Dragon Bow of Sky,,G65,,,65,,,0,
+imperialdragondaggerofsky,bango-only-name,,1441,,Imperial Dragon dagger of Sky,,G65,,,65,,,0,
+imperialdragongiantswordofsky,bango-only-name,,799,,Imperial Dragon Giant Sword of Sky,,G65,,,65,,,0,
+imperialdragonstickofsky,matched-name,492,801,Imperial Dragon Stick of Sky,Imperial Dragon Stick of Sky,G65,G65,True,65,65,True,0,0,True
+imperialdragonswordofsky,bango-only-name,,798,,Imperial Dragon Sword of Sky,,G65,,,65,,,0,
+imperialgeneralofancienttribalmacsbow,bango-only-name,,788,,Imperial General of Ancient Tribal Mac's Bow,,G56,,,56,,,0,
+imperialgeneralsdagger,bango-only-name,,1438,,Imperial General's dagger,,G56,,,56,,,0,
+imperialgeneralsgiantsword,bango-only-name,,787,,Imperial General's Giant Sword,,G56,,,56,,,0,
+imperialgeneralsstick,bango-only-name,,789,,Imperial General's Stick,,G56,,,56,,,0,
+imperialgeneralstreasuresword,bango-only-name,,786,,Imperial General's Treasure Sword,,G56,,,56,,,0,
+imperialgiantswordofdarkness,bango-only-name,,2620,,Imperial Giant Sword of Darkness,,G62,,,60,,,0,
+imperialgiantswordofdoggebi,bango-only-name,,791,,Imperial Giant Sword of Doggebi,,G59,,,59,,,0,
+imperialgoldenbow,bango-only-name,,796,,Imperial Golden Bow,,G62,,,60,,,0,
+imperialgoldendagger,bango-only-name,,1440,,Imperial Golden dagger,,G62,,,60,,,0,
+imperialgoldengiantsword,bango-only-name,,795,,Imperial Golden Giant Sword,,G62,,,60,,,0,
+imperialgoldenstick,bango-only-name,,797,,Imperial Golden Stick,,G62,,,60,,,0,
+imperialgoldensword,bango-only-name,,794,,Imperial Golden Sword,,G62,,,60,,,0,
+imperialguardiandaggerwithalotusflower,bango-only-name,,1669,,Imperial Guardian Dagger with a Lotus Flower,,G62,,,62,,,0,
+imperialguardianstickwithabluegem,bango-only-name,,1443,,Imperial Guardian Stick with a Blue Gem,,G59,,,59,,,0,
+imperialguardianstickwithalotusflower,bango-only-name,,1445,,Imperial Guardian Stick with a Lotus Flower,,G62,,,62,,,0,
+imperialheavenlyexecutionerbow,bango-only-name,,1923,,Imperial Heavenly Executioner Bow,,G75,,,75,,,0,
+imperialheavenlyexecutionerdagger,bango-only-name,,1927,,Imperial Heavenly Executioner Dagger,,G75,,,75,,,0,
+imperialheavenlyexecutionergiantsword,bango-only-name,,1922,,Imperial Heavenly Executioner Giant Sword,,G75,,,75,,,0,
+imperialheavenlyexecutionerstick,bango-only-name,,1924,,Imperial Heavenly Executioner Stick,,G75,,,75,,,0,
+imperialheavenlyexecutionerstickofhell,bango-only-name,,1926,,Imperial Heavenly Executioner Stick of Hell,,G75,,,75,,,0,
+imperialheavenlyexecutionerstickofruin,bango-only-name,,1925,,Imperial Heavenly Executioner Stick of Ruin,,G75,,,75,,,0,
+imperialheavenlyexecutionersword,bango-only-name,,1921,,Imperial Heavenly Executioner Sword,,G75,,,75,,,0,
+imperialhwandoosaehyungbigswordwithpatternofleaf,bango-only-name,,772,,Imperial Hwandoo Saehyung Big Sword with Pattern of Leaf,,G45,,,40,,,0,
+imperialhwandoosaehyungdaggerwithpatternofleaf,bango-only-name,,1434,,Imperial Hwandoo Saehyung dagger with Pattern of Leaf,,G45,,,40,,,0,
+imperialjoongbangchairpersonsstick,bango-only-name,,771,,Imperial JoongBang Chairperson's Stick,,G40,,,1,,,0,
+imperialjoongbangchairpersonswhitestick,bango-only-name,,774,,Imperial Joong Bang Chairperson's WhiteStick,,G45,,,40,,,0,
+imperialsaehyungbigsword,bango-only-name,,769,,Imperial SaeHyung Big Sword,,G40,,,1,,,0,
+imperialsaehyungdagger,bango-only-name,,1433,,Imperial SaeHyung dagger,,G40,,,1,,,0,
+imperialsavagetribesbluechultaebow,bango-only-name,,776,,Imperial Savage Tribe's Blue ChulTae Bow,,G48,,,45,,,0,
+imperialsavagetribesgrandstick,bango-only-name,,777,,Imperial Savage Tribe's Grand Stick,,G48,,,45,,,0,
+imperialsavagetribestigerteethdagger,bango-only-name,,1435,,Imperial Savage Tribe's Tiger Teeth dagger,,G48,,,45,,,0,
+imperialsavagetribestigerteethgiantsword,bango-only-name,,2648,,Imperial Savage Tribe's Tiger Teeth Giant Sword,,G48,,,48,,,0,
+imperialsavagetribestigerteethsword,bango-only-name,,775,,Imperial Savage Tribe's Tiger Teeth Sword,,G48,,,45,,,0,
+imperialsteelbowwithcrowsfeather,bango-only-name,,780,,Imperial Steel Bow with Crow's Feather,,G50,,,50,,,0,
+imperialstickofdarkness,bango-only-name,,2622,,Imperial Stick of Darkness,,G62,,,60,,,0,
+imperialstickofdoggebi,bango-only-name,,793,,Imperial Stick of Doggebi,,G59,,,59,,,0,
+imperialstickwithbluecrowsfeather,bango-only-name,,781,,Imperial Stick with Blue Crow's Feather,,G50,,,50,,,0,
+imperialswordofdarkness,bango-only-name,,2619,,Imperial Sword of Darkness,,G62,,,60,,,0,
+imperialtreasureswordofdoggebi,bango-only-name,,790,,Imperial Treasure Sword of Doggebi,,G59,,,59,,,0,
+imperialyeonlinsteelbow,bango-only-name,,773,,Imperial Yeon Lin Steel Bow,,G45,,,40,,,0,
+infinitelyheroic,legacy-only-name,334,,"""Infinitely"" / ""Heroic""",,,,,0,,,,,
+inpillsscabbard,bango-only-name,,172,,In-Pill's Scabbard,,,,,,,,0,
+instantagile,legacy-only-name,361,,"""Instant"" / ""Agile""",,,,,0,,,,,
+intelligencenecklace,bango-only-name,,2449,,Intelligence Necklace,,G75,,,,,,0,
+intensifiedirondagger,matched-name,578,1407,Intensified Iron Dagger,Intensified Iron dagger,G13,G13,True,1,1,True,,3120,False
+intensifiedshaejagaparmor,matched-name,55|56,54,Intensified ShaeJaGap Armor,Intensified ShaeJaGap Armor,G32,G32,True,1,1,True,28.629|73.002,28629,False
+intensifiedshaejagapboots,matched-name,57,57,Intensified ShaeJaGap Boots,Intensified ShaeJaGap Boots,G32,G32,True,1,1,True,15.745,15745,False
+intensifiedshaejagapgloves,matched-name,58,56,Intensified ShaeJaGap Gloves,Intensified ShaeJaGap Gloves,G32,G32,True,1,1,True,7.157,7157,False
+intensifiedshaejagaphood,matched-name,59,55,Intensified ShaeJaGap Hood,Intensified ShaeJaGap Hood,G32,G32,True,1,1,True,12.883,12883,False
+intensifiedshaejagapshorts,matched-name,60,58,Intensified ShaeJaGap Shorts,Intensified ShaeJaGap Shorts,G32,G32,True,1,1,True,8.588,8588,False
+intensifiedsteelarmor,matched-name,98|97,251,Intensified Steel Armor,Intensified Steel Armor,G46,G46,True,35|43,43,False,210.800|695.600,0,False
+intensifiedsteelboots,legacy-only-name,99,,Intensified Steel Boots,,G46,,,37,,,102.400,,
+intensifiedsteeldagger,matched-name,580,1409,Intensified Steel Dagger,Intensified Steel dagger,G21,G21,True,1,1,True,,10826,False
+intensifiedsteelgloves,matched-name,100,253,Intensified Steel Gloves,Intensified Steel Gloves,G46,G46,True,35,35,True,87.200,0,False
+intensifiedsteelhelmet,matched-name,101,252,Intensified Steel Helmet,Intensified Steel Helmet,G46,G46,True,39,39,True,117.200,0,False
+intensifiedsteelshoes,bango-only-name,,254,,Intensified Steel Shoes,,G46,,,37,,,0,
+intensifiedsteelshorts,matched-name,102,255,Intensified Steel Shorts,Intensified Steel Shorts,G46,G46,True,41,41,True,178.000,0,False
+invincibleharsh,legacy-only-name,337,,"""Invincible"" / ""Harsh""",,,,,0,,,,,
+iran,bango-only-name,,922,,Iran,,,,,,,,0,
+irondagger,matched-name,576,1405,Iron Dagger,Iron dagger,G05,G05,True,1,1,True,,180,False
+ironjuckmostick,matched-name,250,94,Iron JuckMo Stick,Iron JuckMo Stick,G17,G17,True,1,1,True,6.973,6973,False
+ironlegsvigorous,legacy-only-name,320,,"""Iron legs"" / ""Vigorous""",,,,,0,,,,,
+ironredblooddagger,matched-name,579,1408,Iron Red-blood Dagger,Iron Red-blood dagger,G17,G17,True,1,1,True,,6973,False
+ironredbloodsword,matched-name,178,5,Iron Red-Blood Sword,Iron Red-blood Sword,G17,G17,True,1,1,True,6.973,6973,False
+ironshieldwithgong,matched-name,168,431,Iron Shield With Gong,Iron Shield With Gong,G52,G52,True,50,50,True,0,0,True
+ironstick,matched-name,249,93,Iron Stick,Iron Stick,G13,G13,True,1,1,True,3.120,3120,False
+ironsword,matched-name,177,4,Iron Sword,Iron Sword,G13,G13,True,1,1,True,3.120,3120,False
+italy,bango-only-name,,925,,Italy,,,,,,,,0,
+jagansgold,bango-only-name,,158,,Ja-Gan's Gold,,,,,,,,0,
+japan,bango-only-name,,932,,Japan,,,,,,,,0,
+jeagalettersofintroduction,bango-only-name,,1471,,"Jea-Ga, letters of introduction",,,,,,,,0,
+joongbangchairpersonssinglestick,matched-name,260,116,Joong Bang Chairpersons Single Stick,Joong Bang Chairperson's Single Stick,G45,G45,True,40,40,True,0,0,True
+joongbangchairpersonsstick,matched-name,258,114,JoongBang Chairpersons Stick,JoongBang Chairperson's Stick,G40,G40,True,1,1,True,159.092,159092,False
+joongbangchairpersonsstickimperial,legacy-only-name,396,,JoongBang Chairpersons Stick (Imperial),,G40,,,1,,,0,,
+joongbangchairpersonswhitestick,matched-name,259,115,Joong Bang Chairpersons WhiteStick,Joong Bang Chairperson's WhiteStick,G45,G45,True,40,40,True,0,0,True
+joongbangchairpersonswhitestickimperial,legacy-only-name,399,,Joong Bang Chairpersons WhiteStick (Imperial),,G45,,,40,,,0,,
+joonongsgold,bango-only-name,,157,,Joo-Nong's Gold,,,,,,,,0,
+juckahbigsteeldagger,matched-name,581,1410,JuckAh Big Steel Dagger,JuckAh Big Steel dagger,G25,G25,True,1,1,True,,14680,False
+juckahbigsteelsword,bango-only-name,,60,,JuckAh Big Steel Sword,,G29,,,1,,,27120,
+k,bango-only-name,,949,,[ K ],,,,,,,,0,
+keenfictional,legacy-only-name,355,,"""Keen"" / ""Fictional""",,,,,0,,,,,
+kegoftalisman,bango-only-name,,225,,Keg of Talisman,,,,,,,,0,
+kegoftalismanfromchang,bango-only-name,,336,,Keg of Talisman from Chang,,,,,,,,0,
+key,bango-only-name,,1182|1183,,Key,,,,,,,,,
+keyforthegateofadvancebase,bango-only-name,,760,,Key for the Gate of Advance Base,,,,,,,,0,
+knightofthetraitorshangoutstalisman,bango-only-name,,1396,,Knight of the Traitors Hangout's Talisman,,,,,,,,0,
+knollhead,bango-only-name,,1791,,Knoll Head,,,,,,,,0,
+knollofcertificate,bango-only-name,,1731,,Knoll of certificate,,,,,,,,0,
+l,bango-only-name,,950|1103,,[ L ],,,,,,,,0,
+lanceasiabell,bango-only-name,,199,,Lance Asiabell,,,,,,,,0,
+largegreenbeancake,bango-only-name,,2374,,large green bean cake,,,,,,,,0,
+largeironshield,matched-name,166,429,Large Iron Shield,Large Iron Shield,G44,G44,True,40,40,True,0,0,True
+largemedicine,bango-only-name,,2055,,Large Medicine,,,,,,,,210,
+largenaturalregenerationpotion,bango-only-name,,2072,,Large natural regeneration potion,,,,,,,,0,
+largerefiningwater,matched-name,308,424,Large Refining Water,Large Refining Water,G48,G48,True,0,48,False,,696,False
+largewaterofgeumohmountain,matched-name,300,416,Large Water of Geum-Oh Mountain,Large Water of Geum-Oh Mountain,G16,G16,True,0,16,False,,75,False
+largewaterofgeumohvalley,matched-name,304,420,Large Water of Geum-Oh Valley,Large Water of Geum-Oh Valley,G32,G32,True,0,32,False,,327,False
+leatherarmor,matched-name,1|2|435|436,32,Leather Armor,Leather Armor,G00|G08,G08,False,1,1,True,200|510,200,False
+leatherarmorboots,matched-name,3|437,35,Leather Armor Boots,Leather Armor Boots,G00|G08,G08,False,1,1,True,110,110,True
+leatherarmorgloves,matched-name,4|438,34,Leather Armor Gloves,Leather Armor Gloves,G00|G08,G08,False,1,1,True,50,50,True
+leatherarmorhood,matched-name,5|439,33,Leather Armor Hood,Leather Armor Hood,G00|G08,G08,False,1,1,True,90,90,True
+leatherarmorshorts,matched-name,6|440,36,Leather Armor Shorts,Leather Armor Shorts,G00|G08,G08,False,1,1,True,60,60,True
+leatherencampmentbuildingscroll,bango-only-name,,1326,,Leather(Encampment Building Scroll),,,,,,,,20000,
+leekcake,bango-only-name,,2372,,leek cake,,,,,,,,0,
+legendaryrash,legacy-only-name,347,,"""Legendary"" / ""Rash""",,,,,0,,,,,
+limitablevigorous,legacy-only-name,327,,"""Limitable"" / ""Vigorous""",,,,,0,,,,,
+linepatternstickwithblackcrowsfeather,matched-name,265,249,Line Pattern Stick with Black Crows Feather,Line Pattern Stick with Black Crow's Feather,G50,G50,True,50,50,True,0,0,True
+lock,bango-only-name,,1181,,Lock,,,,,,,,90000,
+lollipop,bango-only-name,,1004,,Lollipop,,,,,,,,0,
+loom,bango-only-name,,1020,,Loom,,,,,,,,0,
+lordsjaw,bango-only-name,,1494,,Lord's Jaw,,,,,,,,0,
+lostarmorfragmentofdevah,bango-only-name,,1826,,Lost armor fragment of D'evah,,,,,,,,0,
+luckykey,bango-only-name,,636|1161,,Lucky Key,,,,,,,,0,
+luckykey1day,bango-only-name,,758,,Lucky Key[1day],,,,,,,,0,
+luckynecklace,bango-only-name,,596,,Lucky Necklace,,G01,,,,,,0,
+luckystone,bango-only-name,,637|1162,,Lucky Stone,,,,,,,,0,
+luckystone1day,bango-only-name,,759,,Lucky Stone[1day],,,,,,,,0,
+luckywoodenbox,bango-only-name,,757,,Lucky Wooden Box,,,,,,,,0,
+m,bango-only-name,,951,,[ M ],,,,,,,,0,
+mackerel,bango-only-name,,239,,Mackerel,,,,,,,,0,
+maegakhwandoosaehyungbigsword,matched-name,187,103,Maegak Hwandoo Saehyung Big Sword,MaeGak Hwandoo SaeHyung Big Sword,G45,G45,True,40,40,True,0,0,True
+maegakhwandoosaehyungdagger,matched-name,586,1416,MaeGak Hwandoo SaeHyung Dagger,MaeGak Hwandoo SaeHyung dagger,G45,G45,True,40,40,True,,0,False
+magicalpowerswise,legacy-only-name,346,,"""Magical Powers"" / ""Wise""",,,,,0,,,,,
+magicscrolltogeumohmineforindividual,bango-only-name,,194,,Magic Scroll to Geum-Oh Mine [For Individual],,,,,,,,400,
+magicscrolltogeumohmineforparty,bango-only-name,,189,,Magic Scroll to Geum-Oh Mine [For Party],,,,,,,,1000,
+magicscrolltohondelforindividual,bango-only-name,,2160,,Magic Scroll to Hondel [For individual],,,,,,,,250,
+magicscrolltohondelforparty,bango-only-name,,2159,,Magic Scroll to Hondel [For Party],,,,,,,,500,
+magicscrolltojooksuhcargostationforindividual,bango-only-name,,193,,Magic Scroll to Jook-Suh Cargo Station [For Individual],,,,,,,,400,
+magicscrolltojooksuhcargostationforparty,bango-only-name,,188,,Magic Scroll to Jook-Suh Cargo Station [For Party],,,,,,,,1000,
+magicscrolltonarootuhforindividual,bango-only-name,,192,,Magic Scroll to Narootuh [For Individual],,,,,,,,400,
+magicscrolltonarootuhforparty,bango-only-name,,187,,Magic Scroll to Narootuh [For Party],,,,,,,,1000,
+magicscrolltotemporaryfortofgeumoheecastleforindividual,bango-only-name,,196,,Magic Scroll to Temporary Fort of Geum-Ohee Castle [For Individual],,,,,,,,400,
+magicscrolltotemporaryfortofgeumoheecastleforparty,bango-only-name,,191,,Magic Scroll to Temporary Fort of Geum-Ohee Castle [For Party],,,,,,,,1000,
+magicscrolltothecityofpriestforindividual,bango-only-name,,485,,Magic Scroll to the City of Priest [For Individual],,,,,,,,400,
+magicscrolltothecityofpriestforparty,bango-only-name,,484,,Magic Scroll to the City of Priest [For Party],,,,,,,,1000,
+magicscrolltothepubofthegiantbirdforindividual,bango-only-name,,195,,Magic Scroll to The Pub of the Giant Bird [For Individual],,,,,,,,400,
+magicscrolltothepubofthegiantbirdforparty,bango-only-name,,190,,Magic Scroll to The Pub of the Giant Bird [For Party],,,,,,,,1000,
+magicscrolltotownofcheonjiyunforindividual,bango-only-name,,2158,,Magic Scroll to Town of Cheonji-Yun [For individual],,,,,,,,250,
+magicscrolltotownofcheonjiyunforparty,bango-only-name,,2157,,Magic Scroll to Town of Cheonji-Yun [For Party],,,,,,,,500,
+makansoosletter,bango-only-name,,133,,Mak-AnSoo's Letter,,,,,,,,0,
+mananecklace,bango-only-name,,2462,,Mana Necklace,,G60,,,,,,0,
+manshealthy,legacy-only-name,365,,"""Mans"" / ""Healthy""",,,,,0,,,,,
+mapforroyaltomb,bango-only-name,,182,,Map for Royal Tomb,,,,,,,,0,
+marignatedsteamedribeye,bango-only-name,,876,,marignated steamed rib-eye,,,,,,,,0,
+maskforarcher,bango-only-name,,364|1037|2602,,Mask for Archer,,,,,41|6,,,0|100000|50000,
+maskforknight,bango-only-name,,363|1036|2601,,Mask for Knight,,,,,41|6,,,0|100000|50000,
+maskformagician,bango-only-name,,365|1038|2603,,Mask for Magician,,,,,41|6,,,0|100000|50000,
+maskforthief,bango-only-name,,1681|2613,,Mask for Thief,,,,,41,,,100000|50000,
+maskofbride,bango-only-name,,352,,Mask of Bride,,,,,,,,0,
+maskofclown,bango-only-name,,354,,Mask of Clown,,,,,,,,0,
+maskofdoggebi,bango-only-name,,353,,Mask of Doggebi,,,,,,,,0,
+maskofspiderman,bango-only-name,,351,,Mask of Spiderman,,,,,,,,0,
+meatofcheonjiyeonwolf,bango-only-name,,2057,,Meat of Cheonjiyeon wolf,,G68,,,68,,,250,
+medeicinepack,bango-only-name,,1787,,Medeicine pack,,,,,,,,0,
+mediumboilingwater,legacy-only-name,311,,Medium Boiling Water,,G60,,,0,,,,,
+mediumboillingwater,bango-only-name,,427,,Medium Boilling Water,,G60,,,60,,,918,
+mediumcheonjiyeonwater,bango-only-name,,2060,,Medium Cheonjiyeon Water,,G72,,,72,,,1700,
+mediumgreenbeancake,bango-only-name,,2375,,medium green bean cake,,,,,,,,0,
+mediumironshield,bango-only-name,,29,,Medium Iron Shield,,G25,,,1,,,520,
+mediummagicpotion,bango-only-name,,1319,,Medium Magic Potion,,,,,,,,0,
+mediummedicine,matched-name,279,48,Medium Medicine,Medium Medicine,,,True,0,,False,160,70,False
+mediumnaturalregenerationpotion,bango-only-name,,2071,,Medium natural regeneration potion,,,,,,,,0,
+mediumrefiningwater,matched-name,307,423,Medium Refining Water,Medium Refining Water,G44,G44,True,0,44,False,,612,False
+mediumsteelshield,bango-only-name,,30,,Medium Steel Shield,,G40,,,1,,,3200,
+mediumwaterofgeumohmountain,matched-name,299,415,Medium Water of Geum-Oh Mountain,Medium Water of Geum-Oh Mountain,G12,G12,True,0,12,False,,39,False
+mediumwaterofgeumohvalley,matched-name,303,419,Medium Water of Geum-Oh Valley,Medium Water of Geum-Oh Valley,G28,G28,True,0,28,False,,282,False
+medumrewardpack,bango-only-name,,2091,,Medum Reward pack,,,,,,,,0,
+medumspiritwater,bango-only-name,,2095,,Medum Spirit water,,,,,,,,0,
+meleesunlawful,legacy-only-name,316,,"""Melees"" / ""Unlawful""",,,,,0,,,,,
+melon,bango-only-name,,368,,Melon,,G32,,,32,,,0,
+mercifulfixed,legacy-only-name,360,,"""Merciful"" / ""Fixed""",,,,,0,,,,,
+mexico,bango-only-name,,921,,Mexico,,,,,,,,0,
+midironshield,legacy-only-name,164,,Mid-Iron Shield,,G23,,,1,,,520,,
+midsteelshield,legacy-only-name,165,,Mid-Steel Shield,,G40,,,1,,,3.200,,
+mightyabsoluteness,legacy-only-name,331,,"""Mighty"" / ""Absoluteness""",,,,,0,,,,,
+milkchocolate,bango-only-name,,1007,,Milk Chocolate,,,,,,,,0,
+milkvetch,bango-only-name,,154,,Milk Vetch,,,,,,,,0,
+mincepie,bango-only-name,,1033,,Mince pie,,,,,,,,0,
+missionletters,bango-only-name,,1299|1300|1301|1302|1303|1304|1305|1306|1307|1308|1309|1310|1311|1312|1313|1314|1315|1316|1317|1328|1329|1330|1331|1332|1333|1334|1335|1336|1337|1338|1339|1340|1341|1342|1343|1344|1345|1346|1347|1348|1349|1350|1351|1352|1353|1354|1355|1356|1357|1358|1359|1360|1361|1362|1363|1364|1365|1741|1742|1743|1744|1745|1796|1797|1798|1799|1800,,Mission letters,,G10|G12|G14|G16|G17|G18|G19|G20|G21|G23|G25|G29|G31|G32|G33|G34|G40|G41|G42|G43|G44|G45|G46|G47|G48|G49|G50|G51|G52|G53|G54|G55|G56|G57|G58|G59|G60|G61|G62|G63|G64|G65|G66|G72|G74|G75|G76|G77|G78|G79|G80|G81|G82|G83|G84|G85|G86|G87,,,,,,10750|1096|116431|11825|128074|13007|140881|14307|154969|15737|170465|17310|19041|1938|20945|2131|23039|2344|2578|2835|300|3118|330|3429|360|375|3771|390|4148|420|42200|450|4562|49381|500|5018|52500|5519|58800|6070|64200|65725|6677|68400|72297|7344|74500|750|79526|8078|81500|825|85600|87478|8885|907|90900|96225|96400|9773|997,
+missionlettersofhondel,bango-only-name,,2061|2062|2063|2064|2065|2066|2067|2068|2069,,Mission letters of Hondel,,G75,,,,,,100400|104900|74200|81800|82400|83100|89500|91100|98400,
+monsterofdemoncracktroopshead,bango-only-name,,1390,,Monster of Demon Crack Troop's head,,,,,,,,0,
+monstersrightarm,bango-only-name,,1495,,Monster's Right Arm,,,,,,,,0,
+monstersummoningscroll1level,bango-only-name,,1534,,monster summoning scroll(1 level),,,,,,,,5000,
+monstersummoningscroll2level,bango-only-name,,1535,,monster summoning scroll(2 level),,,,,,,,10000,
+monstersummoningscroll3level,bango-only-name,,1536,,monster summoning scroll(3 level),,,,,50,,,15000,
+monstersummoningscroll4level,bango-only-name,,1537,,monster summoning scroll(4 level),,,,,60,,,20000,
+monstersummoningscroll5level,bango-only-name,,1538,,monster summoning scroll(5 level),,,,,,,,60000,
+monstersummoningscroll6level,bango-only-name,,1973,,monster summoning scroll(6 level),,,,,,,,100000,
+moonheesdoll,bango-only-name,,208,,Moon-Hee's Doll,,,,,,,,0,
+mountainspringwater,bango-only-name,,2172,,Mountain Spring Water,,,,,,,,0,
+movingscrolloflocation,bango-only-name,,511|1149|1291,,Moving Scroll of Location,,,,,,,,0,
+movingtrinket,bango-only-name,,1620,,Moving Trinket,,,,,,,,0,
+muzzleofwhitetigercannon,bango-only-name,,768,,Muzzle of White Tiger Cannon,,,,,,,,0,
+mysticsharp,legacy-only-name,318,,"""Mystic"" / ""Sharp""",,,,,0,,,,,
+mysticspice,bango-only-name,,2075,,Mystic spice,,,,,,,,0,
+myungjoo,bango-only-name,,142,,MyungJoo,,,,,,,,0,
+myungjoobootsofhighclassthief,bango-only-name,,1573,,MyungJoo Boots of High class thief,,G42,,,1,,,82705,
+myungjoobootsoflowclassthief,bango-only-name,,1553,,MyungJoo Boots of low class thief,,G08,,,1,,,110,
+myungjoobootsofthief,bango-only-name,,1563,,MyungJoo Boots of thief,,G24,,,1,,,3790,
+myungjoodaechangeau,matched-name,85,127,MyungJoo DaeChangEau,MyungJoo DaeChangEau,G42,G42,True,1,1,True,374.830,148870,False
+myungjoodaechangeauboots,matched-name,87,130,MyungJoo DaeChangEau Boots,MyungJoo DaeChangEau Boots,G42,G42,True,1,1,True,82.705,82705,False
+myungjoodaechangeauclothes,legacy-only-name,86,,MyungJoo DaeChangEau Clothes,,G42,,,1,,,148.872,,
+myungjoodaechangeaugloves,matched-name,88,129,MyungJoo DaeChangEau Gloves,MyungJoo DaeChangEau Gloves,G42,G42,True,1,1,True,37.217,37217,False
+myungjoodaechangeauhairdecoration,matched-name,89,128,MyungJoo DaeChangEau Hair Decoration,MyungJoo DaeChangEau Hair Decoration,G42,G42,True,1,1,True,67.668,67668,False
+myungjoodaechangeaushorts,matched-name,90,131,MyungJoo DaeChangEau Shorts,MyungJoo DaeChangEau Shorts,G42,G42,True,1,1,True,38.368,38368,False
+myungjooglovesofhighclassthief,bango-only-name,,1572,,MyungJoo Gloves of High class thief,,G42,,,1,,,37217,
+myungjooglovesoflowclassthief,bango-only-name,,1552,,MyungJoo Gloves of low class thief,,G08,,,1,,,50,
+myungjooglovesofthief,bango-only-name,,1562,,MyungJoo Gloves of thief,,G24,,,1,,,1723,
+myungjoohakchangeau,legacy-only-name,13|447,,MyungJoo HakChangEau,,G00|G08,,,1,,,510,,
+myungjoohakchangeauboots,matched-name,15|449,73,MyungJoo HakChangEau Boots,MyungJoo HakChangEau Boots,G00|G08,G08,False,1,1,True,110,110,True
+myungjoohakchangeauclothes,matched-name,14|448,70,MyungJoo HakChangEau Clothes,MyungJoo HakChangEau Clothes,G00|G08,G08,False,1,1,True,200,200,True
+myungjoohakchangeaugloves,matched-name,16|450,72,MyungJoo HakChangEau Gloves,MyungJoo HakChangEau Gloves,G00|G08,G08,False,1,1,True,50,50,True
+myungjoohakchangeauhairdecoration,matched-name,17|451,71,MyungJoo HakChangEau Hair Decoration,MyungJoo HakChangEau Hair Decoration,G00|G08,G08,False,1,1,True,90,90,True
+myungjoohakchangeaushorts,matched-name,18|452,74,MyungJoo HakChangEau Shorts,MyungJoo HakChangEau Shorts,G00|G08,G08,False,1,1,True,60,60,True
+myungjoohoodofhighclassthief,bango-only-name,,1571,,MyungJoo Hood of High class thief,,G42,,,1,,,67668,
+myungjoohoodoflowclassthief,bango-only-name,,1551,,MyungJoo Hood of low class thief,,G08,,,1,,,90,
+myungjoohoodofthief,bango-only-name,,1561,,MyungJoo Hood of thief,,G24,,,1,,,3101,
+myungjoosochangeau,legacy-only-name,49,,MyungJoo SoChangEau,,G24,,,1,,,17.573,,
+myungjoosochangeauboots,matched-name,51,83,MyungJoo SoChangEau Boots,MyungJoo SoChangEau Boots,G24,G24,True,1,1,True,3.790,3790,False
+myungjoosochangeauclothes,matched-name,50,80,MyungJoo SoChangEau Clothes,MyungJoo SoChangEau Clothes,G24,G24,True,1,1,True,6.892,6892,False
+myungjoosochangeaugloves,matched-name,52,82,MyungJoo SoChangEau Gloves,MyungJoo SoChangEau Gloves,G24,G24,True,1,1,True,1.723,1723,False
+myungjoosochangeauhairdecoration,matched-name,53,81,MyungJoo SoChangEau Hair Decoration,MyungJoo SoChangEau Hair Decoration,G24,G24,True,1,1,True,3.101,3101,False
+myungjoosochangeaushorts,matched-name,54,84,MyungJoo SoChangEau Shorts,MyungJoo SoChangEau Shorts,G24,G24,True,1,1,True,2.067,2067,False
+myungjoosuitofhct,legacy-only-name,545|546,,Myung Joo suit of hcT,,G42,,,1,,,148.872|374.830,,
+myungjoosuitofhctboots,legacy-only-name,547,,Myung Joo suit of hcT Boots,,G42,,,1,,,82.705,,
+myungjoosuitofhctgloves,legacy-only-name,548,,Myung Joo suit of hcT Gloves,,G42,,,1,,,37.217,,
+myungjoosuitofhcthelmet,legacy-only-name,549,,Myung Joo suit of hcT Helmet,,G42,,,1,,,67.668,,
+myungjoosuitofhctshorts,legacy-only-name,550,,Myung Joo suit of hcT Shorts,,G42,,,1,,,38.368,,
+myungjoosuitofhighclassthief,bango-only-name,,1570,,MyungJoo suit of  High class thief,,G42,,,1,,,148870,
+myungjoosuitoflct,legacy-only-name,521|522,,MyungJoo Suit of lcT,,G08,,,1,,,200|510,,
+myungjoosuitoflctboots,legacy-only-name,523,,MyungJoo Suit of lcT Boots,,G08,,,1,,,110,,
+myungjoosuitoflctgloves,legacy-only-name,524,,MyungJoo Suit of lcT Gloves,,G08,,,1,,,50,,
+myungjoosuitoflcthelmet,legacy-only-name,525,,MyungJoo Suit of lcT Helmet,,G08,,,1,,,90,,
+myungjoosuitoflctshorts,legacy-only-name,526,,MyungJoo Suit of lcT Shorts,,G08,,,1,,,60,,
+myungjoosuitoflowclassthief,bango-only-name,,1550,,MyungJoo suit of  low class thief,,G08,,,1,,,200,
+myungjoosuitoft,legacy-only-name,533|534,,Myung Joo suit of T,,G24,,,0|1,,,17.573|6.892,,
+myungjoosuitoftboots,legacy-only-name,535,,Myung Joo suit of T Boots,,G24,,,1,,,3.790,,
+myungjoosuitoftgloves,legacy-only-name,536,,Myung Joo suit of T Gloves,,G24,,,1,,,1.723,,
+myungjoosuitofthelmet,legacy-only-name,537,,Myung Joo suit of T Helmet,,G24,,,1,,,3.101,,
+myungjoosuitofthief,bango-only-name,,1560,,MyungJoo suit of thief,,G24,,,1,,,6892,
+myungjoosuitoftshorts,legacy-only-name,538,,Myung Joo suit of T Shorts,,G24,,,1,,,2.067,,
+myungjoosuitshortsofhighclassthief,bango-only-name,,1574,,MyungJoo suit Shorts of High class thief,,G42,,,1,,,38368,
+myungjoosuitshortsoflowclassthief,bango-only-name,,1554,,MyungJoo suit Shorts of low class thief,,G08,,,1,,,60,
+myungjoosuitshortsofthief,bango-only-name,,1564,,MyungJoo suit Shorts of thief,,G24,,,1,,,2067,
+n,bango-only-name,,952|1104,,[ N ],,,,,,,,0,
+nailofdragon,bango-only-name,,1263,,Nail of Dragon,,,,,,,,0,
+namelistcharacter,bango-only-name,,639|1163,,Name List[Character],,,,,,,,0,
+namelistguild,bango-only-name,,640|1164,,Name List[Guild],,,,,,,,0,
+necklaceofcourage,bango-only-name,,1046,,Necklace of Courage,,,,,,,,0,
+necklaceofevil,bango-only-name,,1493,,Necklace of Evil,,,,,,,,0,
+necklaceofexcessiveness,bango-only-name,,1040,,Necklace of Excessiveness,,,,,,,,0,
+necklaceofexplosion,bango-only-name,,1044,,Necklace of Explosion,,,,,,,,0,
+necklaceofknowledge,bango-only-name,,1050,,Necklace of Knowledge,,,,,,,,0,
+necklaceofmaturity,bango-only-name,,1056,,Necklace of Maturity,,,,,,,,0,
+necklaceofmeditation,bango-only-name,,1054,,Necklace of Meditation,,,,,,,,0,
+necklaceofquickness,bango-only-name,,1052,,Necklace of Quickness,,,,,,,,0,
+necklaceofsage,bango-only-name,,1093,,Necklace of Sage,,,,,,,,0,
+necklaceofvigor,bango-only-name,,1042,,Necklace of Vigor,,,,,,,,0,
+necklaceofwisdom,bango-only-name,,1048,,Necklace of Wisdom,,,,,,,,0,
+normalcheonjiyeonwater,bango-only-name,,2059,,Normal Cheonjiyeon Water,,G68,,,68,,,1550,
+normalfixingtool,bango-only-name,,223,,Normal Fixing Tool,,,,,,,,2000,
+normalghostcloth,bango-only-name,,1000|1015,,Normal Ghost Cloth,,G01,,,1,,,30000,
+nouwoongsletter,bango-only-name,,135,,Nou-Woong's Letter,,,,,,,,0,
+nouwoongsmoney,bango-only-name,,143,,Nou-Woong's Money,,,,,,,,0,
+o,bango-only-name,,953|1105,,[ O ],,,,,,,,0,
+oakbow,matched-name,217,23,Oak Bow,Oak Bow,G05,G05,True,1,1,True,180,180,True
+oakpetalstick,matched-name,248,92,Oak Petal Stick,Oak Petal Stick,G09,G09,True,1,1,True,1650,1650,True
+oakstick,matched-name,247,91,Oak Stick,Oak Stick,G05,G05,True,1,1,True,180,180,True
+ordinaryfictional,legacy-only-name,356,,"""Ordinary"" / ""Fictional""",,,,,0,,,,,
+pangaparmor,matched-name,43|44,16,PanGap Armor,PanGap Armor,G24,G24,True,1,1,True,17.573|6.892,6892,False
+pangapboots,matched-name,45,19,PanGap Boots,PanGap Boots,G24,G24,True,1,1,True,3.790,3790,False
+pangapgloves,matched-name,46,18,PanGap Gloves,PanGap Gloves,G24,G24,True,1,1,True,1.723,1723,False
+pangaphelmet,matched-name,47,17,PanGap Helmet,PanGap Helmet,G24,G24,True,1,1,True,3.101,3101,False
+pangapshorts,matched-name,48,20,PanGap Shorts,PanGap Shorts,G24,G24,True,1,1,True,2.067,2067,False
+panther,legacy-only-name,457|458|459|460,,Panther,,G11|G21|G31|G41,,,11|21|31|41,,,,,
+paper,bango-only-name,,1284,,Paper,,,,,,,,0,
+paradoxicalcelebrated,legacy-only-name,340,,"""Paradoxical"" / ""Celebrated""",,,,,0,,,,,
+paraguay,bango-only-name,,914,,Paraguay,,,,,,,,0,
+peach,bango-only-name,,367,,Peach,,G20,,,20,,,0,
+peony,bango-only-name,,201,,Peony,,,,,,,,0,
+petitionofafarmer,bango-only-name,,234,,Petition of A Farmer,,,,,,,,0,
+petitionofaparents,bango-only-name,,236,,Petition of A Parents,,,,,,,,0,
+petitionofasmith,bango-only-name,,235,,Petition of A Smith,,,,,,,,0,
+pieceofbamboopole,bango-only-name,,159,,Piece of Bamboo Pole,,,,,,,,0,
+pieceofluckystone,matched-name,466,638,Piece of Lucky Stone,Piece of Lucky Stone,,,True,0,,False,,0,False
+pieceofmap,bango-only-name,,1719,,Piece of Map,,,,,,,,0,
+pieceofmap10,bango-only-name,,1728,,Piece of Map10,,,,,,,,0,
+pieceofmap2,bango-only-name,,1720,,Piece of Map2,,,,,,,,0,
+pieceofmap3,bango-only-name,,1721,,Piece of Map3,,,,,,,,0,
+pieceofmap4,bango-only-name,,1722,,Piece of Map4,,,,,,,,0,
+pieceofmap5,bango-only-name,,1723,,Piece of Map5,,,,,,,,0,
+pieceofmap6,bango-only-name,,1724,,Piece of Map6,,,,,,,,0,
+pieceofmap7,bango-only-name,,1725,,Piece of Map7,,,,,,,,0,
+pieceofmap8,bango-only-name,,1726,,Piece of Map8,,,,,,,,0,
+pieceofmap9,bango-only-name,,1727,,Piece of Map9,,,,,,,,0,
+pieceofmeat,matched-name,290,407,Piece of Meat,Piece of Meat,G40,G40,True,0,40,False,,93,False
+pieceofunknownworld,bango-only-name,,1621,,Piece of Unknown World,,,,,,,,0,
+pincersofdesertscorpion,bango-only-name,,2080,,Pincers of Desert Scorpion,,,,,,,,0,
+pinethesouthgaterestorationevent,bango-only-name,,1321,,Pine (The South Gate Restoration Event),,,,,,,,0,
+plum,bango-only-name,,366,,Plum,,G12,,,12,,,0,
+poisonousliquid,bango-only-name,,1785,,Poisonous liquid,,,,,,,,0,
+poisonpouch,bango-only-name,,360,,Poison Pouch,,,,,,,,50,
+poland,bango-only-name,,911,,Poland,,,,,,,,0,
+polishingstone,bango-only-name,,481|1159|1666,,Polishing Stone,,,,,,,,0,
+poppy,bango-only-name,,1712,,Poppy,,,,,,,,0,
+porklegofgeumohmountain,matched-name,294,411,Pork Leg of Geum-Oh Mountain,Pork Leg of Geum-Oh Mountain,G56,G56,True,0,56,False,,159,False
+porkribofgeumohmountain,matched-name,295,412,Pork Rib of Geum-Oh Mountain,Pork Rib of Geum-Oh Mountain,G60,G60,True,0,60,False,,180,False
+portablebomb,bango-only-name,,1117,,Portable Bomb,,,,,,,,150000,
+portugal,bango-only-name,,924,,Portugal,,,,,,,,0,
+potato,matched-name,282,400,Potato,Potato,G12,G12,True,0,12,False,,12,False
+potionofbearskin,bango-only-name,,534|608|1143,,Potion of Bear Skin,,,,,,,,0,
+potionofeaglewings,bango-only-name,,537|611|1146,,Potion of Eagle Wings,,,,,,,,0,
+potionofforesight,bango-only-name,,536|610|1145,,Potion of Foresight,,,,,,,,0,
+potionoftigerclaws,bango-only-name,,533|607|1142,,Potion of Tiger Claws,,,,,,,,0,
+potionofwisdom,bango-only-name,,535|609|1144,,Potion of Wisdom,,,,,,,,0,
+predictiveconfirmatory,legacy-only-name,322,,"""Predictive"" / ""Confirmatory""",,,,,0,,,,,
+premiumrewardpack,bango-only-name,,2093,,Premium Reward pack,,,,,,,,0,
+presentboxes,bango-only-name,,1110,,Present Boxes,,,,,,,,0,
+pridefulhealthy,legacy-only-name,369,,"""Prideful"" / ""Healthy""",,,,,0,,,,,
+primingpowders,bango-only-name,,762,,Priming Powders,,,,,,,,0,
+properlybrownbearmeat,bango-only-name,,1794,,Properly Brown Bear meat,,,,,,,,0,
+protectiontalisman,matched-name,376,206,Protection Talisman,Protection Talisman,G0,,False,0,,False,,0,False
+pullscroll,bango-only-name,,2629,,Pull Scroll,,,,,,,,0,
+puredewteaofgeumohmountain,bango-only-name,,1629,,Pure Dew-Tea of Geum-Oh Mountain,,G72,,,72,,,1220,
+purekeen,legacy-only-name,333,,"""Pure"" / ""Keen""",,,,,0,,,,,
+purifiednecklaceofspirit,bango-only-name,,2249,,Purified necklace of spirit,,,,,,,,0,
+purifiedringofspirit,bango-only-name,,2248,,Purified ring of spirit,,,,,,,,0,
+purifiedtrinketofspirit,bango-only-name,,2251,,Purified trinket of spirit,,,,,,,,0,
+purplewitchhat,bango-only-name,,997|1012,,Purple Witch Hat,,G01,,,1,,,30000,
+r,bango-only-name,,954,,[ R ],,,,,,,,0,
+rainingdagger,legacy-only-name,575,,Raining Dagger,,G01,,,1,,,,,
+raykite,bango-only-name,,1288,,Ray Kite,,,,,,,,0,
+recallscrollforguild,bango-only-name,,1474|1477,,Recall scroll [For Guild],,,,,,,,0,
+recallscrollforindividual,bango-only-name,,1472|1475,,Recall scroll [For Individual],,,,,,,,0,
+recallscrollforparty,bango-only-name,,1473|1476,,Recall scroll [For Party],,,,,,,,0,
+redbigsteelsword,legacy-only-name,181,,Red Big Steel Sword,,G29,,,1,,,27.120,,
+redbirdcannon,bango-only-name,,883|884|885|886|891|892|893|894,,Red Bird Cannon,,,,,,,,0|1,
+redbox,bango-only-name,,521,,Red Box,,,,,,,,0,
+reddragonimperialstickofimmortality,legacy-only-name,643,,Red Dragon Imperial Stick of Immortality,,G65,,,65,,,0,,
+reddragonsimperialstickofimmortality,legacy-only-name,655,,Red Dragons Imperial Stick of Immortality,,G70,,,70,,,0,,
+redflag,bango-only-name,,161,,Red Flag,,,,,,,,0,
+redhwandoobigsword,matched-name,184,100,Red HwanDoo Big Sword,Red HwanDoo Big Sword,G40,G40,True,1,1,True,0,0,True
+redhwandoodagger,matched-name,584,1414,Red HwanDoo Dagger,Red HwanDoo dagger,G40,G40,True,1,1,True,,159092,False
+redtigerpatterngakbow,matched-name,227,107,Red Tiger Pattern Gak Bow,Red Tiger Pattern Gak Bow,G40,G40,True,1,1,True,0,0,True
+reel,bango-only-name,,1286,,Reel,,,,,,,,0,
+republicofengea,bango-only-name,,936,,Republic of ENGea,,,,,,,,0,
+revengefuldagger,matched-name,592,1422,Revengeful Dagger,Revengeful dagger,G50,G50,True,50,50,True,,0,False
+revengefulsword,matched-name,196,441,Revengeful Sword,Revengeful Sword,G50,G50,True,50,50,True,0,0,True
+revengesagile,legacy-only-name,368,,"""Revenges"" / ""Agile""",,,,,0,,,,,
+reverentcelebrated,legacy-only-name,335,,"""Reverent"" / ""Celebrated""",,,,,0,,,,,
+revisionstone,legacy-only-name,465,,Revision Stone,,,,,0,,,,,
+rewardfordestructingkeypoints,bango-only-name,,1173,,Reward for Destructing Key Points,,,,,,,,0,
+rewardforprotectingleader,bango-only-name,,1174,,Reward for Protecting Leader,,,,,,,,0,
+rewardforsufferingvalley,bango-only-name,,1175,,Reward for Suffering Valley,,,,,,,,0,
+ribofskeleton,bango-only-name,,2081,,Rib of Skeleton,,,,,,,,0,
+ricecake,bango-only-name,,155,,Rice Cake,,,,,,,,0,
+ricecakesoup,bango-only-name,,868,,rice cake soup,,,,,,,,0,
+ricewine,bango-only-name,,145,,Rice Wine,,,,,,,,0,
+ring,matched-name,377,207,Ring,Ring,G0,,False,0,,False,,0,False
+ringofcourage,bango-only-name,,1045,,Ring of Courage,,,,,,,,0,
+ringofexcessiveness,bango-only-name,,1039,,Ring of Excessiveness ,,,,,,,,0,
+ringofexplosion,bango-only-name,,1043,,Ring of Explosion,,,,,,,,0,
+ringofknowledge,bango-only-name,,1049,,Ring of Knowledge,,,,,,,,0,
+ringofmaturity,bango-only-name,,1055,,Ring of Maturity,,,,,,,,0,
+ringofmeditation,bango-only-name,,1053,,Ring of Meditation,,,,,,,,0,
+ringofquickness,bango-only-name,,1051,,Ring of Quickness,,,,,,,,0,
+ringofsage,bango-only-name,,1092,,Ring of Sage,,,,,,,,0,
+ringofvigor,bango-only-name,,1041,,Ring of Vigor,,,,,,,,0,
+ringofwisdom,bango-only-name,,1047,,Ring of Wisdom,,,,,,,,0,
+robeofthefairy,bango-only-name,,1019,,Robe of the Fairy,,,,,,,,0,
+rope,bango-only-name,,359,,Rope,,,,,,,,0,
+rottenskeletonofwarrioroftheroyaltomb,bango-only-name,,1372,,Rotten Skeleton of Warrior of the Royal Tomb,,,,,,,,0,
+royaltombkeepersbook,bango-only-name,,434,,Royal Tomb Keeper's Book,,,,,,,,0,
+royaltombkeepersironhammer,bango-only-name,,439,,Royal Tomb Keeper's Iron Hammer,,,,,,,,0,
+royaltombkeeperslute,bango-only-name,,435,,Royal Tomb Keeper's Lute,,,,,,,,0,
+royaltombkeepersshield,bango-only-name,,437,,Royal Tomb Keeper's Shield,,,,,,,,0,
+royaltombkeepersspear,bango-only-name,,438,,Royal Tomb Keeper's Spear,,,,,,,,0,
+royaltombkeeperssword,bango-only-name,,436,,Royal Tomb Keeper's Sword,,,,,,,,0,
+ruinousfictional,legacy-only-name,370,,"""Ruinous"" / ""Fictional""",,,,,0,,,,,
+rushreflective,legacy-only-name,324,,"""Rush"" / ""Reflective""",,,,,0,,,,,
+s,bango-only-name,,955|1106,,[ S ],,,,,,,,0,
+saedanchairpersonsstick,matched-name,256,112,Sae Dan Chairpersons Stick,Sae Dan Chairperson's Stick,G40,G40,True,1,1,True,0,0,True
+saegumchairpersonsstick,matched-name,255,111,SaeGum Chairpersons Stick,SaeGum Chairperson's Stick,G37,G37,True,1,1,True,51.320,51320,False
+saehakchairpersonsstick,matched-name,257,113,Sae Hak Chairpersons Stick,Sae Hak Chairperson's Stick,G40,G40,True,1,1,True,0,0,True
+saewongeneralsletter,bango-only-name,,134,,Sae-Won General's Letter,,,,,,,,0,
+salmon,bango-only-name,,240,,Salmon,,,,,,,,0,
+santabootsofarcher,bango-only-name,,1845,,Santa Boots of Archer,,G01,,,1,,,0,
+santabootsofknight,bango-only-name,,1835,,Santa Boots of Knight,,G01,,,1,,,0,
+santabootsofmagician,bango-only-name,,1840,,Santa Boots of Magician,,G01,,,1,,,0,
+santabootsofthief,bango-only-name,,1850,,Santa Boots of Thief,,G01,,,1,,,0,
+santacoatofarcher,bango-only-name,,1842,,Santa Coat of Archer,,G01,,,1,,,0,
+santacoatofknight,bango-only-name,,1832,,Santa Coat of Knight,,G01,,,1,,,0,
+santacoatofmagician,bango-only-name,,1837,,Santa Coat of Magician,,G01,,,1,,,0,
+santacoatofthief,bango-only-name,,1847,,Santa Coat of Thief,,G01,,,1,,,0,
+santaglovesofarcher,bango-only-name,,1844,,Santa Gloves of Archer,,G01,,,1,,,0,
+santaglovesofknight,bango-only-name,,1834,,Santa Gloves of Knight,,G01,,,1,,,0,
+santaglovesofmagician,bango-only-name,,1839,,Santa Gloves of Magician,,G01,,,1,,,0,
+santaglovesofthief,bango-only-name,,1849,,Santa Gloves of Thief,,G01,,,1,,,0,
+santahatofarcher,bango-only-name,,1843,,Santa Hat of Archer,,G01,,,1,,,0,
+santahatofknight,bango-only-name,,1833,,Santa Hat of Knight,,G01,,,1,,,0,
+santahatofmagician,bango-only-name,,1838,,Santa Hat of Magician,,G01,,,1,,,0,
+santahatofthief,bango-only-name,,1848,,Santa Hat of Thief,,G01,,,1,,,0,
+santapantsofknight,bango-only-name,,1836,,Santa Pants of Knight,,G01,,,1,,,0,
+santapantsofmagician,bango-only-name,,1841,,Santa Pants of Magician,,G01,,,1,,,0,
+santapantsofthief,bango-only-name,,1851,,Santa Pants of Thief,,G01,,,1,,,0,
+santaskirtofarcher,bango-only-name,,1846,,Santa Skirt of Archer,,G01,,,1,,,0,
+sasaeularmor,matched-name,7|8|441|442,6,SaSaEul Armor,SaSaEul Armor,G00|G08,G08,False,1,1,True,200|510,200,False
+sasaeulboots,matched-name,9|443,9,SaSaEul Boots,SaSaEul Boots,G00|G08,G08,False,1,1,True,110,110,True
+sasaeulgloves,matched-name,10|444,8,SaSaEul Gloves,SaSaEul Gloves,G00|G08,G08,False,1,1,True,50,50,True
+sasaeulhelmet,matched-name,11|445,7,SaSaEul Helmet,SaSaEul Helmet,G00|G08,G08,False,1,1,True,90,90,True
+sasaeulshorts,matched-name,12|446,10,SaSaEul Shorts,SaSaEul Shorts,G00|G08,G08,False,1,1,True,60,60,True
+saudiarabia,bango-only-name,,940,,Saudi Arabia,,,,,,,,0,
+savagetribesbigstick,matched-name,262,582,Savage Tribes Big Stick,Savage Tribe's Big Stick,G48,G48,True,45,45,True,0,0,True
+savagetribesbluechultaebow,matched-name,232,579,Savage Tribes Blue ChulTae Bow,Savage Tribe's Blue ChulTae Bow,G48,G48,True,45,45,True,0,0,True
+savagetribesbluechultaebowimperial,legacy-only-name,401,,Savage Tribes Blue ChulTae Bow (Imperial),,G48,,,45,,,0,,
+savagetribeschultaebow,matched-name,231,578,Savage Tribes ChulTae Bow,Savage Tribe's ChulTae Bow,G48,G48,True,45,45,True,0,0,True
+savagetribesdagger,matched-name,588,1418,Savage Tribes Dagger,Savage Tribe's dagger,G48,G48,True,45,45,True,,0,False
+savagetribesgiantsword,bango-only-name,,575,,Savage Tribe's Giant Sword,,G48,,,48,,,0,
+savagetribesgrandstick,matched-name,263,583,Savage Tribes Grand Stick,Savage Tribe's Grand Stick,G48,G48,True,45,45,True,0,0,True
+savagetribesgrandstickimperial,legacy-only-name,402,,Savage Tribes Grand Stick (Imperial),,G48,,,45,,,0,,
+savagetribesredchultaebow,matched-name,233,580,Savage Tribes Red ChulTae Bow,Savage Tribe's Red ChulTae Bow,G48,G48,True,45,45,True,0,0,True
+savagetribesreligiousstick,matched-name,261,581,Savage Tribes Religious Stick,Savage Tribe's Religious Stick,G48,G48,True,45,45,True,0,0,True
+savagetribestigerteethdagger,matched-name,589,1419,Savage Tribes Tiger Teeth Dagger,Savage Tribe's Tiger Teeth dagger,G48,G48,True,45,45,True,,0,False
+savagetribestigerteethdaggerimperial,legacy-only-name,605,,Savage Tribes Tiger Teeth Dagger (Imperial),,G48,,,48,,,,,
+savagetribestigerteethgiantsword,bango-only-name,,576,,Savage Tribe's Tiger Teeth Giant Sword,,G48,,,48,,,0,
+savagetribestigerteethsword,matched-name,190,573,Savage Tribes Tiger Teeth Sword,Savage Tribe's Tiger Teeth Sword,G48,G48,True,45,45,True,0,0,True
+savagetribestigerteethswordimperial,legacy-only-name,400,,Savage Tribes Tiger Teeth Sword (Imperial),,G48,,,45,,,0,,
+savagetribestreasuresword,matched-name,189,572,Savage Tribes Treasure Sword,Savage Tribe's Treasure Sword,G48,G48,True,45,45,True,0,0,True
+savagetribestruthgiantsword,bango-only-name,,577,,Savage Tribe's Truth Giant Sword,,G48,,,48,,,0,
+savagetribestruthsword,matched-name,191,574,Savage Tribes Truth Sword,Savage Tribe's Truth Sword,G48,G48,True,45,45,True,0,0,True
+savingscrolloflocation,bango-only-name,,509|1148|1290,,Saving Scroll of Location,,,,,,,,0,
+scaledarmorofdarkness,bango-only-name,,673,,Scaled Armor of Darkness,,G60,,,60,,,0,
+scaledarmorofdoggebi,matched-name,133|134,621|730|841|1504,Scaled Armor of Doggebi,Scaled Armor of Doggebi,G55,G55,True,51|55,55,False,0,0,True
+scaledbootsofdoggebi,legacy-only-name,135,,Scaled Boots of Doggebi,,G55,,,52,,,0,,
+scaledglovesofdarkness,bango-only-name,,675,,Scaled Gloves of Darkness,,G60,,,56,,,0,
+scaledglovesofdoggebi,matched-name,136,623|732|843|1506,Scaled Gloves of Doggebi,Scaled Gloves of Doggebi,G55,G55,True,51,51,True,0,0,True
+scaledhelmetofdarkness,bango-only-name,,674,,Scaled Helmet of  Darkness,,G60,,,58,,,0,
+scaledhelmetofdoggebi,matched-name,137,622|731|842|1505,Scaled Helmet of Doggebi,Scaled Helmet of Doggebi,G55,G55,True,53,53,True,0,0,True
+scaledshoesofdarkness,bango-only-name,,676,,Scaled Shoes of  Darkness,,G60,,,57,,,0,
+scaledshoesofdoggebi,bango-only-name,,624|733|844|1507,,Scaled Shoes of Doggebi,,G55,,,52,,,0,
+scaledshortsofdarkness,bango-only-name,,677,,Scaled Shorts of Darkness,,G60,,,59,,,0,
+scaledshortsofdoggebi,matched-name,138,625|734|845|1508,Scaled Shorts of Doggebi,Scaled Shorts of Doggebi,G55,G55,True,54,54,True,0,0,True
+scholarstrinket,bango-only-name,,204,,Scholar's Trinket,,,,,,,,0,
+scorpionshell,bango-only-name,,1776,,Scorpion Shell,,,,,,,,0,
+scorpionspoisonedneedle,bango-only-name,,1729,,Scorpions Poisoned needle,,,,,,,,0,
+scrollofaccuracyimprovement,bango-only-name,,528|603|1153,,Scroll of Accuracy Improvement,,,,,,,,0,
+scrollofanewstart,bango-only-name,,2604|2642,,Scroll of a New Start,,,,,,,,0,
+scrollofdamagereduction,bango-only-name,,525|599|1151,,Scroll of Damage Reduction,,,,,,,,0,
+scrollofevasionimprovement,bango-only-name,,529|605|1154,,Scroll of Evasion Improvement,,,,,,,,0,
+scrollofhighexplosiveblowimprovement,bango-only-name,,527,,Scroll of High Explosive Blow Improvement,,,,,,,,0,
+scrollofhighhpabsorption,bango-only-name,,540,,Scroll of High HP Absorption,,,,,,,,0,
+scrollofhighperfectdefense,bango-only-name,,532,,Scroll of High Perfect Defense,,,,,,,,0,
+scrollofhpabsorption,bango-only-name,,618|1156,,Scroll of HP Absorption,,,,,,,,0,
+scrollofinvincibility,bango-only-name,,1122|1176|1457,,Scroll of Invincibility,,,,,,,,0|110000|150000,
+scrollofjobchange,bango-only-name,,2605|2606,,Scroll of Job Change,,,,,,,,0,
+scrolloflevelup,bango-only-name,,2612,,Scroll of Level Up,,,,,,,,0,
+scrollofmediumhpabsorption,bango-only-name,,539,,Scroll of Medium HP Absorption,,,,,,,,0,
+scrollofmediumperfectdefense,bango-only-name,,531,,Scroll of Medium Perfect Defense,,,,,,,,0,
+scrollofmovingtotheleader,bango-only-name,,1123|1177,,Scroll of Moving to the Leader,,,,,,,,0|150000,
+scrollofnormalexplosiveblowimprovement,bango-only-name,,526,,Scroll of Normal Explosive Blow Improvement,,,,,,,,0,
+scrollofnormalhpabsorption,bango-only-name,,538,,Scroll of Normal HP Absorption,,,,,,,,0,
+scrollofnormalperfectdefense,bango-only-name,,530,,Scroll of Normal Perfect Defense,,,,,,,,0,
+scrollofperfectdefense,bango-only-name,,617|1155,,Scroll of Perfect Defense,,,,,,,,0,
+scrollofpowerimprovement,bango-only-name,,524|597|1150,,Scroll of Power Improvement,,,,,,,,0,
+scrollofrebirth,bango-only-name,,483,,Scroll of Rebirth,,,,,,,,0,
+scrollofthirdjob,bango-only-name,,2610,,Scroll of third job,,,,,,,,0,
+scrollofvalleyofdevah,bango-only-name,,2645,,Scroll of Valley of Devah,,,,,,,,0,
+seabream,bango-only-name,,444,,Sea-bream,,,,,,,,0,
+seabreamwithblood,matched-name,379,446,Sea Bream with Blood,Sea Bream with Blood,,,True,0,,False,,0,False
+sealedghosttroopsbead,bango-only-name,,214,,Sealed Ghost Troop's Bead,,,,,,,,0,
+sealedstonewithvillageheadmansspirit,bango-only-name,,1694,,Sealed Stone with Village Headman's Spirit,,,,,,,,0,
+sealedtalismanwithspirits,bango-only-name,,226,,Sealed Talisman with Spirits,,,,,,,,0,
+secondjobitemspack,bango-only-name,,2636,,Second Job Items Pack,,,,,,,,0,
+secondpieceofbronzemirror,matched-name,382,642,Second Piece of Bronze Mirror,Second Piece of Bronze Mirror,,,True,0,,False,,0,False
+secretdocument,bango-only-name,,1788,,Secret document,,,,,,,,0,
+secretletter,bango-only-name,,358,,Secret Letter,,,,,,,,0,
+secretletterofhongjun,bango-only-name,,340,,Secret Letter of Hong-Jun,,,,,,,,0,
+serbiaandmontenegro,bango-only-name,,919,,Serbia and Montenegro,,,,,,,,0,
+sesamericecake,bango-only-name,,870|2370,,sesame rice cake,,,,,,,,0,
+seventhpieceofbronzemirror,matched-name,387,647,Seventh Piece of Bronze Mirror,Seventh Piece of Bronze Mirror,,,True,0,,False,,0,False
+shad,bango-only-name,,2073,,Shad,,,,,,,,0,
+shaejagaparmor,matched-name,37|38,42,ShaeJaGap Armor,ShaeJaGap Armor,G24,G24,True,1,1,True,17.573|6.892,6892,False
+shaejagapboots,matched-name,39,45,ShaeJaGap Boots,ShaeJaGap Boots,G24,G24,True,1,1,True,3.790,3790,False
+shaejagapgloves,matched-name,40,44,ShaeJaGap Gloves,ShaeJaGap Gloves,G24,G24,True,1,1,True,1.723,1723,False
+shaejagaphood,matched-name,41,43,ShaeJaGap Hood,ShaeJaGap Hood,G24,G24,True,1,1,True,3.101,3101,False
+shaejagapshorts,matched-name,42,46,ShaeJaGap Shorts,ShaeJaGap Shorts,G24,G24,True,1,1,True,2.067,2067,False
+sheegeunsmessage,bango-only-name,,140,,Shee-Geun's Message,,,,,,,,0,
+shieldkite,bango-only-name,,1289,,Shield Kite,,,,,,,,0,
+shieldofdarkness,bango-only-name,,688,,Shield of Darkness,,G60,,,60,,,0,
+shoesofdarkness,bango-only-name,,681,,Shoes of Darkness,,G60,,,57,,,0,
+shoesofdoggebi,bango-only-name,,629|738|849|1207|1512,,Shoes of Doggebi,,G55,,,52,,,0,
+shortironsword,matched-name,174,1,Short Iron Sword,Short Iron Sword,G01,G01,True,1,1,True,4,4,True
+shortsofdarkness,matched-name,502|508|514,682,Shorts of Darkness,Shorts of Darkness,G90,G60,False,90,59,False,0,0,True
+shortsofdoggebi,matched-name,132,630|739|850|1208|1513,Shorts of Doggebi,Shorts of Doggebi,G55,G55,True,54,54,True,0,0,True
+shortsteelsword,matched-name,175,2,Short Steel Sword,Short Steel Sword,G05,G05,True,1,1,True,180,180,True
+sickle,bango-only-name,,1779,,Sickle,,,,,,,,0,
+silverkalcash,bango-only-name,,2608,,Silver KalCash,,,,,,,,0,
+silvermarble,bango-only-name,,2178,,Silver Marble,,,,,,,,0,
+silverpot,bango-only-name,,690,,Silver Pot,,,,,,,,0,
+singakdoosuklinarmor,matched-name,91|92,256,SinGak DooSukLin Armor,SinGak DooSukLin Armor,G46,G46,True,35|43,43,False,210.800|695.600,0,False
+singakdoosuklinboots,legacy-only-name,93,,SinGak DooSukLin Boots,,G46,,,37,,,102.400,,
+singakdoosuklingloves,matched-name,94,258,SinGak DooSukLin Gloves,SinGak DooSukLin Gloves,G46,G46,True,35,35,True,87.200,0,False
+singakdoosuklinhood,matched-name,95,257,SinGak DooSukLin Hood,SinGak DooSukLin Hood,G46,G46,True,39,39,True,117.200,0,False
+singakdoosuklinshoes,bango-only-name,,259,,SinGak DooSukLin Shoes,,G46,,,37,,,0,
+singakdoosuklinshorts,matched-name,96,260,SinGak DooSukLin Shorts,SinGak DooSukLin Shorts,G46,G46,True,41,41,True,178.000,0,False
+sipjundaebotang,bango-only-name,,144,,SipJunDaeBoTang,,,,,,,,0,
+sixpieceofbronzemirror,matched-name,386,646,Six Piece of Bronze Mirror,Six Piece of Bronze Mirror,,,True,0,,False,,0,False
+skeletonswiththepack,bango-only-name,,1774,,Skeletons with the pack,,,,,,,,0,
+skeletonwarriorshead,bango-only-name,,432,,Skeleton Warrior's Head,,,,,,,,0,
+skeletonwarriorsribs,bango-only-name,,433,,Skeleton Warrior's Ribs,,,,,,,,0,
+skillbookattackpowerup,bango-only-name,,1682,,Skill Book [Attack Power Up],,,,,60,,,0,
+skillbookbowmastery,bango-only-name,,1070,,Skill Book [Bow Mastery],,,,,60,,,0,
+skillbookconcentration,bango-only-name,,1074,,Skill Book [Concentration],,,,,60,,,0,
+skillbookcriticalhit,bango-only-name,,1065,,Skill Book [Critical Hit],,,,,60,,,0,
+skillbookdefense,bango-only-name,,1068,,Skill Book [Defense],,,,,60,,,0,
+skillbookdefensiveincantation6,bango-only-name,,1087,,Skill Book [Defensive incantation 6],,,,,60,,,0,
+skillbookdevinesuction,bango-only-name,,1089,,Skill Book [Devine Suction],,,,,75,,,0,
+skillbookfatalblow,bango-only-name,,1072,,Skill Book [Fatal Blow],,,,,60,,,0,
+skillbookincreasecriticaldamage,bango-only-name,,1688,,Skill Book [Increase Critical Damage],,,,,60,,,0,
+skillbookincreasecriticalrate,bango-only-name,,1686,,Skill Book [Increase Critical Rate],,,,,60,,,0,
+skillbookincreasetargetrate,bango-only-name,,1684,,Skill Book [Increase Target Rate],,,,,60,,,0,
+skillbookincreasingconcentration,bango-only-name,,1067,,Skill Book [Increasing Concentration],,,,,60,,,0,
+skillbookmagicmasteryfire,bango-only-name,,1082,,Skill Book [Magic Mastery  : Fire],,,,,60,,,0,
+skillbookmagicmasteryice,bango-only-name,,1080,,Skill Book [Magic Mastery : Ice],,,,,60,,,0,
+skillbookmagicmasterylightning,bango-only-name,,1078,,Skill Book [Magic Mastery : Lightning],,,,,60,,,0,
+skillbookmeditation,bango-only-name,,1084,,Skill Book [Meditation],,,,,60,,,0,
+skillbookperfectevasion,bango-only-name,,1076,,Skill Book [Perfect Evasion],,,,,60,,,0,
+skillbookrevival,bango-only-name,,1086,,Skill Book [Revival],,,,,60,,,0,
+skillbookweaponmastery,bango-only-name,,1063,,Skill Book [Weapon Mastery],,,,,60,,,0,
+smallboilingwater,matched-name,310,426,Small Boiling Water,Small Boiling Water,G56,G56,True,0,56,False,,822,False
+smallbrownemoogisteeth,bango-only-name,,1393,,Small Brown E-Moogi's teeth,,,,,,,,0,
+smallgreenbeancake,bango-only-name,,2376,,small green bean cake,,,,,,,,0,
+smallgreenemoogisteeth,bango-only-name,,1389,,Small Green E-Moogi's teeth,,,,,,,,0,
+smallironshield,matched-name,163,28,Small Iron Shield,Small Iron Shield,G10,G10,True,1,1,True,80,80,True
+smallmagicpotion,bango-only-name,,1318,,Small Magic Potion,,,,,,,,0,
+smallmedicine,matched-name,278,47,Small Medicine,Small Medicine,,,True,0,,False,70,20,False
+smallnaturalregenerationpotion,bango-only-name,,2070,,Small natural regeneration potion,,,,,,,,0,
+smallpotato,matched-name,281,399,Small Potato,Small Potato,G08,G08,True,0,8,False,,9,False
+smallrefiningwater,matched-name,306,422,Small Refining Water,Small Refining Water,G40,G40,True,0,40,False,,558,False
+smallsteelsword,matched-name,176,3,Small Steel Sword,Small Steel Sword,G09,G09,True,1,1,True,1.650,1650,False
+smallsweetpotato,matched-name,285,403,Small Sweet Potato,Small Sweet Potato,G24,G24,True,0,24,False,,45,False
+smallwaterofgeumohmountain,matched-name,298,414,Small Water of Geum-Oh Mountain,Small Water of Geum-Oh Mountain,G8,G08,False,0,8,False,,18,False
+smallwaterofgeumohvalley,matched-name,302,418,Small Water of Geum-Oh Valley,Small Water of Geum-Oh Valley,G24,G24,True,0,24,False,,216,False
+smilepumpkinhead,bango-only-name,,994|1009,,Smile Pumpkin Head,,G01,,,1,,,30000,
+smokedsalmon,bango-only-name,,269,,Smoked Salmon,,,,,,,,0,
+soorablooddragonsbow,bango-only-name,,1803,,Soo-Ra Blood Dragon's Bow,,G70,,,56,,,0,
+soorablooddragonsdagger,bango-only-name,,1804,,Soo-Ra Blood Dragon's Dagger,,G70,,,56,,,0,
+soorablooddragonsstick,bango-only-name,,1805,,Soo-Ra Blood Dragon's Stick,,G70,,,56,,,0,
+soorablooddragonssword,bango-only-name,,1801,,Soo-Ra Blood Dragon's Sword,,G70,,,56,,,0,
+sooradragongiantswordofsky,bango-only-name,,1807,,Soo-Ra Dragon Giant Sword of Sky,,G65,,,56,,,0,
+sooradragonsbowofsky,bango-only-name,,1808,,Soo-Ra Dragons Bow of Sky,,G65,,,56,,,0,
+sooradragonsdaggerofsky,bango-only-name,,1809,,Soo-Ra Dragons Dagger of Sky,,G65,,,56,,,0,
+sooradragonsgiantsword,bango-only-name,,1802,,Soo-Ra Dragon's Giant Sword,,G70,,,56,,,0,
+sooradragonsstickofsky,bango-only-name,,1810,,Soo-Ra Dragons Stick of Sky,,G65,,,56,,,0,
+sooradragonswordofsky,bango-only-name,,1806,,Soo-Ra Dragon Sword of Sky,,G65,,,56,,,0,
+sooraprotectiontalisman,bango-only-name,,1812,,Soo-Ra Protection Talisman,,,,,56,,,0,
+sooraring,bango-only-name,,1811,,Soo-Ra Ring,,,,,56,,,0,
+sooratrinket,bango-only-name,,1813,,Soo-Ra Trinket,,,,,56,,,0,
+sooryunsletter,bango-only-name,,1714,,Soo-Ryun's Letter,,,,,,,,0,
+soowooganggakbow,matched-name,223,63,SooWoo GangGak Bow,SooWoo GangGak Bow,G29,G29,True,1,1,True,27.120,27120,False
+soowooyeongakbow,matched-name,221,62,SooWoo YeonGak Bow,SooWoo YeonGak Bow,G21,G21,True,1,1,True,10.826,10826,False
+spain,bango-only-name,,937,,Spain,,,,,,,,0,
+speedupmedicine,bango-only-name,,447,,Speed up Medicine,,,,,,,,0,
+spiritofdoggebiofmonsterface,bango-only-name,,449,,Spirit of Doggebi of Monster Face,,,,,,,,0,
+spiritofdoggebiwithagong,bango-only-name,,450,,Spirit of Doggebi with a Gong,,,,,,,,0,
+spiritofdoggebiwithamaskofblackcrow,bango-only-name,,452,,Spirit of Doggebi with a Mask of Black Crow,,,,,,,,0,
+spiritofdoggebiwithamaskofblackpanther,bango-only-name,,453,,Spirit of Doggebi with a Mask of Black Panther,,,,,,,,0,
+spiritofdrunkendoggebi,bango-only-name,,451,,Spirit of Drunken Doggebi,,,,,,,,0,
+spiritofgiantdoggebi,bango-only-name,,454,,Spirit of Giant Doggebi,,,,,,,,0,
+spiritofguardianofdoggebi,bango-only-name,,455,,Spirit of Guardian of Doggebi,,,,,,,,0,
+statue,bango-only-name,,160,,Statue,,,,,,,,0,
+statueofblackcrow,bango-only-name,,185,,Statue of Black Crow,,,,,,,,0,
+steelarmor,matched-name,61|62,49,Steel Armor,Steel Armor,G32,G32,True,1,1,True,28.629|73.002,28629,False
+steelarmorboots,matched-name,63,52,Steel Armor Boots,Steel Armor Boots,G32,G32,True,1,1,True,15.745,15745,False
+steelarmorgloves,matched-name,64,51,Steel Armor Gloves,Steel Armor Gloves,G32,G32,True,1,1,True,7.157,7157,False
+steelarmorhelmet,matched-name,65,50,Steel Armor Helmet,Steel Armor Helmet,G32,G32,True,1,1,True,12.883,12883,False
+steelarmorshorts,matched-name,66,53,Steel Armor Shorts,Steel Armor Shorts,G32,G32,True,1,1,True,8.588,8588,False
+steelbow,matched-name,234,245,Steel Bow,Steel Bow,G50,G50,True,50,50,True,0,0,True
+steelbowwithcrowfeatherimperial,legacy-only-name,405,,Steel Bow with Crow Feather (Imperial),,G50,,,50,,,0,,
+steelbowwithcrowsfeather,matched-name,235,246,Steel Bow with Crows Feather,Steel Bow with Crow's Feather,G50,G50,True,50,50,True,0,0,True
+steelbowwithgoldencrowsfeather,matched-name,236,247,Steel Bow with Golden Crows Feather,Steel Bow with Golden Crow's Feather,G50,G50,True,50,50,True,0,0,True
+steeldagger,matched-name,577,1406,Steel Dagger,Steel dagger,G09,G09,True,1,1,True,,1650,False
+steeldaggerwithpatternofleaf,matched-name,582,1412,Steel Dagger with Pattern of Leaf,Steel dagger with Pattern of Leaf,G33,G33,True,1,1,True,,39560,False
+steelsvigorous,legacy-only-name,321,,"""Steels"" / ""Vigorous""",,,,,0,,,,,
+steelsword,matched-name,179,59,Steel Sword,Steel Sword,G21,G21,True,1,1,True,10.826,10826,False
+steelyablaze,legacy-only-name,343,,"""Steely"" / ""Ablaze""",,,,,0,,,,,
+stickofdarkness,bango-only-name,,2617,,Stick of Darkness,,G62,,,60,,,0,
+stickofdoggebi,matched-name,273,593|754|865|1227,Stick of Doggebi,Stick of Doggebi,G59,G59,True,59,59,True,0,0,True
+stickofdoggebilord,matched-name,275,595|756|867|1229,Stick of Doggebi Lord,Stick of Doggebi Lord,G59,G59,True,59,59,True,0,0,True
+stickofhighclassdoggebi,matched-name,274,594|755|866|1228,Stick of High Class Doggebi,Stick of High Class Doggebi,G59,G59,True,59,59,True,0,0,True
+stickofhighclassdoggebiimperial,legacy-only-name,418,,Stick of High Class Doggebi (Imperial),,G59,,,59,,,0,,
+stickwithblackcrowsfeather,matched-name,264,248,Stick with Black Crows Feather,Stick with Black Crow's Feather,G50,G50,True,50,50,True,0,0,True
+stickwithbluecrowsfeather,matched-name,266,250,Stick with Blue Crows Feather,Stick with Blue Crow's Feather,G50,G50,True,50,50,True,0,0,True
+stickwithbluecrowsfeatherimperial,legacy-only-name,406,,Stick with Blue Crows Feather (Imperial),,G50,,,50,,,0,,
+stoneofbirth,bango-only-name,,361|1157,,Stone of Birth,,,,,,,,0,
+stoneofchance,matched-name,380,362|1158,Stone of Chance,Stone of Chance,,,True,0,,False,,0,False
+stoneofdemonsblood,matched-name,433,905|1167,Stone of Demons Blood,Stone of Demon's Blood,,,True,0,,False,,0,False
+stoneofexp15days,bango-only-name,,471|1139,,Stone of EXP - 15 days,,,,,,,,0,
+stoneofexp1day,bango-only-name,,469|1169|1294,,Stone of EXP - 1 day,,,,,,,,0,
+stoneofexp30days,bango-only-name,,472,,Stone of EXP - 30 days,,,,,,,,0,
+stoneofexp7days,bango-only-name,,470,,Stone of EXP - 7 days,,,,,,,,0,
+stoneofexpforancientanimal15day,bango-only-name,,1986,,Stone of EXP for Ancient Animal (15 day),,,,,,,,0,
+stoneoffishery15days,bango-only-name,,479|1141,,Stone of Fishery - 15 days,,,,,,,,0,
+stoneoffishery1day,bango-only-name,,477,,Stone of Fishery - 1 day,,,,,,,,0,
+stoneoffishery30days,bango-only-name,,480,,Stone of Fishery - 30 days,,,,,,,,0,
+stoneoffishery7days,bango-only-name,,478,,Stone of Fishery - 7 days,,,,,,,,0,
+stoneofflame,matched-name,425,897,Stone of Flame,Stone of Flame,,,True,0,,False,,0,False
+stoneofholy,matched-name,424,896,Stone of Holy,Stone of Holy,,,True,0,,False,,0,False
+stoneofice,matched-name,426,898,Stone of Ice,Stone of Ice,,,True,0,,False,,0,False
+stoneofjob,bango-only-name,,657,,Stone of Job,,,,,,,,0,
+stoneoflightening,matched-name,427,899,Stone of Lightening,Stone of Lightening,,,True,0,,False,,0,False
+stoneofmystery,matched-name,432,904|1166,Stone of Mystery,Stone of Mystery,,,True,0,,False,,0,False
+stoneofparalysis,bango-only-name,,901,,Stone of Paralysis,,,,,,,,0,
+stoneofparalyzis,legacy-only-name,429,,Stone of Paralyzis,,,,,0,,,,,
+stoneofpoison,matched-name,428,900,Stone of Poison,Stone of Poison,,,True,0,,False,,0,False
+stoneofrevision,bango-only-name,,517,,Stone of Revision,,,,,,,,0,
+stoneofshadow,matched-name,423,895,Stone of Shadow,Stone of Shadow,,,True,0,,False,,0,False
+stoneofskill,matched-name,431,903,Stone of Skill,Stone of Skill,,,True,0,,False,,0,False
+stoneofstrength,matched-name,430,902,Stone of Strength,Stone of Strength,,,True,0,,False,,0,False
+stoneofwealth15days,bango-only-name,,475|1140,,Stone of Wealth - 15 days,,,,,,,,0,
+stoneofwealth1day,bango-only-name,,473|1170|1295,,Stone of Wealth - 1 day,,,,,,,,0,
+stoneofwealth30days,bango-only-name,,476,,Stone of Wealth - 30 days,,,,,,,,0,
+stoneofwealth7days,bango-only-name,,474,,Stone of Wealth - 7 days,,,,,,,,0,
+strawricebag,bango-only-name,,151,,Straw Rice Bag,,,,,,,,0,
+strengtheningmagicscroll,bango-only-name,,1456|1460,,Strengthening Magic Scroll,,,,,,,,0,
+string,bango-only-name,,1285,,String,,,,,,,,0,
+strongestmansforced,legacy-only-name,351,,"""Strongest Mans"" / ""Forced""",,,,,0,,,,,
+strongmansforced,legacy-only-name,350,,"""Strong Mans"" / ""Forced""",,,,,0,,,,,
+sublimesharp,legacy-only-name,326,,"""Sublime"" / ""Sharp""",,,,,0,,,,,
+suicidebombersoil,bango-only-name,,148,,Suicide Bomber's Oil,,,,,,,,0,
+suitofarmor,bango-only-name,,1777,,Suit of armor.,,,,,,,,0,
+supportsofwhitetigercannon,bango-only-name,,766,,Supports of White Tiger Cannon,,,,,,,,0,
+sweden,bango-only-name,,915,,Sweden,,,,,,,,0,
+sweetpotato,matched-name,286,404,Sweet Potato,Sweet Potato,G28,G28,True,0,28,False,,57,False
+switzerland,bango-only-name,,934,,Switzerland,,,,,,,,0,
+swordofdarkness,bango-only-name,,2614,,Sword of Darkness,,G62,,,60,,,0,
+swordofthechiefdefender,bango-only-name,,1496,,Sword of the Chief Defender,,,,,,,,0,
+swordpumpkinhead,bango-only-name,,995|1010,,Sword Pumpkin Head,,G01,,,1,,,30000,
+t,bango-only-name,,1107,,[ T ],,,,,,,,0,
+taewoonganggakbow,matched-name,224,64,TaeWoon GangGak Bow,TaeWoon GangGak Bow,G33,G33,True,1,1,True,39.560,39560,False
+tailofdesertscorpion,bango-only-name,,2089,,Tail of Desert Scorpion,,,,,,,,0,
+talismanofaccuracy,matched-name,374,220,Talisman of Accuracy,Talisman of Accuracy,,,True,0,,False,,0,False
+talismanofattack,matched-name,372,218,Talisman of Attack,Talisman of Attack,,,True,0,,False,,4500,False
+talismanofdefense,matched-name,375,221,Talisman of Defense,Talisman of Defense,,,True,0,,False,,0,False
+talismanofevasion,bango-only-name,,222,,Talisman of Evasion,,,,,,,,0,
+talismanofintensification,bango-only-name,,278|279|280|281|282|286|287|288|289|290|294|295|296|297|298|302|303|304|305|306|310|311|312|313|314|315|316|317|318|327|328|329|330|331|332|523,,Talisman of Intensification,,,,,,,,0,
+talismanofmagic,matched-name,373,219,Talisman of Magic,Talisman of Magic,,,True,0,,False,,4500,False
+talismanofprotection,bango-only-name,,319|320|321|322|323|324|325|326,,Talisman of Protection,,,,,,,,0,
+talismanofpurification,bango-only-name,,217,,Talisman of Purification,,,,,,,,0,
+talismanoftransmigration,bango-only-name,,1611|1667,,Talisman of Transmigration,,,,,,,,0,
+talismanofwonder,bango-only-name,,275|276|277|283|284|285|291|292|293|299|300|301|307|308|309|1816|1817|1818|1819|1820,,Talisman of Wonder,,,,,,,,0,
+tastyeelskewer,bango-only-name,,2077,,Tasty eel skewer,,G70,,,70,,,0,
+teleportscroll,bango-only-name,,1540|1541,,Teleport Scroll ,,,,,,,,0,
+thecaveofthegiantbirddemonshead,bango-only-name,,1371,,The Cave of The Giant Bird Demon's Head,,,,,,,,0,
+thekingguhbalhansrash,legacy-only-name,348,,"""The King, GuhBalHans"" / ""Rash""",,,,,0,,,,,
+thepurifiedelementoffire,bango-only-name,,1466,,the purified element of fire,,,,,,,,0,
+thepurifiedelementofground,bango-only-name,,1470,,the purified element of ground,,,,,,,,0,
+thepurifiedelementofiron,bango-only-name,,1469,,the purified element of iron,,,,,,,,0,
+thepurifiedelementofwater,bango-only-name,,1467,,the purified element of water,,,,,,,,0,
+thepurifiedelementofwood,bango-only-name,,1468,,the purified element of wood,,,,,,,,0,
+theroyaltobmkeepersfirstcertificate,bango-only-name,,1380,,The Royal Tobm Keeper's first certificate,,,,,,,,0,
+theroyaltobmkeeperssecondcertificate,bango-only-name,,1382,,The Royal Tobm Keeper's second certificate,,,,,,,,0,
+thirdjobitemspack,bango-only-name,,2637,,Third Job Items Pack,,,,,,,,0,
+thirdpieceofbronzemirror,matched-name,383,643,Third Piece of Bronze Mirror,Third Piece of Bronze Mirror,,,True,0,,False,,0,False
+tiger,legacy-only-name,461|462|463|464,,Tiger,,G11|G21|G31|G41,,,11|21|31|41,,,,,
+tigermeatofgeumohmountain,matched-name,296,413,Tiger Meat of Geum-Oh Mountain,Tiger Meat of Geum-Oh Mountain,G64,G64,True,0,64,False,,201,False
+tilethesouthgaterestorationevent,bango-only-name,,1322,,Tile (The South Gate Restoration Event),,,,,,,,0,
+togo,bango-only-name,,935,,Togo,,,,,,,,0,
+trainedtraitorwarriorstalisman,bango-only-name,,1388,,Trained Traitor Warrior's Talisman,,,,,,,,0,
+trainingdagger,bango-only-name,,1404,,training dagger,,G01,,,1,,,4,
+traitorwarriorstalisman,bango-only-name,,1385,,Traitor Warrior's Talisman,,,,,,,,0,
+treasuresword,bango-only-name,,1734,,Treasure Sword,,,,,,,,0,
+treasureswordofdoggebi,matched-name,210,584|745|856|1218,Treasure Sword of Doggebi,Treasure Sword of Doggebi,G59,G59,True,59,59,True,0,0,True
+treasureswordofdoggebilord,matched-name,212,586|747|858|1220,Treasure Sword of Doggebi Lord,Treasure Sword of Doggebi Lord,G59,G59,True,59,59,True,0,0,True
+treasureswordofhighclassdoggebi,matched-name,211,585|746|857|1219,Treasure Sword of High Class Doggebi,Treasure Sword of High Class Doggebi,G59,G59,True,59,59,True,0,0,True
+treasureswordofhighclassdoggebiimperial,legacy-only-name,415,,Treasure Sword of High Class Doggebi (Imperial),,G59,,,59,,,0,,
+tricoloreddrink,bango-only-name,,2173|2366,,Tri-Colored Drink,,,,,,,,0,
+trinidadandtobago,bango-only-name,,916,,Trinidad and Tobago,,,,,,,,0,
+trinitynecklace,bango-only-name,,2463,,Trinity Necklace,,G60,,,,,,0,
+trinket,matched-name,378,205,Trinket,Trinket,G0,,False,0,,False,,0,False
+truefirmamentalpillar,bango-only-name,,1455|1459,,True Firmamental Pillar,,,,,,,,0,
+tunisia,bango-only-name,,939,,Tunisia,,,,,,,,0,
+turkeymeat,bango-only-name,,1031,,Turkey meat,,,,,,,,0,
+twistedbrownemoogisteeth,bango-only-name,,1397,,Twisted Brown E-Moogi's teeth,,,,,,,,0,
+twisteddemondefendershead,bango-only-name,,1403,,Twisted Demon Defender's head,,,,,,,,0,
+twisteddemonguardershead,bango-only-name,,1399,,Twisted Demon Guarder's head,,,,,,,,0,
+twisteddemonpatrolshead,bango-only-name,,1400,,Twisted Demon Patrol's head,,,,,,,,0,
+twisteddemonsoldiershead,bango-only-name,,1402,,Twisted Demon Soldier's head,,,,,,,,0,
+twisteddemonwarriorshead,bango-only-name,,1401,,Twisted Demon Warrior's head,,,,,,,,0,
+twistedgreenemoogisteeth,bango-only-name,,1395,,Twisted Green E-Moogi's teeth,,,,,,,,0,
+u,bango-only-name,,956,,[ U ],,,,,,,,0,
+ukraine,bango-only-name,,938,,Ukraine,,,,,,,,0,
+unitedstatesofamerica,bango-only-name,,927,,United States of America,,,,,,,,0,
+unlimitedinstant,legacy-only-name,336,,"""Unlimited"" / ""Instant""",,,,,0,,,,,
+unresolveditemname3320,bango-only-name,,2252,,<unresolved itemname:3320>,,,,,,,,0,
+unresolveditemname3321,bango-only-name,,2253,,<unresolved itemname:3321>,,,,,,,,0,
+unresolveditemname3322,bango-only-name,,2254,,<unresolved itemname:3322>,,,,,,,,0,
+unresolveditemname3323,bango-only-name,,2255,,<unresolved itemname:3323>,,,,,,,,0,
+unresolveditemname758,bango-only-name,,558,,<unresolved itemname:758>,,,,,,,,200,
+unresolveditemname759,bango-only-name,,559,,<unresolved itemname:759>,,,,,,,,200,
+unresolveditemname854,bango-only-name,,654,,<unresolved itemname:854>,,,,,,,,0,
+unresolveditemname855,bango-only-name,,655,,<unresolved itemname:855>,,,,,,,,0,
+unresolveditemname856,bango-only-name,,656,,<unresolved itemname:856>,,,,,,,,0,
+upgradedmodeloftower,bango-only-name,,1028|1035|1171|1458,,Upgraded Model of Tower,,,,,,,,0|20000|40000,
+urgentletter,bango-only-name,,1782,,Urgent letter,,,,,,,,0,
+v,bango-only-name,,1108,,[ V ],,,,,,,,0,
+valleyofdevahitemspack,bango-only-name,,2644,,Valley of Devah Items Pack,,,,,,,,0,
+vegetableskewer,bango-only-name,,2176,,Vegetable Skewer,,,,,,,,0,
+vitalhealthy,legacy-only-name,353,,"""Vital"" / ""Healthy""",,,,,0,,,,,
+warleadersconfirmatory,legacy-only-name,328,,"""War Leaders"" / ""Confirmatory""",,,,,0,,,,,
+waryustalisman,bango-only-name,,156,,Wa-Ryu's Talisman,,,,,,,,0,
+waterbag,bango-only-name,,1736,,Water Bag,,,,,,,,0,
+watermelon,bango-only-name,,370,,Water Melon,,G48,,,48,,,0,
+whitebeastofdemoncracktroopshead,bango-only-name,,1394,,White Beast of Demon Crack Troop's head	,,,,,,,,0,
+whitedaechangeau,matched-name,121,382|725|836,White DaeChangEau,White DaeChangEau,G50,G50,True,46,50,False,0,0,True
+whitedaechangeauboots,legacy-only-name,123,,White DaeChangEau Boots,,G50,,,47,,,0,,
+whitedaechangeauclothes,legacy-only-name,122,,White DaeChangEau Clothes,,G50,,,50,,,0,,
+whitedaechangeaugloves,matched-name,124,384|727|838,White DaeChangEau Gloves,White DaeChangEau Gloves,G50,G50,True,46,46,True,0,0,True
+whitedaechangeauhairdecoration,matched-name,125,383|726|837,White DaeChangEau Hair Decoration,White DaeChangEau Hair Decoration,G50,G50,True,48,48,True,0,0,True
+whitedaechangeaushoes,bango-only-name,,385|728|839,,White DaeChangEau Shoes,,G50,,,47,,,0,
+whitedaechangeaushorts,matched-name,126,386|729|840,White DaeChangEau Shorts,White DaeChangEau Shorts,G50,G50,True,49,49,True,0,0,True
+whitehwandoobigsword,matched-name,185,101,White HwanDoo Big Sword,White HwanDoo Big Sword,G40,G40,True,1,1,True,0,0,True
+whitepeony,bango-only-name,,153,,White Peony,,,,,,,,0,
+widerangepullscroll,bango-only-name,,2630,,Wide Range Pull Scroll,,,,,,,,0,
+wildboarchopofmeat,bango-only-name,,1718,,Wild Boar Chop of Meat,,,,,,,,0,
+wildboarfur,bango-only-name,,2647,,Wild Boar Fur,,,,,,,,0,
+wildboarshead,bango-only-name,,1790,,Wild Boar's Head,,,,,,,,0,
+wildboarshorn,bango-only-name,,1783,,Wild Boar's horn,,,,,,,,0,
+wilddemonsoldiershead,bango-only-name,,176,,Wild Demon Soldier's Head,,,,,,,,0,
+wisdomsfixed,legacy-only-name,366,,"""Wisdoms"" / ""Fixed""",,,,,0,,,,,
+wisefictional,legacy-only-name,357,,"""Wise"" / ""Fictional""",,,,,0,,,,,
+wolfcommanderhead,bango-only-name,,1775,,Wolf Commander Head,,,,,,,,0,
+wolffur,bango-only-name,,1740,,Wolf Fur,,,,,,,,0,
+wolftoothnecklace,bango-only-name,,209,,Wolf Tooth Necklace,,,,,,,,0,
+wonjungsletter,bango-only-name,,136,,Won-Jung's Letter,,,,,,,,0,
+woodencampmentbuilding,bango-only-name,,1325,,Wood(Encampment Building),,,,,,,,20000,
+worshipfulsharp,legacy-only-name,319,,"""Worshipful"" / ""Sharp""",,,,,0,,,,,
+wreath,bango-only-name,,1025,,Wreath,,,,,,,,0,
+y,bango-only-name,,1109,,[ Y ],,,,,,,,0,
+yaejinsletter,bango-only-name,,137,,Yae-Jin's Letter,,,,,,,,0,
+yellowtigerpatterngakbow,matched-name,226,106,Yellow Tiger Pattern Gak Bow,Yellow Tiger Pattern Gak Bow,G40,G40,True,1,1,True,159.092,0,False
+yeongakbow,matched-name,219,25,YeonGak Bow,YeonGak Bow,G13,G13,True,1,1,True,3.120,3120,False
+yeonghwahwandoostick,matched-name,253,97,YeongHwaHwanDoo Stick,YeongHwaHwanDoo Stick,G29,G29,True,1,1,True,27.120,27120,False
+yeonhwangbow,matched-name,220,26,YeonHwang Bow,YeonHwang Bow,G17,G17,True,1,1,True,6.973,6973,False
+yeonlinsteelbow,matched-name,230,110,Yeon Lin Steel Bow,Yeon Lin Steel Bow,G45,G45,True,40,40,True,0,0,True
+yeonlinsteelbowimperial,legacy-only-name,398,,Yeon Lin Steel Bow (Imperial),,G45,,,40,,,0,,
+yooansletter,bango-only-name,,138,,Yoo-An's Letter,,,,,,,,0,
+yunhwasletter,bango-only-name,,1715,,Yun-Hwa's Letter,,,,,,,,0,
+zamogeon,bango-only-name,,31,,Zamogeon,,,,,,,,0,
+zilpoongshinrhoe,bango-only-name,,1596,,ZilPoongShinRhoe,,,,,,,,0,

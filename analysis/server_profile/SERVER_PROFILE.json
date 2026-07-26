@@ -1,0 +1,13 @@
+{
+ "note": "Server-specific rates for Rafael's Bango server. Edit the numbers here, not the site. The site reads this file at run time and every derived table follows it.",
+ "server_name": "Bango",
+ "experience_rate": 1,
+ "experience_rate_confirmed": false,
+ "drop_rate_multiplier": 1,
+ "drop_rate_multiplier_confirmed": false,
+ "geons_rate": 1,
+ "geons_rate_confirmed": false,
+ "egg_experience_per_day": 4800,
+ "egg_experience_per_day_confirmed": false,
+ "source": "KalEncyclopedia baseline (2011). Nothing here has been measured on Bango yet; every *_confirmed flag stays false until it is, and the site labels unconfirmed rates rather than presenting them as fact."
+}

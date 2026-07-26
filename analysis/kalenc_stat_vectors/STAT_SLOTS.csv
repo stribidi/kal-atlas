@@ -1,0 +1,28 @@
+slot_index,stat_name,provenance,source
+0,Strength,kalencyclopedia-assembly,modGlobal::strStats
+1,Health,kalencyclopedia-assembly,modGlobal::strStats
+2,Intelligence,kalencyclopedia-assembly,modGlobal::strStats
+3,Wisdom,kalencyclopedia-assembly,modGlobal::strStats
+4,Agility,kalencyclopedia-assembly,modGlobal::strStats
+5,HP,kalencyclopedia-assembly,modGlobal::strStats
+6,MP,kalencyclopedia-assembly,modGlobal::strStats
+7,PDMin,kalencyclopedia-assembly,modGlobal::strStats
+8,PDMax,kalencyclopedia-assembly,modGlobal::strStats
+9,MDMin,kalencyclopedia-assembly,modGlobal::strStats
+10,MDMax,kalencyclopedia-assembly,modGlobal::strStats
+11,OTP,kalencyclopedia-assembly,modGlobal::strStats
+12,Evasion,kalencyclopedia-assembly,modGlobal::strStats
+13,Defense,kalencyclopedia-assembly,modGlobal::strStats
+14,Absorb,kalencyclopedia-assembly,modGlobal::strStats
+15,Fire,kalencyclopedia-assembly,modGlobal::strStats
+16,Ice,kalencyclopedia-assembly,modGlobal::strStats
+17,Lightening,kalencyclopedia-assembly,modGlobal::strStats
+18,NonElemental,kalencyclopedia-assembly,modGlobal::strStats
+19,Curse,kalencyclopedia-assembly,modGlobal::strStats
+20,Flame dmg,kalencyclopedia-assembly,modGlobal::strStats
+21,Ice dmg,kalencyclopedia-assembly,modGlobal::strStats
+22,Lightning dmg,kalencyclopedia-assembly,modGlobal::strStats
+23,Poison dmg,kalencyclopedia-assembly,modGlobal::strStats
+24,Paralyzis,kalencyclopedia-assembly,modGlobal::strStats
+25,HP%,kalencyclopedia-assembly,modGlobal::strStats
+26,Mana%,kalencyclopedia-assembly,modGlobal::strStats

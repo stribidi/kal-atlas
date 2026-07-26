@@ -1,0 +1,103 @@
+pre_azon,pre_name,pre_rev,pre_grd
+1,"Forced","1",0
+2,"Unlawful","2",0
+3,"Harsh","3",0
+4,"Strong mans","4",0
+5,"Strongest mans","5",0
+6,"Melees","6",0
+7,"Bloody fights","7",0
+8,"Slaughterous","8",0
+9,"Barbaric","9",0
+10,"Invincible","10",0
+11,"Healthy","|1",0
+12,"Vigorous","|2",0
+13,"Heroic","|3",0
+14,"Vital","|4",0
+15,"Ablaze","|5",0
+16,"Iron legs","|6",0
+17,"Steels","|7",0
+18,"Limitable","|8",0
+19,"Infinitely","|9",0
+20,"Diamond","|10",0
+21,"Fictional","||1",0
+22,"Sharp","||2",0
+23,"Keen","||3",0
+24,"Ordinary","||4",0
+25,"Wise","||5",0
+26,"Mystic","||6",0
+27,"Worshipful","||7",0
+28,"Sublime","||8",0
+29,"Pure","||9",0
+30,"Absolute","||10",0
+31,"Fixed","|||1",0
+32,"Confirmatory","|||2",0
+33,"Celebrated","|||3",0
+34,"Dignified","|||4",0
+35,"Merciful","|||5",0
+36,"Predictive","|||6",0
+37,"Foreseeable","|||7",0
+38,"Noble","|||8",0
+39,"Reverent","|||9",0
+40,"Paradoxic","|||10",0
+41,"Agile","||||1",0
+42,"Reflective","||||2",0
+43,"Instant","||||3",0
+44,"Flexible","||||4",0
+45,"Dashy","||||5",0
+46,"Rush","||||6",0
+47,"Fierce","||||7",0
+48,"Flashy","||||8",0
+49,"Unlimited","||||9",0
+50,"Gliding","||||10",0
+51,"Heavy blows","||||||||4",1
+52,"Powerful","|||||||2|2",1
+53,"Explosive","||||||||6",1
+54,"Fierc","|||||||3|3",1
+55,"Exterminable","||||||||8",2
+56,"Feathery","|2|||1",1
+57,"Mans","1|2",1
+58,"Extreme","||||||||12",1
+59,"Destructive","||||||||14",2
+60,"Fundamental","||||||||||4",1
+61,"Powerfull","|||||||||2|2",1
+62,"Mighty","||||||||||6",1
+63,"Considerable","|||||||||3|3",1
+64,"Cruel","||||||||||8",1
+65,"Wisdoms","|2|1",1
+66,"High class","||||||||||12",1
+67,"Absoluteness","||||||||||14",2
+68,"Wandering Knights","1|1|||1||||1",0
+69,"Skillful Knights","2|2|||1|||1|2",1
+70,"Veteran  Knights","3|2|||2|50||2|3",1
+71,"Expert Knights","4|3|||3|75|25|2|5",2
+72,"Wandering Archers","1|1|||1||||1",0
+73,"Skillful Archers","2|1|||2|||1|2",1
+74,"Veteran  Archers","2|2|||3|50||2|3",1
+75,"Expert Archers","3|3|||4|75|25|2|5",2
+76,"Beginning Scholars","||1|1|||||||1",0
+77,"Skillful Scholars","||1|2|1|||||1|2",1
+78,"Veteran Scholars","||3|2|2|50||||2|3",1
+79,"Expert Scholars","||4|3|3|50|50|||2|5",2
+80,"Distinct","|2|3|5|2|90|110|||||||2",3
+81,"Steely","2|5||2|3|150||||||||5",
+82,"Breakthroughs","5|2||2|3|100|100|||||1",3
+83,"Despotic","2|1||||||||||1",1
+84,"Revenges","|||1|2|||||||1",1
+85,"Prideful","|2|||1|60||||||||1",1
+86,"Ruinous","|1|2||||30|||||||2",1
+87,"Glorious","|||2|1||30|||||||2",1
+88,"Decisional","3|2||2|5|120|80|||||||2",3
+89,"Magical Powers","|2|5|3|2|50|150|||||||2",3
+90,"Legendary","5|5|5|5|5|75|75|||||||5",3
+91,"Rash","|||||360||||||||3",1
+92,"The King, GuhBalHans","6|6|6|6|6|100|80|||||||5",3
+93,"Excessiveness","3||||3",0
+94,"Vigor","3|3",0
+95,"Explosion","3||3",0
+96,"Courage","3|||3",0
+97,"Wisdom","||3|3",0
+98,"Knowledge","|3|3",0
+99,"Quickness","||3||3",0
+100,"Meditation","|||3|3",0
+101,"Maturity","|3|||3",0
+102,"Sage","|3||3",0

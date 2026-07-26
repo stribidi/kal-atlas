@@ -1,0 +1,5 @@
+ability_key,name,range,record_json,provenance,source_file,source_line
+0,Ancient Tiger,28,"[""shinsu_ability"",[""key"",""0""],[""name"",""Ancient Tiger""],[""range"",""28""]]",bango-file,jobsystem.dat,5543
+4,Ancient Panther,28,"[""shinsu_ability"",[""key"",""4""],[""name"",""Ancient Panther""],[""range"",""28""]]",bango-file,jobsystem.dat,5549
+6,Ancient Bird,28,"[""shinsu_ability"",[""key"",""6""],[""name"",""Ancient Bird""],[""range"",""28""]]",bango-file,jobsystem.dat,5555
+8,ZilPoongShinRhoe,28,"[""shinsu_ability"",[""key"",""8""],[""name"",""ZilPoongShinRhoe""],[""range"",""28""]]",bango-file,jobsystem.dat,5561

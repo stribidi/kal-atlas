@@ -1,0 +1,357 @@
+que_id,que_type,que_lvl,que_name,que_monst,que_item,que_text,que_rew,que_pic1,que_pic2,que_pic3
+"00","Event",15,"Ancients Animals","Naughty Doggebi","Keg Talisman from Chang","1. Talk to Take Care of Ancient Animals by Chang (Narooth - 8)
+2. Hunt monsters
+3. Give Talizman to Chang (Narooth - 8)","One of the Ancient Animals",32,-1,1
+"01","Event",1,"Beginning of Long Journey","Demons Plungerer","Stirrup","1. Talk to Chun-Sooin (Narooth - 9)
+2. Hunt monsters
+3. Give Stirrup to Chun-Sooin (Narooth - 9)","+100 XP",22,-1,1
+"01","Quest",1,"Favor of Sailor Gwang-Chun","-","Gwan-ChunZs Message","1. Talk to Gwang-Chun (Narooth - 26)
+2. Give Message to Nu-Rook (Cargo Station - 3)
+3. Go back to Gwang-Chun (Narooth - 26)","+200 geon, 2 small medicine",0,-1,1
+"01","RQ",10,"Big Handed Inhabitants dead body","Big Handed Inhabitant and Slaves","25 Head of Big Handed",,"+ 1.110 XP",24,-1,0
+"02","Event",1,"Appointment of General In-Pill /a","Demon Escort Soldier & Archer","30 Demon Escort HeadZs","1. Talk to Sae-Ryu (Narooth - 27)
+2. Hunt monsters
+3. Go back to Sae-Ryu (Narooth - 27)","+200 XP",23,-1,1
+"02","Quest",1,"Message Collection","Demon SpearHead","Sea-GeunZs Message","1. Talk to Sea-Geun (Narooth - 6)
+2. Hunt monsters
+3. Go back to Sea-Geun (Narooth - 6)","+50 XP, 2 small medicine",0,-1,1
+"02","RQ",12,"Big Handed Warriors dead body","Red and Blue Big Handed Warrior","15 Head of Big Handed Warriors",,"+ 1.410 XP",24,-1,0
+"03","Event",1,"Appointment of General In-Pill /b","Big Handed Inhabitant","Big Handed InhabitantZs Head","1. Talk to In-Pill (Cargo - 8)
+2. Hunt monsters
+3. Go back to  In-Pill (Cargo - 8)","+400 XP",24,-1,2
+"03","Quest",1,"Grasp the Situation of Demons","Demon SpearHead","Demon Strategic Map","1. Talk to Mak-Ahnsoo (Narooth - 24)
+2. Hunt monsters
+3. Go back to Mak-Ahnsoo (Narooth - 24)
+4. Give Map to Sae Won (Cargo - 4)","+100 geon, +1 Contribution point",1,-1,1
+"03","RQ",14,"Demon Soldiers Head","Demon Soldier","10 Demon Soldiers Head",,"+ 1.560 XP",26,-1,0
+"04","Event",1,"Appointment of General In-Pill /c","Demon Carcass Scavenger","In-PillZs Scrabbard","1. Talk to In-Pill (Cargo - 8)
+2. Hunt monsters
+3. Go back to  In-Pill (Cargo - 8)","+600 XP",25,-1,2
+"04","Quest",6,"General, Poong-seup's Missing","Demon Escort Archer","10 DemonZs Bow","1. Talk to Ji-Hun (Narooth - 10)
+2. Talk to Joo-Jimin (Narooth - 19)
+3. Hunt monsters
+4. Give Bows to Ji-Hun (Narooth - 10)","+542 XP, +1 Contribution point",2,-1,1
+"04","RQ",16,"Demon Throwing Soldier Head","Demon Throwing Soldier","10 Demon Throwing Soldier Head",,"+ 1.650 XP",26,-1,0
+"05","Event",1,"Favor of the Governor of Geum-Ohee Castle","Big Handed Warriors","40 Big Handed WarriorZs Head","1. Talk to HyungJoo-SeungGong (Mine - 1)
+2. Hunt monsters
+3. Go back to HyungJoo-SeungGong (Mine - 1)","+1000 XP",24,-1,3
+"05","Quest",8,"Farmer, Noo-Woong's Favor","Suicide Bomber","10 Suicide BomberZs Oil","1. Talk to Noo-Woong (Cargo - 7)
+2. Talk to Gwee-Sik(Mine - 3)
+3. Hunt monsters
+4. Give Oils to Noo-Woong(Cargo - 7)","+1.157 XP, +1 Contribution Point",3,-1,2
+"05","RQ",17,"Wild Demon Soldier Head","Wild Demon Soldier","10 Wild Demon Soldier Head",,"+ 1.800 XP",26,-1,0
+"06","Event",30,"Entering the Government Service /a","Demon Commander","1 Demon CommanderZs Head","1. Talk to HyungJoo-SeungGong (Mine - 1)
+2. Talk to Jin-Pyung (Mine - 18)
+3. Hunt monsters
+4. Give Head to Jin-Pyung (Mine - 18)","+10.000 XP",26,-1,3
+"06","Quest",10,"Farmer, Ha-Jik's Favor","Big handed Inhabitant, Demon Carcass Scavenger","15 Big handed Inhabitant Tooth, 5 Straw Rice Bag","1. Talk to Ha-Jik (Narooth - 11)
+2. Talk to Noo-Woong (Cargo - 7)
+3. Talk to Ha-Jik (Narooth - 11)
+4. Talk to Gwang-Chun (Narooth - 26)
+5. Hunt monsters
+6. Give Tooth to Gwang-Chun (Narooth - 26)
+7. Hunt monsters
+8. Give Rice to Ha-Jik (Narooth-11)","+2.250 XP, +1 Contribution Point",4,5,1
+"06","RQ",18,"Demon Shock Trooper Head","Demon Shock Trooper","10 Demon Shock Trooper Head",,"+ 1.950 XP",26,-1,0
+"07","Event",30,"Entering the Government Service /b","Castoff Baby Ghost, Ghost of Young Man-Woman","Sealed Talisman with Spirits","1. Talk to Hyun-Choong (Fort - 42)
+2. Talk to Jin-Haeryang (Fort - 19)
+3. Hunt monsters
+4. Go back to Jin-Haeryang (Fort - 19)","+10.000 XP, +2 Contribution point",33,-1,4
+"07","Quest",11,"Won-jung and Yea-jin's Love","Big Hand Slaves","10 White Peony, 10 Milk Vetch","1. Talk to Won-Jung(Cargo - 1)
+2. Talk toYea-Jin (Narooth - 1)
+3. Hunt monsters
+4. Give Items to Yea-Jin (Narooth - 1)
+5. Talk to Won-Jung (Cargo - 1)","+2.500 XP, +1 Skill Point",7,8,2
+"07","RQ",19,"Demon Flag Bearer Head","Demon Flag Bearer","10 Demon Flag Bearer Head",,"+ 2.130 XP",26,-1,0
+"08","Event",30,"Entering the Government Service /c","-","-","1. Talk to Jae-Ga (Fort - 14)
+2. Talk to Farmer Who Lost His Farmland (Fort - 15)
+3. Talk to Parents Who Lost Their Son (Fort - 4)
+4. Talk to Smith Who Lost His Family (Fort - 5)
+5. Talk to Jae-Ga (Fort - 14)","-",-1,-1,4
+"08","Quest",12,"Sweeping the Demon Carcass Scavenger","Demon Carcass Scavenger","25 DemonZs Carcass","1. Talk to Sae-Won (Cargo - 4)
+2. Hunt monsters
+3. Give Carcass to Sae-Won (Cargo - 4)","+2.600 XP, +1 Contribution Point",6,-1,2
+"08","RQ",20,"Demon Band Head","Demon Band","10 Demon Band Head",,"+ 2.400 XP",26,-1,0
+"09","Event",30,"Entering the Government Service /d","Devil Soldiers","Devil Soldier-Bow-Twin-Sword-Spear Head","1. Talk to Jae-Ga (Fort - 14)
+2. Hunt monsters
+3. Go back to Jae-Ga (Fort - 14)","-",34,-1,4
+"09","Quest",13,"Finding Tonic","Big Hand Slaves","12 White Peony, 12 Milk Vetch","1. Talk to Guh-Sosun (Cargo - 2)
+2. Talk to Yae-Jin (Narooth - 1)
+3. Hunt monsters
+4. Give Items to Yae-Jin (Narooth - 1)
+5. Go back to Guh-Sosun (Cargo - 2)","+1.000 geon, +2.722 XP",7,8,2
+"09","RQ",21,"Demon Water Dragons Head","All Kinds of Water Dragons and Predator","10 Demon Water Dragons Head",,"+ 2.580 XP",15,-1,0
+"10","Event",30,"Entering the Government Service /e","1st Devil, 2nd Devil","Devil BossZs Head, Devil Sub-BossZs Head","1. Talk to Jae-Ga (Fort - 14)
+2. Hunt monsters
+3. Go back to Jae-Ga (Fort - 14)","+10.000 XP, Apprentice Archer-Knight-Mage Trinket",35,36,4
+"10","Quest",14,"Finding Alcohol for Joo-Nong","Demon Soldier","20 Demon SoldierZs Tooth","1. Talk to Joo-Nong (Mine - 2)
+2. Talk to Ok-Jin (Cargo - 5)
+3. Hunt monsters
+4. Give Tooth to Joo-Nong (Mine - 2)","+3.534 XP, +1 Contribution point",4,-1,3
+"10","RQ",23,"Demon Armored Knight Head","Demon Armored Knight","10 Demon Armored Knight Head",,"+ 2.760 XP",26,-1,0
+"11","Event",40,"Green Crystal of Doggebi Forest","Devil Troop Of Absorbing Green","Green Crystal of Doggebi Forest","1. Talk to Jae-Ga (Fort - 14)
+2. Hunt monsters
+3. Go back to Jae-Ga (Fort - 14)","+80.789 XP",55,-1,4
+"11","Quest",15,"Undelivered Rice Cake","Big Handed Blue Warrior","25 Rice Cake","1. Talk to Gwee-Sik (Mine - 3)
+2. Talk to Ha-Jik (Narooth - 11)
+3. Hunt monsters
+4. Give Rice to Ha-Jik (Narooth - 11)
+5. Go back to Gwee-Sik (Mine - 3)","+600 geon, +4.000 XP, +1 Skill point",9,-1,3
+"11","RQ",25,"Crazy Demon Warrior Head","Crazy Demon Warrior","10 Crazy Demon Warrior Head",,"+ 3.150 XP",26,-1,0
+"12","Event",44,"Angry Doggebi Troop","Dogebis","Spirit of All Doggebi","1. Talk to Leader of the Dogebis (Forest)
+2. Hunt monsters
+3. Go back to Leader of the Dogebis (Forest)","+169.875 XP",56,-1,7
+"12","Quest",16,"Wa-Ryu's Talisman","Big Handed Red Warrior","Wa-RyuZs Talisman","1. Talk to Wa-Ryu (Cargo - 16)
+2. Hunt monsters
+3. Give Talizman to Wa-Ryu (Cargo - 16)
+Alternative (+1 Contribution point) :
+3. Give Talizman to Sae-Won (Cargo - 16)","+600 geon, +4.000 XP, +1 Skill point",10,-1,2
+"12","RQ",29,"Demon Commander Head","Demon Commander","5 Demon Commander Head",,"+ 3.990 XP",26,-1,0
+"13","Event",46,"Kill the Chief of Angry Doggebi Troop","Chief of Angry Doggebi Troop","Dead Body of Angry Doggebi Troop","1. Talk to Leader of the Dogebis (Forest)
+2. Hunt monsters
+3. Go back to Leader of the Dogebis (Forest)","+203.850 XP",57,-1,7
+"13","Quest",17,"Finding Yea-jin's Father","Demon Infantry","30 Joo-NongZs Gold","1. Talk to Yea-Jin (Narooth - 1)
+2. Talk to Joo-Nong (Mine - 2)
+3. Hunt monsters
+4. Talk to Joo-Nong (Mine - 2)
+5. Go back to Yea-Jin (Narooth - 1)","+4.500 XP, +1 Skill point",11,-1,1
+"13","RQ",29,"Devil Soldier Head","Devil Soldier","10 Devil Soldier Head",,"+ 5.130 XP",34,-1,0
+"14","Event",50,"Choose your new government position","-","-","1. Talk to Jae-Ga (Fort - 14)","-",-1,-1,4
+"14","Quest",18,"Collecting Yang-Do's Bamboo Poles","Demon Throwing Soldier","30 Pierce of Bamboo Pole","1. Talk to Yang-Do (Mine - 19)
+2. Hunt monsters
+3. Give Poles to Yand-Do (Mine - 19)
+4. Talk to Ok-Jin (Cargo - 5)
+5. Go back to Yang-Do (Mine - 19)","+4.800 XP, +1 Skill point, +1 Contribution point",12,-1,3
+"14","RQ",31,"Devil Soldier Twin Blades Head","Devil Soldier Twin Blades","5 Devil Soldier Twin Blades Head",,"+ 5.370 XP",34,-1,0
+"15","Quest",19,"Finding the Statue of Protection","Wild Demon Soldier","30 Statue","1. Talk to Gwee-Sik (Mine - 3)
+2. Talk to Joo-Nong (Mine - 2)
+3. Hunt monsters
+4. Give Statues to Gwee-Sik (Mine - 3)","+5.600 XP, +1 Contribution point",13,-1,3
+"15","RQ",32,"Devil Soldier Bow Head","Devil Soldier Bow","5 Devil Soldier Bow",,"+ 5.550 XP",34,-1,0
+"16","Event",70,"Road to Forrest of Elements","-","-","1. Talk to Jea Ga
+2. Meet with priest “Seo-An” in priests city","-",-1,-1,0
+"16","Quest",20,"Ja-Gan's Good Conduct","Demon Shock Trooper","30 Ja-GanZs Gold","1. Talk to Ja-Gan (Cargo - 14)
+2. Hunt monsters
+3. Talk to Ja-Gan (Cargo - 14)
+4. Talk to Won-Ga (Mine - 11)
+5. Go back to Ja-Gan (Cargo - 14)","+7.000 XP, +1 Skill point",11,-1,2
+"16","RQ",33,"Devil Soldier Sword Head","Devil Soldier Sword","5 Devil Soldier Sword Head",,"+ 5.760 XP",34,-1,0
+"17","Event",70,"Destroying fallen elements","All Elements","20 Elements of each Type","1. Talk to Seo An
+2. Gather each 20 elements from all spirits.","-",-1,-1,0
+"17","Quest",21,"Getting Red Flags","Demon Flag Bearer","35 Red Flag","1. Talk to Sae-Won (Cargo - 4)
+2. Hunt monsters
+3. Go back to Sae-Won (Cargo - 4)","+8.500 XP, +1 Contribution point",14,-1,2
+"17","RQ",34,"Devil Soldier Spear Head","Devil Soldier Spear","5 Devil Soldier Spear Head",,"+ 5.970 XP",34,-1,0
+"18","Event",70,"Purifying fallen elements","-","5 Perfect Elements","1. Talk to Seo An
+2. Purify element on Forrest of Elements altar","-",-1,-1,0
+"18","Quest",23,"Beheading the Demon Water Dragon","Demon Water Dragon","35 Demon Water DragonZs Head","1. Talk to Sae-Won (Cargo - 4)
+2. Hunt monsters
+3. Go back to Sae-Won (Cargo - 4)","+10.000 XP, +1 Contribution point",15,-1,2
+"18","RQ",40,"Devil Troop of Jealousy Mask","Devil Troop of Jealousy","50 Mask of Devil Troop of Jealousy",,"+ 13.720 XP",63,-1,0
+"19","Event",70,"Ceremony for elements1","-","-","1. Talk to Seo An
+2. Gather evil sacrifices for ceremony","-",97,98,0
+"19","Quest",25,"Demon's Drum","Demon Drum","40 DemonZs Drum","1. Talk to Sae-Won (Cargo - 4)
+2. Hunt monsters
+3. Go back to Sae-Won (Cargo - 4)","+12.000 XP, +1 Skill point",18,-1,2
+"19","RQ",41,"Devil Troop of Hatred Mask","Devil Troop of Hatred","40 Mask of Devil Troop of Hatred Mask",,"+ 14.805 XP",64,-1,0
+"20","Event",70,"Ceremony for elements2","Traitor Chief, Keyholder, Defender, Shadow Lord","1 Evil Necklace, 1 Right Arm, 1 Defender sword, 1 Lords Jaw","1. Talk to Seo An
+2. Gather more evil sacrifice","-",99,100,0
+"20","Quest",26,"Collecting Armors","Demon Armoured Knight","40 DemonZs Armor","1. Talk to Guh-Sosun (Cargo - 2)
+2. Hunt monsters
+3. Go back to Guh-Sosun (Cargo - 2)","+14.500 XP, +1 Contribution point",19,-1,2
+"20","RQ",42,"Devil Troop of Madness Mask","Devil Troop of Madness","40 Mask of Devil Troop of Madness",,"+ 16.065 XP",65,-1,0
+"21","Event",70,"Gateway for success","Ghost of Dragon, Doggebi Lord","1 Emoogys pure scale, 1 Doggebi Horn","1. Talk to Seo An
+2. Change to 3rd job","-",101,102,0
+"21","Quest",27,"Collecting Clothes that are Stained with Blood","Hungry Demon Water Dragon","40 Bloodstained Clothes","1. Talk to Won-Jung (Cargo - 1)
+2. Hunt monsters
+3. Go back to Won-Jung (Cargo - 1)","+16300 XP, +1 Skill point, +1 Contribution point",20,-1,2
+"21","RQ",42,"Devil Soldier Sub-boss Head","Devil Soldier Sub-boss","10 Devil Soldier Sub-boss Head",,"+ 14.610 XP",35,-1,0
+"22","Quest",28,"Materials of Winter Clothes","Demon Water Dragon Predator","40 Demon Water DragonZs Skin","1. Talk to Guh-Sosun (Cargo - 2)
+2. Hunt monsters
+3. Go back to Guh-Sosun (Cargo - 2)","+19.000 XP, +1 Skill point, +1 Contribution point",17,-1,2
+"22","RQ",42,"Devil Soldier Boss Head","Devil Soldier Boss","5 Devil Soldier Boss Head",,"+ 14.610 XP",36,-1,0
+"23","Quest",29,"Hunting the Demon Mad Knight","Demon Mad Knight","40 Demon Mad KnightZs Head","1. Talk to Sae-Won (Cargo - 4)
+2. Hunt monsters
+3. Go back to Sae-Won (Cargo - 4)","+22.000 XP, +1 Skill point, +1 Contribution point",16,-1,2
+"23","RQ",43,"Devil Troop of Anger Mask","Devil Troop of Anger","45 Mask of Devil Troop of Anger",,"+ 16.870 XP",66,-1,0
+"24","Quest",30,"Moon-Hee Who Became a Ghost","Cast of Baby Ghost","Moon-HeeZs Doll","1. Talk to Mother Moon Hee (Fort - 32)
+2. Talk to Ghoost Moon Hee (after Fort)
+2. Hunt monsters
+3. Go back to Ghoost Moon Hee (after Fort - 32)","+29.000 XP, +1 Contribution point",27,-1,4
+"24","RQ",44,"Devil Troop of Absorbing Green Mask","Devil Troop of Absorbing Green","15 Mask of Devil Troop of Absorbing Green",,"+ 23.000 XP",67,-1,0
+"25","Quest",31,"Hunting Ghost","Ghost of Young Man","Wolf Tooth Necklace","1. Talk to Heung-Pae (Fort - 30)
+2. Hunt monsters
+3. Go back to Heung-Pae (Fort - 30)","+35.000 XP, +1 Contribution point",28,-1,4
+"25","RQ",45,"The Cave of The Giant Bird Demons Head","All D4 Demons","30 The Cave of The Giant Bird Demons Head",,"+ 27.650 XP",68,-1,0
+"26","Quest",32,"Bead of Ghost","Ghost of Young Women","10 Ghost Beads","1. Talk to Duk-Yoon (Fort - 41)
+2. Hunt monsters
+3. Talk to Mother of Moon Hee (Fort - 32)
+3. Go back to Duk-Yoon (Fort - 41)","+42.000 XP, +1 Contribution point",29,-1,4
+"26","RQ",46,"Rotten Skeleton of Warrior of the Royal Tomb Body","Rotten Skeleton of Warrior of the Royal Tomb","30 Rotten Skeleton of Warrior of the Royal Tomb Body",,"+ 24.575 XP",69,-1,0
+"27","Quest",33,"Helping Yang-Do","Demon Commander","Demon Confidential Document","1. Talk to Yang-Do (Mine - 19)
+2. Hunt monsters
+3. Go back to Yang-Do (Mine - 19)","+47.000 XP, +1 Skill point",0,-1,3
+"27","RQ",47,"Doggebi of Monster Face Fire","Doggebi of Monster Face (D1)","10 Doggebi of Monster Face Fire",,"+ 26.950 XP",70,-1,0
+"28","Quest",34,"Ghost of Blacksmith","Ghost of Blacksmith","10 Ghost Beads","1. Talk to Soo-Go (Fort - 37)
+2. Hunt monsters
+3. Go back to Soo-Go (Fort - 37)","+62.000 XP, +1 Contribution point",29,-1,4
+"28","RQ",48,"Doggebi with a Gong Fire","Doggebi with a Gong (D1)","5 Doggebi with a Gong Fire",,"+ 28.805 XP",71,-1,0
+"29","Quest",35,"Ghost of Friends","Ghost Of Ghost Guard","10 Ghost Beads","1. Talk to Dan-Bok (Fort - 16)
+2. Hunt monsters
+3. Go back to Dan-Bok (Fort - 16)","+76.000 XP, +1 Contribution point",29,-1,4
+"29","RQ",49,"Drunken Doggebi Fire","Drunken Doggebi (D1)","20 Drunken Doggebi Fire",,"+ 30.310 XP",72,-1,0
+"30","Quest",36,"Joong-Gwon's Disease","Demon Dragon Commander","Skin of Demon Dragon Commander","1. Talk to Gwee-Sik (Mine - 3)
+2. Hunt monsters
+3. Go back to Gwee-Sik (Mine - 3)","+78.000 XP, +1  Contribution point",21,-1,3
+"30","RQ",50,"Doggebi with a Mask of Black Fire","Doggebi with a Mask of Black (D1)","10 Doggebi with a Mask of Black Fire",,"+ 31.815 XP",73,-1,0
+"31","Quest",37,"Undetected Ghost","Ghost Of Fellow Traveller","10 Ghost Beads","1. Talk to Ga-Gi (Fort - 1)
+2. Hunt monsters
+3. Go back to Ga-Gi (Fort - 1)","+80.000 XP, +1 Contribution points",29,-1,4
+"31","RQ",51,"Doggebi with a Mask of Black Panther Fire","Doggebi with a Mask of Black Panther (D1)","10 Doggebi with a Mask of Black Panther Fire",,"+ 33.320 XP",74,-1,0
+"32","Quest",38,"Dilemma of Jae-Ga Troop's Scouts","Ghost of Sealed Troop","10 Ghost Beads","1. Talk to Soo-Sung (Fort - 18)
+2. Hunt monsters
+3. Go back to Soo-Sung (Fort - 18)","+90.000 XP, +1 Skill point",29,-1,4
+"32","RQ",52,"Giant Doggebi Fire","Giant Doggebi, Guardian Doggebi (D1)","20 Giant Doggebi Fire",,"+ 34.895 XP",75,-1,0
+"33","Quest",39,"Devil Soldier with Bow","Devil Soldier With Bow","10 Devils Bows","1. Talk to Yoo-Sang (Fort - 13)
+2. Hunt monsters
+3. Go back to Yoo-Sang (Fort - 13)","+100.000 XP, +1 Contribution point",30,-1,4
+"33","RQ",53,"High Class Doggebi with a Gong Fire","High Class Doggebi with a Gong","20 High Class Doggebi with a Gong Fire",,"+ 40.840 XP",76,-1,0
+"34","Quest",40,"Lim-Gang's Favor","Devil Soldier With Spear","10 Devils Spears","1. Talk to Lim-Gang (Fort - 2)
+2. Hunt monsters
+3. Go back to Lim-Gang (Fort - 2)","+110.000 XP, +1 Contribution point",31,-1,4
+"34","RQ",54,"The Royal Tomb Keepers first certificate","The Royal Tomb Keeper (Sword, Shield)","10 The Royal Tomb Keepers first certificate",,"+ 42.000 XP",77,-1,0
+"35","Quest",41,"Dutiful Son and His Father","Enemy Of Hyun-Woong","Devils Head","1. Talk to To-Woo (Fort - 31)
+2. Talk to Hyun-Woong (Forest)
+3. Hunt monsters
+4. Go back to To-Woo (Fort - 31)","+110.825 XP",34,-1,4
+"35","RQ",55,"High Class Drunken Doggebi Fire","High Class Drunken Doggebi","5 High Class Drunken Doggebi Fire",,"+ 44.985 XP",78,-1,0
+"36","Quest",41,"Mask of Pain","Devil Troop Of Pain","100 Mask of Pain","1. Talk to Woo-Joong nr.8 (Fort - 8)
+2. Hunt monsters
+3. Go back to Woo-Joong nr.8 (Fort - 8)","+194.790 XP",37,-1,4
+"36","RQ",56,"The Royal Tomb Keepers second certificate","The Royal Tomb Keeper","10 The Royal Tomb Keepers second certificate",,"+ 45.000 XP",79,-1,0
+"37","Quest",42,"Assassins","Named Devil Soldier with Twin Blade","Devil's Head of Named Assassins","1. Talk to Red Flag Leader, Gee-Gung (Fort - 17)
+2. Talk to Ha Woogo (Narooth - 7)
+3. Talk to Ma-Yong (Mine - 7)
+4. Talk to Gee-Gung (Fort - 17) (maybe go back to Ma-Yong)
+5. Hunt monsters
+6. Talk to Gee-Gung (Fort - 17) or Ma-Yong (Mine - 7)","+139.000 XP",34,-1,4
+"37","RQ",57,"High Class Doggebi with a Mask of Black Crow Fire","High Class Doggebi with a Mask of Black Crow","5 High Class Doggebi with a Mask of Black Crow Fire",,"+ 44.735 XP",80,-1,0
+"38","Quest",42,"Masks of Greed","Devil Troop Of Greed","100 Masks of Greed","1. Talk to Jwa-II nr.9 (Fort - 9)
+2. Hunt monsters
+3. Go back to Jwa-II nr.9 (Fort - 9)","+234.514 XP",38,-1,4
+"38","RQ",58,"Demon Crack Soldiers head","Demon Crack Soldier","10 Demon Crack Soldiers head",,"+ 49.000 XP",81,-1,0
+"39","Quest",43,"Yong-Chun killed by Assasin","Assasin who killed Yong-Chun","Secret letter, HeadSkin of Yong-Chun","1. Talk to Seoung-Gil (Forest),
+2. Talk to Ma-Gill (Fort - 39)
+3. Go back to Seoung-Gil (Forest)
+4. Hunt monsters
+5. Talk to Seoung-Gil (Forest)
+6. Talk to Ma-Gill (Fort - 39)
+7. Go back to Seoung-Gil (Forest)","+169.395 XP",0,42,7
+"39","RQ",59,"Traitor Warriors Talisman","Traitor Warrior","20 Traitor Warriors Talisman",,"+ 49.000 XP",82,-1,0
+"40","Quest",43,"Masks of Jealousy","Devil Troop Of Jealousy","100 Masks of Jealousy","1. Talk to Geun-Pyung nr.10 (Fort - 10)
+2. Hunt monsters
+3. Go back to Geun-Pyung nr.10 (Fort - 10)","+282.326 XP",39,-1,4
+"40","RQ",60,"Chief of Demon Crack Troops head","Chief of Demon Crack Troop","20 Chief of Demon Crack Troops head",,"+ 55.300 XP",83,-1,0
+"41","Quest",44,"Rope","Devil Troop Of Hatred","1 Rope","1. Talk to Hak-Gu (Castle)
+2. Hunt monsters
+3. Go back to Hak-Gu (Castle)","+203.850 XP",43,-1,7
+"41","RQ",60,"E-Mok Island Blacksmiths rings","E-Mok Island Blacksmith","30 E-Mok Island Blacksmiths rings",,,84,-1,0
+"42","Quest",44,"Masks of Hatred","Devil Troop Of Hatred","100 Masks of Hatred","1. Talk to Dan-Joong nr.11 (Fort - 11)
+2. Hunt monsters
+3. Go back to Dan-Joong nr.11 (Fort - 11)","+245.225 XP",40,-1,4
+"42","RQ",61,"Trained Traitor Warriors Talisman","Trained Traitor Warriors","10 Trained Traitor Warriors Talisman",,,85,-1,0
+"43","Quest",45,"Broken Doll of Doggebi","Devil Troop Of Anger","1 Broken Doll of Doggebi","1. Talk to Doggebi who wants to be Friend with Humans (after Fort)
+2. Hunt monsters
+3. Talk to Doll Maker (Fort - 22)
+4. Go back to Doggebi","+245.225 XP",27,-1,7
+"43","RQ",61,"Small Green E-Moogis teeth","Small Green E-Moogi","30 Small Green E-Moogis teeth",,"+ 60.200 XP",86,-1,0
+"44","Quest",45,"Masks of Madness","Devil Troop Of Madness","100 Masks of Madness","1. Talk to Choi Choong nr.12 (Fort - 12)
+2. Hunt monsters
+3. Go back to Choi Choong nr.12 (Fort - 12)","+408.708 XP",41,-1,4
+"44","RQ",62,"Monster of Demon Crack Troops Head","Monster of Demon Crack Troop","5 Monster of Demon Crack Troops Head",,"+ 55.300 XP",87,-1,0
+"45","Quest",46,"Limpers' Favor","Doggebi Of Monster Face","1 Broomstick, 5 Blood of Big-Handed Inhabitant","1. Talk to Limper (after Narooth)
+2. Hunt monsters
+3. Go back to Limper (after Narooth)","+491.510 XP, +1 Contribution point",44,45,6
+"45","RQ",62,"E-Mok Island Sealed Ghosts Ring","E-Mok Island Sealed Ghost","20 E-Mok Island Sealed Ghosts Ring",,"+ 61.600 XP",88,-1,0
+"46","Quest",47,"Blind Man's Favor","Doggebi with Gong","1 Broomstick, 5 Blood of Big-Handed Inhabitant","1. Talk to Blind Man (after Narooth)
+2. Hunt monsters
+3. Go back to Blind Man (after Narooth)","+590.926 XP, +1 Contribution point",44,45,6
+"46","RQ",63,"Guard of the Traitors Hangouts Talisman","Guard of the Traitors Hangout","5 Guard of the Traitors Hangouts Talisman",,,89,-1,0
+"47","Quest",48,"Coward's Favor","Drunken Doggebi","1 Broomstick, 5 Blood of Big-Handed Inhabitant","1. Talk to Coward (after Narooth)
+2. Hunt monsters
+3. Go back to Coward (after Narooth)","+710.280 XP, +1 Contribution point",44,45,6
+"47","RQ",63,"Small Brown E-Moogis Teeth","Small Brown E-Moogi","30 Small Brown E-Moogis Teeth",,"+ 63.000 XP",90,-1,0
+"48","Quest",49,"Hunchback's Favor","Doggebi with Mask of Black Crow","1 Broomstick, 5 Blood of Big-Handed Inhabitant","1. Talk to Hunchback (after Narooth)
+2. Hunt monsters
+3. Go back to Hunchback (after Narooth)","+853.562 XP, +1 Contribution point",44,45,6
+"48","RQ",64,"White Beast of Demon Crack Troops head","White Beast of Demon Crack Troop","10 White Beast of Demon Crack Troops Head",,"+ 63.700 XP",91,-1,0
+"49","Quest",50,"Deaf-Man's Favor","Doggebi with a Mask of Black Panther","1 Broomstick, 5 Blood of Big-Handed","1. Talk to Deaf-Man (after Narooth)
+2. Hunt monsters
+3. Go back to Deaf-Man (after Narooth)","+1.025.563 XP, +1 Contribution point",44,45,6
+"49","RQ",64,"Twisted Green E-Moogis Teeth","Twisted Green E-Moogi","15 Twisted Green E-Moogis Teeth",,,92,-1,0
+"50","Quest",51,"One-Armed Man's Favor","Giant Doggebi","1 Giant Broom, 5 Blood of Big-Handed","1. Talk to One-armed Man (after Narooth)
+2. Hunt monsters
+3. Go back to One-armed Man (after Narooth)","+1.232.024 XP, +1 Contribution point",44,45,6
+"50","RQ",65,"Knight of the Traitors Hangouts Talisman","Knight of the Traitors Hangout","5 Knight of the Traitors Hangouts Talisman",,"+ 67.910 XP",93,-1,0
+"51","Quest",52,"Manager's Favor","Guardian of Doggebi","1 Stone of Guardian Doggebi, 5 Blood of Demon Water Dragon","1. Talk to Manager (after Narooth)
+2. Hunt monsters
+3. Go back to Manager (after Narooth)","+1.479.839 XP, +1 Contribution point",44,46,6
+"51","RQ",65,"Twisted Brown E-Moogis Teeth","Twisted Brown E-Moogi","15 Twisted Brown E-Moogis Teeth",,"+ 68.605 XP",94,-1,0
+"52","Quest",53,"The Dead People Around The Tomb(1)","Rotten Skeleton Warrior of the Royal Tomb","Skeletons Skull","1. Talk to Gang-Man (Giant Bird - 15)
+2. Talk to Ja-Sang (Fort - 13)
+3. Talk to Gang-Man (Giant Bird - 15)
+4. Hunt monsters
+5. Go back to Gang-Man (Giant Bird - 15)","+1.777.280 XP, +1 Contribution point",47,-1,5
+"52","RQ",66,"Blue Beast of Demon Crack Troops Head","Blue Beast of Demon Crack Troop","5 Blue Beast of Demon Crack Troops Head",,,95,-1,0
+"53","Quest",54,"The Dead People Around The Tomb(2)","Rotten Skeleton Warrior of the Royal Tomb","Skeletons Bone","1. Talk to Gang-Man (Giant Bird - 15)
+2. Hunt monsters
+3. Go back to Gang-Man (Giant Bird - 15)","+2.134.273 XP, +1 Contribution point",48,-1,5
+"53","RQ",66,"Twisted Demon Guarders Head","Twisted Demon Guarder","10 Twisted Demon Guarders Head",,,96,-1,0
+"54","Quest",55,"The Dead People Around The Tomb(3)","Minister of the Royal Tomb","5 Books from Judicator","1. Talk to Gang-Man (Giant Bird - 15)
+2. Hunt monsters
+3. Go back to Gang-Man (Giant Bird - 15)","+2.562.732 XP, +1 Contribution point",49,-1,5
+"54","RQ",67,"Twisted Demon Patrol Head","Twisted Demon Patrol","15 Twisted Demon Patrol Head",,"+ 75.000 XP",96,-1,0
+"55","Quest",56,"The Dead People Around The Tomb(4)","Maid of Honor of the Royal Tomb","5 Harps from Maidens","1. Talk to Gang-Man (Giant Bird - 15)
+2. Hunt monsters
+3. Go back to Gang-Man (Giant Bird - 15)","+3.076.950 XP, +1 Contribution point",50,-1,5
+"55","RQ",68,"Twisted Demon Warrior Head","Twisted Demon Warrior","10 Twisted Demon Warrior Head",,"+ 80.000 XP",96,-1,0
+"56","Quest",57,"The Dead People Around The Tomb(5)","The Royal Tomb Keeper","5 Swords of Tomb Keepers","1. Talk to Gang-Man (Giant Bird - 15)
+2. Hunt monsters
+3. Go back to Gang-Man (Giant Bird - 15)","+3.694.082 XP, +1 Contribution point",51,-1,5
+"56","RQ",69,"Twisted Demon Soldier Head","Twisted Demon Soldier","20 Twisted Demon Soldier Head",,"+ 89.265 XP",96,-1,0
+"57","Quest",58,"The Dead People Around The Tomb(6)","The Royal Tomb Keeper","5 Shields of Tomb keeper","1. Talk to Gang-Man (Giant Bird - 15)
+2. Hunt monsters
+3. Go back to Gang-Man (Giant Bird - 15)","+4.434.712 XP, +1 Contribution point",52,-1,5
+"57","RQ",70,"Twisted Demon Defender Head","Twisted Demon Defender","5 Twisted Demon Defender Head",,,96,-1,0
+"58","Quest",59,"The Dead People Around The Tomb(7)","The Royal Tomb Keeper","5 Sticks of Tomb keeper","1. Talk to Gang-Man (Giant Bird - 15)
+2. Hunt monsters
+3. Go back to Gang-Man (Giant Bird - 15)","+5.323.541 XP, +1 Contribution point",53,-1,5
+"58","RQ",86,"Wild Boar","Wild Boar","80 Wild Boar's Head",,,58,-1,0
+"59","Quest",60,"The Dead People Around The Tomb(8)","The Royal Tomb Keeper","5 Hammers of Tomb keeper","1. Talk to Gang-Man (Giant Bird - 15)
+2. Hunt monsters
+3. Go back to Gang-Man (Giant Bird - 15)","+6.390.210 XP, +1 Contribution point",54,-1,5
+"59","RQ",87,"Knoll's Head","Knoll","100 Knoll's Head",,,59,-1,0
+"60","Quest",70,"Quality of Mu-Geuk warior","Catapults, Crazy Demon Worker","10 Catapults leaver, 30 Crazy Demon Workers Head","1. Talk to Soo-Ryun
+2. Hunt monsters
+3. Go back to Soo-Ryun","-",-1,-1,0
+"60","RQ",88,"Degenarated Twisted Demon Head","Degenarated Twisted Demon","120 Degenarated Twisted Demon's Head",,,60,-1,0
+"61","Quest",70,"Block up Goblins information interchange","-","-","1. Talk to Soo-Ryun","-",-1,-1,0
+"61","RQ",89,"Goblin's Head","Goblin","150 Goblin's Head",,,61,-1,0
+"62","Quest",70,"Source of Demons power","-","-","1. Talk to Soo-Ryun","-",-1,-1,0
+"62","RQ",90,"Guard of D'evah's Head","Guard of D'evah","200 Guard of D'evah's Head",,,62,-1,0
+"63","Quest",70,"Death of the chief of Crazy Demon Workers","-","-","1. Talk to Soo-Ryun","-",-1,-1,0
+"64","Quest",70,"Wiping out the remnants of skeletons","-","-","1. Talk to Soo-Ryun","-",-1,-1,0
+"65","Quest",70,"Yun Hwa's request","Elite Skeleton","50 Elite Skeleton's Head","1. Talk to Yun-Hwa
+2. Hunt monsters
+3. Go to the Explorer at Northwest","-",-1,-1,0
+"66","Quest",70,"Making a complete suit of armor","-","-","1. Talk to Yun-Hwa","-",-1,-1,0
+"67","Quest",70,"Restoring soldiers health","-","-","1. Talk to Yun-Hwa","-",-1,-1,0
+"68","Quest",70,"The Knoll's temporary fort","-","-","1. Talk to Yun-Hwa","-",-1,-1,0
+"69","Quest",70,"An urgent ssession","-","-","1. Talk to Yun-Hwa","-",-1,-1,0
+"70","Quest",70,"Skeleton Archer's suppression","Skeleton Archer","10 Skeleton Archer's Head","1. Talk to Dae-Gil
+2. Hunt monsters
+3. Go back to Dae-Gil","-",-1,-1,0
+"71","Quest",70,"Wild Boar's horn","-","-","1. Talk to Dae-Gil","-",-1,-1,0
+"72","Quest",70,"The end of Demon tribe","-","-","1. Talk to Dae-Gil","-",-1,-1,0
+"73","Quest",70,"D'evah's suspicious activities","-","-","1. Talk to Dae-Gil","-",-1,-1,0
+"74","Quest",70,"Guard of D'evah's Commander","-","-","1. Talk to Dae-Gil","-",-1,-1,0

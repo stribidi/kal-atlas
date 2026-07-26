@@ -1,0 +1,230 @@
+pre_azon,pre_name,pre_grd,slot_index,stat_name,value,raw_vector
+1,Forced,0,0,Strength,1,1
+2,Unlawful,0,0,Strength,2,2
+3,Harsh,0,0,Strength,3,3
+4,Strong mans,0,0,Strength,4,4
+5,Strongest mans,0,0,Strength,5,5
+6,Melees,0,0,Strength,6,6
+7,Bloody fights,0,0,Strength,7,7
+8,Slaughterous,0,0,Strength,8,8
+9,Barbaric,0,0,Strength,9,9
+10,Invincible,0,0,Strength,10,10
+11,Healthy,0,1,Health,1,|1
+12,Vigorous,0,1,Health,2,|2
+13,Heroic,0,1,Health,3,|3
+14,Vital,0,1,Health,4,|4
+15,Ablaze,0,1,Health,5,|5
+16,Iron legs,0,1,Health,6,|6
+17,Steels,0,1,Health,7,|7
+18,Limitable,0,1,Health,8,|8
+19,Infinitely,0,1,Health,9,|9
+20,Diamond,0,1,Health,10,|10
+21,Fictional,0,2,Intelligence,1,||1
+22,Sharp,0,2,Intelligence,2,||2
+23,Keen,0,2,Intelligence,3,||3
+24,Ordinary,0,2,Intelligence,4,||4
+25,Wise,0,2,Intelligence,5,||5
+26,Mystic,0,2,Intelligence,6,||6
+27,Worshipful,0,2,Intelligence,7,||7
+28,Sublime,0,2,Intelligence,8,||8
+29,Pure,0,2,Intelligence,9,||9
+30,Absolute,0,2,Intelligence,10,||10
+31,Fixed,0,3,Wisdom,1,|||1
+32,Confirmatory,0,3,Wisdom,2,|||2
+33,Celebrated,0,3,Wisdom,3,|||3
+34,Dignified,0,3,Wisdom,4,|||4
+35,Merciful,0,3,Wisdom,5,|||5
+36,Predictive,0,3,Wisdom,6,|||6
+37,Foreseeable,0,3,Wisdom,7,|||7
+38,Noble,0,3,Wisdom,8,|||8
+39,Reverent,0,3,Wisdom,9,|||9
+40,Paradoxic,0,3,Wisdom,10,|||10
+41,Agile,0,4,Agility,1,||||1
+42,Reflective,0,4,Agility,2,||||2
+43,Instant,0,4,Agility,3,||||3
+44,Flexible,0,4,Agility,4,||||4
+45,Dashy,0,4,Agility,5,||||5
+46,Rush,0,4,Agility,6,||||6
+47,Fierce,0,4,Agility,7,||||7
+48,Flashy,0,4,Agility,8,||||8
+49,Unlimited,0,4,Agility,9,||||9
+50,Gliding,0,4,Agility,10,||||10
+51,Heavy blows,1,8,PDMax,4,||||||||4
+52,Powerful,1,7,PDMin,2,|||||||2|2
+52,Powerful,1,8,PDMax,2,|||||||2|2
+53,Explosive,1,8,PDMax,6,||||||||6
+54,Fierc,1,7,PDMin,3,|||||||3|3
+54,Fierc,1,8,PDMax,3,|||||||3|3
+55,Exterminable,2,8,PDMax,8,||||||||8
+56,Feathery,1,1,Health,2,|2|||1
+56,Feathery,1,4,Agility,1,|2|||1
+57,Mans,1,0,Strength,1,1|2
+57,Mans,1,1,Health,2,1|2
+58,Extreme,1,8,PDMax,12,||||||||12
+59,Destructive,2,8,PDMax,14,||||||||14
+60,Fundamental,1,10,MDMax,4,||||||||||4
+61,Powerfull,1,9,MDMin,2,|||||||||2|2
+61,Powerfull,1,10,MDMax,2,|||||||||2|2
+62,Mighty,1,10,MDMax,6,||||||||||6
+63,Considerable,1,9,MDMin,3,|||||||||3|3
+63,Considerable,1,10,MDMax,3,|||||||||3|3
+64,Cruel,1,10,MDMax,8,||||||||||8
+65,Wisdoms,1,1,Health,2,|2|1
+65,Wisdoms,1,2,Intelligence,1,|2|1
+66,High class,1,10,MDMax,12,||||||||||12
+67,Absoluteness,2,10,MDMax,14,||||||||||14
+68,Wandering Knights,0,0,Strength,1,1|1|||1||||1
+68,Wandering Knights,0,1,Health,1,1|1|||1||||1
+68,Wandering Knights,0,4,Agility,1,1|1|||1||||1
+68,Wandering Knights,0,8,PDMax,1,1|1|||1||||1
+69,Skillful Knights,1,0,Strength,2,2|2|||1|||1|2
+69,Skillful Knights,1,1,Health,2,2|2|||1|||1|2
+69,Skillful Knights,1,4,Agility,1,2|2|||1|||1|2
+69,Skillful Knights,1,7,PDMin,1,2|2|||1|||1|2
+69,Skillful Knights,1,8,PDMax,2,2|2|||1|||1|2
+70,Veteran  Knights,1,0,Strength,3,3|2|||2|50||2|3
+70,Veteran  Knights,1,1,Health,2,3|2|||2|50||2|3
+70,Veteran  Knights,1,4,Agility,2,3|2|||2|50||2|3
+70,Veteran  Knights,1,5,HP,50,3|2|||2|50||2|3
+70,Veteran  Knights,1,7,PDMin,2,3|2|||2|50||2|3
+70,Veteran  Knights,1,8,PDMax,3,3|2|||2|50||2|3
+71,Expert Knights,2,0,Strength,4,4|3|||3|75|25|2|5
+71,Expert Knights,2,1,Health,3,4|3|||3|75|25|2|5
+71,Expert Knights,2,4,Agility,3,4|3|||3|75|25|2|5
+71,Expert Knights,2,5,HP,75,4|3|||3|75|25|2|5
+71,Expert Knights,2,6,MP,25,4|3|||3|75|25|2|5
+71,Expert Knights,2,7,PDMin,2,4|3|||3|75|25|2|5
+71,Expert Knights,2,8,PDMax,5,4|3|||3|75|25|2|5
+72,Wandering Archers,0,0,Strength,1,1|1|||1||||1
+72,Wandering Archers,0,1,Health,1,1|1|||1||||1
+72,Wandering Archers,0,4,Agility,1,1|1|||1||||1
+72,Wandering Archers,0,8,PDMax,1,1|1|||1||||1
+73,Skillful Archers,1,0,Strength,2,2|1|||2|||1|2
+73,Skillful Archers,1,1,Health,1,2|1|||2|||1|2
+73,Skillful Archers,1,4,Agility,2,2|1|||2|||1|2
+73,Skillful Archers,1,7,PDMin,1,2|1|||2|||1|2
+73,Skillful Archers,1,8,PDMax,2,2|1|||2|||1|2
+74,Veteran  Archers,1,0,Strength,2,2|2|||3|50||2|3
+74,Veteran  Archers,1,1,Health,2,2|2|||3|50||2|3
+74,Veteran  Archers,1,4,Agility,3,2|2|||3|50||2|3
+74,Veteran  Archers,1,5,HP,50,2|2|||3|50||2|3
+74,Veteran  Archers,1,7,PDMin,2,2|2|||3|50||2|3
+74,Veteran  Archers,1,8,PDMax,3,2|2|||3|50||2|3
+75,Expert Archers,2,0,Strength,3,3|3|||4|75|25|2|5
+75,Expert Archers,2,1,Health,3,3|3|||4|75|25|2|5
+75,Expert Archers,2,4,Agility,4,3|3|||4|75|25|2|5
+75,Expert Archers,2,5,HP,75,3|3|||4|75|25|2|5
+75,Expert Archers,2,6,MP,25,3|3|||4|75|25|2|5
+75,Expert Archers,2,7,PDMin,2,3|3|||4|75|25|2|5
+75,Expert Archers,2,8,PDMax,5,3|3|||4|75|25|2|5
+76,Beginning Scholars,0,2,Intelligence,1,||1|1|||||||1
+76,Beginning Scholars,0,3,Wisdom,1,||1|1|||||||1
+76,Beginning Scholars,0,10,MDMax,1,||1|1|||||||1
+77,Skillful Scholars,1,2,Intelligence,1,||1|2|1|||||1|2
+77,Skillful Scholars,1,3,Wisdom,2,||1|2|1|||||1|2
+77,Skillful Scholars,1,4,Agility,1,||1|2|1|||||1|2
+77,Skillful Scholars,1,9,MDMin,1,||1|2|1|||||1|2
+77,Skillful Scholars,1,10,MDMax,2,||1|2|1|||||1|2
+78,Veteran Scholars,1,2,Intelligence,3,||3|2|2|50||||2|3
+78,Veteran Scholars,1,3,Wisdom,2,||3|2|2|50||||2|3
+78,Veteran Scholars,1,4,Agility,2,||3|2|2|50||||2|3
+78,Veteran Scholars,1,5,HP,50,||3|2|2|50||||2|3
+78,Veteran Scholars,1,9,MDMin,2,||3|2|2|50||||2|3
+78,Veteran Scholars,1,10,MDMax,3,||3|2|2|50||||2|3
+79,Expert Scholars,2,2,Intelligence,4,||4|3|3|50|50|||2|5
+79,Expert Scholars,2,3,Wisdom,3,||4|3|3|50|50|||2|5
+79,Expert Scholars,2,4,Agility,3,||4|3|3|50|50|||2|5
+79,Expert Scholars,2,5,HP,50,||4|3|3|50|50|||2|5
+79,Expert Scholars,2,6,MP,50,||4|3|3|50|50|||2|5
+79,Expert Scholars,2,9,MDMin,2,||4|3|3|50|50|||2|5
+79,Expert Scholars,2,10,MDMax,5,||4|3|3|50|50|||2|5
+80,Distinct,3,1,Health,2,|2|3|5|2|90|110|||||||2
+80,Distinct,3,2,Intelligence,3,|2|3|5|2|90|110|||||||2
+80,Distinct,3,3,Wisdom,5,|2|3|5|2|90|110|||||||2
+80,Distinct,3,4,Agility,2,|2|3|5|2|90|110|||||||2
+80,Distinct,3,5,HP,90,|2|3|5|2|90|110|||||||2
+80,Distinct,3,6,MP,110,|2|3|5|2|90|110|||||||2
+80,Distinct,3,13,Defense,2,|2|3|5|2|90|110|||||||2
+81,Steely,,0,Strength,2,2|5||2|3|150||||||||5
+81,Steely,,1,Health,5,2|5||2|3|150||||||||5
+81,Steely,,3,Wisdom,2,2|5||2|3|150||||||||5
+81,Steely,,4,Agility,3,2|5||2|3|150||||||||5
+81,Steely,,5,HP,150,2|5||2|3|150||||||||5
+81,Steely,,13,Defense,5,2|5||2|3|150||||||||5
+82,Breakthroughs,3,0,Strength,5,5|2||2|3|100|100|||||1
+82,Breakthroughs,3,1,Health,2,5|2||2|3|100|100|||||1
+82,Breakthroughs,3,3,Wisdom,2,5|2||2|3|100|100|||||1
+82,Breakthroughs,3,4,Agility,3,5|2||2|3|100|100|||||1
+82,Breakthroughs,3,5,HP,100,5|2||2|3|100|100|||||1
+82,Breakthroughs,3,6,MP,100,5|2||2|3|100|100|||||1
+82,Breakthroughs,3,11,OTP,1,5|2||2|3|100|100|||||1
+83,Despotic,1,0,Strength,2,2|1||||||||||1
+83,Despotic,1,1,Health,1,2|1||||||||||1
+83,Despotic,1,11,OTP,1,2|1||||||||||1
+84,Revenges,1,3,Wisdom,1,|||1|2|||||||1
+84,Revenges,1,4,Agility,2,|||1|2|||||||1
+84,Revenges,1,11,OTP,1,|||1|2|||||||1
+85,Prideful,1,1,Health,2,|2|||1|60||||||||1
+85,Prideful,1,4,Agility,1,|2|||1|60||||||||1
+85,Prideful,1,5,HP,60,|2|||1|60||||||||1
+85,Prideful,1,13,Defense,1,|2|||1|60||||||||1
+86,Ruinous,1,1,Health,1,|1|2||||30|||||||2
+86,Ruinous,1,2,Intelligence,2,|1|2||||30|||||||2
+86,Ruinous,1,6,MP,30,|1|2||||30|||||||2
+86,Ruinous,1,13,Defense,2,|1|2||||30|||||||2
+87,Glorious,1,3,Wisdom,2,|||2|1||30|||||||2
+87,Glorious,1,4,Agility,1,|||2|1||30|||||||2
+87,Glorious,1,6,MP,30,|||2|1||30|||||||2
+87,Glorious,1,13,Defense,2,|||2|1||30|||||||2
+88,Decisional,3,0,Strength,3,3|2||2|5|120|80|||||||2
+88,Decisional,3,1,Health,2,3|2||2|5|120|80|||||||2
+88,Decisional,3,3,Wisdom,2,3|2||2|5|120|80|||||||2
+88,Decisional,3,4,Agility,5,3|2||2|5|120|80|||||||2
+88,Decisional,3,5,HP,120,3|2||2|5|120|80|||||||2
+88,Decisional,3,6,MP,80,3|2||2|5|120|80|||||||2
+88,Decisional,3,13,Defense,2,3|2||2|5|120|80|||||||2
+89,Magical Powers,3,1,Health,2,|2|5|3|2|50|150|||||||2
+89,Magical Powers,3,2,Intelligence,5,|2|5|3|2|50|150|||||||2
+89,Magical Powers,3,3,Wisdom,3,|2|5|3|2|50|150|||||||2
+89,Magical Powers,3,4,Agility,2,|2|5|3|2|50|150|||||||2
+89,Magical Powers,3,5,HP,50,|2|5|3|2|50|150|||||||2
+89,Magical Powers,3,6,MP,150,|2|5|3|2|50|150|||||||2
+89,Magical Powers,3,13,Defense,2,|2|5|3|2|50|150|||||||2
+90,Legendary,3,0,Strength,5,5|5|5|5|5|75|75|||||||5
+90,Legendary,3,1,Health,5,5|5|5|5|5|75|75|||||||5
+90,Legendary,3,2,Intelligence,5,5|5|5|5|5|75|75|||||||5
+90,Legendary,3,3,Wisdom,5,5|5|5|5|5|75|75|||||||5
+90,Legendary,3,4,Agility,5,5|5|5|5|5|75|75|||||||5
+90,Legendary,3,5,HP,75,5|5|5|5|5|75|75|||||||5
+90,Legendary,3,6,MP,75,5|5|5|5|5|75|75|||||||5
+90,Legendary,3,13,Defense,5,5|5|5|5|5|75|75|||||||5
+91,Rash,1,5,HP,360,|||||360||||||||3
+91,Rash,1,13,Defense,3,|||||360||||||||3
+92,"The King, GuhBalHans",3,0,Strength,6,6|6|6|6|6|100|80|||||||5
+92,"The King, GuhBalHans",3,1,Health,6,6|6|6|6|6|100|80|||||||5
+92,"The King, GuhBalHans",3,2,Intelligence,6,6|6|6|6|6|100|80|||||||5
+92,"The King, GuhBalHans",3,3,Wisdom,6,6|6|6|6|6|100|80|||||||5
+92,"The King, GuhBalHans",3,4,Agility,6,6|6|6|6|6|100|80|||||||5
+92,"The King, GuhBalHans",3,5,HP,100,6|6|6|6|6|100|80|||||||5
+92,"The King, GuhBalHans",3,6,MP,80,6|6|6|6|6|100|80|||||||5
+92,"The King, GuhBalHans",3,13,Defense,5,6|6|6|6|6|100|80|||||||5
+93,Excessiveness,0,0,Strength,3,3||||3
+93,Excessiveness,0,4,Agility,3,3||||3
+94,Vigor,0,0,Strength,3,3|3
+94,Vigor,0,1,Health,3,3|3
+95,Explosion,0,0,Strength,3,3||3
+95,Explosion,0,2,Intelligence,3,3||3
+96,Courage,0,0,Strength,3,3|||3
+96,Courage,0,3,Wisdom,3,3|||3
+97,Wisdom,0,2,Intelligence,3,||3|3
+97,Wisdom,0,3,Wisdom,3,||3|3
+98,Knowledge,0,1,Health,3,|3|3
+98,Knowledge,0,2,Intelligence,3,|3|3
+99,Quickness,0,2,Intelligence,3,||3||3
+99,Quickness,0,4,Agility,3,||3||3
+100,Meditation,0,3,Wisdom,3,|||3|3
+100,Meditation,0,4,Agility,3,|||3|3
+101,Maturity,0,1,Health,3,|3|||3
+101,Maturity,0,4,Agility,3,|3|||3
+102,Sage,0,1,Health,3,|3||3
+102,Sage,0,3,Wisdom,3,|3||3

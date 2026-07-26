@@ -1,0 +1,77 @@
+taskquest_key,script,item_ordinal,item_id,item_name,count,provenance,source_file,source_line
+1,s600001,1,171,Big Handed Inhabitant's Head,25,bango-file,taskquest.dat,12
+2,s600002,1,173,Big Handed Warrior's Head,15,bango-file,taskquest.dat,13
+3,s600003,1,174,Demon Soldier's Head,10,bango-file,taskquest.dat,14
+4,s600004,1,175,Demon Throwing Soldier's Head,10,bango-file,taskquest.dat,15
+5,s600005,1,176,Wild Demon Soldier's Head,10,bango-file,taskquest.dat,16
+6,s600006,1,177,Demon Shock Trooper's Head,10,bango-file,taskquest.dat,17
+7,s600007,1,178,Demon Flag Bearer's Head,10,bango-file,taskquest.dat,18
+8,s600008,1,179,Demon Band's Head,10,bango-file,taskquest.dat,19
+9,s600009,1,162,Demon Water Dragon's Head,10,bango-file,taskquest.dat,20
+10,s600010,1,180,Demon Armored Knight's Head,10,bango-file,taskquest.dat,21
+11,s600011,1,163,Demon Mad Knight's Head,10,bango-file,taskquest.dat,22
+12,s600012,1,181,Demon Commander's Head,5,bango-file,taskquest.dat,23
+13,s600013,1,227,Devil Soldier's Head,20,bango-file,taskquest.dat,24
+14,s600014,1,228,Devil Soldier Twin Blades' Head,10,bango-file,taskquest.dat,25
+15,s600015,1,229,Devil Soldier Bow's Head,10,bango-file,taskquest.dat,26
+16,s600016,1,230,Devil Soldier Sword's Head,5,bango-file,taskquest.dat,27
+17,s600017,1,231,Devil Soldier Spear's Head,5,bango-file,taskquest.dat,28
+18,s600018,1,232,Devil Soldier Sub-boss' Head,10,bango-file,taskquest.dat,29
+19,s600019,1,233,Devil Soldier Boss' Head,5,bango-file,taskquest.dat,30
+20,s600020,1,1366,Devil Troop of Jealousy Mask,50,bango-file,taskquest.dat,33
+21,s600021,1,1367,Devil Troop of Hatred Mask,40,bango-file,taskquest.dat,34
+22,s600022,1,1368,Devil Troop of Madness Mask,40,bango-file,taskquest.dat,35
+23,s600023,1,1369,Devil Troop of Anger Mask,45,bango-file,taskquest.dat,36
+24,s600024,1,1370,Devil Troop of Absorbing Green Mask,15,bango-file,taskquest.dat,37
+25,s600025,1,1371,The Cave of The Giant Bird Demon's Head,60,bango-file,taskquest.dat,39
+26,s600026,1,1372,Rotten Skeleton of Warrior of the Royal Tomb,30,bango-file,taskquest.dat,40
+27,s600027,1,1373,Doggebi of Monster Face Fire,20,bango-file,taskquest.dat,41
+28,s600028,1,1374,Doggebi with a Gong Fire,10,bango-file,taskquest.dat,42
+29,s600029,1,1375,Drunken Doggebi Fire,20,bango-file,taskquest.dat,43
+30,s600030,1,1376,Doggebi with a Mask of Black Fire,20,bango-file,taskquest.dat,45
+31,s600031,1,1377,Doggebi with a Mask of Black Panther Fire,20,bango-file,taskquest.dat,46
+32,s600032,1,1378,Giant Doggebi Fire,40,bango-file,taskquest.dat,47
+33,s600033,1,1379,High Class Doggebi with a Gong Fire,20,bango-file,taskquest.dat,48
+34,s600034,1,1380,The Royal Tobm Keeper's first certificate,10,bango-file,taskquest.dat,49
+35,s600035,1,1381,High Class Drunken Doggebi  Fire,10,bango-file,taskquest.dat,51
+36,s600036,1,1382,The Royal Tobm Keeper's second certificate,10,bango-file,taskquest.dat,52
+37,s600037,1,1383,High Class Doggebi with a Mask of Black Crow Fire,10,bango-file,taskquest.dat,53
+38,s600038,1,1384,Demon Crack Soldier's head,20,bango-file,taskquest.dat,54
+39,s600039,1,1385,Traitor Warrior's Talisman,20,bango-file,taskquest.dat,55
+40,s600040,1,1386,Chief of Demon Crack Troop's head,40,bango-file,taskquest.dat,57
+41,s600041,1,1387,E-Mok Island Blacksmith's rings,30,bango-file,taskquest.dat,58
+42,s600042,1,1388,Trained Traitor Warrior's Talisman,10,bango-file,taskquest.dat,59
+43,s600043,1,1389,Small Green E-Moogi's teeth,30,bango-file,taskquest.dat,60
+44,s600044,1,1390,Monster of Demon Crack Troop's head,10,bango-file,taskquest.dat,61
+45,s600045,1,1391,E-Mok Island Sealed Ghost's ring,20,bango-file,taskquest.dat,63
+46,s600046,1,1392,Guard of the Traitors Hangout's Talisman,5,bango-file,taskquest.dat,64
+47,s600047,1,1393,Small Brown E-Moogi's teeth,30,bango-file,taskquest.dat,65
+48,s600048,1,1394,White Beast of Demon Crack Troop's head	,20,bango-file,taskquest.dat,66
+49,s600049,1,1395,Twisted Green E-Moogi's teeth,15,bango-file,taskquest.dat,67
+50,s600050,1,1396,Knight of the Traitors Hangout's Talisman,5,bango-file,taskquest.dat,69
+51,s600051,1,1397,Twisted Brown E-Moogi's teeth,15,bango-file,taskquest.dat,70
+52,s600052,1,1398,Blue Beast of Demon Crack Troop's head,5,bango-file,taskquest.dat,71
+53,s600053,1,1399,Twisted Demon Guarder's head,10,bango-file,taskquest.dat,72
+54,s600054,1,1400,Twisted Demon Patrol's head,15,bango-file,taskquest.dat,73
+55,s600055,1,1401,Twisted Demon Warrior's head,10,bango-file,taskquest.dat,75
+56,s600056,1,1402,Twisted Demon Soldier's head,20,bango-file,taskquest.dat,76
+57,s600057,1,1403,Twisted Demon Defender's head,5,bango-file,taskquest.dat,77
+58,s600058,1,1713,Crazy Demon Worker's Head,50,bango-file,taskquest.dat,80
+59,s600059,1,1718,Wild Boar Chop of Meat,30,bango-file,taskquest.dat,81
+60,s600060,1,1719,Piece of Map,10,bango-file,taskquest.dat,82
+61,s600061,1,1731,Knoll of certificate,10,bango-file,taskquest.dat,83
+62,s600062,1,1738,Goblin Conjurator Head,5,bango-file,taskquest.dat,84
+63,s600063,1,1790,Wild Boar's Head,80,bango-file,taskquest.dat,88
+64,s600064,1,1791,Knoll Head,100,bango-file,taskquest.dat,89
+65,s600065,1,1784,Degenarated Twisted Demon Head,120,bango-file,taskquest.dat,90
+66,s600066,1,1792,Goblin Head,150,bango-file,taskquest.dat,91
+67,s600067,1,1793,Guard of D'evah Head,1,bango-file,taskquest.dat,92
+68,s600068,1,2080,Pincers of Desert Scorpion,20,bango-file,taskquest.dat,95
+69,s600069,1,2081,Rib of Skeleton,20,bango-file,taskquest.dat,96
+70,s600070,1,2082,Head of Twisted Demon warrior,20,bango-file,taskquest.dat,97
+71,s600071,1,2083,Certificate of Xill,20,bango-file,taskquest.dat,98
+72,s600072,1,2084,Certificate of Goblin,20,bango-file,taskquest.dat,99
+73,s600073,1,2085,Head of Knoll,20,bango-file,taskquest.dat,100
+74,s600074,1,2086,Certificate of Zombie,20,bango-file,taskquest.dat,101
+75,s600075,1,2087,Certificate of Master Skeleton,10,bango-file,taskquest.dat,102
+76,s600076,1,2088,Head of Master Wraith,10,bango-file,taskquest.dat,103
