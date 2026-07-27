@@ -3,25 +3,29 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="color-scheme" content="light">
+  <meta name="color-scheme" content="dark">
   <title>Kal Atlas — Linked KalOnline Knowledge Base</title>
   <style>
+    /* Jade Archive, night reading: the pine rail is unchanged and the content
+       surfaces are darkened to sit with it — deep pine-black ground, jade-grey
+       panels, warm ivory type and the same copper rules. Item portraits and
+       map artwork keep their light plates, because those are picture frames. */
     :root {
-      --bg: #e9e5d9;
-      --panel: #f8f5ec;
-      --panel-2: #f1ecdf;
-      --panel-3: #e8e1d2;
-      --line: #c9c1ad;
-      --line-soft: #ddd6c7;
-      --text: #203029;
-      --muted: #647168;
-      --dim: #879087;
-      --accent: #1f5a45;
-      --accent-ink: #f8f5ec;
-      --gold: #a86f3e;
-      --danger: #b94e42;
-      --blue: #2e7563;
-      --shadow: 0 14px 34px rgba(34, 48, 40, .09);
+      --bg: #0f1a16;
+      --panel: #16241f;
+      --panel-2: #1b2b25;
+      --panel-3: #22342d;
+      --line: #31473e;
+      --line-soft: #26372f;
+      --text: #ece3d1;
+      --muted: #a7b6ac;
+      --dim: #7e8f84;
+      --accent: #6cc6a0;
+      --accent-ink: #0a1512;
+      --gold: #d2a468;
+      --danger: #e2887a;
+      --blue: #74b7c7;
+      --shadow: 0 14px 34px rgba(0, 0, 0, .38);
       --radius: 13px;
       --radius-sm: 8px;
       --sidebar: 244px;
@@ -993,50 +997,34 @@
     .sidebar-status { border-top-color: rgba(240, 232, 213, .16); }
 
     .topbar {
-      background: rgba(248, 245, 236, .93);
-      box-shadow: 0 7px 24px rgba(34, 48, 40, .06);
+      background: rgba(11, 22, 18, .93);
+      box-shadow: 0 7px 24px rgba(0, 0, 0, .3);
     }
 
     button:hover, .button:hover, .directory-card:hover, .result:hover {
-      border-color: #668b78;
+      border-color: #4f7d67;
     }
 
-    th { background: #ece6d8; color: #69756d; }
-    tbody tr:hover td { background: rgba(31, 90, 69, .035); }
-    code { color: #86592f; background: #eee7d9; }
-    pre { color: #2b3b34; background: #eee9de; }
+    th { background: #12201b; color: var(--dim); }
+    tbody tr:hover td { background: rgba(108, 198, 160, .055); }
+    code { color: var(--gold); background: #101d18; }
+    pre { color: #cfdcd3; background: #0c1713; }
     .icon-missing {
-      background: repeating-linear-gradient(45deg, #cbd3ca 0 3px, transparent 3px 6px);
+      background: repeating-linear-gradient(45deg, #2e3f37 0 3px, transparent 3px 6px);
     }
 
-    .tag.accent { border-color: #8dac9b; }
-    .tag.gold { border-color: #c5a47f; }
-    .tag.blue { border-color: #8aafa3; }
-    .tag.danger { border-color: #d6a29b; }
-    .callout { background: #f2eadc; }
-    .callout.info { background: #e8f0eb; }
-    .callout.error { background: #f5e7e4; }
-    .article { color: #405048; }
-    dialog { box-shadow: 0 24px 80px rgba(22, 49, 37, .24); }
-    dialog::backdrop { background: rgba(20, 48, 37, .54); }
+    .tag.accent { border-color: #3c6a56; }
+    .tag.gold { border-color: #6c542f; }
+    .tag.blue { border-color: #3a6069; }
+    .tag.danger { border-color: #6f4039; }
+    .callout { background: #1a2620; }
+    .callout.info { background: #14242a; }
+    .callout.error { background: #261a18; }
+    .article { color: #c8d4cb; }
+    dialog { box-shadow: 0 24px 80px rgba(0, 0, 0, .62); }
+    dialog::backdrop { background: rgba(4, 12, 9, .72); }
 
-    .sheet {
-      --sheet-ink: #22362d;
-      --sheet-label: #8a653d;
-      --sheet-rule: #c8b18f;
-      color: var(--sheet-ink);
-      background:
-        linear-gradient(135deg, rgba(31, 90, 69, .06), transparent 36%),
-        #f2eadc;
-      border-color: #b89b73;
-      box-shadow: inset 0 0 0 1px #fffaf0, 0 9px 23px rgba(45, 56, 46, .09);
-    }
-    .sheet-head b, .sheet-bar b, .sheet-line > b { color: #203029; }
-    .sheet-line { border-bottom-color: #d8c9b1; }
-    .sheet-line small { color: #887b68; }
-    .sheet-bar .track { border-color: #a59b8a; background: #ded7c9; }
-    .sheet-bar .fill.mp { background: linear-gradient(90deg, #315e70, #5d94a3); }
-    .slot-icon { border-color: #b8ad9c; background: #e7e0d4; }
+    .status-dot.ready { box-shadow: 0 0 0 4px rgba(108, 198, 160, .12); }
 
     .item-identity {
       display: grid;
@@ -1116,8 +1104,8 @@
        redrawn as a Jade Archive screen. */
     body {
       background:
-        radial-gradient(circle at 84% 8%, rgba(173, 129, 70, .09), transparent 24rem),
-        repeating-linear-gradient(135deg, transparent 0 42px, rgba(31, 90, 69, .018) 42px 43px),
+        radial-gradient(circle at 84% 8%, rgba(173, 129, 70, .11), transparent 24rem),
+        repeating-linear-gradient(135deg, transparent 0 42px, rgba(236, 227, 209, .022) 42px 43px),
         var(--bg);
     }
 
@@ -1189,7 +1177,7 @@
       display: flex;
       gap: 4px;
       margin: 0 0 18px;
-      border-bottom: 1px solid #b99b70;
+      border-bottom: 1px solid #6d5638;
       padding: 0 8px;
     }
     .character-tabs a {
@@ -1205,10 +1193,10 @@
     }
     .character-tabs a.active {
       margin-bottom: -1px;
-      border-color: #b99b70;
-      color: #1f5a45;
+      border-color: #6d5638;
+      color: var(--accent);
       background: var(--panel);
-      box-shadow: inset 0 3px 0 #a96f3d;
+      box-shadow: inset 0 3px 0 #c08a4c;
     }
 
     .character-banner {
@@ -1217,12 +1205,12 @@
       align-items: end;
       gap: 18px;
       margin-bottom: 18px;
-      border: 1px solid #b99b70;
+      border: 1px solid #6d5638;
       border-radius: var(--radius);
       padding: 16px 18px;
       background:
-        linear-gradient(105deg, rgba(31, 90, 69, .95), rgba(31, 90, 69, .82) 58%, rgba(128, 85, 45, .86)),
-        var(--accent);
+        linear-gradient(105deg, rgba(24, 74, 57, .96), rgba(22, 66, 51, .9) 58%, rgba(97, 64, 34, .9)),
+        #1a4c3b;
       color: #fff8e9;
       box-shadow: var(--shadow);
     }
@@ -1253,20 +1241,20 @@
     .equipment-board {
       position: relative;
       min-height: 392px;
-      border: 1px solid #aa8a5f;
+      border: 1px solid #5c4830;
       border-radius: var(--radius);
       padding: 16px;
       background:
-        radial-gradient(circle at 50% 40%, rgba(53, 103, 78, .13), transparent 34%),
-        linear-gradient(135deg, rgba(255,255,255,.48), transparent 55%),
-        #e9e1d3;
-      box-shadow: inset 0 0 0 1px #fffaf0;
+        radial-gradient(circle at 50% 40%, rgba(108, 198, 160, .07), transparent 34%),
+        linear-gradient(135deg, rgba(236, 227, 209, .05), transparent 55%),
+        #16241f;
+      box-shadow: inset 0 0 0 1px rgba(236, 227, 209, .05);
     }
     .equipment-board::before {
       content: "裝";
       position: absolute;
       inset: 82px 0 auto;
-      color: rgba(31, 90, 69, .07);
+      color: rgba(108, 198, 160, .06);
       font-family: Georgia, serif;
       font-size: 148px;
       line-height: 1;
@@ -1287,18 +1275,18 @@
     }
     .equipment-slot {
       min-width: 0;
-      border: 1px solid #bba98c;
+      border: 1px solid #3b5145;
       border-radius: 9px;
       padding: 8px 6px;
       color: var(--text);
-      background: rgba(248, 245, 236, .88);
+      background: rgba(236, 227, 209, .045);
       text-align: center;
       cursor: context-menu;
-      box-shadow: 0 4px 12px rgba(42, 52, 44, .06);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, .2);
     }
     .equipment-slot:hover, .equipment-slot:focus-visible {
-      border-color: #9a6a3a;
-      background: #fffaf0;
+      border-color: var(--gold);
+      background: rgba(236, 227, 209, .09);
     }
     .equipment-slot .slot-icon {
       width: 48px;
@@ -1309,7 +1297,7 @@
     .equipment-slot strong {
       display: block;
       overflow: hidden;
-      color: #29473a;
+      color: var(--text);
       font-size: 11px;
       text-overflow: ellipsis;
       white-space: nowrap;
@@ -1350,10 +1338,10 @@
       margin-bottom: 16px;
     }
     .point-ledger > div {
-      border: 1px solid #c9b99e;
+      border: 1px solid var(--line);
       border-radius: 8px;
       padding: 11px 12px;
-      background: #eee7d9;
+      background: var(--panel-2);
     }
     .point-ledger span {
       display: block;
@@ -1379,10 +1367,10 @@
       grid-template-columns: 42px minmax(0, 1fr) auto;
       align-items: center;
       gap: 10px;
-      border: 1px solid #c4b59d;
+      border: 1px solid var(--line-soft);
       border-radius: 8px;
       padding: 8px;
-      background: #eee8dc;
+      background: var(--panel-2);
     }
     .skill-card.locked { opacity: .54; filter: saturate(.5); }
     .skill-card .icon { width: 38px; height: 38px; }
@@ -1416,10 +1404,10 @@
       grid-template-columns: 30px minmax(0, 1fr);
       gap: 7px;
       margin: 0 0 7px;
-      border: 1px solid #d2c6b4;
+      border: 1px solid var(--line-soft);
       border-radius: 6px;
       padding: 7px;
-      background: #f1ebdf;
+      background: var(--panel-2);
     }
     .quest-check.future { opacity: .52; }
     .quest-status {
@@ -1429,10 +1417,10 @@
       border-radius: 4px;
       padding: 0;
       color: var(--dim);
-      background: #fffaf0;
+      background: var(--panel-3);
     }
-    .quest-status.progress { color: #97622f; background: #f3dfbd; }
-    .quest-status.finished { color: #fff; background: #1f5a45; }
+    .quest-status.progress { color: #eab97a; background: rgba(210, 164, 104, .2); }
+    .quest-status.finished { color: #0a1512; background: var(--accent); }
     .quest-check strong { display: block; font-size: 12px; }
     .quest-check small { color: var(--dim); font-size: 10px; }
 
@@ -1443,19 +1431,19 @@
       margin-bottom: 16px;
     }
     .buff-card {
-      border: 1px solid #c7b89f;
+      border: 1px solid var(--line-soft);
       border-radius: 8px;
       padding: 10px;
-      background: #eee7da;
+      background: var(--panel-2);
     }
     .buff-card.active {
-      border-color: #477c60;
-      background: #e1ebdf;
-      box-shadow: inset 0 0 0 1px rgba(31, 90, 69, .13);
+      border-color: var(--accent);
+      background: rgba(108, 198, 160, .08);
+      box-shadow: inset 0 0 0 1px rgba(108, 198, 160, .16);
     }
     .buff-group-title {
       margin: 4px 0 8px;
-      color: #365343;
+      color: var(--accent);
       font-family: Georgia, "Times New Roman", serif;
     }
     .buff-toggle {
@@ -1473,7 +1461,7 @@
       height: 44px;
       display: grid;
       place-items: center;
-      border: 1px solid #b5a58c;
+      border: 1px solid #3b5145;
       border-radius: 5px;
       background: #221a13;
     }
@@ -1482,10 +1470,10 @@
     .buff-effect {
       min-height: 35px;
       margin: 8px 0;
-      border-left: 2px solid #b78654;
+      border-left: 2px solid #8a6438;
       padding: 5px 7px;
-      color: #405149;
-      background: rgba(255, 250, 240, .64);
+      color: var(--muted);
+      background: rgba(236, 227, 209, .04);
       font-size: 11px;
     }
     .buff-card-head {
@@ -1706,6 +1694,17 @@
     .entity-hero.tall .entity-portrait { width: 176px; height: 250px; }
     .entity-hero.tall .entity-portrait .kalenc-preview { max-width: 168px; max-height: 242px; }
 
+    /* Leading identity column on the directory tables: the client icon for an
+       item, the KalEncyclopedia portrait for a monster. */
+    .icon-col {
+      width: 44px;
+      padding-right: 0 !important;
+      text-align: center;
+      vertical-align: middle;
+    }
+    .icon-col .icon { image-rendering: pixelated; }
+    .icon-col .monster-icon { image-rendering: auto; }
+
     .cell-icon {
       display: inline-flex;
       align-items: center;
@@ -1746,6 +1745,43 @@
     .sheet-breakdown { margin-top: 10px; }
     .sheet-breakdown > summary { color: var(--muted); font-size: 12px; cursor: pointer; }
     .monster-search { width: 100%; margin-bottom: 10px; }
+
+    /* Monster comparison, collapsed: title and search only, and the width it
+       was holding goes back to the character panels, which flow into columns. */
+    .threat-toggle {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      min-height: 0;
+      border: 0;
+      border-radius: 0;
+      padding: 0;
+      color: inherit;
+      background: none;
+      font: inherit;
+      letter-spacing: inherit;
+      text-transform: inherit;
+      cursor: pointer;
+    }
+    .threat-toggle:hover { color: var(--accent); background: none; }
+    .threat-caret { display: inline-block; font-size: 9px; transition: transform .15s ease; }
+    .threat-panel.open .threat-caret { transform: rotate(90deg); }
+    .threat-panel:not(.open) .monster-search { margin-bottom: 0; }
+
+    .sim-workspace.threats-collapsed { grid-template-columns: minmax(0, 1fr); }
+    .sim-workspace.threats-collapsed > .sim-column:first-child {
+      columns: 3 340px;
+      column-gap: 16px;
+    }
+    .sim-workspace.threats-collapsed > .sim-column:first-child > * {
+      break-inside: avoid;
+      margin-bottom: 14px;
+    }
+    .sim-workspace.threats-collapsed .sim-threat-column {
+      position: static;
+      max-height: none;
+      overflow: visible;
+    }
 
     .equipment-board-help { display: none; }
     .equipment-board { padding: 0; }
@@ -1798,6 +1834,8 @@
       z-index: 60;
       min-width: 210px;
       max-width: 320px;
+      max-height: 82vh;
+      overflow-y: auto;
       border: 1px solid var(--line);
       border-radius: var(--radius-sm);
       background: var(--panel);
@@ -1814,14 +1852,20 @@
       text-transform: uppercase;
     }
     .slot-menu-list { margin: 0; padding: 4px 0; list-style: none; }
+    /* Submenus are `fixed`, not `absolute`, and placed by openSubmenu().
+       A scrolling list clips its own absolutely-positioned descendants — that
+       is what made a third-level branch (Talisman of Protection → Multiple
+       stats) render only as scrollbars on its parent. A fixed element escapes
+       an ancestor's overflow, so each level scrolls independently and none of
+       them can crop the next. */
     .slot-menu-list .slot-menu-list {
-      position: absolute;
-      z-index: 1;
-      top: -4px;
-      left: 100%;
+      position: fixed;
+      z-index: 61;
+      top: 0;
+      left: 0;
       display: none;
       min-width: 190px;
-      max-width: 330px;
+      max-width: 340px;
       max-height: 74vh;
       overflow-y: auto;
       border: 1px solid var(--line);
@@ -1829,11 +1873,7 @@
       background: var(--panel);
       box-shadow: 0 16px 36px rgba(34, 48, 40, .22);
     }
-    /* Submenus open on hover and on keyboard focus, and flip to the left when
-       the cascade would otherwise run off the right edge. */
-    .slot-menu-item.has-children:hover > .slot-menu-list,
-    .slot-menu-item.has-children:focus-within > .slot-menu-list { display: block; }
-    .slot-menu.flip .slot-menu-list .slot-menu-list { left: auto; right: 100%; }
+    .slot-menu-item.has-children.open > .slot-menu-list { display: block; }
     .slot-menu-item {
       position: relative;
       display: flex;
@@ -1932,6 +1972,135 @@
     @media (max-width: 1180px) {
       .quest-layout { grid-template-columns: 1fr; }
       .quest-map-column { position: static; }
+    }
+
+    /* ── Quest cards ─────────────────────────────────────────────────── */
+    .quest-progress {
+      align-self: center;
+      color: var(--muted);
+      font-size: 13px;
+    }
+    .quest-progress b { color: var(--accent); font-size: 18px; }
+
+    .quest-cards { display: grid; gap: 10px; }
+    .qcard {
+      border: 1px solid var(--line);
+      border-radius: var(--radius-sm);
+      background: var(--panel);
+      transition: opacity .2s ease, border-color .2s ease, background .2s ease;
+    }
+    .qcard-head {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+      padding: 9px 12px;
+    }
+    .qcard.open > .qcard-head { border-bottom: 1px solid var(--line-soft); }
+    .qcard-head h4 { margin: 0; font-size: 15px; }
+    .qcard-lvl {
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      padding: 1px 9px;
+      color: var(--muted);
+      font-size: 11px;
+      white-space: nowrap;
+    }
+    .qcard-rewards { color: var(--dim); font-size: 11.5px; }
+    .qcard-toggle {
+      min-height: 26px;
+      min-width: 26px;
+      margin-left: auto;
+      padding: 0 6px;
+      color: var(--dim);
+      background: none;
+      border-color: transparent;
+    }
+    /* Done: struck through, faded, and folded shut. The visitor can still open
+       it — the strike-through and the fade stay, because the state is the
+       quest's, not the card's. */
+    .qcard.done { border-color: var(--line-soft); opacity: .62; }
+    .qcard.done .qcard-head h4 a,
+    .qcard.done .qcard-head h4 { text-decoration: line-through; }
+    .qcard.done .qcard-head h4 a { color: var(--muted); }
+    .qcard.done .qcard-lvl, .qcard.done .qcard-rewards { opacity: .8; }
+    .qcard.done:hover { opacity: .95; }
+    .qcard-body { padding: 11px 12px 12px; }
+    .qcard-foot {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 10px;
+    }
+    .qcard-foot .button { margin-left: auto; }
+
+    /* The telegraphic route: one box per stop, arrows between them. */
+    .route-diagram {
+      display: flex;
+      align-items: stretch;
+      flex-wrap: wrap;
+      gap: 6px 3px;
+    }
+    .stop {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 5px;
+      width: 152px;
+      border: 1px solid var(--line-soft);
+      border-radius: 8px;
+      padding: 8px 7px;
+      background: var(--panel-2);
+      text-align: center;
+    }
+    .stop.kill { border-style: dashed; }
+    .stop-arrow { align-self: center; color: var(--gold); font-size: 15px; }
+    .stop-chip {
+      border-radius: 999px;
+      padding: 1px 9px;
+      color: var(--accent);
+      background: var(--panel-3);
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+    }
+    .stop-chip.kill { color: var(--danger); }
+    .stop-name { color: var(--text); font-size: 11.5px; font-weight: 650; line-height: 1.25; }
+    .stop-do {
+      display: -webkit-box;
+      overflow: hidden;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 4;
+      color: var(--muted);
+      font-size: 10.5px;
+      line-height: 1.3;
+    }
+    .stop-mobs {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 4px;
+    }
+    .stop-mob {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 2px;
+      max-width: 64px;
+      color: var(--muted);
+      font-size: 9.5px;
+      line-height: 1.15;
+    }
+    .stop-mob:hover { color: var(--accent); }
+    .stop-mob .monster-icon, .stop-mob .icon-monster-blank { border-radius: 4px; }
+    .stop-more { align-self: center; color: var(--dim); font-size: 10px; }
+
+    @media (max-width: 560px) {
+      .stop { width: 100%; }
+      .stop-arrow { transform: rotate(90deg); }
     }
 
     .map-filter-row {
@@ -2172,6 +2341,41 @@
     .link-list li { padding: 3px 0; border-bottom: 1px dotted var(--line-soft); font-size: 13px; }
     .link-list li:last-child { border-bottom: 0; }
     .link-list small { display: block; color: var(--dim); font-size: 11.5px; }
+
+    /* ── Night surfaces, last word ───────────────────────────────────────
+       Rules that have to sit at the end because the light-surface versions
+       they replace are declared further down the sheet than the palette
+       block. Ink that used to be dark on a pale tint is inverted here; a
+       tint left alone would put near-black text on a near-black panel. */
+    .sort-head:hover { color: var(--accent); background: rgba(108, 198, 160, .07); }
+    .map-tab.active .dim { color: rgba(10, 21, 18, .68); }
+    .xp-band.dead { color: var(--dim); background: rgba(126, 143, 132, .14); }
+    .xp-band.cold { color: #7fb3dd; background: rgba(127, 179, 221, .13); }
+    .xp-band.cool { color: #6cc6a0; background: rgba(108, 198, 160, .13); }
+    .xp-band.even { color: #d8b761; background: rgba(216, 183, 97, .14); }
+    .xp-band.warm { color: #e0a26a; background: rgba(224, 162, 106, .14); }
+    .xp-band.hot  { color: #e2887a; background: rgba(226, 136, 122, .14); }
+    .xp-band.peak { color: #c193d8; background: rgba(193, 147, 216, .14); }
+    tr.current-row { background: rgba(108, 198, 160, .1); }
+    .slot-menu, .slot-menu-list .slot-menu-list {
+      box-shadow: 0 18px 42px rgba(0, 0, 0, .55);
+    }
+    .slot-menu-item:hover, .slot-menu-item:focus-visible {
+      background: rgba(108, 198, 160, .1);
+    }
+    .map-pin { border-color: #f6efe0; }
+    /* Portraits, item previews and the model stage keep a light plate: the
+       client's artwork is drawn to sit on one, and a dark plate loses the
+       outlines. They read as framed pictures rather than as page surface. */
+    .entity-hero .entity-portrait, .item-preview {
+      border-color: #7c6647;
+      background:
+        linear-gradient(135deg, rgba(31, 90, 69, .1), transparent 55%),
+        #e6dcc8;
+      box-shadow: inset 0 0 0 1px rgba(255, 250, 240, .5);
+    }
+    .model-viewer canvas { border-color: #7c6647; }
+    .monster-icon { background: #cfc7b6; }
   </style>
 </head>
 <body>
@@ -2309,6 +2513,13 @@
       profiles: null,
       activeEquipmentSlot: "",
       monsterQuery: "",
+      // The monster comparison starts shut so its width goes to the character
+      // panels; opening it is a session preference, not part of the build.
+      threatOpen: false,
+      // Quest cards open when the quest is unfinished and shut when it is
+      // done. This holds the visitor's manual overrides of that default,
+      // keyed by quest id, so a card stays where they put it across renders.
+      questCardOpen: new Map(),
       // Sortable tables, keyed by the id given to sortableTable(). Holds the
       // row data and the current sort so a header click re-sorts in place
       // instead of re-rendering (and re-scrolling) the whole route.
@@ -3559,9 +3770,10 @@
         })}
         ${filterToolbar("items", query, { selectName: "class", selectLabel: "Class", allLabel: "All classes", selectOptions: classes, placeholder: "Name, ID, type or grade…" })}
         <section class="section"><div class="table-wrap"><table>
-          <thead><tr><th>ID</th><th>Item</th><th>Class</th><th>Grade</th><th>Required level</th><th>Client class</th><th>Drop sources</th><th>Source</th></tr></thead>
+          <thead><tr><th class="icon-col"></th><th>ID</th><th>Item</th><th>Class</th><th>Grade</th><th>Required level</th><th>Client class</th><th>Drop sources</th><th>Source</th></tr></thead>
           <tbody>${shown.map(row => `
             <tr>
+              <td class="icon-col">${iconTag(row.bango_image || "", row.ita_name || "", 28)}</td>
               <td class="mono">${escapeHtml(row.ita_azon)}</td>
               <td>${entityLink("item", row.ita_azon, row.ita_name || `<unresolved item ${row.ita_azon}>`)}</td>
               <td>${escapeHtml(row.ita_class || "—")}</td>
@@ -3597,11 +3809,12 @@
           selectOptions: ["yes", "no"], placeholder: "Monster name or Bango ID…"
         })}
         <section class="section"><div class="table-wrap"><table>
-          <thead><tr><th>Bango ID</th><th>Monster</th><th>Drop rows</th><th>Quests</th><th>Zones</th><th>Legacy stats</th></tr></thead>
+          <thead><tr><th class="icon-col"></th><th>Bango ID</th><th>Monster</th><th>Drop rows</th><th>Quests</th><th>Zones</th><th>Legacy stats</th></tr></thead>
           <tbody>${shown.map(row => {
             const id = String(row.message_id);
             const legacyRow = state.indexes.legacyMonstersByName.get(normalizeName(row.text));
             return `<tr>
+              <td class="icon-col">${monsterIconTag(id, row.text, 30)}</td>
               <td class="mono">${escapeHtml(id)}</td>
               <td>${entityLink("monster", id, row.text)}</td>
               <td class="number">${prettyNumber((state.indexes.dropsByMonster.get(id) || []).length)}</td>
@@ -3827,6 +4040,162 @@
       return null;
     }
 
+    /* ===================================================================
+       Quest route diagram
+
+       One small box per stop, left to right, in the order the quest is
+       actually played: who you talk to and where, what you kill, what you do.
+       The stops come from the player route where one exists, and from the
+       Bango client's own step text where it does not.
+
+       Monsters are attached to a step only when the step's text contains a
+       monster's full name (standing rule 14 — a partial name is not an
+       identity). Monsters the client ties to the quest but no step names get
+       one box of their own at the end, so they are shown without claiming a
+       position in the sequence they do not have.
+       =================================================================== */
+    function questMonsterRows(questId) {
+      const rows = (state.indexes.monsterQuestsByQuest.get(String(questId)) || [])
+        .map(ref => state.indexes.monstersById.get(String(ref.monster_id))
+          || { message_id: ref.monster_id, text: ref.monster_name || "" })
+        .filter(row => row.text);
+      // Bango keeps several ids under one name — three separate "Wolf" records
+      // sit behind Cloth Raise — and the diagram is about which creature you
+      // are looking for, not how many rows carry it.
+      return [...new Map(rows.map(row => [normalizeName(row.text), row])).values()];
+    }
+
+    function questDiagramStops(quest) {
+      const monsters = questMonsterRows(quest.que_id);
+      const used = new Set();
+      const nameMonsters = text => {
+        const needle = normalizeName(text);
+        const hits = monsters.filter(monster =>
+          normalizeName(monster.text) && needle.includes(normalizeName(monster.text)));
+        hits.forEach(monster => used.add(String(monster.message_id)));
+        return hits;
+      };
+
+      const route = routeQuestForBango(quest);
+      const stops = [];
+      if (route?.quest.steps?.length) {
+        route.quest.steps.forEach(step => {
+          if (step.type === "talk") {
+            stops.push({ kind: "talk", city: step.city, pin: step.pin,
+              label: step.label, name: questPinName(step.city, step.pin) });
+          } else if (step.type === "field") {
+            stops.push({ kind: "field", label: step.label, name: step.name,
+              monsters: nameMonsters(`${step.label} ${step.name}`) });
+          } else {
+            stops.push({ kind: "action", text: step.text || "",
+              monsters: nameMonsters(step.text || "") });
+          }
+        });
+      } else {
+        (state.indexes.questSteps.get(String(quest.que_id)) || []).forEach(step => {
+          stops.push({ kind: "action", text: cleanText(step.step_text) || "",
+            monsters: nameMonsters(step.step_text || "") });
+        });
+      }
+
+      const unplaced = monsters.filter(monster => !used.has(String(monster.message_id)));
+      if (unplaced.length) stops.push({ kind: "monsters", monsters: unplaced });
+      return stops;
+    }
+
+    function questStopMonstersHtml(monsters) {
+      if (!monsters?.length) return "";
+      return `<div class="stop-mobs">${monsters.slice(0, 4).map(monster =>
+        `<a class="stop-mob" href="${routeHref("monster", monster.message_id)}"
+          title="${escapeAttr(monster.text)}">
+          ${monsterIconTag(monster.message_id, monster.text, 44)}
+          <span>${escapeHtml(monster.text)}</span></a>`).join("")}${
+        monsters.length > 4
+          ? `<span class="stop-more">+${prettyNumber(monsters.length - 4)}</span>` : ""}</div>`;
+    }
+
+    function questDiagramHtml(quest) {
+      const stops = questDiagramStops(quest);
+      if (!stops.length) return "";
+      return `<div class="route-diagram">${stops.map((stop, index) => {
+        const arrow = index ? `<span class="stop-arrow" aria-hidden="true">→</span>` : "";
+        if (stop.kind === "talk") {
+          return `${arrow}<div class="stop talk">
+            ${questPinTag(stop.city, stop.pin)
+              || `<span class="stop-chip">${escapeHtml(questMapById(stop.city)?.label || "Go")}</span>`}
+            <span class="stop-name">${escapeHtml(stop.name || "—")}</span>
+            <span class="stop-do">${escapeHtml(stop.label || "")}</span></div>`;
+        }
+        if (stop.kind === "monsters") {
+          return `${arrow}<div class="stop kill">
+            <span class="stop-chip kill">Quest monsters</span>
+            ${questStopMonstersHtml(stop.monsters)}</div>`;
+        }
+        if (stop.kind === "field") {
+          return `${arrow}<div class="stop kill">
+            <span class="stop-chip kill">${escapeHtml(stop.label || "Field")}</span>
+            ${questStopMonstersHtml(stop.monsters)}
+            <span class="stop-name">${escapeHtml(stop.name || "")}</span></div>`;
+        }
+        const kill = stop.monsters?.length || /\bkill\b|\bcollect\b|\bfind\b/i.test(stop.text);
+        return `${arrow}<div class="stop ${kill ? "kill" : "act"}">
+          <span class="stop-chip${kill ? " kill" : ""}">${kill ? "Kill" : "Do"}</span>
+          ${questStopMonstersHtml(stop.monsters)}
+          <span class="stop-do" title="${escapeAttr(stop.text)}">${escapeHtml(stop.text)}</span></div>`;
+      }).join("")}</div>`;
+    }
+
+    function questCardIsOpen(profile, quest) {
+      const id = String(quest.que_id);
+      if (state.questCardOpen.has(id)) return state.questCardOpen.get(id);
+      return questState(profile, id) !== "finished";
+    }
+
+    function questCardHtml(profile, quest, build) {
+      const id = String(quest.que_id);
+      const finished = questState(profile, id) === "finished";
+      const open = questCardIsOpen(profile, quest);
+      const rewards = [
+        Number(quest.bango_experience) ? `${prettyNumber(quest.bango_experience)} XP` : "",
+        Number(quest.bango_skill_points) ? `${prettyNumber(quest.bango_skill_points)} SP` : "",
+        Number(quest.bango_contribution)
+          ? `${prettyNumber(quest.bango_contribution)} contribution` : ""
+      ].filter(Boolean).join(" · ");
+      const prerequisite = state.indexes.questsById.get(String(quest.bango_prerequisite));
+      const diagram = open ? questDiagramHtml(quest) : "";
+      return `<article class="qcard${finished ? " done" : ""}${open ? " open" : ""}"
+          data-quest-card="${escapeAttr(id)}">
+        <div class="qcard-head">
+          ${questStatusButton(profile, quest, true)}
+          <h4>${entityLink("quest", quest.que_id, quest.que_name)}</h4>
+          <span class="qcard-lvl">Lv ${escapeHtml(quest.que_lvl || "—")}</span>
+          ${rewards ? `<span class="qcard-rewards">${escapeHtml(rewards)}</span>` : ""}
+          <button type="button" class="qcard-toggle" data-quest-toggle="${escapeAttr(id)}"
+            aria-expanded="${open ? "true" : "false"}"
+            aria-label="${open ? "Collapse" : "Expand"} ${escapeAttr(quest.que_name || "quest")}"
+            >${open ? "▾" : "▸"}</button>
+        </div>
+        ${open ? `<div class="qcard-body">
+          ${diagram || emptyState("No route or client steps are recorded for this quest.")}
+          <div class="qcard-foot">
+            ${prerequisite ? `<span class="tag gold">after ${
+              entityLink("quest", prerequisite.que_id, prerequisite.que_name)}</span>` : ""}
+            ${Number(quest.que_lvl) > Number(build.level)
+              ? `<span class="tag danger">needs level ${escapeHtml(quest.que_lvl)}</span>` : ""}
+            <a class="button small ghost" href="${routeHref("quest", quest.que_id)}">Full quest page</a>
+          </div>
+        </div>` : ""}
+      </article>`;
+    }
+
+    function toggleQuestCard(questId) {
+      const id = String(questId);
+      const quest = state.indexes.questsById.get(id);
+      if (!quest) return;
+      state.questCardOpen.set(id, !questCardIsOpen(activeProfile(), quest));
+      renderRoute();
+    }
+
     function renderQuests(query) {
       const q = normalizeName(query.get("q") || "");
       const level = query.get("level") || "";
@@ -3842,9 +4211,15 @@
         }
         return true;
       });
-      const pageSize = 60;
+      // Level order, because that is the order the quests are actually played.
+      rows.sort((a, b) => (Number(a.que_lvl) || 0) - (Number(b.que_lvl) || 0)
+        || Number(a.que_id) - Number(b.que_id));
+      const pageSize = 20;
       const page = Number(query.get("page") || 1);
       const shown = rows.slice((page - 1) * pageSize, page * pageSize);
+      const profile = activeProfile();
+      const build = currentBuild();
+      const done = rows.filter(row => questState(profile, row.que_id) === "finished").length;
       const usedMaps = new Set();
       shown.forEach(row => routeQuestForBango(row)?.quest.steps
         .forEach(step => { if (step.city) usedMaps.add(step.city); }));
@@ -3853,8 +4228,11 @@
         ${pageHeader({
           eyebrow: "Quests",
           title: "Quests",
-          lede: "Levels, rewards, steps — and where on the map each one happens.",
-          crumbs: [["Overview", "#/home"], ["Quests", ""]]
+          lede: "Every quest as a route: who to talk to, where, and what to kill. "
+            + "Tick one off and it folds away.",
+          crumbs: [["Overview", "#/home"], ["Quests", ""]],
+          actions: `<span class="quest-progress"><b>${prettyNumber(done)}</b>
+            of ${prettyNumber(rows.length)} done</span>`
         })}
         ${filterToolbar("quests", query, { selectName: "level", selectLabel: "Level", allLabel: "All levels", selectOptions: levels, placeholder: "Quest name or text…" })}
         ${questMaps().length ? `<div class="map-filter-row">
@@ -3874,29 +4252,9 @@
         </div>` : ""}
         <div class="quest-layout">
           <div>
-            ${panel("", `<div class="table-wrap"><table>
-              <thead><tr><th>${escapeHtml(activeProfile().name)}</th><th>Quest</th>
-                <th class="num">Level</th><th class="num">XP</th><th class="num">SP</th>
-                <th class="num">Contribution</th><th>Where</th></tr></thead>
-              <tbody>${shown.map(row => {
-                const route = routeQuestForBango(row);
-                const pins = route ? [...new Map(route.quest.steps
-                  .filter(step => step.type === "talk")
-                  .map(step => [`${step.city}-${step.pin}`, step])).values()] : [];
-                return `<tr>
-                  <td>${questStatusButton(activeProfile(), row, true)}</td>
-                  <td>${entityLink("quest", row.que_id, row.que_name)}</td>
-                  <td class="num">${escapeHtml(row.que_lvl || "—")}</td>
-                  <td class="num">${prettyNumber(row.bango_experience)}</td>
-                  <td class="num">${prettyNumber(row.bango_skill_points)}</td>
-                  <td class="num">${prettyNumber(row.bango_contribution)}</td>
-                  <td>${pins.length
-                    ? `<div class="pin-tag-row">${pins.map(step =>
-                        questPinTag(step.city, step.pin)).join("")}</div>`
-                    : `<span class="dim">—</span>`}</td>
-                </tr>`;
-              }).join("")}</tbody>
-            </table></div>`, { wide: true })}
+            <div class="quest-cards">${shown.length
+              ? shown.map(row => questCardHtml(profile, row, build)).join("")
+              : emptyState("No quest matches this filter.")}</div>
             ${pagination(rows.length, page, pageSize, "quests", query)}
           </div>
           <div class="quest-map-column">
@@ -5634,7 +5992,14 @@
       if (armorCode && parseJson(row.bango_class_json, [])[0] === "defense") {
         return `kalenc-armor-preview-${armorCode}`;
       }
-      const picture = Number(legacyItem.ita_pic2);
+      // `ita_pic`, not `ita_pic2`. KalEncyclopedia's item form fills its list
+      // from `SELECT ita_class,ita_grade,ita_type,ita_name,ita_lvllim ×4,
+      // ita_rev,ita_price,ita_pic,ita_azon` and then reads
+      // imgWeapons.Images(SubItems(10)) — subitem 10 of that select is
+      // `ita_pic`. The count confirms it: all 311 non-blank `ita_pic` values
+      // fall in 0–182 and the exported ImageList holds exactly 183 pictures,
+      // while `ita_pic2` runs to 261 (it indexes the talisman list instead).
+      const picture = Number(legacyItem.ita_pic);
       if (Number.isInteger(picture) && picture >= 0 && picture < 183) {
         return `kalenc-item-preview-${String(picture).padStart(3, "0")}`;
       }
@@ -6525,13 +6890,13 @@
       const anchor = event?.currentTarget?.getBoundingClientRect?.()
         || { left: event?.clientX || 40, bottom: event?.clientY || 40, top: 0 };
       const width = host.offsetWidth || 260;
+      const height = host.offsetHeight || 240;
       const left = Math.max(8, Math.min(window.innerWidth - width - 8, anchor.left));
       host.style.left = `${left}px`;
-      host.style.top = `${Math.min(window.innerHeight - 40, anchor.bottom + 4)}px`;
-      // Submenus cascade right by default; near the right edge there is no
-      // room, so the whole menu flips them to the left instead.
-      if (left + width + 340 > window.innerWidth) host.classList.add("flip");
+      host.style.top = `${Math.max(8,
+        Math.min(anchor.bottom + 4, window.innerHeight - height - 8))}px`;
       hydrateIcons(host);
+      wireSlotSubmenus(host);
 
       host.querySelectorAll("[data-slot-choice]").forEach(node => {
         node.onclick = viewEvent => {
@@ -6545,6 +6910,45 @@
           }
         };
       });
+    }
+
+    /* Each cascade level is opened by hand rather than by :hover, because the
+       submenus are position:fixed and CSS cannot compute where they go. Moving
+       the pointer from a branch into its own submenu does not fire mouseleave,
+       since the submenu is still a DOM child of that branch. */
+    function wireSlotSubmenus(host) {
+      if (typeof host.querySelectorAll !== "function") return;
+      host.querySelectorAll(".slot-menu-item.has-children").forEach(branch => {
+        branch.onmouseenter = () => openSubmenu(branch);
+        branch.onfocusin = () => openSubmenu(branch);
+        branch.onmouseleave = () => closeSubmenu(branch);
+      });
+    }
+
+    function closeSubmenu(branch) {
+      if (!branch.classList) return;
+      branch.classList.remove("open");
+      branch.querySelectorAll?.(".slot-menu-item.has-children.open")
+        .forEach(child => child.classList.remove("open"));
+    }
+
+    function openSubmenu(branch) {
+      const list = branch.querySelector?.(":scope > .slot-menu-list");
+      if (!list || !branch.classList) return;
+      // Only one branch per level stays open, or two cascades overlap.
+      branch.parentElement?.querySelectorAll(":scope > .slot-menu-item.open")
+        .forEach(sibling => { if (sibling !== branch) closeSubmenu(sibling); });
+      branch.classList.add("open");
+
+      const anchor = branch.getBoundingClientRect();
+      const width = list.offsetWidth || 220;
+      const height = list.offsetHeight || 200;
+      // Cascade right; flip to the left only when the right side has no room.
+      let left = anchor.right - 2;
+      if (left + width > window.innerWidth - 8) left = anchor.left - width + 2;
+      list.style.left = `${Math.max(8, Math.min(left, window.innerWidth - width - 8))}px`;
+      list.style.top = `${Math.max(8,
+        Math.min(anchor.top - 5, window.innerHeight - height - 8))}px`;
     }
 
     function closeSlotMenu() {
@@ -6695,7 +7099,7 @@
        deliberately narrow so the sheet reads as one block instead of a row of
        half-empty cards. */
     function renderCharacterStatsHtml(profile, build) {
-      return `<div class="sim-workspace">
+      return `<div class="sim-workspace${state.threatOpen ? "" : " threats-collapsed"}">
           <div class="sim-column">
             <div id="simSheetPanel">${simSheetPanelHtml(build)}</div>
             ${panel("Character", `
@@ -7060,6 +7464,9 @@
           saveBuild();
         } catch (error) { /* a malformed share link falls back to the stored build */ }
       }
+      // `?monsters=open` opens the comparison straight away, so a link can
+      // point at it and a test can reach the table it renders.
+      if (params.get("monsters") === "open") state.threatOpen = true;
       const tab = CHARACTER_TABS.includes(params.get("tab")) ? params.get("tab") : "stats";
       const profile = activeProfile();
       const build = simNormalizeBuildItems(currentBuild());
@@ -7082,6 +7489,11 @@
         ${characterTabs(tab)}
         ${body}`;
       wireCharacterWorkspace(tab);
+      // renderBuild is also called directly — by a skill step, a quest tick or
+      // a class/level change — and not only through renderRoute. Without this
+      // the redrawn markup keeps its empty <img data-icon> tags and every icon
+      // on the tab disappears until the next navigation.
+      hydrateIcons(el.main);
     }
 
     function wireCharacterWorkspace(tab) {
@@ -7190,6 +7602,9 @@
       if (profile.quests[String(questId)] === "not-started") {
         delete profile.quests[String(questId)];
       }
+      // Marking a quest done is itself the instruction to fold it away, so a
+      // manual expand from before the change is dropped rather than obeyed.
+      state.questCardOpen.delete(String(questId));
       persistProfiles();
       renderRoute();
     }
@@ -7308,15 +7723,58 @@
         </details>`;
     }
 
+    /* Collapsed to its title and search box by default. The comparison is a
+       reference you consult, not something you read while building, so the
+       width it used to hold permanently now goes to the character panels;
+       typing a monster name opens it without a second click. */
     function simThreatPanelHtml(build) {
+      const open = Boolean(state.threatOpen);
       const sheet = simSheet(build);
       const threats = threatRows(sheet, build);
-      return panel("Monsters versus this build", `
+      return `<section class="panel threat-panel${open ? " open" : ""}">
+        <h3>
+          <button type="button" class="threat-toggle" id="simThreatToggle"
+            aria-expanded="${open ? "true" : "false"}" aria-controls="simMonsterList">
+            <span class="threat-caret" aria-hidden="true">▸</span>
+            <span>Monsters versus this build</span>
+          </button>
+          <span class="panel-aside">${prettyNumber(threats.rows.length)} with stats</span>
+        </h3>
         <input class="monster-search" type="search" id="simMonsterSearch"
           placeholder="Search monsters — e.g. Devil Soldier"
           value="${escapeAttr(state.monsterQuery || "")}" aria-label="Search monsters">
-        <div id="simMonsterList">${simMonsterList(sheet, build, state.monsterQuery || "")}</div>`,
-        { aside: `<span class="panel-aside">${prettyNumber(threats.rows.length)} with stats</span>` });
+        <div id="simMonsterList"${open ? "" : ` class="hidden"`}>${
+          open ? simMonsterList(sheet, build, state.monsterQuery || "") : ""}</div>
+      </section>`;
+    }
+
+    // The workspace is two columns while the comparison is open and one wide
+    // column of flowing panels while it is shut.
+    function applyThreatLayout() {
+      const workspace = el.main.querySelector?.(".sim-workspace");
+      if (workspace?.classList) {
+        workspace.classList.toggle("threats-collapsed", !state.threatOpen);
+      }
+    }
+
+    function setThreatPanelOpen(open) {
+      if (Boolean(state.threatOpen) === Boolean(open)) return;
+      state.threatOpen = Boolean(open);
+      applyThreatLayout();
+      const host = document.getElementById("simThreatPanel");
+      if (!host) return;
+      const build = currentBuild();
+      host.innerHTML = simThreatPanelHtml(build);
+      wireSimControls();
+      const search = document.getElementById("simMonsterSearch");
+      // Re-rendering replaces the input the player is typing into.
+      if (search && state.threatOpen && typeof search.focus === "function") {
+        search.focus();
+        if (typeof search.setSelectionRange === "function") {
+          const end = String(search.value || "").length;
+          search.setSelectionRange(end, end);
+        }
+      }
     }
 
     function simSupplementalHtml(build) {
@@ -7372,12 +7830,18 @@
       if (typeof el.main.querySelectorAll !== "function") return;
       el.main.querySelectorAll("[data-sim-field],[data-sim-item],[data-sim-prefix],[data-sim-manual]")
         .forEach(control => { control.oninput = onSimInput; });
+      const toggle = document.getElementById("simThreatToggle");
+      if (toggle) toggle.onclick = () => setThreatPanelOpen(!state.threatOpen);
       const search = document.getElementById("simMonsterSearch");
       if (search) {
         search.oninput = event => {
           state.monsterQuery = event.currentTarget.value;
+          if (state.monsterQuery.trim() && !state.threatOpen) {
+            setThreatPanelOpen(true);
+            return;
+          }
           const host = document.getElementById("simMonsterList");
-          if (!host) return;
+          if (!host || !state.threatOpen) return;
           const build = currentBuild();
           host.innerHTML = simMonsterList(simSheet(build), build, state.monsterQuery);
         };
@@ -9087,6 +9551,11 @@
       const questControl = event.target.closest("[data-quest-status]");
       if (questControl) {
         cycleQuestStatus(questControl.dataset.questStatus);
+        return;
+      }
+      const questToggle = event.target.closest("[data-quest-toggle]");
+      if (questToggle) {
+        toggleQuestCard(questToggle.dataset.questToggle);
         return;
       }
       const control = event.target.closest("[data-action]");
