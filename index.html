@@ -1276,6 +1276,32 @@
       grid-template-columns: repeat(3, minmax(76px, 1fr));
       gap: 10px;
     }
+    /* Fill-all-armor: plain dropdowns, deliberately no icons and no cascade. */
+    .armor-fill {
+      margin-top: 14px;
+      border: 1px solid var(--line-soft);
+      border-radius: 9px;
+      padding: 8px 10px;
+      background: rgba(236, 227, 209, .035);
+    }
+    .armor-fill > summary {
+      color: var(--gold);
+      font-size: 11.5px;
+      font-weight: 700;
+      letter-spacing: .04em;
+      cursor: pointer;
+    }
+    .armor-fill-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 8px;
+      margin: 10px 0 4px;
+    }
+    .armor-fill-grid .field span { font-size: 10.5px; }
+    .armor-fill-grid select { font-size: 12px; padding: 4px 6px; }
+    .armor-fill-action { grid-column: 1 / -1; }
+    .armor-fill-action .button { width: 100%; }
+    .armor-fill p { margin: 4px 0 0; }
     .equipment-slot {
       min-width: 0;
       border: 1px solid #3b5145;
@@ -1358,6 +1384,42 @@
       color: var(--accent);
       font-size: 22px;
     }
+    /* An impossible allocation has to be unmissable, not a minus sign the eye
+       slides past — the whole first tile turns to the danger colour. */
+    .point-ledger.over-budget > div:first-child {
+      border-color: var(--danger);
+      background: #2a1414;
+    }
+    .point-ledger.over-budget > div:first-child strong { color: var(--danger); }
+    .point-ledger.over-budget > div:first-child span { color: var(--danger); }
+    .point-ledger.three { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    /* The four transformation bands of one animal, side by side. */
+    .egg-bands {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 12px;
+    }
+    .egg-band {
+      border: 1px solid var(--line);
+      border-radius: 9px;
+      padding: 10px 12px;
+      background: var(--panel-2);
+    }
+    .egg-band-head {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 8px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid var(--line-soft);
+    }
+    .egg-band-head strong { color: var(--gold); font-size: 12.5px; }
+    .egg-band-body > div { margin-bottom: 5px; }
+    .egg-band-body .mono { font-size: 10.5px; }
+    .follow-character { display: flex; align-items: flex-start; gap: 8px; cursor: pointer; }
+    .follow-character input { margin-top: 3px; }
+    .stat-cost-table { font-size: 12px; }
+    .stat-cost-table td.danger { color: var(--danger); font-weight: 700; }
 
     .skill-columns {
       display: grid;
@@ -3679,21 +3741,48 @@
 
     // Bango names its item and prefix attributes in its own vocabulary. This is
     // the only place that vocabulary is translated into the project's 27 stat
-    // slots. `Attack` and `Magic` carry a min/max pair; everything else is a
+    // slots. `attack` and `magic` carry a min/max pair; everything else is a
     // single value. Attributes with no stat meaning (buff, quest, teleport,
     // refresh, aspeed and the rest) are deliberately not mapped — they are not
     // dropped silently, they simply are not sheet stats.
+    //
+    // THE KEYS ARE MATCHED CASE-INSENSITIVELY, and that is not tidiness. The
+    // two client files disagree on capitalisation for the same attribute:
+    // `inititem.dat` writes `Str`, `Attack`, `Magic`, while `prefix.dat` writes
+    // `str`, `attack`, `magic` on every one of its rows, and `int`/`wis`/`dex`
+    // in the +N grid where the named prefixes use `Int`/`Wis`/`Dex`. Matching
+    // exactly silently dropped 115 `str`, 105 `attack` and 101 `magic` prefix
+    // rows — which is why "Man's" (str+1, Hth+2) used to decode as Health only
+    // and every attack/magic talisman decoded to nothing at all.
     const BANGO_ATTRIBUTE_SLOTS = {
-      Str: ["Strength"], Hth: ["Health"], Int: ["Intelligence"],
-      Wis: ["Wisdom"], Dex: ["Agility"],
+      str: ["Strength"], hth: ["Health"], int: ["Intelligence"],
+      wis: ["Wisdom"], dex: ["Agility"],
       hp: ["HP"], mp: ["MP"], hit: ["OTP"], dodge: ["Evasion"],
       defense: ["Defense"], absorb: ["Absorb"],
       resistfire: ["Fire"], resistice: ["Ice"], resistlitning: ["Lightening"],
       resistpalsy: ["NonElemental"], resistcurse: ["Curse"],
-      Attack: ["PDMin", "PDMax"], Magic: ["MDMin", "MDMax"]
+      attack: ["PDMin", "PDMax"], magic: ["MDMin", "MDMax"]
     };
 
-    const WEAPON_PREFIX_IDS = new Set([
+    /* Which prefixes a slot can carry.
+
+       These three lists are a floor, not the answer: `prefixFamilyIds()` unions
+       them with what the data actually says, because the hand-made armor list
+       was missing five prefixes a player really can have. Two sources add to it.
+
+       1. A talisman item's own `Changeprefix` attribute, which reads
+          `[family, chance, prefix, chance, prefix]` — the family it applies to,
+          then the good result and its chance, then the **second-chance** result
+          and its chance. Talisman of Protection (items 319–326) names
+          Feathery/Man's/Wisdom's/Despotic/Revenge's/Prideful/Ruinous/Glorious as
+          the good outcomes and Forced/Healthy/Fictional/Fixed/Agile — the five
+          single-stat +1 prefixes — as the second chance. Only the good half was
+          listed here, which is why armor showed two branches and no +1 prefixes.
+       2. What armor and weapons are actually seen carrying in the legacy drop
+          table (`drp_rev`): armor drops with Ablaze, Predictive, Keen, Instant
+          and the rest, up to Health 6 and Wisdom 6, so the single-stat prefixes
+          on armor are not limited to the talismans' +1 second chance. */
+    const WEAPON_PREFIX_FLOOR = new Set([
       ...Array.from({ length: 10 }, (_, index) => index + 1).filter(id => id !== 4),
       ...Array.from({ length: 10 }, (_, index) => index + 11).filter(id => id !== 14),
       ...Array.from({ length: 10 }, (_, index) => index + 21).filter(id => id !== 24),
@@ -3703,17 +3792,72 @@
       ...Array.from({ length: 25 }, (_, index) => index + 68).filter(id =>
         ![83, 84, 85, 86, 87].includes(id))
     ].map(String));
-    const ARMOR_PREFIX_IDS = new Set([56, 57, 65, 83, 84, 85, 86, 87].map(String));
-    const ACCESSORY_PREFIX_IDS = new Set([
+    const ARMOR_PREFIX_FLOOR = new Set([56, 57, 65, 83, 84, 85, 86, 87].map(String));
+    const ACCESSORY_PREFIX_FLOOR = new Set([
       1, 3, 4, 5, 6, 7, 11, 13, 14, 15, 16, 17,
       21, 23, 24, 25, 26, 27, 31, 33, 34, 35, 36, 37,
       41, 43, 44, 45, 46, 47, 93, 94, 95, 96, 97, 98, 99, 100, 101, 102
     ].map(String));
+    // The client's own word for each family, as `Changeprefix` writes it.
+    const PREFIX_FAMILY_KEYS = { weapon: "weapon", armor: "defense", accessory: "ornament" };
+    // Attack and magic min/max belong to a weapon. A prefix carrying them can
+    // never be an armor or accessory prefix, whatever a name join suggests —
+    // "Fierce" is both prefix 47 (Agility 7) and prefix 54 (attack 3/3).
+    const WEAPON_ONLY_STATS = ["PDMin", "PDMax", "MDMin", "MDMax"];
+
+    function isWeaponOnlyPrefix(prefix) {
+      return WEAPON_ONLY_STATS.some(stat => (prefix?.stats || {})[stat] !== undefined);
+    }
+
+    /* The union of the floor above, the talisman `Changeprefix` outcomes and
+       the prefixes seen on dropped equipment of that kind. */
+    function buildPrefixFamilyIds(ix, tables, optional) {
+      const families = {
+        weapon: new Set(WEAPON_PREFIX_FLOOR),
+        armor: new Set(ARMOR_PREFIX_FLOOR),
+        accessory: new Set(ACCESSORY_PREFIX_FLOOR)
+      };
+      const byKey = new Map(Object.entries(PREFIX_FAMILY_KEYS)
+        .map(([family, key]) => [key, family]));
+      const add = (family, id) => {
+        const prefix = ix.prefixById.get(String(id));
+        if (!prefix) return;
+        if (family !== "weapon" && isWeaponOnlyPrefix(prefix)) return;
+        families[family].add(String(id));
+      };
+
+      for (const row of tables.itemAttributes || []) {
+        if (row.attribute !== "Changeprefix") continue;
+        const values = parseJson(row.values_json, []);
+        const family = byKey.get(String(values[0] || ""));
+        if (!family) continue;
+        // Index 2 is the good outcome, index 4 the second chance. Both are real
+        // prefixes a player can end up wearing.
+        [values[2], values[4]].forEach(id => { if (id) add(family, id); });
+      }
+
+      // Legacy `ita_itype`: 1 armor, 3 weapon. `drp_rev` writes the prefix name
+      // with its punctuation stripped ("Mans", "Wisdoms"), so the join is by
+      // normalized name, never by id (standing rule 17).
+      const prefixIdsByName = new Map();
+      ix.prefixOptions.forEach(prefix =>
+        mapPush(prefixIdsByName, normalizeName(prefix.name), prefix.id));
+      const legacyItemType = new Map((optional.legacyItems || [])
+        .map(row => [String(row.ita_azon), String(row.ita_itype || "")]));
+      for (const row of optional.legacyDrops || []) {
+        const family = ({ 1: "armor", 3: "weapon" })[legacyItemType.get(String(row.drp_item))];
+        if (!family) continue;
+        const name = normalizeName(row.drp_rev || "");
+        if (!name || /^\d+$/.test(String(row.drp_rev).trim())) continue;
+        (prefixIdsByName.get(name) || []).forEach(id => add(family, id));
+      }
+      ix.prefixFamilyIds = families;
+    }
 
     function bangoAttributeStats(rows) {
       const stats = {};
       rows.forEach(row => {
-        const slots = BANGO_ATTRIBUTE_SLOTS[row.attribute];
+        const slots = BANGO_ATTRIBUTE_SLOTS[String(row.attribute || "").toLowerCase()];
         if (!slots) return;
         const values = parseJson(row.values_json, []);
         slots.forEach((slot, index) => {
@@ -3880,6 +4024,7 @@
           && !/^<unresolved prefixname:/i.test(prefix.name))
         .sort((a, b) => a.name.localeCompare(b.name));
       ix.prefixById = new Map(ix.prefixOptions.map(prefix => [prefix.id, prefix]));
+      buildPrefixFamilyIds(ix, t, o);
       ix.legacyDropsByPairName = new Map();
       // Talismans have no Bango item id of their own to key on, so their drop
       // list is indexed inside the legacy id space they belong to.
@@ -4034,6 +4179,7 @@
           ["build", "Character Creation", ""],
           ["weapon-calculator", "Weapon calculator", ""],
           ["levels", "Levelling", ""],
+          ["eggs", "Eggs", ""],
           ["repeatable", "Repeatable quests", counts.repeatable],
           ["system", "Game system", ""]
         ]},
@@ -6523,15 +6669,142 @@
        in this file.
        =================================================================== */
 
+    /* The starting example is the one character in this project that was
+       actually measured in game — the naked level-38 Magician in
+       `calibration\OBSERVED_SHEETS.csv`. It used to be an invented set of
+       numbers, which now that the page shows a stat budget would greet every
+       new visitor with a red "over budget" warning on a character that cannot
+       exist. This one spends exactly 190 of its 190 points. */
     const DEFAULT_BUILD = {
       cls: "Magician", position: "", level: 38,
-      Strength: 8, Health: 70, Intelligence: 80, Wisdom: 50, Agility: 45,
+      Strength: 8, Health: 70, Intelligence: 77, Wisdom: 50, Agility: 8,
       items: {}, prefixes: {}, manual: {},
       questPercent: 0, petDamage: 0, petDefense: 0, petEvasion: 0,
       doubleHp: false
     };
 
     const PRIMARY_STATS = ["Strength", "Health", "Intelligence", "Wisdom", "Agility"];
+
+    /* ── Stat points ────────────────────────────────────────────────────
+       Everything here is read out of KalEncyclopedia's own character planner
+       (frmSkills), not from a rule of thumb:
+
+         lvl0Stats             the level-0 stat block per class, a 4x5 array
+         CalcSTATP(level)      the point budget, 5 x level with three late steps
+         txtCharLvl_TextChanged  the per-point cost loop and its two bands
+
+       The five stat values in `data\PL_SAVE.csv` are the check: all eight saved
+       builds come out spent to the point or within two of it, and none over
+       budget — which would be impossible if any of the four tables were wrong.
+
+       This agrees with the independent `[REIMPL]` reading in
+       `KalOnline_Engine_Formulas.md` on both cost tables and on which stat each
+       class gets cheap. Bango may have retuned any of it; nothing here is
+       measured in play. */
+    const STAT_BASE_BY_CLASS = {
+      Archer:   { Strength: 14, Health: 10, Intelligence: 8,  Wisdom: 10, Agility: 18 },
+      Knight:   { Strength: 18, Health: 16, Intelligence: 8,  Wisdom: 8,  Agility: 10 },
+      Magician: { Strength: 8,  Health: 10, Intelligence: 18, Wisdom: 16, Agility: 8 },
+      Thief:    { Strength: 14, Health: 10, Intelligence: 8,  Wisdom: 10, Agility: 18 }
+    };
+    // One stat per class costs less. Health and Wisdom are always full price.
+    const DISCOUNTED_STAT_BY_CLASS = {
+      Archer: "Agility", Knight: "Strength", Magician: "Intelligence", Thief: "Agility"
+    };
+    // Cost of the point that *reaches* this value; above the last band it is 7.
+    const STAT_COST_BANDS = {
+      standard:   [[50, 1], [70, 2], [90, 3], [110, 4], [130, 5], [150, 6]],
+      discounted: [[60, 1], [90, 2], [120, 3], [150, 4], [180, 5], [210, 6]]
+    };
+    const STAT_COST_ABOVE_BANDS = 7;
+
+    function statBaseFor(cls, stat) {
+      return STAT_BASE_BY_CLASS[cls]?.[stat] ?? 0;
+    }
+
+    function statPointCost(value, discounted) {
+      const bands = discounted ? STAT_COST_BANDS.discounted : STAT_COST_BANDS.standard;
+      const band = bands.find(([limit]) => value <= limit);
+      return band ? band[1] : STAT_COST_ABOVE_BANDS;
+    }
+
+    function statPointsSpent(cls, stat, value) {
+      const base = statBaseFor(cls, stat);
+      const discounted = DISCOUNTED_STAT_BY_CLASS[cls] === stat;
+      let total = 0;
+      for (let step = base + 1; step <= Number(value); step += 1) {
+        total += statPointCost(step, discounted);
+      }
+      return total;
+    }
+
+    // CalcSTATP: 5 per level, plus a second point per level from 72, a third
+    // from 76 and a fourth from 81.
+    function statPointsAtLevel(level) {
+      const value = Math.max(0, Number(level) || 0);
+      let total = 5 * value;
+      if (value >= 72) total += (value - 71) * 2;
+      if (value >= 76) total += value - 75;
+      if (value >= 81) total += value - 80;
+      return total;
+    }
+
+    function characterStatLedger(build) {
+      const cls = build.cls;
+      const known = Boolean(STAT_BASE_BY_CLASS[cls]);
+      const rows = PRIMARY_STATS.map(stat => {
+        const value = Number(build[stat]) || 0;
+        const base = statBaseFor(cls, stat);
+        const discounted = DISCOUNTED_STAT_BY_CLASS[cls] === stat;
+        return {
+          stat, value, base, discounted,
+          belowBase: known && value < base,
+          spent: known ? statPointsSpent(cls, stat, value) : 0,
+          next: known ? statPointCost(value + 1, discounted) : 0
+        };
+      });
+      const spent = rows.reduce((total, row) => total + row.spent, 0);
+      const total = statPointsAtLevel(build.level);
+      return { known, rows, spent, total, available: total - spent,
+        belowBase: rows.filter(row => row.belowBase) };
+    }
+
+    function statLedgerHtml(build) {
+      const ledger = characterStatLedger(build);
+      if (!ledger.known) {
+        return `<div class="callout"><strong>No stat budget for ${escapeHtml(build.cls)}.</strong>
+          The level-0 stat block was recovered for Archer, Knight, Magician and Thief only.</div>`;
+      }
+      const over = ledger.available < 0;
+      return `<div class="point-ledger three${over ? " over-budget" : ""}">
+          <div><span>Points left</span><strong>${prettyNumber(ledger.available)}</strong></div>
+          <div><span>Spent</span><strong>${prettyNumber(ledger.spent)}</strong></div>
+          <div><span>At level ${prettyNumber(build.level)}</span><strong>${
+            prettyNumber(ledger.total)}</strong></div>
+        </div>
+        ${over ? `<div class="callout error"><strong>Over budget by ${
+          prettyNumber(-ledger.available)} point${ledger.available === -1 ? "" : "s"}.</strong>
+          This character cannot exist at level ${prettyNumber(build.level)} — lower a stat or
+          raise the level.</div>` : ""}
+        ${ledger.belowBase.length ? `<div class="callout warn"><strong>Below the starting
+          block.</strong> ${escapeHtml(ledger.belowBase.map(row =>
+            `${row.stat} starts at ${row.base}`).join(", "))} for a ${escapeHtml(build.cls)}.</div>` : ""}
+        <div class="table-wrap"><table class="stat-cost-table">
+          <thead><tr><th>Stat</th><th class="num">Start</th><th class="num">Now</th>
+            <th class="num">Points</th><th class="num">Next</th></tr></thead>
+          <tbody>${ledger.rows.map(row => `<tr>
+            <td>${escapeHtml(row.stat)}${row.discounted
+              ? ` <small class="dim">cheap</small>` : ""}</td>
+            <td class="num">${prettyNumber(row.base)}</td>
+            <td class="num${row.belowBase ? " danger" : ""}">${prettyNumber(row.value)}</td>
+            <td class="num">${prettyNumber(row.spent)}</td>
+            <td class="num">${prettyNumber(row.next)}</td></tr>`).join("")}
+          </tbody></table></div>
+        <p class="dim"><small>Five points a level, and one more per level from 72, 76 and 81.
+          A point costs more the higher the stat already is; ${escapeHtml(build.cls)} pays the
+          cheaper table on ${escapeHtml(DISCOUNTED_STAT_BY_CLASS[build.cls] || "no stat")}.
+          Read out of KalEncyclopedia's planner — not measured on Bango.</small></p>`;
+    }
     // Buffs used to be a tab of their own. They belong next to the sheet they
     // change, so they now live inside Stats.
     const CHARACTER_TABS = ["stats", "skills", "quests"];
@@ -7823,10 +8096,14 @@
       return SIM_CORE_SLOTS.includes(label) ? label : `Other · ${label}`;
     }
 
-    function simWearable(item, build) {
-      return (!item.cls || item.cls === "All"
+    function simWearableClass(item, build) {
+      return !item.cls || item.cls === "All"
         || normalizeName(item.cls) === normalizeName(build.cls)
-        || (build.cls === "Magician" && normalizeName(item.cls) === "mage"))
+        || (build.cls === "Magician" && normalizeName(item.cls) === "mage");
+    }
+
+    function simWearable(item, build) {
+      return simWearableClass(item, build)
         && (!item.levelLimit || item.levelLimit <= Number(build.level));
     }
 
@@ -7908,7 +8185,130 @@
           that belongs to it. Click is the touch and keyboard fallback.</p>
         <div class="equipment-slot-grid">${definitions.map(([slot, label]) =>
           characterEquipmentSlot(build, slot, label)).join("")}</div>
+        ${armorFillControlsHtml(build)}
       </div>`;
+    }
+
+    /* Five armor pieces, one set of choices.
+
+       Configuring a full set through the slot menus is the same five decisions
+       made five times over. This is the same set of choices made once: no icon
+       and no cascade, just the four things that actually differ between one
+       armor set and the next. It writes through the same build fields the slot
+       menu writes, so nothing here is a parallel model. */
+    const ARMOR_FILL_SLOTS = ["Hood / Helmet", "Chest", "Gloves", "Shorts", "Boots"];
+    // The original enables Bead of Fire from G46 up, and only on the five
+    // pieces — never on a shield.
+    const BEAD_OF_FIRE_MIN_GRADE = 46;
+
+    function armorFillState() {
+      state.armorFill ||= { grade: "", defense: 0, bead: false, prefix: "" };
+      return state.armorFill;
+    }
+
+    // A grade is offered when at least one of the five pieces has an item at it.
+    function armorFillGrades(build) {
+      const grades = new Map();
+      ARMOR_FILL_SLOTS.forEach(slot => {
+        equipmentOptionsForSlot(build, slot).forEach(option => {
+          const label = option.gradeLabel || "—";
+          grades.set(label, Math.max(grades.get(label) || 0, 1));
+        });
+      });
+      return [...grades.keys()].sort((left, right) =>
+        (gradeNumber(right) ?? -1) - (gradeNumber(left) ?? -1));
+    }
+
+    function armorFillControlsHtml(build) {
+      const fill = armorFillState();
+      const grades = armorFillGrades(build);
+      if (!grades.length) return "";
+      const gradeValue = grades.includes(fill.grade) ? fill.grade : "";
+      const beadAllowed = (gradeNumber(gradeValue) ?? 0) >= BEAD_OF_FIRE_MIN_GRADE;
+      return `<details class="armor-fill"${state.armorFillOpen ? " open" : ""}>
+        <summary>Fill all five armor pieces at once</summary>
+        <div class="armor-fill-grid">
+          <label class="field"><span>Grade</span>
+            <select data-armor-fill="grade">
+              <option value="">— choose —</option>
+              ${grades.map(grade => `<option value="${escapeAttr(grade)}"${
+                grade === gradeValue ? " selected" : ""}>${escapeHtml(grade)}</option>`).join("")}
+            </select></label>
+          <label class="field"><span>Talisman of Defense</span>
+            <select data-armor-fill="defense">
+              ${Array.from({ length: 11 }, (_, amount) => `<option value="${amount}"${
+                Number(fill.defense || 0) === amount ? " selected" : ""
+              }>${amount ? `+${amount} Defense` : "— none —"}</option>`).join("")}
+            </select></label>
+          <label class="field"><span>Bead of Fire</span>
+            <select data-armor-fill="bead"${beadAllowed ? "" : " disabled"}>
+              <option value="no"${fill.bead && beadAllowed ? "" : " selected"}>No</option>
+              <option value="yes"${fill.bead && beadAllowed ? " selected" : ""}>Yes</option>
+            </select></label>
+          <label class="field"><span>${escapeHtml(
+            prefixFamilyForSlot("Chest")?.name || "Prefix")}</span>
+            <select data-armor-fill="prefix">
+              <option value="">— no prefix —</option>
+              ${prefixOptionsHtml("Chest", null, fill.prefix)}
+            </select></label>
+          <div class="armor-fill-action">
+            <button type="button" class="button small" data-armor-fill-apply${
+              gradeValue ? "" : " disabled"}>Apply to all five</button>
+          </div>
+        </div>
+        <p class="dim"><small>${beadAllowed
+          ? "Writes grade, defense talisman, Bead of Fire and prefix onto Hood / Helmet, Chest, Gloves, Shorts and Boots."
+          : `Writes grade, defense talisman and prefix onto Hood / Helmet, Chest, Gloves, Shorts and Boots. Bead of Fire needs G${BEAD_OF_FIRE_MIN_GRADE} or better, as in the original.`}
+          A piece with nothing at the chosen grade is left as it is and named below.</small></p>
+        ${state.armorFillReport ? `<div class="callout${
+          state.armorFillReport.missed.length ? " warn" : " info"}">
+          <strong>${escapeHtml(state.armorFillReport.applied)} of ${ARMOR_FILL_SLOTS.length} filled.</strong>
+          ${state.armorFillReport.missed.length
+            ? ` Nothing this character can wear at ${escapeHtml(state.armorFillReport.grade)} for
+              ${escapeHtml(state.armorFillReport.missed.join(", "))}.`
+            : ""}</div>` : ""}
+      </details>`;
+    }
+
+    function applyArmorFill() {
+      const fill = armorFillState();
+      const build = currentBuild();
+      if (!fill.grade) return;
+      build.items ||= {};
+      build.prefixes ||= {};
+      build.equipmentMods ||= {};
+      const missed = [];
+      let applied = 0;
+      ARMOR_FILL_SLOTS.forEach(slot => {
+        const option = equipmentOptionsForSlot(build, slot)
+          .find(entry => entry.gradeLabel === fill.grade);
+        if (!option) {
+          // A set can exist at this grade and still be unwearable: the five
+          // G46 BeeDan DaeChangEau pieces ask for character level 35, 37, 39,
+          // 41 and 43. Saying "no item" would be a lie — say which level.
+          const gated = (state.indexes.equippableItems || []).filter(item =>
+            item.slot === slot && displayGrade(item.grade) === fill.grade
+            && simWearableClass(item, build));
+          const lowest = Math.min(...gated.map(item => Number(item.levelLimit) || 0));
+          missed.push(gated.length && Number.isFinite(lowest)
+            ? `${slot} (needs level ${lowest})` : slot);
+          return;
+        }
+        build.items[slot] = option.item.id;
+        build.equipmentMods[slot] ||= {};
+        build.equipmentMods[slot].defense = Number(fill.defense) || 0;
+        build.equipmentMods[slot].equip =
+          fill.bead && (gradeNumber(fill.grade) ?? 0) >= BEAD_OF_FIRE_MIN_GRADE
+            ? "Bead of Fire" : "";
+        const allowed = new Set(prefixOptionsForSlot(slot, option.item).map(prefix => prefix.id));
+        if (fill.prefix && allowed.has(String(fill.prefix))) build.prefixes[slot] = fill.prefix;
+        else delete build.prefixes[slot];
+        applied += 1;
+      });
+      state.armorFillReport = { applied, missed, grade: fill.grade };
+      state.armorFillOpen = true;
+      saveBuild();
+      refreshSimResults({ refreshGear: true });
     }
 
     function equipmentModifierSummary(mods) {
@@ -8070,10 +8470,55 @@
       Defense: "Defense", Absorb: "Absorption"
     };
 
+    /* The compact form the equipment menu uses. A full row reads
+       "Health +2 · Agility +1 · On target point +1 — Revenge's", which is wide
+       enough that the menu clipped the talisman's own name off the end — so the
+       one thing you are choosing between became the one thing you could not
+       see. The menu row is the name first, then the effects abbreviated:
+       `Rev: Wis+1;Agi+2;OTP+1`. Full names and full effect text stay on the
+       slot summary, the prefix page and the talisman page. */
+    const PREFIX_STAT_SHORT = {
+      Strength: "Str", Health: "Hea", Intelligence: "Int", Wisdom: "Wis",
+      Agility: "Agi", HP: "HP", MP: "MP", OTP: "OTP", Evasion: "Eva",
+      PDMin: "PMin", PDMax: "PMax", MDMin: "MMin", MDMax: "MMax",
+      Defense: "Def", Absorb: "Abs", Fire: "Fire", Ice: "Ice",
+      Lightening: "Ltn", NonElemental: "NonEl", Curse: "Cur"
+    };
+    // One fixed order, so a column of prefixes can be read down rather than
+    // each row parsed on its own.
+    const PREFIX_STAT_ORDER = ["Strength", "Health", "Intelligence", "Wisdom", "Agility",
+      "HP", "MP", "OTP", "Evasion", "PDMin", "PDMax", "MDMin", "MDMax",
+      "Defense", "Absorb", "Fire", "Ice", "Lightening", "NonElemental", "Curse"];
+
+    function prefixStatEntries(prefix) {
+      const stats = prefix?.stats || {};
+      const known = PREFIX_STAT_ORDER.filter(stat => stats[stat] !== undefined);
+      const rest = Object.keys(stats).filter(stat => !PREFIX_STAT_ORDER.includes(stat));
+      return [...known, ...rest].map(stat => [stat, stats[stat]]);
+    }
+
     function prefixEffectText(prefix) {
-      return Object.entries(prefix.stats || {}).map(([stat, value]) =>
+      return prefixStatEntries(prefix).map(([stat, value]) =>
         `${PREFIX_STAT_LABELS[stat] || stat} ${Number(value) >= 0 ? "+" : ""}${prettyNumber(value)}`
       ).join(" · ");
+    }
+
+    function prefixShortEffect(prefix) {
+      return prefixStatEntries(prefix).map(([stat, value]) =>
+        `${PREFIX_STAT_SHORT[stat] || stat}${Number(value) >= 0 ? "+" : ""}${prettyNumber(value)}`
+      ).join(";");
+    }
+
+    // Three letters of the talisman's own name, so the name leads the row.
+    // A leading "The" is dropped because it identifies nothing.
+    function prefixShortName(prefix) {
+      const name = String(prefix?.name || "").trim().replace(/^the\s+/i, "");
+      const letters = name.replace(/[^A-Za-z0-9]/g, "").slice(0, 3);
+      return letters || name.slice(0, 3) || "?";
+    }
+
+    function prefixMenuLabel(prefix) {
+      return `${prefixShortName(prefix)}: ${prefixShortEffect(prefix)}`;
     }
 
     function prefixGroupName(prefix) {
@@ -8084,27 +8529,44 @@
       return "Multiple stats";
     }
 
+    function prefixFamilyIds(family) {
+      return state.indexes.prefixFamilyIds?.[family]
+        || ({ weapon: WEAPON_PREFIX_FLOOR, armor: ARMOR_PREFIX_FLOOR,
+              accessory: ACCESSORY_PREFIX_FLOOR })[family];
+    }
+
     function prefixFamilyForSlot(slot) {
       if (slot === "Weapon") return {
-        name: "Talisman of Intensification", ids: WEAPON_PREFIX_IDS
+        name: "Talisman of Intensification", ids: prefixFamilyIds("weapon")
       };
       if (ARMOR_EQUIPMENT_SLOTS.has(slot)) return {
-        name: "Talisman of Protection", ids: ARMOR_PREFIX_IDS
+        name: "Talisman of Protection", ids: prefixFamilyIds("armor")
       };
       if (ACCESSORY_EQUIPMENT_SLOTS.has(slot)) return {
-        name: "Talisman of Wonder", ids: ACCESSORY_PREFIX_IDS
+        name: "Talisman of Wonder", ids: prefixFamilyIds("accessory")
       };
       return null;
+    }
+
+    /* Is the Weapon slot a magic weapon? With no weapon chosen the class
+       answers, which is what the amount branch beside it already did — so a
+       Magician with an empty slot was being offered the physical-attack
+       prefixes under a menu headed "Mag. attack". (Invisible until the
+       attack/magic attributes started decoding at all.) */
+    function weaponIsMagic(item, build = null) {
+      if (item) return item.rawSlot === "wand";
+      return (build || currentBuild())?.cls === "Magician";
     }
 
     function prefixOptionsForSlot(slot, item = null) {
       const family = prefixFamilyForSlot(slot);
       if (!family) return [];
+      const magic = slot === "Weapon" ? weaponIsMagic(item) : false;
       return state.indexes.prefixOptions.filter(prefix => {
         if (!family.ids.has(prefix.id)) return false;
         const group = prefixGroupName(prefix);
-        if (slot === "Weapon" && item?.rawSlot === "wand" && group === "Physical attack") return false;
-        if (slot === "Weapon" && item?.rawSlot !== "wand" && group === "Magical attack") return false;
+        if (slot === "Weapon" && magic && group === "Physical attack") return false;
+        if (slot === "Weapon" && !magic && group === "Magical attack") return false;
         return true;
       });
     }
@@ -8133,8 +8595,7 @@
       const prefixFamily = prefixFamilyForSlot(slot);
       const isWeapon = slot === "Weapon";
       const isArmor = ARMOR_EQUIPMENT_SLOTS.has(slot);
-      const isMagicWeapon = isWeapon && (item?.rawSlot === "wand"
-        || (!item && build.cls === "Magician"));
+      const isMagicWeapon = isWeapon && weaponIsMagic(item, build);
       const label = slot.replace(/^Other · /, "");
       const dragonNames = ["Imoogi", "Shadow Dragon", "Sky Dragon", "Ancient Dragon",
         "Storm Dragon", "Violent Dragon", "Thunder Dragon"];
@@ -8340,7 +8801,7 @@
             .sort((left, right) => prefixMagnitude(left) - prefixMagnitude(right)
               || String(left.name).localeCompare(String(right.name)))
             .map(prefix => ({
-              label: `${prefixEffectText(prefix)} — ${prefix.name}`,
+              label: prefixMenuLabel(prefix),
               checked: String(selectedId || "") === prefix.id,
               prefix: prefix.id
             }))
@@ -8385,8 +8846,7 @@
       const mods = build.equipmentMods?.[slot] || {};
       const isWeapon = slot === "Weapon";
       const isArmor = ARMOR_EQUIPMENT_SLOTS.has(slot);
-      const isMagicWeapon = isWeapon && (item?.rawSlot === "wand"
-        || (!item && build.cls === "Magician"));
+      const isMagicWeapon = isWeapon && weaponIsMagic(item, build);
 
       if (slot === "Animal") {
         return [
@@ -8787,6 +9247,7 @@
                   <input type="number" min="0" data-sim-field="${escapeAttr(stat)}"
                     value="${escapeAttr(build[stat])}"></label>`).join("")}
               </div>`)}
+            <div id="simStatPoints">${panel("Stat points", statLedgerHtml(build))}</div>
             <div id="simGearHost">${panel("Inventory", simGearControls(build))}</div>
             <div id="simBuffPanel">${simBuffPanelHtml(profile)}</div>
             ${panel("Advanced", `<details><summary>Percentages and manual stat overrides</summary>
@@ -9246,6 +9707,25 @@
           control.oninput = onBuffChange;
           control.onchange = onBuffChange;
         });
+        el.main.querySelectorAll("[data-armor-fill]").forEach(control => {
+          control.onchange = event => {
+            const key = event.currentTarget.dataset.armorFill;
+            const value = event.currentTarget.value;
+            const fill = armorFillState();
+            if (key === "defense") fill.defense = Number(value) || 0;
+            else if (key === "bead") fill.bead = value === "yes";
+            else fill[key] = value;
+            state.armorFillOpen = true;
+            // The grade decides whether Bead of Fire is even offered, so the
+            // block has to redraw rather than just remember the choice.
+            if (key === "grade") refreshSimResults({ refreshGear: true });
+          };
+        });
+        el.main.querySelectorAll("details.armor-fill").forEach(node => {
+          node.ontoggle = () => { state.armorFillOpen = Boolean(node.open); };
+        });
+        const armorApply = el.main.querySelector("[data-armor-fill-apply]");
+        if (armorApply) armorApply.onclick = applyArmorFill;
       } else if (tab === "skills") {
         el.main.querySelectorAll("[data-skill-up]").forEach(control => {
           control.onclick = () => changeSkillGrade(control.dataset.skillUp, 1);
@@ -9428,6 +9908,7 @@
       const sheetHost = document.getElementById("simSheetPanel");
       const threatHost = document.getElementById("simThreatPanel");
       const supplementalHost = document.getElementById("simSupplemental");
+      const statPointHost = document.getElementById("simStatPoints");
       // Re-rendering the buff panel would close every open group, so its
       // markup is left alone unless the caller asks for it.
       const openBuffGroups = buffHost
@@ -9441,11 +9922,12 @@
           if (openBuffGroups[index] !== undefined) node.open = openBuffGroups[index];
         });
       }
+      if (statPointHost) statPointHost.innerHTML = panel("Stat points", statLedgerHtml(build));
       if (sheetHost) sheetHost.innerHTML = simSheetPanelHtml(build);
       if (threatHost) threatHost.innerHTML = simThreatPanelHtml(build);
       if (supplementalHost) supplementalHost.innerHTML = simSupplementalHtml(build);
       wireCharacterWorkspace("stats");
-      [gearHost, buffHost, sheetHost, threatHost, supplementalHost]
+      [gearHost, buffHost, sheetHost, threatHost, supplementalHost, statPointHost]
         .forEach(host => hydrateIcons(host));
     }
 
@@ -10198,8 +10680,230 @@
       return state.indexes.playerLevels;
     }
 
+    /* ===================================================================
+       Eggs — its own section, because the egg table is not a levelling
+       table and its three numbers are not the same three stats for
+       everybody.
+
+       KalEncyclopedia's frmLevels puts one shared `Gra. | ExpToLvl | Day |
+       Stats` list beside four animal tabs, and each tab carries an
+       "Attributes" line naming what that animal's three numbers are:
+
+         Tiger    Strength / Health / Agility      recommended for Knight
+         Panther  Agility / Strength / Health      recommended for Archer
+         Bird     Intelligence / Agility / Health  recommended for Mage
+         Eagle    Health / Wisdom / Agility        recommended for Thief
+
+       Reading `LVL_EGGS.leg_stat` as Strength / Health / Agility for every
+       animal, as this page used to, is right for Tiger alone and wrong for
+       the other three. The four transformation bands below are transcribed
+       from the same four tabs; a value the tool itself writes as `??` stays
+       `??` here.
+       =================================================================== */
+    const EGG_ANIMALS = [
+      {
+        name: "Tiger", recommended: "Knight",
+        attributes: ["Strength", "Health", "Agility"],
+        bands: [
+          { grade: "G11", title: "Baby Transformation", skill: "Hard Hit",
+            description: "Simple hitting the enemys",
+            parameters: "Rage used: 7, Range: 28, Charge time: 0.8s, Cooldown: 0.6s",
+            extra: "", rage: "357 per 5 Seconds (71.4/s)" },
+          { grade: "G21", title: "Young Transformation", skill: "Destruction",
+            description: "Hit target with two hands, stun skill.",
+            parameters: "Rage used: 400, Range: 28, Charge time: 1.2s, Cooldown: 15s",
+            extra: "+ 36 defense", rage: "761 per 5 Seconds (152.2/s)" },
+          { grade: "G31", title: "Adult Transformation", skill: "Rage",
+            description: "100% Accuracy for 15 seconds.",
+            parameters: "Rage used: 4800, Range: 0, Charge time: 0.0s, Cooldown: 1800s",
+            extra: "+ 36 defense, + 4% attack", rage: "857 per 5 Seconds (171.4/s)" },
+          { grade: "G41", title: "Ancient Transformation", skill: "Revolve Attack",
+            description: "The force of flame attacks the enemies around you.",
+            parameters: "Rage used: 15000, Range: 0, Charge time: 0.0s, Cooldown: ??s",
+            extra: "+ 36 defense, + 4% attack", rage: "1000 per 5 Seconds (200/s)" }
+        ]
+      },
+      {
+        name: "Panther", recommended: "Archer",
+        attributes: ["Agility", "Strength", "Health"],
+        bands: [
+          { grade: "G11", title: "Baby Transformation", skill: "Earth Thorn",
+            description: "Hitting enemys...",
+            parameters: "Rage used: , Range: WeaRange, Charge time: 0.9s, Cooldown: 0.6s",
+            extra: "", rage: "357 per 5 Seconds (71.4/s)" },
+          { grade: "G21", title: "Young Transformation", skill: "Shadow Canine",
+            description: "",
+            parameters: "Rage used: 400, Range: 100, Charge time: 0.6s, Cooldown: 60s",
+            extra: "+ 18 defense", rage: "761 per 5 Seconds (152.2/s)" },
+          { grade: "G31", title: "Adult Transformation", skill: "Adamant",
+            description: "When performed, all attacks are critical damage for 15 seconds",
+            parameters: "Rage used: 4800, Range: 0, Charge time: 0.0s, Cooldown: 1800s",
+            extra: "+ 18 defense, + 4% attack", rage: "857 per 5 Seconds (171.4/s)" },
+          { grade: "G41", title: "Ancient Transformation", skill: "Blood Suction",
+            description: "",
+            parameters: "Rage used: 15000, Range: 0, Charge time: 0.0s, Cooldown: ??s",
+            extra: "+ 18 defense, + 4% attack", rage: "1000 per 5 Seconds (200/s)" }
+        ]
+      },
+      {
+        name: "Bird", recommended: "Mage",
+        attributes: ["Intelligence", "Agility", "Health"],
+        bands: [
+          { grade: "G11", title: "Baby Transformation", skill: "LighteningWave",
+            description: "Hitting enemys...",
+            parameters: "Rage used: 4, Range: 200, Charge time: 0.9s, Cooldown: 0.6s",
+            extra: "", rage: "357 per 5 Seconds (71.4/s)" },
+          { grade: "G21", title: "Young Transformation", skill: "Icy Storm",
+            description: "Area Effect, Reduce speed of enemies by 50%",
+            parameters: "Rage used: 400, Range: ??, Charge time: 1.2s, Cooldown: 80s",
+            extra: "+ 27 defense", rage: "761 per 5 Seconds (152.2/s)" },
+          { grade: "G31", title: "Adult Transformation", skill: "Phoenix",
+            description: "Become Invincible from any attack for 15 seconds",
+            parameters: "Rage used: 4800, Range: 0, Charge time: 0.0s, Cooldown: 1800s",
+            extra: "+ 27 Defense, + 4% attack", rage: "857 per 5 Seconds (171.4/s)" },
+          { grade: "G41", title: "Ancient Transformation", skill: "Thunderbolt",
+            description: "Thunderbolt hits enemies around you for 9 seconds.",
+            parameters: "Rage used: 15000, Range: 0, Charge time: 0.0s, Cooldown: ??s",
+            extra: "+ 27 defense, + 4% attack", rage: "1000 per 5 Seconds (200/s)" }
+        ]
+      },
+      {
+        name: "Eagle", recommended: "Thief",
+        attributes: ["Health", "Wisdom", "Agility"],
+        bands: [
+          { grade: "G11", title: "Baby Transformation", skill: "High Cl. Hiding",
+            description: "Conceal yourself from the detection of enemy. (Normal move speed)",
+            parameters: "Rage used: 9 , Lasting time: 20s",
+            extra: "", rage: "357 per 5 Seconds (71.4/s)" },
+          { grade: "G21", title: "Young Transformation", skill: "ZilPoong",
+            description: "Attack 3 times rapidly",
+            parameters: "Rage used: 400",
+            extra: "+ 20 defense", rage: "761 per 5 Seconds (152.2/s)" },
+          { grade: "G31", title: "Adult Transformation", skill: "ShinRhoe",
+            description: "Summon Lightening in surrounding area.",
+            parameters: "Rage used: ??, Range: 0, Charge time: 0.0s, Cooldown: ??s",
+            extra: "+ 20 defense, + 4% attack", rage: "857 per 5 Seconds (171.4/s)" },
+          { grade: "G41", title: "Ancient Transformation", skill: "Blood Suction",
+            description: "The wirlwind and feathers attack the enemies around you.",
+            parameters: "Rage used: 15000, Range: 0, Charge time: 0.0s, Cooldown: ??s",
+            extra: "+ 20 defense, + 4% attack", rage: "1000 per 5 Seconds (200/s)",
+            // Panther's ancient skill carries this same name in the source
+            // tool. One of the two labels is a copy; which one is not
+            // recoverable from the tool, so neither is corrected here.
+            nameShared: "Panther" }
+        ]
+      }
+    ];
+
+    function eggAnimal(name) {
+      return EGG_ANIMALS.find(animal =>
+        normalizeName(animal.name) === normalizeName(name)) || EGG_ANIMALS[0];
+    }
+
+    /* One row per egg grade: the experience it needs, the days that takes at
+       the server's egg rate, and the three numbers named for this animal. */
+    function eggGradeRows(animal) {
+      const perDay = Number(state.server?.egg_experience_per_day) || 4800;
+      return (state.optional.levelEggs || []).map((row, index) => {
+        const grade = Number(String(row.leg_id).replace(/\D/g, "")) || index + 1;
+        // 6553.6 x n, exactly as frmLevels computes it.
+        const experience = Math.round(6553.6 * (index + 1));
+        const values = String(row.leg_stat || "").split("/").map(value => value.trim());
+        const stats = {};
+        animal.attributes.forEach((stat, slot) => { stats[stat] = values[slot] || ""; });
+        return { grade, experience, days: experience / perDay, stats, values };
+      });
+    }
+
+    // The animal's own picture at each grade band, from frmSkills' imgOther.
+    function eggBandLevel(grade) {
+      return Number(String(grade).replace(/\D/g, "")) || 0;
+    }
+
+    function renderEggs(query) {
+      const animal = eggAnimal(query.get("animal") || EGG_ANIMALS[0].name);
+      const rows = eggGradeRows(animal);
+      const perDay = Number(state.server?.egg_experience_per_day) || 4800;
+
+      el.main.innerHTML = `
+        ${pageHeader({
+          eyebrow: "Tables",
+          title: "Eggs",
+          lede: "What an egg costs to raise, and what each animal actually gives you.",
+          crumbs: [["Overview", "#/home"], ["Eggs", ""]]
+        })}
+        <nav class="character-tabs" aria-label="Animals">
+          ${EGG_ANIMALS.map(entry => `<a class="${
+            entry.name === animal.name ? "active" : ""}" href="#/eggs?animal=${
+            encodeURIComponent(entry.name)}">${escapeHtml(entry.name)}</a>`).join("")}
+        </nav>
+        ${panel(`${animal.name} — recommended for ${animal.recommended}`, `
+          <div class="egg-bands">${animal.bands.map(band => `
+            <div class="egg-band">
+              <div class="egg-band-head">
+                <span class="slot-icon">${iconTag(
+                  animalIconName(animal.name, eggBandLevel(band.grade)),
+                  `${animal.name} ${band.grade}`, 40)}</span>
+                <div><strong>${escapeHtml(band.grade)} — ${escapeHtml(band.title)}</strong>
+                  <br><small class="dim">character level ${eggBandLevel(band.grade)}</small></div>
+              </div>
+              <div class="egg-band-body">
+                <div><b>${escapeHtml(band.skill)}</b>${band.nameShared
+                  ? ` <small class="dim">(the source tool gives ${escapeHtml(band.nameShared)}'s
+                      ancient skill the same name)</small>` : ""}</div>
+                ${band.description ? `<div><small>${escapeHtml(band.description)}</small></div>`
+                  : `<div><small class="dim">No description in the source tool.</small></div>`}
+                <div><small class="dim mono">${escapeHtml(band.parameters)}</small></div>
+                ${statLines([
+                  ["Extra stats", band.extra ? escapeHtml(band.extra) : "<span class=\"dim\">none</span>"],
+                  ["Rage", escapeHtml(band.rage)]
+                ])}
+              </div>
+            </div>`).join("")}</div>
+          <p class="dim" style="margin:12px 0 0"><small>Every animal keeps its transformation
+            skills for the whole band; the grade is the egg's grade, and the character level
+            beside it is the requirement the client puts on that transformation item.</small></p>`,
+          { wide: true })}
+        ${panel(`Raising a${/^[AEIOU]/i.test(animal.name) ? "n" : ""} ${animal.name}`, `
+          <p class="dim" style="margin:0 0 10px"><small>Each grade needs
+            ${prettyNumber(Math.round(6553.6))} × its number in experience. Days assume
+            ${prettyNumber(perDay)} experience a day${state.server?.egg_experience_per_day_confirmed
+              ? "" : ", which has not been confirmed on this server"}. The three stat columns are
+            <strong>${escapeHtml(animal.attributes.join(" / "))}</strong> for a${
+              /^[AEIOU]/i.test(animal.name) ? "n" : ""}
+            ${escapeHtml(animal.name)} — the same three numbers mean different stats on a
+            different animal.</small></p>
+          ${rows.length ? sortableTable("eggTable", [
+            { key: "grade", label: "Grade", align: true,
+              sort: row => row.grade, cell: row => `G${String(row.grade).padStart(2, "0")}` },
+            { key: "xp", label: "Experience to level", align: true,
+              sort: row => row.experience, cell: row => prettyNumber(row.experience) },
+            { key: "days", label: "Days", align: true,
+              sort: row => row.days, cell: row => row.days.toFixed(2) },
+            ...animal.attributes.map((stat, slot) => ({
+              key: `stat${slot}`, label: stat, align: true,
+              sort: row => Number(row.values[slot]) || "",
+              cell: row => escapeHtml(row.values[slot] || "—")
+            }))
+          ], rows, { defaultSort: { key: "grade", dir: "asc" } })
+            : emptyState("The egg table (data/LVL_EGGS.csv) was not found.")}`,
+          { wide: true })}
+        ${provenanceFooter(`<p>The grade ladder is KalEncyclopedia's own
+          <code class="mono">LVL_EGGS</code> table and its <code class="mono">6553.6 × n</code>
+          experience rule. Which stats the three numbers are, the recommended class and every
+          transformation below come from the four animal tabs of the same tool, read out of its
+          code. None of it is Bango-measured, and the daily experience rate is a server value
+          held in <code class="mono">SERVER_PROFILE.json</code>.</p>`)}`;
+    }
+
     function renderLevels(query) {
-      const tab = query.get("tab") === "eggs" ? "eggs" : "players";
+      // Eggs used to be a tab here. They are their own section now, because
+      // which stats an egg raises depends on the animal and this page has no
+      // animal. Old links keep working.
+      if (query.get("tab") === "eggs") {
+        location.hash = "#/eggs";
+        return;
+      }
       const levels = playerLevelTable();
       const selected = Number(query.get("level"))
         || Number(currentBuild()?.level) || levels[0]?.level || 1;
@@ -10213,11 +10917,7 @@
           lede: "How much experience each level needs, and which monsters actually give it to you.",
           crumbs: [["Overview", "#/home"], ["Levelling", ""]]
         })}
-        <nav class="character-tabs" aria-label="Levelling tables">
-          <a class="${tab === "players" ? "active" : ""}" href="#/levels?tab=players">Players</a>
-          <a class="${tab === "eggs" ? "active" : ""}" href="#/levels?tab=eggs">Eggs</a>
-        </nav>
-        ${tab === "eggs" ? renderEggTable() : renderPlayerLevels(levels, selected, below, above)}`;
+        ${renderPlayerLevels(levels, selected, below, above)}`;
 
       if (typeof el.main.querySelectorAll !== "function") return;
       el.main.querySelectorAll("[data-level-input]").forEach(control => {
@@ -10319,37 +11019,6 @@
           ], monsters, { defaultSort: { key: "kills", dir: "asc" } })
             : emptyState("No monster sits in that level window.")}`,
           { wide: false })}`;
-    }
-
-    function renderEggTable() {
-      const perDay = Number(state.server?.egg_experience_per_day) || 4800;
-      const rows = (state.optional.levelEggs || []).map((row, index) => {
-        const grade = Number(String(row.leg_id).replace(/\D/g, "")) || index + 1;
-        // 6553.6 x n, exactly as frmLevels computes it.
-        const experience = Math.round(6553.6 * (index + 1));
-        const [strength, health, agility] = String(row.leg_stat || "").split("/")
-          .map(value => value.trim());
-        return { grade, experience, days: experience / perDay, strength, health, agility };
-      });
-      return panel("Animal eggs", `
-        <p class="dim" style="margin:0 0 10px"><small>Each grade needs
-          ${prettyNumber(Math.round(6553.6))} × its number in experience. Days assume
-          ${prettyNumber(perDay)} experience a day${state.server?.egg_experience_per_day_confirmed
-            ? "" : ", which has not been confirmed on this server"}.</small></p>
-        ${sortableTable("eggTable", [
-          { key: "grade", label: "Grade", align: true,
-            sort: row => row.grade, cell: row => `G${String(row.grade).padStart(2, "0")}` },
-          { key: "xp", label: "Experience to level", align: true,
-            sort: row => row.experience, cell: row => prettyNumber(row.experience) },
-          { key: "days", label: "Days", align: true,
-            sort: row => row.days, cell: row => row.days.toFixed(2) },
-          { key: "str", label: "Strength", align: true,
-            sort: row => Number(row.strength) || "", cell: row => escapeHtml(row.strength || "—") },
-          { key: "hea", label: "Health", align: true,
-            sort: row => Number(row.health) || "", cell: row => escapeHtml(row.health || "—") },
-          { key: "agi", label: "Agility", align: true,
-            sort: row => Number(row.agility) || "", cell: row => escapeHtml(row.agility || "—") }
-        ], rows, { defaultSort: { key: "grade", dir: "asc" } })}`, { wide: true });
     }
 
     /* ===================================================================
@@ -10532,6 +11201,8 @@
     const ELITE_TALISMAN_COUNT = [
       [/^(Disti|Steel|Break|Decis|Magic)/, 5], [/^Legen/, 4], [/^The K/, 7]
     ];
+    const WEAPON_CALC_PREFIX_NAMES = ["Distinct", "Steely", "Breakthroughs", "Decisional",
+      "Magical Powers", "Legendary", "The King, GuhBalHans"];
     const WEAPON_CALC_DEFAULTS = {
       intensification: 750000, accuracy: 190000, polishing: 650000, revision: 10000
     };
@@ -10549,9 +11220,44 @@
     function weaponCalcState() {
       state.weaponCalc ||= {
         weaponId: "", attackStep: 0, accuracyStep: 0, enhancement: 0,
-        prefixName: "", ...WEAPON_CALC_DEFAULTS
+        prefixName: "", follow: true, ...WEAPON_CALC_DEFAULTS
       };
       return state.weaponCalc;
+    }
+
+    /* The weapon on the character is the weapon you want the calculator to
+       talk about, so the calculator starts on it. Four of the five choices
+       transfer exactly — the weapon itself, its EB level, its accuracy
+       talisman (both are +0..+7) and an Intensification prefix the cost model
+       knows. The attack talisman does not: the slot menu counts the bonus
+       (+0..+18) while the calculator counts talismans consumed, whose bonus
+       ladder is 0,1,2,4,6,9,… — so it transfers only when the character's
+       bonus is a value that ladder actually reaches, and is reported when it
+       cannot. Untick `follow` and the calculator is free-standing again. */
+    function characterWeaponSetup() {
+      const build = currentBuild();
+      const weapon = state.indexes.equippableById.get(String(build.items?.Weapon || ""));
+      if (!weapon) return null;
+      const mods = build.equipmentMods?.Weapon || {};
+      const bonus = Number(weapon.rawSlot === "wand" ? mods.magical : mods.physical) || 0;
+      const attackStep = TALISMAN_BONUS_LADDER.indexOf(bonus);
+      const prefix = state.indexes.prefixById.get(String(build.prefixes?.Weapon || ""));
+      // The cost model only knows the seven elite Intensification prefixes, and
+      // it spells three of them without their apostrophe. Match through the
+      // same patterns the cost model uses rather than by string equality.
+      const prefixName = WEAPON_CALC_PREFIX_NAMES.find(option =>
+        ELITE_TALISMAN_COUNT.some(([pattern]) =>
+          pattern.test(option) && pattern.test(prefix?.name || ""))) || "";
+      return {
+        weapon,
+        weaponId: weapon.id,
+        enhancement: Number(mods.enhancementLevel) || 0,
+        accuracyStep: Math.min(ACCURACY_TALISMAN_STEPS.length, Number(mods.otp) || 0),
+        attackStep: attackStep >= 0 ? attackStep : 0,
+        attackBonus: bonus,
+        attackCarried: attackStep >= 0 || bonus === 0,
+        prefix, prefixName
+      };
     }
 
     function weaponCalcOptions() {
@@ -10564,6 +11270,14 @@
     function renderWeaponCalculator() {
       const calc = weaponCalcState();
       const options = weaponCalcOptions();
+      const character = characterWeaponSetup();
+      if (character && calc.follow) {
+        calc.weaponId = character.weaponId;
+        calc.enhancement = character.enhancement;
+        calc.accuracyStep = character.accuracyStep;
+        calc.attackStep = character.attackStep;
+        calc.prefixName = character.prefixName;
+      }
       const weapon = state.indexes.equippableById.get(String(calc.weaponId)) || options[0];
       const ladder = enhancementLadder();
       const stats = weapon?.stats || {};
@@ -10612,6 +11326,24 @@
         <div class="detail-grid">
           <div>
             ${panel("The weapon", `
+              ${character ? `<div class="callout${calc.follow ? " info" : ""}"
+                  style="margin:0 0 12px">
+                <label class="follow-character">
+                  <input type="checkbox" data-weapon-calc="follow"${calc.follow ? " checked" : ""}>
+                  <span><strong>Follow ${escapeHtml(activeProfile().name)}'s weapon</strong> —
+                  ${escapeHtml(`${displayGrade(character.weapon.grade)} ${character.weapon.name}`)}${
+                    character.enhancement ? `, EB +${character.enhancement}` : ""}${
+                    character.accuracyStep ? `, accuracy +${character.accuracyStep}` : ""}${
+                    character.prefix ? `, ${escapeHtml(character.prefix.name)}` : ""}.</span>
+                </label>
+                ${calc.follow && !character.attackCarried ? `<p style="margin:8px 0 0"><small>The
+                  character's <b>+${character.attackBonus}</b> attack talisman is not a step on
+                  this calculator's talisman ladder (0, ${TALISMAN_BONUS_LADDER.slice(1).join(", ")}),
+                  so the attack talisman below was left at +0 rather than rounded to a
+                  neighbour.</small></p>` : ""}
+              </div>` : `<div class="callout" style="margin:0 0 12px"><strong>No weapon on the
+                character.</strong> Put one on the Weapon slot in Character Creation and this
+                calculator will open on it.</div>`}
               <div class="field-grid" style="grid-template-columns:repeat(2,minmax(0,1fr))">
                 <label class="field" style="grid-column:1/-1"><span>Weapon</span>
                   <select data-weapon-calc="weaponId">${options.map(item =>
@@ -10635,8 +11367,7 @@
                 <label class="field"><span>Intensification prefix</span>
                   <select data-weapon-calc="prefixName">
                     <option value="">— none —</option>
-                    ${["Distinct", "Steely", "Breakthroughs", "Decisional", "Magical Powers",
-                       "Legendary", "The King, GuhBalHans"].map(name =>
+                    ${WEAPON_CALC_PREFIX_NAMES.map(name =>
                       `<option value="${escapeAttr(name)}"${
                         calc.prefixName === name ? " selected" : ""}>${escapeHtml(name)}</option>`
                     ).join("")}</select></label>
@@ -10708,9 +11439,19 @@
       el.main.querySelectorAll("[data-weapon-calc]").forEach(control => {
         control.onchange = event => {
           const key = event.currentTarget.dataset.weaponCalc;
+          if (key === "follow") {
+            calc.follow = Boolean(event.currentTarget.checked);
+            renderWeaponCalculator();
+            return;
+          }
           calc[key] = key === "weaponId" || key === "prefixName"
             ? event.currentTarget.value
             : Number(event.currentTarget.value) || 0;
+          // Changing one of the five carried-over fields is the player saying
+          // they want to try something other than what they are wearing, so
+          // the link is dropped rather than silently overwriting them again.
+          if (["weaponId", "prefixName", "attackStep", "accuracyStep", "enhancement"]
+              .includes(key)) calc.follow = false;
           renderWeaponCalculator();
         };
       });
@@ -11315,6 +12056,7 @@
           case "talismans": renderTalismans(route.query); break;
           case "talisman": renderTalisman(route.id); break;
           case "levels": renderLevels(route.query); break;
+          case "eggs": renderEggs(route.query); break;
           case "repeatable": renderRepeatableQuests(route.query); break;
           case "weapon-calculator": renderWeaponCalculator(); break;
           case "system": renderGameSystem(); break;
