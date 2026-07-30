@@ -2612,6 +2612,15 @@
        has to keep the translate and change only the scale. */
     .map-pin:active { transform: translate(-50%, -50%) scale(.92); }
     .map-pin.flash { z-index: 5; animation: pinFlash 2.6s ease-out; }
+    /* The pin the page is actually about. Every other pin in the town stays
+       drawn, because a player reads a map to see what else is nearby. */
+    .map-pin.focus {
+      z-index: 4;
+      border-color: var(--gold);
+      color: #241b12;
+      background: var(--gold);
+      box-shadow: 0 0 0 3px rgba(168, 111, 62, .35);
+    }
     @keyframes pinFlash {
       0%   { box-shadow: 0 0 0 0 rgba(168, 111, 62, 1);  background: var(--gold); color: #241b12; transform: translate(-50%, -50%) scale(1.7); }
       60%  { box-shadow: 0 0 0 20px rgba(168, 111, 62, 0); background: var(--gold); color: #241b12; transform: translate(-50%, -50%) scale(1.7); }
@@ -2658,6 +2667,10 @@
       font-size: 10.5px;
       font-weight: 700;
     }
+    .map-legend li.focus { color: var(--text); font-weight: 600; }
+    .map-legend-pin.focus { color: #241b12; background: var(--gold); }
+    .map-legend li a { color: var(--muted); }
+    .map-legend li a:hover { color: var(--accent); }
     .map-legend-pin.flash, .pin-tag.flash { animation: tagFlash 2.6s ease-out; }
     @keyframes tagFlash {
       0%   { box-shadow: 0 0 0 0 rgba(168, 111, 62, 1);  background: var(--gold); color: #241b12; }
@@ -2954,6 +2967,9 @@
       // The guide author's NPC screenshots, keyed by the names a pin label
       // can be recognised by. Built once, lazily, from the loaded quest maps.
       npcPhotos: null,
+      // Which character stands on which map pin, both directions. Built once,
+      // lazily, from the loaded quest maps and the client string table.
+      pinEntities: null,
       // gameagit.com monster artwork, keyed by normalized Bango monster name.
       // Null when the ingest has not been run; monsters KalEncyclopedia has no
       // portrait for then stay blank rather than borrowing another creature's.
@@ -3019,6 +3035,47 @@
         .replace(/[\u0300-\u036f]/g, "")
         .toLowerCase()
         .replace(/[^a-z0-9]+/g, "");
+    }
+
+    /* normalizeName with the word boundaries kept.
+
+       Dropping every separator is what lets `Sae-Ryu` in a pin label and
+       `[Sae-Ryu]` in a client string meet as `saeryu` \u2014 but it also lets a
+       short name meet the middle of an unrelated word. `Chang` matched
+       "information interchange" and put an NPC from the level-1 town on a
+       level-79 goblin quest.
+
+       So the normalized text carries, per character, whether a separator or
+       the start of the string preceded it. An alias then has to begin where a
+       word begins and end where one ends. A hyphenated name still matches
+       across the hyphen, because the alias spans those words too. */
+    function normalizedSpans(value) {
+      const text = [];
+      const wordStart = [];
+      let afterSeparator = true;
+      for (const character of String(value ?? "").normalize("NFKD")
+        .replace(/[\u0300-\u036f]/g, "").toLowerCase()) {
+        if (/[a-z0-9]/.test(character)) {
+          text.push(character);
+          wordStart.push(afterSeparator);
+          afterSeparator = false;
+        } else {
+          afterSeparator = true;
+        }
+      }
+      return { text: text.join(""), wordStart };
+    }
+
+    function spansContainWord(spans, alias) {
+      if (!alias) return false;
+      for (let at = spans.text.indexOf(alias); at !== -1;
+        at = spans.text.indexOf(alias, at + 1)) {
+        const end = at + alias.length;
+        if (spans.wordStart[at] && (end === spans.text.length || spans.wordStart[end])) {
+          return true;
+        }
+      }
+      return false;
     }
 
     function displayGrade(value) {
@@ -4055,13 +4112,13 @@
         .map(npc => ({ npc, aliases: npcAliases(npc, ix.npcNameCounts) }))
         .filter(matcher => matcher.aliases.length);
       for (const quest of t.quests) {
-        const combined = normalizeName([
+        const combined = normalizedSpans([
           quest.que_name,
           quest.que_text,
           ...(ix.questSteps.get(String(quest.que_id)) || []).map(step => step.step_text)
         ].join(" "));
         for (const matcher of npcMatchers) {
-          if (matcher.aliases.some(alias => combined.includes(alias))) {
+          if (matcher.aliases.some(alias => spansContainWord(combined, alias))) {
             mapPush(ix.questNpcs, String(quest.que_id), matcher.npc);
             mapPush(ix.npcQuests, String(matcher.npc.message_id), quest);
           }
@@ -5007,10 +5064,101 @@
       // ("Boatman (Gwang-Chun)") and a note about what the NPC is for
       // ("Guard (G8 Chest)"). Offering it as a candidate costs nothing: a note
       // matches no NPC string, and an ambiguous alias is discarded anyway.
+      // Where he saw two spellings he writes them as a list — `Guard (Yang-Do /
+      // "Jang-Do")` — so the parenthetical is offered whole and split, which is
+      // reading what he wrote rather than guessing at it.
       const parenthetical = (full.match(/\(([^)]*)\)\s*$/) || [, ""])[1].trim();
+      const parentheticals = [parenthetical, ...parenthetical.split("/")]
+        .map(value => value.replace(/["“”]/g, "").trim());
       const whole = raw.replace(/[\[\]]/g, " ");
-      return [...new Set([...bracketNames, commaName, parenthetical, whole]
+      return [...new Set([...bracketNames, commaName, ...parentheticals, whole]
         .map(normalizeName).filter(value => value.length >= 4))];
+    }
+
+    /* ===================================================================
+       Pin -> entity
+
+       A pin is one character standing in one place, so a pin label and a
+       client string can be joined by the same identity rules that decide
+       which photograph a player is shown (standing rule 14): the bracket or
+       comma name first, the whole label only where it is unique, and a bare
+       role such as `Guard` never. An alias answering to more than one client
+       string is skipped rather than picked between.
+
+       Eight of the guide's pins are not people at all — the world map marks
+       where a named boss stands — so a label that no NPC string answers to is
+       tried once against the monster table on its exact name (rule 17), which
+       is what makes `Ma-Gwang (Monster 2)` open the monster's own page.
+
+       79 of the 90 pins resolve. The 11 that do not are the four level-1
+       guard quests no client table records, the pub's bare `Chief Guard`, and
+       six places where the guide's spelling and the client's differ
+       (`Ha-Wogoo` / `Ha-Woogo`, `Parent` / `Parents Who Lost Their Son`). Those
+       stay plain text: a near-miss is not a match.
+       =================================================================== */
+    function pinEntityIndex() {
+      if (state.pinEntities) return state.pinEntities;
+      const byAlias = new Map();
+      for (const npc of state.indexes.npcs) {
+        for (const alias of npcAliases(npc, state.indexes.npcNameCounts)) {
+          mapPush(byAlias, alias, npc);
+        }
+      }
+      const byPin = new Map();
+      const byEntity = new Map();
+      for (const map of questMaps()) {
+        for (const [pin, data] of Object.entries(map.pins || {})) {
+          const label = String(data.name || "");
+          let match = null;
+          for (const alias of pinLabelAliases(label)) {
+            const hits = byAlias.get(alias) || [];
+            if (hits.length !== 1) continue;
+            match = { kind: "npc", row: hits[0] };
+            break;
+          }
+          if (!match) {
+            // The trailing "(Monster 4)" is the guide's own numbering, not part
+            // of any name, so it comes off before the exact-name lookup.
+            const stem = normalizeName(label.replace(/\s*\([^)]*\)\s*$/, ""));
+            const monster = stem ? state.indexes.monstersByName.get(stem) : null;
+            if (monster) match = { kind: "monster", row: monster };
+          }
+          if (!match) continue;
+          const entry = {
+            kind: match.kind,
+            row: match.row,
+            id: String(match.row.message_id),
+            name: match.kind === "npc" ? npcDisplayName(match.row) : match.row.text,
+            city: map.id,
+            cityLabel: map.label,
+            mapName: map.name,
+            pin,
+            label
+          };
+          byPin.set(`${map.id}-${pin}`, entry);
+          mapPush(byEntity, `${match.kind}~${entry.id}`, entry);
+        }
+      }
+      state.pinEntities = { byPin, byEntity };
+      return state.pinEntities;
+    }
+
+    function pinEntityFor(city, pin) {
+      return pinEntityIndex().byPin.get(`${city}-${pin}`) || null;
+    }
+
+    function pinsForEntity(kind, id) {
+      return pinEntityIndex().byEntity.get(`${kind}~${id}`) || [];
+    }
+
+    /* The number is the map reference and the name is the character: clicking
+       the number finds the pin, clicking the name opens whoever is standing
+       on it. A pin nothing answers to keeps its name as plain text. */
+    function questPinNameHtml(city, pin, fallback = "") {
+      const name = questPinName(city, pin) || fallback;
+      if (!name) return "";
+      const entry = pinEntityFor(city, pin);
+      return entry ? entityLink(entry.kind, entry.id, name) : escapeHtml(name);
     }
 
     function npcPhotoIndex() {
@@ -5072,9 +5220,15 @@
       return questMapById(city)?.pins?.[pin]?.name || "";
     }
 
+    /* `options.highlight` is a Set of `city-pin` keys the page is about — the
+       stops of one quest, or the one pin an NPC stands on. The map shows every
+       pin in the town either way, because a player reads a map to see what
+       else is nearby; the highlight is what says which of them is the answer. */
     function questMapPanel(activeCity, options = {}) {
       const maps = questMaps();
       if (!maps.length) return "";
+      const highlight = options.highlight || new Set();
+      const isFocus = key => highlight.has(key);
       const current = maps.find(entry => entry.id === activeCity) || maps[0];
       const shown = options.onlyMaps
         ? maps.filter(entry => options.onlyMaps.has(entry.id)) : maps;
@@ -5098,7 +5252,8 @@
               <div class="map-wrap" style="aspect-ratio:${entry.image.width || 4}/${entry.image.height || 3}">
                 <img data-project-file="${escapeAttr(entry.image.file)}"
                   alt="${escapeAttr(entry.name)}">
-                ${pins.map(([pin, data]) => `<button type="button" class="map-pin"
+                ${pins.map(([pin, data]) => `<button type="button" class="map-pin${
+                  isFocus(`${entry.id}-${pin}`) ? " focus" : ""}"
                   data-map-pin="${escapeAttr(`${entry.id}-${pin}`)}"
                   style="left:${data.x}%;top:${data.y}%"
                   title="${escapeAttr(`${data.name} — click to find its quest steps`)}"
@@ -5113,12 +5268,13 @@
                 : `<strong>${escapeHtml(entry.credit.name)}</strong>`}${
               entry.credit.note ? ` — ${escapeHtml(entry.credit.note)}` : ""}</p>` : ""}
             <ul class="map-legend">${pins.map(([pin, data]) => `
-              <li><button type="button" class="map-legend-pin"
+              <li${isFocus(`${entry.id}-${pin}`) ? ` class="focus"` : ""}><button type="button"
+                class="map-legend-pin${isFocus(`${entry.id}-${pin}`) ? " focus" : ""}"
                 data-map-pin="${escapeAttr(`${entry.id}-${pin}`)}">${escapeHtml(pin)}</button>
                 ${data.photo ? `<img class="npc-photo" height="26"
                   data-project-file="${escapeAttr(data.photoThumb || data.photo)}"
                   alt="">` : ""}
-                <span>${escapeHtml(data.name)}${data.teleport
+                <span>${questPinNameHtml(entry.id, pin, data.name)}${data.teleport
                   ? ` <small class="dim">${escapeHtml(data.teleport)}</small>` : ""}</span></li>`).join("")}</ul>
             ${pins.some(([, data]) => data.photo) && npcPhotoCredit()
               ? `<p class="map-credit">${npcPhotoCredit()}</p>` : ""}
@@ -5394,7 +5550,7 @@
           return `${arrow}<div class="stop talk">
             ${questPinTag(stop.city, stop.pin)
               || `<span class="stop-chip">${escapeHtml(questMapById(stop.city)?.label || "Go")}</span>`}
-            <span class="stop-name">${escapeHtml(stop.name || "—")}</span>
+            <span class="stop-name">${questPinNameHtml(stop.city, stop.pin) || "—"}</span>
             <span class="stop-do">${escapeHtml(stop.label || "")}</span></div>`;
         }
         if (stop.kind === "field") {
@@ -5638,7 +5794,7 @@
             data-project-file="${escapeAttr(pin.photoThumb || pin.photo)}"
             alt="" title="${escapeAttr(name)}">`, "photo") : ""}
           <span class="wt-step-text"><strong>${escapeHtml(step.label || "Talk")}</strong>
-            ${name ? ` — ${escapeHtml(name)}` : ""}${pin.teleport
+            ${name ? ` — ${questPinNameHtml(step.city, step.pin)}` : ""}${pin.teleport
               ? ` <small class="dim">${escapeHtml(pin.teleport)}</small>` : ""}</span>
         </li>`;
       }
@@ -5738,7 +5894,7 @@
             ${teleports.length ? section("Useful teleports",
               `<ul class="wt-teleports">${teleports.map(row => `<li>
                 ${questPinTag(row.city, row.pin) || ""}
-                <span>${escapeHtml(questPinName(row.city, row.pin) || "")}
+                <span>${questPinNameHtml(row.city, row.pin)}
                   — ${escapeHtml(row.dest || "")}</span></li>`).join("")}</ul>`) : ""}
             ${stages.length ? stages.map(stage => `
               <section class="wt-stage">
@@ -10227,6 +10383,10 @@
       const uniqueZones = [...new Map(zones.map(zone => [zone.id, zone])).values()];
       const documented = documentedDropEvidence(row.text);
       const articles = relatedArticles("monster", id, row.text);
+      // The guide's world maps mark where eight named bosses stand. Seven of
+      // them are a client monster by exact name, so those pages get the same
+      // map an NPC page gets; every other monster is placed by zone, not pin.
+      const pins = pinsForEntity("monster", id);
 
       // Ranges, not a pick: several rows can sit behind one Bango name.
       const level = legacyVariantRange(variants, "mon_lvl");
@@ -10252,6 +10412,12 @@
               { aside: `<span class="panel-aside">Click a column to sort</span>` })}
             ${panel("Against your build",
               monsterCombatPanel(row, variants, query.get("variant") || 0))}
+            ${pins.length ? questMapPanel(pins[0].city, {
+              title: "Where it stands",
+              onlyMaps: new Set(pins.map(entry => entry.city)),
+              highlight: new Set(pins.map(entry => `${entry.city}-${entry.pin}`)),
+              aside: `<span class="panel-aside">The guide marks this one by hand</span>`
+            }) : ""}
           </div>
           <div class="detail-side">
             <div class="entity-hero${monsterFallbackPicture(row.text)
@@ -10290,8 +10456,11 @@
             ${monsterPictureCredit(row.text)}</p>
           ${definitions.length > 1 ? `<p>This name resolves to ${definitions.length} client string
             definitions.</p>` : ""}
+          ${pins.length ? `<p>The map pin is the route guide author's own marking on his world
+            map, joined to this monster by its exact client name.</p>` : ""}
           ${documented && !/class="empty"/.test(documented)
             ? `<div>${documented}</div>` : ""}`)}`;
+      wireQuestMaps();
     }
 
     /* Skill costs are stored as reverse-Polish expressions over the grade.
@@ -10407,7 +10576,21 @@
       const prerequisite = state.indexes.questsById.get(String(row.bango_prerequisite));
       const route = routeQuestForBango(row);
       const routeSteps = route?.quest.steps || [];
-      const questCities = new Set(routeSteps.filter(step => step.city).map(step => step.city));
+      const uniqueNpcs = [...new Map(npcs.map(npc => [String(npc.message_id), npc])).values()];
+      /* Where the quest happens. The route guide places 63 of the 116 quests
+         by walking them; the rest — every event quest, and everything above
+         the level the guide stops at — carry no pin at all, which is why
+         [Event] Appointment of General In-Pill had no map while Sae-Ryu and
+         General In-Pill both stand on one. So the quest's own NPCs are looked
+         up on the maps as well, and the union is what the page shows: the
+         route's stops where there are any, the people it names where there
+         are not. Both sets are highlighted against the rest of the town. */
+      const routePins = routeSteps.filter(step => step.city && step.pin)
+        .map(step => ({ city: step.city, pin: step.pin }));
+      const npcPins = uniqueNpcs.flatMap(npc => pinsForEntity("npc", npc.message_id));
+      const questPins = [...new Map([...routePins, ...npcPins]
+        .map(entry => [`${entry.city}-${entry.pin}`, entry])).entries()];
+      const questCities = new Set(questPins.map(([, entry]) => entry.city));
       const articles = relatedArticles("quest", id, row.que_name || "");
 
       el.main.innerHTML = `
@@ -10436,7 +10619,8 @@
               <ol class="route-steps">${routeSteps.map(step => {
                 if (step.type === "talk") {
                   return `<li>${questPinTag(step.city, step.pin)}
-                    <span>${escapeHtml(step.label)} — ${escapeHtml(questPinName(step.city, step.pin))}</span></li>`;
+                    <span>${escapeHtml(step.label)} — ${
+                      questPinNameHtml(step.city, step.pin)}</span></li>`;
                 }
                 if (step.type === "field") {
                   return `<li><span class="pin-tag field">${escapeHtml(step.label)}</span>
@@ -10462,7 +10646,12 @@
           </div>
           <div class="detail-side">
             ${questCities.size ? questMapPanel([...questCities][0], {
-              title: "Where to go", onlyMaps: questCities
+              title: "Where to go",
+              onlyMaps: questCities,
+              highlight: new Set(questPins.map(([key]) => key)),
+              aside: `<span class="panel-aside">${
+                routePins.length ? "The route's own stops" : "Where this quest's people stand"
+              }</span>`
             }) : ""}
             ${monsters.length ? panel("Kill", `<ul class="link-list">${monsters.map(ref => {
               const monster = state.indexes.monstersById.get(String(ref.monster_id));
@@ -10470,10 +10659,13 @@
                 ? entityLink("monster", monster.message_id, monster.text)
                 : escapeHtml(ref.monster_name || `Monster ${ref.monster_id}`)}</li>`;
             }).join("")}</ul>`) : ""}
-            ${npcs.length ? panel("Talk to", `<ul class="link-list">${
-              [...new Map(npcs.map(npc => [npc.message_id, npc])).values()].map(npc =>
-                `<li>${npcPhotoTag(npc, 30, true)}${
-                  entityLink("npc", npc.message_id, npcDisplayName(npc))}</li>`).join("")
+            ${uniqueNpcs.length ? panel("Talk to", `<ul class="link-list">${
+              uniqueNpcs.map(npc => {
+                const where = pinsForEntity("npc", npc.message_id);
+                return `<li>${npcPhotoTag(npc, 30, true)}${
+                  entityLink("npc", npc.message_id, npcDisplayName(npc))}
+                  ${where.map(entry => questPinTag(entry.city, entry.pin)).join("")}</li>`;
+              }).join("")
             }</ul>`) : ""}
             ${articles ? panel("Guides", articles) : ""}
           </div>
@@ -10485,6 +10677,11 @@
             <a href="https://mystic-city.de/System/viewpage.php?page_id=48" target="_blank"
                rel="noopener noreferrer">mystic-city.de</a>, with world map artwork by
             Vresko.com.</p>
+          ${routePins.length ? "" : npcPins.length ? `<p>The route guide does not walk this
+            quest, so the map is placed from the people the client's own quest text names:
+            ${escapeHtml(npcPins.map(entry => entry.name).join(", "))}. That is where they
+            stand, not a claim about the order to visit them in.</p>` : `<p>Neither the route
+            guide nor a pinned NPC places this quest, so it has no map.</p>`}
           ${routeRows.length ? `<div class="table-wrap"><table>
             <thead><tr><th>Route quest</th><th>Stage</th><th>Match</th><th>Status</th></tr></thead>
             <tbody>${routeRows.map(entry => `<tr>
@@ -10514,7 +10711,9 @@
       const photo = npcPhotoFor(row);
       const uniqueQuests = [...new Map(quests.map(quest => [quest.que_id, quest])).values()];
       const articles = relatedArticles("npc", id, row.text || "");
-      const towns = [...new Set(routeMatches.map(route => route.town).filter(Boolean))];
+      const pins = pinsForEntity("npc", id);
+      const towns = [...new Set([...pins.map(entry => entry.mapName),
+        ...routeMatches.map(route => route.town)].filter(Boolean))];
 
       el.main.innerHTML = `
         ${pageHeader({
@@ -10533,10 +10732,18 @@
               </ul>` : `<p class="dim" style="margin:0">${identity.named
                 ? "No quest names this NPC."
                 : "This is a generic role rather than a named character, so it is not linked to quests."}</p>`)}
-            ${routeMatches.length ? panel("Where to find them", `
+            ${pins.length ? questMapPanel(pins[0].city, {
+              title: "Where they stand",
+              onlyMaps: new Set(pins.map(entry => entry.city)),
+              highlight: new Set(pins.map(entry => `${entry.city}-${entry.pin}`)),
+              aside: `<span class="panel-aside">${pins.map(entry =>
+                `${escapeHtml(entry.cityLabel)} #${escapeHtml(entry.pin)}`).join(" · ")}</span>`
+            }) : ""}
+            ${routeMatches.length ? panel("On the route", `
               <ul class="link-list">${routeMatches.map(route =>
                 `<li>${escapeHtml(route.npc_name)} <small class="dim">${escapeHtml(route.town)}
-                  · ${escapeHtml(route.route_names)}</small></li>`).join("")}</ul>`) : ""}
+                  · ${escapeHtml(route.route_names)}</small></li>`).join("")}</ul>`,
+              { aside: `<span class="panel-aside">Which route quests stop here</span>` }) : ""}
           </div>
           <div class="detail-side">
             ${photo ? `<div class="entity-hero npc-hero">
@@ -10557,12 +10764,20 @@
         </div>
         ${provenanceFooter(`
           <p>Names come from the Bango client string table. Quests are linked by matching a
-            named identity inside the quest text${identity.named
+            named identity inside the quest text, whole words only${identity.named
               ? "" : " — this string is a role, not a name, so it is deliberately not matched"}.
             Locations come from the player-authored route guide.
             ${photo ? npcPhotoCredit() : ""}</p>
+          ${pins.length ? `<p>The pin is the guide author's, placed on his own artwork; it is
+            joined to this string by ${identity.named ? "the name inside the pin label"
+              : "nothing — a role is never joined"}, so it is his reading of who stands there
+            rather than a client coordinate.</p>`
+            : `<p>No pin on any of the guide's ${prettyNumber(questMaps()
+                .reduce((total, map) => total + Object.keys(map.pins || {}).length, 0))} answers
+              to this name, so this page cannot say where they stand.</p>`}
           ${definitions.length > 1 ? `<p>This string resolves to ${definitions.length}
             definitions.</p>` : ""}`)}`;
+      wireQuestMaps();
     }
 
     function renderZone(id) {
