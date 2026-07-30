@@ -1409,6 +1409,14 @@
       background: var(--gold);
     }
     .scope-tab.active .dim { color: rgba(20, 30, 24, .7); }
+    .job-tabs { align-items: center; margin-top: -6px; }
+    .job-tabs .scope-tab { padding: 4px 11px; font-size: 11.5px; font-weight: 500; }
+    .job-tabs-label {
+      color: var(--dim);
+      font-size: 10px;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
     .skill-tree-wrap { overflow: auto; padding: 2px 0 8px; }
     .skill-tree { position: relative; }
     .skill-tree-edges {
@@ -1421,8 +1429,11 @@
       fill: none;
       stroke: var(--gold);
       stroke-width: 1.6;
+      stroke-linecap: round;
+      stroke-linejoin: round;
       opacity: .62;
     }
+    .skill-edge-head { fill: var(--gold); opacity: .75; }
     .skill-tree-rail {
       position: absolute;
       left: 0;
@@ -1846,10 +1857,17 @@
       max-width: 84px;
       max-height: 64px;
     }
+    /* gameagit's artwork is a tall rectangle where KalEncyclopedia's is a wide
+       one, so the frame takes the shape of whichever picture it is holding
+       instead of a square the tall one spills out of. */
+    .entity-hero.portrait-art .entity-portrait { width: 104px; height: 150px; }
     /* gameagit's artwork is taller than it is wide, so it is shown whole rather
        than cropped to KalEncyclopedia's landscape frame. */
     .monster-icon.tall { object-fit: contain; background: transparent; }
-    .entity-hero .entity-portrait .monster-icon.tall { max-width: 64px; max-height: 96px; }
+    .entity-hero .entity-portrait .monster-icon.tall {
+      max-width: calc(100% - 10px);
+      max-height: calc(100% - 10px);
+    }
     /* The guide author's own NPC screenshots — the only pictures of these
        characters the project has. */
     .npc-photo {
@@ -2367,18 +2385,73 @@
     .wt-step:last-child { border-bottom: 0; }
     .wt-step-text { color: var(--muted); }
     .wt-step.action .wt-step-text { color: var(--text); }
-    .wt-assets { display: flex; flex-wrap: wrap; gap: 6px; margin: 7px 0 0; }
+    .wt-assets { display: flex; flex-wrap: wrap; gap: 10px; margin: 9px 0 0; }
     .wt-asset {
       display: inline-flex;
+      flex-direction: column;
       align-items: center;
-      gap: 5px;
-      border: 1px solid var(--line-soft);
-      border-radius: 12px;
-      padding: 2px 8px 2px 3px;
+      gap: 4px;
+      max-width: 120px;
+      color: var(--muted);
       font-size: 11px;
+      line-height: 1.2;
+      text-align: center;
     }
+    .wt-asset a { color: var(--muted); text-decoration: none; }
+    .wt-asset a:hover { color: var(--accent); }
     .wt-asset-plain { padding: 0 4px; color: var(--dim); }
-    .wt-choices { display: flex; flex-wrap: wrap; gap: 5px; margin: 7px 0 0; }
+
+    /* ── Look closer ────────────────────────────────────────────────────
+       A picture enlarges under the pointer and enlarges further when clicked.
+       The frame keeps its own size in the layout; only the picture inside it
+       grows, so nothing reflows when it does. */
+    .zoom-frame {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      place-items: center;
+      min-height: 0;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      padding: 0;
+      background: #1a1710;
+      cursor: zoom-in;
+      overflow: visible;
+    }
+    .zoom-frame img {
+      display: block;
+      transition: transform .18s ease, box-shadow .18s ease;
+      transform-origin: center center;
+    }
+    .zoom-frame.item { width: 62px; height: 62px; }
+    .zoom-frame.item img { width: 56px; height: 56px; image-rendering: pixelated; }
+    .zoom-frame.monster { width: 62px; height: 94px; }
+    .zoom-frame.monster img { width: auto; height: 92px; max-width: 60px; object-fit: contain; }
+    .zoom-frame.photo { width: 76px; height: 57px; flex: none; }
+    .zoom-frame.photo img { width: 74px; height: 55px; object-fit: cover; border-radius: 4px; }
+    .zoom-frame:hover, .zoom-frame:focus-visible { z-index: 6; border-color: var(--gold); }
+    .zoom-frame:hover img, .zoom-frame:focus-visible img {
+      transform: scale(2.2);
+      box-shadow: 0 10px 28px rgba(0, 0, 0, .65);
+    }
+    .zoom-frame.zoomed { z-index: 20; cursor: zoom-out; border-color: var(--accent); }
+    .zoom-frame.zoomed img, .zoom-frame.zoomed:hover img {
+      transform: scale(4.4);
+      box-shadow: 0 18px 46px rgba(0, 0, 0, .78);
+    }
+    .zoom-frame.monster.zoomed img, .zoom-frame.monster.zoomed:hover img { transform: scale(3.4); }
+    .choice-note { margin: 10px 0 0; font-size: 12.5px; }
+    .choice-list { margin: 7px 0 0; padding: 0; list-style: none; }
+    .choice-list li {
+      display: flex;
+      align-items: baseline;
+      gap: 7px;
+      padding: 2px 0;
+    }
+    .choice-list .mono { color: var(--muted); font-size: 11.5px; }
+    .choice-list .choice-arrow { color: var(--dim); }
+    .choice-list a { color: var(--accent); text-decoration: none; }
+    .choice-list a:hover { text-decoration: underline; }
     .wt-reward { margin: 7px 0 0; color: var(--muted); font-size: 12px; }
     .wt-reward span {
       margin-right: 6px;
@@ -3664,6 +3737,7 @@
       ix.legacyItemsById = firstBy(o.legacyItems || [], "ita_azon");
       ix.legacyMonstersById = firstBy(o.legacyMonsters || [], "mon_azon");
       ix.positionsByClass = groupedBy(o.positions || [], "po_class");
+      ix.positionsById = firstBy(o.positions || [], "po_azon");
       ix.positionsByName = new Map((o.positions || [])
         .map(row => [normalizeName(row.po_megn), row]));
       ix.legacyItemsByName = new Map((o.legacyItems || []).map(row => [normalizeName(row.ita_name), row]));
@@ -4200,10 +4274,107 @@
     /* One row per unlock level, and inside a row the skills in the client's own
        order. A skill with no recovered schedule has no level to be placed at,
        so it goes in a final row of its own rather than being guessed at. */
-    function skillTreeModel(scope) {
+    /* ===================================================================
+       Jobs
+
+       `POSITIONS.csv` already answers "which skills does this job get": its
+       `po_skills` column lists every position whose skills the job inherits.
+       A Hermit carries `7,1,2,3` — Free Magician, Scholar, Literary Person and
+       its own — and pointedly not `4`, the Chairperson branch it did not take.
+
+       One deliberate addition: a job with exactly **one** possible successor
+       also shows that successor's skills, because there is no choice to spoil
+       and a player wants to see what the next step gives. A Scholar therefore
+       sees Literary Person; a Literary Person sees neither Hermit nor
+       Chairperson, because picking between them is the decision.
+       =================================================================== */
+    function positionByName(name) {
+      return state.indexes.positionsByName?.get(normalizeName(name)) || null;
+    }
+
+    function positionSkillIds(position) {
+      return String(position?.po_skills || "").split(",")
+        .map(value => value.trim()).filter(Boolean);
+    }
+
+    /* The jobs reachable in one step: same class, inheriting everything this
+       job has plus themselves and nothing else. */
+    function nextPositions(position) {
+      if (!position) return [];
+      const mine = positionSkillIds(position);
+      return (state.indexes.positionsByClass?.get(String(position.po_class)) || [])
+        .filter(other => {
+          if (String(other.po_azon) === String(position.po_azon)) return false;
+          const theirs = positionSkillIds(other);
+          return theirs.length === mine.length + 1
+            && theirs[theirs.length - 1] === String(other.po_azon)
+            && mine.every((value, index) => theirs[index] === value);
+        });
+    }
+
+    function positionAllowedIds(position) {
+      if (!position) return null;
+      const allowed = new Set([String(position.po_azon), ...positionSkillIds(position)]);
+      const next = nextPositions(position);
+      // One successor is a formality, two is a choice. Only the formality is
+      // shown ahead of time.
+      if (next.length === 1) {
+        next[0] && allowed.add(String(next[0].po_azon));
+      }
+      return allowed;
+    }
+
+    function skillBelongsToJob(schedule, allowedIds) {
+      // A skill with no position at all belongs to every job of the class.
+      if (!schedule?.legacy_position) return true;
+      return !allowedIds || allowedIds.has(String(schedule.legacy_position));
+    }
+
+    // scope -> the legacy class id POSITIONS.csv keys its jobs by.
+    const SCOPE_CLASS_ID = { archer: "1", knight: "2", mage: "3", thief: "4" };
+
+    /* The jobs of a class, in the order a character passes through them, with
+       the "Free <class>" placeholder dropped — it is the absence of a job, not
+       one of them. */
+    function skillScopeJobs(scope) {
+      const classId = SCOPE_CLASS_ID[scope];
+      if (!classId) return [];
+      return (state.indexes.positionsByClass?.get(classId) || [])
+        .filter(position => !/^free /i.test(position.po_megn || ""))
+        .sort((left, right) => Number(left.po_lvl) - Number(right.po_lvl)
+          || Number(left.po_azon) - Number(right.po_azon));
+    }
+
+    function jobTreeExplanation(job) {
+      const inherited = positionSkillIds(job)
+        .map(id => state.indexes.positionsById?.get(id))
+        .filter(entry => entry && !/^free /i.test(entry.po_megn || ""))
+        .map(entry => entry.po_megn);
+      const ahead = nextPositions(job);
+      const carried = inherited.length
+        ? `Everything ${inherited.join(" and ")} already gives, plus this job's own.`
+        : "This job's own skills, and the ones every character of the class shares.";
+      if (ahead.length === 1) {
+        return `${carried} ${ahead[0].po_megn} is next at level ${ahead[0].po_lvl} and there `
+          + "is no alternative, so its skills are shown here too.";
+      }
+      if (ahead.length > 1) {
+        return `${carried} At level ${ahead[0].po_lvl} the path splits between `
+          + `${ahead.map(entry => entry.po_megn).join(" and ")}; pick a tab above to see `
+          + "either, because a character can only ever hold one of them.";
+      }
+      return `${carried} This is the end of the class path.`;
+    }
+
+    function skillTreeModel(scope, options = {}) {
+      const allowedIds = options.position ? positionAllowedIds(options.position) : null;
       const rows = (state.tables.skills || [])
         .filter(row => scopeForSkill(row) === scope)
-        .map(row => ({ row, schedule: state.indexes.skillSchedules.get(skillId(row)) }));
+        .map(row => ({ row, schedule: state.indexes.skillSchedules.get(skillId(row)) }))
+        // A job a character can never hold is not dimmed, it is absent: showing
+        // a Chairperson's buffs on a Hermit's tree suggests a choice that does
+        // not exist.
+        .filter(entry => skillBelongsToJob(entry.schedule, allowedIds));
       const levelOf = entry => {
         const level = skillUnlockLevel(entry.schedule);
         return Number.isFinite(level) ? level : Infinity;
@@ -4254,40 +4425,113 @@
         });
         return { level, entries, columns: Math.max(...placed.map(item => item.column)) + 1 };
       });
+      /* Every card's grid cell, so a connector can be routed around them.
+         Cards are the only obstacles: the gaps between rows and between columns
+         are empty by construction, which is what makes the routing below sound
+         rather than merely tidy. */
+      const occupied = new Set();
+      const rowIndexOf = new Map();
+      laid.forEach((row, index) => rowIndexOf.set(row.level, index));
+      for (const node of nodes.values()) {
+        occupied.add(`${rowIndexOf.get(node.level)}:${node.column}`);
+      }
+      const columns = Math.max(1, ...laid.map(row => row.columns || row.entries.length));
+      const columnX = column => SKILL_NODE.padding + column * (SKILL_NODE.width + SKILL_NODE.gapX);
+      const rowY = index => SKILL_NODE.padding + index * (SKILL_NODE.height + SKILL_NODE.gapY);
+      // The empty lane down the right-hand side of a column.
+      const channelX = column => columnX(column) + SKILL_NODE.width + SKILL_NODE.gapX / 2;
+      const channelUse = new Map();
+
       const edges = [];
       for (const node of nodes.values()) {
         for (const edge of state.indexes.skillPrerequisites.get(node.key) || []) {
           const parent = nodes.get(String(edge.prerequisite_skill_key));
-          if (parent) edges.push({ parent, child: node, grade: edge.required_grade });
+          if (!parent) continue;
+          const fromRow = rowIndexOf.get(parent.level);
+          const toRow = rowIndexOf.get(node.level);
+          const fromX = parent.x + SKILL_NODE.width / 2;
+          const toX = node.x + SKILL_NODE.width / 2;
+          const fromY = parent.y + SKILL_NODE.height;
+          const toY = node.y;
+          let clear = parent.column === node.column;
+          for (let row = fromRow + 1; clear && row < toRow; row += 1) {
+            if (occupied.has(`${row}:${parent.column}`)) clear = false;
+          }
+          if (clear) {
+            edges.push({ parent, child: node, grade: edge.required_grade,
+              points: [[fromX, fromY], [toX, toY]] });
+            continue;
+          }
+          // Blocked: leave through the gap below the parent, run down the empty
+          // lane beside the columns, and come back along the gap above the
+          // child. Every segment sits in a gap, so the line passes under no card.
+          const lane = Math.max(parent.column, node.column);
+          const seen = (channelUse.get(lane) || 0);
+          channelUse.set(lane, seen + 1);
+          // Two connectors sharing a lane would draw as one; a few pixels apart
+          // keeps them readable.
+          const laneX = channelX(lane) + ((seen % 3) - 1) * 4;
+          const exitY = rowY(fromRow) + SKILL_NODE.height + SKILL_NODE.gapY / 2;
+          const enterY = rowY(toRow) - SKILL_NODE.gapY / 2;
+          const points = [[fromX, fromY], [fromX, exitY], [laneX, exitY]];
+          if (enterY > exitY) points.push([laneX, enterY]);
+          points.push([toX, enterY], [toX, toY]);
+          edges.push({ parent, child: node, grade: edge.required_grade, points });
         }
       }
-      const columns = Math.max(1, ...laid.map(row => row.columns || row.entries.length));
+
+      const rightMost = Math.max(
+        SKILL_NODE.padding + columns * SKILL_NODE.width + (columns - 1) * SKILL_NODE.gapX,
+        ...edges.flatMap(edge => edge.points.map(([x]) => x + SKILL_NODE.gapX)));
       return {
         scope,
+        position: options.position || null,
         rows: laid,
         nodes: [...nodes.values()],
         edges,
-        width: SKILL_NODE.padding * 2 + columns * SKILL_NODE.width
-          + (columns - 1) * SKILL_NODE.gapX,
+        width: rightMost + SKILL_NODE.padding,
         height: SKILL_NODE.padding * 2 + laid.length * SKILL_NODE.height
           + Math.max(0, laid.length - 1) * SKILL_NODE.gapY
       };
     }
 
+    /* An orthogonal polyline with its corners rounded off. Rounding is purely
+       cosmetic; the corner never leaves the gap the segment runs in, because
+       the radius is clamped to half the shorter of the two segments. */
+    function orthogonalPath(points, radius = 7) {
+      if (points.length < 2) return "";
+      const parts = [`M ${points[0][0]} ${points[0][1]}`];
+      for (let index = 1; index < points.length - 1; index += 1) {
+        const [px, py] = points[index - 1];
+        const [cx, cy] = points[index];
+        const [nx, ny] = points[index + 1];
+        const inLength = Math.hypot(cx - px, cy - py);
+        const outLength = Math.hypot(nx - cx, ny - cy);
+        const bend = Math.min(radius, inLength / 2, outLength / 2);
+        if (bend < 1) {
+          parts.push(`L ${cx} ${cy}`);
+          continue;
+        }
+        parts.push(`L ${cx - Math.sign(cx - px) * bend} ${cy - Math.sign(cy - py) * bend}`);
+        parts.push(`Q ${cx} ${cy} ${cx + Math.sign(nx - cx) * bend} ${cy + Math.sign(ny - cy) * bend}`);
+      }
+      const last = points[points.length - 1];
+      parts.push(`L ${last[0]} ${last[1]}`);
+      return parts.join(" ");
+    }
+
     function skillTreeEdgesSvg(model) {
       if (!model.edges.length) return "";
-      const half = SKILL_NODE.width / 2;
       return `<svg class="skill-tree-edges" width="${model.width}" height="${model.height}"
           viewBox="0 0 ${model.width} ${model.height}" aria-hidden="true">
         ${model.edges.map(edge => {
-          const x1 = edge.parent.x + half;
-          const y1 = edge.parent.y + SKILL_NODE.height;
-          const x2 = edge.child.x + half;
-          const y2 = edge.child.y;
-          const mid = (y1 + y2) / 2;
-          return `<path d="M ${x1} ${y1} C ${x1} ${mid}, ${x2} ${mid}, ${x2} ${y2}"
+          const end = edge.points[edge.points.length - 1];
+          return `<path d="${orthogonalPath(edge.points)}"
             data-edge-from="${escapeAttr(edge.parent.key)}"
-            data-edge-to="${escapeAttr(edge.child.key)}"></path>`;
+            data-edge-to="${escapeAttr(edge.child.key)}"
+            data-points="${edge.points.map(point => point.join(",")).join(" ")}"></path>
+          <circle class="skill-edge-head" cx="${end[0]}" cy="${end[1]}" r="2.6"
+            data-edge-to="${escapeAttr(edge.child.key)}"></circle>`;
         }).join("")}
       </svg>`;
     }
@@ -4380,7 +4624,12 @@
       // Monster abilities are not a path anyone walks, so they keep the table
       // and stay out of the diagram entirely.
       const asTree = !searching && scope && scope !== "monster";
-      const model = asTree ? skillTreeModel(scope) : null;
+      // A class splits into jobs, and a job is what actually decides which
+      // skills a character can ever take. Each gets its own diagram.
+      const jobs = skillScopeJobs(scope);
+      const job = jobs.find(entry => String(entry.po_azon) === query.get("job"))
+        || jobs[0] || null;
+      const model = asTree ? skillTreeModel(scope, { position: job }) : null;
 
       el.main.innerHTML = `
         ${pageHeader({
@@ -4402,11 +4651,28 @@
                 .filter(row => scopeForSkill(row) === entry).length)}</span></a>`;
           }).join("")}
         </div>
+        ${asTree && jobs.length ? `<div class="scope-tabs job-tabs" role="tablist">
+          <span class="job-tabs-label">Job</span>
+          ${jobs.map(entry => {
+            const params = new URLSearchParams();
+            params.set("scope", scope);
+            params.set("job", entry.po_azon);
+            const active = job && String(entry.po_azon) === String(job.po_azon);
+            return `<a class="scope-tab${active ? " active" : ""}" role="tab"
+              aria-selected="${active}" href="#/skills?${params}"
+              title="${escapeAttr(`Available from level ${entry.po_lvl}`)}"
+              >${escapeHtml(entry.po_megn)}
+              <span class="dim">Lv ${escapeHtml(entry.po_lvl)}</span></a>`;
+          }).join("")}
+        </div>` : ""}
         ${filterToolbar("skills", query, { placeholder: "Skill name, key or description…" })}
         ${searching ? `<p class="dim"><small>Searching every scope. Clear the search to go back
           to a class diagram.</small></p>` : ""}
-        ${asTree ? section(`${skillScopeLabel(scope)} skill tree`,
-            skillTreeHtml(model, { interactive: false }),
+        ${asTree ? section(`${skillScopeLabel(scope)} skill tree${
+            job ? ` — ${escapeHtml(job.po_megn)}` : ""}`,
+            `${job ? `<p class="dim" style="margin:0 0 10px"><small>${
+              escapeHtml(jobTreeExplanation(job))}</small></p>` : ""}
+            ${skillTreeHtml(model, { interactive: false })}`,
             `<span class="panel-aside">${prettyNumber(model.nodes.length)} skills ·
               ${prettyNumber(model.edges.length)} prerequisite link${
                 model.edges.length === 1 ? "" : "s"}</span>`)
@@ -4947,6 +5213,7 @@
         </div>
         ${open ? `<div class="qcard-body">
           ${diagram || emptyState("No route or client steps are recorded for this quest.")}
+          ${animalChoiceHtml(questAnimalChoices(quest))}
           <div class="qcard-foot">
             ${prerequisite ? `<span class="tag gold">after ${
               entityLink("quest", prerequisite.que_id, prerequisite.que_name)}</span>` : ""}
@@ -5058,23 +5325,73 @@
       return null;
     }
 
+    /* A picture you are trying to recognise mid-quest wants to be looked at, so
+       it enlarges under the pointer and enlarges further when clicked. The
+       picture itself is the zoom control and the name beside it stays the link,
+       because a click that both navigated and zoomed could only do one. */
+    function zoomFrame(inner, kind) {
+      return `<button type="button" class="zoom-frame ${escapeAttr(kind)}"
+        data-zoom aria-label="Enlarge">${inner}</button>`;
+    }
+
     function guideAssetsHtml(entries, kind) {
       if (!entries?.length) return "";
       return `<div class="wt-assets">${entries.map(entry => {
         const label = String(entry.name || "");
         if (kind === "item") {
           const item = guideItemFor(label);
-          return `<span class="wt-asset">${item
-            ? `${iconTag(item.bango_image || "", item.ita_name || label, 26)}
+          return `<span class="wt-asset item">${item
+            ? `${zoomFrame(iconTag(item.bango_image || "", item.ita_name || label, 56), "item")}
                ${entityLink("item", item.ita_azon, label)}`
             : `<span class="wt-asset-plain">${escapeHtml(label)}</span>`}</span>`;
         }
         const monster = guideMonsterFor(label);
-        return `<span class="wt-asset">${monster
-          ? `${monsterIconTag(monster.message_id, monster.text, 30)}
+        return `<span class="wt-asset monster">${monster
+          ? `${zoomFrame(monsterIconTag(monster.message_id, monster.text, 92), "monster")}
              ${entityLink("monster", monster.message_id, label)}`
           : `<span class="wt-asset-plain">${escapeHtml(label)}</span>`}</span>`;
       }).join("")}</div>`;
+    }
+
+    /* ===================================================================
+       "Which animal is which"
+
+       The Egg Quest's turn-in offers three untranslated transliterations —
+       `YoongSangGaeGoonJae`, `GunChiHyunRyungHwangSun`, `TooGeuk` — and the
+       choice is permanent. The route guide's author worked out which animal
+       each one hatches into; without that a player is picking blind.
+
+       It is the same vocabulary the client uses for the transform skills, so
+       each answer links to that animal's skill tree.
+       =================================================================== */
+    const ANIMAL_SCOPE_BY_NAME = { tiger: "yungsang", panther: "tuguk",
+      bird: "gunchi", eagle: "gale" };
+
+    function animalChoiceHtml(choices) {
+      const rows = (choices || []).map(choice => (typeof choice === "string"
+        ? { tag: choice, desc: "" }
+        : { tag: String(choice.tag || ""), desc: String(choice.desc || "") }))
+        .filter(choice => choice.tag || choice.desc);
+      if (!rows.length) return "";
+      return `<div class="callout info choice-note">
+        <strong>Which animal is which.</strong> The turn-in names them as they appear
+        in the client; this is what each one hatches into. The choice is permanent.
+        <ul class="choice-list">${rows.map(choice => {
+          const scope = ANIMAL_SCOPE_BY_NAME[normalizeName(choice.desc)];
+          return `<li><span class="mono">${escapeHtml(choice.tag)}</span>
+            <span class="choice-arrow" aria-hidden="true">→</span>
+            ${choice.desc ? (scope
+              ? `<a href="#/skills?scope=${escapeAttr(scope)}"><strong>${
+                  escapeHtml(choice.desc)}</strong></a>`
+              : `<strong>${escapeHtml(choice.desc)}</strong>`)
+            : `<span class="dim">not identified</span>`}</li>`;
+        }).join("")}</ul>
+      </div>`;
+    }
+
+    /* The route guide's choices for a Bango quest, where one is matched. */
+    function questAnimalChoices(quest) {
+      return routeQuestForBango(quest)?.quest.choices || [];
     }
 
     function walkthroughStepHtml(step) {
@@ -5084,9 +5401,9 @@
         return `<li class="wt-step talk">
           ${questPinTag(step.city, step.pin)
             || `<span class="pin-tag field">${escapeHtml(step.city || "?")}</span>`}
-          ${pin.photo ? `<img class="npc-photo" height="30"
+          ${pin.photo ? zoomFrame(`<img class="npc-photo"
             data-project-file="${escapeAttr(pin.photoThumb || pin.photo)}"
-            alt="" title="${escapeAttr(name)}">` : ""}
+            alt="" title="${escapeAttr(name)}">`, "photo") : ""}
           <span class="wt-step-text"><strong>${escapeHtml(step.label || "Talk")}</strong>
             ${name ? ` — ${escapeHtml(name)}` : ""}${pin.teleport
               ? ` <small class="dim">${escapeHtml(pin.teleport)}</small>` : ""}</span>
@@ -5144,11 +5461,7 @@
         <ol class="wt-steps">${(entry.steps || []).map(walkthroughStepHtml).join("")}</ol>
         ${guideAssetsHtml(entry.mobs, "monster")}
         ${guideAssetsHtml(entry.items, "item")}
-        ${(entry.choices || []).length ? `<div class="wt-choices">
-          ${entry.choices.map(choice => `<span class="tag gold">${escapeHtml(
-            typeof choice === "string" ? choice
-              : [choice.label, choice.text, choice.name].filter(Boolean).join(" — ")
-          )}</span>`).join("")}</div>` : ""}
+        ${animalChoiceHtml(entry.choices)}
         ${entry.reward ? `<p class="wt-reward"><span>Reward</span>
           ${escapeHtml(entry.reward)}</p>` : ""}
         ${status.kind === "quest" && Number(status.quest.que_lvl) > Number(build.level)
@@ -8194,7 +8507,10 @@
           && !event.target.closest?.("[data-equipment-slot]")) closeSlotMenu();
     });
     document.addEventListener("keydown", event => {
-      if (event.key === "Escape") closeSlotMenu();
+      if (event.key !== "Escape") return;
+      closeSlotMenu();
+      document.querySelectorAll(".zoom-frame.zoomed")
+        .forEach(frame => frame.classList.remove("zoomed"));
     });
 
     function openEquipmentDialog(slot) {
@@ -8518,14 +8834,29 @@
           quests supply the quest total. The omitted/free post-60 bands remain unverified for Bango
           and are not granted silently.</small></p>`)}
         ${(() => {
-          const model = skillTreeModel(classSkillScope(build.cls));
-          const reached = rows.length;
+          const position = positionByName(build.position);
+          const model = skillTreeModel(classSkillScope(build.cls), { position });
+          // Counted over the tree, not over characterSkillRows: the tree also
+          // carries the one job step ahead, which that helper deliberately omits.
+          const reached = model.nodes.filter(node =>
+            !Number.isFinite(node.level) || node.level <= Number(build.level)).length;
           const raisable = model.nodes.filter(node =>
             skillPrerequisiteState(profile, node.row).missing.length === 0
             && positionAllowsSkill(node.schedule, build)
             && (!Number.isFinite(node.level) || node.level <= Number(build.level))).length;
-          return section(`${build.cls} skill tree`,
-            skillTreeHtml(model, { interactive: true, profile, build, ledger }),
+          const ahead = position ? nextPositions(position) : [];
+          return section(`${build.cls} skill tree${
+              position ? ` — ${escapeHtml(position.po_megn)}` : ""}`,
+            `${position ? `<p class="dim" style="margin:0 0 10px"><small>Only the skills
+              ${escapeHtml(position.po_megn)} can take${ahead.length === 1
+                ? `, including the ${escapeHtml(ahead[0].po_megn)} step ahead of it`
+                : ""}. ${ahead.length > 1
+                ? `Choosing between <strong>${ahead.map(entry =>
+                    escapeHtml(entry.po_megn)).join("</strong> and <strong>")}</strong>
+                   at level ${escapeHtml(ahead[0].po_lvl)} is the next decision, and neither
+                   branch is shown until it is made.`
+                : ""}</small></p>` : ""}
+            ${skillTreeHtml(model, { interactive: true, profile, build, ledger })}`,
             `<span class="panel-aside">${prettyNumber(reached)} of ${prettyNumber(
               model.nodes.length)} reach level ${escapeHtml(String(build.level))} ·
               ${prettyNumber(raisable)} can be raised now</span>`);
@@ -9218,7 +9549,8 @@
             ${panel("Against your build", monsterCombatPanel(row, legacy))}
           </div>
           <div class="detail-side">
-            <div class="entity-hero">
+            <div class="entity-hero${monsterFallbackPicture(row.text)
+                && !monsterPortraitName(id, row.text) ? " portrait-art" : ""}">
               <span class="entity-portrait">${monsterIconTag(id, row.text, 64)}</span>
               <div>
                 <strong>${escapeHtml(row.text)}</strong>
@@ -9390,7 +9722,8 @@
                 ? entityLink("quest", prerequisite.que_id, prerequisite.que_name) : ""]
             ]))}
             ${cleanText(row.que_text) ? panel("What it asks",
-              `<p style="white-space:pre-line;margin:0">${escapeHtml(cleanText(row.que_text))}</p>`) : ""}
+              `<p style="white-space:pre-line;margin:0">${escapeHtml(cleanText(row.que_text))}</p>
+               ${animalChoiceHtml(questAnimalChoices(row))}`) : ""}
             ${routeSteps.length ? panel("Walkthrough", `
               <ol class="route-steps">${routeSteps.map(step => {
                 if (step.type === "talk") {
@@ -10760,6 +11093,18 @@
     }
 
     document.addEventListener("click", async event => {
+      // Clicking a picture enlarges it further than hovering does; clicking it
+      // again, or anything else, puts it back. Delegated, so it survives every
+      // re-render without rewiring.
+      const zoom = event.target.closest("[data-zoom]");
+      document.querySelectorAll(".zoom-frame.zoomed").forEach(frame => {
+        if (frame !== zoom) frame.classList.remove("zoomed");
+      });
+      if (zoom) {
+        event.preventDefault();
+        zoom.classList.toggle("zoomed");
+        return;
+      }
       const sortControl = event.target.closest("[data-sort-table]");
       if (sortControl) {
         applyTableSort(sortControl.dataset.sortTable, sortControl.dataset.sortKey,
