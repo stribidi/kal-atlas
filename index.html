@@ -4552,11 +4552,13 @@
       return null;
     }
 
-    function npcPhotoTag(row, height = 34) {
+    /* `decorative` where the NPC's name is already written beside the picture:
+       the alt text would then be read — and, if the image fails, drawn — twice. */
+    function npcPhotoTag(row, height = 34, decorative = false) {
       const photo = npcPhotoFor(row);
       if (!photo) return "";
       return `<img class="npc-photo" data-project-file="${escapeAttr(photo.thumb)}"
-        height="${height}" alt="${escapeAttr(photo.label)}"
+        height="${height}" alt="${decorative ? "" : escapeAttr(photo.label)}"
         title="${escapeAttr(`${photo.label} — ${photo.cityLabel} #${photo.pin}`)}">`;
     }
 
@@ -4616,7 +4618,7 @@
                 data-map-pin="${escapeAttr(`${entry.id}-${pin}`)}">${escapeHtml(pin)}</button>
                 ${data.photo ? `<img class="npc-photo" height="26"
                   data-project-file="${escapeAttr(data.photoThumb || data.photo)}"
-                  alt="${escapeAttr(data.name)}">` : ""}
+                  alt="">` : ""}
                 <span>${escapeHtml(data.name)}${data.teleport
                   ? ` <small class="dim">${escapeHtml(data.teleport)}</small>` : ""}</span></li>`).join("")}</ul>
             ${pins.some(([, data]) => data.photo) && npcPhotoCredit()
@@ -5084,7 +5086,7 @@
             || `<span class="pin-tag field">${escapeHtml(step.city || "?")}</span>`}
           ${pin.photo ? `<img class="npc-photo" height="30"
             data-project-file="${escapeAttr(pin.photoThumb || pin.photo)}"
-            alt="${escapeAttr(name)}">` : ""}
+            alt="" title="${escapeAttr(name)}">` : ""}
           <span class="wt-step-text"><strong>${escapeHtml(step.label || "Talk")}</strong>
             ${name ? ` — ${escapeHtml(name)}` : ""}${pin.teleport
               ? ` <small class="dim">${escapeHtml(pin.teleport)}</small>` : ""}</span>
@@ -9410,7 +9412,7 @@
             }).join("")}</ul>`) : ""}
             ${npcs.length ? panel("Talk to", `<ul class="link-list">${
               [...new Map(npcs.map(npc => [npc.message_id, npc])).values()].map(npc =>
-                `<li>${npcPhotoTag(npc, 30)}${
+                `<li>${npcPhotoTag(npc, 30, true)}${
                   entityLink("npc", npc.message_id, npcDisplayName(npc))}</li>`).join("")
             }</ul>`) : ""}
             ${articles ? panel("Guides", articles) : ""}
