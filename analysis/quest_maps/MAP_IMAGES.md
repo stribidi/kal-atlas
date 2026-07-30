@@ -1,11 +1,15 @@
 # Quest map images and their credits
 
-`QUEST_MAPS.json` carries all 80 pins and every quest→pin link. Pin positions
+`QUEST_MAPS.json` carries every pin and every quest→pin link. Pin positions
 are **percentages of their own map image**, so a pin only lands correctly on
 the exact artwork it was placed against. Substituting a different map of the
 same place puts every pin in the wrong spot.
 
-All nine maps are present.
+Guide revision **v1.0 (30.7.)** places **90 pins across 8 maps** — up from
+revision 10's 80 pins, gaining six teleport pins (`tp1`–`tp6`) and five
+starter-equipment pins in Narootuh (`eg1`–`eg5`). It **dropped the `forest`
+map** entirely; `map-forest.jpg` is kept on disk for the revision that placed
+it, but no live map references it any more.
 
 ## Credits
 
@@ -35,7 +39,23 @@ Rafael's call, 2026-07-26: the maps may be published with the credit shown.
 | `cop` — City of Priest | `map-cop.jpg` | 1159 × 1236 |
 | `wild` — Forsaken Fort area | `map-wild.jpg` | 538 × 514 |
 | `wildcargo` — Cargo / Geum-Oh Mine area | `map-wildcargo.jpg` | 385 × 610 |
-| `forest` — Forest of Elements / Tower of Priest | `map-forest.jpg` | 346 × 457 |
+| `forest` — Forest of Elements / Tower of Priest | `map-forest.jpg` | 346 × 457 — **not in v1.0** |
+
+## NPC photographs
+
+v1.0 embeds **77** in-game NPC screenshots (58 full-size only, 19 with a
+thumbnail as well), up from revision 10's 47. These are the **guide author's own
+work** and he cleared their use on 2026-07-25, so unlike the borrowed map
+artwork they are copied into the project — `assets\npc_photos\<city>-<pin>.jpg`
+— and the site shows them as the picture for that NPC. The credit travels in
+`QUEST_MAPS.json` as `photo_credit`.
+
+## Monster thumbnails
+
+v1.0 stopped hot-linking monster icons from `mystic-city.de` and now points at
+**gameagit.com** instead. `QUEST_MAPS.json` records the 61 URL mappings under
+`mob_icons`; `fetch_mob_icons.py` downloads them into `assets\mob_icons\` on
+request. The credit travels as `mob_icon_credit`.
 
 ## Regenerating
 

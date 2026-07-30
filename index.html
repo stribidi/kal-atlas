@@ -1379,6 +1379,123 @@
     .skill-grade.zero { color: var(--dim); }
     .skill-stepper { display: flex; gap: 3px; }
     .skill-stepper button { min-height: 28px; min-width: 28px; padding: 2px 7px; }
+    /* ── Skill tree ─────────────────────────────────────────────────────
+       One row per unlock level, a line from each prerequisite to what it
+       opens. Node positions are set inline from arithmetic, so the only job
+       here is to make the boxes and the lines readable. */
+    .scope-tabs {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin: 0 0 14px;
+    }
+    .scope-tab {
+      display: inline-flex;
+      align-items: baseline;
+      gap: 6px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      padding: 6px 14px;
+      color: var(--muted);
+      background: var(--panel-2);
+      font-size: 12.5px;
+      font-weight: 600;
+      text-decoration: none;
+    }
+    .scope-tab:hover { border-color: var(--gold); color: var(--text); }
+    .scope-tab.active {
+      border-color: var(--gold);
+      color: var(--accent-ink);
+      background: var(--gold);
+    }
+    .scope-tab.active .dim { color: rgba(20, 30, 24, .7); }
+    .skill-tree-wrap { overflow: auto; padding: 2px 0 8px; }
+    .skill-tree { position: relative; }
+    .skill-tree-edges {
+      position: absolute;
+      inset: 0;
+      overflow: visible;
+      pointer-events: none;
+    }
+    .skill-tree-edges path {
+      fill: none;
+      stroke: var(--gold);
+      stroke-width: 1.6;
+      opacity: .62;
+    }
+    .skill-tree-rail {
+      position: absolute;
+      left: 0;
+      right: 0;
+      border-top: 1px dotted var(--line-soft);
+    }
+    .skill-tree-rail span {
+      position: absolute;
+      top: -8px;
+      left: 0;
+      padding: 0 5px;
+      color: var(--dim);
+      background: var(--panel);
+      font-size: 9.5px;
+      letter-spacing: .05em;
+      text-transform: uppercase;
+    }
+    .skill-node {
+      position: absolute;
+      display: grid;
+      grid-template-columns: 26px minmax(0, 1fr);
+      grid-template-rows: auto auto;
+      align-items: center;
+      gap: 2px 7px;
+      width: 148px;
+      height: 62px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 5px 7px;
+      background: var(--panel-2);
+      box-shadow: 0 2px 6px rgba(0, 0, 0, .25);
+    }
+    .skill-node:hover { border-color: var(--gold); z-index: 3; }
+    .skill-node.locked { opacity: .42; filter: saturate(.35); }
+    .skill-node.taken { border-color: var(--accent); }
+    .skill-node .icon { width: 26px; height: 26px; grid-row: 1; }
+    .skill-node-name {
+      grid-column: 2;
+      grid-row: 1;
+      overflow: hidden;
+      color: var(--text);
+      font-size: 11px;
+      font-weight: 600;
+      line-height: 1.15;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+    .skill-node-name a { color: inherit; text-decoration: none; }
+    .skill-node-name a:hover { color: var(--accent); }
+    .skill-node-grade {
+      grid-column: 1 / -1;
+      grid-row: 2;
+      color: var(--muted);
+      font-size: 10px;
+      font-weight: 700;
+    }
+    .skill-node-grade.zero { color: var(--dim); }
+    .skill-node .skill-stepper {
+      position: absolute;
+      right: 5px;
+      bottom: 4px;
+    }
+    .skill-node .skill-stepper button { min-height: 20px; min-width: 22px; padding: 0 5px; font-size: 11px; }
+    .skill-node-need {
+      grid-column: 1 / -1;
+      overflow: hidden;
+      color: var(--dim);
+      font-size: 9px;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+    .skill-node-need.missing { color: var(--danger); }
+
     .skill-tooltip {
       position: fixed;
       z-index: 80;
@@ -1729,6 +1846,24 @@
       max-width: 84px;
       max-height: 64px;
     }
+    /* gameagit's artwork is taller than it is wide, so it is shown whole rather
+       than cropped to KalEncyclopedia's landscape frame. */
+    .monster-icon.tall { object-fit: contain; background: transparent; }
+    .entity-hero .entity-portrait .monster-icon.tall { max-width: 64px; max-height: 96px; }
+    /* The guide author's own NPC screenshots — the only pictures of these
+       characters the project has. */
+    .npc-photo {
+      width: auto;
+      border: 1px solid var(--line-soft);
+      border-radius: 4px;
+      object-fit: cover;
+      background: #1a1710;
+      vertical-align: middle;
+    }
+    .npc-photo.large { max-width: 100%; height: auto; border-radius: 6px; }
+    .npc-hero { align-items: flex-start; }
+    .map-legend li .npc-photo { flex: 0 0 auto; }
+    .link-list .npc-photo { margin-right: 6px; }
 
     /* ── Character Creation: the artifact's density ─────────────────── */
     .sim-workspace {
@@ -2097,10 +2232,170 @@
     .stop-mob:hover { color: var(--accent); }
     .stop-mob .monster-icon, .stop-mob .icon-monster-blank { border-radius: 4px; }
     .stop-more { align-self: center; color: var(--dim); font-size: 10px; }
+    /* Monsters the quest tags that no single step can claim. Deliberately not
+       styled as a stop: it is not a place in the route. */
+    .route-loose {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin: 8px 0 0;
+      border-top: 1px dotted var(--line-soft);
+      padding: 8px 2px 0;
+    }
+    .route-loose-label {
+      color: var(--dim);
+      font-size: 10.5px;
+      text-transform: uppercase;
+      letter-spacing: .06em;
+    }
+    .route-loose .stop-mobs { justify-content: flex-start; }
 
     @media (max-width: 560px) {
       .stop { width: 100%; }
       .stop-arrow { transform: rotate(90deg); }
+    }
+
+    /* ── The two ways into the quests ───────────────────────────────────
+       Deliberately large: the whole point is that a first-time visitor cannot
+       miss that there are two of these. */
+    .view-switch {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 12px;
+      margin: 0 0 18px;
+    }
+    .view-card {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      border: 2px solid var(--line);
+      border-radius: var(--radius);
+      padding: 14px 16px;
+      color: var(--text);
+      background: var(--panel-2);
+      text-decoration: none;
+      transition: border-color .14s ease, background .14s ease, transform .14s ease;
+    }
+    .view-card:hover { border-color: var(--gold); background: var(--panel-3); }
+    .view-card.active {
+      border-color: var(--gold);
+      background: linear-gradient(180deg, rgba(168, 111, 62, .22), transparent);
+      box-shadow: inset 0 0 0 1px rgba(168, 111, 62, .4);
+    }
+    .view-card.disabled { opacity: .45; pointer-events: none; }
+    .view-card-icon {
+      flex: 0 0 auto;
+      display: grid;
+      place-items: center;
+      width: 40px;
+      height: 40px;
+      border: 1px solid var(--line);
+      border-radius: 50%;
+      color: var(--gold);
+      background: var(--panel);
+      font-size: 18px;
+    }
+    .view-card.active .view-card-icon { border-color: var(--gold); }
+    .view-card-body { display: flex; flex-direction: column; gap: 3px; }
+    .view-card-body strong { font-size: 15px; letter-spacing: .01em; }
+    .view-card-body small { color: var(--muted); font-size: 11.5px; line-height: 1.35; }
+
+    /* ── Walkthrough ────────────────────────────────────────────────── */
+    .wt-progress {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin: 0 0 16px;
+    }
+    .wt-bar {
+      flex: 1 1 200px;
+      min-width: 160px;
+      height: 9px;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      background: var(--panel-2);
+      overflow: hidden;
+    }
+    .wt-bar span { display: block; height: 100%; background: var(--accent); transition: width .25s ease; }
+    .wt-stage {
+      margin: 0 0 16px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 14px 16px;
+      background: var(--panel);
+    }
+    .wt-stage-head { display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap; }
+    .wt-stage-head h4 { margin: 0; color: var(--gold); font-size: 15px; }
+    .wt-stage-lvl {
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      padding: 1px 8px;
+      color: var(--muted);
+      font-size: 11px;
+    }
+    .wt-where { margin: 5px 0 0; color: var(--muted); font-size: 12.5px; }
+    .wt-combo { margin: 10px 0 4px; font-size: 12.5px; }
+    .wt-quest {
+      margin: 12px 0 0;
+      border-top: 1px dotted var(--line-soft);
+      padding: 10px 0 2px;
+    }
+    .wt-quest.done { opacity: .55; }
+    .wt-quest.done .wt-quest-head h5 { text-decoration: line-through; }
+    .wt-quest-head { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+    .wt-quest-head h5 { margin: 0; font-size: 13.5px; }
+    .wt-route-name { margin-left: auto; color: var(--dim); font-size: 10.5px; }
+    .wt-note {
+      margin: 6px 0 0;
+      border-left: 2px solid var(--gold);
+      padding: 2px 0 2px 8px;
+      color: var(--muted);
+      font-size: 12px;
+    }
+    .wt-start { margin: 6px 0 0; color: var(--muted); font-size: 12px; }
+    .wt-steps { margin: 8px 0 0; padding: 0; list-style: none; }
+    .wt-step {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      border-bottom: 1px dotted var(--line-soft);
+      padding: 3px 0;
+      font-size: 12.5px;
+    }
+    .wt-step:last-child { border-bottom: 0; }
+    .wt-step-text { color: var(--muted); }
+    .wt-step.action .wt-step-text { color: var(--text); }
+    .wt-assets { display: flex; flex-wrap: wrap; gap: 6px; margin: 7px 0 0; }
+    .wt-asset {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      border: 1px solid var(--line-soft);
+      border-radius: 12px;
+      padding: 2px 8px 2px 3px;
+      font-size: 11px;
+    }
+    .wt-asset-plain { padding: 0 4px; color: var(--dim); }
+    .wt-choices { display: flex; flex-wrap: wrap; gap: 5px; margin: 7px 0 0; }
+    .wt-reward { margin: 7px 0 0; color: var(--muted); font-size: 12px; }
+    .wt-reward span {
+      margin-right: 6px;
+      color: var(--dim);
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: .06em;
+    }
+    .wt-warn { margin: 5px 0 0; color: var(--danger); font-size: 11.5px; }
+    .wt-teleports { margin: 0; padding: 0; list-style: none; font-size: 12.5px; }
+    .wt-teleports li {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      border-bottom: 1px dotted var(--line-soft);
+      padding: 3px 0;
+      color: var(--muted);
     }
 
     .map-filter-row {
@@ -2172,6 +2467,12 @@
       line-height: 1;
     }
     .map-pin:hover { border-color: var(--gold); background: var(--gold); color: #241b12; }
+    /* The global `button:active { transform: translateY(1px) }` replaces the
+       centring translate outright, which threw a 19px pin half its own size
+       south-east the instant it was pressed — far enough that the pointer ended
+       up outside the round hit area and the click never landed. Press feedback
+       has to keep the translate and change only the scale. */
+    .map-pin:active { transform: translate(-50%, -50%) scale(.92); }
     .map-pin.flash { z-index: 5; animation: pinFlash 2.6s ease-out; }
     @keyframes pinFlash {
       0%   { box-shadow: 0 0 0 0 rgba(168, 111, 62, 1);  background: var(--gold); color: #241b12; transform: translate(-50%, -50%) scale(1.7); }
@@ -2509,6 +2810,13 @@
       // the file is absent, in which case the simulator disables itself rather
       // than falling back on restated constants.
       combat: null,
+      // The guide author's NPC screenshots, keyed by the names a pin label
+      // can be recognised by. Built once, lazily, from the loaded quest maps.
+      npcPhotos: null,
+      // gameagit.com monster artwork, keyed by normalized Bango monster name.
+      // Null when the ingest has not been run; monsters KalEncyclopedia has no
+      // portrait for then stay blank rather than borrowing another creature's.
+      monsterIcons: null,
       build: null,
       profiles: null,
       activeEquipmentSlot: "",
@@ -2584,6 +2892,14 @@
     function prettyNumber(value) {
       const number = Number(value);
       return Number.isFinite(number) ? number.toLocaleString("en-US") : String(value ?? "—");
+    }
+
+    /* The route guide writes emphasis into its own prose ("<b>Devil Troop Of
+       Hatred</b>"). Escaping everything and then re-allowing exactly those two
+       tags keeps the emphasis without letting a source file inject markup. */
+    function cleanHtmlText(value) {
+      return escapeHtml(String(value ?? ""))
+        .replace(/&lt;(\/?)(b|strong|i|em)&gt;/g, "<$1$2>");
     }
 
     function cleanText(value) {
@@ -3029,6 +3345,7 @@
         await loadCombatFixture();
         await loadServerProfile();
         await loadQuestMaps();
+        await loadMonsterIcons();
         await loadModelCatalogue();
         renderLoading("Reading registered reference articles…", 81);
         await loadArticles();
@@ -3337,6 +3654,13 @@
       ix.enhancementGroups = groupedBy(t.enhancementBonuses, row =>
         `${row.stat_family}~${row.application_band}`);
 
+      // The walkthrough names monsters in prose, so it needs a name lookup as
+      // well as the id one. First definition wins; several ids can share a name.
+      ix.monstersByName = new Map();
+      monsterMessages.forEach(row => {
+        const key = normalizeName(row.text);
+        if (key && !ix.monstersByName.has(key)) ix.monstersByName.set(key, row);
+      });
       ix.legacyItemsById = firstBy(o.legacyItems || [], "ita_azon");
       ix.legacyMonstersById = firstBy(o.legacyMonsters || [], "mon_azon");
       ix.positionsByClass = groupedBy(o.positions || [], "po_class");
@@ -3823,29 +4147,270 @@
               <td>${legacyRow ? `<span class="tag gold">available · non-Bango</span>` : `<span class="dim">—</span>`}</td>
             </tr>`;
           }).join("")}</tbody>
-        </table></div><div class="section-body">${pagination(rows.length, page, pageSize, "monsters", query)}</div></section>`;
+        </table></div><div class="section-body">${pagination(rows.length, page, pageSize, "monsters", query)}
+          ${monsterPictureCredit(shown.map(row => row.text))
+            ? `<p class="map-credit">${monsterPictureCredit(shown.map(row => row.text))}</p>` : ""}
+        </div></section>`;
+    }
+
+    /* ===================================================================
+       Skill trees
+
+       The client's own scope names for the four animal transforms are
+       transliterations nobody uses in play — `yungsang`, `tuguk`, `gunchi`,
+       `gale`. They are shown as the animals they are, and the raw scope stays
+       the route key so a link into the data still works.
+
+       The diagram lays every skill of a scope out by the level it unlocks at:
+       one row per unlock level, top to bottom, with a line drawn from each
+       prerequisite to the skill it opens. Level is the axis because level is
+       what a player actually spends — and because most skills have no
+       prerequisite at all (68 edges across 536 skills), so a pure dependency
+       tree would be 50 unconnected roots in a column.
+
+       Positions are arithmetic, not measured from the page: the node box is a
+       fixed size, so the SVG lines can be drawn from the same numbers that
+       place the boxes. Nothing here needs a layout pass to be correct.
+       =================================================================== */
+    const SKILL_SCOPE_LABELS = {
+      common: "Common", mage: "Mage", archer: "Archer", knight: "Knight",
+      thief: "Thief", shaman: "Shaman",
+      // The animals, by the names they are called in play.
+      yungsang: "Tiger", tuguk: "Panther", gunchi: "Bird", gunchie: "Bird", gale: "Eagle",
+      monster: "Monster abilities"
+    };
+    // The order the tabs are shown in: your own class first, then the shared
+    // book, then the transforms. Monster abilities are not a player path and
+    // are deliberately last and diagram-free.
+    const SKILL_SCOPE_ORDER = ["common", "mage", "archer", "knight", "thief", "shaman",
+      "yungsang", "tuguk", "gunchi", "gale", "monster"];
+    const SKILL_NODE = { width: 148, height: 62, gapX: 14, gapY: 30, padding: 18 };
+
+    function skillScopeLabel(scope) {
+      return SKILL_SCOPE_LABELS[scope] || (scope
+        ? scope[0].toUpperCase() + scope.slice(1) : "");
+    }
+
+    function skillScopes() {
+      const present = new Set(state.tables.skills.map(scopeForSkill));
+      return [...SKILL_SCOPE_ORDER.filter(scope => present.has(scope)),
+        ...[...present].filter(scope => !SKILL_SCOPE_ORDER.includes(scope)).sort()];
+    }
+
+    /* One row per unlock level, and inside a row the skills in the client's own
+       order. A skill with no recovered schedule has no level to be placed at,
+       so it goes in a final row of its own rather than being guessed at. */
+    function skillTreeModel(scope) {
+      const rows = (state.tables.skills || [])
+        .filter(row => scopeForSkill(row) === scope)
+        .map(row => ({ row, schedule: state.indexes.skillSchedules.get(skillId(row)) }));
+      const levelOf = entry => {
+        const level = skillUnlockLevel(entry.schedule);
+        return Number.isFinite(level) ? level : Infinity;
+      };
+      const byLevel = new Map();
+      rows.forEach(entry => mapPush(byLevel, levelOf(entry), entry));
+      const levels = [...byLevel.keys()].sort((left, right) => left - right);
+      const nodes = new Map();
+      const laid = levels.map((level, rowIndex) => {
+        const entries = byLevel.get(level).sort((left, right) =>
+          Number(left.row.sk_order || 0) - Number(right.row.sk_order || 0)
+          || String(left.row.sk_megn || "").localeCompare(String(right.row.sk_megn || "")));
+        // A skill sits under the skill that unlocks it wherever the column is
+        // free, so a chain reads as a chain instead of a long diagonal across
+        // the diagram. Everything else fills the leftmost free column.
+        const taken = new Set();
+        const claim = wanted => {
+          for (let distance = 0; distance < 64; distance += 1) {
+            for (const column of [wanted + distance, wanted - distance]) {
+              if (column >= 0 && !taken.has(column)) {
+                taken.add(column);
+                return column;
+              }
+            }
+          }
+          return taken.size;
+        };
+        const placed = entries.map(entry => {
+          const edges = state.indexes.skillPrerequisites.get(String(entry.row.bango_key)) || [];
+          const parent = edges.map(edge => nodes.get(String(edge.prerequisite_skill_key)))
+            .find(Boolean);
+          return { entry, wanted: parent ? parent.column : null };
+        });
+        placed.filter(item => item.wanted != null)
+          .forEach(item => { item.column = claim(item.wanted); });
+        placed.filter(item => item.column == null)
+          .forEach(item => { item.column = claim(0); });
+        placed.forEach(({ entry, column }) => {
+          const node = {
+            ...entry,
+            key: String(entry.row.bango_key),
+            level,
+            column,
+            x: SKILL_NODE.padding + column * (SKILL_NODE.width + SKILL_NODE.gapX),
+            y: SKILL_NODE.padding + rowIndex * (SKILL_NODE.height + SKILL_NODE.gapY)
+          };
+          nodes.set(node.key, node);
+        });
+        return { level, entries, columns: Math.max(...placed.map(item => item.column)) + 1 };
+      });
+      const edges = [];
+      for (const node of nodes.values()) {
+        for (const edge of state.indexes.skillPrerequisites.get(node.key) || []) {
+          const parent = nodes.get(String(edge.prerequisite_skill_key));
+          if (parent) edges.push({ parent, child: node, grade: edge.required_grade });
+        }
+      }
+      const columns = Math.max(1, ...laid.map(row => row.columns || row.entries.length));
+      return {
+        scope,
+        rows: laid,
+        nodes: [...nodes.values()],
+        edges,
+        width: SKILL_NODE.padding * 2 + columns * SKILL_NODE.width
+          + (columns - 1) * SKILL_NODE.gapX,
+        height: SKILL_NODE.padding * 2 + laid.length * SKILL_NODE.height
+          + Math.max(0, laid.length - 1) * SKILL_NODE.gapY
+      };
+    }
+
+    function skillTreeEdgesSvg(model) {
+      if (!model.edges.length) return "";
+      const half = SKILL_NODE.width / 2;
+      return `<svg class="skill-tree-edges" width="${model.width}" height="${model.height}"
+          viewBox="0 0 ${model.width} ${model.height}" aria-hidden="true">
+        ${model.edges.map(edge => {
+          const x1 = edge.parent.x + half;
+          const y1 = edge.parent.y + SKILL_NODE.height;
+          const x2 = edge.child.x + half;
+          const y2 = edge.child.y;
+          const mid = (y1 + y2) / 2;
+          return `<path d="M ${x1} ${y1} C ${x1} ${mid}, ${x2} ${mid}, ${x2} ${y2}"
+            data-edge-from="${escapeAttr(edge.parent.key)}"
+            data-edge-to="${escapeAttr(edge.child.key)}"></path>`;
+        }).join("")}
+      </svg>`;
+    }
+
+    /* The same diagram serves both pages. On the Skills page nothing is
+       greyed out — it is a reference, and every skill of the class exists.
+       On Character Creation a node the character cannot take yet is dimmed and
+       carries its grade stepper. */
+    function skillTreeHtml(model, options = {}) {
+      const { interactive = false, profile = null, build = null, ledger = null } = options;
+      if (!model.nodes.length) return emptyState("No skill carries this scope.");
+      return `<div class="skill-tree-wrap">
+        <div class="skill-tree" style="width:${model.width}px;height:${model.height}px">
+          ${skillTreeEdgesSvg(model)}
+          ${model.rows.map((row, index) => `<div class="skill-tree-rail"
+            style="top:${SKILL_NODE.padding + index * (SKILL_NODE.height + SKILL_NODE.gapY)
+              - SKILL_NODE.gapY / 2}px"
+            ><span>${Number.isFinite(row.level) ? `Lv ${row.level}` : "no schedule"}</span></div>`).join("")}
+          ${model.nodes.map(node => {
+            const grade = interactive ? Number(profile.skills?.[node.key]) || 0 : 0;
+            const max = interactive ? availableSkillGrade(node.schedule, build.level)
+              : Number(node.schedule?.client_max_grade) || 0;
+            const prerequisites = interactive
+              ? skillPrerequisiteState(profile, node.row) : { edges: [], missing: [] };
+            const beyondLevel = interactive && Number.isFinite(node.level)
+              && node.level > Number(build.level);
+            const locked = interactive && (prerequisites.missing.length > 0 || beyondLevel
+              || !positionAllowsSkill(node.schedule, build));
+            const minimum = interactive ? skillMinimumGrade(node.row) : 0;
+            return `<div class="skill-node${locked ? " locked" : ""}${
+                interactive && grade ? " taken" : ""}"
+                style="left:${node.x}px;top:${node.y}px"
+                data-skill-node="${escapeAttr(node.key)}"
+                data-skill-card="${escapeAttr(skillId(node.row))}"
+                data-skill-tip="${escapeAttr(interactive
+                  ? skillTooltipHtml(node.row, node.schedule, grade, build)
+                  : skillReferenceTipHtml(node.row, node.schedule))}">
+              ${skillIconTag(node.row, 26)}
+              <span class="skill-node-name">${interactive
+                ? escapeHtml(node.row.sk_megn || node.key)
+                : entityLink("skill", skillId(node.row), node.row.sk_megn || node.key)}</span>
+              ${interactive ? `<span class="skill-node-grade${grade ? "" : " zero"}">${
+                  grade} / ${max}</span>
+                <span class="skill-stepper">
+                  <button class="small" type="button" data-skill-down="${escapeAttr(node.key)}"${
+                    grade <= minimum ? " disabled" : ""}>−</button>
+                  <button class="small" type="button" data-skill-up="${escapeAttr(node.key)}"${
+                    grade >= max || locked || (ledger?.available ?? 0) <= 0 ? " disabled" : ""
+                  }>+</button>
+                </span>`
+                : `<span class="skill-node-grade">${max ? `to G${max}` : "—"}</span>`}
+              ${prerequisites.edges.length ? `<span class="skill-node-need${
+                prerequisites.missing.length ? " missing" : ""}">after ${
+                escapeHtml(prerequisites.edges.map(edge =>
+                  `${edge.prerequisite_skill_name} G${edge.required_grade}`).join(", "))}</span>` : ""}
+            </div>`;
+          }).join("")}
+        </div>
+      </div>`;
+    }
+
+    function skillReferenceTipHtml(row, schedule) {
+      const prerequisites = state.indexes.skillPrerequisites.get(String(row.bango_key)) || [];
+      const unlock = skillUnlockLevel(schedule);
+      return `<strong>${escapeHtml(row.sk_megn || row.bango_key)}</strong>
+        <small>${escapeHtml(cleanText(row.sk_desc) || "No description in the Bango record.")}</small>
+        <div class="tip-grade">[ Unlocks at level ${Number.isFinite(unlock) ? unlock : "—"}
+          · up to grade ${escapeHtml(schedule?.client_max_grade || "—")} ]</div>
+        ${schedule?.client_schedule_format ? `<div><small>Client schedule
+          <span class="mono">${escapeHtml(schedule.client_schedule_format)}</span></small></div>` : ""}
+        ${prerequisites.length ? `<div class="tip-next"><small>Requires ${
+          prerequisites.map(edge => `${escapeHtml(edge.prerequisite_skill_name)}
+            G${escapeHtml(edge.required_grade)}`).join(", ")}</small></div>` : ""}`;
     }
 
     function renderSkills(query) {
       const q = normalizeName(query.get("q") || "");
-      const scope = query.get("scope") || "";
-      const scopes = [...new Set(state.tables.skills.map(scopeForSkill))].sort();
+      const scopes = skillScopes();
+      const scope = scopes.includes(query.get("scope")) ? query.get("scope")
+        : (query.get("scope") ? "" : "common");
+      // A search runs across every scope; the tabs are for browsing.
+      const searching = Boolean(q);
       const rows = state.tables.skills.filter(row =>
         (!q || normalizeName(`${row.sk_megn} ${row.bango_key} ${cleanText(row.sk_desc)}`).includes(q)) &&
-        (!scope || scopeForSkill(row) === scope)
+        (searching || !scope || scopeForSkill(row) === scope)
       );
       const pageSize = 80;
       const page = Number(query.get("page") || 1);
       const shown = rows.slice((page - 1) * pageSize, page * pageSize);
+      // Monster abilities are not a path anyone walks, so they keep the table
+      // and stay out of the diagram entirely.
+      const asTree = !searching && scope && scope !== "monster";
+      const model = asTree ? skillTreeModel(scope) : null;
+
       el.main.innerHTML = `
         ${pageHeader({
           eyebrow: "Bango skill definitions",
           title: "Skills",
-          lede: "Each definition links its recovered grade schedule, native formulas, prerequisite chain, dependents and class scope.",
+          lede: "Every skill of a class, laid out by the level it unlocks at, with a line from "
+            + "each prerequisite to what it opens. Hover a skill for its description, schedule "
+            + "and costs.",
           crumbs: [["Overview", "#/home"], ["Skills", ""]]
         })}
-        ${filterToolbar("skills", query, { selectName: "scope", selectLabel: "Scope", allLabel: "All scopes", selectOptions: scopes, placeholder: "Skill name, key or description…" })}
-        <section class="section"><div class="table-wrap"><table>
+        <div class="scope-tabs" role="tablist">
+          ${scopes.map(entry => {
+            const params = new URLSearchParams();
+            params.set("scope", entry);
+            return `<a class="scope-tab${entry === scope && !searching ? " active" : ""}"
+              role="tab" aria-selected="${entry === scope && !searching}"
+              href="#/skills?${params}">${escapeHtml(skillScopeLabel(entry))}
+              <span class="dim">${prettyNumber(state.tables.skills
+                .filter(row => scopeForSkill(row) === entry).length)}</span></a>`;
+          }).join("")}
+        </div>
+        ${filterToolbar("skills", query, { placeholder: "Skill name, key or description…" })}
+        ${searching ? `<p class="dim"><small>Searching every scope. Clear the search to go back
+          to a class diagram.</small></p>` : ""}
+        ${asTree ? section(`${skillScopeLabel(scope)} skill tree`,
+            skillTreeHtml(model, { interactive: false }),
+            `<span class="panel-aside">${prettyNumber(model.nodes.length)} skills ·
+              ${prettyNumber(model.edges.length)} prerequisite link${
+                model.edges.length === 1 ? "" : "s"}</span>`)
+        : `<section class="section"><div class="table-wrap"><table>
           <thead><tr><th aria-label="Icon"></th><th>Skill</th><th>Scope</th><th>Key</th><th>Client schedule</th><th>Max grade</th><th>Prerequisites</th></tr></thead>
           <tbody>${shown.map(row => {
             const id = skillId(row);
@@ -3853,14 +4418,26 @@
             return `<tr>
               <td>${skillIconTag(row, 32)}</td>
               <td>${entityLink("skill", id, row.sk_megn || row.bango_key)}</td>
-              <td>${entityLink("class", scopeForSkill(row), scopeForSkill(row))}</td>
+              <td>${entityLink("class", scopeForSkill(row), skillScopeLabel(scopeForSkill(row)))}</td>
               <td class="mono">${escapeHtml(id)}</td>
               <td class="mono">${escapeHtml(schedule?.client_schedule_format || schedule?.schedule_state || "—")}</td>
               <td>${escapeHtml(schedule?.client_max_grade || "—")}</td>
               <td class="number">${prettyNumber((state.indexes.skillPrerequisites.get(String(row.bango_key)) || []).length)}</td>
             </tr>`;
           }).join("")}</tbody>
-        </table></div><div class="section-body">${pagination(rows.length, page, pageSize, "skills", query)}</div></section>`;
+        </table></div><div class="section-body">${pagination(rows.length, page, pageSize, "skills", query)}</div></section>`}`;
+      wireSkillTooltips();
+    }
+
+    /* The hover card is the one from Character Creation; on the reference page
+       it carries the schedule instead of a grade stepper. */
+    function wireSkillTooltips(root = el.main) {
+      if (!root || typeof root.querySelectorAll !== "function") return;
+      root.querySelectorAll("[data-skill-tip]").forEach(card => {
+        card.onmouseenter = event => showSkillTooltip(card, event);
+        card.onmousemove = positionSkillTooltip;
+        card.onmouseleave = hideSkillTooltip;
+      });
     }
 
     /* ===================================================================
@@ -3900,6 +4477,94 @@
 
     function questMapById(id) {
       return questMaps().find(entry => entry.id === id);
+    }
+
+    /* ===================================================================
+       NPC photographs
+
+       The guide's author photographed the NPCs he sends players to and cleared
+       their use. The Bango client ships no NPC artwork at all, so these are the
+       only pictures of them the project has.
+
+       A photo belongs to a map pin, and a pin carries the author's own label
+       for that NPC — "Master, Jin-Pyung", "Chief guard, Sea-Geun". Attaching it
+       to a Bango NPC string therefore goes through the same identity rules as
+       quest-text matching (standing rule 14): bracket or comma names first, the
+       whole label only when it is unique, and a repeated bare role such as
+       `Guard` or `Woman` gets nothing. A trailing parenthetical is the author's
+       annotation of what the NPC is for ("Guard (G8 Chest)") and is not part of
+       the name.
+       =================================================================== */
+    /* The names a pin label can be recognised by. A pin is one NPC standing in
+       one place, so unlike a client string the whole label is usable — but the
+       bracket and comma names come first because they are the actual name
+       inside a role-plus-name label. */
+    function pinLabelAliases(label) {
+      const full = String(label);
+      const raw = full.replace(/\s*\([^)]*\)\s*$/, "").trim();
+      const bracketNames = [...raw.matchAll(/\[([^\]]+)\]/g)].map(match => match[1].trim());
+      const commaName = raw.includes(",") ? raw.split(",").at(-1).replace(/[\[\]]/g, "").trim() : "";
+      // The author uses a trailing parenthetical for both the character's name
+      // ("Boatman (Gwang-Chun)") and a note about what the NPC is for
+      // ("Guard (G8 Chest)"). Offering it as a candidate costs nothing: a note
+      // matches no NPC string, and an ambiguous alias is discarded anyway.
+      const parenthetical = (full.match(/\(([^)]*)\)\s*$/) || [, ""])[1].trim();
+      const whole = raw.replace(/[\[\]]/g, " ");
+      return [...new Set([...bracketNames, commaName, parenthetical, whole]
+        .map(normalizeName).filter(value => value.length >= 4))];
+    }
+
+    function npcPhotoIndex() {
+      if (state.npcPhotos) return state.npcPhotos;
+      const byAlias = new Map();
+      for (const map of questMaps()) {
+        for (const [pin, data] of Object.entries(map.pins || {})) {
+          if (!data.photo) continue;
+          const entry = {
+            file: data.photo,
+            thumb: data.photoThumb || data.photo,
+            label: String(data.name || ""),
+            city: map.id,
+            cityLabel: map.label,
+            pin
+          };
+          for (const alias of pinLabelAliases(data.name || "")) {
+            // First pin wins, and a second NPC claiming the same alias is
+            // dropped rather than overwriting: an ambiguous alias must not
+            // decide which face a player is shown.
+            if (byAlias.has(alias)) byAlias.set(alias, null);
+            else byAlias.set(alias, entry);
+          }
+        }
+      }
+      state.npcPhotos = byAlias;
+      return byAlias;
+    }
+
+    function npcPhotoFor(row) {
+      const index = npcPhotoIndex();
+      const identity = npcIdentity(row);
+      if (!identity.named) return null;
+      for (const alias of identity.aliases) {
+        const entry = index.get(alias);
+        if (entry) return entry;
+      }
+      return null;
+    }
+
+    function npcPhotoTag(row, height = 34) {
+      const photo = npcPhotoFor(row);
+      if (!photo) return "";
+      return `<img class="npc-photo" data-project-file="${escapeAttr(photo.thumb)}"
+        height="${height}" alt="${escapeAttr(photo.label)}"
+        title="${escapeAttr(`${photo.label} — ${photo.cityLabel} #${photo.pin}`)}">`;
+    }
+
+    function npcPhotoCredit() {
+      const credit = state.questMaps?.photo_credit;
+      if (!credit?.name) return "";
+      return `NPC photographs by ${escapeHtml(credit.name)}${
+        credit.note ? ` — ${escapeHtml(credit.note)}` : ""}.`;
     }
 
     function questPinName(city, pin) {
@@ -3949,7 +4614,13 @@
             <ul class="map-legend">${pins.map(([pin, data]) => `
               <li><button type="button" class="map-legend-pin"
                 data-map-pin="${escapeAttr(`${entry.id}-${pin}`)}">${escapeHtml(pin)}</button>
-                ${escapeHtml(data.name)}</li>`).join("")}</ul>
+                ${data.photo ? `<img class="npc-photo" height="26"
+                  data-project-file="${escapeAttr(data.photoThumb || data.photo)}"
+                  alt="${escapeAttr(data.name)}">` : ""}
+                <span>${escapeHtml(data.name)}${data.teleport
+                  ? ` <small class="dim">${escapeHtml(data.teleport)}</small>` : ""}</span></li>`).join("")}</ul>
+            ${pins.some(([, data]) => data.photo) && npcPhotoCredit()
+              ? `<p class="map-credit">${npcPhotoCredit()}</p>` : ""}
           </div>`;
         }).join("")}`, { aside: options.aside || "" });
     }
@@ -3994,13 +4665,37 @@
       flashElement(pin);
     }
 
+    /* Route name -> Bango quest id, the reverse of routeQuestForBango. A pin
+       knows which route quests use it; this is what turns that into a page. */
+    function bangoQuestIdForRouteName(name) {
+      if (!state.questMaps) return "";
+      state.questMaps.byRouteName ||= new Map(
+        (state.optional.routeReconciliation || [])
+          .filter(entry => entry.route_name && entry.bango_que_id)
+          .map(entry => [entry.route_name, String(entry.bango_que_id)]));
+      return state.questMaps.byRouteName.get(name) || "";
+    }
+
     function focusPinTag(key) {
       const tags = [...el.main.querySelectorAll(`[data-pin-tag="${CSS.escape(key)}"]`)];
-      if (!tags.length) return;
       state.pinCycle ||= new Map();
-      const index = (state.pinCycle.get(key) || 0) % tags.length;
+      if (tags.length) {
+        const index = (state.pinCycle.get(key) || 0) % tags.length;
+        state.pinCycle.set(key, index + 1);
+        flashElement(tags[index]);
+        return;
+      }
+      // Nothing on this page uses the pin — the quest list is paginated and
+      // filtered, so that is the common case. Go to the quest instead of
+      // silently doing nothing, cycling on repeated clicks the same way the
+      // tags do.
+      const uses = state.questMaps?.uses?.get(key) || [];
+      const targets = [...new Set(uses.map(use => use.quest.name))]
+        .map(name => bangoQuestIdForRouteName(name)).filter(Boolean);
+      if (!targets.length) return;
+      const index = (state.pinCycle.get(key) || 0) % targets.length;
       state.pinCycle.set(key, index + 1);
-      flashElement(tags[index]);
+      location.hash = routeHref("quest", targets[index]).slice(1);
     }
 
     function wireQuestMaps(root = el.main) {
@@ -4048,11 +4743,23 @@
        The stops come from the player route where one exists, and from the
        Bango client's own step text where it does not.
 
-       Monsters are attached to a step only when the step's text contains a
-       monster's full name (standing rule 14 — a partial name is not an
-       identity). Monsters the client ties to the quest but no step names get
-       one box of their own at the end, so they are shown without claiming a
-       position in the sequence they do not have.
+       A quest monster belongs on the step where the hunting happens, so it is
+       attached by three signals, strongest first:
+
+         1. the step names the monster in full;
+         2. the step asks for a quest item and the monster drops it — a join
+            through the client's own drop table, and the signal that catches
+            both Demon Escorts behind "collect 30 Escort Soldier's Heads",
+            neither of which the step names;
+         3. every word of the monster's name appears in the step, which catches
+            the shorthand "Kill Demon Escort Archer/Soldier".
+
+       None of these is a substring match on a partial name (standing rule 14):
+       (1) and (3) need the whole name, and (2) is a data join. A monster the
+       quest tags that no step can be tied to is named once under its own
+       heading below the diagram, never as a step in the sequence — and if the
+       quest has exactly one hunting step, that is where it goes, because there
+       is nowhere else it could be.
        =================================================================== */
     function questMonsterRows(questId) {
       const rows = (state.indexes.monsterQuestsByQuest.get(String(questId)) || [])
@@ -4065,15 +4772,64 @@
       return [...new Map(rows.map(row => [normalizeName(row.text), row])).values()];
     }
 
+    /* Words worth matching on. Dropping the filler leaves the words that
+       actually identify the creature, so "Kill Demon Escort Archer/Soldier for
+       30x …" still resolves Demon Escort Soldier even though the slash means
+       its full name never appears. */
+    const MONSTER_WORD_NOISE = new Set(["of", "the", "a", "an", "and", "from"]);
+
+    function monsterNameWords(name) {
+      return String(name).toLowerCase().split(/[^a-z0-9]+/i)
+        .filter(word => word.length > 2 && !MONSTER_WORD_NOISE.has(word));
+    }
+
+    /* Which of this quest's monsters drop a given item, by Bango item id. The
+       drop table is the client's own, so this is a join and not a guess. */
+    function monstersDroppingItem(itemId, candidates) {
+      const drops = state.indexes.dropsByItem.get(String(itemId)) || [];
+      const ids = new Set(drops.map(row => String(row.drp_monst)));
+      const names = new Set(drops.map(row => normalizeName(row.bango_monster_name)));
+      return candidates.filter(monster => ids.has(String(monster.message_id))
+        || names.has(normalizeName(monster.text)));
+    }
+
+    /* Item ids a step asks for: the client step carries them as data, and the
+       player route quotes the item by name in its action text. */
+    function stepItemIds(step) {
+      const ids = parseJson(step.items_json, [])
+        .map(entry => String(entry.item_id || "")).filter(Boolean);
+      const text = String(step.step_text || step.text || "");
+      for (const [, quoted] of text.matchAll(/"([^"]{3,})"/g)) {
+        const item = state.indexes.bangoItemsByName.get(normalizeName(quoted));
+        if (item) ids.push(String(item.ita_azon));
+      }
+      return [...new Set(ids)];
+    }
+
     function questDiagramStops(quest) {
       const monsters = questMonsterRows(quest.que_id);
       const used = new Set();
-      const nameMonsters = text => {
-        const needle = normalizeName(text);
-        const hits = monsters.filter(monster =>
-          normalizeName(monster.text) && needle.includes(normalizeName(monster.text)));
+      const take = hits => {
         hits.forEach(monster => used.add(String(monster.message_id)));
         return hits;
+      };
+      /* One step, every signal. `step` is either a client QUEST_STEPS row or a
+         player-route step; both are read through the same two accessors. */
+      const stepMonsters = step => {
+        const text = String(step.step_text || step.text || step.label || "");
+        const needle = normalizeName(`${text} ${step.name || ""}`);
+        const words = new Set(needle.length ? monsterNameWords(`${text} ${step.name || ""}`) : []);
+        const named = monsters.filter(monster => {
+          const key = normalizeName(monster.text);
+          if (!key) return false;
+          if (needle.includes(key)) return true;
+          const parts = monsterNameWords(monster.text);
+          return parts.length > 0 && parts.every(word => words.has(word));
+        });
+        const dropped = stepItemIds(step)
+          .flatMap(itemId => monstersDroppingItem(itemId, monsters));
+        return take([...new Map([...named, ...dropped]
+          .map(monster => [String(monster.message_id), monster])).values()]);
       };
 
       const route = routeQuestForBango(quest);
@@ -4085,39 +4841,53 @@
               label: step.label, name: questPinName(step.city, step.pin) });
           } else if (step.type === "field") {
             stops.push({ kind: "field", label: step.label, name: step.name,
-              monsters: nameMonsters(`${step.label} ${step.name}`) });
+              monsters: stepMonsters(step) });
           } else {
             stops.push({ kind: "action", text: step.text || "",
-              monsters: nameMonsters(step.text || "") });
+              monsters: stepMonsters(step) });
           }
         });
       } else {
         (state.indexes.questSteps.get(String(quest.que_id)) || []).forEach(step => {
           stops.push({ kind: "action", text: cleanText(step.step_text) || "",
-            monsters: nameMonsters(step.step_text || "") });
+            monsters: stepMonsters(step) });
         });
       }
 
       const unplaced = monsters.filter(monster => !used.has(String(monster.message_id)));
-      if (unplaced.length) stops.push({ kind: "monsters", monsters: unplaced });
+      if (unplaced.length) {
+        const hunting = stops.filter(stop => stop.kind === "action" || stop.kind === "field");
+        // With one hunting step there is only one place the hunting can happen,
+        // so put them there. With several, saying which would be an invention.
+        if (hunting.length === 1) {
+          hunting[0].monsters = [...(hunting[0].monsters || []), ...unplaced];
+        } else {
+          stops.push({ kind: "monsters", monsters: unplaced });
+        }
+      }
       return stops;
     }
 
+    // Every monster on the step, not the first four: an incomplete row is what
+    // made the old trailing box look careless.
     function questStopMonstersHtml(monsters) {
       if (!monsters?.length) return "";
-      return `<div class="stop-mobs">${monsters.slice(0, 4).map(monster =>
+      return `<div class="stop-mobs">${monsters.map(monster =>
         `<a class="stop-mob" href="${routeHref("monster", monster.message_id)}"
           title="${escapeAttr(monster.text)}">
           ${monsterIconTag(monster.message_id, monster.text, 44)}
-          <span>${escapeHtml(monster.text)}</span></a>`).join("")}${
-        monsters.length > 4
-          ? `<span class="stop-more">+${prettyNumber(monsters.length - 4)}</span>` : ""}</div>`;
+          <span>${escapeHtml(monster.text)}</span></a>`).join("")}</div>`;
     }
 
     function questDiagramHtml(quest) {
       const stops = questDiagramStops(quest);
       if (!stops.length) return "";
-      return `<div class="route-diagram">${stops.map((stop, index) => {
+      // Monsters that could not be tied to a step are not a stop in the route,
+      // so they are rendered under the diagram rather than inside it.
+      const sequence = stops.filter(stop => stop.kind !== "monsters");
+      const loose = stops.filter(stop => stop.kind === "monsters")
+        .flatMap(stop => stop.monsters);
+      return `<div class="route-diagram">${sequence.map((stop, index) => {
         const arrow = index ? `<span class="stop-arrow" aria-hidden="true">→</span>` : "";
         if (stop.kind === "talk") {
           return `${arrow}<div class="stop talk">
@@ -4125,11 +4895,6 @@
               || `<span class="stop-chip">${escapeHtml(questMapById(stop.city)?.label || "Go")}</span>`}
             <span class="stop-name">${escapeHtml(stop.name || "—")}</span>
             <span class="stop-do">${escapeHtml(stop.label || "")}</span></div>`;
-        }
-        if (stop.kind === "monsters") {
-          return `${arrow}<div class="stop kill">
-            <span class="stop-chip kill">Quest monsters</span>
-            ${questStopMonstersHtml(stop.monsters)}</div>`;
         }
         if (stop.kind === "field") {
           return `${arrow}<div class="stop kill">
@@ -4142,7 +4907,10 @@
           <span class="stop-chip${kill ? " kill" : ""}">${kill ? "Kill" : "Do"}</span>
           ${questStopMonstersHtml(stop.monsters)}
           <span class="stop-do" title="${escapeAttr(stop.text)}">${escapeHtml(stop.text)}</span></div>`;
-      }).join("")}</div>`;
+      }).join("")}</div>${loose.length ? `<div class="route-loose">
+        <span class="route-loose-label">Also tagged to this quest${
+          sequence.length > 1 ? ", with more than one hunting step to choose from" : ""}</span>
+        ${questStopMonstersHtml(loose)}</div>` : ""}`;
     }
 
     function questCardIsOpen(profile, quest) {
@@ -4196,7 +4964,288 @@
       renderRoute();
     }
 
+    /* ===================================================================
+       Quests: two ways in
+
+       The same quests answer two different questions. "Which quest is this,
+       what does it give me, have I done it?" is a directory — filterable,
+       sortable, one card per quest. "What do I actually do next?" is a
+       walkthrough — the player route in its own order, batched into stages,
+       read top to bottom.
+
+       Neither is a subset of the other, so both exist, behind one navigation
+       link and one deliberate choice at the top of the page. The choice is
+       remembered, and the switch stays where it was so it can never be missed.
+       =================================================================== */
+    const QUEST_VIEWS = ["list", "walkthrough"];
+    const QUEST_VIEW_KEY = "kal-atlas-quest-view-v1";
+
+    function storedQuestView() {
+      try {
+        const saved = localStorage.getItem(QUEST_VIEW_KEY);
+        return QUEST_VIEWS.includes(saved) ? saved : "";
+      } catch (error) {
+        return "";
+      }
+    }
+
+    function questView(query) {
+      const asked = query.get("view");
+      if (QUEST_VIEWS.includes(asked)) {
+        try { localStorage.setItem(QUEST_VIEW_KEY, asked); }
+        catch (error) { /* a browser with storage off just does not remember */ }
+        return asked;
+      }
+      return storedQuestView() || "list";
+    }
+
+    function questViewSwitch(view, query) {
+      const carried = new URLSearchParams();
+      for (const key of ["q", "level", "map"]) {
+        if (query.get(key)) carried.set(key, query.get(key));
+      }
+      const href = name => {
+        const params = new URLSearchParams(carried);
+        params.set("view", name);
+        return `#/quests?${params}`;
+      };
+      const walkthroughReady = Boolean(state.questMaps?.stages?.length);
+      return `<div class="view-switch" role="tablist" aria-label="How to read the quests">
+        <a class="view-card${view === "list" ? " active" : ""}" role="tab"
+          aria-selected="${view === "list"}" href="${href("list")}">
+          <span class="view-card-icon" aria-hidden="true">▤</span>
+          <span class="view-card-body">
+            <strong>Quest list</strong>
+            <small>Every quest as its own card. Filter by level or map, check the
+              rewards, tick off what you have done.</small>
+          </span>
+        </a>
+        <a class="view-card${view === "walkthrough" ? " active" : ""}${
+            walkthroughReady ? "" : " disabled"}" role="tab"
+          aria-selected="${view === "walkthrough"}" href="${href("walkthrough")}">
+          <span class="view-card-icon" aria-hidden="true">➜</span>
+          <span class="view-card-body">
+            <strong>Walkthrough</strong>
+            <small>${walkthroughReady
+              ? "The efficient route in stages, in the order you play it — who to "
+                + "talk to, what to farm, what stacks with what."
+              : "Needs the player route guide, which is not loaded."}</small>
+          </span>
+        </a>
+      </div>`;
+    }
+
+    /* The route names items and monsters in prose; the pictures come from our
+       own licence-clean sources by resolving that prose to a real entity. A name
+       that does not resolve keeps its text and gets no picture. */
+    function guideItemFor(name) {
+      const clean = String(name).replace(/^\s*\d+\s*x\s*/i, "").trim();
+      return state.indexes.bangoItemsByName?.get(normalizeName(clean)) || null;
+    }
+
+    function guideMonsterFor(name) {
+      const table = state.indexes.monstersByName;
+      if (!table) return null;
+      const key = normalizeName(name);
+      // The route writes monsters in the plural — "Kill Demon Plunderers" —
+      // where the client names one creature.
+      for (const candidate of [key, key.replace(/es$/, ""), key.replace(/s$/, "")]) {
+        const found = candidate && table.get(candidate);
+        if (found) return found;
+      }
+      return null;
+    }
+
+    function guideAssetsHtml(entries, kind) {
+      if (!entries?.length) return "";
+      return `<div class="wt-assets">${entries.map(entry => {
+        const label = String(entry.name || "");
+        if (kind === "item") {
+          const item = guideItemFor(label);
+          return `<span class="wt-asset">${item
+            ? `${iconTag(item.bango_image || "", item.ita_name || label, 26)}
+               ${entityLink("item", item.ita_azon, label)}`
+            : `<span class="wt-asset-plain">${escapeHtml(label)}</span>`}</span>`;
+        }
+        const monster = guideMonsterFor(label);
+        return `<span class="wt-asset">${monster
+          ? `${monsterIconTag(monster.message_id, monster.text, 30)}
+             ${entityLink("monster", monster.message_id, label)}`
+          : `<span class="wt-asset-plain">${escapeHtml(label)}</span>`}</span>`;
+      }).join("")}</div>`;
+    }
+
+    function walkthroughStepHtml(step) {
+      if (step.type === "talk") {
+        const name = questPinName(step.city, step.pin);
+        const pin = questMapById(step.city)?.pins?.[step.pin] || {};
+        return `<li class="wt-step talk">
+          ${questPinTag(step.city, step.pin)
+            || `<span class="pin-tag field">${escapeHtml(step.city || "?")}</span>`}
+          ${pin.photo ? `<img class="npc-photo" height="30"
+            data-project-file="${escapeAttr(pin.photoThumb || pin.photo)}"
+            alt="${escapeAttr(name)}">` : ""}
+          <span class="wt-step-text"><strong>${escapeHtml(step.label || "Talk")}</strong>
+            ${name ? ` — ${escapeHtml(name)}` : ""}${pin.teleport
+              ? ` <small class="dim">${escapeHtml(pin.teleport)}</small>` : ""}</span>
+        </li>`;
+      }
+      if (step.type === "field") {
+        return `<li class="wt-step field">
+          <span class="pin-tag field">🌲 ${escapeHtml(step.label || "Out of town")}</span>
+          <span class="wt-step-text">${escapeHtml(step.name || "")}</span>
+        </li>`;
+      }
+      return `<li class="wt-step action">
+        <span class="pin-tag action">⚔</span>
+        <span class="wt-step-text">${escapeHtml(step.text || "")}</span>
+      </li>`;
+    }
+
+    /* A route row is one quest most of the time, and sometimes a batch of
+       several ("Step 0 — Accept everything first" covers seven). Only a row
+       that resolves to one Bango quest can share the profile's quest status;
+       a batch keeps its own tick, stored beside it and labelled as its own. */
+    function walkthroughRowStatus(profile, stageId, entry) {
+      const questId = bangoQuestIdForRouteName(entry.name);
+      const quest = questId && state.indexes.questsById.get(questId);
+      if (quest) {
+        return { kind: "quest", quest,
+          done: questState(profile, quest.que_id) === "finished" };
+      }
+      const key = `${stageId}::${entry.name}`;
+      return { kind: "batch", key, done: Boolean(profile.walkthrough?.[key]) };
+    }
+
+    function walkthroughQuestHtml(profile, stage, entry, build) {
+      const status = walkthroughRowStatus(profile, stage.id, entry);
+      const tick = status.kind === "quest"
+        ? questStatusButton(profile, status.quest, true)
+        : `<button type="button" class="quest-status${status.done ? " finished" : ""}"
+            data-walkthrough-tick="${escapeAttr(status.key)}"
+            title="Several quests at once — ticked here only"
+            aria-pressed="${status.done ? "true" : "false"}">${status.done ? "✓" : "○"}</button>`;
+      const title = status.kind === "quest"
+        ? entityLink("quest", status.quest.que_id, status.quest.que_name)
+        : escapeHtml(entry.name);
+      return `<article class="wt-quest${status.done ? " done" : ""}">
+        <div class="wt-quest-head">
+          ${tick}
+          <h5>${title}</h5>
+          ${entry.level ? `<span class="qcard-lvl">${escapeHtml(entry.level)}</span>` : ""}
+          ${status.kind === "quest" ? `<span class="wt-route-name"
+            title="What the route guide calls it">${escapeHtml(entry.name)}</span>` : ""}
+        </div>
+        ${entry.note ? `<p class="wt-note">${escapeHtml(entry.note)}</p>` : ""}
+        ${entry.startCity ? `<p class="wt-start">Start from
+          <strong>${escapeHtml(questMapById(entry.startCity)?.name || entry.startCity)}</strong></p>` : ""}
+        <ol class="wt-steps">${(entry.steps || []).map(walkthroughStepHtml).join("")}</ol>
+        ${guideAssetsHtml(entry.mobs, "monster")}
+        ${guideAssetsHtml(entry.items, "item")}
+        ${(entry.choices || []).length ? `<div class="wt-choices">
+          ${entry.choices.map(choice => `<span class="tag gold">${escapeHtml(
+            typeof choice === "string" ? choice
+              : [choice.label, choice.text, choice.name].filter(Boolean).join(" — ")
+          )}</span>`).join("")}</div>` : ""}
+        ${entry.reward ? `<p class="wt-reward"><span>Reward</span>
+          ${escapeHtml(entry.reward)}</p>` : ""}
+        ${status.kind === "quest" && Number(status.quest.que_lvl) > Number(build.level)
+          ? `<p class="wt-warn">Your character is level ${escapeHtml(String(build.level))};
+            the client requires ${escapeHtml(status.quest.que_lvl)}.</p>` : ""}
+      </article>`;
+    }
+
+    function renderQuestWalkthrough(query) {
+      const profile = activeProfile();
+      const build = currentBuild();
+      const stages = state.questMaps?.stages || [];
+      const mapFilter = query.get("map") || "";
+      const rows = stages.flatMap(stage => stage.quests.map(entry => ({ stage, entry })));
+      const done = rows.filter(({ stage, entry }) =>
+        walkthroughRowStatus(profile, stage.id, entry).done).length;
+      const usedMaps = new Set();
+      stages.forEach(stage => stage.quests.forEach(entry => (entry.steps || [])
+        .forEach(step => { if (step.city) usedMaps.add(step.city); })));
+      const teleports = (state.questMaps?.teleports || []);
+      const percent = rows.length ? Math.round((done / rows.length) * 100) : 0;
+      const revision = state.questMaps?.source_revision || "";
+
+      el.main.innerHTML = `
+        ${pageHeader({
+          eyebrow: "Quests",
+          title: "Walkthrough",
+          lede: "The efficient route in the order it is played. Each stage says where "
+            + "you are, what stacks with what, and every stop on the way.",
+          crumbs: [["Overview", "#/home"], ["Quests", "#/quests"], ["Walkthrough", ""]]
+        })}
+        ${questViewSwitch("walkthrough", query)}
+        <div class="wt-progress">
+          <div class="wt-bar"><span style="width:${percent}%"></span></div>
+          <span class="dim"><b>${prettyNumber(done)}</b> of ${prettyNumber(rows.length)}
+            route entries done</span>
+          <button type="button" class="small ghost" data-action="reset-quests">Reset</button>
+        </div>
+        <div class="quest-layout">
+          <div>
+            ${teleports.length ? section("Useful teleports",
+              `<ul class="wt-teleports">${teleports.map(row => `<li>
+                ${questPinTag(row.city, row.pin) || ""}
+                <span>${escapeHtml(questPinName(row.city, row.pin) || "")}
+                  — ${escapeHtml(row.dest || "")}</span></li>`).join("")}</ul>`) : ""}
+            ${stages.length ? stages.map(stage => `
+              <section class="wt-stage">
+                <div class="wt-stage-head">
+                  <h4>${escapeHtml(stage.title || stage.id)}</h4>
+                  ${stage.level ? `<span class="wt-stage-lvl">${escapeHtml(stage.level)}</span>` : ""}
+                </div>
+                ${stage.where ? `<p class="wt-where">${escapeHtml(stage.where)}</p>` : ""}
+                ${stage.combo ? `<div class="callout info wt-combo">
+                  <strong>Farm cluster.</strong> ${cleanHtmlText(stage.combo)}</div>` : ""}
+                ${stage.quests.map(entry =>
+                  walkthroughQuestHtml(profile, stage, entry, build)).join("")}
+              </section>`).join("")
+            : emptyState("The player route guide is not loaded, so there is no walkthrough.")}
+          </div>
+          <div class="quest-map-column">
+            ${questMapPanel(mapFilter || [...usedMaps][0], {
+              title: "Where the quests are",
+              aside: `<span class="panel-aside">Click a pin or a tag</span>`
+            })}
+          </div>
+        </div>
+        ${provenanceFooter(`
+          <p>The route order, the stage batching and the notes are the player-authored
+            guide's own work${revision ? ` (revision ${escapeHtml(revision)})` : ""}; its quest
+            text and town maps come from
+            <a href="https://mystic-city.de/System/viewpage.php?page_id=48" target="_blank"
+               rel="noopener noreferrer">mystic-city.de</a>, with world map artwork by
+            Vresko.com. Quest names, levels and rewards shown against a route entry come from
+            the current Bango client tables and win wherever the two disagree.
+            ${npcPhotoCredit()}</p>
+          <p>A row the guide writes as a batch of several quests — the opening stage has
+            five — cannot be one client quest, so it carries its own tick rather than
+            pretending to be one.</p>`)}`;
+      wireQuestMaps();
+      if (typeof el.main.querySelectorAll === "function") {
+        el.main.querySelectorAll("[data-walkthrough-tick]").forEach(button => {
+          button.onclick = () => toggleWalkthroughTick(button.dataset.walkthroughTick);
+        });
+      }
+    }
+
+    function toggleWalkthroughTick(key) {
+      const profile = activeProfile();
+      profile.walkthrough ||= {};
+      if (profile.walkthrough[key]) delete profile.walkthrough[key];
+      else profile.walkthrough[key] = true;
+      persistProfiles();
+      renderRoute();
+    }
+
     function renderQuests(query) {
+      if (questView(query) === "walkthrough" && state.questMaps?.stages?.length) {
+        return renderQuestWalkthrough(query);
+      }
       const q = normalizeName(query.get("q") || "");
       const level = query.get("level") || "";
       const mapFilter = query.get("map") || "";
@@ -4234,6 +5283,7 @@
           actions: `<span class="quest-progress"><b>${prettyNumber(done)}</b>
             of ${prettyNumber(rows.length)} done</span>`
         })}
+        ${questViewSwitch("list", query)}
         ${filterToolbar("quests", query, { selectName: "level", selectLabel: "Level", allLabel: "All levels", selectOptions: levels, placeholder: "Quest name or text…" })}
         ${questMaps().length ? `<div class="map-filter-row">
           <span class="dim">Map</span>
@@ -4284,10 +5334,11 @@
         })}
         ${filterToolbar("npcs", query, { placeholder: "NPC name or string ID…" })}
         <section class="section"><div class="table-wrap"><table>
-          <thead><tr><th>String ID</th><th>NPC</th><th>Quest mentions</th><th>Definitions</th><th>Source</th></tr></thead>
+          <thead><tr><th class="icon-col"></th><th>String ID</th><th>NPC</th><th>Quest mentions</th><th>Definitions</th><th>Source</th></tr></thead>
           <tbody>${shown.map(row => {
             const id = String(row.message_id);
             return `<tr>
+              <td class="icon-col">${npcPhotoTag(row, 30)}</td>
               <td class="mono">${escapeHtml(id)}</td>
               <td>${entityLink("npc", id, npcDisplayName(row))}</td>
               <td class="number">${prettyNumber((state.indexes.npcQuests.get(id) || []).length)}</td>
@@ -4295,7 +5346,10 @@
               <td>${provenanceTag(row)}</td>
             </tr>`;
           }).join("")}</tbody>
-        </table></div><div class="section-body">${pagination(rows.length, page, pageSize, "npcs", query)}</div></section>`;
+        </table></div><div class="section-body">${pagination(rows.length, page, pageSize, "npcs", query)}
+          ${shown.some(row => npcPhotoFor(row))
+            ? `<p class="map-credit">${npcPhotoCredit()}</p>` : ""}
+        </div></section>`;
     }
 
     function renderZones(query) {
@@ -5097,6 +6151,9 @@
         }),
         skills: {},
         quests: {},
+        // Route rows the guide writes as a batch of several quests have no
+        // single client quest to own their status, so they are ticked here.
+        walkthrough: {},
         buffs: [],
         createdAt: new Date().toISOString(),
         updatedAt: new Date().toISOString()
@@ -5126,6 +6183,7 @@
         });
         normalized.skills = cloneJson(profile.skills || {});
         normalized.quests = cloneJson(profile.quests || {});
+        normalized.walkthrough = cloneJson(profile.walkthrough || {});
         normalized.buffs = Array.isArray(profile.buffs) ? cloneJson(profile.buffs) : [];
         return normalized;
       });
@@ -5878,34 +6936,86 @@
       }
     }
 
-    /* Monster portraits. The Bango client names monsters but ships no 2D
-       artwork for them, so the picture comes from KalEncyclopedia's monster
-       ImageList, selected exactly as frmMonsters does it:
-       imgMonst.Images(mon_pic - 1). mon_pic = -1 means the original tool
-       showed nothing, and neither does this. The join to a Bango monster is
-       the same exact normalized name used everywhere else. */
+    /* Monster pictures, from two sources and never blended.
+
+       First choice is KalEncyclopedia's monster ImageList, selected exactly as
+       frmMonsters does it: imgMonst.Images(mon_pic - 1), where mon_pic = -1
+       means the original tool showed nothing. That covers 100 of the 527
+       distinct Bango monster names.
+
+       Second choice is gameagit.com's own monster artwork, ingested by
+       tools/gameagit_icons and joined to Bango names in MONSTER_ICONS.json.
+       It covers another 98, and the two are shaped differently — 100x75 wide
+       against roughly 141x218 tall — so each picture is sized from its own
+       recorded dimensions instead of being squashed into the other's box.
+
+       Both joins are by exact normalized name, never by id: the Bango
+       monstername ids and the legacy mon_azon ids are different spaces and only
+       13 of 283 coincide, so an id join would silently show the wrong monster. */
     const MONSTER_PORTRAIT_RATIO = 100 / 75;
+    const MONSTER_ICONS_PATH = "analysis/monster_icons/MONSTER_ICONS.json";
+
+    async function loadMonsterIcons() {
+      try {
+        const parsed = JSON.parse(await state.source.read(MONSTER_ICONS_PATH));
+        state.monsterIcons = {
+          credit: parsed.credit || null,
+          byName: new Map(Object.entries(parsed.icons || {})
+            .map(([name, entry]) => [normalizeName(name), entry]))
+        };
+      } catch (error) {
+        state.monsterIcons = null;
+      }
+    }
 
     function monsterPortraitName(id, name = "") {
-      // Name, never id: the Bango monstername ids and the legacy mon_azon ids
-      // are different spaces — only 13 of 283 coincide — so an id join would
-      // silently show the wrong monster.
       const legacy = state.indexes.legacyMonstersByName?.get(normalizeName(name));
       const pic = Number(legacy?.mon_pic);
       if (!Number.isFinite(pic) || pic < 1) return "";
       return `kalenc-monster-${String(pic - 1).padStart(3, "0")}`;
     }
 
+    function monsterFallbackPicture(name = "") {
+      return state.monsterIcons?.byName.get(normalizeName(name)) || null;
+    }
+
+    function monsterHasPicture(name = "") {
+      return Boolean(monsterPortraitName("", name) || monsterFallbackPicture(name));
+    }
+
+    // Named where these pictures are shown, because they are gameagit.com's
+    // work and not this project's. Only where one is actually being shown: a
+    // monster that has KalEncyclopedia's own portrait is not their artwork.
+    function monsterPictureCredit(names) {
+      const list = [names].flat().filter(name =>
+        !monsterPortraitName("", name) && monsterFallbackPicture(name));
+      const credit = state.monsterIcons?.credit;
+      if (!list.length || !credit?.name) return "";
+      return `Monster artwork by ${credit.url
+        ? `<a href="${escapeAttr(credit.url)}" target="_blank" rel="noopener noreferrer"
+             >${escapeHtml(credit.name)}</a>`
+        : `<strong>${escapeHtml(credit.name)}</strong>`}.`;
+    }
+
     function monsterIconTag(id, name = "", height = 32) {
-      const width = Math.round(height * MONSTER_PORTRAIT_RATIO);
       const portrait = monsterPortraitName(id, name);
-      if (!portrait) {
-        return `<span class="icon icon-monster-blank"
-          style="width:${width}px;height:${height}px" aria-hidden="true"></span>`;
+      if (portrait) {
+        return `<img class="icon monster-icon" data-icon="${escapeAttr(portrait)}"
+          width="${Math.round(height * MONSTER_PORTRAIT_RATIO)}" height="${height}"
+          alt="${escapeAttr(name)}" title="${escapeAttr(name)}">`;
       }
-      return `<img class="icon monster-icon" data-icon="${escapeAttr(portrait)}"
-        width="${width}" height="${height}" alt="${escapeAttr(name)}"
-        title="${escapeAttr(name)}">`;
+      const fallback = monsterFallbackPicture(name);
+      if (fallback) {
+        const ratio = Number(fallback.width) && Number(fallback.height)
+          ? Number(fallback.width) / Number(fallback.height) : MONSTER_PORTRAIT_RATIO;
+        return `<img class="icon monster-icon tall"
+          data-project-file="${escapeAttr(fallback.file)}"
+          width="${Math.round(height * ratio)}" height="${height}"
+          alt="${escapeAttr(name)}" title="${escapeAttr(name)}">`;
+      }
+      return `<span class="icon icon-monster-blank"
+        style="width:${Math.round(height * MONSTER_PORTRAIT_RATIO)}px;height:${height}px"
+        aria-hidden="true"></span>`;
     }
 
     function previewImageTag(name, fallback, label = "") {
@@ -6335,8 +7445,9 @@
           ? `${mods.dragonName} +${mods.dragonPercent || 0}% / +${mods.dragonRStat || 0} ${mods.dragonStat}`
           : mods.dragonName);
       }
-      if (mods.animal) parts.push(`${mods.animal}${mods.animalGrade ? ` G${mods.animalGrade}` : ""}`);
-      if (mods.pet) parts.push(mods.pet);
+      if (mods.animalGrade) parts.push(`G${mods.animalGrade}`);
+      else if (mods.animal) parts.push("no grade set");
+      if (mods.petSource) parts.push(mods.petSource);
       return parts.join(" · ");
     }
 
@@ -6350,16 +7461,54 @@
       // The client ships no empty-slot art for the three accessory slots, so
       // those stay blank rather than borrowing another slot's picture.
     };
-    const ANIMAL_ICONS = {
-      Bird: "pet002", Panther: "pet003", Tiger: "pet004", Eagle: "pet005"
+    /* Animal transforms and pets, recovered from frmSkills rather than guessed.
+
+       The animal picture is chosen by the first letter of its name and then by
+       a grade band: `imgOther.Images(base + Fix((grade - 1) / 10))`, capped at
+       band 3. Each animal therefore has four pictures — an egg and three grown
+       stages — and the bases are 4, 8, 12 and 17. Index 16 belongs to none of
+       them, which is exactly why Eagle starts at 17 and not 16.
+
+       The client's own `pet00N` icons, which this used to point at, are the four
+       guardian pets in field and PvP variants. They carry no animal transforms
+       at all, so Bird was showing a dragon and Tiger a tortoise. */
+    const ANIMAL_ICON_BASE = { Bird: 4, Panther: 8, Tiger: 12, Eagle: 17 };
+    const ANIMAL_ICON_BANDS = 4;
+    // Pets are one picture per guardian per variant: field 21, 23, 25, 27 and
+    // PvP 22, 24, 26, 28. Zamogeon and KalCash share the same eight pictures.
+    const PET_ICON_INDEX = {
+      "Black Tortoise": 21, "Blue Dragon": 23, "Red Bird": 25, "White Tiger": 27
     };
+
+    function kalencOtherIcon(index) {
+      return `kalenc-other-${String(index).padStart(3, "0")}`;
+    }
+
+    function animalIconName(animal, grade) {
+      const base = ANIMAL_ICON_BASE[animal];
+      if (base == null) return "";
+      const band = Math.min(ANIMAL_ICON_BANDS - 1,
+        Math.max(0, Math.trunc(((Number(grade) || 1) - 1) / 10)));
+      return kalencOtherIcon(base + band);
+    }
+
+    function petIconName(pet, source = "") {
+      const index = PET_ICON_INDEX[String(pet).trim()];
+      if (index == null) return "";
+      // The PvP variant of each guardian is the next picture along.
+      return kalencOtherIcon(/pvp/i.test(String(source)) ? index + 1 : index);
+    }
 
     function equipmentSlotIcon(build, slot) {
       const item = state.indexes.equippableById.get(String(build.items?.[slot] || ""));
       if (item?.icon) return item.icon;
       const mods = build.equipmentMods?.[slot] || {};
-      if (slot === "Animal" && mods.animal) return ANIMAL_ICONS[mods.animal] || "pet001";
-      if (slot === "Pet" && mods.pet) return "pet001";
+      if (slot === "Animal" && mods.animal) {
+        return animalIconName(mods.animal, mods.animalGrade) || SLOT_PLACEHOLDER_ICONS[slot];
+      }
+      if (slot === "Pet" && mods.pet) {
+        return petIconName(mods.pet, mods.petSource) || SLOT_PLACEHOLDER_ICONS[slot];
+      }
       return SLOT_PLACEHOLDER_ICONS[slot] || "";
     }
 
@@ -6479,15 +7628,14 @@
       });
     }
 
+    /* The keyboard/touch fallback for the same list, and it has to agree with
+       the cascading menu — same grouping, same smallest-first order. */
     function prefixOptionsHtml(slot, item, selectedId) {
-      const groups = new Map();
-      prefixOptionsForSlot(slot, item).forEach(prefix =>
-        mapPush(groups, prefixGroupName(prefix), prefix));
-      return [...groups.entries()].map(([group, prefixes]) => `
-        <optgroup label="${escapeAttr(group)}">
-          ${prefixes.map(prefix => `<option value="${escapeAttr(prefix.id)}"${
-            String(selectedId || "") === prefix.id ? " selected" : ""
-          }>${escapeHtml(prefix.name)} — ${escapeHtml(prefixEffectText(prefix))}</option>`).join("")}
+      return prefixBranchesForSlot(slot, item, selectedId)
+        .filter(branch => branch.children)
+        .map(branch => `<optgroup label="${escapeAttr(branch.label)}">
+          ${branch.children.map(child => `<option value="${escapeAttr(child.prefix)}"${
+            child.checked ? " selected" : ""}>${escapeHtml(child.label)}</option>`).join("")}
         </optgroup>`).join("");
     }
 
@@ -6510,9 +7658,7 @@
       const dragonNames = ["Imoogi", "Shadow Dragon", "Sky Dragon", "Ancient Dragon",
         "Storm Dragon", "Violent Dragon", "Thunder Dragon"];
       const animalNames = ["Bird", "Panther", "Tiger", "Eagle"];
-      const petNames = ["Black Tortoise", "Blue Dragon", "Red Bird", "White Tiger",
-        "Zamogeon — Field Pet", "Zamogeon — PvP Pet",
-        "KalCash — Field Pet", "KalCash — PvP Pet"];
+
       const modifierFields = isWeapon ? `
         <label class="field"><span>Talisman of Accuracy</span>
           <select data-equipment-mod="otp">${talismanAmountOptions(mods.otp, "OTP")}</select></label>
@@ -6532,11 +7678,22 @@
           <option value="">— no animal —</option>
           ${animalNames.map(name => `<option value="${escapeAttr(name)}"${
             mods.animal === name ? " selected" : ""}>${escapeHtml(name)}</option>`).join("")}
+        </select></label>
+        <label class="field"><span>Grade</span><select data-equipment-mod="animalGrade">
+          <option value="0">— none —</option>
+          ${Array.from({ length: 80 }, (_, index) => index + 1).map(grade =>
+            `<option value="${grade}"${Number(mods.animalGrade || 0) === grade
+              ? " selected" : ""}>G${String(grade).padStart(2, "0")}</option>`).join("")}
         </select></label>` : "";
       const petField = slot === "Pet" ? `
-        <label class="field"><span>Pet</span><select data-equipment-mod="pet">
+        <label class="field"><span>Pet kind</span><select data-equipment-mod="petSource">
           <option value="">— no pet —</option>
-          ${petNames.map(name => `<option value="${escapeAttr(name)}"${
+          ${PET_SOURCES.map(name => `<option value="${escapeAttr(name)}"${
+            mods.petSource === name ? " selected" : ""}>${escapeHtml(name)}</option>`).join("")}
+        </select></label>
+        <label class="field"><span>Guardian</span><select data-equipment-mod="pet">
+          <option value="">— none —</option>
+          ${PET_GUARDIANS.map(name => `<option value="${escapeAttr(name)}"${
             mods.pet === name ? " selected" : ""}>${escapeHtml(name)}</option>`).join("")}
         </select></label>` : "";
       return `<div class="equipment-config">
@@ -6635,9 +7792,12 @@
       other: [1, 1, 1, 2, 2, 3, 4]
     };
     const ANIMALS = ["Bird", "Panther", "Tiger", "Eagle"];
-    const PETS = ["Black Tortoise", "Blue Dragon", "Red Bird", "White Tiger",
-      "Zamogeon — Field Pet", "Zamogeon — PvP Pet",
-      "KalCash — Field Pet", "KalCash — PvP Pet"];
+    // frmSkills' own pet menu has two levels: where the pet came from, then
+    // which of the four guardians it is. Flattening them into one list, as this
+    // used to, offered "Zamogeon - Field Pet" as if it were a creature.
+    const PET_SOURCES = ["Zamogeon - Field Pet", "Zamogeon - PvP Pet",
+      "KalCash - Field Pet", "KalCash - PvP Pet"];
+    const PET_GUARDIANS = ["Black Tortoise", "Blue Dragon", "Red Bird", "White Tiger"];
 
     function elementalStones() {
       return (state.optional.legacyItems || []).filter(row => String(row.ita_itype) === "9");
@@ -6675,19 +7835,34 @@
       };
     }
 
+    /* What a prefix is worth, for ordering. The names carry no order at all —
+       "Healthy" sorts before "Hearty" alphabetically whatever they give — so a
+       family is listed by the size of its effect instead, smallest first. */
+    function prefixMagnitude(prefix) {
+      return Object.values(prefix.stats || {})
+        .reduce((total, value) => total + (Number(value) || 0), 0);
+    }
+
     function prefixBranchesForSlot(slot, item, selectedId) {
       const groups = new Map();
       prefixOptionsForSlot(slot, item).forEach(prefix =>
         mapPush(groups, prefixGroupName(prefix), prefix));
+      const ordered = [...groups.entries()].sort(([left], [right]) =>
+        // Single-stat families first, in alphabetical order; the mixed bag last.
+        (left === "Multiple stats") - (right === "Multiple stats")
+        || left.localeCompare(right));
       return [
         { label: "— No prefix —", checked: !selectedId, prefix: "" },
-        ...[...groups.entries()].map(([group, prefixes]) => ({
+        ...ordered.map(([group, prefixes]) => ({
           label: group,
-          children: prefixes.map(prefix => ({
-            label: `${prefix.name} — ${prefixEffectText(prefix)}`,
-            checked: String(selectedId || "") === prefix.id,
-            prefix: prefix.id
-          }))
+          children: [...prefixes]
+            .sort((left, right) => prefixMagnitude(left) - prefixMagnitude(right)
+              || String(left.name).localeCompare(String(right.name)))
+            .map(prefix => ({
+              label: `${prefixEffectText(prefix)} — ${prefix.name}`,
+              checked: String(selectedId || "") === prefix.id,
+              prefix: prefix.id
+            }))
         }))
       ];
     }
@@ -6752,9 +7927,16 @@
 
       if (slot === "Pet") {
         return [
-          { label: "— No pet —", checked: !mods.pet, set: { pet: "" } },
-          ...PETS.map(name => ({
-            label: name, checked: mods.pet === name, set: { pet: name }
+          { label: "— No pet —", checked: !mods.pet,
+            set: { pet: "", petSource: "" } },
+          ...PET_SOURCES.map(source => ({
+            label: source,
+            marked: mods.petSource === source,
+            children: PET_GUARDIANS.map(guardian => ({
+              label: guardian,
+              checked: mods.petSource === source && mods.pet === guardian,
+              set: { pet: guardian, petSource: source }
+            }))
           }))
         ];
       }
@@ -7030,7 +8212,7 @@
       } else {
         const key = control.dataset.equipmentMod;
         const numeric = ["otp", "physical", "magical", "defense",
-          "enhancementLevel", "elementLevel"].includes(key);
+          "enhancementLevel", "elementLevel", "animalGrade"].includes(key);
         build.equipmentMods[slot][key] = numeric ? (Number(control.value) || 0) : control.value;
       }
       saveBuild();
@@ -7314,30 +8496,22 @@
         <p class="dim"><small>One level point is granted at each level from 2 onward. Finished Bango
           quests supply the quest total. The omitted/free post-60 bands remain unverified for Bango
           and are not granted silently.</small></p>`)}
-        ${section(`${build.cls} skills available by level ${build.level}`, rows.length ? `
-          <div class="skill-columns">${rows.map(({ row, schedule }) => {
-            const key = String(row.bango_key);
-            const grade = Number(profile.skills?.[key]) || 0;
-            const max = availableSkillGrade(schedule, build.level);
-            const minimum = skillMinimumGrade(row);
-            const prerequisites = skillPrerequisiteState(profile, row);
-            const locked = prerequisites.missing.length > 0;
-            return `<div class="skill-card${locked ? " locked" : ""}" data-skill-card="${escapeAttr(skillId(row))}"
-                data-skill-tip="${escapeAttr(skillTooltipHtml(row, schedule, grade, build))}">
-              ${skillIconTag(row, 38)}
-              <div><strong>${escapeHtml(row.sk_megn || key)}</strong>
-                <span class="skill-grade${grade ? "" : " zero"}">Grade ${grade} / ${max}</span>
-                ${locked ? `<small class="danger">Needs ${prerequisites.missing.map(edge =>
-                  `${escapeHtml(edge.prerequisite_skill_name)} G${escapeHtml(edge.required_grade)}`).join(", ")}</small>` : ""}
-              </div>
-              <div class="skill-stepper">
-                <button class="small" type="button" data-skill-down="${escapeAttr(key)}"${
-                  grade <= minimum ? " disabled" : ""}>−</button>
-                <button class="small" type="button" data-skill-up="${escapeAttr(key)}"${
-                  grade >= max || locked || ledger.available <= 0 ? " disabled" : ""}>+</button>
-              </div>
-            </div>`;
-          }).join("")}</div>` : emptyState("No Bango-resolved skill schedule is available at this level."))}`;
+        ${(() => {
+          const model = skillTreeModel(classSkillScope(build.cls));
+          const reached = rows.length;
+          const raisable = model.nodes.filter(node =>
+            skillPrerequisiteState(profile, node.row).missing.length === 0
+            && positionAllowsSkill(node.schedule, build)
+            && (!Number.isFinite(node.level) || node.level <= Number(build.level))).length;
+          return section(`${build.cls} skill tree`,
+            skillTreeHtml(model, { interactive: true, profile, build, ledger }),
+            `<span class="panel-aside">${prettyNumber(reached)} of ${prettyNumber(
+              model.nodes.length)} reach level ${escapeHtml(String(build.level))} ·
+              ${prettyNumber(raisable)} can be raised now</span>`);
+        })()}
+        <p class="dim"><small>The whole class path is shown so the shape of it is visible.
+          A dimmed skill is one this character cannot take yet — its level is not reached, its
+          prerequisite is not raised far enough, or the chosen position does not grant it.</small></p>`;
     }
 
     function questState(profile, questId) {
@@ -7414,8 +8588,11 @@
       const activeCount = REGISTERED_BUFFS
         .filter(definition => activeBuffState(profile, definition.key).enabled).length;
 
+      // The Mage group is open whatever the character is: those are the party
+      // buffs — Strength, Health, Agility, Intelligence — that a mage casts on
+      // everyone else, so they are the set a player actually reaches for.
       return panel("Buffs", ordered.map(([group, definitions]) => `
-        <details class="buff-group"${group === classGroup ? " open" : ""}>
+        <details class="buff-group"${group === classGroup || group === "Mage" ? " open" : ""}>
           <summary>${escapeHtml(group)}
             <span class="dim">${definitions.length}</span></summary>
           <div class="buff-grid">${definitions.map(definition => {
@@ -7627,8 +8804,14 @@
 
     function resetAllQuests() {
       activeProfile().quests = {};
+      // The walkthrough's own batch ticks are quest progress too, so a reset
+      // that left them set would leave the two views disagreeing.
+      activeProfile().walkthrough = {};
       persistProfiles();
-      renderBuild();
+      // Called from the character workspace and from the walkthrough; only the
+      // former is a build tab, so redraw whatever route is actually showing.
+      if (routeInfo().section === "build") renderBuild();
+      else renderRoute();
     }
 
     function onBuffChange(event) {
@@ -8042,7 +9225,8 @@
           <p>Names and drop associations come from the current Bango client tables.
             Drop chances come from the KalEncyclopedia database, which is confirmed to match
             Bango's rates. Combat stats below the name are a legacy export of an earlier game
-            version and are <strong>not</strong> confirmed for Bango.</p>
+            version and are <strong>not</strong> confirmed for Bango.
+            ${monsterPictureCredit(row.text)}</p>
           ${definitions.length > 1 ? `<p>This name resolves to ${definitions.length} client string
             definitions.</p>` : ""}
           ${documented && !/class="empty"/.test(documented)
@@ -8226,7 +9410,8 @@
             }).join("")}</ul>`) : ""}
             ${npcs.length ? panel("Talk to", `<ul class="link-list">${
               [...new Map(npcs.map(npc => [npc.message_id, npc])).values()].map(npc =>
-                `<li>${entityLink("npc", npc.message_id, npcDisplayName(npc))}</li>`).join("")
+                `<li>${npcPhotoTag(npc, 30)}${
+                  entityLink("npc", npc.message_id, npcDisplayName(npc))}</li>`).join("")
             }</ul>`) : ""}
             ${articles ? panel("Guides", articles) : ""}
           </div>
@@ -8264,6 +9449,7 @@
       const quests = state.indexes.npcQuests.get(String(id)) || [];
       const routeMatches = routeNpcMatches(row);
       const identity = npcIdentity(row);
+      const photo = npcPhotoFor(row);
       const uniqueQuests = [...new Map(quests.map(quest => [quest.que_id, quest])).values()];
       const articles = relatedArticles("npc", id, row.text || "");
       const towns = [...new Set(routeMatches.map(route => route.town).filter(Boolean))];
@@ -8291,6 +9477,14 @@
                   · ${escapeHtml(route.route_names)}</small></li>`).join("")}</ul>`) : ""}
           </div>
           <div class="detail-side">
+            ${photo ? `<div class="entity-hero npc-hero">
+              <span class="entity-portrait"><img class="npc-photo large"
+                data-project-file="${escapeAttr(photo.file)}"
+                alt="${escapeAttr(photo.label)}"></span>
+              <div><strong>${escapeHtml(photo.label)}</strong>
+                <br><span class="dim">${escapeHtml(photo.cityLabel)} #${escapeHtml(photo.pin)}</span>
+              </div>
+            </div>` : ""}
             ${panel("Details", statLines([
               ["Name", escapeHtml(identity.display)],
               ["Town", escapeHtml(towns.join(", "))],
@@ -8303,7 +9497,8 @@
           <p>Names come from the Bango client string table. Quests are linked by matching a
             named identity inside the quest text${identity.named
               ? "" : " — this string is a role, not a name, so it is deliberately not matched"}.
-            Locations come from the player-authored route guide.</p>
+            Locations come from the player-authored route guide.
+            ${photo ? npcPhotoCredit() : ""}</p>
           ${definitions.length > 1 ? `<p>This string resolves to ${definitions.length}
             definitions.</p>` : ""}`)}`;
     }
@@ -9082,9 +10277,11 @@
       el.main.innerHTML = `
         ${pageHeader({
           eyebrow: "Skill scope",
-          title: scope[0].toUpperCase() + scope.slice(1),
-          lede: `${prettyNumber(skills.length)} Bango skill definition${skills.length === 1 ? "" : "s"} carry this normalized scope.`,
-          crumbs: [["Overview", "#/home"], ["Skills", "#/skills"], [scope, ""]]
+          title: skillScopeLabel(scope),
+          lede: `${prettyNumber(skills.length)} Bango skill definition${skills.length === 1 ? "" : "s"} carry this scope`
+            + `${skillScopeLabel(scope) === scope ? "" : ` — the client calls it ${scope}`}.`,
+          crumbs: [["Overview", "#/home"], ["Skills", "#/skills"],
+            [skillScopeLabel(scope), ""]]
         })}
         ${section("Skills", `
           <div class="table-wrap"><table><thead><tr><th>Skill</th><th>Key</th><th>Schedule</th><th>Maximum grade</th></tr></thead>
@@ -9583,6 +10780,8 @@
       } else if (action === "finish-available-quests") {
         finishAvailableQuests();
       } else if (action === "reset-all-quests") {
+        resetAllQuests();
+      } else if (action === "reset-quests") {
         resetAllQuests();
       }
     });

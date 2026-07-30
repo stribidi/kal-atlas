@@ -1,0 +1,2389 @@
+{
+ "note": "Monster artwork from gameagit.com, joined to Bango monster names by exact normalized name. Used only where KalEncyclopedia has no embedded portrait for that monster.",
+ "credit": {
+  "name": "gameagit.com",
+  "url": "https://www.gameagit.com/kalonline/Monster01",
+  "note": "original KalOnline monster artwork"
+ },
+ "source_pages": [
+  {
+   "path": "/kalonline/Monster01",
+   "file": "research/gameagit/Monster01.html",
+   "bytes": 30668,
+   "sha256": "d8f0e3535c270d46fb24549f15132a0fffbb9bdc90790c7d0900189f810740b7",
+   "fetched_now": false,
+   "entries": 9
+  },
+  {
+   "path": "/kalonline/Monster02",
+   "file": "research/gameagit/Monster02.html",
+   "bytes": 27096,
+   "sha256": "d5140b849d77533f0cb3afd0f61f9a966e2b43804454ecc9f9a1fd3bbc666edf",
+   "fetched_now": false,
+   "entries": 5
+  },
+  {
+   "path": "/kalonline/Monster03",
+   "file": "research/gameagit/Monster03.html",
+   "bytes": 32589,
+   "sha256": "2f7a70214c17cbd4a2b464be9d18a7905bc3ced944d00182b5c88714987ba0d4",
+   "fetched_now": false,
+   "entries": 11
+  },
+  {
+   "path": "/kalonline/Monster04",
+   "file": "research/gameagit/Monster04.html",
+   "bytes": 27101,
+   "sha256": "cf55d2214459b4c8fa4391ebb0fce493d7fe6fc264987a65f545c0bed32031c9",
+   "fetched_now": false,
+   "entries": 4
+  },
+  {
+   "path": "/kalonline/Monster05",
+   "file": "research/gameagit/Monster05.html",
+   "bytes": 28599,
+   "sha256": "7f0697456d65e1377443f0b231904c485c9aa1f9d1ad459cff6902751c08166e",
+   "fetched_now": false,
+   "entries": 7
+  },
+  {
+   "path": "/kalonline/Monster06",
+   "file": "research/gameagit/Monster06.html",
+   "bytes": 28143,
+   "sha256": "ced5485170fcd9c44443ed56468ef413b3bc3eaab4bec0d5fbea0c0a1e78827a",
+   "fetched_now": false,
+   "entries": 7
+  },
+  {
+   "path": "/kalonline/Monster07",
+   "file": "research/gameagit/Monster07.html",
+   "bytes": 28102,
+   "sha256": "6a773630628f47cc9bd6475d4bbbf18982bac72afb553fc6e1aa51aad11d1c17",
+   "fetched_now": false,
+   "entries": 7
+  },
+  {
+   "path": "/kalonline/Monster08",
+   "file": "research/gameagit/Monster08.html",
+   "bytes": 27960,
+   "sha256": "cd61176d95e68af3292f012c81ae44ba558834dc926ac7bf993cb9cf627244e8",
+   "fetched_now": false,
+   "entries": 7
+  },
+  {
+   "path": "/kalonline/Monster09",
+   "file": "research/gameagit/Monster09.html",
+   "bytes": 33196,
+   "sha256": "49129136c13e01d15c50f098921adb6723d80e945a35822e85ecb3cb24757a91",
+   "fetched_now": false,
+   "entries": 9
+  },
+  {
+   "path": "/kalonline/Monster10",
+   "file": "research/gameagit/Monster10.html",
+   "bytes": 30463,
+   "sha256": "fda42da60c8d6bd885b485c8a28fc57bf4100e55717b97276489ae0ce8d6a711",
+   "fetched_now": false,
+   "entries": 7
+  },
+  {
+   "path": "/kalonline/Monster11",
+   "file": "research/gameagit/Monster11.html",
+   "bytes": 34194,
+   "sha256": "48e786134dd0e7fa60242362d31c4264f0178102218cc6534af96cec1d1ad027",
+   "fetched_now": false,
+   "entries": 7
+  },
+  {
+   "path": "/kalonline/Monster12",
+   "file": "research/gameagit/Monster12.html",
+   "bytes": 31110,
+   "sha256": "456e19907450f51e238bac68f4aac3ecefe4077a1bb39ba4b5b6c79b033ceba9",
+   "fetched_now": false,
+   "entries": 6
+  },
+  {
+   "path": "/kalonline/Monster13",
+   "file": "research/gameagit/Monster13.html",
+   "bytes": 29231,
+   "sha256": "bea1888d0294f4d8d702d9f92d34fbd68e380a6c187600f450340cdde614fc66",
+   "fetched_now": false,
+   "entries": 8
+  },
+  {
+   "path": "/kalonline/Monster14",
+   "file": "research/gameagit/Monster14.html",
+   "bytes": 28184,
+   "sha256": "72b35ccb06af1d2384ca1785d60a8186e757d60a85663d8e020caeb79506f541",
+   "fetched_now": false,
+   "entries": 6
+  },
+  {
+   "path": "/kalonline/Monster15",
+   "file": "research/gameagit/Monster15.html",
+   "bytes": 27501,
+   "sha256": "db7b31bc7ba93ce1465e654a0e9922845369b0b2f88ffefe5ca22105a6248d57",
+   "fetched_now": false,
+   "entries": 6
+  },
+  {
+   "path": "/kalonline/Monster16",
+   "file": "research/gameagit/Monster16.html",
+   "bytes": 27577,
+   "sha256": "b56b928bcad94c4367173f7cf13927015e9de02c4367a9d1546dc3e8cf30f062",
+   "fetched_now": false,
+   "entries": 6
+  },
+  {
+   "path": "/kalonline/Monster17",
+   "file": "research/gameagit/Monster17.html",
+   "bytes": 53387,
+   "sha256": "b9008fac33143fa9012b063f8cf7cb0faa960944a2be3e10d60235afd70108ac",
+   "fetched_now": false,
+   "entries": 26
+  },
+  {
+   "path": "/kalonline/Monster18",
+   "file": "research/gameagit/Monster18.html",
+   "bytes": 27762,
+   "sha256": "442fbd26fcd943ba58c7b832509ef82ce8f6a2c8315e794c7ebc7fce3c7743c3",
+   "fetched_now": false,
+   "entries": 6
+  },
+  {
+   "path": "/kalonline/Monster19",
+   "file": "research/gameagit/Monster19.html",
+   "bytes": 32800,
+   "sha256": "fca108dddfa9d4ce76deee4e4e38abfc45a249c8094d73d47cc07caf4ae91c53",
+   "fetched_now": false,
+   "entries": 12
+  }
+ ],
+ "icon_files": 142,
+ "matched_bango_monsters": 159,
+ "matched_by_rule": {
+  "exact-normalized-name": 128,
+  "summoned-copy": 31,
+  "training-field-copy": 0
+ },
+ "bango_monsters_with_kalencyclopedia_portrait": 100,
+ "bango_monsters_still_without_a_picture": 329,
+ "icons": {
+  "Demon Vulgar": {
+   "file": "assets/mob_icons/maguni01.jpg",
+   "source_name": "Demon Vulgar",
+   "page": "/kalonline/Monster01",
+   "match": "exact-normalized-name",
+   "height": 218,
+   "width": 141
+  },
+  "Demon Scout": {
+   "file": "assets/mob_icons/maguni02.jpg",
+   "source_name": "Demon Scout",
+   "page": "/kalonline/Monster01",
+   "match": "exact-normalized-name",
+   "height": 218,
+   "width": 141
+  },
+  "Wild Small Demon": {
+   "file": "assets/mob_icons/maguni02.jpg",
+   "source_name": "Wild Small Demon",
+   "page": "/kalonline/Monster01",
+   "match": "exact-normalized-name",
+   "height": 218,
+   "width": 141
+  },
+  "Demon Spearhead": {
+   "file": "assets/mob_icons/maguni03.jpg",
+   "source_name": "Demon Spearhead",
+   "page": "/kalonline/Monster01",
+   "match": "exact-normalized-name",
+   "height": 218,
+   "width": 141
+  },
+  "Demon Plunderer": {
+   "file": "assets/mob_icons/maguni04.jpg",
+   "source_name": "Demon Plunderer",
+   "page": "/kalonline/Monster01",
+   "match": "exact-normalized-name",
+   "height": 218,
+   "width": 141
+  },
+  "Demon Scout Commander": {
+   "file": "assets/mob_icons/maguni09.jpg",
+   "source_name": "Demon Scout Commander",
+   "page": "/kalonline/Monster01",
+   "match": "exact-normalized-name",
+   "height": 218,
+   "width": 141
+  },
+  "Big Handed Inhabitant": {
+   "file": "assets/mob_icons/gu01.jpg",
+   "source_name": "Big Handed Inhabitant",
+   "page": "/kalonline/Monster02",
+   "match": "exact-normalized-name",
+   "height": 218,
+   "width": 141
+  },
+  "Big Handed Slave": {
+   "file": "assets/mob_icons/gu02.jpg",
+   "source_name": "Big Handed Slave",
+   "page": "/kalonline/Monster02",
+   "match": "exact-normalized-name",
+   "height": 218,
+   "width": 141
+  },
+  "Big Handed Blue Warrior": {
+   "file": "assets/mob_icons/gu04.jpg",
+   "source_name": "Big Handed Blue Warrior",
+   "page": "/kalonline/Monster02",
+   "match": "exact-normalized-name",
+   "height": 218,
+   "width": 141
+  },
+  "Big Handed Red Warrior": {
+   "file": "assets/mob_icons/gu03.jpg",
+   "source_name": "Big Handed Red Warrior",
+   "page": "/kalonline/Monster02",
+   "match": "exact-normalized-name",
+   "height": 218,
+   "width": 141
+  },
+  "Demon Soldier": {
+   "file": "assets/mob_icons/magun02.jpg",
+   "source_name": "Demon Soldier",
+   "page": "/kalonline/Monster03",
+   "match": "exact-normalized-name",
+   "height": 218,
+   "width": 141
+  },
+  "Demon Infantry": {
+   "file": "assets/mob_icons/magun03.jpg",
+   "source_name": "Demon Infantry",
+   "page": "/kalonline/Monster03",
+   "match": "exact-normalized-name",
+   "height": 218,
+   "width": 141
+  },
+  "Demon Throwing Soldier": {
+   "file": "assets/mob_icons/magun04.jpg",
+   "source_name": "Demon Throwing Soldier",
+   "page": "/kalonline/Monster03",
+   "match": "exact-normalized-name",
+   "height": 218,
+   "width": 141
+  },
+  "Wild Demon Soldier": {
+   "file": "assets/mob_icons/magun05.jpg",
+   "source_name": "Wild Demon Soldier",
+   "page": "/kalonline/Monster03",
+   "match": "exact-normalized-name",
+   "height": 218,
+   "width": 141
+  },
+  "Demon Shock Trooper": {
+   "file": "assets/mob_icons/magun06.jpg",
+   "source_name": "Demon Shock Trooper",
+   "page": "/kalonline/Monster03",
+   "match": "exact-normalized-name",
+   "height": 218,
+   "width": 141
+  },
+  "Demon Flag Bearer": {
+   "file": "assets/mob_icons/magun07.jpg",
+   "source_name": "Demon Flag Bearer",
+   "page": "/kalonline/Monster03",
+   "match": "exact-normalized-name",
+   "height": 218,
+   "width": 141
+  },
+  "Demon Band": {
+   "file": "assets/mob_icons/magun08.jpg",
+   "source_name": "Demon Band",
+   "page": "/kalonline/Monster03",
+   "match": "exact-normalized-name",
+   "height": 218,
+   "width": 141
+  },
+  "Demon Armored Knight": {
+   "file": "assets/mob_icons/magun09.jpg",
+   "source_name": "Demon Armored Knight",
+   "page": "/kalonline/Monster03",
+   "match": "exact-normalized-name",
+   "height": 218,
+   "width": 141
+  },
+  "Demon Mad Knight": {
+   "file": "assets/mob_icons/magun10.jpg",
+   "source_name": "Demon Mad Knight",
+   "page": "/kalonline/Monster03",
+   "match": "exact-normalized-name",
+   "height": 218,
+   "width": 141
+  },
+  "Demon Commander": {
+   "file": "assets/mob_icons/magun11.jpg",
+   "source_name": "Demon Commander",
+   "page": "/kalonline/Monster03",
+   "match": "exact-normalized-name",
+   "height": 218,
+   "width": 141
+  },
+  "Demon Water Dragon": {
+   "file": "assets/mob_icons/su01.jpg",
+   "source_name": "Demon Water Dragon",
+   "page": "/kalonline/Monster04",
+   "match": "exact-normalized-name",
+   "height": 218,
+   "width": 141
+  },
+  "Hungry Demon Water Dragon": {
+   "file": "assets/mob_icons/su02.jpg",
+   "source_name": "Hungry Demon Water Dragon",
+   "page": "/kalonline/Monster04",
+   "match": "exact-normalized-name",
+   "height": 218,
+   "width": 141
+  },
+  "Demon Water Dragon Predator": {
+   "file": "assets/mob_icons/su03.jpg",
+   "source_name": "Demon Water Dragon Predator",
+   "page": "/kalonline/Monster04",
+   "match": "exact-normalized-name",
+   "height": 218,
+   "width": 141
+  },
+  "Demon Water Dragon Commander": {
+   "file": "assets/mob_icons/su04.jpg",
+   "source_name": "Demon Water Dragon Commander",
+   "page": "/kalonline/Monster04",
+   "match": "exact-normalized-name",
+   "height": 218,
+   "width": 141
+  },
+  "Castoff Baby Ghost": {
+   "file": "assets/mob_icons/wh01.jpg",
+   "source_name": "Castoff Baby Ghost",
+   "page": "/kalonline/Monster05",
+   "match": "exact-normalized-name",
+   "height": 218,
+   "width": 141
+  },
+  "Ghost of Young Man": {
+   "file": "assets/mob_icons/wh02.jpg",
+   "source_name": "Ghost of Young Man",
+   "page": "/kalonline/Monster05",
+   "match": "exact-normalized-name",
+   "height": 218,
+   "width": 141
+  },
+  "Ghost of Young Woman": {
+   "file": "assets/mob_icons/wh03.jpg",
+   "source_name": "Ghost of Young Woman",
+   "page": "/kalonline/Monster05",
+   "match": "exact-normalized-name",
+   "height": 218,
+   "width": 141
+  },
+  "Ghost of Blacksmith": {
+   "file": "assets/mob_icons/wh04.jpg",
+   "source_name": "Ghost of Blacksmith",
+   "page": "/kalonline/Monster05",
+   "match": "exact-normalized-name",
+   "height": 218,
+   "width": 141
+  },
+  "Ghost of Guard": {
+   "file": "assets/mob_icons/wh05.jpg",
+   "source_name": "Ghost of Guard",
+   "page": "/kalonline/Monster05",
+   "match": "exact-normalized-name",
+   "height": 218,
+   "width": 141
+  },
+  "Fellow Traveler to the Other World": {
+   "file": "assets/mob_icons/wh06.jpg",
+   "source_name": "Fellow Traveler to the Other World",
+   "page": "/kalonline/Monster05",
+   "match": "exact-normalized-name",
+   "height": 218,
+   "width": 141
+  },
+  "Sealed Ghost Troop": {
+   "file": "assets/mob_icons/wh07.jpg",
+   "source_name": "Sealed Ghost Troop",
+   "page": "/kalonline/Monster05",
+   "match": "exact-normalized-name",
+   "height": 218,
+   "width": 141
+  },
+  "Devil Soldier": {
+   "file": "assets/mob_icons/mabyung01.jpg",
+   "source_name": "Devil Soldier",
+   "page": "/kalonline/Monster06",
+   "match": "exact-normalized-name",
+   "height": 218,
+   "width": 141
+  },
+  "Devil Soldier with Twin Blades": {
+   "file": "assets/mob_icons/mabyung02.jpg",
+   "source_name": "Devil Soldier with Twin Blades",
+   "page": "/kalonline/Monster06",
+   "match": "exact-normalized-name",
+   "height": 218,
+   "width": 141
+  },
+  "Devil Soldier with Bow": {
+   "file": "assets/mob_icons/mabyung03.jpg",
+   "source_name": "Devil Soldier with Bow",
+   "page": "/kalonline/Monster06",
+   "match": "exact-normalized-name",
+   "height": 218,
+   "width": 141
+  },
+  "Devil Soldier with Sword": {
+   "file": "assets/mob_icons/mabyung04.jpg",
+   "source_name": "Devil Soldier with Sword",
+   "page": "/kalonline/Monster06",
+   "match": "exact-normalized-name",
+   "height": 218,
+   "width": 141
+  },
+  "Devil Soldier with Spear": {
+   "file": "assets/mob_icons/mabyung05.jpg",
+   "source_name": "Devil Soldier with Spear",
+   "page": "/kalonline/Monster06",
+   "match": "exact-normalized-name",
+   "height": 218,
+   "width": 141
+  },
+  "2nd Devil Monster": {
+   "file": "assets/mob_icons/mabyung06.jpg",
+   "source_name": "2nd Devil Monster",
+   "page": "/kalonline/Monster06",
+   "match": "exact-normalized-name",
+   "height": 218,
+   "width": 141
+  },
+  "1st Devil Monster": {
+   "file": "assets/mob_icons/mabyung07.jpg",
+   "source_name": "1st Devil Monster",
+   "page": "/kalonline/Monster06",
+   "match": "exact-normalized-name",
+   "height": 218,
+   "width": 141
+  },
+  "Devil Troop of Desire": {
+   "file": "assets/mob_icons/maryung03.jpg",
+   "source_name": "Devil Troop of Desire",
+   "page": "/kalonline/Monster07",
+   "match": "exact-normalized-name",
+   "height": 218,
+   "width": 141
+  },
+  "Devil Troop of Pain": {
+   "file": "assets/mob_icons/maryung06.jpg",
+   "source_name": "Devil Troop of Pain",
+   "page": "/kalonline/Monster07",
+   "match": "exact-normalized-name",
+   "height": 218,
+   "width": 141
+  },
+  "Devil Troop of Greed": {
+   "file": "assets/mob_icons/maryung01.jpg",
+   "source_name": "Devil Troop of Greed",
+   "page": "/kalonline/Monster07",
+   "match": "exact-normalized-name",
+   "height": 218,
+   "width": 141
+  },
+  "Devil Troop of Jealousy": {
+   "file": "assets/mob_icons/maryung02.jpg",
+   "source_name": "Devil Troop of Jealousy",
+   "page": "/kalonline/Monster07",
+   "match": "exact-normalized-name",
+   "height": 218,
+   "width": 141
+  },
+  "Devil Troop of Madness": {
+   "file": "assets/mob_icons/maryung07.jpg",
+   "source_name": "Devil Troop of Madness",
+   "page": "/kalonline/Monster07",
+   "match": "exact-normalized-name",
+   "height": 218,
+   "width": 141
+  },
+  "Devil Troop of Anger": {
+   "file": "assets/mob_icons/maryung05.jpg",
+   "source_name": "Devil Troop of Anger",
+   "page": "/kalonline/Monster07",
+   "match": "exact-normalized-name",
+   "height": 218,
+   "width": 141
+  },
+  "Guardian of Doggebi": {
+   "file": "assets/mob_icons/do07.jpg",
+   "source_name": "Guardian of Doggebi",
+   "page": "/kalonline/Monster08",
+   "match": "exact-normalized-name",
+   "height": 218,
+   "width": 141
+  },
+  "Doggebi of Monster Face": {
+   "file": "assets/mob_icons/do01.jpg",
+   "source_name": "Doggebi of Monster Face",
+   "page": "/kalonline/Monster08",
+   "match": "exact-normalized-name",
+   "height": 218,
+   "width": 141
+  },
+  "Doggebi with a Gong": {
+   "file": "assets/mob_icons/do02.jpg",
+   "source_name": "Doggebi with a Gong",
+   "page": "/kalonline/Monster08",
+   "match": "exact-normalized-name",
+   "height": 218,
+   "width": 141
+  },
+  "Drunken Doggebi": {
+   "file": "assets/mob_icons/do03.jpg",
+   "source_name": "Drunken Doggebi",
+   "page": "/kalonline/Monster08",
+   "match": "exact-normalized-name",
+   "height": 218,
+   "width": 141
+  },
+  "Doggebi with a Mask of Black Crow": {
+   "file": "assets/mob_icons/do04.jpg",
+   "source_name": "Doggebi with a Mask of Black Crow",
+   "page": "/kalonline/Monster08",
+   "match": "exact-normalized-name",
+   "height": 218,
+   "width": 141
+  },
+  "Doggebi with a Mask of Black Panther": {
+   "file": "assets/mob_icons/do05.jpg",
+   "source_name": "Doggebi with a Mask of Black Panther",
+   "page": "/kalonline/Monster08",
+   "match": "exact-normalized-name",
+   "height": 218,
+   "width": 141
+  },
+  "Giant Doggebi": {
+   "file": "assets/mob_icons/do06.jpg",
+   "source_name": "Giant Doggebi",
+   "page": "/kalonline/Monster08",
+   "match": "exact-normalized-name",
+   "height": 218,
+   "width": 141
+  },
+  "Rotten Skeleton Warrior of the Royal Tomb (Sword)": {
+   "file": "assets/mob_icons/hon01.jpg",
+   "source_name": "Rotten Skeleton Warrior of the Royal Tomb (Sword)",
+   "page": "/kalonline/Monster09",
+   "match": "exact-normalized-name",
+   "height": 218,
+   "width": 141
+  },
+  "Rotten Skeleton Warrior of the Royal Tomb (Lance)": {
+   "file": "assets/mob_icons/hon02.jpg",
+   "source_name": "Rotten Skeleton Warrior of the Royal Tomb (Lance)",
+   "page": "/kalonline/Monster09",
+   "match": "exact-normalized-name",
+   "height": 218,
+   "width": 141
+  },
+  "Minister of the Royal Tomb": {
+   "file": "assets/mob_icons/hon03.jpg",
+   "source_name": "Minister of the Royal Tomb",
+   "page": "/kalonline/Monster09",
+   "match": "exact-normalized-name",
+   "height": 218,
+   "width": 141
+  },
+  "Maid of Honor of the Royal Tomb": {
+   "file": "assets/mob_icons/hon04.jpg",
+   "source_name": "Maid of Honor of the Royal Tomb",
+   "page": "/kalonline/Monster09",
+   "match": "exact-normalized-name",
+   "height": 218,
+   "width": 141
+  },
+  "The Royal Tomb Keeper (Sword)": {
+   "file": "assets/mob_icons/hon05.jpg",
+   "source_name": "The Royal Tomb Keeper (Sword)",
+   "page": "/kalonline/Monster09",
+   "match": "exact-normalized-name",
+   "height": 218,
+   "width": 141
+  },
+  "The Royal Tomb Keeper (Shield)": {
+   "file": "assets/mob_icons/hon06.jpg",
+   "source_name": "The Royal Tomb Keeper (Shield)",
+   "page": "/kalonline/Monster09",
+   "match": "exact-normalized-name",
+   "height": 218,
+   "width": 141
+  },
+  "The Royal Tomb Keeper (Spear)": {
+   "file": "assets/mob_icons/hon07.jpg",
+   "source_name": "The Royal Tomb Keeper (Spear)",
+   "page": "/kalonline/Monster09",
+   "match": "exact-normalized-name",
+   "height": 218,
+   "width": 141
+  },
+  "The Royal Tomb Keeper (Iron Hammer)": {
+   "file": "assets/mob_icons/hon08.jpg",
+   "source_name": "The Royal Tomb Keeper (Iron Hammer)",
+   "page": "/kalonline/Monster09",
+   "match": "exact-normalized-name",
+   "height": 218,
+   "width": 141
+  },
+  "The Royal Tomb Keeper": {
+   "file": "assets/mob_icons/hon11.jpg",
+   "source_name": "The Royal Tomb Keeper",
+   "page": "/kalonline/Monster09",
+   "match": "exact-normalized-name",
+   "height": 218,
+   "width": 141
+  },
+  "Trained Traitor Warrior": {
+   "file": "assets/mob_icons/Traitor02.jpg",
+   "source_name": "Trained Traitor Warrior",
+   "page": "/kalonline/Monster10",
+   "match": "exact-normalized-name",
+   "height": 218,
+   "width": 141
+  },
+  "Trained Traitor Archer": {
+   "file": "assets/mob_icons/Traitor03.jpg",
+   "source_name": "Trained Traitor Archer",
+   "page": "/kalonline/Monster10",
+   "match": "exact-normalized-name",
+   "height": 218,
+   "width": 141
+  },
+  "Chief of the Traitor's Hangout, Yoong-Gi": {
+   "file": "assets/mob_icons/Traitor07.jpg",
+   "source_name": "Chief of the Traitor's Hangout, Yoong-Gi",
+   "page": "/kalonline/Monster10",
+   "match": "exact-normalized-name",
+   "height": 218,
+   "width": 141
+  },
+  "Gigantic Species Warrior": {
+   "file": "assets/mob_icons/Horse01.jpg",
+   "source_name": "Gigantic Species Warrior",
+   "page": "/kalonline/Monster11",
+   "match": "exact-normalized-name",
+   "height": 218,
+   "width": 141
+  },
+  "Gigantic Species Archer": {
+   "file": "assets/mob_icons/Horse02.jpg",
+   "source_name": "Gigantic Species Archer",
+   "page": "/kalonline/Monster11",
+   "match": "exact-normalized-name",
+   "height": 218,
+   "width": 141
+  },
+  "Gigantic Species Shock Trooper": {
+   "file": "assets/mob_icons/Horse03.jpg",
+   "source_name": "Gigantic Species Shock Trooper",
+   "page": "/kalonline/Monster11",
+   "match": "exact-normalized-name",
+   "height": 218,
+   "width": 141
+  },
+  "Gigantic Species Ignoramus": {
+   "file": "assets/mob_icons/Horse03.jpg",
+   "source_name": "Gigantic Species Ignoramus",
+   "page": "/kalonline/Monster11",
+   "match": "exact-normalized-name",
+   "height": 218,
+   "width": 141
+  },
+  "Gigantic Species Berserk": {
+   "file": "assets/mob_icons/Horse05.jpg",
+   "source_name": "Gigantic Species Berserk",
+   "page": "/kalonline/Monster11",
+   "match": "exact-normalized-name",
+   "height": 218,
+   "width": 141
+  },
+  "Gigantic Species Murderer": {
+   "file": "assets/mob_icons/Horse06.jpg",
+   "source_name": "Gigantic Species Murderer",
+   "page": "/kalonline/Monster11",
+   "match": "exact-normalized-name",
+   "height": 218,
+   "width": 141
+  },
+  "Gigantic Species Master": {
+   "file": "assets/mob_icons/Horse07.jpg",
+   "source_name": "Gigantic Species Master",
+   "page": "/kalonline/Monster11",
+   "match": "exact-normalized-name",
+   "height": 218,
+   "width": 141
+  },
+  "Warrior of Shadow Troop": {
+   "file": "assets/mob_icons/shadow01.jpg",
+   "source_name": "Warrior of Shadow Troop",
+   "page": "/kalonline/Monster12",
+   "match": "exact-normalized-name",
+   "height": 218,
+   "width": 141
+  },
+  "Hook of Shadow Troop": {
+   "file": "assets/mob_icons/shadow02.jpg",
+   "source_name": "Hook of Shadow Troop",
+   "page": "/kalonline/Monster12",
+   "match": "exact-normalized-name",
+   "height": 218,
+   "width": 141
+  },
+  "Watcher of Shadow Troop": {
+   "file": "assets/mob_icons/shadow03.jpg",
+   "source_name": "Watcher of Shadow Troop",
+   "page": "/kalonline/Monster12",
+   "match": "exact-normalized-name",
+   "height": 218,
+   "width": 141
+  },
+  "Chief Warrior of Shadow Troop": {
+   "file": "assets/mob_icons/shadow04.jpg",
+   "source_name": "Chief Warrior of Shadow Troop",
+   "page": "/kalonline/Monster12",
+   "match": "exact-normalized-name",
+   "height": 218,
+   "width": 141
+  },
+  "Spear Hand of Shadow Troop": {
+   "file": "assets/mob_icons/shadow05.jpg",
+   "source_name": "Spear Hand of Shadow Troop",
+   "page": "/kalonline/Monster12",
+   "match": "exact-normalized-name",
+   "height": 218,
+   "width": 141
+  },
+  "Lord of Shadow Troop": {
+   "file": "assets/mob_icons/shadow06.jpg",
+   "source_name": "Lord of Shadow Troop",
+   "page": "/kalonline/Monster12",
+   "match": "exact-normalized-name",
+   "height": 218,
+   "width": 141
+  },
+  "High Class Doggebi of Monster Face": {
+   "file": "assets/mob_icons/do10.jpg",
+   "source_name": "High Class Doggebi of Monster Face",
+   "page": "/kalonline/Monster13",
+   "match": "exact-normalized-name",
+   "height": 218,
+   "width": 141
+  },
+  "High Class Doggebi with a Gong": {
+   "file": "assets/mob_icons/do11.jpg",
+   "source_name": "High Class Doggebi with a Gong",
+   "page": "/kalonline/Monster13",
+   "match": "exact-normalized-name",
+   "height": 218,
+   "width": 141
+  },
+  "High Class Drunken Doggebi": {
+   "file": "assets/mob_icons/do12.jpg",
+   "source_name": "High Class Drunken Doggebi",
+   "page": "/kalonline/Monster13",
+   "match": "exact-normalized-name",
+   "height": 218,
+   "width": 141
+  },
+  "High Class Doggebi with a Mask of Black Crow": {
+   "file": "assets/mob_icons/do13.jpg",
+   "source_name": "High Class Doggebi with a Mask of Black Crow",
+   "page": "/kalonline/Monster13",
+   "match": "exact-normalized-name",
+   "height": 218,
+   "width": 141
+  },
+  "High Class Giant Doggebi": {
+   "file": "assets/mob_icons/do15.jpg",
+   "source_name": "High Class Giant Doggebi",
+   "page": "/kalonline/Monster13",
+   "match": "exact-normalized-name",
+   "height": 218,
+   "width": 141
+  },
+  "High Class Guardian of Doggebi": {
+   "file": "assets/mob_icons/do16.jpg",
+   "source_name": "High Class Guardian of Doggebi",
+   "page": "/kalonline/Monster13",
+   "match": "exact-normalized-name",
+   "height": 218,
+   "width": 141
+  },
+  "Personal Guard of Doggebi Lord": {
+   "file": "assets/mob_icons/do16.jpg",
+   "source_name": "Personal Guard of Doggebi Lord",
+   "page": "/kalonline/Monster13",
+   "match": "exact-normalized-name",
+   "height": 218,
+   "width": 141
+  },
+  "Demon Crack Soldier": {
+   "file": "assets/mob_icons/s1_mgn01.jpg",
+   "source_name": "Demon Crack Soldier",
+   "page": "/kalonline/Monster14",
+   "match": "exact-normalized-name",
+   "height": 218,
+   "width": 141
+  },
+  "Chief of Demon Crack Troop": {
+   "file": "assets/mob_icons/s1_mgn02.jpg",
+   "source_name": "Chief of Demon Crack Troop",
+   "page": "/kalonline/Monster14",
+   "match": "exact-normalized-name",
+   "height": 218,
+   "width": 141
+  },
+  "Monster of Demon Crack Troop": {
+   "file": "assets/mob_icons/s1_mgn03.jpg",
+   "source_name": "Monster of Demon Crack Troop",
+   "page": "/kalonline/Monster14",
+   "match": "exact-normalized-name",
+   "height": 218,
+   "width": 141
+  },
+  "White Beast of Demon Crack Troop": {
+   "file": "assets/mob_icons/s1_mgn04.jpg",
+   "source_name": "White Beast of Demon Crack Troop",
+   "page": "/kalonline/Monster14",
+   "match": "exact-normalized-name",
+   "height": 218,
+   "width": 141
+  },
+  "Blue Beast of Demon Crack Troop": {
+   "file": "assets/mob_icons/s1_mgn05.jpg",
+   "source_name": "Blue Beast of Demon Crack Troop",
+   "page": "/kalonline/Monster14",
+   "match": "exact-normalized-name",
+   "height": 218,
+   "width": 141
+  },
+  "Punitive Force of Demon Crack Troop": {
+   "file": "assets/mob_icons/s1_mgn06.jpg",
+   "source_name": "Punitive Force of Demon Crack Troop",
+   "page": "/kalonline/Monster14",
+   "match": "exact-normalized-name",
+   "height": 218,
+   "width": 141
+  },
+  "Hermit of White Beard": {
+   "file": "assets/mob_icons/s1_ss01.jpg",
+   "source_name": "Hermit of White Beard",
+   "page": "/kalonline/Monster15",
+   "match": "exact-normalized-name",
+   "height": 218,
+   "width": 141
+  },
+  "Hermit of Long Beard": {
+   "file": "assets/mob_icons/s1_ss02.jpg",
+   "source_name": "Hermit of Long Beard",
+   "page": "/kalonline/Monster15",
+   "match": "exact-normalized-name",
+   "height": 218,
+   "width": 141
+  },
+  "Hermit of Red Face": {
+   "file": "assets/mob_icons/s1_ss03.jpg",
+   "source_name": "Hermit of Red Face",
+   "page": "/kalonline/Monster15",
+   "match": "exact-normalized-name",
+   "height": 218,
+   "width": 141
+  },
+  "Hermit of Mask": {
+   "file": "assets/mob_icons/s1_ss04.jpg",
+   "source_name": "Hermit of Mask",
+   "page": "/kalonline/Monster15",
+   "match": "exact-normalized-name",
+   "height": 218,
+   "width": 141
+  },
+  "Tough Hermit": {
+   "file": "assets/mob_icons/s1_ss05.jpg",
+   "source_name": "Tough Hermit",
+   "page": "/kalonline/Monster15",
+   "match": "exact-normalized-name",
+   "height": 218,
+   "width": 141
+  },
+  "Hermit of Anger": {
+   "file": "assets/mob_icons/s1_ss06.jpg",
+   "source_name": "Hermit of Anger",
+   "page": "/kalonline/Monster15",
+   "match": "exact-normalized-name",
+   "height": 218,
+   "width": 141
+  },
+  "2nd Commander of The Royal Tomb": {
+   "file": "assets/mob_icons/hon13.jpg",
+   "source_name": "2nd Commander of The Royal Tomb",
+   "page": "/kalonline/Monster16",
+   "match": "exact-normalized-name",
+   "height": 218,
+   "width": 141
+  },
+  "1st Commander of The Royal Tomb": {
+   "file": "assets/mob_icons/hon15.jpg",
+   "source_name": "1st Commander of The Royal Tomb",
+   "page": "/kalonline/Monster16",
+   "match": "exact-normalized-name",
+   "height": 218,
+   "width": 141
+  },
+  "Imperial Commander of The Royal Tomb": {
+   "file": "assets/mob_icons/hon17.jpg",
+   "source_name": "Imperial Commander of The Royal Tomb",
+   "page": "/kalonline/Monster16",
+   "match": "exact-normalized-name",
+   "height": 218,
+   "width": 141
+  },
+  "Chief Guard of The Royal Tomb": {
+   "file": "assets/mob_icons/hon12.jpg",
+   "source_name": "Chief Guard of The Royal Tomb",
+   "page": "/kalonline/Monster16",
+   "match": "exact-normalized-name",
+   "height": 218,
+   "width": 141
+  },
+  "Chief Escort of The Royal Tomb": {
+   "file": "assets/mob_icons/hon14.jpg",
+   "source_name": "Chief Escort of The Royal Tomb",
+   "page": "/kalonline/Monster16",
+   "match": "exact-normalized-name",
+   "height": 218,
+   "width": 141
+  },
+  "Vicious Wild Boar": {
+   "file": "assets/mob_icons/DevaMoN07.jpg",
+   "source_name": "Vicious Wild Boar",
+   "page": "/kalonline/Monster17",
+   "match": "exact-normalized-name",
+   "height": 218,
+   "width": 141
+  },
+  "Vicious Wolf": {
+   "file": "assets/mob_icons/DevaMoN08.jpg",
+   "source_name": "Vicious Wolf",
+   "page": "/kalonline/Monster17",
+   "match": "exact-normalized-name",
+   "height": 218,
+   "width": 141
+  },
+  "Vicious Bear": {
+   "file": "assets/mob_icons/DevaMoN09.jpg",
+   "source_name": "Vicious Bear",
+   "page": "/kalonline/Monster17",
+   "match": "exact-normalized-name",
+   "height": 218,
+   "width": 141
+  },
+  "Vicious Master Scorpion": {
+   "file": "assets/mob_icons/DevaMoN10.jpg",
+   "source_name": "Vicious Master Scorpion",
+   "page": "/kalonline/Monster17",
+   "match": "exact-normalized-name",
+   "height": 218,
+   "width": 141
+  },
+  "Vicious Knoll": {
+   "file": "assets/mob_icons/DevaMoN11.jpg",
+   "source_name": "Vicious Knoll",
+   "page": "/kalonline/Monster17",
+   "match": "exact-normalized-name",
+   "height": 218,
+   "width": 141
+  },
+  "Mutant Demon": {
+   "file": "assets/mob_icons/SipMan_Img01.jpg",
+   "source_name": "Mutant Demon",
+   "page": "/kalonline/Monster18",
+   "match": "exact-normalized-name",
+   "height": 218,
+   "width": 141
+  },
+  "Mutant Demon Leader": {
+   "file": "assets/mob_icons/SipMan_Img02.jpg",
+   "source_name": "Mutant Demon Leader",
+   "page": "/kalonline/Monster18",
+   "match": "exact-normalized-name",
+   "height": 218,
+   "width": 141
+  },
+  "Bronze Man": {
+   "file": "assets/mob_icons/SipMan_Img03.jpg",
+   "source_name": "Bronze Man",
+   "page": "/kalonline/Monster18",
+   "match": "exact-normalized-name",
+   "height": 218,
+   "width": 141
+  },
+  "Bronze Giant": {
+   "file": "assets/mob_icons/SipMan_Img04.jpg",
+   "source_name": "Bronze Giant",
+   "page": "/kalonline/Monster18",
+   "match": "exact-normalized-name",
+   "height": 218,
+   "width": 141
+  },
+  "Goshi Warrior": {
+   "file": "assets/mob_icons/SipMan_Img05.jpg",
+   "source_name": "Goshi Warrior",
+   "page": "/kalonline/Monster18",
+   "match": "exact-normalized-name",
+   "height": 218,
+   "width": 141
+  },
+  "Goshi Leader": {
+   "file": "assets/mob_icons/SipMan_Img06.jpg",
+   "source_name": "Goshi Leader",
+   "page": "/kalonline/Monster18",
+   "match": "exact-normalized-name",
+   "height": 218,
+   "width": 141
+  },
+  "Banshee": {
+   "file": "assets/mob_icons/JesajangMonster_Img01.gif",
+   "source_name": "Banshee",
+   "page": "/kalonline/Monster19",
+   "match": "exact-normalized-name",
+   "width": 141,
+   "height": 218
+  },
+  "Skeleton": {
+   "file": "assets/mob_icons/JesajangMonster_Img02.gif",
+   "source_name": "Skeleton",
+   "page": "/kalonline/Monster19",
+   "match": "exact-normalized-name",
+   "width": 141,
+   "height": 218
+  },
+  "Elite Skeleton": {
+   "file": "assets/mob_icons/JesajangMonster_Img03.gif",
+   "source_name": "Elite Skeleton",
+   "page": "/kalonline/Monster19",
+   "match": "exact-normalized-name",
+   "width": 141,
+   "height": 218
+  },
+  "Skeleton Warrior": {
+   "file": "assets/mob_icons/JesajangMonster_Img04.gif",
+   "source_name": "Skeleton Warrior",
+   "page": "/kalonline/Monster19",
+   "match": "exact-normalized-name",
+   "width": 141,
+   "height": 218
+  },
+  "Skeleton Archer": {
+   "file": "assets/mob_icons/JesajangMonster_Img05.gif",
+   "source_name": "Skeleton Archer",
+   "page": "/kalonline/Monster19",
+   "match": "exact-normalized-name",
+   "width": 141,
+   "height": 218
+  },
+  "Wraith": {
+   "file": "assets/mob_icons/JesajangMonster_Img06.gif",
+   "source_name": "Wraith",
+   "page": "/kalonline/Monster19",
+   "match": "exact-normalized-name",
+   "width": 141,
+   "height": 218
+  },
+  "High Class Earth element": {
+   "file": "assets/mob_icons/JesajangMonster_Img07.gif",
+   "source_name": "High Class Earth element",
+   "page": "/kalonline/Monster19",
+   "match": "exact-normalized-name",
+   "width": 141,
+   "height": 218
+  },
+  "Earth element master": {
+   "file": "assets/mob_icons/JesajangMonster_Img07.gif",
+   "source_name": "Earth element master",
+   "page": "/kalonline/Monster19",
+   "match": "exact-normalized-name",
+   "width": 141,
+   "height": 218
+  },
+  "High Class Wood element": {
+   "file": "assets/mob_icons/JesajangMonster_Img08.gif",
+   "source_name": "High Class Wood element",
+   "page": "/kalonline/Monster19",
+   "match": "exact-normalized-name",
+   "width": 141,
+   "height": 218
+  },
+  "Wood element master": {
+   "file": "assets/mob_icons/JesajangMonster_Img08.gif",
+   "source_name": "Wood element master",
+   "page": "/kalonline/Monster19",
+   "match": "exact-normalized-name",
+   "width": 141,
+   "height": 218
+  },
+  "High Class Water element": {
+   "file": "assets/mob_icons/JesajangMonster_Img09.gif",
+   "source_name": "High Class Water element",
+   "page": "/kalonline/Monster19",
+   "match": "exact-normalized-name",
+   "width": 141,
+   "height": 218
+  },
+  "Water element master": {
+   "file": "assets/mob_icons/JesajangMonster_Img09.gif",
+   "source_name": "Water element master",
+   "page": "/kalonline/Monster19",
+   "match": "exact-normalized-name",
+   "width": 141,
+   "height": 218
+  },
+  "High Class Fire element": {
+   "file": "assets/mob_icons/JesajangMonster_Img10.gif",
+   "source_name": "High Class Fire element",
+   "page": "/kalonline/Monster19",
+   "match": "exact-normalized-name",
+   "width": 141,
+   "height": 218
+  },
+  "Fire element master": {
+   "file": "assets/mob_icons/JesajangMonster_Img10.gif",
+   "source_name": "Fire element master",
+   "page": "/kalonline/Monster19",
+   "match": "exact-normalized-name",
+   "width": 141,
+   "height": 218
+  },
+  "High Class Iron element": {
+   "file": "assets/mob_icons/JesajangMonster_Img11.gif",
+   "source_name": "High Class Iron element",
+   "page": "/kalonline/Monster19",
+   "match": "exact-normalized-name",
+   "width": 141,
+   "height": 218
+  },
+  "Iron element master": {
+   "file": "assets/mob_icons/JesajangMonster_Img11.gif",
+   "source_name": "Iron element master",
+   "page": "/kalonline/Monster19",
+   "match": "exact-normalized-name",
+   "width": 141,
+   "height": 218
+  },
+  "Guardian of I'Lyer": {
+   "file": "assets/mob_icons/JesajangMonster_Img12.gif",
+   "source_name": "Guardian of I'Lyer",
+   "page": "/kalonline/Monster19",
+   "match": "exact-normalized-name",
+   "width": 141,
+   "height": 218
+  },
+  "Summoned 1st Devil Monster": {
+   "file": "assets/mob_icons/mabyung07.jpg",
+   "source_name": "1st Devil Monster",
+   "page": "/kalonline/Monster06",
+   "match": "summoned-copy",
+   "height": 218,
+   "width": 141,
+   "match_base": "1st Devil Monster"
+  },
+  "Summoned 2nd Commander of The Royal Tomb": {
+   "file": "assets/mob_icons/hon13.jpg",
+   "source_name": "2nd Commander of The Royal Tomb",
+   "page": "/kalonline/Monster16",
+   "match": "summoned-copy",
+   "height": 218,
+   "width": 141,
+   "match_base": "2nd Commander of The Royal Tomb"
+  },
+  "Summoned 2nd Devil Monster": {
+   "file": "assets/mob_icons/mabyung06.jpg",
+   "source_name": "2nd Devil Monster",
+   "page": "/kalonline/Monster06",
+   "match": "summoned-copy",
+   "height": 218,
+   "width": 141,
+   "match_base": "2nd Devil Monster"
+  },
+  "Summoned Blue Beast of Demon Crack Troop": {
+   "file": "assets/mob_icons/s1_mgn05.jpg",
+   "source_name": "Blue Beast of Demon Crack Troop",
+   "page": "/kalonline/Monster14",
+   "match": "summoned-copy",
+   "height": 218,
+   "width": 141,
+   "match_base": "Blue Beast of Demon Crack Troop"
+  },
+  "Summoned Chief of Demon Crack Troop": {
+   "file": "assets/mob_icons/s1_mgn02.jpg",
+   "source_name": "Chief of Demon Crack Troop",
+   "page": "/kalonline/Monster14",
+   "match": "summoned-copy",
+   "height": 218,
+   "width": 141,
+   "match_base": "Chief of Demon Crack Troop"
+  },
+  "Summoned Chief of the Traitor's Hangout, Yoong-Gi": {
+   "file": "assets/mob_icons/Traitor07.jpg",
+   "source_name": "Chief of the Traitor's Hangout, Yoong-Gi",
+   "page": "/kalonline/Monster10",
+   "match": "summoned-copy",
+   "height": 218,
+   "width": 141,
+   "match_base": "Chief of the Traitor's Hangout, Yoong-Gi"
+  },
+  "Summoned Doggebi of Monster Face": {
+   "file": "assets/mob_icons/do01.jpg",
+   "source_name": "Doggebi of Monster Face",
+   "page": "/kalonline/Monster08",
+   "match": "summoned-copy",
+   "height": 218,
+   "width": 141,
+   "match_base": "Doggebi of Monster Face"
+  },
+  "Summoned Doggebi with a Mask of Black Crow": {
+   "file": "assets/mob_icons/do04.jpg",
+   "source_name": "Doggebi with a Mask of Black Crow",
+   "page": "/kalonline/Monster08",
+   "match": "summoned-copy",
+   "height": 218,
+   "width": 141,
+   "match_base": "Doggebi with a Mask of Black Crow"
+  },
+  "Summoned Doggebi with a Mask of Black Panther": {
+   "file": "assets/mob_icons/do05.jpg",
+   "source_name": "Doggebi with a Mask of Black Panther",
+   "page": "/kalonline/Monster08",
+   "match": "summoned-copy",
+   "height": 218,
+   "width": 141,
+   "match_base": "Doggebi with a Mask of Black Panther"
+  },
+  "Summoned Drunken Doggebi": {
+   "file": "assets/mob_icons/do03.jpg",
+   "source_name": "Drunken Doggebi",
+   "page": "/kalonline/Monster08",
+   "match": "summoned-copy",
+   "height": 218,
+   "width": 141,
+   "match_base": "Drunken Doggebi"
+  },
+  "Summoned Giant Doggebi": {
+   "file": "assets/mob_icons/do06.jpg",
+   "source_name": "Giant Doggebi",
+   "page": "/kalonline/Monster08",
+   "match": "summoned-copy",
+   "height": 218,
+   "width": 141,
+   "match_base": "Giant Doggebi"
+  },
+  "Summoned Gigantic Species Archer": {
+   "file": "assets/mob_icons/Horse02.jpg",
+   "source_name": "Gigantic Species Archer",
+   "page": "/kalonline/Monster11",
+   "match": "summoned-copy",
+   "height": 218,
+   "width": 141,
+   "match_base": "Gigantic Species Archer"
+  },
+  "Summoned Gigantic Species Berserk": {
+   "file": "assets/mob_icons/Horse05.jpg",
+   "source_name": "Gigantic Species Berserk",
+   "page": "/kalonline/Monster11",
+   "match": "summoned-copy",
+   "height": 218,
+   "width": 141,
+   "match_base": "Gigantic Species Berserk"
+  },
+  "Summoned Gigantic Species Ignoramus": {
+   "file": "assets/mob_icons/Horse03.jpg",
+   "source_name": "Gigantic Species Ignoramus",
+   "page": "/kalonline/Monster11",
+   "match": "summoned-copy",
+   "height": 218,
+   "width": 141,
+   "match_base": "Gigantic Species Ignoramus"
+  },
+  "Summoned Gigantic Species Master": {
+   "file": "assets/mob_icons/Horse07.jpg",
+   "source_name": "Gigantic Species Master",
+   "page": "/kalonline/Monster11",
+   "match": "summoned-copy",
+   "height": 218,
+   "width": 141,
+   "match_base": "Gigantic Species Master"
+  },
+  "Summoned Gigantic Species Murderer": {
+   "file": "assets/mob_icons/Horse06.jpg",
+   "source_name": "Gigantic Species Murderer",
+   "page": "/kalonline/Monster11",
+   "match": "summoned-copy",
+   "height": 218,
+   "width": 141,
+   "match_base": "Gigantic Species Murderer"
+  },
+  "Summoned Gigantic Species Shock Trooper": {
+   "file": "assets/mob_icons/Horse03.jpg",
+   "source_name": "Gigantic Species Shock Trooper",
+   "page": "/kalonline/Monster11",
+   "match": "summoned-copy",
+   "height": 218,
+   "width": 141,
+   "match_base": "Gigantic Species Shock Trooper"
+  },
+  "Summoned Gigantic Species Warrior": {
+   "file": "assets/mob_icons/Horse01.jpg",
+   "source_name": "Gigantic Species Warrior",
+   "page": "/kalonline/Monster11",
+   "match": "summoned-copy",
+   "height": 218,
+   "width": 141,
+   "match_base": "Gigantic Species Warrior"
+  },
+  "Summoned Guardian of Doggebi": {
+   "file": "assets/mob_icons/do07.jpg",
+   "source_name": "Guardian of Doggebi",
+   "page": "/kalonline/Monster08",
+   "match": "summoned-copy",
+   "height": 218,
+   "width": 141,
+   "match_base": "Guardian of Doggebi"
+  },
+  "Summoned Hermit of Anger": {
+   "file": "assets/mob_icons/s1_ss06.jpg",
+   "source_name": "Hermit of Anger",
+   "page": "/kalonline/Monster15",
+   "match": "summoned-copy",
+   "height": 218,
+   "width": 141,
+   "match_base": "Hermit of Anger"
+  },
+  "Summoned Hermit of Mask": {
+   "file": "assets/mob_icons/s1_ss04.jpg",
+   "source_name": "Hermit of Mask",
+   "page": "/kalonline/Monster15",
+   "match": "summoned-copy",
+   "height": 218,
+   "width": 141,
+   "match_base": "Hermit of Mask"
+  },
+  "Summoned Hermit of Red Face": {
+   "file": "assets/mob_icons/s1_ss03.jpg",
+   "source_name": "Hermit of Red Face",
+   "page": "/kalonline/Monster15",
+   "match": "summoned-copy",
+   "height": 218,
+   "width": 141,
+   "match_base": "Hermit of Red Face"
+  },
+  "Summoned Monster of Demon Crack Troop": {
+   "file": "assets/mob_icons/s1_mgn03.jpg",
+   "source_name": "Monster of Demon Crack Troop",
+   "page": "/kalonline/Monster14",
+   "match": "summoned-copy",
+   "height": 218,
+   "width": 141,
+   "match_base": "Monster of Demon Crack Troop"
+  },
+  "Summoned Mutant Demon Leader": {
+   "file": "assets/mob_icons/SipMan_Img02.jpg",
+   "source_name": "Mutant Demon Leader",
+   "page": "/kalonline/Monster18",
+   "match": "summoned-copy",
+   "height": 218,
+   "width": 141,
+   "match_base": "Mutant Demon Leader"
+  },
+  "Summoned Punitive Force of Demon Crack Troop": {
+   "file": "assets/mob_icons/s1_mgn06.jpg",
+   "source_name": "Punitive Force of Demon Crack Troop",
+   "page": "/kalonline/Monster14",
+   "match": "summoned-copy",
+   "height": 218,
+   "width": 141,
+   "match_base": "Punitive Force of Demon Crack Troop"
+  },
+  "Summoned Skeleton": {
+   "file": "assets/mob_icons/JesajangMonster_Img02.gif",
+   "source_name": "Skeleton",
+   "page": "/kalonline/Monster19",
+   "match": "summoned-copy",
+   "width": 141,
+   "height": 218,
+   "match_base": "Skeleton"
+  },
+  "Summoned Skeleton Archer": {
+   "file": "assets/mob_icons/JesajangMonster_Img05.gif",
+   "source_name": "Skeleton Archer",
+   "page": "/kalonline/Monster19",
+   "match": "summoned-copy",
+   "width": 141,
+   "height": 218,
+   "match_base": "Skeleton Archer"
+  },
+  "Summoned The Royal Tomb Keeper": {
+   "file": "assets/mob_icons/hon11.jpg",
+   "source_name": "The Royal Tomb Keeper",
+   "page": "/kalonline/Monster09",
+   "match": "summoned-copy",
+   "height": 218,
+   "width": 141,
+   "match_base": "The Royal Tomb Keeper"
+  },
+  "Summoned Trained Traitor Archer": {
+   "file": "assets/mob_icons/Traitor03.jpg",
+   "source_name": "Trained Traitor Archer",
+   "page": "/kalonline/Monster10",
+   "match": "summoned-copy",
+   "height": 218,
+   "width": 141,
+   "match_base": "Trained Traitor Archer"
+  },
+  "Summoned Trained Traitor Warrior": {
+   "file": "assets/mob_icons/Traitor02.jpg",
+   "source_name": "Trained Traitor Warrior",
+   "page": "/kalonline/Monster10",
+   "match": "summoned-copy",
+   "height": 218,
+   "width": 141,
+   "match_base": "Trained Traitor Warrior"
+  },
+  "Summoned White Beast of Demon Crack Troop": {
+   "file": "assets/mob_icons/s1_mgn04.jpg",
+   "source_name": "White Beast of Demon Crack Troop",
+   "page": "/kalonline/Monster14",
+   "match": "summoned-copy",
+   "height": 218,
+   "width": 141,
+   "match_base": "White Beast of Demon Crack Troop"
+  }
+ },
+ "unmatched_source_names": [
+  {
+   "source_name": "Wild Demon Spearhead",
+   "page": "/kalonline/Monster01",
+   "file": "assets/mob_icons/maguni03.jpg"
+  },
+  {
+   "source_name": "Wild Demon Plunderer",
+   "page": "/kalonline/Monster01",
+   "file": "assets/mob_icons/maguni04.jpg"
+  },
+  {
+   "source_name": "Wild Demon Escort Soldier",
+   "page": "/kalonline/Monster01",
+   "file": "assets/mob_icons/maguni06.jpg"
+  },
+  {
+   "source_name": "Wild Demon Escort Soldier",
+   "page": "/kalonline/Monster01",
+   "file": "assets/mob_icons/maguni06.jpg"
+  },
+  {
+   "source_name": "Wild Demon Escort Archer",
+   "page": "/kalonline/Monster01",
+   "file": "assets/mob_icons/maguni07.jpg"
+  },
+  {
+   "source_name": "Wild Demon Escort Archer",
+   "page": "/kalonline/Monster01",
+   "file": "assets/mob_icons/maguni07.jpg"
+  },
+  {
+   "source_name": "Wild Suicide Bomber",
+   "page": "/kalonline/Monster01",
+   "file": "assets/mob_icons/maguni08.jpg"
+  },
+  {
+   "source_name": "Wild Suicide Bomber",
+   "page": "/kalonline/Monster01",
+   "file": "assets/mob_icons/maguni08.jpg"
+  },
+  {
+   "source_name": "Despair Big Handed Inhabitant",
+   "page": "/kalonline/Monster02",
+   "file": "assets/mob_icons/gu01.jpg"
+  },
+  {
+   "source_name": "Despair Big Handed Slave",
+   "page": "/kalonline/Monster02",
+   "file": "assets/mob_icons/gu02.jpg"
+  },
+  {
+   "source_name": "Big Handed Warrior",
+   "page": "/kalonline/Monster02",
+   "file": "assets/mob_icons/gu03.jpg"
+  },
+  {
+   "source_name": "Despair Big Handed Blue Warrior",
+   "page": "/kalonline/Monster02",
+   "file": "assets/mob_icons/gu04.jpg"
+  },
+  {
+   "source_name": "Despair Big Handed Red Warrior",
+   "page": "/kalonline/Monster02",
+   "file": "assets/mob_icons/gu03.jpg"
+  },
+  {
+   "source_name": "Demon Carcass Scavenge",
+   "page": "/kalonline/Monster03",
+   "file": "assets/mob_icons/magun01.jpg"
+  },
+  {
+   "source_name": "Wild Demon Carcass Scavenger",
+   "page": "/kalonline/Monster03",
+   "file": "assets/mob_icons/magun01.jpg"
+  },
+  {
+   "source_name": "Assault Demon Infantry",
+   "page": "/kalonline/Monster03",
+   "file": "assets/mob_icons/magun03.jpg"
+  },
+  {
+   "source_name": "Assault Demon Throwing Soldier",
+   "page": "/kalonline/Monster03",
+   "file": "assets/mob_icons/magun04.jpg"
+  },
+  {
+   "source_name": "Ferocious Demon Shock Trooper",
+   "page": "/kalonline/Monster03",
+   "file": "assets/mob_icons/magun06.jpg"
+  },
+  {
+   "source_name": "Ferocious Demon Flag Bearer",
+   "page": "/kalonline/Monster03",
+   "file": "assets/mob_icons/magun07.jpg"
+  },
+  {
+   "source_name": "Assault Demon Band",
+   "page": "/kalonline/Monster03",
+   "file": "assets/mob_icons/magun08.jpg"
+  },
+  {
+   "source_name": "Assault Demon Armored Knight",
+   "page": "/kalonline/Monster03",
+   "file": "assets/mob_icons/magun09.jpg"
+  },
+  {
+   "source_name": "Elite Demon Mad Knight",
+   "page": "/kalonline/Monster03",
+   "file": "assets/mob_icons/magun10.jpg"
+  },
+  {
+   "source_name": "Elite Demon Commander",
+   "page": "/kalonline/Monster03",
+   "file": "assets/mob_icons/magun11.jpg"
+  },
+  {
+   "source_name": "Demon Water Dragon the Chained",
+   "page": "/kalonline/Monster04",
+   "file": "assets/mob_icons/su01.jpg"
+  },
+  {
+   "source_name": "Demon Water Dragon Predator the Chained",
+   "page": "/kalonline/Monster04",
+   "file": "assets/mob_icons/su02.jpg"
+  },
+  {
+   "source_name": "Seaside Hungry Demon Water Dragon",
+   "page": "/kalonline/Monster04",
+   "file": "assets/mob_icons/su02.jpg"
+  },
+  {
+   "source_name": "Demon Water Dragon Predator the Chained",
+   "page": "/kalonline/Monster04",
+   "file": "assets/mob_icons/su03.jpg"
+  },
+  {
+   "source_name": "Seaside Demon Water Dragon Predator",
+   "page": "/kalonline/Monster04",
+   "file": "assets/mob_icons/su03.jpg"
+  },
+  {
+   "source_name": "Demon Water Dragon Commander the Chained",
+   "page": "/kalonline/Monster04",
+   "file": "assets/mob_icons/su04.jpg"
+  },
+  {
+   "source_name": "Seaside Demon Water Dragon Commander",
+   "page": "/kalonline/Monster04",
+   "file": "assets/mob_icons/su04.jpg"
+  },
+  {
+   "source_name": "Ghost of Guard the Chained",
+   "page": "/kalonline/Monster05",
+   "file": "assets/mob_icons/wh05.jpg"
+  },
+  {
+   "source_name": "Fellow Traveler to the Other World the Chained",
+   "page": "/kalonline/Monster05",
+   "file": "assets/mob_icons/wh06.jpg"
+  },
+  {
+   "source_name": "Sealed Ghost Troop the Chained",
+   "page": "/kalonline/Monster05",
+   "file": "assets/mob_icons/wh07.jpg"
+  },
+  {
+   "source_name": "Dismal Skeleton Warrior (Sword)",
+   "page": "/kalonline/Monster09",
+   "file": "assets/mob_icons/hon01.jpg"
+  },
+  {
+   "source_name": "Runabout Skeleton Warrior (Sword)",
+   "page": "/kalonline/Monster09",
+   "file": "assets/mob_icons/hon01.jpg"
+  },
+  {
+   "source_name": "Dismal Skeleton Warrior (Lance)",
+   "page": "/kalonline/Monster09",
+   "file": "assets/mob_icons/hon02.jpg"
+  },
+  {
+   "source_name": "Runabout Skeleton Warrior (Lance)",
+   "page": "/kalonline/Monster09",
+   "file": "assets/mob_icons/hon02.jpg"
+  },
+  {
+   "source_name": "Chill Minister of the Royal Tomb)",
+   "page": "/kalonline/Monster09",
+   "file": "assets/mob_icons/hon03.jpg"
+  },
+  {
+   "source_name": "Sensitive Minister of the Royal Tomb)",
+   "page": "/kalonline/Monster09",
+   "file": "assets/mob_icons/hon03.jpg"
+  },
+  {
+   "source_name": "Chill Maid of Honor of the Royal Tomb)",
+   "page": "/kalonline/Monster09",
+   "file": "assets/mob_icons/hon04.jpg"
+  },
+  {
+   "source_name": "Sensitive Maid of Honor of the Royal Tomb)",
+   "page": "/kalonline/Monster09",
+   "file": "assets/mob_icons/hon04.jpg"
+  },
+  {
+   "source_name": "Sensitive The Royal Tomb Keeper (Sword)",
+   "page": "/kalonline/Monster09",
+   "file": "assets/mob_icons/hon05.jpg"
+  },
+  {
+   "source_name": "Chill The Royal Tomb Keeper (Sword)",
+   "page": "/kalonline/Monster09",
+   "file": "assets/mob_icons/hon05.jpg"
+  },
+  {
+   "source_name": "Sharp The Royal Tomb Keeper (Sword)",
+   "page": "/kalonline/Monster09",
+   "file": "assets/mob_icons/hon05.jpg"
+  },
+  {
+   "source_name": "Sensitive The Royal Tomb Keeper (Shield)",
+   "page": "/kalonline/Monster09",
+   "file": "assets/mob_icons/hon06.jpg"
+  },
+  {
+   "source_name": "Chill The Royal Tomb Keeper (Shield)",
+   "page": "/kalonline/Monster09",
+   "file": "assets/mob_icons/hon06.jpg"
+  },
+  {
+   "source_name": "Sharp The Royal Tomb Keeper (Shield)",
+   "page": "/kalonline/Monster09",
+   "file": "assets/mob_icons/hon06.jpg"
+  },
+  {
+   "source_name": "Sensitive The Royal Tomb Keeper (Spear)",
+   "page": "/kalonline/Monster09",
+   "file": "assets/mob_icons/hon07.jpg"
+  },
+  {
+   "source_name": "Chill The Royal Tomb Keeper (Spear)",
+   "page": "/kalonline/Monster09",
+   "file": "assets/mob_icons/hon07.jpg"
+  },
+  {
+   "source_name": "Sharp The Royal Tomb Keeper (Spear)",
+   "page": "/kalonline/Monster09",
+   "file": "assets/mob_icons/hon07.jpg"
+  },
+  {
+   "source_name": "Sensitive The Royal Tomb Keeper (Iron Hammer)",
+   "page": "/kalonline/Monster09",
+   "file": "assets/mob_icons/hon08.jpg"
+  },
+  {
+   "source_name": "Chill The Royal Tomb Keeper (Iron Hammer)",
+   "page": "/kalonline/Monster09",
+   "file": "assets/mob_icons/hon08.jpg"
+  },
+  {
+   "source_name": "Sharp The Royal Tomb Keeper (Iron Hammer)",
+   "page": "/kalonline/Monster09",
+   "file": "assets/mob_icons/hon08.jpg"
+  },
+  {
+   "source_name": "Traitor Trainee Warrior",
+   "page": "/kalonline/Monster10",
+   "file": "assets/mob_icons/Traitor01.jpg"
+  },
+  {
+   "source_name": "Traitor Apprentice Warrior",
+   "page": "/kalonline/Monster10",
+   "file": "assets/mob_icons/Traitor01.jpg"
+  },
+  {
+   "source_name": "Traitor Common Warrior",
+   "page": "/kalonline/Monster10",
+   "file": "assets/mob_icons/Traitor01.jpg"
+  },
+  {
+   "source_name": "Skilled Traitor Warrior",
+   "page": "/kalonline/Monster10",
+   "file": "assets/mob_icons/Traitor02.jpg"
+  },
+  {
+   "source_name": "Experienced Traitor Warrior",
+   "page": "/kalonline/Monster10",
+   "file": "assets/mob_icons/Traitor02.jpg"
+  },
+  {
+   "source_name": "Skilled Traitor Archer",
+   "page": "/kalonline/Monster10",
+   "file": "assets/mob_icons/Traitor03.jpg"
+  },
+  {
+   "source_name": "Experienced Traitor Archer",
+   "page": "/kalonline/Monster10",
+   "file": "assets/mob_icons/Traitor03.jpg"
+  },
+  {
+   "source_name": "Traitor's Nest Scout",
+   "page": "/kalonline/Monster10",
+   "file": "assets/mob_icons/Traitor04.jpg"
+  },
+  {
+   "source_name": "Traitor's Nest Keeper",
+   "page": "/kalonline/Monster10",
+   "file": "assets/mob_icons/Traitor04.jpg"
+  },
+  {
+   "source_name": "Traitor's Nest Guard",
+   "page": "/kalonline/Monster10",
+   "file": "assets/mob_icons/Traitor04.jpg"
+  },
+  {
+   "source_name": "Traitor's Nest Hunter",
+   "page": "/kalonline/Monster10",
+   "file": "assets/mob_icons/Traitor05.jpg"
+  },
+  {
+   "source_name": "Traitor's Nest Archer",
+   "page": "/kalonline/Monster10",
+   "file": "assets/mob_icons/Traitor05.jpg"
+  },
+  {
+   "source_name": "Traitor's Nest Sniper",
+   "page": "/kalonline/Monster10",
+   "file": "assets/mob_icons/Traitor05.jpg"
+  },
+  {
+   "source_name": "Traitor's Nest Regular Warrior",
+   "page": "/kalonline/Monster10",
+   "file": "assets/mob_icons/Traitor06.jpg"
+  },
+  {
+   "source_name": "Traitor's Nest Elite Warrior",
+   "page": "/kalonline/Monster10",
+   "file": "assets/mob_icons/Traitor06.jpg"
+  },
+  {
+   "source_name": "Traitor's Nest Honorary Warrior",
+   "page": "/kalonline/Monster10",
+   "file": "assets/mob_icons/Traitor06.jpg"
+  },
+  {
+   "source_name": "Gigantic Species trainee Warrior",
+   "page": "/kalonline/Monster11",
+   "file": "assets/mob_icons/Horse01.jpg"
+  },
+  {
+   "source_name": "Gigantic Species common Warrior",
+   "page": "/kalonline/Monster11",
+   "file": "assets/mob_icons/Horse01.jpg"
+  },
+  {
+   "source_name": "Wandering Gigantic Species Warrior",
+   "page": "/kalonline/Monster11",
+   "file": "assets/mob_icons/Horse01.jpg"
+  },
+  {
+   "source_name": "Wandering Gigantic Species Archer",
+   "page": "/kalonline/Monster11",
+   "file": "assets/mob_icons/Horse01.jpg"
+  },
+  {
+   "source_name": "Gigantic Species trainee Archer",
+   "page": "/kalonline/Monster11",
+   "file": "assets/mob_icons/Horse02.jpg"
+  },
+  {
+   "source_name": "Gigantic Species common Archer",
+   "page": "/kalonline/Monster11",
+   "file": "assets/mob_icons/Horse02.jpg"
+  },
+  {
+   "source_name": "Savage Gigantic Species Warrior",
+   "page": "/kalonline/Monster11",
+   "file": "assets/mob_icons/Horse02.jpg"
+  },
+  {
+   "source_name": "Savage Gigantic Species Archer",
+   "page": "/kalonline/Monster11",
+   "file": "assets/mob_icons/Horse02.jpg"
+  },
+  {
+   "source_name": "Ferocious Gigantic Species Archer",
+   "page": "/kalonline/Monster11",
+   "file": "assets/mob_icons/Horse02.jpg"
+  },
+  {
+   "source_name": "Ferocious Gigantic Species Shock Trooper",
+   "page": "/kalonline/Monster11",
+   "file": "assets/mob_icons/Horse03.jpg"
+  },
+  {
+   "source_name": "Ferocious Gigantic Species Shock Trooper",
+   "page": "/kalonline/Monster11",
+   "file": "assets/mob_icons/Horse03.jpg"
+  },
+  {
+   "source_name": "Savage Gigantic Species Shock Trooper",
+   "page": "/kalonline/Monster11",
+   "file": "assets/mob_icons/Horse03.jpg"
+  },
+  {
+   "source_name": "Furious Gigantic Species Shock Trooper",
+   "page": "/kalonline/Monster11",
+   "file": "assets/mob_icons/Horse03.jpg"
+  },
+  {
+   "source_name": "Gigantic Species elite Ignoramus",
+   "page": "/kalonline/Monster11",
+   "file": "assets/mob_icons/Horse04.jpg"
+  },
+  {
+   "source_name": "Sharp Gigantic Species Ignoramus",
+   "page": "/kalonline/Monster11",
+   "file": "assets/mob_icons/Horse04.jpg"
+  },
+  {
+   "source_name": "Furious Gigantic Species Ignoramus",
+   "page": "/kalonline/Monster11",
+   "file": "assets/mob_icons/Horse04.jpg"
+  },
+  {
+   "source_name": "Corrupted Gigantic Species Ignoramus",
+   "page": "/kalonline/Monster11",
+   "file": "assets/mob_icons/Horse04.jpg"
+  },
+  {
+   "source_name": "Corrupted Gigantic Species Berserk",
+   "page": "/kalonline/Monster11",
+   "file": "assets/mob_icons/Horse05.jpg"
+  },
+  {
+   "source_name": "Savage Gigantic Species Berserk",
+   "page": "/kalonline/Monster11",
+   "file": "assets/mob_icons/Horse05.jpg"
+  },
+  {
+   "source_name": "Bounded Gigantic Species Berserk",
+   "page": "/kalonline/Monster11",
+   "file": "assets/mob_icons/Horse05.jpg"
+  },
+  {
+   "source_name": "Elite Gigantic Species Berserk",
+   "page": "/kalonline/Monster11",
+   "file": "assets/mob_icons/Horse05.jpg"
+  },
+  {
+   "source_name": "Corrupted Gigantic Species Killer",
+   "page": "/kalonline/Monster11",
+   "file": "assets/mob_icons/Horse06.jpg"
+  },
+  {
+   "source_name": "Bounded Gigantic Species Murderer",
+   "page": "/kalonline/Monster11",
+   "file": "assets/mob_icons/Horse06.jpg"
+  },
+  {
+   "source_name": "Elite Gigantic Species Murderer",
+   "page": "/kalonline/Monster11",
+   "file": "assets/mob_icons/Horse06.jpg"
+  },
+  {
+   "source_name": "Dark Gigantic Species Murderer",
+   "page": "/kalonline/Monster11",
+   "file": "assets/mob_icons/Horse06.jpg"
+  },
+  {
+   "source_name": "Dark Gigantic Species Master",
+   "page": "/kalonline/Monster11",
+   "file": "assets/mob_icons/Horse07.jpg"
+  },
+  {
+   "source_name": "Small Green E-Moogi's water",
+   "page": "/kalonline/Monster17",
+   "file": "assets/mob_icons/s2_mgn18.jpg"
+  },
+  {
+   "source_name": "Small Brown E-Moogi's water",
+   "page": "/kalonline/Monster17",
+   "file": "assets/mob_icons/s2_mgn19.jpg"
+  },
+  {
+   "source_name": "Twisted Brown E-Moogi's wind",
+   "page": "/kalonline/Monster17",
+   "file": "assets/mob_icons/s2_mgn19.jpg"
+  },
+  {
+   "source_name": "Twisted Green E-Moogi's wind",
+   "page": "/kalonline/Monster17",
+   "file": "assets/mob_icons/s2_mgn18.jpg"
+  },
+  {
+   "source_name": "Big Green E-Moogi's Earth",
+   "page": "/kalonline/Monster17",
+   "file": "assets/mob_icons/s2_mgn18.jpg"
+  },
+  {
+   "source_name": "Big Brown E-Moogi's Earth",
+   "page": "/kalonline/Monster17",
+   "file": "assets/mob_icons/s2_mgn19.jpg"
+  },
+  {
+   "source_name": "Ghost of Smith in E-Mok Island water",
+   "page": "/kalonline/Monster17",
+   "file": "assets/mob_icons/wh04.jpg"
+  },
+  {
+   "source_name": "Ghost of Guard in E-Mok Island water",
+   "page": "/kalonline/Monster17",
+   "file": "assets/mob_icons/wh05.jpg"
+  },
+  {
+   "source_name": "Sealed Ghost in E-Mok Island wind",
+   "page": "/kalonline/Monster17",
+   "file": "assets/mob_icons/wh02.jpg"
+  },
+  {
+   "source_name": "Sealed Ghost in E-Mok Island wind",
+   "page": "/kalonline/Monster17",
+   "file": "assets/mob_icons/wh07.jpg"
+  },
+  {
+   "source_name": "Twisted Demon Guarder Earth",
+   "page": "/kalonline/Monster17",
+   "file": "assets/mob_icons/s2_mgn14.jpg"
+  },
+  {
+   "source_name": "Twisted Demon Patrol Earth",
+   "page": "/kalonline/Monster17",
+   "file": "assets/mob_icons/s2_mgn15.jpg"
+  },
+  {
+   "source_name": "Twisted Demon Soldier water",
+   "page": "/kalonline/Monster17",
+   "file": "assets/mob_icons/s2_mgn17.jpg"
+  },
+  {
+   "source_name": "Twisted Demon Warrior water",
+   "page": "/kalonline/Monster17",
+   "file": "assets/mob_icons/s2_mgn16.jpg"
+  },
+  {
+   "source_name": "Twisted Demon Guarder wind",
+   "page": "/kalonline/Monster17",
+   "file": "assets/mob_icons/s2_mgn14.jpg"
+  },
+  {
+   "source_name": "Twisted Demon Patrol wind",
+   "page": "/kalonline/Monster17",
+   "file": "assets/mob_icons/s2_mgn15.jpg"
+  },
+  {
+   "source_name": "Twisted Demon Warrior Earth",
+   "page": "/kalonline/Monster17",
+   "file": "assets/mob_icons/s2_mgn16.jpg"
+  },
+  {
+   "source_name": "Twisted Demon Soldier Earth",
+   "page": "/kalonline/Monster17",
+   "file": "assets/mob_icons/s2_mgn17.jpg"
+  },
+  {
+   "source_name": "Twisted Demon Defender water",
+   "page": "/kalonline/Monster17",
+   "file": "assets/mob_icons/s2_mgn20.jpg"
+  },
+  {
+   "source_name": "Twisted Demon Platoon leader water",
+   "page": "/kalonline/Monster17",
+   "file": "assets/mob_icons/s2_mgn21.jpg"
+  },
+  {
+   "source_name": "Twisted Demon General water",
+   "page": "/kalonline/Monster17",
+   "file": "assets/mob_icons/s2_mgn22.jpg"
+  }
+ ],
+ "still_without_a_picture": [
+  "??????? ????????",
+  "A Thousand year old E-Moogi",
+  "Angry Doggebi of Monster Face",
+  "Archer of the Traitor's Hangout",
+  "Ball of Soul",
+  "Big Brown E-Moogi",
+  "Big Green E-Moogi",
+  "Black Armored Insect from Hell",
+  "Black Santa",
+  "Black Santa Clause",
+  "Black Wolf",
+  "Blue Big Tower",
+  "Blue Dragon Cannon",
+  "Blue Small Tower",
+  "Blue Team Flag",
+  "Bogy Archer",
+  "Bogy Captain",
+  "Bogy General",
+  "Bogy Rider",
+  "Boss of Demon Worker from Hell",
+  "Broken Gate of Prayer",
+  "Brown Bear",
+  "Brown Wolf",
+  "Cannon Ball of Blue Dragon Cannon",
+  "Cannon Ball of Red Bird Cannon",
+  "Cannon Ball of White Tiger Cannon",
+  "Castle Gate",
+  "Corpse Fountain",
+  "Corrupt Guardian of Doggebi",
+  "Crazed Demon Water Dragon Commander",
+  "Crazy Demon Conjurator",
+  "Crazy Demon Worker",
+  "Crazy Demon Worker's Leader",
+  "Crazy Demon soldier",
+  "Crazy Xill Warrior",
+  "Cruel Ghost of Guard",
+  "Crumbling sand fragment",
+  "D'evah's Guardian",
+  "D'evah's Royal Guard",
+  "D'evah's Special Guard",
+  "Dawn Shadow of D'evah",
+  "Deadly sand [Mautareta] of Training Field",
+  "Deadly sand[Mautareta]",
+  "Death Harvester",
+  "Death Knight",
+  "Death Lich",
+  "Death Thorn",
+  "Degenarated Twisted Demon",
+  "Demon Guard",
+  "Demon Infantry from Hell",
+  "Demon Nest",
+  "Demon Patrol",
+  "Demon Queen of Training Field",
+  "Demon Troop's Catapult",
+  "Demon Worker",
+  "Desert Scorpion",
+  "Destructive sand[Mautareta]",
+  "Devil",
+  "Devil Shadow of D'evah",
+  "Doggebi Lord of Training Field",
+  "Doggebi of Time",
+  "Dunamic",
+  "Dunamic of Training Field",
+  "Dungeon Archer",
+  "Dungeon Ax Soldier",
+  "Dungeon Guard",
+  "Dungeon Mad Knight",
+  "Dungeon Mighty Knight",
+  "Dungeon Scout Soldier",
+  "Dungeon Shield Soldier",
+  "Dungeon Shock Trooper",
+  "Dungeon Warrior",
+  "Dungeon combat trooper",
+  "Egg",
+  "Elite Black Santa",
+  "Elite Dungeon Ax Soldier",
+  "Elite Dungeon Guard",
+  "Elite Dungeon Scout Soldier",
+  "Elite Dungeon Shield Soldier",
+  "Elite Dungeon Shock Trooper",
+  "Elite Dungeon Warrior",
+  "Elite Dungeon combat trooper",
+  "Elite Skeleton Archer",
+  "Elite Skeleton Warrior",
+  "Elite bad Santa Clause",
+  "Evil Black Santa",
+  "Evil Santa Clause",
+  "Evil Spirit",
+  "Evolve Zombie",
+  "Fanatic Magician of Land God (Earth)",
+  "Fanatic warrior of Land God (Earth)",
+  "Firmamental Pillar",
+  "Flame Fountain",
+  "Flame Plants",
+  "For the appearance for Ghost of Dragon",
+  "Frame Statue",
+  "Frenzy Demon Flag Bearer",
+  "Frost Fountain",
+  "Frozen Skeleton Warrior (Water)",
+  "Gale Skeleton Warrior (Wind)",
+  "Gale Skeleton Wizard (Wind)",
+  "Gale Zombie (Wind)",
+  "Gate of Prayer",
+  "Ghost Troop",
+  "Ghost of Dragon",
+  "Ghost of Dragon of Training Field",
+  "Ghost of Guard in E-Mok Island from Hell",
+  "Ghost of Smith in E-Mok Island",
+  "Giant",
+  "Giant Tower",
+  "Gift Box",
+  "Gigantic Species Ignoramus from Hell",
+  "Gigantic Species Killer",
+  "Gigantic Species Master from Hell",
+  "Goblin",
+  "Goblin Conjurator",
+  "Goblin Scout Soldier",
+  "Goblin Warrior",
+  "Goblin soldier",
+  "Goofy Demon Band",
+  "Great Armored Knight",
+  "Great Wolf",
+  "Guard of D'evah",
+  "Guard of D'evah's Commander",
+  "Guard of the Traitor's Hangout",
+  "Guild Flag",
+  "Hell Gate Keeper",
+  "Hell Shadow of D'evah",
+  "Hell's Virago",
+  "Hermit of Anger from Hell",
+  "Hermit of Long Beard from Hell",
+  "Hermit of Red Face from Hell",
+  "High Class Doggebi with a Mask of Black Panther",
+  "High Class Security guard of the priest",
+  "I'Lyer",
+  "Ifrit",
+  "Ironclaw of Hell",
+  "Knight of the Traitor's Hangout",
+  "Knoll",
+  "Knoll Archer",
+  "Knoll Mad Warrior",
+  "Knoll Warrior",
+  "Knoll soldier",
+  "Knoll's hideaway 1",
+  "Knoll's hideaway 2",
+  "Knoll's hideaway 3",
+  "Knoll's hideaway 4",
+  "Land Bison (Earth)",
+  "Land Brown Bear (Earth)",
+  "Larva of destruction",
+  "Little Black Santa",
+  "Little bad Santa Clause",
+  "Lord Bisaim",
+  "Lord of Shadow Troop from Hell",
+  "Lv. 10 Test monster",
+  "Lv. 100 Test monster",
+  "Lv. 20 Test monster",
+  "Lv. 30 Test monster",
+  "Lv. 40 Test monster",
+  "Lv. 50 Test monster",
+  "Lv. 60 Test monster",
+  "Lv. 70 Test monster",
+  "Lv. 80 Test monster",
+  "Lv. 90 Test monster",
+  "Mad Demon Infantry",
+  "Manager of Demon Worker",
+  "Master Black Santa",
+  "Master Skeleton Archer",
+  "Master Skeleton Warrior",
+  "Master Wraith",
+  "Master bad Santa Clause",
+  "Master of Dead people",
+  "Minister of the Royal Tomb from Hell",
+  "Minor earth element",
+  "Miracle's Stone 1",
+  "Miracle's Stone 2",
+  "Miracle's Stone 3",
+  "Miracle's Stone 4",
+  "Movement Plate",
+  "Mutated Warrior of Shadow Troop",
+  "Nail of Dragon",
+  "Nightmare shadow of D'evah",
+  "Noktoo Assassin",
+  "Noktoo General",
+  "Noktoo Magician",
+  "Noktoo Soldier",
+  "Obsessed Devil Soldier",
+  "Odd Demon Mad Knight",
+  "Odd Demon Scout",
+  "Ohgeuma",
+  "One-Legged Ghost",
+  "Portable Bomb",
+  "Portal Stone",
+  "Pumpkin",
+  "Red Big Tower",
+  "Red Bird Cannon",
+  "Red Small Tower",
+  "Red Team Flag",
+  "Regrettable Ghost of Young Woman",
+  "Ruins Destroyer",
+  "Ruled by a Rotten Skeleton Warrior of theRoyal Tomb",
+  "Ruler of Wasteland",
+  "Ruler of purgatory",
+  "Rusty Blade",
+  "Scorpion",
+  "Scorpion prince",
+  "Seal of Hell",
+  "Sealed Commanders",
+  "Sealed Ghost in E-Mok Island",
+  "Sealed Ghost in E-Mok Island from Hell",
+  "Sealed Hermit",
+  "Security guard of the priest",
+  "Shadow Murder",
+  "Skeleton Soldier",
+  "Small Brown E-Moogi",
+  "Small Green E-Moogi",
+  "Small Green E-Moogi from Hell",
+  "Snow Monster",
+  "Solid sand fragment",
+  "Spirit of Dead One",
+  "Starved Xill soldier",
+  "Statue of Prayer",
+  "Steel Arrow trap",
+  "Storm blade",
+  "Summon Stone",
+  "Summoned 3rd Commander of The Royal Tomb",
+  "Summoned Archer of the Traitor's Hangout",
+  "Summoned Bogy Archer",
+  "Summoned Bogy General",
+  "Summoned Brown Bear",
+  "Summoned Chief of Angry Doggebi Troop",
+  "Summoned Crazy Demon Warrior",
+  "Summoned Crazy Demon Worker's Leader",
+  "Summoned Earth element",
+  "Summoned Fire element",
+  "Summoned Giant",
+  "Summoned Goblin",
+  "Summoned Goblin Conjurator",
+  "Summoned Goblin Scout Soldier",
+  "Summoned Goblin soldier",
+  "Summoned Guard of the Traitors Hangout",
+  "Summoned Iron element",
+  "Summoned Knight of the Traitor's Hangout",
+  "Summoned Knoll",
+  "Summoned Knoll Archer",
+  "Summoned Knoll Mad Warrior",
+  "Summoned Knoll soldier",
+  "Summoned Manager of Demon Worker",
+  "Summoned Master Skeleton Archer",
+  "Summoned Master Skeleton Warrior",
+  "Summoned Master Wraith",
+  "Summoned Minor earth element",
+  "Summoned Minor fire element",
+  "Summoned Minor iron element",
+  "Summoned Minor water element",
+  "Summoned Minor wood element",
+  "Summoned Noktoo Assassin",
+  "Summoned Noktoo Magician",
+  "Summoned Noktoo Soldier",
+  "Summoned Scorpion",
+  "Summoned Skeleton Soldier",
+  "Summoned Traitor Warrior",
+  "Summoned Twisted Brown E-Moogi",
+  "Summoned Twisted Demon Defender",
+  "Summoned Twisted Demon Soldier",
+  "Summoned Twisted Demon Warrior",
+  "Summoned Twisted Green E-Moogi",
+  "Summoned Water element",
+  "Summoned Wild Boar",
+  "Summoned Wolf",
+  "Summoned Wood element",
+  "Summoned Xill",
+  "Summoned Xill Archer",
+  "Swamp Naga tribe Archer (Water)",
+  "Swamp Naga tribe Warrior (Water)",
+  "Swamp Zombie (Water)",
+  "The first ghost",
+  "Thief Santa Claus",
+  "Tobyong",
+  "Tobyong Giant",
+  "Tobyong Magician",
+  "Traitor Warrior",
+  "Treasure Box",
+  "True Firmamental Pillar",
+  "Twisted Brown E-Moogi",
+  "Twisted Demon Defender from Hell",
+  "Twisted Demon Guard",
+  "Twisted Demon Officer of Attack",
+  "Twisted Demon Soldier",
+  "Twisted Demon Soldier from Hell",
+  "Twisted Green E-Moogi",
+  "Twisted Imperial Demon Commander",
+  "Tyrant of E-Mok",
+  "Ugly Soul",
+  "Upgraded Blue Big Tower",
+  "Upgraded Blue Small Tower",
+  "Upgraded Red Big Tower",
+  "Upgraded Red Small Tower",
+  "Use when E-Moogi is dead",
+  "Virgin Ghost",
+  "Wanderer of sand",
+  "Weak bad Santa Clause",
+  "White Tiger Cannon",
+  "Wild Boar",
+  "Wolf",
+  "Wolf Commander",
+  "Wooden Box",
+  "Wooden doll",
+  "Wounded Conjurator Zombie",
+  "Wounded Evolve Zombie",
+  "Wreckage of Blue Dragon Cannon",
+  "Wreckage of Red Bird Cannon",
+  "Wreckage of White Tiger Cannon",
+  "Xill",
+  "Xill Archer",
+  "Xill Conjurator",
+  "Zombie Conjurator",
+  "adjutant of invading army",
+  "betrayal Minister of the Royal Tomb",
+  "big bear fight beechun brain",
+  "big bear fight beechun brain remains",
+  "cheios",
+  "current fight beechun brain",
+  "current fight beechun brain remains",
+  "executive officer of invading army",
+  "general of invading army",
+  "private of invading army",
+  "summoning stone",
+  "watermelon"
+ ]
+}

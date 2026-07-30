@@ -1,11 +1,301 @@
 {
- "note": "Map pins and quest-to-pin links parsed from the player quest guide. Pin x/y are percentages of the rendered map image, so they are only correct against that map's own artwork.",
- "source_file": "kal_quest_guide_full_10 (3).html",
- "source_sha256": "63956590ecd8fd5e5e5fb2bbc8d6d6030b5aed139a66def973dc1c1e5770ac36",
- "map_count": 9,
- "pin_count": 80,
- "quest_count": 91,
- "stage_count": 36,
+ "note": "Map pins, walkthrough stages and NPC photos parsed from the player quest guide. Pin x/y are percentages of the rendered map image, so they are only correct against that map's own artwork.",
+ "source_file": "kal_quest_guide_full-30.7.-v1.0.html",
+ "source_revision": "v1.0 (30.7.)",
+ "source_sha256": "4bddfd5a52fe5fc59b72bd277f5806c5f0d2492a29c0c66cf86b3639fa03bda0",
+ "map_count": 8,
+ "pin_count": 90,
+ "quest_count": 71,
+ "stage_count": 31,
+ "photo_count": 77,
+ "photo_credit": {
+  "name": "the guide's author",
+  "url": "",
+  "note": "in-game NPC screenshots, used with permission"
+ },
+ "mob_icon_credit": {
+  "name": "gameagit.com",
+  "url": "https://www.gameagit.com/kalonline/Monster01",
+  "note": "monster artwork"
+ },
+ "mob_icons": {
+  "ms_m1_01.jpg": {
+   "url": "https://www.gameagit.com/images/kalonline/guide/maguni01.jpg",
+   "file": ""
+  },
+  "ms_m1_02.jpg": {
+   "url": "https://www.gameagit.com/images/kalonline/guide/maguni02.jpg",
+   "file": ""
+  },
+  "ms_m1_03.jpg": {
+   "url": "https://www.gameagit.com/images/kalonline/guide/maguni03.jpg",
+   "file": ""
+  },
+  "ms_m1_04.jpg": {
+   "url": "https://www.gameagit.com/images/kalonline/guide/maguni04.jpg",
+   "file": ""
+  },
+  "ms_m1_06.jpg": {
+   "url": "https://www.gameagit.com/images/kalonline/guide/maguni06.jpg",
+   "file": ""
+  },
+  "ms_m1_07.jpg": {
+   "url": "https://www.gameagit.com/images/kalonline/guide/maguni07.jpg",
+   "file": ""
+  },
+  "ms_m1_08.jpg": {
+   "url": "https://www.gameagit.com/images/kalonline/guide/maguni08.jpg",
+   "file": ""
+  },
+  "ms_m2_01.jpg": {
+   "url": "https://www.gameagit.com/images/kalonline/guide/gu01.jpg",
+   "file": ""
+  },
+  "ms_m2_02.jpg": {
+   "url": "https://www.gameagit.com/images/kalonline/guide/gu02.jpg",
+   "file": ""
+  },
+  "ms_m2_03.jpg": {
+   "url": "https://www.gameagit.com/images/kalonline/guide/gu03.jpg",
+   "file": ""
+  },
+  "ms_m2_04.jpg": {
+   "url": "https://www.gameagit.com/images/kalonline/guide/gu04.jpg",
+   "file": ""
+  },
+  "ms_m3_01.jpg": {
+   "url": "https://www.gameagit.com/images/kalonline/guide/magun01.jpg",
+   "file": ""
+  },
+  "ms_m3_02.jpg": {
+   "url": "https://www.gameagit.com/images/kalonline/guide/magun02.jpg",
+   "file": ""
+  },
+  "ms_m3_03.jpg": {
+   "url": "https://www.gameagit.com/images/kalonline/guide/magun03.jpg",
+   "file": ""
+  },
+  "ms_m3_04.jpg": {
+   "url": "https://www.gameagit.com/images/kalonline/guide/magun04.jpg",
+   "file": ""
+  },
+  "ms_m3_05.jpg": {
+   "url": "https://www.gameagit.com/images/kalonline/guide/magun05.jpg",
+   "file": ""
+  },
+  "ms_m3_06.jpg": {
+   "url": "https://www.gameagit.com/images/kalonline/guide/magun06.jpg",
+   "file": ""
+  },
+  "ms_m3_07.jpg": {
+   "url": "https://www.gameagit.com/images/kalonline/guide/magun07.jpg",
+   "file": ""
+  },
+  "ms_m3_08.jpg": {
+   "url": "https://www.gameagit.com/images/kalonline/guide/magun08.jpg",
+   "file": ""
+  },
+  "ms_m3_09.jpg": {
+   "url": "https://www.gameagit.com/images/kalonline/guide/magun09.jpg",
+   "file": ""
+  },
+  "ms_m3_10.jpg": {
+   "url": "https://www.gameagit.com/images/kalonline/guide/magun10.jpg",
+   "file": ""
+  },
+  "ms_m3_11.jpg": {
+   "url": "https://www.gameagit.com/images/kalonline/guide/magun11.jpg",
+   "file": ""
+  },
+  "ms_m4_01.jpg": {
+   "url": "https://www.gameagit.com/images/kalonline/guide/su01.jpg",
+   "file": ""
+  },
+  "ms_m4_02.jpg": {
+   "url": "https://www.gameagit.com/images/kalonline/guide/su02.jpg",
+   "file": ""
+  },
+  "ms_m4_03.jpg": {
+   "url": "https://www.gameagit.com/images/kalonline/guide/su03.jpg",
+   "file": ""
+  },
+  "ms_m4_04.jpg": {
+   "url": "https://www.gameagit.com/images/kalonline/guide/su04.jpg",
+   "file": ""
+  },
+  "ms_m5_01.jpg": {
+   "url": "https://www.gameagit.com/images/kalonline/guide/wh01.jpg",
+   "file": ""
+  },
+  "ms_m5_02.jpg": {
+   "url": "https://www.gameagit.com/images/kalonline/guide/wh02.jpg",
+   "file": ""
+  },
+  "ms_m5_03.jpg": {
+   "url": "https://www.gameagit.com/images/kalonline/guide/wh03.jpg",
+   "file": ""
+  },
+  "ms_m5_04.jpg": {
+   "url": "https://www.gameagit.com/images/kalonline/guide/wh04.jpg",
+   "file": ""
+  },
+  "ms_m5_05.jpg": {
+   "url": "https://www.gameagit.com/images/kalonline/guide/wh05.jpg",
+   "file": ""
+  },
+  "ms_m5_06.jpg": {
+   "url": "https://www.gameagit.com/images/kalonline/guide/wh06.jpg",
+   "file": ""
+  },
+  "ms_m5_07.jpg": {
+   "url": "https://www.gameagit.com/images/kalonline/guide/wh07.jpg",
+   "file": ""
+  },
+  "ms_m6_01.jpg": {
+   "url": "https://www.gameagit.com/images/kalonline/guide/mabyung01.jpg",
+   "file": ""
+  },
+  "ms_m6_02b.jpg": {
+   "url": "https://www.gameagit.com/images/kalonline/guide/mabyung02.jpg",
+   "file": ""
+  },
+  "ms_m6_03.jpg": {
+   "url": "https://www.gameagit.com/images/kalonline/guide/mabyung03.jpg",
+   "file": ""
+  },
+  "ms_m6_04.jpg": {
+   "url": "https://www.gameagit.com/images/kalonline/guide/mabyung04.jpg",
+   "file": ""
+  },
+  "ms_m6_05.jpg": {
+   "url": "https://www.gameagit.com/images/kalonline/guide/mabyung05.jpg",
+   "file": ""
+  },
+  "ms_m6_06.jpg": {
+   "url": "https://www.gameagit.com/images/kalonline/guide/mabyung06.jpg",
+   "file": ""
+  },
+  "ms_m6_07.jpg": {
+   "url": "https://www.gameagit.com/images/kalonline/guide/mabyung07.jpg",
+   "file": ""
+  },
+  "ms_m7_02.jpg": {
+   "url": "https://www.gameagit.com/images/kalonline/guide/maryung06.jpg",
+   "file": ""
+  },
+  "ms_m7_03.jpg": {
+   "url": "https://www.gameagit.com/images/kalonline/guide/maryung01.jpg",
+   "file": ""
+  },
+  "ms_m7_04.jpg": {
+   "url": "https://www.gameagit.com/images/kalonline/guide/maryung02.jpg",
+   "file": ""
+  },
+  "ms_m7_05.jpg": {
+   "url": "https://www.gameagit.com/images/kalonline/guide/maryung04.jpg",
+   "file": ""
+  },
+  "ms_m7_06.jpg": {
+   "url": "https://www.gameagit.com/images/kalonline/guide/maryung07.jpg",
+   "file": ""
+  },
+  "ms_m7_07.jpg": {
+   "url": "https://www.gameagit.com/images/kalonline/guide/maryung05.jpg",
+   "file": ""
+  },
+  "ms_m8_01.jpg": {
+   "url": "https://www.gameagit.com/images/kalonline/guide/do01.jpg",
+   "file": ""
+  },
+  "ms_m8_02.jpg": {
+   "url": "https://www.gameagit.com/images/kalonline/guide/do02.jpg",
+   "file": ""
+  },
+  "ms_m8_03.jpg": {
+   "url": "https://www.gameagit.com/images/kalonline/guide/do03.jpg",
+   "file": ""
+  },
+  "ms_m8_04.jpg": {
+   "url": "https://www.gameagit.com/images/kalonline/guide/do04.jpg",
+   "file": ""
+  },
+  "ms_m8_05.jpg": {
+   "url": "https://www.gameagit.com/images/kalonline/guide/do05.jpg",
+   "file": ""
+  },
+  "ms_m8_06.jpg": {
+   "url": "https://www.gameagit.com/images/kalonline/guide/do06.jpg",
+   "file": ""
+  },
+  "ms_m8_07.jpg": {
+   "url": "https://www.gameagit.com/images/kalonline/guide/do07.jpg",
+   "file": ""
+  },
+  "ms_m9_01.jpg": {
+   "url": "https://www.gameagit.com/images/kalonline/guide/hon01.jpg",
+   "file": ""
+  },
+  "ms_m9_02.jpg": {
+   "url": "https://www.gameagit.com/images/kalonline/guide/hon02.jpg",
+   "file": ""
+  },
+  "ms_m9_03.jpg": {
+   "url": "https://www.gameagit.com/images/kalonline/guide/hon03.jpg",
+   "file": ""
+  },
+  "ms_m9_04.jpg": {
+   "url": "https://www.gameagit.com/images/kalonline/guide/hon04.jpg",
+   "file": ""
+  },
+  "ms_m9_05.jpg": {
+   "url": "https://www.gameagit.com/images/kalonline/guide/hon06.jpg",
+   "file": ""
+  },
+  "ms_m9_06.jpg": {
+   "url": "https://www.gameagit.com/images/kalonline/guide/hon05.jpg",
+   "file": ""
+  },
+  "ms_m9_07.jpg": {
+   "url": "https://www.gameagit.com/images/kalonline/guide/hon07.jpg",
+   "file": ""
+  },
+  "ms_m9_08.jpg": {
+   "url": "https://www.gameagit.com/images/kalonline/guide/hon08.jpg",
+   "file": ""
+  }
+ },
+ "teleports": [
+  {
+   "city": "fort",
+   "pin": "tp1",
+   "dest": "Teleports to Devil Castle"
+  },
+  {
+   "city": "fort",
+   "pin": "tp2",
+   "dest": "Teleports to Dungeon 1 (Abandoned Grave)"
+  },
+  {
+   "city": "pub",
+   "pin": "tp4",
+   "dest": "Teleports to Dungeon 2 (Royal Tomb of Guhbalhan)"
+  },
+  {
+   "city": "fort",
+   "pin": "tp3",
+   "dest": "Teleports to Dungeon 3 (Doggebi Tower)"
+  },
+  {
+   "city": "cop",
+   "pin": "tp5",
+   "dest": "Teleports to Dungeon 4 (Cave of Giant Bird)"
+  },
+  {
+   "city": "cop",
+   "pin": "tp6",
+   "dest": "Teleports to Safe Hill"
+  }
+ ],
  "maps": [
   {
    "id": "naroo",
@@ -15,57 +305,109 @@
     "21": {
      "x": 84.3,
      "y": 18.5,
-     "name": "Chief Guard (Sea-Geun)"
+     "name": "Chief Guard (Sea-Geun)",
+     "photo": "assets/npc_photos/naroo-21.jpg",
+     "photoThumb": "assets/npc_photos/naroo-21-thumb.jpg"
     },
     "26": {
      "x": 40.4,
      "y": 25.8,
-     "name": "Chun-Sooin"
+     "name": "Chun-Sooin",
+     "photo": "assets/npc_photos/naroo-26.jpg",
+     "photoThumb": "assets/npc_photos/naroo-26-thumb.jpg"
     },
     "52": {
      "x": 45.4,
      "y": 62.4,
-     "name": "Boatman (Gwang-Chun)"
+     "name": "Boatman (Gwang-Chun)",
+     "photo": "assets/npc_photos/naroo-52.jpg",
+     "photoThumb": "assets/npc_photos/naroo-52-thumb.jpg"
     },
     "51": {
      "x": 64.4,
      "y": 50.9,
-     "name": "Chief Guard (Mak-Ansoo)"
+     "name": "Chief Guard (Mak-Ansoo)",
+     "photo": "assets/npc_photos/naroo-51.jpg",
+     "photoThumb": "assets/npc_photos/naroo-51-thumb.jpg"
     },
     "24": {
      "x": 51.2,
      "y": 24.6,
-     "name": "Farmer (Ji-Hun)"
+     "name": "Farmer (Ji-Hun)",
+     "photo": "assets/npc_photos/naroo-24.jpg",
+     "photoThumb": "assets/npc_photos/naroo-24-thumb.jpg"
     },
     "35": {
      "x": 40.6,
      "y": 42.7,
-     "name": "Chief Guard (Joo-Jimin)"
+     "name": "Chief Guard (Joo-Jimin)",
+     "photo": "assets/npc_photos/naroo-35.jpg",
+     "photoThumb": "assets/npc_photos/naroo-35-thumb.jpg"
     },
     "23": {
      "x": 60.1,
      "y": 24.3,
-     "name": "Farmer (Ha-Jik)"
+     "name": "Farmer (Ha-Jik)",
+     "photo": "assets/npc_photos/naroo-23.jpg",
+     "photoThumb": "assets/npc_photos/naroo-23-thumb.jpg"
     },
     "55": {
      "x": 30.7,
      "y": 71.0,
-     "name": "[Sae-Ryu]"
+     "name": "[Sae-Ryu]",
+     "photo": "assets/npc_photos/naroo-55.jpg",
+     "photoThumb": "assets/npc_photos/naroo-55-thumb.jpg"
     },
     "6": {
      "x": 53.7,
      "y": 7.5,
-     "name": "Woman (Yae-Jin)"
+     "name": "Woman (Yae-Jin)",
+     "photo": "assets/npc_photos/naroo-6.jpg",
+     "photoThumb": "assets/npc_photos/naroo-6-thumb.jpg"
     },
     "20": {
      "x": 61.0,
      "y": 21.2,
-     "name": "Ancient-Animal Keeper [Chang]"
+     "name": "Ancient-Animal Keeper [Chang]",
+     "photo": "assets/npc_photos/naroo-20.jpg",
+     "photoThumb": "assets/npc_photos/naroo-20-thumb.jpg"
     },
     "17": {
      "x": 41.5,
      "y": 21.4,
-     "name": "[Ha-Wogoo]"
+     "name": "[Ha-Wogoo]",
+     "photo": "assets/npc_photos/naroo-17.jpg",
+     "photoThumb": "assets/npc_photos/naroo-17-thumb.jpg"
+    },
+    "eg1": {
+     "x": 34.7,
+     "y": 9.9,
+     "name": "Guard (G5 Weapon)",
+     "photo": "assets/npc_photos/naroo-eg1.jpg"
+    },
+    "eg2": {
+     "x": 38.9,
+     "y": 8.8,
+     "name": "Guard (G8 Chest)",
+     "photo": "assets/npc_photos/naroo-eg2.jpg"
+    },
+    "eg3": {
+     "x": 61.8,
+     "y": 8.8,
+     "name": "Guard (G8 gear)",
+     "photo": "assets/npc_photos/naroo-eg3.jpg"
+    },
+    "eg4": {
+     "x": 69.1,
+     "y": 8.8,
+     "name": "Guard (Goby)",
+     "photo": "assets/npc_photos/naroo-eg4.jpg"
+    },
+    "eg5": {
+     "x": 59.7,
+     "y": 36.7,
+     "name": "Merchant, Gae-Yoo (Fish Hook)",
+     "photo": "assets/npc_photos/naroo-eg5.jpg"
     }
    },
    "image": {
@@ -84,52 +426,69 @@
   {
    "id": "jook",
    "label": "Cargo",
-   "name": "Jook-Suh Cargo Station",
+   "name": "Cargo Station",
    "pins": {
     "6": {
      "x": 54.0,
      "y": 24.5,
-     "name": "Nu-Rook"
+     "name": "Nu-Rook",
+     "photo": "assets/npc_photos/jook-6.jpg",
+     "photoThumb": "assets/npc_photos/jook-6-thumb.jpg"
     },
     "10": {
      "x": 40.8,
      "y": 31.3,
-     "name": "General (Sae-Won)"
+     "name": "General (Sae-Won)",
+     "photo": "assets/npc_photos/jook-10.jpg",
+     "photoThumb": "assets/npc_photos/jook-10-thumb.jpg"
     },
     "17": {
      "x": 51.3,
      "y": 40.3,
-     "name": "Farmer (Nu-Woong)"
+     "name": "Farmer (Nu-Woong)",
+     "photo": "assets/npc_photos/jook-17.jpg"
     },
     "18": {
      "x": 75.6,
      "y": 41.3,
-     "name": "General [In-Pill]"
+     "name": "General [In-Pill]",
+     "photo": "assets/npc_photos/jook-18.jpg",
+     "photoThumb": "assets/npc_photos/jook-18-thumb.jpg"
     },
     "1": {
      "x": 45.0,
      "y": 4.4,
-     "name": "Guard (Won-Jung)"
+     "name": "Guard (Won-Jung)",
+     "photo": "assets/npc_photos/jook-1.jpg",
+     "photoThumb": "assets/npc_photos/jook-1-thumb.jpg"
     },
     "5": {
      "x": 79.9,
      "y": 17.5,
-     "name": "Chief Guard (Guh-Sosun)"
+     "name": "Chief Guard (Guh-Sosun)",
+     "photo": "assets/npc_photos/jook-5.jpg",
+     "photoThumb": "assets/npc_photos/jook-5-thumb.jpg"
     },
     "9": {
      "x": 29.5,
      "y": 31.6,
-     "name": "Woman (Ok-Jin)"
+     "name": "Woman (Ok-Jin)",
+     "photo": "assets/npc_photos/jook-9.jpg",
+     "photoThumb": "assets/npc_photos/jook-9-thumb.jpg"
     },
     "25": {
      "x": 31.9,
      "y": 73.4,
-     "name": "Wa-Ryu"
+     "name": "Wa-Ryu",
+     "photo": "assets/npc_photos/jook-25.jpg",
+     "photoThumb": "assets/npc_photos/jook-25-thumb.jpg"
     },
     "23": {
      "x": 49.1,
      "y": 65.3,
-     "name": "Ja-Gan"
+     "name": "Ja-Gan",
+     "photo": "assets/npc_photos/jook-23.jpg",
+     "photoThumb": "assets/npc_photos/jook-23-thumb.jpg"
     }
    },
    "image": {
@@ -153,37 +512,44 @@
     "4": {
      "x": 23.5,
      "y": 12.5,
-     "name": "Miner (Gwee-Sik)"
+     "name": "Miner (Gwee-Sik)",
+     "photo": "assets/npc_photos/geum-4.jpg"
     },
     "1": {
      "x": 20.2,
      "y": 7.9,
-     "name": "HyungJoo-SeungGong"
+     "name": "HyungJoo-SeungGong",
+     "photo": "assets/npc_photos/geum-1.jpg"
     },
     "2": {
      "x": 19.1,
      "y": 9.9,
-     "name": "Miner (Joo-Nong)"
+     "name": "Miner (Joo-Nong)",
+     "photo": "assets/npc_photos/geum-2.jpg"
     },
     "29": {
      "x": 29.0,
      "y": 80.2,
-     "name": "Guard (Yang-Do / \"Jang-Do\")"
+     "name": "Guard (Yang-Do / \"Jang-Do\")",
+     "photo": "assets/npc_photos/geum-29.jpg"
     },
     "24": {
      "x": 26.1,
      "y": 19.2,
-     "name": "[Won-Ga]"
+     "name": "[Won-Ga]",
+     "photo": "assets/npc_photos/geum-24.jpg"
     },
     "23": {
      "x": 24.3,
      "y": 19.8,
-     "name": "Ma-Yong"
+     "name": "Ma-Yong",
+     "photo": "assets/npc_photos/geum-23.jpg"
     },
     "28": {
      "x": 89.4,
      "y": 56.1,
-     "name": "Master, Jin-Pyung"
+     "name": "Master, Jin-Pyung",
+     "photo": "assets/npc_photos/geum-28.jpg"
     }
    },
    "image": {
@@ -207,127 +573,173 @@
     "1": {
      "x": 40.4,
      "y": 5.1,
-     "name": "Fort Guard [Gai-Gi]"
+     "name": "Fort Guard [Gai-Gi]",
+     "photo": "assets/npc_photos/fort-1.jpg"
     },
     "2": {
      "x": 41.2,
      "y": 16.4,
-     "name": "Soldier from Troop of Jae-Ga [Lim-Gang]"
+     "name": "Soldier from Troop of Jae-Ga [Lim-Gang]",
+     "photo": "assets/npc_photos/fort-2.jpg"
     },
     "5": {
      "x": 39.4,
      "y": 23.8,
-     "name": "Smith Who Lost His Family"
+     "name": "Smith Who Lost His Family",
+     "photo": "assets/npc_photos/fort-5.jpg"
     },
     "6": {
      "x": 60.7,
      "y": 21.6,
-     "name": "Parent Who Lost Their Son"
+     "name": "Parent Who Lost Their Son",
+     "photo": "assets/npc_photos/fort-6.jpg"
     },
     "10": {
      "x": 33.6,
      "y": 31.2,
-     "name": "Fort Guard [Soo-Sung]"
+     "name": "Fort Guard [Soo-Sung]",
+     "photo": "assets/npc_photos/fort-10.jpg"
     },
     "11": {
      "x": 37.0,
      "y": 28.5,
-     "name": "Mask of Ghost Hunter [Woo-Jong]"
+     "name": "Mask of Ghost Hunter [Woo-Jong]",
+     "photo": "assets/npc_photos/fort-11.jpg"
     },
     "12": {
      "x": 38.7,
      "y": 28.9,
-     "name": "Mask of Ghost Hunter [Jwa-Ill]"
+     "name": "Mask of Ghost Hunter [Jwa-Ill]",
+     "photo": "assets/npc_photos/fort-12.jpg"
     },
     "13": {
      "x": 40.6,
      "y": 29.2,
-     "name": "Mask of Ghost Hunter [Geun-Pyung]"
+     "name": "Mask of Ghost Hunter [Geun-Pyung]",
+     "photo": "assets/npc_photos/fort-13.jpg"
     },
     "14": {
      "x": 42.1,
      "y": 29.2,
-     "name": "Mask of Ghost Hunter [Dan-Joong]"
+     "name": "Mask of Ghost Hunter [Dan-Joong]",
+     "photo": "assets/npc_photos/fort-14.jpg"
     },
     "15": {
      "x": 44.2,
      "y": 29.6,
-     "name": "Mask of Ghost Hunter [Choi-Choong]"
+     "name": "Mask of Ghost Hunter [Choi-Choong]",
+     "photo": "assets/npc_photos/fort-15.jpg"
     },
     "16": {
      "x": 46.7,
      "y": 31.6,
-     "name": "Jin-Haeryang"
+     "name": "Jin-Haeryang",
+     "photo": "assets/npc_photos/fort-16.jpg"
     },
     "19": {
      "x": 56.3,
      "y": 27.3,
-     "name": "Soldier from Troop of [Yoo-Sang]"
+     "name": "Soldier from Troop of [Yoo-Sang]",
+     "photo": "assets/npc_photos/fort-19.jpg"
     },
     "20": {
      "x": 55.4,
      "y": 29.0,
-     "name": "Soldier at Fort of Geum-Ohee Castle [Jae-Ga]"
+     "name": "Soldier at Fort of Geum-Ohee Castle [Jae-Ga]",
+     "photo": "assets/npc_photos/fort-20.jpg"
     },
     "23": {
      "x": 59.6,
      "y": 33.2,
-     "name": "Farmer Who Lost His Farmland"
+     "name": "Farmer Who Lost His Farmland",
+     "photo": "assets/npc_photos/fort-23.jpg"
     },
     "36": {
      "x": 70.6,
      "y": 33.6,
-     "name": "[Ja-Sang]"
+     "name": "[Ja-Sang]",
+     "photo": "assets/npc_photos/fort-36.jpg"
     },
     "41": {
      "x": 41.1,
      "y": 42.1,
-     "name": "Doll Craftsman [Gill-Jun]"
+     "name": "Doll Craftsman [Gill-Jun]",
+     "photo": "assets/npc_photos/fort-41.jpg"
     },
     "44": {
      "x": 26.8,
      "y": 40.2,
-     "name": "Red Flag’s Leader [Gee-Jung]"
+     "name": "Red Flag’s Leader [Gee-Jung]",
+     "photo": "assets/npc_photos/fort-44.jpg"
     },
     "45": {
      "x": 7.2,
      "y": 28.1,
-     "name": "Fort Guard [Dan-Bok]"
+     "name": "Fort Guard [Dan-Bok]",
+     "photo": "assets/npc_photos/fort-45.jpg"
     },
     "49": {
      "x": 3.8,
      "y": 44.2,
-     "name": "Fort Guard [Heung-Pae]"
+     "name": "Fort Guard [Heung-Pae]",
+     "photo": "assets/npc_photos/fort-49.jpg"
     },
     "50": {
      "x": 14.3,
      "y": 47.3,
-     "name": "To-Woo"
+     "name": "To-Woo",
+     "photo": "assets/npc_photos/fort-50.jpg"
     },
     "51": {
      "x": 16.8,
      "y": 48.9,
-     "name": "Mother of Moon-Hee"
+     "name": "Mother of Moon-Hee",
+     "photo": "assets/npc_photos/fort-51.jpg"
     },
     "52": {
      "x": 13.8,
      "y": 50.8,
-     "name": "Fort Guard [Soo-Go]"
+     "name": "Fort Guard [Soo-Go]",
+     "photo": "assets/npc_photos/fort-52.jpg"
     },
     "59": {
      "x": 24.5,
      "y": 63.7,
-     "name": "Hyun-Choong"
+     "name": "Hyun-Choong",
+     "photo": "assets/npc_photos/fort-59.jpg"
     },
     "60": {
      "x": 27.9,
      "y": 64.5,
-     "name": "Chief Guard [Duk-Yoon]"
+     "name": "Chief Guard [Duk-Yoon]",
+     "photo": "assets/npc_photos/fort-60.jpg"
     },
     "64": {
      "x": 39.9,
      "y": 56.2,
-     "name": "[Ma-Gill]"
+     "name": "[Ma-Gill]",
+     "photo": "assets/npc_photos/fort-64.jpg"
+    },
+    "tp1": {
+     "x": 20.75,
+     "y": 58.11,
+     "name": "Guide for Devil Castle",
+     "photo": "assets/npc_photos/fort-tp1.jpg",
+     "teleport": "Teleports to Devil Castle"
+    },
+    "tp2": {
+     "x": 62.25,
+     "y": 39.43,
+     "name": "Guide for Abandoned Grave (Dungeon 1)",
+     "photo": "assets/npc_photos/fort-tp2.jpg",
+     "teleport": "Teleports to Dungeon 1 (Abandoned Grave)"
+    },
+    "tp3": {
+     "x": 71.06,
+     "y": 36.21,
+     "name": "Guide for Doggebi Tower (Dungeon 3)",
+     "photo": "assets/npc_photos/fort-tp3.jpg",
+     "teleport": "Teleports to Dungeon 3 (Doggebi Tower)"
     }
    },
    "image": {
@@ -356,7 +768,15 @@
     "13": {
      "x": 24.7,
      "y": 29.1,
-     "name": "Tomb Keeper [Gang-Man]"
+     "name": "Tomb Keeper [Gang-Man]",
+     "photo": "assets/npc_photos/pub-13.jpg"
+    },
+    "tp4": {
+     "x": 44.9,
+     "y": 46.5,
+     "name": "Guide for Royal Tomb of Guhbalhan (Dungeon 2)",
+     "photo": "assets/npc_photos/pub-tp4.jpg",
+     "teleport": "Teleports to Dungeon 2 (Royal Tomb of Guhbalhan)"
     }
    },
    "image": {
@@ -396,6 +816,20 @@
      "x": 39.0,
      "y": 20.6,
      "name": "Element Collecting Official [Hwa-Eun]"
+    },
+    "tp5": {
+     "x": 50.8,
+     "y": 21.6,
+     "name": "Guide for Cave of Giant Bird (Dungeon 4)",
+     "photo": "assets/npc_photos/cop-tp5.jpg",
+     "teleport": "Teleports to Dungeon 4 (Cave of Giant Bird)"
+    },
+    "tp6": {
+     "x": 29.0,
+     "y": 3.0,
+     "name": "Guide for Safe Hill",
+     "photo": "assets/npc_photos/cop-tp6.jpg",
+     "teleport": "Teleports to Safe Hill"
     }
    },
    "image": {
@@ -419,32 +853,38 @@
     "p7": {
      "x": 34.86,
      "y": 20.41,
-     "name": "Ghost of [Moon-Hee] (Person 7)"
+     "name": "Ghost of [Moon-Hee] (Person 7)",
+     "photo": "assets/npc_photos/wild-p7.jpg"
     },
     "p8": {
      "x": 29.12,
      "y": 67.81,
-     "name": "[Hak-Goo] (Person 8)"
+     "name": "[Hak-Goo] (Person 8)",
+     "photo": "assets/npc_photos/wild-p8.jpg"
     },
     "p9": {
      "x": 58.5,
      "y": 19.44,
-     "name": "Doggebi Who Wants To Be a Friend with Humans (Person 9)"
+     "name": "Doggebi Who Wants To Be a Friend with Humans (Person 9)",
+     "photo": "assets/npc_photos/wild-p9.jpg"
     },
     "p10": {
      "x": 50.31,
      "y": 33.93,
-     "name": "[Seoung-Gill] (Person 10)"
+     "name": "[Seoung-Gill] (Person 10)",
+     "photo": "assets/npc_photos/wild-p10.jpg"
     },
     "p11": {
      "x": 55.52,
      "y": 49.33,
-     "name": "Doggebi Master (Person 11)"
+     "name": "Doggebi Master (Person 11)",
+     "photo": "assets/npc_photos/wild-p11.jpg"
     },
     "p12": {
      "x": 61.02,
      "y": 49.63,
-     "name": "Hyun-Woong (Person 12)"
+     "name": "Hyun-Woong (Person 12)",
+     "photo": "assets/npc_photos/wild-p12.jpg"
     },
     "m1": {
      "x": 16.19,
@@ -501,68 +941,51 @@
    }
   },
   {
-   "id": "forest",
-   "label": "Wild: Forest",
-   "name": "Out of Town — Forrest of Elements / Tower of Priest (World Map, zoomed)",
-   "pins": {
-    "p14": {
-     "x": 47.85,
-     "y": 49.12,
-     "name": "Priest Tower [Il Ja] (Person 14)"
-    }
-   },
-   "image": {
-    "file": "analysis/quest_maps/map-forest.jpg",
-    "bytes": 38950,
-    "sha256": "f3d2065e1b64082423da7166d497887c8d29f523ea7352ae1510de8b74186193",
-    "width": 346,
-    "height": 457
-   },
-   "credit": {
-    "name": "Vresko.com",
-    "url": "",
-    "note": "world map artwork"
-   }
-  },
-  {
    "id": "wildcargo",
    "label": "Wild: Cargo",
-   "name": "Out of Town — Jook-Suh Cargo / Geum-Oh Mine area (World Map, zoomed)",
+   "name": "Out of Town — Cargo / Geum-Oh Mine area (World Map, zoomed)",
    "pins": {
     "p6": {
      "x": 61.8,
      "y": 26.0,
-     "name": "Hunchback (Person 6)"
+     "name": "Hunchback (Person 6)",
+     "photo": "assets/npc_photos/wildcargo-p6.jpg"
     },
     "p5": {
      "x": 61.7,
      "y": 27.37,
-     "name": "Manager (Person 5)"
+     "name": "Manager (Person 5)",
+     "photo": "assets/npc_photos/wildcargo-p5.jpg"
     },
     "p4": {
      "x": 63.27,
      "y": 36.53,
-     "name": "Coward (Person 4)"
+     "name": "Coward (Person 4)",
+     "photo": "assets/npc_photos/wildcargo-p4.jpg"
     },
     "p3": {
      "x": 62.0,
      "y": 48.16,
-     "name": "Blind Man (Person 3)"
+     "name": "Blind Man (Person 3)",
+     "photo": "assets/npc_photos/wildcargo-p3.jpg"
     },
     "p2": {
      "x": 36.33,
      "y": 54.72,
-     "name": "Limper (Person 2)"
+     "name": "Limper (Person 2)",
+     "photo": "assets/npc_photos/wildcargo-p2.jpg"
     },
     "p1": {
      "x": 34.03,
      "y": 56.59,
-     "name": "Deaf Man (Person 1)"
+     "name": "Deaf Man (Person 1)",
+     "photo": "assets/npc_photos/wildcargo-p1.jpg"
     },
     "p13": {
      "x": 44.47,
      "y": 74.25,
-     "name": "One-armed Man (Person 13)"
+     "name": "One-armed Man (Person 13)",
+     "photo": "assets/npc_photos/wildcargo-p13.jpg"
     }
    },
    "image": {
@@ -584,130 +1007,265 @@
    "id": "s1-1",
    "title": "Stage 1 — Narootuh starter batch",
    "level": "Lv 0-1",
-   "where": "Stay in Narootuh the whole stage.",
+   "where": "Stay in Narootuh the whole stage — grouped by activity, not by quest number.",
+   "combo": "5 batches: accept everything (0) → kill everything (1) → turn-ins in Narootuh (2) → Cargo trip (3) → final turn-ins (4). The 3 Guard quests aren’t on the server’s quest list — found in-game, marked with gold pins.",
    "quests": [
     {
-     "name": "Quest 1",
-     "level": "Lv 0",
+     "name": "Step 0 — Accept everything first",
+     "level": "Lv 1",
      "steps": [
       {
        "type": "talk",
        "city": "naroo",
-       "pin": "21",
-       "label": "Talk"
+       "pin": "51",
+       "label": "Accept Quest 3"
       },
-      {
-       "type": "action",
-       "text": "Kill Lower Class Demons for \"Shee-Geun’s Message\""
-      },
-      {
-       "type": "talk",
-       "city": "naroo",
-       "pin": "21",
-       "label": "Turn in"
-      }
-     ],
-     "reward": "80 XP, 3 Small Medicines"
-    },
-    {
-     "name": "Event Quest 1",
-     "level": "Lv 0",
-     "steps": [
-      {
-       "type": "talk",
-       "city": "naroo",
-       "pin": "26",
-       "label": "Talk"
-      },
-      {
-       "type": "action",
-       "text": "Kill Demon Plunderers for \"Chun-SooIn’s Stirrup\""
-      },
-      {
-       "type": "talk",
-       "city": "naroo",
-       "pin": "26",
-       "label": "Turn in"
-      }
-     ],
-     "reward": "100 XP"
-    }
-   ]
-  },
-  {
-   "id": "s1-2",
-   "title": "Stage 2 — Narootuh ↔ Jook-Suh shuttle",
-   "level": "Lv 0",
-   "where": "Do both quests back-to-back — same round trip.",
-   "quests": [
-    {
-     "name": "Quest 2",
-     "level": "Lv 0",
-     "steps": [
       {
        "type": "talk",
        "city": "naroo",
        "pin": "52",
-       "label": "Talk"
+       "label": "Accept Quest 2"
       },
+      {
+       "type": "talk",
+       "city": "naroo",
+       "pin": "26",
+       "label": "Accept Event Quest 1"
+      },
+      {
+       "type": "talk",
+       "city": "naroo",
+       "pin": "eg1",
+       "label": "Accept G5 Weapon quest"
+      },
+      {
+       "type": "talk",
+       "city": "naroo",
+       "pin": "eg2",
+       "label": "Accept G8 Chest quest"
+      },
+      {
+       "type": "talk",
+       "city": "naroo",
+       "pin": "eg3",
+       "label": "Accept G8 Gear Set quest"
+      },
+      {
+       "type": "talk",
+       "city": "naroo",
+       "pin": "21",
+       "label": "Accept Quest 1"
+      }
+     ],
+     "reward": "No rewards yet — just clears the accept step for all 7 quests so you don’t have to backtrack for it later",
+     "note": "",
+     "startCity": "",
+     "items": [],
+     "mobs": [],
+     "choices": []
+    },
+    {
+     "name": "Step 1 — Kill everything",
+     "level": "Lv 1",
+     "steps": [
+      {
+       "type": "action",
+       "text": "Kill Lower Class Demons for everything below (around Narootuh — covers Quest 1, Quest 3, Event Quest 1, and all 3 Guard quests in one grind)"
+      }
+     ],
+     "reward": "No turn-ins yet — carry all 6 drops into Step 2",
+     "note": "",
+     "startCity": "",
+     "items": [
+      {
+       "file": "3.png",
+       "name": "1x Demon’s Strategic Map"
+      },
+      {
+       "file": "ev1.png",
+       "name": "1x Chun-SooIn’s Stirrup"
+      },
+      {
+       "file": "",
+       "name": "1x Demon Vulgar’s Head"
+      },
+      {
+       "file": "",
+       "name": "1x Demon Scout’s Head"
+      },
+      {
+       "file": "",
+       "name": "1x Demon SpearHead’s Head"
+      },
+      {
+       "file": "1.png",
+       "name": "1x Shee-Geun’s Message"
+      }
+     ],
+     "mobs": [
+      {
+       "file": "ms_m1_01.jpg",
+       "name": "Demon Vulgar"
+      },
+      {
+       "file": "ms_m1_02.jpg",
+       "name": "Demon Scout"
+      },
+      {
+       "file": "ms_m1_03.jpg",
+       "name": "Demon SpearHead"
+      },
+      {
+       "file": "ms_m1_04.jpg",
+       "name": "Demon Plunderers"
+      }
+     ],
+     "choices": []
+    },
+    {
+     "name": "Step 2 — Talk to people in Narootuh again",
+     "level": "Lv 1",
+     "steps": [
+      {
+       "type": "talk",
+       "city": "naroo",
+       "pin": "51",
+       "label": "Report — Quest 3 (not done yet, needs a Cargo trip)"
+      },
+      {
+       "type": "talk",
+       "city": "naroo",
+       "pin": "26",
+       "label": "Turn in — Event Quest 1"
+      },
+      {
+       "type": "talk",
+       "city": "naroo",
+       "pin": "eg1",
+       "label": "Turn in — G5 Weapon"
+      },
+      {
+       "type": "talk",
+       "city": "naroo",
+       "pin": "eg2",
+       "label": "Turn in — G8 Chest"
+      },
+      {
+       "type": "talk",
+       "city": "naroo",
+       "pin": "eg3",
+       "label": "Turn in — G8 Gear Set"
+      },
+      {
+       "type": "talk",
+       "city": "naroo",
+       "pin": "21",
+       "label": "Turn in — Quest 1"
+      }
+     ],
+     "reward": "100 XP (Event Quest 1) + G5 Weapon + G8 Chest + G8 Gloves/Boots/Shorts/Helmet + 80 XP, 3 Small Medicines (Quest 1)",
+     "note": "",
+     "startCity": "",
+     "items": [],
+     "mobs": [],
+     "choices": []
+    },
+    {
+     "name": "Step 3 — Cargo trip",
+     "level": "Lv 1",
+     "steps": [
       {
        "type": "talk",
        "city": "jook",
        "pin": "6",
-       "label": "Talk"
-      },
-      {
-       "type": "talk",
-       "city": "naroo",
-       "pin": "52",
-       "label": "Turn in"
-      }
-     ],
-     "reward": "100 geons, 2 Small Medicines"
-    },
-    {
-     "name": "Quest 3",
-     "level": "Lv 0",
-     "steps": [
-      {
-       "type": "talk",
-       "city": "naroo",
-       "pin": "51",
-       "label": "Talk"
-      },
-      {
-       "type": "action",
-       "text": "Kill Demon SpearHead for \"Demon’s Strategic Map\""
-      },
-      {
-       "type": "talk",
-       "city": "naroo",
-       "pin": "51",
-       "label": "Report"
+       "label": "Talk — Quest 2"
       },
       {
        "type": "talk",
        "city": "jook",
        "pin": "10",
-       "label": "Talk"
+       "label": "Talk — Quest 3"
+      }
+     ],
+     "reward": "No reward yet — clears the way for Step 4’s turn-ins",
+     "note": "",
+     "startCity": "naroo",
+     "items": [],
+     "mobs": [],
+     "choices": []
+    },
+    {
+     "name": "Step 4 — Back to Narootuh to finish up",
+     "level": "Lv 1",
+     "steps": [
+      {
+       "type": "talk",
+       "city": "naroo",
+       "pin": "52",
+       "label": "Turn in — Quest 2"
       },
       {
        "type": "talk",
        "city": "naroo",
        "pin": "51",
-       "label": "Turn in"
+       "label": "Turn in — Quest 3"
       }
      ],
-     "reward": "73 XP, 200 geons, 1 Contribution Point"
+     "reward": "100 geons, 2 Small Medicines (Quest 2) + 73 XP, 200 geons, 1 Contribution Point (Quest 3)",
+     "note": "",
+     "startCity": "",
+     "items": [],
+     "mobs": [],
+     "choices": []
     }
    ]
   },
   {
-   "id": "s1-3",
-   "title": "Stage 3 — Demon Escort Archers",
-   "level": "Lv 6",
+   "id": "s1-2",
+   "title": "Stage 2 — Demon Escort Archers",
+   "level": "Lv 5-6",
    "where": "Narootuh only.",
+   "combo": "Event Quest 3 (Lv 1, Sae-Ryu) is woven into Quest 4 — same mobs drop its Escort Soldier’s Head too, and you report to Sae-Ryu twice along the way. Only Cargo/Geum-Oh Mine are left for it in Stage 4.",
    "quests": [
+    {
+     "name": "Bonus Quest — Goby Fishing (optional, highly recommended)",
+     "level": "Lv 5",
+     "steps": [
+      {
+       "type": "talk",
+       "city": "naroo",
+       "pin": "eg4",
+       "label": "Talk"
+      },
+      {
+       "type": "talk",
+       "city": "naroo",
+       "pin": "eg5",
+       "label": "Buy a Fish Hook (40 geons)"
+      },
+      {
+       "type": "action",
+       "text": "Fish 1x Goby"
+      },
+      {
+       "type": "talk",
+       "city": "naroo",
+       "pin": "eg4",
+       "label": "Turn in"
+      }
+     ],
+     "reward": "G9 weapon",
+     "note": "You’ll have ~300 geons from the earlier quests by now — the Fish Hook is only 40, and fishing takes ~15 seconds with a guaranteed Goby, so this is basically a free G9 weapon.",
+     "startCity": "",
+     "items": [
+      {
+       "file": "",
+       "name": "1x Goby"
+      }
+     ],
+     "mobs": [],
+     "choices": []
+    },
     {
      "name": "Quest 4",
      "level": "Lv 6",
@@ -725,8 +1283,14 @@
        "label": "Talk"
       },
       {
+       "type": "talk",
+       "city": "naroo",
+       "pin": "55",
+       "label": "Accept Event Quest 3"
+      },
+      {
        "type": "action",
-       "text": "Kill Demon Escort Archers for 10x \"Demon’s Bow\""
+       "text": "Kill Demon Escort Archer/Soldier for 10x \"Demon’s Bow\" and 30x \"Escort Soldier’s Head\" (the head is for Event Quest 3, turned in later in Stage 4)"
       },
       {
        "type": "talk",
@@ -737,19 +1301,55 @@
       {
        "type": "talk",
        "city": "naroo",
+       "pin": "55",
+       "label": "Report"
+      },
+      {
+       "type": "talk",
+       "city": "naroo",
+       "pin": "55",
+       "label": "Report again"
+      },
+      {
+       "type": "talk",
+       "city": "naroo",
        "pin": "24",
        "label": "Turn in"
       }
      ],
-     "reward": "542 XP, 1 Contribution Point"
+     "reward": "542 XP, 1 Contribution Point",
+     "note": "",
+     "startCity": "",
+     "items": [
+      {
+       "file": "4.png",
+       "name": "10x Demon’s Bow"
+      },
+      {
+       "file": "ev2.png",
+       "name": "30x Escort Soldier’s Head"
+      }
+     ],
+     "mobs": [
+      {
+       "file": "ms_m1_07.jpg",
+       "name": "Demon Escort Archers"
+      },
+      {
+       "file": "ms_m1_06.jpg",
+       "name": "Demon Escort Soldier"
+      }
+     ],
+     "choices": []
     }
    ]
   },
   {
-   "id": "s1-4",
-   "title": "Stage 4 — Suicide Bombers",
+   "id": "s1-3",
+   "title": "Stage 3 — Suicide Bombers",
    "level": "Lv 8",
-   "where": "Jook-Suh → Geum-Oh Mine → Jook-Suh.",
+   "where": "Cargo → Geum-Oh Mine → Cargo.",
+   "combo": "",
    "quests": [
     {
      "name": "Quest 5",
@@ -784,18 +1384,34 @@
        "label": "Turn in"
       }
      ],
-     "reward": "1,184 XP, 1 Contribution Point"
+     "reward": "1,184 XP, 1 Contribution Point",
+     "note": "",
+     "startCity": "",
+     "items": [
+      {
+       "file": "5.png",
+       "name": "10x Suicide Bomber’s Oil"
+      }
+     ],
+     "mobs": [
+      {
+       "file": "ms_m1_08.jpg",
+       "name": "Suicide Bombers"
+      }
+     ],
+     "choices": []
     }
    ]
   },
   {
-   "id": "s1-5",
-   "title": "Stage 5 — Demon Carcass Scavenger combo",
+   "id": "s1-4",
+   "title": "Stage 4 — Demon Carcass Scavenger combo",
    "level": "Lv 10",
-   "where": "Narootuh (accept) → Jook-Suh (accept + turn in) → Narootuh (turn in).",
+   "where": "Narootuh ↔ Cargo, weaving between Ha-Jik/Boatman/Sae-Ryu and Nu-Woong/In-Pill.",
+   "combo": "Quest 6 + Event Quest 3 combined — same camp, same two mobs, just two turn-in NPCs (Ha-Jik, In-Pill). Keep killing Demon Carcass Scavengers a bit longer: Quest 8 (Stage 5) wants 25x Demon’s Carcass from the same mob.",
    "quests": [
     {
-     "name": "Quest 6",
+     "name": "Quest 6 + Event Quest 3 (combo)",
      "level": "Lv 10",
      "steps": [
       {
@@ -812,6 +1428,12 @@
       },
       {
        "type": "talk",
+       "city": "jook",
+       "pin": "18",
+       "label": "Talk"
+      },
+      {
+       "type": "talk",
        "city": "naroo",
        "pin": "23",
        "label": "Report"
@@ -824,7 +1446,13 @@
       },
       {
        "type": "action",
-       "text": "Kill Big Handed Inhabitants for 15x tooth"
+       "text": "Kill Big Handed Inhabitants for 15x tooth and 1x \"Big Handed Inhabitant’s Head\""
+      },
+      {
+       "type": "talk",
+       "city": "jook",
+       "pin": "18",
+       "label": "Report"
       },
       {
        "type": "talk",
@@ -833,8 +1461,20 @@
        "label": "Report"
       },
       {
+       "type": "talk",
+       "city": "naroo",
+       "pin": "55",
+       "label": "Talk"
+      },
+      {
        "type": "action",
-       "text": "Kill Demon Carcass Scavengers for 2x \"Straw Rice\""
+       "text": "Kill Demon Carcass Scavengers for 2x \"Straw Rice\" and \"In-Pills Scabbard\""
+      },
+      {
+       "type": "talk",
+       "city": "jook",
+       "pin": "18",
+       "label": "Turn in"
       },
       {
        "type": "talk",
@@ -843,97 +1483,47 @@
        "label": "Turn in"
       }
      ],
-     "reward": "2,436 XP, 1 Contribution Point"
-    },
-    {
-     "name": "Event Quest 3",
-     "level": "Lv 10",
-     "steps": [
+     "reward": "2,436 XP, 1 Contribution Point (Quest 6) + 662 XP (Event Quest 3)",
+     "note": "",
+     "startCity": "",
+     "items": [
       {
-       "type": "talk",
-       "city": "naroo",
-       "pin": "55",
-       "label": "Talk"
+       "file": "6.png",
+       "name": "15x tooth"
       },
       {
-       "type": "action",
-       "text": "Kill Demon Escort Archer/Soldier for 30x \"Escort Soldier’s Head\""
+       "file": "ev2-2.png",
+       "name": "1x Big Handed Inhabitant’s Head"
       },
       {
-       "type": "talk",
-       "city": "naroo",
-       "pin": "55",
-       "label": "Report"
+       "file": "60.png",
+       "name": "2x Straw Rice"
       },
       {
-       "type": "talk",
-       "city": "naroo",
-       "pin": "55",
-       "label": "Report again"
-      },
-      {
-       "type": "talk",
-       "city": "jook",
-       "pin": "18",
-       "label": "Talk"
-      },
-      {
-       "type": "action",
-       "text": "Kill Big Handed for \"Big Handed Inhabitant’s Head\""
-      },
-      {
-       "type": "talk",
-       "city": "jook",
-       "pin": "18",
-       "label": "Report"
-      },
-      {
-       "type": "talk",
-       "city": "naroo",
-       "pin": "55",
-       "label": "Talk"
-      },
-      {
-       "type": "action",
-       "text": "Kill Demon Carcass Scavengers for \"In-Pills Scabbard\""
-      },
-      {
-       "type": "talk",
-       "city": "jook",
-       "pin": "18",
-       "label": "Turn in"
+       "file": "ev2-3.png",
+       "name": "1x In-Pills Scabbard"
       }
      ],
-     "reward": "662 XP"
+     "mobs": [
+      {
+       "file": "ms_m2_01.jpg",
+       "name": "Big Handed Inhabitants"
+      },
+      {
+       "file": "ms_m3_01.jpg",
+       "name": "Demon Carcass Scavengers"
+      }
+     ],
+     "choices": []
     }
    ]
   },
   {
-   "id": "s1-6",
-   "title": "Stage 6 — Accept and hold: Big Handed Warriors",
-   "level": "Lv 0 req., save the grind for Lv 15-16",
-   "where": "Geum-Oh Mine — quick stop, then move on.",
-   "quests": [
-    {
-     "name": "Event Quest 5 (accept only)",
-     "level": "Lv 0",
-     "steps": [
-      {
-       "type": "talk",
-       "city": "geum",
-       "pin": "1",
-       "label": "Accept"
-      }
-     ],
-     "reward": "1,782 XP (turn in during Stage 10)"
-    }
-   ]
-  },
-  {
-   "id": "s1-7",
-   "title": "Stage 7 — Milk Wetch / White Peony loop + Carcass follow-up",
+   "id": "s1-5",
+   "title": "Stage 5 — Milk Wetch / White Peony loop + Carcass follow-up",
    "level": "Lv 11-13",
-   "where": "Jook-Suh ↔ Narootuh.",
+   "where": "Cargo ↔ Narootuh.",
+   "combo": "",
    "quests": [
     {
      "name": "Quest 7",
@@ -968,7 +1558,26 @@
        "label": "Turn in"
       }
      ],
-     "reward": "3,576 XP, 1 Skill Point"
+     "reward": "3,576 XP, 1 Skill Point",
+     "note": "",
+     "startCity": "",
+     "items": [
+      {
+       "file": "7.png",
+       "name": "22x Milk Wetch"
+      },
+      {
+       "file": "70.png",
+       "name": "22x White Peony"
+      }
+     ],
+     "mobs": [
+      {
+       "file": "ms_m2_02.jpg",
+       "name": "Big Handed Slaves"
+      }
+     ],
+     "choices": []
     },
     {
      "name": "Quest 8",
@@ -982,7 +1591,7 @@
       },
       {
        "type": "action",
-       "text": "Kill Demon Carcass Scavengers for 25x \"Demon’s Carcass\" (same camp as Stage 5)"
+       "text": "Kill Demon Carcass Scavengers for 25x \"Demon’s Carcass\" (same camp as Stage 4)"
       },
       {
        "type": "talk",
@@ -991,7 +1600,22 @@
        "label": "Turn in"
       }
      ],
-     "reward": "2,910 XP, 1 Contribution Point"
+     "reward": "2,910 XP, 1 Contribution Point",
+     "note": "",
+     "startCity": "",
+     "items": [
+      {
+       "file": "8.png",
+       "name": "25x Demon’s Carcass"
+      }
+     ],
+     "mobs": [
+      {
+       "file": "ms_m3_01.jpg",
+       "name": "Demon Carcass Scavengers"
+      }
+     ],
+     "choices": []
     },
     {
      "name": "Quest 9",
@@ -1007,6 +1631,12 @@
        "type": "talk",
        "city": "naroo",
        "pin": "6",
+       "label": "Talk"
+      },
+      {
+       "type": "talk",
+       "city": "naroo",
+       "pin": "6",
        "label": "Hand in stockpiled Milk Wetch/White Peony"
       },
       {
@@ -1016,15 +1646,21 @@
        "label": "Turn in"
       }
      ],
-     "reward": "2,798 XP, 1,000 geons"
+     "reward": "2,798 XP, 1,000 geons",
+     "note": "",
+     "startCity": "",
+     "items": [],
+     "mobs": [],
+     "choices": []
     }
    ]
   },
   {
-   "id": "s1-8",
-   "title": "Stage 8 — Demon Soldier’s Teeth",
+   "id": "s1-6",
+   "title": "Stage 6 — Demon Soldier’s Teeth",
    "level": "Lv 14",
-   "where": "Geum-Oh Mine ↔ Jook-Suh.",
+   "where": "Geum-Oh Mine ↔ Cargo.",
+   "combo": "",
    "quests": [
     {
      "name": "Quest 10",
@@ -1059,15 +1695,31 @@
        "label": "Turn in"
       }
      ],
-     "reward": "4,374 XP, 1 Contribution Point"
+     "reward": "4,374 XP, 1 Contribution Point",
+     "note": "",
+     "startCity": "",
+     "items": [
+      {
+       "file": "10.png",
+       "name": "20x Demon Soldier’s Teeth"
+      }
+     ],
+     "mobs": [
+      {
+       "file": "ms_m3_02.jpg",
+       "name": "Demon Soldiers"
+      }
+     ],
+     "choices": []
     }
    ]
   },
   {
-   "id": "s1-9",
-   "title": "Stage 9 — Egg quest",
+   "id": "s1-7",
+   "title": "Stage 7 — Egg quest",
    "level": "Lv 15",
-   "where": "Narootuh → Jook-Suh → Narootuh.",
+   "where": "Narootuh → Cargo → Narootuh.",
+   "combo": "",
    "quests": [
     {
      "name": "Egg Quest",
@@ -1081,7 +1733,7 @@
       },
       {
        "type": "action",
-       "text": "Kill Naughty Doggebi (Jook-Suh) for \"Keg of Talisman\""
+       "text": "Kill Naughty Doggebi (Cargo) for \"Keg of Talisman\""
       },
       {
        "type": "talk",
@@ -1090,16 +1742,77 @@
        "label": "Turn in, pick your animal"
       }
      ],
-     "reward": "Egg — transforms at grade 11"
+     "reward": "Egg — transforms at grade 11",
+     "note": "",
+     "startCity": "",
+     "items": [
+      {
+       "file": "egg.png",
+       "name": "1x Keg of Talisman"
+      }
+     ],
+     "mobs": [
+      {
+       "file": "ms_m8_01.jpg",
+       "name": "Doggebi of Monster Face"
+      }
+     ],
+     "choices": [
+      {
+       "tag": "YoongSangGaeGoonJae",
+       "desc": "Tiger"
+      },
+      {
+       "tag": "GunChiHyunRyungHwangSun",
+       "desc": "Bird"
+      },
+      {
+       "tag": "TooGeuk",
+       "desc": "Panther"
+      }
+     ]
     }
    ]
   },
   {
-   "id": "s1-10",
-   "title": "Stage 10 — Big Handed Warriors combo",
+   "id": "s1-8",
+   "title": "Stage 8 — Big Handed Warriors combo",
    "level": "Lv 15-16",
-   "where": "Geum-Oh Mine ↔ Narootuh ↔ Jook-Suh.",
+   "where": "Geum-Oh Mine ↔ Narootuh ↔ Cargo.",
+   "combo": "Accept Event Quest 5 first (Geum-Oh Mine). Farm Blue + Red Warriors together — Blue drops Quest 11 + Event Quest 5, Red drops Quest 12 — then turn in all three.",
    "quests": [
+    {
+     "name": "Event Quest 5",
+     "level": "Lv 1",
+     "steps": [
+      {
+       "type": "talk",
+       "city": "geum",
+       "pin": "1",
+       "label": "Accept"
+      }
+     ],
+     "reward": "1,782 XP (turn in later this stage)",
+     "note": "",
+     "startCity": "",
+     "items": [
+      {
+       "file": "ev2-2.png",
+       "name": "40x Big Handed Warrior’s Head"
+      }
+     ],
+     "mobs": [
+      {
+       "file": "ms_m2_04.jpg",
+       "name": "Big Handed Blue Warriors"
+      },
+      {
+       "file": "ms_m2_03.jpg",
+       "name": "Big Handed Red Warrior"
+      }
+     ],
+     "choices": []
+    },
     {
      "name": "Quest 11",
      "level": "Lv 15",
@@ -1133,7 +1846,22 @@
        "label": "Turn in"
       }
      ],
-     "reward": "5,125 XP, 1 Skill Point, 600 geons"
+     "reward": "5,125 XP, 1 Skill Point, 600 geons",
+     "note": "",
+     "startCity": "",
+     "items": [
+      {
+       "file": "10.png",
+       "name": "25x Rice Cake"
+      }
+     ],
+     "mobs": [
+      {
+       "file": "ms_m2_04.jpg",
+       "name": "Big Handed Blue Warriors"
+      }
+     ],
+     "choices": []
     },
     {
      "name": "Quest 12",
@@ -1146,13 +1874,32 @@
        "label": "Talk"
       },
       {
+       "type": "action",
+       "text": "Kill Big Handed Red Warrior for \"Wa-Ryu’s Talisman\""
+      },
+      {
        "type": "talk",
        "city": "jook",
        "pin": "10",
        "label": "Turn in \"Wa-Ryu’s Talisman\""
       }
      ],
-     "reward": "4,624 XP, 1 Skill Point, 600 geons"
+     "reward": "4,624 XP, 1 Skill Point, 600 geons",
+     "note": "",
+     "startCity": "",
+     "items": [
+      {
+       "file": "12.png",
+       "name": "1x Wa-Ryu’s Talisman"
+      }
+     ],
+     "mobs": [
+      {
+       "file": "ms_m2_03.jpg",
+       "name": "Big Handed Red Warrior"
+      }
+     ],
+     "choices": []
     },
     {
      "name": "Event Quest 5 (turn-in)",
@@ -1165,15 +1912,21 @@
        "label": "Turn in 40x \"Big Handed Warrior’s Head\""
       }
      ],
-     "reward": "1,782 XP"
+     "reward": "1,782 XP",
+     "note": "",
+     "startCity": "",
+     "items": [],
+     "mobs": [],
+     "choices": []
     }
    ]
   },
   {
-   "id": "s1-11",
-   "title": "Stage 11 — Joo-Nong’s Gold",
+   "id": "s1-9",
+   "title": "Stage 9 — Joo-Nong’s Gold",
    "level": "Lv 17",
    "where": "Narootuh ↔ Geum-Oh Mine.",
+   "combo": "",
    "quests": [
     {
      "name": "Quest 13",
@@ -1208,15 +1961,31 @@
        "label": "Turn in"
       }
      ],
-     "reward": "6,060 XP, 1 Skill Point"
+     "reward": "6,060 XP, 1 Skill Point",
+     "note": "",
+     "startCity": "",
+     "items": [
+      {
+       "file": "",
+       "name": "30x Joo-Nong’s Gold"
+      }
+     ],
+     "mobs": [
+      {
+       "file": "ms_m3_03.jpg",
+       "name": "Demon Infantry"
+      }
+     ],
+     "choices": []
     }
    ]
   },
   {
-   "id": "s1-12",
-   "title": "Stage 12 — Bamboo Poles",
+   "id": "s1-10",
+   "title": "Stage 10 — Bamboo Poles",
    "level": "Lv 18",
-   "where": "Geum-Oh Mine ↔ Jook-Suh.",
+   "where": "Geum-Oh Mine ↔ Cargo.",
+   "combo": "",
    "quests": [
     {
      "name": "Quest 14",
@@ -1251,15 +2020,31 @@
        "label": "Turn in"
       }
      ],
-     "reward": "6,450 XP, 1 Skill Point"
+     "reward": "6,450 XP, 1 Skill Point",
+     "note": "",
+     "startCity": "",
+     "items": [
+      {
+       "file": "14.png",
+       "name": "30x Piece of Bamboo Pole"
+      }
+     ],
+     "mobs": [
+      {
+       "file": "ms_m3_04.jpg",
+       "name": "Demon Throwing Soldiers"
+      }
+     ],
+     "choices": []
     }
    ]
   },
   {
-   "id": "s1-13",
-   "title": "Stage 13 — Wild Demon Soldiers",
+   "id": "s1-11",
+   "title": "Stage 11 — Wild Demon Soldiers",
    "level": "Lv 19",
    "where": "Geum-Oh Mine.",
+   "combo": "",
    "quests": [
     {
      "name": "Quest 15",
@@ -1288,15 +2073,31 @@
        "label": "Turn in"
       }
      ],
-     "reward": "7,400 XP, 1 Contribution Point"
+     "reward": "7,400 XP, 1 Contribution Point",
+     "note": "",
+     "startCity": "",
+     "items": [
+      {
+       "file": "15.png",
+       "name": "30x Statue"
+      }
+     ],
+     "mobs": [
+      {
+       "file": "ms_m3_05.jpg",
+       "name": "Wild Demon Soldiers"
+      }
+     ],
+     "choices": []
     }
    ]
   },
   {
-   "id": "s1-14",
-   "title": "Stage 14 — Demon Shock Troopers",
+   "id": "s1-12",
+   "title": "Stage 12 — Demon Shock Troopers",
    "level": "Lv 20",
-   "where": "Jook-Suh ↔ Geum-Oh Mine.",
+   "where": "Cargo ↔ Geum-Oh Mine.",
+   "combo": "",
    "quests": [
     {
      "name": "Quest 16",
@@ -1331,15 +2132,31 @@
        "label": "Turn in"
       }
      ],
-     "reward": "8,950 XP, 1 Skill Point"
+     "reward": "8,950 XP, 1 Skill Point",
+     "note": "",
+     "startCity": "",
+     "items": [
+      {
+       "file": "16.png",
+       "name": "30x Ja-Gan’s Gold"
+      }
+     ],
+     "mobs": [
+      {
+       "file": "ms_m3_06.jpg",
+       "name": "Demon Shock Troopers"
+      }
+     ],
+     "choices": []
     }
    ]
   },
   {
-   "id": "s1-15",
-   "title": "Stage 15 — General Sae-Won’s chain",
+   "id": "s1-13",
+   "title": "Stage 13 — General Sae-Won’s chain",
    "level": "Lv 21-25",
-   "where": "Jook-Suh only — same NPC, three separate visits as you level up.",
+   "where": "Cargo only — same NPC, three separate visits as you level up.",
+   "combo": "",
    "quests": [
     {
      "name": "Quest 17",
@@ -1362,7 +2179,22 @@
        "label": "Turn in"
       }
      ],
-     "reward": "10,985 XP, 1 Contribution Point"
+     "reward": "10,985 XP, 1 Contribution Point",
+     "note": "",
+     "startCity": "",
+     "items": [
+      {
+       "file": "17.png",
+       "name": "35x Red Flag"
+      }
+     ],
+     "mobs": [
+      {
+       "file": "ms_m3_07.jpg",
+       "name": "Demon Flag Bearers"
+      }
+     ],
+     "choices": []
     },
     {
      "name": "Quest 18",
@@ -1385,7 +2217,22 @@
        "label": "Turn in"
       }
      ],
-     "reward": "21,610 XP, 1 Contribution Point"
+     "reward": "21,610 XP, 1 Contribution Point",
+     "note": "",
+     "startCity": "",
+     "items": [
+      {
+       "file": "18.png",
+       "name": "35x Demon Water Dragon Head"
+      }
+     ],
+     "mobs": [
+      {
+       "file": "ms_m4_01.jpg",
+       "name": "Demon Water Dragons"
+      }
+     ],
+     "choices": []
     },
     {
      "name": "Quest 19",
@@ -1408,15 +2255,31 @@
        "label": "Turn in"
       }
      ],
-     "reward": "19,440 XP, 1 Skill Point"
+     "reward": "19,440 XP, 1 Skill Point",
+     "note": "",
+     "startCity": "",
+     "items": [
+      {
+       "file": "19.png",
+       "name": "40x Demon’s Drum"
+      }
+     ],
+     "mobs": [
+      {
+       "file": "ms_m3_08.jpg",
+       "name": "Demon Band"
+      }
+     ],
+     "choices": []
     }
    ]
   },
   {
    "id": "s2-1",
-   "title": "Stage 1 — Jook-Suh solo run",
+   "title": "Stage 14 — Cargo solo run",
    "level": "Lv 26-29",
-   "where": "Jook-Suh Cargo Station only — same routine, four times in a row.",
+   "where": "Cargo Station only — same routine, four times in a row.",
+   "combo": "",
    "quests": [
     {
      "name": "Quest 20",
@@ -1439,7 +2302,22 @@
        "label": "Turn in"
       }
      ],
-     "reward": "23,056 XP, 1 Contribution Point"
+     "reward": "23,056 XP, 1 Contribution Point",
+     "note": "",
+     "startCity": "",
+     "items": [
+      {
+       "file": "20.png",
+       "name": "40x Demon’s Armor"
+      }
+     ],
+     "mobs": [
+      {
+       "file": "ms_m3_09.jpg",
+       "name": "Demon Armored Knight"
+      }
+     ],
+     "choices": []
     },
     {
      "name": "Quest 21",
@@ -1462,7 +2340,22 @@
        "label": "Turn in"
       }
      ],
-     "reward": "24,298 XP, 1 Skill Point, 1 Contribution Point"
+     "reward": "24,298 XP, 1 Skill Point, 1 Contribution Point",
+     "note": "",
+     "startCity": "",
+     "items": [
+      {
+       "file": "21.png",
+       "name": "40x Bloodstained Clothes"
+      }
+     ],
+     "mobs": [
+      {
+       "file": "ms_m4_02.jpg",
+       "name": "Hungry Demon Water Dragon"
+      }
+     ],
+     "choices": []
     },
     {
      "name": "Quest 22",
@@ -1485,7 +2378,22 @@
        "label": "Turn in"
       }
      ],
-     "reward": "28,207 XP, 1 Skill Point, 1 Contribution Point"
+     "reward": "28,207 XP, 1 Skill Point, 1 Contribution Point",
+     "note": "",
+     "startCity": "",
+     "items": [
+      {
+       "file": "22.png",
+       "name": "40x Demon Water Dragon Skin"
+      }
+     ],
+     "mobs": [
+      {
+       "file": "ms_m4_03.jpg",
+       "name": "Demon Water Dragon Predator"
+      }
+     ],
+     "choices": []
     },
     {
      "name": "Quest 23",
@@ -1508,15 +2416,31 @@
        "label": "Turn in"
       }
      ],
-     "reward": "28,510 XP, 1 Skill Point, 1 Contribution Point"
+     "reward": "28,510 XP, 1 Skill Point, 1 Contribution Point",
+     "note": "",
+     "startCity": "",
+     "items": [
+      {
+       "file": "23.png",
+       "name": "40x Demon Mad Knight Head"
+      }
+     ],
+     "mobs": [
+      {
+       "file": "ms_m3_10.jpg",
+       "name": "Demon Mad Knight"
+      }
+     ],
+     "choices": []
     }
    ]
   },
   {
    "id": "s2-2",
-   "title": "Stage 2 — Job Change #1 + Trinket’s Quest",
+   "title": "Stage 15 — Job Change #1 + Trinket’s Quest",
    "level": "Lv 30",
    "where": "Geum-Oh Mine, then the Fort — this is a big milestone stage.",
+   "combo": "Event Quest 8 = <b>1st Job Change</b>, do it at 30. You only need 1x Demon Commander’s Head — Quest 27 (Stage 16) needs a different drop from the same mob, so no need to stock up.",
    "quests": [
     {
      "name": "Quest 24",
@@ -1545,7 +2469,22 @@
        "label": "Turn in"
       }
      ],
-     "reward": "~30,000 XP, 1 Contribution Point"
+     "reward": "~30,000 XP, 1 Contribution Point",
+     "note": "",
+     "startCity": "",
+     "items": [
+      {
+       "file": "24.png",
+       "name": "1x Moon-Hee’s Doll"
+      }
+     ],
+     "mobs": [
+      {
+       "file": "ms_m5_01.jpg",
+       "name": "Castoff Baby Ghost"
+      }
+     ],
+     "choices": []
     },
     {
      "name": "Event Quest 8 — 1st Job Change",
@@ -1578,7 +2517,22 @@
        "label": "Turn in — pick your job"
       }
      ],
-     "reward": "10,000 XP + 1st Job Change"
+     "reward": "10,000 XP + 1st Job Change",
+     "note": "",
+     "startCity": "",
+     "items": [
+      {
+       "file": "ev4.png",
+       "name": "1x Demon Commander’s Head"
+      }
+     ],
+     "mobs": [
+      {
+       "file": "ms_m3_11.jpg",
+       "name": "Demon Commander"
+      }
+     ],
+     "choices": []
     },
     {
      "name": "Event Quest 9 — Trinket’s Quest",
@@ -1598,7 +2552,7 @@
       },
       {
        "type": "action",
-       "text": "Find 100x \"Sealed Talisman with Spirits\" from any Ghosts"
+       "text": "Kill Ghosts for 100x \"Sealed Talisman with Spirits\""
       },
       {
        "type": "talk",
@@ -1638,7 +2592,7 @@
       },
       {
        "type": "action",
-       "text": "Find one head each: Devil Soldier, Devil Soldier Twin Blades, Devil Soldier Bow, Devil Soldier Sword, Devil Soldier Spear, Devil Soldier Sub-boss, 1st Devil Monster"
+       "text": "Kill different devil soldiers for their head"
       },
       {
        "type": "talk",
@@ -1647,15 +2601,99 @@
        "label": "Turn in (talk twice)"
       }
      ],
-     "reward": "~24,000 XP + Apprentice Trinket"
+     "reward": "~24,000 XP + Apprentice Trinket",
+     "note": "",
+     "startCity": "",
+     "items": [
+      {
+       "file": "",
+       "name": "100x Sealed Talisman with Spirits"
+      },
+      {
+       "file": "",
+       "name": "1x Devil Soldier Head"
+      },
+      {
+       "file": "",
+       "name": "1x Devil Soldier with Twin Blades Head"
+      },
+      {
+       "file": "",
+       "name": "1x Devil Soldier With Bow Head"
+      },
+      {
+       "file": "",
+       "name": "1x Devil Soldier with Sword Head"
+      },
+      {
+       "file": "",
+       "name": "1x Devil Soldier With Spear Head"
+      },
+      {
+       "file": "",
+       "name": "1x 2nd Devil Soldier Head"
+      },
+      {
+       "file": "",
+       "name": "1x 1st Devil Soldier Head"
+      }
+     ],
+     "mobs": [
+      {
+       "file": "ms_m5_01.jpg",
+       "name": "Castoff Baby Ghost"
+      },
+      {
+       "file": "ms_m5_02.jpg",
+       "name": "Ghost Of Young Man"
+      },
+      {
+       "file": "ms_m5_03.jpg",
+       "name": "Ghost Of Young Woman"
+      },
+      {
+       "file": "ms_m5_04.jpg",
+       "name": "Ghost Of Blacksmith"
+      },
+      {
+       "file": "ms_m6_01.jpg",
+       "name": "Devil Soldier"
+      },
+      {
+       "file": "ms_m6_02b.jpg",
+       "name": "Devil Soldier with Twin Blades"
+      },
+      {
+       "file": "ms_m6_03.jpg",
+       "name": "Devil Soldier With Bow"
+      },
+      {
+       "file": "ms_m6_04.jpg",
+       "name": "Devil Soldier with Sword"
+      },
+      {
+       "file": "ms_m6_05.jpg",
+       "name": "Devil Soldier With Spear"
+      },
+      {
+       "file": "ms_m6_06.jpg",
+       "name": "2nd Devil Soldier"
+      },
+      {
+       "file": "ms_m6_07.jpg",
+       "name": "1st Devil Soldier"
+      }
+     ],
+     "choices": []
     }
    ]
   },
   {
    "id": "s2-3",
-   "title": "Stage 3 — Ghost beads at the Fort",
+   "title": "Stage 16 — Ghost beads at the Fort",
    "level": "Lv 31-34",
    "where": "Temporary Fort of Geum-Ohee Castle, one side-trip to Geum-Oh Mine.",
+   "combo": "",
    "quests": [
     {
      "name": "Quest 25",
@@ -1678,7 +2716,22 @@
        "label": "Turn in"
       }
      ],
-     "reward": "~35,000 XP, 1 Contribution Point"
+     "reward": "~35,000 XP, 1 Contribution Point",
+     "note": "",
+     "startCity": "",
+     "items": [
+      {
+       "file": "25.png",
+       "name": "1x Wolf Tooth Necklace"
+      }
+     ],
+     "mobs": [
+      {
+       "file": "ms_m5_02.jpg",
+       "name": "Ghost Of Young Man"
+      }
+     ],
+     "choices": []
     },
     {
      "name": "Quest 26",
@@ -1701,7 +2754,22 @@
        "label": "Turn in"
       }
      ],
-     "reward": "~42,000 XP, 1 Contribution Point"
+     "reward": "~42,000 XP, 1 Contribution Point",
+     "note": "",
+     "startCity": "",
+     "items": [
+      {
+       "file": "26.png",
+       "name": "10x Ghost Bead"
+      }
+     ],
+     "mobs": [
+      {
+       "file": "ms_m5_03.jpg",
+       "name": "Ghost Of Young Woman"
+      }
+     ],
+     "choices": []
     },
     {
      "name": "Quest 27",
@@ -1724,7 +2792,22 @@
        "label": "Turn in"
       }
      ],
-     "reward": "47,266 XP, 1 Skill Point"
+     "reward": "47,266 XP, 1 Skill Point",
+     "note": "",
+     "startCity": "",
+     "items": [
+      {
+       "file": "27.png",
+       "name": "1x Demon Troops Confidential Document"
+      }
+     ],
+     "mobs": [
+      {
+       "file": "ms_m3_11.jpg",
+       "name": "Demon Commander"
+      }
+     ],
+     "choices": []
     },
     {
      "name": "Quest 28",
@@ -1747,15 +2830,31 @@
        "label": "Turn in"
       }
      ],
-     "reward": "~62,000 XP, 1 Contribution Point"
+     "reward": "~62,000 XP, 1 Contribution Point",
+     "note": "",
+     "startCity": "",
+     "items": [
+      {
+       "file": "26.png",
+       "name": "10x Blacksmith Bead"
+      }
+     ],
+     "mobs": [
+      {
+       "file": "ms_m5_04.jpg",
+       "name": "Ghost Of Blacksmith"
+      }
+     ],
+     "choices": []
     }
    ]
   },
   {
    "id": "s2-4",
-   "title": "Stage 4 — More Fort ghost beads",
+   "title": "Stage 17 — More Fort ghost beads",
    "level": "Lv 35-36",
    "where": "Fort, one side-trip to Geum-Oh Mine.",
+   "combo": "",
    "quests": [
     {
      "name": "Quest 29",
@@ -1778,7 +2877,22 @@
        "label": "Turn in"
       }
      ],
-     "reward": "~76,000 XP, 1 Contribution Point"
+     "reward": "~76,000 XP, 1 Contribution Point",
+     "note": "",
+     "startCity": "",
+     "items": [
+      {
+       "file": "26.png",
+       "name": "10x Ghost Guard Bead"
+      }
+     ],
+     "mobs": [
+      {
+       "file": "ms_m5_05.jpg",
+       "name": "Ghost Guard"
+      }
+     ],
+     "choices": []
     },
     {
      "name": "Quest 30",
@@ -1801,15 +2915,31 @@
        "label": "Turn in"
       }
      ],
-     "reward": "80,002 XP, 1 Contribution Point"
+     "reward": "80,002 XP, 1 Contribution Point",
+     "note": "",
+     "startCity": "",
+     "items": [
+      {
+       "file": "30.png",
+       "name": "1x Demon Water Dragon Commander’s Skin"
+      }
+     ],
+     "mobs": [
+      {
+       "file": "ms_m4_04.jpg",
+       "name": "Demon Dragon Commander"
+      }
+     ],
+     "choices": []
     }
    ]
   },
   {
    "id": "s2-5",
-   "title": "Stage 5 — Fellow Traveller / Sealed Troop",
+   "title": "Stage 18 — Fellow Traveller / Sealed Troop",
    "level": "Lv 37-39",
    "where": "Fort only.",
+   "combo": "",
    "quests": [
     {
      "name": "Quest 31",
@@ -1832,7 +2962,22 @@
        "label": "Turn in"
       }
      ],
-     "reward": "~100,000 XP, 1 Contribution Point"
+     "reward": "~100,000 XP, 1 Contribution Point",
+     "note": "",
+     "startCity": "",
+     "items": [
+      {
+       "file": "26.png",
+       "name": "10x Fellow Traveller Bead"
+      }
+     ],
+     "mobs": [
+      {
+       "file": "ms_m5_06.jpg",
+       "name": "Fellow traveller to the other world"
+      }
+     ],
+     "choices": []
     },
     {
      "name": "Quest 32",
@@ -1855,7 +3000,22 @@
        "label": "Turn in"
       }
      ],
-     "reward": "156,300 XP, 1 Skill Point"
+     "reward": "156,300 XP, 1 Skill Point",
+     "note": "",
+     "startCity": "",
+     "items": [
+      {
+       "file": "26.png",
+       "name": "10x Sealed Troop Bead"
+      }
+     ],
+     "mobs": [
+      {
+       "file": "ms_m5_07.jpg",
+       "name": "Sealed ghost troop"
+      }
+     ],
+     "choices": []
     },
     {
      "name": "Quest 33",
@@ -1878,15 +3038,31 @@
        "label": "Turn in"
       }
      ],
-     "reward": "100,000 XP, 1 Contribution Point"
+     "reward": "100,000 XP, 1 Contribution Point",
+     "note": "",
+     "startCity": "",
+     "items": [
+      {
+       "file": "33.png",
+       "name": "10x Devil Soldier’s Bow"
+      }
+     ],
+     "mobs": [
+      {
+       "file": "ms_m6_03.jpg",
+       "name": "Devil Soldier With Bow"
+      }
+     ],
+     "choices": []
     }
    ]
   },
   {
    "id": "s2-6",
-   "title": "Stage 6 — Devil Soldier’s Spear",
+   "title": "Stage 19 — Devil Soldier’s Spear",
    "level": "Lv 40",
    "where": "Fort only.",
+   "combo": "",
    "quests": [
     {
      "name": "Quest 34",
@@ -1909,10 +3085,25 @@
        "label": "Turn in"
       }
      ],
-     "reward": "~110,000 XP, 1 Contribution Point"
+     "reward": "~110,000 XP, 1 Contribution Point",
+     "note": "",
+     "startCity": "",
+     "items": [
+      {
+       "file": "34.png",
+       "name": "10x Devil Soldier’s Spear"
+      }
+     ],
+     "mobs": [
+      {
+       "file": "ms_m6_05.jpg",
+       "name": "Devil Soldier With Spear"
+      }
+     ],
+     "choices": []
     },
     {
-     "name": "Event Quest 14",
+     "name": "Event Quest 14 — Devil Troops of Absorbing Green",
      "level": "Lv 40",
      "steps": [
       {
@@ -1923,7 +3114,7 @@
       },
       {
        "type": "action",
-       "text": "Find \"Green Crystal\" from Devil Troops of Absorbing Green (on the way to d3, and around d1 gates)"
+       "text": "Kill Devil Troop Of Absorbing for \"Green Crystal\""
       },
       {
        "type": "talk",
@@ -1932,15 +3123,31 @@
        "label": "Turn in"
       }
      ],
-     "reward": "83,680 XP"
+     "reward": "83,680 XP",
+     "note": "Devil Troop Of Absorbing Green spawns on the way to D3, and around the D1 gates.",
+     "startCity": "",
+     "items": [
+      {
+       "file": "ev6.png",
+       "name": "1x Green Crystal"
+      }
+     ],
+     "mobs": [
+      {
+       "file": "ms_m7_07.jpg",
+       "name": "Devil Troop Of Absorbing"
+      }
+     ],
+     "choices": []
     }
    ]
   },
   {
    "id": "s2-7",
-   "title": "Stage 7 — To-Woo’s errand + Ghost Hunter masks",
+   "title": "Stage 20 — To-Woo’s errand + Ghost Hunter masks",
    "level": "Lv 41",
    "where": "Fort, with a trip out of town.",
+   "combo": "",
    "quests": [
     {
      "name": "Quest 35",
@@ -1977,7 +3184,22 @@
        "label": "Turn in"
       }
      ],
-     "reward": "~116,825 XP"
+     "reward": "~116,825 XP",
+     "note": "",
+     "startCity": "",
+     "items": [
+      {
+       "file": "37.png",
+       "name": "1x Head of Hyun-Woong’s Enemy"
+      }
+     ],
+     "mobs": [
+      {
+       "file": "ms_m6_02.jpg",
+       "name": "Enemy of Hyun-Woong"
+      }
+     ],
+     "choices": []
     },
     {
      "name": "Quest 36",
@@ -2000,15 +3222,31 @@
        "label": "Turn in"
       }
      ],
-     "reward": "~194,790 XP"
+     "reward": "~194,790 XP",
+     "note": "",
+     "startCity": "",
+     "items": [
+      {
+       "file": "",
+       "name": "100x Devil Troop of Pain’s Mask"
+      }
+     ],
+     "mobs": [
+      {
+       "file": "ms_m7_02.jpg",
+       "name": "Devil Troop Of Pain"
+      }
+     ],
+     "choices": []
     }
    ]
   },
   {
    "id": "s2-8",
-   "title": "Stage 8 — Red Flag Leader’s errand + Ghost Hunter masks",
+   "title": "Stage 21 — Red Flag Leader’s errand + Ghost Hunter masks",
    "level": "Lv 42",
    "where": "Fort → Narootuh → Geum-Oh Mine → Fort, then out of town.",
+   "combo": "",
    "quests": [
     {
      "name": "Quest 37",
@@ -2075,7 +3313,17 @@
        "label": "Turn in"
       }
      ],
-     "reward": "~140,708 XP"
+     "reward": "~140,708 XP",
+     "note": "",
+     "startCity": "",
+     "items": [
+      {
+       "file": "37.png",
+       "name": "5x Collected Heads (named targets)"
+      }
+     ],
+     "mobs": [],
+     "choices": []
     },
     {
      "name": "Quest 38",
@@ -2098,15 +3346,31 @@
        "label": "Turn in"
       }
      ],
-     "reward": "~234,514 XP"
+     "reward": "~234,514 XP",
+     "note": "",
+     "startCity": "",
+     "items": [
+      {
+       "file": "",
+       "name": "100x Devil Troop of Greed’s Mask"
+      }
+     ],
+     "mobs": [
+      {
+       "file": "ms_m7_03.jpg",
+       "name": "Devil Troop Of Greed"
+      }
+     ],
+     "choices": []
     }
    ]
   },
   {
    "id": "s2-9",
-   "title": "Stage 9 — Seoung-Gill’s secret + Ghost Hunter masks",
+   "title": "Stage 22 — Seoung-Gill’s secret + Ghost Hunter masks",
    "level": "Lv 43",
    "where": "Fort, with trips out of town.",
+   "combo": "",
    "quests": [
     {
      "name": "Quest 39",
@@ -2155,7 +3419,21 @@
        "label": "Final turn-in"
       }
      ],
-     "reward": "~169,395 XP"
+     "reward": "~169,395 XP",
+     "note": "",
+     "startCity": "",
+     "items": [
+      {
+       "file": "39.png",
+       "name": "1x Secret Letter"
+      },
+      {
+       "file": "39_1.png",
+       "name": "1x Head Skin of Yong-Chun"
+      }
+     ],
+     "mobs": [],
+     "choices": []
     },
     {
      "name": "Quest 40",
@@ -2178,15 +3456,31 @@
        "label": "Turn in"
       }
      ],
-     "reward": "~282,326 XP"
+     "reward": "~282,326 XP",
+     "note": "",
+     "startCity": "",
+     "items": [
+      {
+       "file": "",
+       "name": "100x Devil Troop of Jealousy’s Mask"
+      }
+     ],
+     "mobs": [
+      {
+       "file": "ms_m7_04.jpg",
+       "name": "Devil Troop Of Jealousy"
+      }
+     ],
+     "choices": []
     }
    ]
   },
   {
    "id": "s2-10",
-   "title": "Stage 10 — Hatred combo + Doggebi spirits",
+   "title": "Stage 23 — Hatred combo + Doggebi spirits",
    "level": "Lv 44",
    "where": "Out of town + Fort + Forsaken Fort.",
+   "combo": "Quest 41 + 42 both farm <b>Devil Troop Of Hatred</b> — one grind covers both.",
    "quests": [
     {
      "name": "Quest 41",
@@ -2209,7 +3503,22 @@
        "label": "Turn in"
       }
      ],
-     "reward": "~203,850 XP"
+     "reward": "~203,850 XP",
+     "note": "",
+     "startCity": "",
+     "items": [
+      {
+       "file": "41.png",
+       "name": "1x Rope"
+      }
+     ],
+     "mobs": [
+      {
+       "file": "ms_m7_05.jpg",
+       "name": "Devil Troop Of Hatred"
+      }
+     ],
+     "choices": []
     },
     {
      "name": "Quest 42",
@@ -2232,7 +3541,22 @@
        "label": "Turn in"
       }
      ],
-     "reward": "~339,750 XP"
+     "reward": "~339,750 XP",
+     "note": "",
+     "startCity": "",
+     "items": [
+      {
+       "file": "",
+       "name": "100x Devil Troop of Hatred’s Mask"
+      }
+     ],
+     "mobs": [
+      {
+       "file": "ms_m7_05.jpg",
+       "name": "Devil Troop Of Hatred"
+      }
+     ],
+     "choices": []
     },
     {
      "name": "Event Quest 16",
@@ -2246,7 +3570,7 @@
       },
       {
        "type": "action",
-       "text": "Find one spirit of each: Doggebi of Monster Face, Doggebi with a Gong, Drunken Doggebi, Doggebi with a Mask of Black Crow, Doggebi with a Mask of Black Panther, Giant Doggebi, Guardian of Doggebi"
+       "text": "Kill different Doggebis for their Spirit"
       },
       {
        "type": "talk",
@@ -2255,7 +3579,70 @@
        "label": "Turn in"
       }
      ],
-     "reward": "~169,875 XP"
+     "reward": "~169,875 XP",
+     "note": "",
+     "startCity": "",
+     "items": [
+      {
+       "file": "",
+       "name": "1x Spirit of Doggebi of Monster Face"
+      },
+      {
+       "file": "",
+       "name": "1x Spirit of Doggebi with a Gong"
+      },
+      {
+       "file": "",
+       "name": "1x Spirit of Drunken Doggebi"
+      },
+      {
+       "file": "",
+       "name": "1x Spirit of Doggebi with a Mask of Black Crow"
+      },
+      {
+       "file": "",
+       "name": "1x Spirit of Doggebi with a Mask of Black Panther"
+      },
+      {
+       "file": "",
+       "name": "1x Spirit of Giant Doggebi"
+      },
+      {
+       "file": "",
+       "name": "1x Spirit of Guardian of Doggebi"
+      }
+     ],
+     "mobs": [
+      {
+       "file": "ms_m8_01.jpg",
+       "name": "Doggebi of Monster Face"
+      },
+      {
+       "file": "ms_m8_02.jpg",
+       "name": "Doggebi with Gong"
+      },
+      {
+       "file": "ms_m8_03.jpg",
+       "name": "Drunken Doggebi"
+      },
+      {
+       "file": "ms_m8_04.jpg",
+       "name": "Doggebi with Mask of Black Crow"
+      },
+      {
+       "file": "ms_m8_05.jpg",
+       "name": "Doggebi with Mask of Black Panther"
+      },
+      {
+       "file": "ms_m8_06.jpg",
+       "name": "Giant Doggebis"
+      },
+      {
+       "file": "ms_m8_07.jpg",
+       "name": "Guardian of Doggebi"
+      }
+     ],
+     "choices": []
     },
     {
      "name": "Event Quest 17",
@@ -2280,15 +3667,31 @@
        "label": "Turn in"
       }
      ],
-     "reward": "1,358,165 XP"
+     "reward": "1,358,165 XP",
+     "note": "",
+     "startCity": "",
+     "items": [
+      {
+       "file": "ev8.png",
+       "name": "1x Chief of Angry Doggebi Troop’s Dead Body"
+      }
+     ],
+     "mobs": [
+      {
+       "file": "ms_m8_07.jpg",
+       "name": "Guardian of Doggebi"
+      }
+     ],
+     "choices": []
     }
    ]
   },
   {
    "id": "s2-11",
-   "title": "Stage 11 — Doll for a Doggebi friend + last mask",
+   "title": "Stage 24 — Doll for a Doggebi friend + last mask",
    "level": "Lv 45",
    "where": "Out of town + Fort.",
+   "combo": "",
    "quests": [
     {
      "name": "Quest 43",
@@ -2323,7 +3726,22 @@
        "label": "Turn in"
       }
      ],
-     "reward": "~245,225 XP"
+     "reward": "~245,225 XP",
+     "note": "",
+     "startCity": "",
+     "items": [
+      {
+       "file": "43.png",
+       "name": "1x Defective Doggebi’s Doll"
+      }
+     ],
+     "mobs": [
+      {
+       "file": "ms_m7_07.jpg",
+       "name": "Devil Troop Of Anger"
+      }
+     ],
+     "choices": []
     },
     {
      "name": "Quest 44",
@@ -2346,15 +3764,31 @@
        "label": "Turn in"
       }
      ],
-     "reward": "~408,708 XP"
+     "reward": "~408,708 XP",
+     "note": "",
+     "startCity": "",
+     "items": [
+      {
+       "file": "",
+       "name": "100x Devil Troop of Madness’ Mask"
+      }
+     ],
+     "mobs": [
+      {
+       "file": "ms_m7_06.jpg",
+       "name": "Devil Troop Of Madness"
+      }
+     ],
+     "choices": []
     }
    ]
   },
   {
    "id": "s2-12",
-   "title": "Stage 12 — Doggebi broom collection",
+   "title": "Stage 25 — Doggebi broom collection",
    "level": "Lv 46-49",
    "where": "Out of town only, four NPCs in a row.",
+   "combo": "Quests 45-49 all need <b>5 Blood of Big Handed</b> too — stockpile it once, covers the whole chain.",
    "quests": [
     {
      "name": "Quest 45",
@@ -2377,7 +3811,26 @@
        "label": "Turn in"
       }
      ],
-     "reward": "~491,510 XP, 1 Contribution Point"
+     "reward": "~491,510 XP, 1 Contribution Point",
+     "note": "",
+     "startCity": "",
+     "items": [
+      {
+       "file": "45.png",
+       "name": "1x Doggebi of Monster Face’s Broom"
+      },
+      {
+       "file": "45-1.png",
+       "name": "5x Blood of Big Handed"
+      }
+     ],
+     "mobs": [
+      {
+       "file": "ms_m8_01.jpg",
+       "name": "Doggebi of Monster Face"
+      }
+     ],
+     "choices": []
     },
     {
      "name": "Quest 46",
@@ -2400,7 +3853,26 @@
        "label": "Turn in"
       }
      ],
-     "reward": "~590,926 XP, 1 Contribution Point"
+     "reward": "~590,926 XP, 1 Contribution Point",
+     "note": "",
+     "startCity": "",
+     "items": [
+      {
+       "file": "45.png",
+       "name": "1x Doggebi with Gong’s Broom"
+      },
+      {
+       "file": "45-1.png",
+       "name": "5x Blood of Big Handed"
+      }
+     ],
+     "mobs": [
+      {
+       "file": "ms_m8_02.jpg",
+       "name": "Doggebi with Gong"
+      }
+     ],
+     "choices": []
     },
     {
      "name": "Quest 47",
@@ -2423,7 +3895,26 @@
        "label": "Turn in"
       }
      ],
-     "reward": "~710,280 XP, 1 Contribution Point"
+     "reward": "~710,280 XP, 1 Contribution Point",
+     "note": "",
+     "startCity": "",
+     "items": [
+      {
+       "file": "45.png",
+       "name": "1x Drunken Doggebi’s Broom"
+      },
+      {
+       "file": "45-1.png",
+       "name": "5x Blood of Big Handed"
+      }
+     ],
+     "mobs": [
+      {
+       "file": "ms_m8_03.jpg",
+       "name": "Drunken Doggebi"
+      }
+     ],
+     "choices": []
     },
     {
      "name": "Quest 48",
@@ -2446,15 +3937,35 @@
        "label": "Turn in"
       }
      ],
-     "reward": "~853,562 XP, 1 Contribution Point"
+     "reward": "~853,562 XP, 1 Contribution Point",
+     "note": "",
+     "startCity": "",
+     "items": [
+      {
+       "file": "45.png",
+       "name": "1x Doggebi with Mask of Black Crow’s Broom"
+      },
+      {
+       "file": "45-1.png",
+       "name": "5x Blood of Big Handed"
+      }
+     ],
+     "mobs": [
+      {
+       "file": "ms_m8_04.jpg",
+       "name": "Doggebi with Mask of Black Crow"
+      }
+     ],
+     "choices": []
     }
    ]
   },
   {
    "id": "s3-1",
-   "title": "Stage 1 — Lv 50 kickoff: 2nd Job Change + Doggebi grind",
+   "title": "Stage 26 — Lv 50: 2nd Job Change",
    "level": "Lv 50",
    "where": "Out of town, then the Fort — big milestone stage.",
+   "combo": "Event Quest 20 = <b>2nd Job Change</b>, do it at 50 — last event quest on this server. From here it’s normal quests only, through Quest 62 (Lv 60).",
    "quests": [
     {
      "name": "Quest 49",
@@ -2477,7 +3988,26 @@
        "label": "Turn in"
       }
      ],
-     "reward": "~1,025,563 XP, 1 Contribution Point"
+     "reward": "~1,025,563 XP, 1 Contribution Point",
+     "note": "",
+     "startCity": "",
+     "items": [
+      {
+       "file": "45.png",
+       "name": "1x Doggebi with Mask of Black Panther’s Broom"
+      },
+      {
+       "file": "45-1.png",
+       "name": "5x Blood of Big Handed"
+      }
+     ],
+     "mobs": [
+      {
+       "file": "ms_m8_05.jpg",
+       "name": "Doggebi with Mask of Black Panther"
+      }
+     ],
+     "choices": []
     },
     {
      "name": "Event Quest 20 — 2nd Job Change",
@@ -2500,61 +4030,21 @@
        "label": "Talk again"
       }
      ],
-     "reward": "2nd Job Change"
-    },
-    {
-     "name": "Event Quest 21",
-     "level": "Lv 50",
-     "steps": [
-      {
-       "type": "talk",
-       "city": "wild",
-       "pin": "p9",
-       "label": "Talk"
-      },
-      {
-       "type": "action",
-       "text": "Kill 50 Giant Doggebi"
-      },
-      {
-       "type": "talk",
-       "city": "wild",
-       "pin": "p9",
-       "label": "Turn in"
-      }
-     ],
-     "reward": "500,000 XP"
-    },
-    {
-     "name": "Event Quest 22",
-     "level": "Lv 50",
-     "steps": [
-      {
-       "type": "talk",
-       "city": "wild",
-       "pin": "p9",
-       "label": "Talk"
-      },
-      {
-       "type": "action",
-       "text": "Kill 50 Guardian of Doggebi, then kill \"Angry Doggebi of Monster Face\" (spawns every 2h since last kill, near D1 / the hollow tree — only needs one kill) for \"Captured Doggebi\""
-      },
-      {
-       "type": "talk",
-       "city": "fort",
-       "pin": "20",
-       "label": "Talk"
-      }
-     ],
-     "reward": "500,000 XP"
+     "reward": "2nd Job Change",
+     "note": "",
+     "startCity": "",
+     "items": [],
+     "mobs": [],
+     "choices": []
     }
    ]
   },
   {
    "id": "s3-2",
-   "title": "Stage 2 — Lv 51-52: One-armed Man + Forsaken Fort",
-   "level": "Lv 51-52",
-   "where": "Out of town, then Forsaken Fort (out of town).",
+   "title": "Stage 27 — Lv 51: One-armed Man errand",
+   "level": "Lv 51",
+   "where": "Out of town (Cargo / Geum-Oh Mine area).",
+   "combo": "",
    "quests": [
     {
      "name": "Quest 50",
@@ -2577,113 +4067,35 @@
        "label": "Turn in"
       }
      ],
-     "reward": "~1,232,024 XP, 1 Contribution Point"
-    },
-    {
-     "name": "Event Quest 23",
-     "level": "Lv 52",
-     "steps": [
+     "reward": "~1,232,024 XP, 1 Contribution Point",
+     "note": "",
+     "startCity": "",
+     "items": [
       {
-       "type": "talk",
-       "city": "wild",
-       "pin": "p11",
-       "label": "Talk"
+       "file": "45.png",
+       "name": "1x Giant Doggebi’s Broom"
       },
       {
-       "type": "action",
-       "text": "Find Spirit of Doggebi of Monster Face, Spirit of Doggebi with a Gong, Spirit of Drunken Doggebi"
-      },
-      {
-       "type": "talk",
-       "city": "wild",
-       "pin": "p11",
-       "label": "Turn in"
+       "file": "45-1.png",
+       "name": "5x Blood of Big Handed"
       }
      ],
-     "reward": "681,882 XP"
-    },
-    {
-     "name": "Event Quest 24",
-     "level": "Lv 52",
-     "steps": [
+     "mobs": [
       {
-       "type": "talk",
-       "city": "wild",
-       "pin": "p11",
-       "label": "Talk"
-      },
-      {
-       "type": "action",
-       "text": "Find Spirit of Doggebi with a Mask of Black Crow, Spirit of Doggebi with a Mask of Black Panther"
-      },
-      {
-       "type": "talk",
-       "city": "wild",
-       "pin": "p11",
-       "label": "Turn in"
+       "file": "ms_m8_06.jpg",
+       "name": "Giant Doggebis"
       }
      ],
-     "reward": "681,882 XP"
-    },
-    {
-     "name": "Event Quest 25",
-     "level": "Lv 52",
-     "steps": [
-      {
-       "type": "talk",
-       "city": "wild",
-       "pin": "p11",
-       "label": "Talk"
-      },
-      {
-       "type": "action",
-       "text": "Find Spirit of Giant Doggebi, Spirit of Guardian of Doggebi"
-      },
-      {
-       "type": "talk",
-       "city": "wild",
-       "pin": "p11",
-       "label": "Turn in"
-      }
-     ],
-     "reward": "681,882 XP"
-    },
-    {
-     "name": "Event Quest 26",
-     "level": "Lv 52",
-     "steps": [
-      {
-       "type": "talk",
-       "city": "wild",
-       "pin": "p11",
-       "label": "Talk"
-      },
-      {
-       "type": "action",
-       "text": "Kill 10 each of Doggebi of Monster Face, Doggebi with a Gong, Drunken Doggebi, Doggebi with a Mask of Black Crow, Doggebi with a Mask of Black Panther, Giant Doggebi, Guardian of Doggebi"
-      },
-      {
-       "type": "talk",
-       "city": "wild",
-       "pin": "m8",
-       "label": "Kill Chief of Angry Doggebi Troop (1x)"
-      },
-      {
-       "type": "talk",
-       "city": "wild",
-       "pin": "p11",
-       "label": "Turn in"
-      }
-     ],
-     "reward": "681,882 XP"
+     "choices": []
     }
    ]
   },
   {
    "id": "s3-3",
-   "title": "Stage 3 — Lv 52-53: Manager’s errand + first Pub visit",
+   "title": "Stage 28 — Lv 52-53: Manager’s errand + first Pub visit",
    "level": "Lv 52-53",
    "where": "Out of town, then Fort → Pub of the Giant Bird.",
+   "combo": "",
    "quests": [
     {
      "name": "Quest 51",
@@ -2706,7 +4118,26 @@
        "label": "Turn in"
       }
      ],
-     "reward": "~1,479,838 XP, 1 Contribution Point"
+     "reward": "~1,479,838 XP, 1 Contribution Point",
+     "note": "",
+     "startCity": "",
+     "items": [
+      {
+       "file": "51.png",
+       "name": "1x Guardian of Doggebi’s Stone"
+      },
+      {
+       "file": "45-1.png",
+       "name": "5x Water Dragon Blood"
+      }
+     ],
+     "mobs": [
+      {
+       "file": "ms_m8_07.jpg",
+       "name": "Guardian of Doggebi"
+      }
+     ],
+     "choices": []
     },
     {
      "name": "Quest 53",
@@ -2735,15 +4166,31 @@
        "label": "Turn in"
       }
      ],
-     "reward": "~1,777,279 XP, 1 Contribution Point"
+     "reward": "~1,777,279 XP, 1 Contribution Point",
+     "note": "",
+     "startCity": "",
+     "items": [
+      {
+       "file": "52.png",
+       "name": "5x Skeleton Warrior’s Head"
+      }
+     ],
+     "mobs": [
+      {
+       "file": "ms_m9_01.jpg",
+       "name": "Rotten Skeleton Warrior of the Royal Tomb (Sword)"
+      }
+     ],
+     "choices": []
     }
    ]
   },
   {
    "id": "s3-4",
-   "title": "Stage 4 — Lv 54-57: Tomb Keeper grind chain begins",
+   "title": "Stage 29 — Lv 54-57: Tomb Keeper grind chain begins",
    "level": "Lv 54-57",
    "where": "Pub of the Giant Bird — this NPC carries you for a while.",
+   "combo": "Quest 56-59 all cycle through <b>Tomb Keeper [Gang-Man]</b> (pin 13).",
    "quests": [
     {
      "name": "Quest 56",
@@ -2766,30 +4213,22 @@
        "label": "Turn in"
       }
      ],
-     "reward": "~2,134,273 XP, 1 Contribution Point"
-    },
-    {
-     "name": "Event Quest 28",
-     "level": "Lv 54",
-     "steps": [
+     "reward": "~2,134,273 XP, 1 Contribution Point",
+     "note": "",
+     "startCity": "",
+     "items": [
       {
-       "type": "talk",
-       "city": "fort",
-       "pin": "20",
-       "label": "Talk"
-      },
-      {
-       "type": "action",
-       "text": "Go to D1 and kill 20x each: Doggebi of Monster Face, Doggebi with a Gong, Drunken Doggebi, Doggebi with a Mask of Black Crow, Doggebi with a Mask of Black Panther"
-      },
-      {
-       "type": "talk",
-       "city": "fort",
-       "pin": "20",
-       "label": "Talk again"
+       "file": "53.png",
+       "name": "5x Skeleton Warrior’s Ribs"
       }
      ],
-     "reward": "3,013,282 XP"
+     "mobs": [
+      {
+       "file": "ms_m9_02.jpg",
+       "name": "Rotten Skeleton Warrior of the Royal Tomb (Lance)"
+      }
+     ],
+     "choices": []
     },
     {
      "name": "Quest 57",
@@ -2812,82 +4251,22 @@
        "label": "Turn in"
       }
      ],
-     "reward": "~2,562,731 XP, 1 Contribution Point"
-    },
-    {
-     "name": "Event Quest 30",
-     "level": "Lv 55",
-     "steps": [
+     "reward": "~2,562,731 XP, 1 Contribution Point",
+     "note": "",
+     "startCity": "",
+     "items": [
       {
-       "type": "talk",
-       "city": "pub",
-       "pin": "13",
-       "label": "Talk"
-      },
-      {
-       "type": "talk",
-       "city": "pub",
-       "pin": "2",
-       "label": "Talk"
-      },
-      {
-       "type": "action",
-       "text": "Get 5x \"Speed up Medicine\""
-      },
-      {
-       "type": "talk",
-       "city": "pub",
-       "pin": "2",
-       "label": "Turn in"
+       "file": "54.png",
+       "name": "5x Royal Tomb Keeper’s Book"
       }
      ],
-     "reward": "3,289,241 XP"
-    },
-    {
-     "name": "Event Quest 31",
-     "level": "Lv 55",
-     "steps": [
+     "mobs": [
       {
-       "type": "talk",
-       "city": "pub",
-       "pin": "13",
-       "label": "Talk"
-      },
-      {
-       "type": "action",
-       "text": "Kill 60x Rotten Skeleton Warrior of the Royal Tomb (Sword) + 60x (Lance)"
-      },
-      {
-       "type": "talk",
-       "city": "pub",
-       "pin": "13",
-       "label": "Turn in"
+       "file": "ms_m9_03.jpg",
+       "name": "Minister of the Royal Tomb"
       }
      ],
-     "reward": "5,289,241 XP, 10x Talisman of Magic"
-    },
-    {
-     "name": "Event Quest 32",
-     "level": "Lv 55",
-     "steps": [
-      {
-       "type": "talk",
-       "city": "pub",
-       "pin": "13",
-       "label": "Talk"
-      },
-      {
-       "type": "action",
-       "text": "Kill 100x Maid of Honor of the Royal Tomb"
-      },
-      {
-       "type": "talk",
-       "city": "pub",
-       "pin": "13",
-       "label": "Turn in"
-      }
-     ],
-     "reward": "12,000,000 XP, 5x Talisman of Defense, Artisan’s Fixing Tool"
+     "choices": []
     },
     {
      "name": "Quest 58",
@@ -2910,30 +4289,22 @@
        "label": "Turn in"
       }
      ],
-     "reward": "~3,076,950 XP, 1 Contribution Point"
-    },
-    {
-     "name": "Event Quest 33",
-     "level": "Lv 57",
-     "steps": [
+     "reward": "~3,076,950 XP, 1 Contribution Point",
+     "note": "",
+     "startCity": "",
+     "items": [
       {
-       "type": "talk",
-       "city": "pub",
-       "pin": "13",
-       "label": "Talk"
-      },
-      {
-       "type": "action",
-       "text": "Kill 100x Minister of the Royal Tomb"
-      },
-      {
-       "type": "talk",
-       "city": "pub",
-       "pin": "13",
-       "label": "Turn in"
+       "file": "55.png",
+       "name": "5x Royal Tomb Keeper’s Lute"
       }
      ],
-     "reward": "12,975,811 XP"
+     "mobs": [
+      {
+       "file": "ms_m9_04.jpg",
+       "name": "Maid of Honor of the Royal Tomb"
+      }
+     ],
+     "choices": []
     },
     {
      "name": "Quest 59",
@@ -2956,15 +4327,31 @@
        "label": "Turn in"
       }
      ],
-     "reward": "~3,694,082 XP, 1 Contribution Point"
+     "reward": "~3,694,082 XP, 1 Contribution Point",
+     "note": "",
+     "startCity": "",
+     "items": [
+      {
+       "file": "56.png",
+       "name": "5x Royal Tomb Keeper’s Sword"
+      }
+     ],
+     "mobs": [
+      {
+       "file": "ms_m9_06.jpg",
+       "name": "The Royal Tomb Keeper (Sword)"
+      }
+     ],
+     "choices": []
     }
    ]
   },
   {
    "id": "s3-5",
-   "title": "Stage 5 — Lv 58: City of Priest opens up",
+   "title": "Stage 30 — Lv 58: Tomb Keeper continues",
    "level": "Lv 58",
-   "where": "Pub of the Giant Bird, then City of Priest.",
+   "where": "Pub of the Giant Bird.",
+   "combo": "",
    "quests": [
     {
      "name": "Quest 60",
@@ -2987,107 +4374,31 @@
        "label": "Turn in"
       }
      ],
-     "reward": "~4,434,711 XP, 1 Contribution Point"
-    },
-    {
-     "name": "Event Quest 35",
-     "level": "Lv 58",
-     "steps": [
+     "reward": "~4,434,711 XP, 1 Contribution Point",
+     "note": "",
+     "startCity": "",
+     "items": [
       {
-       "type": "talk",
-       "city": "cop",
-       "pin": "11",
-       "label": "Talk"
-      },
-      {
-       "type": "action",
-       "text": "Get 5x \"Baked Mackarel in Soy Sauce\" — cook at the Fort with 1x Mackerel fish"
-      },
-      {
-       "type": "talk",
-       "city": "cop",
-       "pin": "11",
-       "label": "Turn in"
+       "file": "57.png",
+       "name": "5x Royal Tomb Keeper’s Shield"
       }
      ],
-     "reward": "10,000,000 XP"
-    },
-    {
-     "name": "Event Quest 36",
-     "level": "Lv 58",
-     "steps": [
+     "mobs": [
       {
-       "type": "talk",
-       "city": "cop",
-       "pin": "11",
-       "label": "Talk"
-      },
-      {
-       "type": "action",
-       "text": "Kill 60x The Royal Tomb Keeper (sword) + 60x (Shield)"
-      },
-      {
-       "type": "talk",
-       "city": "cop",
-       "pin": "11",
-       "label": "Turn in"
+       "file": "ms_m9_05.jpg",
+       "name": "The Royal Tomb Keeper (Shield)"
       }
      ],
-     "reward": "10,000,000 XP"
-    },
-    {
-     "name": "Event Quest 37",
-     "level": "Lv 58",
-     "steps": [
-      {
-       "type": "talk",
-       "city": "cop",
-       "pin": "11",
-       "label": "Talk"
-      },
-      {
-       "type": "action",
-       "text": "Kill 60x The Royal Tomb Keeper (Iron Hammer) + 60x (Spear)"
-      },
-      {
-       "type": "talk",
-       "city": "cop",
-       "pin": "11",
-       "label": "Turn in"
-      }
-     ],
-     "reward": "20,835,821 XP"
-    },
-    {
-     "name": "Event Quest 38",
-     "level": "Lv 58",
-     "steps": [
-      {
-       "type": "talk",
-       "city": "cop",
-       "pin": "9",
-       "label": "Talk"
-      },
-      {
-       "type": "action",
-       "text": "Kill 60x each: The Royal Tomb Keeper (sword), (Shield), (Iron Hammer), (Spear)"
-      },
-      {
-       "type": "talk",
-       "city": "cop",
-       "pin": "9",
-       "label": "Turn in"
-      }
-     ],
-     "reward": "20,000,000 XP"
+     "choices": []
     }
    ]
   },
   {
    "id": "s3-6",
-   "title": "Stage 6 — Lv 59-60: Tomb Keeper finale",
+   "title": "Stage 31 — Lv 59-60: Tomb Keeper finale (last quests on this server)",
    "level": "Lv 59-60",
    "where": "Pub of the Giant Bird.",
+   "combo": "Quest 62 is the last quest on this server — nothing beyond Lv 60 exists yet.",
    "quests": [
     {
      "name": "Quest 61",
@@ -3110,7 +4421,22 @@
        "label": "Turn in"
       }
      ],
-     "reward": "~5,323,540 XP, 1 Contribution Point"
+     "reward": "~5,323,540 XP, 1 Contribution Point",
+     "note": "",
+     "startCity": "",
+     "items": [
+      {
+       "file": "58.png",
+       "name": "5x Royal Tomb Keeper’s Spear"
+      }
+     ],
+     "mobs": [
+      {
+       "file": "ms_m9_07.jpg",
+       "name": "The Royal Tomb Keeper (Spear)"
+      }
+     ],
+     "choices": []
     },
     {
      "name": "Quest 62",
@@ -3133,211 +4459,38 @@
        "label": "Turn in"
       }
      ],
-     "reward": "~6,390,210 XP, 1 Contribution Point"
-    }
-   ]
-  },
-  {
-   "id": "s3-7",
-   "title": "Stage 7 — Lv 70: 3rd Job Change + Forest of Elements",
-   "level": "Lv 70",
-   "where": "Fort → City of Priest → Forest of Elements (field) → City of Priest.",
-   "quests": [
-    {
-     "name": "Event Quest 40 — 3rd Job Change",
-     "level": "Lv 70",
-     "steps": [
+     "reward": "~6,390,210 XP, 1 Contribution Point",
+     "note": "",
+     "startCity": "",
+     "items": [
       {
-       "type": "talk",
-       "city": "fort",
-       "pin": "20",
-       "label": "Talk"
-      },
-      {
-       "type": "talk",
-       "city": "cop",
-       "pin": "9",
-       "label": "Talk"
-      },
-      {
-       "type": "field",
-       "label": "Field",
-       "name": "Forest of Elements — drop 10x each: element of fire, water, wood, iron, ground (can substitute \"Imperfect element of..\" from the same mobs or from D5)"
-      },
-      {
-       "type": "talk",
-       "city": "cop",
-       "pin": "19",
-       "label": "Talk — convert imperfects (200k each try, ~35% success rate, not guaranteed)"
-      },
-      {
-       "type": "field",
-       "label": "Field",
-       "name": "Carry the converted elements to the altars at every major spot in the Forest of Elements"
-      },
-      {
-       "type": "talk",
-       "city": "cop",
-       "pin": "9",
-       "label": "Talk again"
-      },
-      {
-       "type": "field",
-       "label": "Field",
-       "name": "\"Monster’s Right Arm\" from Demon Monster (D4, every floor)"
-      },
-      {
-       "type": "field",
-       "label": "Field",
-       "name": "\"Necklace of Evil\" from Chief of the Traitor’s Hangout, Yoong-Gi (Highlands of Sky, Traitor Hang Out)"
-      },
-      {
-       "type": "field",
-       "label": "Field",
-       "name": "\"Lord’s Jaw\" from Lord of Shadow Troop (D2)"
-      },
-      {
-       "type": "field",
-       "label": "Field",
-       "name": "\"Sword of the Chief Defender\" from Twisted Demon Defender (Emok Island)"
-      },
-      {
-       "type": "talk",
-       "city": "cop",
-       "pin": "9",
-       "label": "Turn in — 3rd Job Change with new skills"
+       "file": "58.png",
+       "name": "5x Royal Tomb Keeper’s Iron Hammer"
       }
      ],
-     "reward": "3rd Job Change + new skills"
-    },
-    {
-     "name": "Event Quest 41",
-     "level": "Lv 70",
-     "steps": [
+     "mobs": [
       {
-       "type": "talk",
-       "city": "forest",
-       "pin": "p14",
-       "label": "Talk"
-      },
-      {
-       "type": "action",
-       "text": "Find Souls of Undead from higher-level spirits / MK monsters in D5: Essence of earth (F3), wood (F4), water (F6), fire (F8), iron (F9)"
-      },
-      {
-       "type": "talk",
-       "city": "forest",
-       "pin": "p14",
-       "label": "Talk again"
-      },
-      {
-       "type": "action",
-       "text": "\"The Trial of I’Lryer\" — go to D5, find 100x \"Essence of Undead\" (drops from all D5 mobs), and \"I’Lryer’s ring\" from Cheios/Dunamic on F10 or Illusion of Dunamic / Illusion of Cheios on F9 (R1/R2)"
-      },
-      {
-       "type": "field",
-       "label": "Field",
-       "name": "Messenger of Devah [Jin-Heun] — Geum-Oh Mine, through the left gate, down the hill, keep right to the ramp"
-      },
-      {
-       "type": "action",
-       "text": "Receive \"Moving Trinket\" — grants access to Valley of Devah"
+       "file": "ms_m9_08.jpg",
+       "name": "The Royal Tomb Keeper (Iron Hammer)"
       }
      ],
-     "reward": "Access to Valley of Devah"
-    }
-   ]
-  },
-  {
-   "id": "s3-8",
-   "title": "Stage 8 — Lv 81: skill training",
-   "level": "Lv 81",
-   "where": "City of Priest.",
-   "quests": [
-    {
-     "name": "Quest 63",
-     "level": "Lv 81",
-     "steps": [
-      {
-       "type": "talk",
-       "city": "cop",
-       "pin": "10",
-       "label": "Talk"
-      },
-      {
-       "type": "action",
-       "text": "Click \"Receive Training\" and pick one of 3 skills (OTP, EVA or DEF) — the skill level scales up with your character level, up to skill level 20"
-      }
-     ],
-     "reward": "Selected Mystery Skill (Passive)"
-    }
-   ]
-  },
-  {
-   "id": "s3-9",
-   "title": "Stage 9 — the AWAKEN trilogy",
-   "level": "Lv 91 / 96 / 101",
-   "where": "Narootuh (talk point) → Emok Island → Valley of Devah farming.",
-   "quests": [
-    {
-     "name": "Event Quest — 1st AWAKEN",
-     "level": "Lv 91",
-     "steps": [
-      {
-       "type": "field",
-       "label": "Field",
-       "name": "\"DEAD Hye min\" — Narootuh, between NPC 43 and Refining Deamon Gong"
-      },
-      {
-       "type": "action",
-       "text": "Kill 200x Twisted Deamon Officer of Attack + 200x Twisted Imperial Deamon Commander (Emok A9)"
-      },
-      {
-       "type": "action",
-       "text": "Find 20x \"Mysterious Marble\" + 5x \"Piece of Shining Gold\" from Shadow of D’evah"
-      }
-     ],
-     "reward": "Blue Ball + access to 1st Awaken skills (S → Awaken tab)"
-    },
-    {
-     "name": "Event Quest — 2nd AWAKEN",
-     "level": "Lv 96",
-     "steps": [
-      {
-       "type": "field",
-       "label": "Field",
-       "name": "\"DEAD Hye min\" again — Narootuh"
-      },
-      {
-       "type": "action",
-       "text": "Find 2x \"Gold Ingot\" (craft with 200x Gold Coins at the Gold Master, dropped by Shadow of D’evah), 60x \"Mysterious Marble\", 15x \"Piece of Shining Gold\""
-      }
-     ],
-     "reward": "Pink Ball + access to 2nd Awaken skills (S → Awaken tab)"
-    },
-    {
-     "name": "Event Quest — 3rd AWAKEN",
-     "level": "Lv 101",
-     "steps": [
-      {
-       "type": "field",
-       "label": "Field",
-       "name": "\"DEAD Hye min\" again — Narootuh"
-      },
-      {
-       "type": "action",
-       "text": "Find \"Processing Awaken Lv3\" from D’evah Boss"
-      },
-      {
-       "type": "action",
-       "text": "Find 1x \"Gold Ingot\" (craft with 100x Gold Coins), 120x \"Mysterious Marble\", 30x \"Piece of Shining Gold\""
-      }
-     ],
-     "reward": "Yellow Ball + access to 3rd Awaken skills (S → Awaken tab)"
+     "choices": []
     }
    ]
   }
  ],
  "dangling_references": [],
- "unused_pins": []
+ "unused_pins": [
+  "cop-10",
+  "cop-11",
+  "cop-19",
+  "cop-9",
+  "cop-tp5",
+  "cop-tp6",
+  "fort-tp1",
+  "fort-tp2",
+  "fort-tp3",
+  "pub-2",
+  "pub-tp4"
+ ]
 }
