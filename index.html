@@ -3609,20 +3609,72 @@
       return npcIdentity(row).display;
     }
 
-    function resolveZoneMonsters(label, monsters) {
-      const original = normalizeName(label);
-      const base = normalizeName(String(label).replace(/\([^)]*\)/g, "").replace(/^all\s+/i, ""));
-      if (!base) return [];
-      const exact = monsters.filter(monster => {
-        const name = normalizeName(monster.text);
-        return name === original || name === base;
-      });
-      if (exact.length) return exact;
-      return monsters.filter(monster => {
-        const name = normalizeName(monster.text);
-        if (name.length < 6 || base.length < 6) return false;
-        return name.endsWith(base) || base.includes(name) || name.includes(base);
-      }).slice(0, 10);
+    /* Zone rosters.
+
+       The geography guide writes a roster the way a player says it out loud:
+       once "Demon Soldier" has been named, the entries after it drop the
+       family word and read "Shock Trooper", "Flag Bearer", "Water Dragon".
+       Resolving those by substring is what put Gigantic Species Shock Trooper
+       — a level 64-66 mob from a different part of the map — into three Demon
+       zones, and Great Armored Knight, Frenzy Demon Flag Bearer, Dungeon Mad
+       Knight and eleven others with them: 30 monster-to-zone claims the guide
+       never made.
+
+       A roster entry now resolves exactly two ways. Either it is a monster's
+       own name, or it is that name with a prefix another entry in the same
+       roster has already spelled out — and then only when exactly one monster
+       answers to the result. Two readings of one shorthand is a question, not
+       a match. Anything unresolved is printed as unmatched on the zone page
+       rather than being attached to whatever it happens to read like. */
+
+    // The guide's own qualifiers: a colour parenthetical, a leading "All" and
+    // a trailing "types" are how it writes a group, not part of a name.
+    function zoneLabelBase(label) {
+      return String(label ?? "")
+        .replace(/\([^)]*\)/g, " ")
+        .replace(/^\s*all\s+/i, " ")
+        .replace(/\s+types?\s*$/i, " ")
+        .trim();
+    }
+
+    function zoneLabelExactMatches(label, monstersByName) {
+      for (const key of [normalizeName(label), normalizeName(zoneLabelBase(label))]) {
+        if (key && monstersByName.has(key)) return monstersByName.get(key);
+      }
+      return [];
+    }
+
+    function resolveZoneRoster(labels, monstersByName) {
+      const entries = labels.map(label => ({
+        label, matches: zoneLabelExactMatches(label, monstersByName), how: "name"
+      }));
+
+      // Every leading word run of an entry that did match is a family prefix
+      // this roster has spelled out for itself. Nothing outside it is used.
+      const prefixes = new Set();
+      for (const entry of entries) {
+        if (!entry.matches.length) continue;
+        const words = zoneLabelBase(entry.label).split(/\s+/).filter(Boolean);
+        for (let count = 1; count < words.length; count += 1) {
+          prefixes.add(words.slice(0, count).join(" "));
+        }
+      }
+
+      for (const entry of entries) {
+        if (entry.matches.length) continue;
+        const base = zoneLabelBase(entry.label);
+        if (!base) continue;
+        const candidates = new Map();
+        for (const prefix of prefixes) {
+          const key = normalizeName(`${prefix} ${base}`);
+          if (monstersByName.has(key)) candidates.set(key, monstersByName.get(key));
+        }
+        if (candidates.size !== 1) continue;
+        entry.matches = [...candidates.values()][0];
+        entry.how = "shorthand";
+        entry.reading = entry.matches[0]?.text || "";
+      }
+      return entries;
     }
 
     // Bango names its item and prefix attributes in its own vocabulary. This is
@@ -3762,7 +3814,30 @@
       // Bango index 1 and legacy ID 174 — so the icon lookup for a legacy-keyed
       // equipment row has to go through the name, not the id.
       ix.bangoItemsByName = new Map(t.items.map(row => [normalizeName(row.ita_name), row]));
-      ix.legacyMonstersByName = new Map((o.legacyMonsters || []).map(row => [normalizeName(row.mon_name), row]));
+      // Bango's string table drops the rank number the legacy export keeps in
+      // the name: "Gigantic Species Shock Trooper 1", "… 2" and "… 3" are all
+      // just "Gigantic Species Shock Trooper" to the client. Joining on the
+      // exact name alone silently loses 42 whole families — 142 Bango records
+      // — and every one of them is a level ladder, so no single row can stand
+      // in for the group. Each family is kept as an ordered list and shown as
+      // one monster with several recorded variants.
+      ix.legacyMonsterVariants = new Map();
+      for (const row of o.legacyMonsters || []) {
+        mapPush(ix.legacyMonsterVariants, normalizeName(row.mon_name), row);
+      }
+      for (const row of o.legacyMonsters || []) {
+        const stem = String(row.mon_name ?? "").trim().match(/^(.*\S)\s+\d+$/);
+        if (!stem) continue;
+        const key = normalizeName(stem[1]);
+        // A rank-stripped name must never shadow a monster that owns that
+        // exact name. No legacy row does today; the guard keeps it that way.
+        const owned = (ix.legacyMonsterVariants.get(key) || [])
+          .some(other => normalizeName(other.mon_name) === key);
+        if (!owned) mapPush(ix.legacyMonsterVariants, key, row);
+      }
+      for (const family of ix.legacyMonsterVariants.values()) {
+        family.sort((a, b) => legacyVariantRank(a) - legacyVariantRank(b));
+      }
       // Decoded ita_rev / pre_rev vectors, grouped so one lookup gives an
       // item's whole stat block. Empty when the analysis folder is absent.
       ix.itemStatsById = groupedBy(o.itemStats || [], "ita_azon");
@@ -3848,13 +3923,16 @@
         }
       }
 
+      // One name can hold several client string IDs, and each of them has its
+      // own monster page, so a roster entry attaches the zone to all of them.
+      const monstersGroupedByName = groupedBy(monsterMessages, row => normalizeName(row.text));
       ix.monsterZones = new Map();
       for (const zone of state.zones) {
-        zone.monsterMatches = [];
-        for (const label of zone.mobLabels) {
-          const matches = resolveZoneMonsters(label, monsterMessages);
-          zone.monsterMatches.push({ label, matches });
-          for (const monster of matches) mapPush(ix.monsterZones, String(monster.message_id), zone);
+        zone.monsterMatches = resolveZoneRoster(zone.mobLabels, monstersGroupedByName);
+        for (const entry of zone.monsterMatches) {
+          for (const monster of entry.matches) {
+            mapPush(ix.monsterZones, String(monster.message_id), zone);
+          }
         }
       }
 
@@ -4194,7 +4272,7 @@
       const q = normalizeName(query.get("q") || "");
       const legacy = query.get("legacy") || "";
       const rows = state.indexes.monsters.filter(row => {
-        const hasLegacy = state.indexes.legacyMonstersByName.has(normalizeName(row.text));
+        const hasLegacy = legacyMonsterVariants(row.text).length > 0;
         return (!q || normalizeName(`${row.text} ${row.message_id}`).includes(q)) &&
           (!legacy || (legacy === "yes" ? hasLegacy : !hasLegacy));
       });
@@ -4216,7 +4294,7 @@
           <thead><tr><th class="icon-col"></th><th>Bango ID</th><th>Monster</th><th>Drop rows</th><th>Quests</th><th>Zones</th><th>Legacy stats</th></tr></thead>
           <tbody>${shown.map(row => {
             const id = String(row.message_id);
-            const legacyRow = state.indexes.legacyMonstersByName.get(normalizeName(row.text));
+            const variants = legacyMonsterVariants(row.text);
             return `<tr>
               <td class="icon-col">${monsterIconTag(id, row.text, 30)}</td>
               <td class="mono">${escapeHtml(id)}</td>
@@ -4224,7 +4302,10 @@
               <td class="number">${prettyNumber((state.indexes.dropsByMonster.get(id) || []).length)}</td>
               <td class="number">${prettyNumber((state.indexes.monsterQuestsByMonster.get(id) || []).length)}</td>
               <td class="number">${prettyNumber((state.indexes.monsterZones.get(id) || []).length)}</td>
-              <td>${legacyRow ? `<span class="tag gold">available · non-Bango</span>` : `<span class="dim">—</span>`}</td>
+              <td>${variants.length
+                ? `<span class="tag gold">available · non-Bango</span>${variants.length > 1
+                  ? ` <small class="dim">${variants.length} variants</small>` : ""}`
+                : `<span class="dim">—</span>`}</td>
             </tr>`;
           }).join("")}</tbody>
         </table></div><div class="section-body">${pagination(rows.length, page, pageSize, "monsters", query)}
@@ -5686,10 +5767,11 @@
         ${filterToolbar("zones", query, { placeholder: "Zone, coordinate or monster label…" })}
         <div class="directory-grid">${rows.map(zone => {
           const matches = zone.monsterMatches.flatMap(group => group.matches);
+          const count = new Set(matches.map(row => normalizeName(row.text))).size;
           return `<a class="directory-card" href="${routeHref("zone", zone.id)}">
             <strong>Zone ${escapeHtml(zone.id)} <span class="dim">[${escapeHtml(zone.coordinates)}]</span></strong>
             <p>${escapeHtml(zone.description)}</p>
-            <span class="count">${prettyNumber(new Set(matches.map(row => row.message_id)).size)} Bango monster links</span>
+            <span class="count">${prettyNumber(count)} monster${count === 1 ? "" : "s"}</span>
           </a>`;
         }).join("")}</div>`;
     }
@@ -6181,8 +6263,7 @@
         ], entries, { defaultSort: { key: "grade", dir: "desc" } });
       }
 
-      const monsterFor = entry => state.indexes.legacyMonstersByName?.get(
-        normalizeName(entry.row.bango_monster_name));
+      const monsterFor = entry => legacyMonsterVariants(entry.row.bango_monster_name);
       return sortableTable("dropTable", [
         {
           key: "monster", label: "Monster",
@@ -6193,8 +6274,8 @@
         },
         {
           key: "level", label: "Level", align: true,
-          sort: entry => Number(monsterFor(entry)?.mon_lvl) || "",
-          cell: entry => escapeHtml(monsterFor(entry)?.mon_lvl || "—")
+          sort: entry => Number(monsterFor(entry)[0]?.mon_lvl) || "",
+          cell: entry => escapeHtml(legacyVariantRange(monsterFor(entry), "mon_lvl") || "—")
         },
         talismanColumn,
         rateColumn
@@ -6374,6 +6455,41 @@
             native limits ${escapeHtml(limits.join(" · ") || "—")}.</p>` : ""}
           ${documented && !/class="empty"/.test(documented) ? `<div>${documented}</div>` : ""}`)}`;
       if (model) wireModelViewer(el.main, model);
+    }
+
+    /* One Bango monster name can cover several legacy rows — see the family
+       join in buildIndexes. These four helpers are the only way the rest of
+       the app reaches them, so nothing can go back to assuming one row. */
+
+    function legacyVariantRank(row) {
+      return Number(String(row?.mon_name ?? "").trim().match(/\s(\d+)$/)?.[1]) || 0;
+    }
+
+    function legacyMonsterVariants(name) {
+      return state.indexes.legacyMonsterVariants?.get(normalizeName(name)) || [];
+    }
+
+    // For the few things that genuinely do not vary between variants — the
+    // portrait, whether any stats exist at all.
+    function legacyMonsterFor(name) {
+      return legacyMonsterVariants(name)[0] || null;
+    }
+
+    // The variants of a family differ on every stat, so a single number would
+    // be a silent pick between them. Identical values collapse; different
+    // ones stay a range. Nothing is invented and nothing is chosen.
+    function legacyVariantRange(variants, field, format = value => String(value)) {
+      const values = [variants].flat()
+        .map(row => String(row?.[field] ?? "").trim()).filter(Boolean);
+      if (!values.length) return "";
+      const numbers = values.map(Number);
+      if (numbers.every(Number.isFinite)) {
+        const low = Math.min(...numbers);
+        const high = Math.max(...numbers);
+        return low === high ? format(low) : `${format(low)}–${format(high)}`;
+      }
+      const unique = [...new Set(values)];
+      return unique.map(format).join(" / ");
     }
 
     function legacyMonsterStats(row) {
@@ -6965,16 +7081,39 @@
       return result;
     }
 
-    // Every Bango monster that resolves to a legacy row carrying combat stats.
+    /* Every Bango monster that resolves to a legacy row carrying combat stats.
+
+       Once per monster *name*, not once per client record. Several records do
+       share a name and are not the same creature — they carry different drop
+       tables, which is why the zone roster keeps them apart — but the legacy
+       stats this ranking is built from are keyed by name, so every record
+       under one name computes to the identical row. Ranking 496 rows of which
+       305 are copies of another row ranks nothing; the zone and monster pages
+       are where the records are told apart.
+
+       Once per recorded variant, though, because a family's variants are a
+       level ladder with their own stats, and collapsing those would mean
+       choosing one of them without saying so. */
     function threatRows(sheet, build) {
       const out = [];
+      const seen = new Set();
       let unresolved = 0;
+      let covered = 0;
       (state.indexes.monsters || []).forEach(row => {
-        const legacy = state.indexes.legacyMonstersByName.get(normalizeName(row.text));
-        if (!monsterHasCombatStats(legacy)) { unresolved += 1; return; }
-        out.push(Object.assign({ bango: row }, simVersus(sheet, build, legacy)));
+        const key = normalizeName(row.text);
+        if (seen.has(key)) return;
+        seen.add(key);
+        const variants = legacyMonsterVariants(row.text).filter(monsterHasCombatStats);
+        if (!variants.length) { unresolved += 1; return; }
+        covered += 1;
+        variants.forEach(legacy => out.push(Object.assign({
+          bango: row,
+          // A family member keeps its own legacy name, so the three levels of
+          // Gigantic Species Shock Trooper are told apart in the ranking.
+          label: variants.length > 1 ? legacy.mon_name : row.text
+        }, simVersus(sheet, build, legacy))));
       });
-      return { rows: out, unresolved };
+      return { rows: out, unresolved, covered, names: seen.size };
     }
 
     // --- Presentation ---------------------------------------------------
@@ -7290,9 +7429,11 @@
     }
 
     function monsterPortraitName(id, name = "") {
-      const legacy = state.indexes.legacyMonstersByName?.get(normalizeName(name));
-      const pic = Number(legacy?.mon_pic);
-      if (!Number.isFinite(pic) || pic < 1) return "";
+      // Variants of one family share a picture; take the first that has one.
+      const pic = legacyMonsterVariants(name)
+        .map(row => Number(row?.mon_pic))
+        .find(value => Number.isFinite(value) && value >= 1);
+      if (!pic) return "";
       return `kalenc-monster-${String(pic - 1).padStart(3, "0")}`;
     }
 
@@ -9046,8 +9187,14 @@
         } catch (error) { /* a malformed share link falls back to the stored build */ }
       }
       // `?monsters=open` opens the comparison straight away, so a link can
-      // point at it and a test can reach the table it renders.
+      // point at it and a test can reach the table it renders. `?monster=`
+      // carries the search with it, because the list shows the first sixty by
+      // level and anything above them is only reachable by searching.
       if (params.get("monsters") === "open") state.threatOpen = true;
+      if (params.has("monster")) {
+        state.monsterQuery = params.get("monster");
+        if (state.monsterQuery.trim()) state.threatOpen = true;
+      }
       const tab = CHARACTER_TABS.includes(params.get("tab")) ? params.get("tab") : "stats";
       const profile = activeProfile();
       const build = simNormalizeBuildItems(currentBuild());
@@ -9379,7 +9526,8 @@
     function simMonsterList(sheet, build, query) {
       const needle = String(query || "").trim().toLowerCase();
       let rows = threatRows(sheet, build).rows;
-      if (needle) rows = rows.filter(row => row.bango.text.toLowerCase().includes(needle));
+      if (needle) rows = rows.filter(row =>
+        `${row.bango.text} ${row.label || ""}`.toLowerCase().includes(needle));
       rows.sort((a, b) => a.monsterLevel - b.monsterLevel);
       if (!rows.length) {
         return emptyState(needle
@@ -9394,7 +9542,7 @@
           <th>You hit</th><th>You deal (melee)</th><th>You deal (magic)</th>
         </tr></thead>
         <tbody>${shown.map(row => `<tr>
-          <td>${entityLink("monster", row.bango.message_id, row.bango.text)}</td>
+          <td>${entityLink("monster", row.bango.message_id, row.label || row.bango.text)}</td>
           <td>${prettyNumber(row.monsterLevel)}</td>
           <td><strong>${prettyNumber(row.evasion)}%</strong>
             <br><small class="dim">it hits ${prettyNumber(row.incomingHit)}%</small></td>
@@ -9443,7 +9591,7 @@
           <th>You hit</th><th>You deal (melee)</th><th>You deal (magic)</th>
         </tr></thead>
         <tbody>${rows.map(row => `<tr>
-          <td>${entityLink("monster", row.bango.message_id, row.bango.text)}</td>
+          <td>${entityLink("monster", row.bango.message_id, row.label || row.bango.text)}</td>
           ${showLevel ? `<td>${prettyNumber(row.monsterLevel)}</td>` : ""}
           <td><strong>${prettyNumber(row.evasion)}%</strong></td>
           <td>${prettyNumber(row.physicalMin)}–${prettyNumber(row.physicalMax)}
@@ -9473,9 +9621,10 @@
       const search = (params.get("q") || "").trim().toLowerCase();
       const maxLevel = Number(params.get("maxlv") || 0);
 
-      const { rows, unresolved } = threatRows(sheet, build);
+      const { rows, unresolved, covered, names } = threatRows(sheet, build);
       let visible = rows;
-      if (search) visible = visible.filter(row => row.bango.text.toLowerCase().includes(search));
+      if (search) visible = visible.filter(row =>
+        `${row.bango.text} ${row.label || ""}`.toLowerCase().includes(search));
       if (maxLevel > 0) visible = visible.filter(row => row.monsterLevel <= maxLevel);
       const sorters = {
         perSecond: (a, b) => (b.perSecond || 0) - (a.perSecond || 0),
@@ -9501,11 +9650,13 @@
           actions: `<a class="button ghost" href="${routeHref("build")}">← Edit build</a>`
         })}
         ${simProvenanceBanner()}
-        ${section("Coverage", `<p>${prettyNumber(rows.length)} of
-          ${prettyNumber((state.indexes.monsters || []).length)} Bango monsters resolve to a legacy
-          row carrying the fields this needs. The other ${prettyNumber(unresolved)} have
-          <strong>no combat stats in any registered source</strong> and are omitted rather than
-          shown as zero.</p>`)}
+        ${section("Coverage", `<p>${prettyNumber(covered)} of ${prettyNumber(names)} Bango
+          monsters resolve to a legacy row carrying the fields this needs, listed as
+          ${prettyNumber(rows.length)} rows: where the legacy export records a monster at
+          several levels — three Gigantic Species Shock Troopers, four Warriors of Shadow
+          Troop — each level gets its own row rather than one being chosen for you. The other
+          ${prettyNumber(unresolved)} have <strong>no combat stats in any registered
+          source</strong> and are omitted rather than shown as zero.</p>`)}
         ${section("Ranking", `
           <div class="tag-row" style="margin-bottom:12px">
             ${sortLink("perSecond", "Damage / second")}
@@ -9518,11 +9669,25 @@
           ${visible.length ? threatTable(visible) : emptyState("No monster matches this filter.")}`)}`;
     }
 
-    function monsterCombatPanel(bangoRow, legacy) {
+    function monsterCombatPanel(bangoRow, variants, chosen = 0) {
       if (!simReady()) return simMissing("The combat fixture was not found.");
-      if (!monsterHasCombatStats(legacy)) {
+      const usable = [variants].flat().filter(monsterHasCombatStats);
+      if (!usable.length) {
         return emptyState("This monster has no combat stats in any registered source, so nothing is computed for it.");
       }
+      // A family's variants are a level ladder with different stats, so one is
+      // picked by the reader rather than silently by this function.
+      const index = Math.min(Math.max(Number(chosen) || 0, 0), usable.length - 1);
+      const legacy = usable[index];
+      const picker = usable.length < 2 ? "" : `<div class="tag-row" style="margin:-2px 0 12px">
+        ${usable.map((variant, position) => `<a class="button ghost${
+          position === index ? " active" : ""}" href="${routeHref("monster",
+          bangoRow.message_id, `variant=${position}`)}">${escapeHtml(variant.mon_name)}
+          <small class="dim">Lv ${escapeHtml(variant.mon_lvl)}</small></a>`).join("")}
+      </div>
+      <p class="dim" style="margin:-4px 0 10px;font-size:12px">The legacy export records
+        ${prettyNumber(usable.length)} of this monster at different levels and the client does
+        not say which one you are looking at, so each is kept and none is chosen for you.</p>`;
       const build = currentBuild();
       const sheet = simSheet(build);
       const versus = simVersus(sheet, build, legacy);
@@ -9536,6 +9701,7 @@
         <p class="dim" style="margin:-2px 0 10px;font-size:12px">Against
           <a href="${routeHref("build")}">${escapeHtml(build.cls)} level ${prettyNumber(build.level)}</a>
           · <a href="${routeHref("threats")}">compare every monster</a></p>
+        ${picker}
         <div class="versus-grid">
           <div>
             <h4>It attacks you</h4>
@@ -9568,23 +9734,27 @@
             of your resistances are shown.</small></p>` : ""}`;
     }
 
-    function renderMonster(id) {
+    function renderMonster(id, query = new URLSearchParams()) {
       const row = state.indexes.monstersById.get(String(id));
       if (!row) return renderNotFound("monster", id);
       const definitions = state.indexes.monsterDefinitions.get(String(id)) || [];
       const drops = state.indexes.dropsByMonster.get(String(id)) || [];
-      const legacy = state.indexes.legacyMonstersByName.get(normalizeName(row.text));
+      const variants = legacyMonsterVariants(row.text);
       const questRefs = state.indexes.monsterQuestsByMonster.get(String(id)) || [];
       const zones = state.indexes.monsterZones.get(String(id)) || [];
       const uniqueZones = [...new Map(zones.map(zone => [zone.id, zone])).values()];
       const documented = documentedDropEvidence(row.text);
       const articles = relatedArticles("monster", id, row.text);
 
-      const headline = legacy
-        ? [legacy.mon_lvl ? `level ${escapeHtml(legacy.mon_lvl)}` : "",
-           legacy.mon_hp ? `${prettyNumber(legacy.mon_hp)} HP` : "",
-           legacy.mon_exp ? `${prettyNumber(legacy.mon_exp)} XP` : ""].filter(Boolean).join(" · ")
-        : "";
+      // Ranges, not a pick: several rows can sit behind one Bango name.
+      const level = legacyVariantRange(variants, "mon_lvl");
+      const headline = [
+        level ? `level ${escapeHtml(level)}` : "",
+        legacyVariantRange(variants, "mon_hp", prettyNumber) &&
+          `${legacyVariantRange(variants, "mon_hp", prettyNumber)} HP`,
+        legacyVariantRange(variants, "mon_exp", prettyNumber) &&
+          `${legacyVariantRange(variants, "mon_exp", prettyNumber)} XP`
+      ].filter(Boolean).join(" · ");
 
       el.main.innerHTML = `
         ${pageHeader({
@@ -9598,7 +9768,8 @@
           <div>
             ${panel("Drops", bangoDropTable(drops, "monster"),
               { aside: `<span class="panel-aside">Click a column to sort</span>` })}
-            ${panel("Against your build", monsterCombatPanel(row, legacy))}
+            ${panel("Against your build",
+              monsterCombatPanel(row, variants, query.get("variant") || 0))}
           </div>
           <div class="detail-side">
             <div class="entity-hero${monsterFallbackPicture(row.text)
@@ -9609,7 +9780,10 @@
                 ${headline ? `<br><span class="dim">${headline}</span>` : ""}
               </div>
             </div>
-            ${panel("Stats", legacy ? legacyMonsterStats(legacy)
+            ${panel("Stats", variants.length
+              ? variants.map(variant => `${variants.length > 1
+                  ? `<h4 style="margin:14px 0 6px">${escapeHtml(variant.mon_name)}</h4>` : ""}
+                ${legacyMonsterStats(variant)}`).join("")
               : `<p class="dim" style="margin:0">No combat stats are recorded for this monster.</p>`)}
             ${uniqueZones.length ? panel("Found in", `<ul class="link-list">${uniqueZones.map(zone =>
               `<li><a href="${routeHref("zone", zone.id)}">Zone ${escapeHtml(zone.id)}</a>
@@ -9913,8 +10087,23 @@
       const zone = state.zones.find(candidate => candidate.id === String(id));
       if (!zone) return renderNotFound("zone", id);
       const groups = zone.monsterMatches || [];
-      const matched = [...new Map(groups.flatMap(group => group.matches).map(monster => [monster.message_id, monster])).values()];
+      // One row per client record, not per name. Several records share a
+      // display name and are not the same creature: Demon Infantry 12 and 309
+      // overlap on 5 of 94 dropped items, a low-class and a high-class version
+      // under one label. Keeping one and hiding the others would be a silent
+      // pick; the record number in the row is what tells them apart.
+      const matched = [...new Map(groups.flatMap(group => group.matches)
+        .map(monster => [monster.message_id, monster])).values()];
+      const sharedNames = new Set();
+      const seenNames = new Set();
+      for (const monster of matched) {
+        const key = normalizeName(monster.text);
+        if (seenNames.has(key)) sharedNames.add(key);
+        seenNames.add(key);
+      }
       const unresolved = groups.filter(group => !group.matches.length);
+      const shorthand = groups.filter(group => group.how === "shorthand");
+      const stats = monster => legacyMonsterVariants(monster.text);
       el.main.innerHTML = `
         ${pageHeader({
           eyebrow: "Hunting zone",
@@ -9927,28 +10116,28 @@
             key: "monster", label: "Monster",
             sort: monster => monster.text,
             cell: monster => `<span class="cell-icon">${monsterIconTag(monster.message_id,
-              monster.text, 24)}${entityLink("monster", monster.message_id, monster.text)}</span>`
+              monster.text, 24)}${entityLink("monster", monster.message_id, monster.text)}${
+              sharedNames.has(normalizeName(monster.text))
+                ? ` <small class="dim">#${escapeHtml(monster.message_id)}</small>` : ""}</span>`
           },
+          // An unknown value is a dash, never a zero: a monster whose HP the
+          // legacy export never carried does not have nought hit points.
           {
             key: "level", label: "Level", align: true,
-            sort: monster => Number(state.indexes.legacyMonstersByName
-              .get(normalizeName(monster.text))?.mon_lvl) || "",
-            cell: monster => escapeHtml(state.indexes.legacyMonstersByName
-              .get(normalizeName(monster.text))?.mon_lvl || "—")
+            sort: monster => Number(stats(monster)[0]?.mon_lvl) || "",
+            cell: monster => escapeHtml(legacyVariantRange(stats(monster), "mon_lvl") || "—")
           },
           {
             key: "hp", label: "HP", align: true,
-            sort: monster => Number(state.indexes.legacyMonstersByName
-              .get(normalizeName(monster.text))?.mon_hp) || "",
-            cell: monster => prettyNumber(state.indexes.legacyMonstersByName
-              .get(normalizeName(monster.text))?.mon_hp || 0)
+            sort: monster => Number(stats(monster)[0]?.mon_hp) || "",
+            cell: monster => escapeHtml(
+              legacyVariantRange(stats(monster), "mon_hp", prettyNumber) || "—")
           },
           {
             key: "xp", label: "Experience", align: true,
-            sort: monster => Number(state.indexes.legacyMonstersByName
-              .get(normalizeName(monster.text))?.mon_exp) || "",
-            cell: monster => prettyNumber(state.indexes.legacyMonstersByName
-              .get(normalizeName(monster.text))?.mon_exp || 0)
+            sort: monster => Number(stats(monster)[0]?.mon_exp) || "",
+            cell: monster => escapeHtml(
+              legacyVariantRange(stats(monster), "mon_exp", prettyNumber) || "—")
           },
           {
             key: "drops", label: "Drops", align: true,
@@ -9962,6 +10151,13 @@
           <p>Zone rosters come from the project's geography guide; each name is matched to the
             Bango monster of the same name. Levels and stats are a legacy export, not confirmed
             Bango values.</p>
+          ${sharedNames.size ? `<p>Some names are carried by more than one creature in the
+            client — same label, different drop table — so they appear once per record with
+            the record number beside them.</p>` : ""}
+          ${shorthand.length ? `<p>The guide abbreviates some entries once it has named the
+            family, and these were read back as the full name the rest of this roster spells
+            out: ${shorthand.map(group => `<em>${escapeHtml(group.label)}</em> as
+            ${escapeHtml(group.reading)}`).join("; ")}.</p>` : ""}
           ${unresolved.length ? `<p>Roster entries with no matching monster page:
             ${unresolved.map(group => escapeHtml(group.label)).join(", ")}.</p>` : ""}`)}`;
     }
@@ -11105,7 +11301,7 @@
           case "items": renderItems(route.query); break;
           case "item": renderItem(route.id); break;
           case "monsters": renderMonsters(route.query); break;
-          case "monster": renderMonster(route.id); break;
+          case "monster": renderMonster(route.id, route.query); break;
           case "build": renderBuild(); break;
           case "threats": renderBuild(); break;
           case "skills": renderSkills(route.query); break;
