@@ -7030,11 +7030,30 @@
     /* Any image at an arbitrary project path — map artwork, not the icon
        library. Goes through state.source for the same reason icons do: on the
        local-folder path there is no URL to point at, only a file handle. */
+    /* Fetch a page's pictures a few at a time rather than one after another.
+
+       The loop used to be strictly sequential, which was invisible while a page
+       showed a dozen icons. The walkthrough shows 276 NPC photographs, and its
+       map — last in the markup — was left waiting behind every one of them: over
+       HTTP the map had not appeared nine seconds in. A small pool keeps the
+       order-independence without opening three hundred connections at once. */
+    const HYDRATE_CONCURRENCY = 8;
+
+    async function inPool(items, worker) {
+      const queue = [...items];
+      const runners = Array.from({ length: Math.min(HYDRATE_CONCURRENCY, queue.length) },
+        async () => {
+          while (queue.length) await worker(queue.shift());
+        });
+      await Promise.all(runners);
+    }
+
     async function hydrateProjectImages(root) {
       if (!root || typeof root.querySelectorAll !== "function") return;
       if (!state.source || typeof state.source.file !== "function") return;
-      for (const image of root.querySelectorAll("img[data-project-file]")) {
-        if (image.getAttribute("src")) continue;
+      const pending = [...root.querySelectorAll("img[data-project-file]")]
+        .filter(image => !image.getAttribute("src"));
+      await inPool(pending, async image => {
         const path = image.dataset.projectFile;
         if (!iconUrlCache.has(path)) {
           try {
@@ -7046,7 +7065,7 @@
         const url = iconUrlCache.get(path);
         if (url) image.setAttribute("src", url);
         else image.closest(".map-wrap")?.classList.add("image-missing");
-      }
+      });
     }
 
     async function hydrateIcons(root) {
@@ -7055,7 +7074,7 @@
       hydrateProjectImages(root);
       const pending = [...root.querySelectorAll("img[data-icon]")]
         .filter(image => !image.getAttribute("src"));
-      for (const image of pending) {
+      await inPool(pending, async image => {
         const primary = image.dataset.icon;
         const fallback = image.dataset.iconFallback || "";
         const candidates = [primary, fallback].filter(Boolean);
@@ -7074,7 +7093,7 @@
         }
         if (url) image.setAttribute("src", url);
         else image.classList.add("icon-missing");
-      }
+      });
     }
 
     function skillIconFallback(row) {
