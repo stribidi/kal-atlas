@@ -779,6 +779,9 @@
     .callout.info strong { color: var(--blue); }
     .callout.error { border-left-color: var(--danger); background: #1b1010; }
     .callout.error strong { color: var(--danger); }
+    /* Something to notice rather than something wrong. */
+    .callout.warn { border-left-color: var(--gold); background: #1c1710; }
+    .callout.warn strong { color: var(--gold); }
 
     .empty {
       border: 1px dashed var(--line);
@@ -2878,6 +2881,9 @@
       loadWarnings: [],
       snapshotLabel: "",
       lastError: "",
+      // The route the current markup was rendered for. Re-rendering the same
+      // route keeps the reader's scroll position; a different one does not.
+      renderedRoute: "",
       // Combat lookup tables and cross-check cases, generated from the Python
       // engine by tools/knowledge_base_site/build_combat_fixture.py. Null when
       // the file is absent, in which case the simulator disables itself rather
@@ -8870,15 +8876,30 @@
       return profile.quests?.[String(questId)] || "not-started";
     }
 
+    /* Whether *this character* could legitimately have done the quest yet.
+       It gates the Character Creation checklist, where the point is to model a
+       real character, and the "finish all available" sweep. It deliberately
+       does not gate the quest pages: a player ticking off what they have
+       already done is recording history, not asking permission, and their
+       character record here may simply be out of date. */
     function questCanChange(profile, quest, build) {
       if ((Number(quest.que_lvl) || 0) > Number(build.level)) return false;
       const prerequisite = String(quest.bango_prerequisite || "");
       return !prerequisite || questState(profile, prerequisite) === "finished";
     }
 
-    function questStatusButton(profile, quest, compact = false) {
+    // Finished quests the character is not high enough level for. Not corrected
+    // — the player may be recording a character this profile has not caught up
+    // with — but not hidden either.
+    function questsFinishedAboveLevel(profile, build) {
+      return state.indexes.questsSorted.filter(quest =>
+        questState(profile, quest.que_id) === "finished"
+        && (Number(quest.que_lvl) || 0) > Number(build.level));
+    }
+
+    function questStatusButton(profile, quest, compact = false, enforceLevel = false) {
       const status = questState(profile, quest.que_id);
-      const allowed = questCanChange(profile, quest, currentBuild());
+      const allowed = !enforceLevel || questCanChange(profile, quest, currentBuild());
       const symbol = status === "finished" ? "✓" : status === "progress" ? "•" : "";
       const title = status === "finished" ? "Finished" : status === "progress"
         ? "In progress" : "Not started";
@@ -8889,14 +8910,28 @@
           allowed ? "" : " disabled"}>${symbol || (compact ? "○" : "")}</button>`;
     }
 
+    /* The quests that change a build. A quest paying only experience is worth
+       doing and worth ticking off, but it is not a decision this workspace can
+       help with — so the checklist here carries the skill-point quests only,
+       and everything else is ticked on the quest pages. */
+    function skillPointQuests() {
+      return state.indexes.questsSorted
+        .filter(quest => Number(quest.bango_skill_points) > 0);
+    }
+
     function renderCharacterQuestsHtml(profile, build) {
       const totals = characterQuestTotals(profile);
-      const visible = state.indexes.questsSorted;
+      const visible = skillPointQuests();
       const finished = visible.filter(quest => questState(profile, quest.que_id) === "finished").length;
+      const available = visible.reduce((sum, quest) =>
+        sum + (Number(quest.bango_skill_points) || 0), 0);
+      const overLevel = questsFinishedAboveLevel(profile, build);
       return `${section("Quest points", `
         <div class="point-ledger quest-ledger">
-          <div><span>Finished</span><strong>${prettyNumber(finished)}</strong></div>
-          <div><span>Skill points</span><strong>${prettyNumber(totals.skillPoints)}</strong></div>
+          <div><span>Finished</span><strong>${prettyNumber(finished)} / ${
+            prettyNumber(visible.length)}</strong></div>
+          <div><span>Skill points</span><strong>${prettyNumber(totals.skillPoints)} / ${
+            prettyNumber(available)}</strong></div>
           <div><span>Contribution</span><strong>${prettyNumber(totals.contribution)}</strong></div>
           <div><span>Character level</span><strong>${prettyNumber(build.level)}</strong></div>
         </div>
@@ -8905,12 +8940,29 @@
           <button type="button" class="button small ghost" data-action="reset-all-quests">Set all to not started</button>
           <span class="tag">○ not started</span><span class="tag gold">• in progress</span>
           <span class="tag accent">✓ finished</span>
-        </div>`)}
-        ${section("Bango quest checklist", `<div class="quest-checklist">${visible.map(quest => {
+        </div>
+        <p class="dim" style="margin:10px 0 0"><small>Contribution counts every finished quest,
+          including the ones not listed below. Quests that award no skill point are ticked on the
+          <a href="#/quests">quest pages</a>.</small></p>`)}
+        ${overLevel.length ? `<div class="callout warn" style="margin-bottom:14px">
+          <strong>${prettyNumber(overLevel.length)} finished quest${
+            overLevel.length === 1 ? " is" : "s are"} above level ${
+            escapeHtml(String(build.level))}.</strong> ${overLevel.length === 1
+              ? "Its reward is" : "Their rewards are"} counted as ${
+              overLevel.length === 1 ? "it stands" : "they stand"}.
+          Either the character's level here is behind, or ${overLevel.length === 1 ? "it was" : "they were"}
+          ticked in advance: ${overLevel.slice(0, 6).map(quest =>
+            `${entityLink("quest", quest.que_id, quest.que_name)} (Lv ${escapeHtml(quest.que_lvl)})`
+          ).join(", ")}${overLevel.length > 6
+            ? ` and ${prettyNumber(overLevel.length - 6)} more` : ""}.
+        </div>` : ""}
+        ${section(`Skill-point quests — ${prettyNumber(available)} points across ${
+          prettyNumber(visible.length)} quests`,
+          `<div class="quest-checklist">${visible.map(quest => {
           const future = !questCanChange(profile, quest, build)
             && questState(profile, quest.que_id) === "not-started";
           return `<div class="quest-check${future ? " future" : ""}">
-            ${questStatusButton(profile, quest)}
+            ${questStatusButton(profile, quest, false, true)}
             <div><strong>[${escapeHtml(quest.que_lvl || "—")}] ${entityLink("quest", quest.que_id, quest.que_name)}</strong>
               <small>${prettyNumber(quest.bango_skill_points)} SP · ${prettyNumber(quest.bango_contribution)} contribution${
                 quest.bango_prerequisite ? ` · requires quest ${escapeHtml(quest.bango_prerequisite)}` : ""}</small></div>
@@ -9124,7 +9176,7 @@
     function cycleQuestStatus(questId) {
       const profile = activeProfile();
       const quest = state.indexes.questsById.get(String(questId));
-      if (!quest || !questCanChange(profile, quest, currentBuild())) return;
+      if (!quest) return;
       const current = questState(profile, questId);
       profile.quests[String(questId)] = current === "not-started" ? "progress"
         : current === "progress" ? "finished" : "not-started";
@@ -11025,6 +11077,13 @@
     }
 
     async function renderRoute() {
+      /* Landing on a new page starts you at the top of it. Re-rendering the
+         page you are already on — ticking a quest, opening a card — must leave
+         the scroll exactly where it was, or every tick throws the reader back
+         to the top. Comparing the route rather than asking each caller to say
+         so means a new in-place caller cannot forget. */
+      const movedToAnotherPage = state.renderedRoute !== (location.hash || "#/home");
+      state.renderedRoute = location.hash || "#/home";
       renderNavigation();
       hideSkillTooltip();
       state.evidence.clear();
@@ -11070,8 +11129,10 @@
           case "sources": renderSources(); break;
           default: renderNotFound("route", route.section); break;
         }
-        el.main.focus({ preventScroll: true });
-        window.scrollTo({ top: 0, behavior: "auto" });
+        if (movedToAnotherPage) {
+          el.main.focus({ preventScroll: true });
+          window.scrollTo({ top: 0, behavior: "auto" });
+        }
         // Icons resolve from the connected folder after the markup is in place.
         hydrateIcons(el.main);
         hydrateThemeArt();
