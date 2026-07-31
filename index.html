@@ -4022,11 +4022,16 @@
       ix.legacyItemsByName = new Map((o.legacyItems || []).map(row => [normalizeName(row.ita_name), row]));
       ix.legacyItemsGroupedByName = groupedBy(o.legacyItems || [], row => normalizeName(row.ita_name));
       ix.legacyArmorPreviewByClassGrade = new Map();
-      (o.legacyItems || []).filter(row => normalizeName(row.ita_type) === "armor").forEach(row => {
-        const model = String(row.ita_3d || "").split("#")[0];
-        const code = model.match(/_([akmt]\d{2})\.gb$/i)?.[1]?.toLowerCase();
+      // KalEncyclopedia stores one synthetic `ita_itype = 0` / type `All`
+      // row per armor set. Its `ita_pic` is the exact full-set portrait code
+      // (`ita_a05`, `ita_k05`, `ita_m05`, `ita_t05`). A piece mesh instead
+      // ends in `_a01.gb` for every class and grade; deriving the portrait from
+      // that suffix put Archer G8 on almost every armor page.
+      (o.legacyItems || []).filter(row => String(row.ita_itype) === "0").forEach(row => {
+        const code = String(row.ita_pic || "")
+          .match(/^ita_([akmt]\d{2})$/i)?.[1]?.toLowerCase();
         if (code) ix.legacyArmorPreviewByClassGrade.set(
-          `${normalizeName(row.ita_class)}~${displayGrade(row.ita_grade)}`, code);
+          `${canonicalItemClass(row.ita_class)}~${displayGrade(row.ita_grade)}`, code);
       });
       ix.legacySkillPicByName = new Map((o.legacySkills || [])
         .filter(row => row.sk_megn && row.sk_pic !== "")
@@ -8493,19 +8498,31 @@
       const candidates = state.indexes.legacyItemsGroupedByName?.get(normalizeName(row?.ita_name)) || [];
       if (!candidates.length) return null;
       const sameClass = candidates.filter(candidate =>
-        normalizeName(candidate.ita_class) === normalizeName(row.ita_class));
+        canonicalItemClass(candidate.ita_class) === canonicalItemClass(row.ita_class));
       const sameGrade = sameClass.filter(candidate =>
         displayGrade(candidate.ita_grade) === displayGrade(row.ita_grade));
-      return sameGrade[0] || sameClass[0] || candidates[0];
+      const clientType = parseJson(row.bango_class_json, [])[1] || "";
+      const legacyType = ({ upperarmor: "armor", helmet: "helmet", gauntlet: "gloves",
+        boots: "boots", lowerarmor: "shorts", shield: "shield" })[clientType] || "";
+      const sameType = sameGrade.filter(candidate => normalizeName(candidate.ita_type) === legacyType);
+      return sameType[0] || sameGrade[0] || sameClass[0] || candidates[0];
+    }
+
+    function canonicalItemClass(name) {
+      const normalized = normalizeName(name);
+      return normalized === "mage" ? "magician" : normalized;
     }
 
     function kalencItemPreviewName(row, legacyItem) {
-      if (!legacyItem) return "";
+      const itemClass = parseJson(row.bango_class_json, []);
+      const isArmorPiece = itemClass[0] === "defense"
+        && new Set(["upperarmor", "helmet", "gauntlet", "boots", "lowerarmor"]).has(itemClass[1]);
       const armorCode = state.indexes.legacyArmorPreviewByClassGrade?.get(
-        `${normalizeName(row.ita_class)}~${displayGrade(row.ita_grade)}`);
-      if (armorCode && parseJson(row.bango_class_json, [])[0] === "defense") {
+        `${canonicalItemClass(row.ita_class)}~${displayGrade(row.ita_grade)}`);
+      if (armorCode && isArmorPiece) {
         return `kalenc-armor-preview-${armorCode}`;
       }
+      if (!legacyItem) return "";
       // `ita_pic`, not `ita_pic2`. KalEncyclopedia's item form fills its list
       // from `SELECT ita_class,ita_grade,ita_type,ita_name,ita_lvllim ×4,
       // ita_rev,ita_price,ita_pic,ita_azon` and then reads
