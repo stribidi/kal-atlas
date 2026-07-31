@@ -2,7 +2,7 @@
  "generated_by": "tools/knowledge_base_site/build_site_manifest.py",
  "note": "Published bundle. Regenerate with tools/knowledge_base_site/build_deploy.py.",
  "file_count": 3345,
- "total_bytes": 54103994,
+ "total_bytes": 54123287,
  "files": [
   "Detailed_World_Geography_and_Navigation.md",
   "Imperial_Mixing_System_Guide.md",

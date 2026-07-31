@@ -1962,6 +1962,10 @@
     #simSheetPanel .sheet { margin-bottom: 14px; }
     .sheet-breakdown { margin-top: 10px; }
     .sheet-breakdown > summary { color: var(--muted); font-size: 12px; cursor: pointer; }
+    .modifier-ledger { margin: 4px 0 12px; padding-left: 18px; }
+    .modifier-ledger li { font-size: 12px; line-height: 1.5; margin-bottom: 6px; }
+    .sheet-breakdown h4 { margin: 10px 0 2px; font-size: 12px; letter-spacing: .04em;
+      text-transform: uppercase; color: var(--muted); }
     .monster-search { width: 100%; margin-bottom: 10px; }
 
     /* Monster comparison, collapsed: title and search only, and the width it
@@ -6794,12 +6798,26 @@
       return unique.map(format).join(" / ");
     }
 
+    /* Attack, on-target and evasion are shown derived, because the stored
+       columns are additive macros (see simMonsterDerived). A row without
+       Strength or Agility cannot be derived, so it shows the stored numbers
+       and says they are the macro rather than quietly passing them off as the
+       monster's real attack. */
     function legacyMonsterStats(row) {
+      const derivable = ["mon_lvl", "mon_str", "mon_agi"]
+        .every(field => String(row[field] ?? "").trim() !== "");
+      const derived = derivable ? simMonsterDerived(row) : null;
+      const attack = derived
+        ? `${prettyNumber(derived.minAttack)}–${prettyNumber(derived.maxAttack)}`
+        : (row.mon_minatt || row.mon_maxatt
+            ? `${row.mon_minatt}–${row.mon_maxatt} (macro only)` : "");
       const fields = [
         ["Level", row.mon_lvl],
         ["HP", row.mon_hp && prettyNumber(row.mon_hp)],
         ["EXP", row.mon_exp && prettyNumber(row.mon_exp)],
-        ["Attack", row.mon_minatt || row.mon_maxatt ? `${row.mon_minatt}–${row.mon_maxatt}` : ""],
+        ["Attack", attack],
+        ["On target point", derived ? prettyNumber(derived.hit) : ""],
+        ["Evasion", derived ? prettyNumber(derived.dodge) : ""],
         ["Defense", row.mon_def1 || row.mon_def2 ? `${row.mon_def1} / ${row.mon_def2}` : ""],
         ["Absorb", row.mon_absorb ? `${row.mon_absorb}%` : ""],
         ["Attack speed", row.mon_attspd],
@@ -6809,7 +6827,13 @@
         ["Wisdom", row.mon_wis],
         ["Agility", row.mon_agi]
       ];
-      return statLines(fields.map(([label, value]) => [label, escapeHtml(String(value ?? ""))]));
+      return statLines(fields.map(([label, value]) => [label, escapeHtml(String(value ?? ""))]))
+        + (derived ? `<p class="dim" style="margin:8px 0 0"><small>Attack, on-target
+          point and evasion are derived from Strength, Agility and level and then
+          the stored value added — that stored value is an additive macro
+          (${escapeHtml(`+${derived.macro.minAttack}/+${derived.macro.maxAttack} attack, `
+            + `+${derived.macro.hit} on target, +${derived.macro.dodge} evasion`)}),
+          not the monster's finished stat.</small></p>` : "");
     }
 
     /* ===================================================================
@@ -6818,7 +6842,9 @@
        Three sources meet here and the UI must never blend them silently:
          character sheet ....... [KALENC-2011]  KalOnline_Simulator_Formulas.md
          hit / damage pipeline . [ORIG] 2006    KalOnline_Engine_Formulas.md
-         monster stats ......... tier-5 legacy export, NOT Bango
+         monster stats ......... tier-5 legacy export, NOT Bango, and its
+                                 hit/dodge/attack columns are additive macros
+                                 finished by the [REIMPL] CMonster derivation
 
        Every lookup table and per-level band comes from COMBAT_FIXTURE.json,
        which is generated from the Python engine. No game constant is written
@@ -6994,6 +7020,96 @@
       { key: "mage-50", group: "Mage", icon: "kalenc-buff-chkagi", effects: [{ stat: "Agility", parameter: 0 }] },
       { key: "mage-51", group: "Mage", icon: "kalenc-buff-chkint", effects: [{ stat: "Intelligence", parameter: 0 }] }
     ];
+
+    /* ===================================================================
+       Passive skills that change the sheet.
+
+       The Skills tab has always let a character allocate grades; none of it
+       reached the character sheet. Bango's own client carries the per-grade
+       formula for each of these as reverse-Polish in
+       `bango_parameter_rpn_json`, so the value is read from the client rather
+       than restated here — only the mapping from a formula slot to a sheet
+       slot lives below, keyed by the skill's `bango_key` suffix so one entry
+       covers every class that has the skill.
+
+       A passive is registered ONLY where its own effect text names a stat this
+       sheet has a slot for. Everything else — proc chances (Fatal Blow,
+       Perfect Evasion, Critical Hit, Acrobatic), percentage effects with no
+       slot (Shrewdness' evasion percent, Knight's short/long-distance defence,
+       Blessing of Son of the Sky), range, healing and mana regeneration — is
+       listed as unmodelled with the number it would give, rather than being
+       pushed into whichever slot looks closest.
+
+       `HP%` is a real slot in the 27-slot vector and `simMaxHp` already
+       consumes it, so Life Extension's "Hp Revision: N %" is modelled there.
+       =================================================================== */
+    const PASSIVE_SHEET_EFFECTS = {
+      // Suffix of the bango_key -> which formula slot feeds which sheet stat.
+      "2": { byScope: {
+        thief: [{ stat: "PDMax", parameter: 0 }, { stat: "PDMin", parameter: 1 }],
+        archer: [{ stat: "PDMin", parameter: 0 }, { stat: "PDMax", parameter: 1 }],
+        knight: [{ stat: "OTP", parameter: 0 },
+                 { stat: "PDMin", parameter: 1 }, { stat: "PDMax", parameter: 1 }]
+      } },
+      "3": { scopes: ["thief"], effects: [{ stat: "OTP", parameter: 0 }] },
+      "5": { scopes: ["archer"], effects: [{ stat: "OTP", parameter: 0 }] },
+      "11": { scopes: ["mage"], effects: [{ stat: "MDMax", parameter: 0 }] },
+      "15": { effects: [{ stat: "HP%", parameter: 0 }] },
+      "17": { scopes: ["shaman"], effects: [{ stat: "MP", parameter: 0 }] },
+      "23": { scopes: ["shaman"], effects: [{ stat: "Intelligence", parameter: 0 }] },
+      "30": { effects: [{ stat: "HP%", parameter: 0 }] },
+      "32": { scopes: ["mage"], effects: [{ stat: "HP%", parameter: 0 }] },
+      "85": { effects: [{ stat: "OTP", parameter: 0 }] },
+      "86": { effects: [{ stat: "Evasion", parameter: 0 }] },
+      "87": { effects: [{ stat: "Defense", parameter: 0 }] }
+    };
+
+    function passiveSheetEffects(row) {
+      const key = String(row?.bango_key || "");
+      const [scope, suffix] = [key.split("-")[0], key.split("-").slice(1).join("-")];
+      const entry = PASSIVE_SHEET_EFFECTS[suffix];
+      if (!entry) return null;
+      if (entry.byScope) return entry.byScope[scope] || null;
+      if (entry.scopes && !entry.scopes.includes(scope)) return null;
+      return entry.effects;
+    }
+
+    function skillIsPassive(row) {
+      return /"passive"/.test(String(row?.bango_type_json || ""));
+    }
+
+    /* What the character's allocated passive grades add to the sheet, plus the
+       passives that are allocated and deliberately not counted. */
+    function passiveSkillVector(profile, build) {
+      const stats = {};
+      const applied = [];
+      const unmodelled = [];
+      const rows = state.indexes.playerSkillsByScope?.get(classSkillScope(build.cls)) || [];
+      rows.forEach(row => {
+        if (!skillIsPassive(row)) return;
+        const grade = Number(profile?.skills?.[String(row.bango_key)]) || 0;
+        if (grade <= 0) return;
+        const formulas = parseJson(row.bango_parameter_rpn_json, []);
+        const effects = passiveSheetEffects(row);
+        if (!effects) {
+          unmodelled.push({ row, grade,
+            values: formulas.map(formula => evaluateRpn(formula, grade, build)) });
+          return;
+        }
+        const entry = { row, grade, stats: {} };
+        let resolved = 0;
+        effects.forEach(effect => {
+          const value = evaluateRpn(formulas[effect.parameter], grade, build);
+          if (value == null || !Number.isFinite(value) || value === 0) return;
+          resolved += 1;
+          stats[effect.stat] = (stats[effect.stat] || 0) + value;
+          entry.stats[effect.stat] = (entry.stats[effect.stat] || 0) + value;
+        });
+        if (resolved) applied.push(entry);
+        else unmodelled.push({ row, grade, values: [], unreadable: true });
+      });
+      return { stats, applied, unmodelled };
+    }
 
     function profileId() {
       if (globalThis.crypto?.randomUUID) return crypto.randomUUID();
@@ -7248,8 +7364,133 @@
         add("MDMax", mods.magical);
         add("Defense", mods.defense);
       });
+      // The four that used to be stored and then dropped on the floor. EB level
+      // is deliberately not here: KalEncyclopedia does not put it on the sheet
+      // either — it belongs to the weapon calculator, which does model it.
+      [beadVector(build), stoneVector(build), dragonScrollVector(build),
+        animalVector(build)].forEach(source => {
+        Object.entries(source.stats).forEach(([slot, value]) => add(slot, value));
+      });
       Object.entries(build.manual || {}).forEach(([slot, value]) => add(slot, value));
       return gear;
+    }
+
+    /* ===================================================================
+       Elemental stone, DragonScroll and the animal — the other three
+       equipment choices the sheet used to store and then ignore.
+       All three are [KALENC-2011], read out of `frmSkills`.
+       =================================================================== */
+
+    /* `MenuItem_Weapon_Stone_Click` looks the stone up by name, splits its own
+       `ita_rev` on commas and takes the part at `level - 1`, then adds that
+       pipe-positional vector to the gear stats. So the commas this project had
+       recorded as "two vectors, meaning to confirm" are the stone's per-level
+       vectors, selected by the stone's level — the standard 27-slot order, not
+       the 28-slot Mix order. Stone of Flame writes Flame dmg, Stone of Ice
+       writes Ice dmg, and so on for all five elemental stones, which is what
+       settles the order.
+
+       Two stones (Strength, Skill) write one slot past the 27 the sheet names.
+       KalEncyclopedia's own vector is 28 wide and its character sheet never
+       reads that last slot either, so the value is carried and reported rather
+       than folded into a neighbour. */
+    function stoneVector(build) {
+      const stats = {};
+      const applied = [];
+      const unread = [];
+      const slots = state.combat?.stat_slots || [];
+      Object.entries(build.equipmentMods || {}).forEach(([slot, mods]) => {
+        if (!mods?.stone) return;
+        const level = Math.max(1, Number(mods.stoneLevel) || 1);
+        const row = elementalStones().find(entry => entry.ita_name === mods.stone);
+        if (!row) return;
+        const parts = String(row.ita_rev || "").split(",");
+        const vector = parts[level - 1];
+        if (vector == null) {
+          unread.push({ slot, stone: mods.stone, level, reason: "no vector at this level" });
+          return;
+        }
+        const values = vector.split("|");
+        const entry = { slot, stone: mods.stone, level, stats: {} };
+        values.forEach((raw, index) => {
+          const value = Number(String(raw).trim());
+          if (!Number.isFinite(value) || value === 0) return;
+          const stat = slots[index];
+          if (!stat) {
+            unread.push({ slot, stone: mods.stone, level, index, value });
+            return;
+          }
+          stats[stat] = (stats[stat] || 0) + value;
+          entry.stats[stat] = (entry.stats[stat] || 0) + value;
+        });
+        applied.push(entry);
+      });
+      return { stats, applied, unread };
+    }
+
+    /* `DS_Text_to_Stats` reads the percentage off the chosen leaf and applies
+       it to the item's OWN Defense, PDMin, PDMax, MDMin and MDMax —
+       `Fix(itemStat x percent / 100)` — then adds the leaf's flat bonus to the
+       primary stat named on it. A scroll on an empty slot therefore does
+       nothing, which is the original's behaviour too: the percentage has
+       nothing to be a percentage of. */
+    const DRAGON_SCROLL_PERCENT_SLOTS = ["Defense", "PDMin", "PDMax", "MDMin", "MDMax"];
+
+    function dragonScrollVector(build) {
+      const stats = {};
+      const applied = [];
+      const idle = [];
+      Object.entries(build.equipmentMods || {}).forEach(([slot, mods]) => {
+        if (!mods?.dragonName) return;
+        const item = state.indexes.equippableById.get(String(build.items?.[slot] || ""));
+        const percent = Number(mods.dragonPercent) || 0;
+        const flat = Number(mods.dragonRStat) || 0;
+        const entry = { slot, name: mods.dragonName, percent, flat,
+          stat: mods.dragonStat, stats: {} };
+        if (flat && mods.dragonStat) {
+          stats[mods.dragonStat] = (stats[mods.dragonStat] || 0) + flat;
+          entry.stats[mods.dragonStat] = flat;
+        }
+        let scaled = 0;
+        DRAGON_SCROLL_PERCENT_SLOTS.forEach(stat => {
+          const base = Number(item?.stats?.[stat]) || 0;
+          const value = simFix(base * percent / 100);
+          if (!value) return;
+          scaled += 1;
+          stats[stat] = (stats[stat] || 0) + value;
+          entry.stats[stat] = (entry.stats[stat] || 0) + value;
+        });
+        if (percent && !scaled) {
+          idle.push({ slot, name: mods.dragonName, percent,
+            reason: item ? "this item has no damage or defence to take a percentage of"
+                         : "no item in the slot" });
+        }
+        applied.push(entry);
+      });
+      return { stats, applied, idle };
+    }
+
+    /* `MenuItem_Animal_Click` adds the animal's stat vector at its grade. The
+       three numbers on an `LVL_EGGS` row are named per animal, not universally
+       — Tiger Str/Hea/Agi, Panther Agi/Str/Hea, Bird Int/Agi/Hea, Eagle
+       Hea/Wis/Agi — so the same row means different things to different
+       animals. An animal with no grade set contributes nothing rather than
+       defaulting to grade 1. */
+    function animalVector(build) {
+      const mods = build.equipmentMods?.Animal || {};
+      const grade = Number(mods.animalGrade) || 0;
+      if (!mods.animal || !grade) {
+        return { stats: {}, animal: mods.animal || "", grade, rows: null };
+      }
+      const animal = eggAnimal(mods.animal);
+      const row = eggGradeRows(animal).find(entry => entry.grade === grade);
+      if (!row) return { stats: {}, animal: animal.name, grade, rows: null };
+      const stats = {};
+      Object.entries(row.stats).forEach(([stat, raw]) => {
+        const value = Number(String(raw).trim());
+        if (Number.isFinite(value) && value !== 0) stats[stat] = value;
+      });
+      return { stats, animal: animal.name, grade, rows: row };
     }
 
     function registeredBuffSkill(definition) {
@@ -7300,15 +7541,27 @@
       return result;
     }
 
+    function simPassiveVector(build) {
+      if (!state.profiles) return { stats: {}, applied: [], unmodelled: [] };
+      return passiveSkillVector(activeProfile(), build);
+    }
+
     function simSheet(build) {
       const gear = simGearVector(build);
       const buffs = simBuffVector(build);
+      const passiveDetail = simPassiveVector(build);
+      const passives = passiveDetail.stats;
       const level = Number(build.level) || 1;
       const finalPrimary = {};
       PRIMARY_STATS.forEach(stat => {
         finalPrimary[stat] = (Number(build[stat]) || 0) + (gear[stat] || 0)
-          + (buffs[stat] || 0);
+          + (buffs[stat] || 0) + (passives[stat] || 0);
       });
+      // HP% and Mana% are real slots, so anything that writes them belongs in
+      // the same percentage the maximum-HP form already takes from gear.
+      const hpPercent = (gear["HP%"] || 0) + (buffs["HP%"] || 0) + (passives["HP%"] || 0);
+      const manaPercent = (gear["Mana%"] || 0) + (buffs["Mana%"] || 0)
+        + (passives["Mana%"] || 0);
 
       const base = simDerived(finalPrimary.Strength, finalPrimary.Health,
         finalPrimary.Intelligence, finalPrimary.Wisdom, finalPrimary.Agility, level);
@@ -7320,13 +7573,15 @@
 
       const final = {};
       state.combat.stat_slots.forEach(slot => {
-        final[slot] = (base[slot] || 0) + (gear[slot] || 0) + (buffs[slot] || 0);
+        final[slot] = (base[slot] || 0) + (gear[slot] || 0) + (buffs[slot] || 0)
+          + (passives[slot] || 0);
       });
       PRIMARY_STATS.forEach(stat => { final[stat] = finalPrimary[stat]; });
       final.HP = simMaxHp(level, finalPrimary.Health, build.cls,
-        gear["HP%"] || 0, build.doubleHp) + (gear.HP || 0) + (buffs.HP || 0);
+        hpPercent, build.doubleHp) + (gear.HP || 0) + (buffs.HP || 0)
+        + (passives.HP || 0);
       final.MP = simMaxMp(level, finalPrimary.Wisdom, build.cls,
-        gear["Mana%"] || 0) + (gear.MP || 0) + (buffs.MP || 0);
+        manaPercent) + (gear.MP || 0) + (buffs.MP || 0) + (passives.MP || 0);
 
       ["PDMin", "PDMax", "MDMin", "MDMax"].forEach(slot => {
         final[slot] = simApplyMultipliers(final[slot],
@@ -7341,7 +7596,7 @@
         finalPrimary.Intelligence, finalPrimary.Wisdom, finalPrimary.Agility, level);
       const kalenc = simKalencDerived(finalPrimary.Strength, finalPrimary.Health,
         finalPrimary.Intelligence, finalPrimary.Wisdom, finalPrimary.Agility, level);
-      return { base, gear, buffs, final, reimpl, kalenc, level };
+      return { base, gear, buffs, passives, passiveDetail, final, reimpl, kalenc, level };
     }
 
     // --- Combat pipeline, [ORIG] ---------------------------------------
@@ -7403,8 +7658,15 @@
       catch (error) { /* private mode: the build simply does not persist */ }
     }
 
-    function encodeBuild(build) {
-      const json = JSON.stringify(build);
+    /* A shared build carries its skill allocation with it. It did not before,
+       and that mattered once passive skills started changing the sheet: a link
+       that dropped them handed the reader a different character from the one
+       that was shared. `skills` rides alongside the build rather than inside
+       it, because it belongs to the profile, not to the build record. */
+    function encodeBuild(build, skills = null) {
+      const payload = skills && Object.keys(skills).length
+        ? Object.assign({}, build, { skills }) : build;
+      const json = JSON.stringify(payload);
       return btoa(String.fromCharCode(...new TextEncoder().encode(json)))
         .replace(/\+/g, "-").replace(/\//g, "_").replace(/=+$/, "");
     }
@@ -7413,26 +7675,66 @@
       const padded = text.replace(/-/g, "+").replace(/_/g, "/");
       const binary = atob(padded + "=".repeat((4 - padded.length % 4) % 4));
       const bytes = Uint8Array.from(binary, char => char.charCodeAt(0));
-      return Object.assign({}, DEFAULT_BUILD, JSON.parse(new TextDecoder().decode(bytes)));
+      const payload = JSON.parse(new TextDecoder().decode(bytes));
+      const skills = payload.skills && typeof payload.skills === "object"
+        ? payload.skills : null;
+      delete payload.skills;
+      return { build: Object.assign({}, DEFAULT_BUILD, payload), skills };
     }
 
     // --- Monsters -------------------------------------------------------
 
     const MONSTER_COMBAT_FIELDS = ["mon_otp", "mon_eva", "mon_minatt", "mon_maxatt",
-      "mon_def1", "mon_def2", "mon_absorb", "mon_attspd", "mon_lvl"];
+      "mon_def1", "mon_def2", "mon_absorb", "mon_attspd", "mon_lvl",
+      // Strength and Agility are required, not optional: the four columns above
+      // are additive macros and the derivation below cannot run without them.
+      "mon_str", "mon_agi"];
 
     function monsterHasCombatStats(row) {
       return Boolean(row) && MONSTER_COMBAT_FIELDS.every(field =>
         String(row[field] ?? "").trim() !== "");
     }
 
+    /* A monster's on-target point, evasion and attack are DERIVED, not read.
+       `mon_otp`, `mon_eva`, `mon_minatt` and `mon_maxatt` in the legacy export
+       are the raw additive `(hit)` / `(dodge)` / `(attack)` macros of an
+       InitMonster record — identical to the 2006 originals on 175 of 175 rows
+       that signature-match one — and CMonster adds the same Str/Agi/Level
+       derivation a player gets before any of them is used. Reading the macro as
+       a final value understated every monster's hit and damage, and so
+       overstated the evasion chance shown against it.
+
+       `mon_hp` is the one column that is already materialized, so it stays a
+       final value. Mirrors engine/kal_engine.py monster_hit/dodge/min/max. */
+    function simMonsterDerived(legacy) {
+      const level = Number(legacy.mon_lvl) || 0;
+      const str = Number(legacy.mon_str) || 0;
+      const agi = Number(legacy.mon_agi) || 0;
+      const macro = {
+        hit: Number(legacy.mon_otp) || 0,
+        dodge: Number(legacy.mon_eva) || 0,
+        minAttack: Number(legacy.mon_minatt) || 0,
+        maxAttack: Number(legacy.mon_maxatt) || 0
+      };
+      return {
+        macro,
+        hit: simCdiv(agi, 8) + simCdiv(15 * str, 54) + macro.hit,
+        dodge: simCdiv(agi, 3) + macro.dodge,
+        minAttack: Math.max(0, 1 + simCdiv(11 * str - 80, 30)
+          + simCdiv(agi - 5, 11) + simCdiv(7 * level, 10) + macro.minAttack),
+        maxAttack: Math.max(0, simCdiv(8 * str - 25, 15)
+          + simCdiv(18 * agi, 77) + level + macro.maxAttack)
+      };
+    }
+
     function simVersus(sheet, build, legacy) {
       const monsterLevel = Number(legacy.mon_lvl);
       const level = sheet.level;
+      const monster = simMonsterDerived(legacy);
       const incomingHit = simHitChance(monsterLevel, level,
-        Number(legacy.mon_otp), sheet.final.Evasion);
-      const rawMin = Number(legacy.mon_minatt);
-      const rawMax = Number(legacy.mon_maxatt);
+        monster.hit, sheet.final.Evasion);
+      const rawMin = monster.minAttack;
+      const rawMax = monster.maxAttack;
       const landed = [rawMin, rawMax].map(raw => simPhysicalFinal(
         raw, monsterLevel, level, sheet.final.Defense, sheet.final.Absorb));
       const physicalMin = Math.min(...landed);
@@ -7442,12 +7744,12 @@
       const perSwing = average * incomingHit / 100;
 
       const result = {
-        legacy, monsterLevel,
+        legacy, monsterLevel, monster,
         incomingHit, evasion: 100 - incomingHit,
         physicalMin, physicalMax, average, perSwing, cooldown,
         perSecond: cooldown > 0 ? perSwing * 1000 / cooldown : null,
         outgoingHit: simHitChance(level, monsterLevel, sheet.final.OTP,
-          Number(legacy.mon_eva)),
+          monster.dodge),
         survivalSwings: perSwing > 0 ? sheet.final.HP / perSwing : null
       };
 
@@ -8063,9 +8365,11 @@
       const gearNote = slot => {
         const gear = sheet.gear[slot] || 0;
         const buff = sheet.buffs[slot] || 0;
+        const passive = sheet.passives?.[slot] || 0;
         return [
           gear ? `${gear > 0 ? "+" : ""}${prettyNumber(gear)} gear` : "",
-          buff ? `${buff > 0 ? "+" : ""}${prettyNumber(buff)} buff` : ""
+          buff ? `${buff > 0 ? "+" : ""}${prettyNumber(buff)} buff` : "",
+          passive ? `${passive > 0 ? "+" : ""}${prettyNumber(passive)} passive` : ""
         ].filter(Boolean).join(" · ");
       };
       const bar = (label, value, kind) => `<div class="sheet-bar">
@@ -8126,6 +8430,9 @@
         export</span> of an unrecorded game version. <strong>Neither of those two is Bango</strong>,
         and Bango's own monster combat stats have never been recovered — so anything involving a
         monster is a hypothesis about Bango, not a statement about it.
+        A monster's on-target point, evasion and attack are also <strong>derived</strong>: the
+        stored columns are additive macros, and the Strength/Agility/level terms
+        (<span class="tag gold">REIMPL</span>) are added to them before any comparison here.
       </div>`;
     }
 
@@ -8163,7 +8470,7 @@
       const rows = order.map(slot => {
         const base = sheet.base[slot] || 0;
         const gear = sheet.gear[slot] || 0;
-        const buffs = sheet.buffs[slot] || 0;
+        const buffs = (sheet.buffs[slot] || 0) + (sheet.passives?.[slot] || 0);
         const final = sheet.final[slot] || 0;
         if (!base && !gear && !buffs && !final) return "";
         const alternatives = [];
@@ -8185,7 +8492,8 @@
         </tr>`;
       }).join("");
       return `<div class="table-wrap"><table>
-        <thead><tr><th>Stat</th><th>Base</th><th>Gear</th><th>Final</th><th>Buffs</th><th>Working</th></tr></thead>
+        <thead><tr><th>Stat</th><th>Base</th><th>Gear</th><th>Final</th>
+          <th>Buffs &amp; passives</th><th>Working</th></tr></thead>
         <tbody>${rows}</tbody></table></div>`;
     }
 
@@ -8356,6 +8664,87 @@
     // The original enables Bead of Fire from G46 up, and only on the five
     // pieces — never on a shield.
     const BEAD_OF_FIRE_MIN_GRADE = 46;
+
+    /* ===================================================================
+       Bead of Fire — per piece, and as a set.  [KALENC-2011]
+
+       Read out of KalEncyclopedia's `frmSkills`, methods
+       `MenuItem_Armor_BoF_Click` and `MenuItem_Armor_SetBonus`. All three
+       effects write the same shape — `n||n||n` into the 27-slot vector, so
+       slots 0, 2 and 4 — which is Strength, Intelligence and Agility, and
+       they are added to the gear vector.
+
+         per piece   n by the piece's own grade, from BEAD_AMOUNT_BY_GRADE
+         full set    a further flat 5, whatever the grade, when all five
+                     pieces share one grade and all five carry a bead
+         half set    a further n by grade, when Boots, Gloves and Shorts
+                     share one grade and all three carry a bead
+
+       Full is tested first; half is the fallback, never both. Bango's own
+       `Bead of Fire` record (`inititem.dat` 942/1029/1165) carries
+       `specialty [Str 0][Int 0][Dex 0]` — the same three stats, zeroed in the
+       client because the server supplies the values. That corroborates which
+       stats, not the amounts, and none of this is confirmed on Bango.
+
+       One guard in the original's full-set path compares its weapon EB-level
+       cell against "- Nothing -"; that cell defaults to "0" and never holds
+       that string, so the guard cannot fire. It is not reproduced.
+       =================================================================== */
+    const BEAD_AMOUNT_BY_GRADE = { 46: 1, 50: 2, 55: 3, 60: 4, 65: 5, 70: 6 };
+    const BEAD_HALF_SET_BY_GRADE = { 46: 2, 50: 1, 55: 1, 60: 3, 65: 3, 70: 2 };
+    const BEAD_FULL_SET_AMOUNT = 5;
+    const BEAD_STATS = ["Strength", "Intelligence", "Agility"];
+    // Not the same five as ARMOR_FILL_SLOTS: the half set is these three only.
+    const BEAD_HALF_SET_SLOTS = ["Boots", "Gloves", "Shorts"];
+
+    function slotHasBead(build, slot) {
+      return (build.equipmentMods?.[slot] || {}).equip === "Bead of Fire";
+    }
+
+    function slotGradeNumber(build, slot) {
+      const item = state.indexes.equippableById.get(String(build.items?.[slot] || ""));
+      return item ? gradeNumber(item.grade) : null;
+    }
+
+    /* Which set, if either, the five armor pieces currently form. Returns the
+       reference grade too, because the half-set amount depends on it. */
+    function beadSetState(build) {
+      const beaded = slot => slotHasBead(build, slot) && slotGradeNumber(build, slot) != null;
+      const grade = slotGradeNumber(build, "Boots");
+      if (grade == null) return { kind: "none" };
+      const sameGrade = slots => slots.every(slot => slotGradeNumber(build, slot) === grade);
+      if (ARMOR_FILL_SLOTS.every(beaded) && sameGrade(ARMOR_FILL_SLOTS)) {
+        return { kind: "full", grade, amount: BEAD_FULL_SET_AMOUNT };
+      }
+      if (BEAD_HALF_SET_SLOTS.every(beaded) && sameGrade(BEAD_HALF_SET_SLOTS)) {
+        return { kind: "half", grade, amount: BEAD_HALF_SET_BY_GRADE[grade] || 0 };
+      }
+      return { kind: "none" };
+    }
+
+    /* Every beaded piece, plus whichever set bonus they form. `unscored` names
+       the pieces whose grade is not on the original's ladder — a G63 armor can
+       carry a bead in the menu but the source table has no row for it, and a
+       silent zero would read as "the bead does nothing" rather than "this
+       grade is not in the source". */
+    function beadVector(build) {
+      const stats = {};
+      const add = amount => BEAD_STATS.forEach(stat => {
+        if (amount) stats[stat] = (stats[stat] || 0) + amount;
+      });
+      const scored = [];
+      const unscored = [];
+      ARMOR_FILL_SLOTS.forEach(slot => {
+        if (!slotHasBead(build, slot)) return;
+        const grade = slotGradeNumber(build, slot);
+        const amount = grade == null ? 0 : (BEAD_AMOUNT_BY_GRADE[grade] || 0);
+        if (amount) { scored.push({ slot, grade, amount }); add(amount); }
+        else unscored.push({ slot, grade });
+      });
+      const set = beadSetState(build);
+      add(set.amount || 0);
+      return { stats, scored, unscored, set };
+    }
 
     function armorFillState() {
       state.armorFill ||= { grade: "", defense: 0, bead: false, prefix: "" };
@@ -8575,10 +8964,14 @@
     function simManualControls(build) {
       return `<details><summary>Manual overrides — type totals the data cannot supply</summary>
         <div class="callout info" style="margin:12px 0">
-          <strong>Use these for anything undecoded.</strong> <code>+N</code> enhancement, set
-          bonuses and Beads of Fire are not decoded, so enhanced gear will under-report unless you
-          enter the difference here. This mirrors KalEncyclopedia, whose own OTP, Defense and
-          damage fields are typed in.</div>
+          <strong>Use these for anything still undecoded.</strong> Beads of Fire, armour set and
+          half-set bonuses, elemental stones, DragonScroll and the animal are now counted on the
+          sheet, and so are the passive skills whose effect names a stat this sheet has.
+          <b>EB <code>+N</code> is still not on the sheet</b> — KalEncyclopedia does not put it
+          there either, and the recovered Bango <code>+1…+15</code> grid does not say which of its
+          three bands applies to which item, so nothing here would be better than a guess. The
+          <a href="#/weapon-calculator">weapon calculator</a> does model EB, which is where the
+          original models it too. Pet percentages stay typed in below.</div>
         <div class="field-grid">${state.combat.stat_slots.map(slot => `
           <label class="field"><span>${escapeHtml(slot)}</span>
           <input type="number" step="1" data-sim-manual="${escapeAttr(slot)}"
@@ -9543,12 +9936,16 @@
       for (const token of String(expression || "").trim().split(/\s+/).filter(Boolean)) {
         if (/^-?\d+(?:\.\d+)?$/.test(token)) stack.push(Number(token));
         else if (Object.prototype.hasOwnProperty.call(values, token)) stack.push(values[token]);
-        else if (["+", "-", "*", "/"].includes(token)) {
+        else if (["+", "-", "*", "/", "divint"].includes(token)) {
           if (stack.length < 2) return null;
           const right = stack.pop();
           const left = stack.pop();
+          // `divint` appears in Weapon Mastery and is the client's own integer
+          // division; `/` stays exact and is truncated once at the end.
           stack.push(token === "+" ? left + right : token === "-" ? left - right
-            : token === "*" ? left * right : right ? left / right : 0);
+            : token === "*" ? left * right
+            : token === "divint" ? (right ? Math.trunc(left / right) : 0)
+            : right ? left / right : 0);
         } else return null;
       }
       return stack.length === 1 && Number.isFinite(stack[0]) ? Math.trunc(stack[0]) : null;
@@ -9798,7 +10195,11 @@
       const params = routeInfo().query;
       if (params.get("b")) {
         try {
-          activeProfile().build = decodeBuild(params.get("b"));
+          const shared = decodeBuild(params.get("b"));
+          activeProfile().build = shared.build;
+          // A link with no skills clears the ones already on the profile, so
+          // the reader sees the shared character and not a blend of two.
+          activeProfile().skills = shared.skills ? cloneJson(shared.skills) : {};
           state.build = activeProfile().build;
           saveBuild();
         } catch (error) { /* a malformed share link falls back to the stored build */ }
@@ -10087,9 +10488,96 @@
         .forEach(host => hydrateIcons(host));
     }
 
+    /* Every modifier the character is carrying, said in one place: what it
+       added, and — the half that matters more — what it did not and why. A
+       choice that is stored but cannot change the sheet has to say so on the
+       page, or it reads as counted. */
+    function simModifierLedger(build, sheet) {
+      const stat = entries => Object.entries(entries)
+        .map(([slot, value]) => `${escapeHtml(PREFIX_STAT_LABELS[slot] || slot)} ${
+          value > 0 ? "+" : ""}${prettyNumber(value)}`).join(" · ");
+      const counted = [];
+      const not = [];
+
+      const bead = beadVector(build);
+      bead.scored.forEach(piece => counted.push(
+        `<b>Bead of Fire</b> on ${escapeHtml(piece.slot)} (G${piece.grade}) — ${
+          BEAD_STATS.map(name => `${name} +${piece.amount}`).join(" · ")}`));
+      if (bead.set.kind !== "none") {
+        counted.push(`<b>${bead.set.kind === "full" ? "Full" : "Half"} G${bead.set.grade
+          } set bonus</b> — ${BEAD_STATS.map(name =>
+            `${name} +${bead.set.amount}`).join(" · ")}${bead.set.kind === "half"
+              ? " (Boots, Gloves and Shorts)" : ""}`);
+      }
+      bead.unscored.forEach(piece => not.push(`<b>Bead of Fire</b> on ${
+        escapeHtml(piece.slot)}${piece.grade == null ? "" : ` (G${piece.grade})`} — the source
+        table has rows for G46, G50, G55, G60, G65 and G70 only, so this grade has no value to
+        read. Not zero because the bead does nothing; zero because nothing was recorded.`));
+
+      const stones = stoneVector(build);
+      stones.applied.forEach(entry => counted.push(`<b>${escapeHtml(entry.stone)} Lv${
+        entry.level}</b> on ${escapeHtml(entry.slot)} — ${stat(entry.stats)}`));
+      stones.unread.forEach(entry => not.push(`<b>${escapeHtml(entry.stone)} Lv${entry.level
+        }</b> writes ${entry.value == null ? "" : `${entry.value} to `}a slot past the 27 this
+        sheet names. KalEncyclopedia's own vector is 28 wide and its sheet does not read that
+        slot either, so the value is shown rather than folded into a neighbour.`));
+
+      const scrolls = dragonScrollVector(build);
+      scrolls.applied.forEach(entry => {
+        if (Object.keys(entry.stats).length) {
+          counted.push(`<b>${escapeHtml(entry.name)}</b> on ${escapeHtml(entry.slot)} — ${
+            stat(entry.stats)}`);
+        }
+      });
+      scrolls.idle.forEach(entry => not.push(`<b>${escapeHtml(entry.name)}</b> on ${
+        escapeHtml(entry.slot)} — its +${entry.percent}% is a percentage of the item's own
+        damage or defence, and ${escapeHtml(entry.reason)}.`));
+
+      const animal = animalVector(build);
+      if (Object.keys(animal.stats).length) {
+        counted.push(`<b>${escapeHtml(animal.animal)} G${animal.grade}</b> — ${
+          stat(animal.stats)}`);
+      } else if (animal.animal && !animal.grade) {
+        not.push(`<b>${escapeHtml(animal.animal)}</b> — no grade is set, and an egg's three
+          numbers come from its grade.`);
+      }
+
+      (sheet.passiveDetail?.applied || []).forEach(entry => counted.push(
+        `<b>${escapeHtml(entry.row.sk_megn || entry.row.bango_key)} G${entry.grade}</b>
+         (passive) — ${stat(entry.stats)}`));
+      (sheet.passiveDetail?.unmodelled || []).forEach(entry => {
+        const values = (entry.values || []).filter(value => value != null);
+        not.push(`<b>${escapeHtml(entry.row.sk_megn || entry.row.bango_key)} G${entry.grade}</b>
+          (passive) — ${values.length
+            ? `the client gives ${values.map(prettyNumber).join(" / ")}, but its effect is`
+            : "its effect is"} a chance, a percentage or a duration that this sheet has no slot
+          for, so it is not added to anything.`);
+      });
+
+      const weaponEb = Number(build.equipmentMods?.Weapon?.enhancementLevel) || 0;
+      if (weaponEb) {
+        not.push(`<b>EB +${weaponEb}</b> on the weapon — the original does not put enhancement on
+          the character sheet either, and the recovered Bango +1…+15 grid does not say which of
+          its three bands applies here. The <a href="#/weapon-calculator">weapon calculator</a>
+          does model it.`);
+      }
+
+      if (!counted.length && !not.length) return "";
+      const list = items => `<ul class="modifier-ledger">${
+        items.map(item => `<li>${item}</li>`).join("")}</ul>`;
+      return `<details class="sheet-breakdown"><summary>What the sheet is counting${
+          not.length ? ` — and ${prettyNumber(not.length)} thing${
+            not.length === 1 ? "" : "s"} it is not` : ""}</summary>
+        <div style="margin-top:10px">
+          ${counted.length ? `<h4>Counted</h4>${list(counted)}` : ""}
+          ${not.length ? `<h4>Not counted</h4>${list(not)}` : ""}
+        </div></details>`;
+    }
+
     function simSheetPanelHtml(build) {
       const sheet = simSheet(build);
-      return simCharacterSheet(build, sheet) + `
+      return simCharacterSheet(build, sheet)
+        + simModifierLedger(build, sheet) + `
         <details class="sheet-breakdown"><summary>Full stat breakdown</summary>
           <div style="margin-top:10px">${simSheetTable(build, sheet)}</div>
         </details>`;
@@ -10156,7 +10644,8 @@
           sheet exactly. The hit and damage numbers use the original 2006 combat engine against
           a legacy monster export — neither of those is Bango, so anything involving a monster
           is an estimate for this server, not a fact about it.</p>
-        <p>Share this build: <code class="mono">#/build?b=${escapeHtml(encodeBuild(build))}</code></p>
+        <p>Share this build: <code class="mono">#/build?b=${escapeHtml(
+          encodeBuild(build, activeProfile().skills))}</code></p>
         <div>${simDisagreementPanel(sheet)}</div>`);
     }
 
