@@ -218,7 +218,11 @@
       z-index: 20;
       min-height: 68px;
       display: grid;
-      grid-template-columns: minmax(220px, 640px) auto;
+      /* The search column may shrink to 120px and the actions may wrap:
+         between ~760px and ~1100px wide the old minmax(220px, 640px) plus a
+         non-wrapping action row asked for more than the workspace had, and
+         the whole bar scrolled sideways. */
+      grid-template-columns: minmax(120px, 640px) auto;
       align-items: center;
       justify-content: space-between;
       gap: 18px;
@@ -260,7 +264,9 @@
       display: flex;
       align-items: center;
       justify-content: flex-end;
+      flex-wrap: wrap;
       gap: 8px;
+      min-width: 0;
     }
 
     .status-dot {
@@ -3959,6 +3965,16 @@
       ix.skillSchedules = new Map(t.skillSchedules.map(row => [
         `${row.bango_key}~${row.bango_definition_ordinal || 1}`, row
       ]));
+      // First token of a Bango skill record's grade field: the job-branch
+      // availability mask, decoded and proven against the legacy planner's
+      // position column in tools\bango_branch_mask\ (170 of 173 matched
+      // player skills agree; the 3 that differ are Bango's own availability
+      // moves, and Bango wins). Keyed like skillSchedules.
+      ix.branchMaskBySkillKey = new Map(t.skills.map(row => {
+        const grade = parseJson(row.bango_grade_json, []);
+        return [`${row.bango_key}~${row.bango_definition_ordinal || 1}`,
+          grade.length ? String(grade[0]) : ""];
+      }));
       ix.skillPrerequisites = groupedBy(t.skillPrerequisites, "skill_key");
       ix.skillDependents = groupedBy(t.skillPrerequisites, "prerequisite_skill_key");
       ix.playerSkillsByScope = groupedBy(
@@ -4043,11 +4059,6 @@
       for (const family of ix.legacyMonsterVariants.values()) {
         family.sort((a, b) => legacyVariantRank(a) - legacyVariantRank(b));
       }
-      // Decoded ita_rev / pre_rev vectors, grouped so one lookup gives an
-      // item's whole stat block. Empty when the analysis folder is absent.
-      ix.itemStatsById = groupedBy(o.itemStats || [], "ita_azon");
-      ix.prefixStatsById = groupedBy(o.prefixStats || [], "pre_azon");
-
       // Equipment comes from the Bango tables, not the legacy decode: Bango is
       // the current authority for what exists, its ITEM_ATTRIBUTES carry the
       // full stat set, and every one of its items has an icon file.
@@ -4098,8 +4109,29 @@
         const enriched = { ...row, __item: item, __monster: monster,
           mon_name: monster.mon_name, mon_lvl: monster.mon_lvl };
         mapPush(ix.legacyDropsByPairName, dropPairKey(monster.mon_name, item.ita_name), enriched);
+        // The guarded rank-family rule the stats join uses, applied to rates
+        // as well: Bango's "Minister of the Royal Tomb" is legacy "… 1/2/3",
+        // and refusing for rates the same join the Stats panel already shows
+        // left 2,468 Bango rows reading "no confirmed rate" beside their
+        // joined stats. Each ranked row keeps its own name as the variant.
+        const stem = String(monster.mon_name ?? "").trim().match(/^(.*\S)\s+\d+$/);
+        if (stem) {
+          const stemKey = normalizeName(stem[1]);
+          const owned = (ix.legacyMonsterVariants.get(stemKey) || [])
+            .some(other => normalizeName(other.mon_name) === stemKey);
+          if (!owned) mapPush(ix.legacyDropsByPairName, dropPairKey(stem[1], item.ita_name), enriched);
+        }
         mapPush(ix.legacyDropsByItemId, String(row.drp_item), enriched);
       }
+      // Fourteen names cover a Forest monster and its Doggebi-dungeon twin
+      // under one Bango string, where the legacy export keeps them apart with
+      // a trailing "D1" ("Devil Troop of Desire" Lv 40 is Bango record 52 and
+      // legacy 43; "Devil Troop of Desire D1" Lv 52 is Bango record 205 and
+      // legacy 69). A name join cannot split them, so those records are
+      // resolved by their own drop tables — the record-to-legacy pairing that
+      // maximizes drop-list overlap, accepted only when it strictly beats the
+      // swap. Same rule, evidence and tests in tools\monster_d1_disambiguation\.
+      ix.legacyVariantsByRecordId = buildD1Overrides(ix, t, o, monsterMessages);
       ix.rateMappedDropRows = t.drops.filter(row => currentRateRows(row).length).length;
       ix.rateVariantRows = t.drops.reduce((total, row) => total + currentRateRows(row).length, 0);
 
@@ -4136,6 +4168,15 @@
       for (const zone of state.zones) {
         zone.monsterMatches = resolveZoneRoster(zone.mobLabels, monstersGroupedByName);
         for (const entry of zone.monsterMatches) {
+          // A Forest/dungeon collision: the geography guide's roster names
+          // the monster without the "D1", so the record resolved to the
+          // legacy "X D1" row is a different creature standing somewhere
+          // else and is not attached here. See buildD1Overrides.
+          entry.matches = entry.matches.filter(monster => {
+            const override = ix.legacyVariantsByRecordId.get(String(monster.message_id));
+            return !override
+              || normalizeName(override[0].mon_name) === normalizeName(monster.text);
+          });
           for (const monster of entry.matches) {
             mapPush(ix.monsterZones, String(monster.message_id), zone);
           }
@@ -4479,7 +4520,7 @@
       const q = normalizeName(query.get("q") || "");
       const legacy = query.get("legacy") || "";
       const rows = state.indexes.monsters.filter(row => {
-        const hasLegacy = legacyMonsterVariants(row.text).length > 0;
+        const hasLegacy = legacyMonsterVariantsForRecord(row.message_id, row.text).length > 0;
         return (!q || normalizeName(`${row.text} ${row.message_id}`).includes(q)) &&
           (!legacy || (legacy === "yes" ? hasLegacy : !hasLegacy));
       });
@@ -4501,7 +4542,7 @@
           <thead><tr><th class="icon-col"></th><th>Bango ID</th><th>Monster</th><th>Drop rows</th><th>Quests</th><th>Zones</th><th>Legacy stats</th></tr></thead>
           <tbody>${shown.map(row => {
             const id = String(row.message_id);
-            const variants = legacyMonsterVariants(row.text);
+            const variants = legacyMonsterVariantsForRecord(id, row.text);
             return `<tr>
               <td class="icon-col">${monsterIconTag(id, row.text, 30)}</td>
               <td class="mono">${escapeHtml(id)}</td>
@@ -4618,14 +4659,46 @@
       return allowed;
     }
 
-    function skillBelongsToJob(schedule, allowedIds) {
-      // A skill with no position at all belongs to every job of the class.
+    // scope -> the legacy class id POSITIONS.csv keys its jobs by.
+    const SCOPE_CLASS_ID = { archer: "1", knight: "2", mage: "3", thief: "4" };
+
+    /* Bango's own job gate. The first token of a skill record's grade field
+       is a branch-availability mask, decoded and proven against the legacy
+       planner's position column in tools\bango_branch_mask\: 170 of 173
+       matched player skills agree, and the 3 that differ are Bango's own
+       availability moves, which win under the authority ranking. 1 covers
+       the Free/first-job tier, 3 the second job, 7/11 the third-job
+       branches, 23/43 the fourth-job branches; 0 or absent means no branch
+       gate (the level-81 Mystery passives) and falls back to the legacy
+       position. Values are legacy po_azon ids, keyed by legacy class id.
+       This is what keeps a Chairperson-only skill such as Increase of
+       Critical Hit (mage-52, mask 11) off the Hermit tree even though its
+       legacy twin — "Increase of Critical Hit (magician)" — never matched
+       by name and left legacy_position empty. */
+    const BRANCH_MASK_POSITIONS = {
+      "1": { "1": ["21", "15"], "3": ["16"], "7": ["17"], "11": ["18"], "23": ["19"], "43": ["20"] },
+      "2": { "1": ["14", "8"], "3": ["9"], "7": ["10"], "11": ["11"], "23": ["12"], "43": ["13"] },
+      "3": { "1": ["7", "1"], "3": ["2"], "7": ["3"], "11": ["4"], "23": ["5"], "43": ["6"] },
+      "4": { "1": ["28", "22"], "3": ["23"], "7": ["24"], "11": ["25"], "23": ["26"], "43": ["27"] }
+    };
+
+    function skillBranchMask(schedule) {
+      if (!schedule) return "";
+      return state.indexes.branchMaskBySkillKey?.get(
+        `${schedule.bango_key}~${schedule.bango_definition_ordinal || 1}`) || "";
+    }
+
+    function branchGateAllows(schedule, allowedIds, classId) {
+      const owning = BRANCH_MASK_POSITIONS[String(classId)]?.[skillBranchMask(schedule)];
+      if (owning) return !allowedIds || owning.some(id => allowedIds.has(id));
+      // No decoded mask: the legacy planner's position is the fallback gate.
       if (!schedule?.legacy_position) return true;
       return !allowedIds || allowedIds.has(String(schedule.legacy_position));
     }
 
-    // scope -> the legacy class id POSITIONS.csv keys its jobs by.
-    const SCOPE_CLASS_ID = { archer: "1", knight: "2", mage: "3", thief: "4" };
+    function skillBelongsToJob(schedule, allowedIds, classId) {
+      return branchGateAllows(schedule, allowedIds, classId);
+    }
 
     /* The jobs of a class, in the order a character passes through them, with
        the "Free <class>" placeholder dropped — it is the absence of a job, not
@@ -4662,13 +4735,14 @@
 
     function skillTreeModel(scope, options = {}) {
       const allowedIds = options.position ? positionAllowedIds(options.position) : null;
+      const classId = options.position?.po_class || SCOPE_CLASS_ID[scope] || "";
       const rows = (state.tables.skills || [])
         .filter(row => scopeForSkill(row) === scope)
         .map(row => ({ row, schedule: state.indexes.skillSchedules.get(skillId(row)) }))
         // A job a character can never hold is not dimmed, it is absent: showing
         // a Chairperson's buffs on a Hermit's tree suggests a choice that does
         // not exist.
-        .filter(entry => skillBelongsToJob(entry.schedule, allowedIds));
+        .filter(entry => skillBelongsToJob(entry.schedule, allowedIds, classId));
       const levelOf = entry => {
         const level = skillUnlockLevel(entry.schedule);
         return Number.isFinite(level) ? level : Infinity;
@@ -6364,8 +6438,13 @@
     }
 
     function currentRateRows(bangoDrop) {
+      // A Forest/dungeon collision record joins through its own legacy row —
+      // record 205's rates are "Devil Troop of Desire D1"'s, not the Forest
+      // monster's. See buildD1Overrides.
+      const override = state.indexes.legacyVariantsByRecordId?.get(String(bangoDrop.drp_monst));
       return state.indexes.legacyDropsByPairName?.get(
-        dropPairKey(bangoDrop.bango_monster_name, bangoDrop.bango_item_name)
+        dropPairKey(override ? override[0].mon_name : bangoDrop.bango_monster_name,
+          bangoDrop.bango_item_name)
       ) || [];
     }
 
@@ -6569,7 +6648,8 @@
         ], entries, { defaultSort: { key: "grade", dir: "desc" } });
       }
 
-      const monsterFor = entry => legacyMonsterVariants(entry.row.bango_monster_name);
+      const monsterFor = entry =>
+        legacyMonsterVariantsForRecord(entry.row.drp_monst, entry.row.bango_monster_name);
       return sortableTable("dropTable", [
         {
           key: "monster", label: "Monster",
@@ -6773,6 +6853,70 @@
 
     function legacyMonsterVariants(name) {
       return state.indexes.legacyMonsterVariants?.get(normalizeName(name)) || [];
+    }
+
+    /* Record-aware resolution: the 14 Forest/dungeon collisions are keyed by
+       the Bango record id (see buildD1Overrides); everything else falls back
+       to the name family. Callers that know which record they hold must come
+       through here, or record 205 wears record 52's legacy row again. */
+    function legacyMonsterVariantsForRecord(recordId, name) {
+      return state.indexes.legacyVariantsByRecordId?.get(String(recordId))
+        || legacyMonsterVariants(name);
+    }
+
+    /* Splits the Forest/dungeon pairs that share one Bango display name where
+       the legacy export keeps a trailing "D1". The rule is deliberately
+       narrow: exactly one plain legacy row, exactly one "X D1" row and
+       exactly two Bango records, assigned by whichever record-to-legacy
+       pairing has the larger total drop-list overlap — and only when that
+       strictly beats the swapped pairing, so a tie decides nothing. The same
+       rule runs in Python with the row-level evidence and the quest-indicator
+       corroboration in tools\monster_d1_disambiguation\; the dungeon records
+       are the contiguous Bango block 198–211. */
+    function buildD1Overrides(ix, t, o, monsterMessages) {
+      const overrides = new Map();
+      const d1Rows = (o.legacyMonsters || [])
+        .filter(row => /\s+D1$/.test(String(row.mon_name ?? "").trim()));
+      if (!d1Rows.length) return overrides;
+      const recordsByName = new Map();
+      (monsterMessages || []).forEach(row =>
+        mapPush(recordsByName, normalizeName(row.text), String(row.message_id)));
+      const dropSet = (map, key) => {
+        if (!map.has(key)) map.set(key, new Set());
+        return map.get(key);
+      };
+      const bangoDropItems = new Map();
+      (t.drops || []).forEach(row =>
+        dropSet(bangoDropItems, String(row.drp_monst)).add(normalizeName(row.bango_item_name)));
+      const legacyDropItems = new Map();
+      (o.legacyDrops || []).forEach(row => {
+        const item = ix.legacyItemsById.get(String(row.drp_item));
+        if (item) dropSet(legacyDropItems, String(row.drp_monst)).add(normalizeName(item.ita_name));
+      });
+      const overlap = (left, right) => {
+        let count = 0;
+        for (const value of left || []) if (right?.has(value)) count += 1;
+        return count;
+      };
+      for (const d1 of d1Rows) {
+        const base = String(d1.mon_name).trim().replace(/\s+D1$/, "");
+        const baseKey = normalizeName(base);
+        const plainRows = (ix.legacyMonsterVariants.get(baseKey) || [])
+          .filter(row => normalizeName(row.mon_name) === baseKey);
+        const records = (recordsByName.get(baseKey) || [])
+          .slice().sort((left, right) => Number(left) - Number(right));
+        if (plainRows.length !== 1 || records.length !== 2) continue;
+        const plain = plainRows[0];
+        const [low, high] = records;
+        const straight = overlap(bangoDropItems.get(low), legacyDropItems.get(String(plain.mon_azon)))
+          + overlap(bangoDropItems.get(high), legacyDropItems.get(String(d1.mon_azon)));
+        const swapped = overlap(bangoDropItems.get(low), legacyDropItems.get(String(d1.mon_azon)))
+          + overlap(bangoDropItems.get(high), legacyDropItems.get(String(plain.mon_azon)));
+        if (straight === swapped) continue;
+        overrides.set(straight > swapped ? low : high, [plain]);
+        overrides.set(straight > swapped ? high : low, [d1]);
+      }
+      return overrides;
     }
 
     // For the few things that genuinely do not vary between variants — the
@@ -7352,11 +7496,16 @@
         const item = items.get(String(itemId));
         if (item) Object.entries(item.stats).forEach(([slot, value]) => add(slot, value));
       });
-      Object.values(build.prefixes || {}).forEach(prefixId => {
+      // A prefix or talisman amount belongs to the item in its slot; with the
+      // item removed it stays stored — putting the item back restores it —
+      // but an empty slot adds nothing, and the ledger says so.
+      Object.entries(build.prefixes || {}).forEach(([slot, prefixId]) => {
+        if (!build.items?.[slot]) return;
         const prefix = prefixes.get(String(prefixId));
-        if (prefix) Object.entries(prefix.stats).forEach(([slot, value]) => add(slot, value));
+        if (prefix) Object.entries(prefix.stats).forEach(([stat, value]) => add(stat, value));
       });
-      Object.values(build.equipmentMods || {}).forEach(mods => {
+      Object.entries(build.equipmentMods || {}).forEach(([slot, mods]) => {
+        if (!build.items?.[slot]) return;
         add("OTP", mods.otp);
         add("PDMin", mods.physical);
         add("PDMax", mods.physical);
@@ -7373,6 +7522,34 @@
       });
       Object.entries(build.manual || {}).forEach(([slot, value]) => add(slot, value));
       return gear;
+    }
+
+    /* The choices stored on slots that currently hold no item. They are kept —
+       equipping an item restores them — but nothing on an empty slot reaches
+       the sheet, and the ledger names them instead of dropping them quietly.
+       Dragon scrolls are not listed here: dragonScrollVector already reports
+       an idle scroll itself. */
+    function emptySlotChoices(build) {
+      const orphans = [];
+      const slots = new Set([
+        ...Object.keys(build.prefixes || {}),
+        ...Object.keys(build.equipmentMods || {})
+      ]);
+      for (const slot of slots) {
+        if (build.items?.[slot]) continue;
+        const details = [];
+        const prefix = state.indexes.prefixById?.get(String(build.prefixes?.[slot] || ""));
+        if (prefix) details.push(`${prefix.name} talisman`);
+        const mods = build.equipmentMods?.[slot] || {};
+        if (Number(mods.otp)) details.push(`accuracy +${mods.otp}`);
+        if (Number(mods.physical)) details.push(`attack +${mods.physical}`);
+        if (Number(mods.magical)) details.push(`magic attack +${mods.magical}`);
+        if (Number(mods.defense)) details.push(`defense +${mods.defense}`);
+        if (mods.stone) details.push(`${mods.stone} Lv${Math.max(1, Number(mods.stoneLevel) || 1)}`);
+        if (mods.equip === "Bead of Fire") details.push("Bead of Fire");
+        if (details.length) orphans.push({ slot, details });
+      }
+      return orphans.sort((left, right) => left.slot.localeCompare(right.slot));
     }
 
     /* ===================================================================
@@ -7401,6 +7578,9 @@
       const slots = state.combat?.stat_slots || [];
       Object.entries(build.equipmentMods || {}).forEach(([slot, mods]) => {
         if (!mods?.stone) return;
+        // A stone on an empty slot adds nothing; the ledger's empty-slot
+        // line discloses it.
+        if (!build.items?.[slot]) return;
         const level = Math.max(1, Number(mods.stoneLevel) || 1);
         const row = elementalStones().find(entry => entry.ita_name === mods.stone);
         if (!row) return;
@@ -7443,6 +7623,13 @@
       Object.entries(build.equipmentMods || {}).forEach(([slot, mods]) => {
         if (!mods?.dragonName) return;
         const item = state.indexes.equippableById.get(String(build.items?.[slot] || ""));
+        // No item, no scroll: the flat bonus rides the scroll on the item
+        // just as the percentage does, so an empty slot applies neither.
+        if (!item) {
+          idle.push({ slot, name: mods.dragonName,
+            percent: Number(mods.dragonPercent) || 0, reason: "no item in the slot" });
+          return;
+        }
         const percent = Number(mods.dragonPercent) || 0;
         const flat = Number(mods.dragonRStat) || 0;
         const entry = { slot, name: mods.dragonName, percent, flat,
@@ -7831,17 +8018,22 @@
       let unresolved = 0;
       let covered = 0;
       (state.indexes.monsters || []).forEach(row => {
-        const key = normalizeName(row.text);
+        // A Forest/dungeon collision record ranks on its own legacy row, so
+        // both sides of "Devil Troop of Desire" appear, told apart by the
+        // legacy name. Everything else still dedupes by display name.
+        const override = state.indexes.legacyVariantsByRecordId?.get(String(row.message_id));
+        const key = override ? `record~${row.message_id}` : normalizeName(row.text);
         if (seen.has(key)) return;
         seen.add(key);
-        const variants = legacyMonsterVariants(row.text).filter(monsterHasCombatStats);
+        const variants = (override || legacyMonsterVariants(row.text))
+          .filter(monsterHasCombatStats);
         if (!variants.length) { unresolved += 1; return; }
         covered += 1;
         variants.forEach(legacy => out.push(Object.assign({
           bango: row,
           // A family member keeps its own legacy name, so the three levels of
           // Gigantic Species Shock Trooper are told apart in the ranking.
-          label: variants.length > 1 ? legacy.mon_name : row.text
+          label: variants.length > 1 || override ? legacy.mon_name : row.text
         }, simVersus(sheet, build, legacy))));
       });
       return { rows: out, unresolved, covered, names: seen.size };
@@ -8161,7 +8353,7 @@
 
     function monsterPortraitName(id, name = "") {
       // Variants of one family share a picture; take the first that has one.
-      const pic = legacyMonsterVariants(name)
+      const pic = legacyMonsterVariantsForRecord(id, name)
         .map(row => Number(row?.mon_pic))
         .find(value => Number.isFinite(value) && value >= 1);
       if (!pic) return "";
@@ -8449,7 +8641,10 @@
       return {
         OTP: `Fix(0.277778 × ${str}) + Fix(${agi} ÷ 8)`,
         Evasion: `Fix(${agi} ÷ 3)`,
-        PDMin: `Fix((${str}−10)×11÷30) + Fix((${agi}−5)÷11) + Fix(${level}×7÷10) + 2`,
+        // The measured/REIMPL form the sheet actually computes — the
+        // KALENC-2011 form (Fix((str−10)×11÷30) … + 2) reads 1 high at
+        // Strength 8–9, exactly where the default character sits.
+        PDMin: `1 + Fix((11×${str}−80)÷30) + Fix((${agi}−5)÷11) + Fix(7×${level}÷10)`,
         PDMax: `Fix((${str}−5)×8÷15) + Fix((${agi}+17)×11÷47) + ${level} − 3`,
         MDMin: `Fix((${int_}−8)×7÷12) + Fix(${wis}÷7)`,
         MDMax: `Fix(${int_}×7÷12) + Fix(${wis}×0.31249) − 3`,
@@ -8717,7 +8912,12 @@
         return { kind: "full", grade, amount: BEAD_FULL_SET_AMOUNT };
       }
       if (BEAD_HALF_SET_SLOTS.every(beaded) && sameGrade(BEAD_HALF_SET_SLOTS)) {
-        return { kind: "half", grade, amount: BEAD_HALF_SET_BY_GRADE[grade] || 0 };
+        const amount = BEAD_HALF_SET_BY_GRADE[grade];
+        // A grade with no row in the source scores nothing and is named —
+        // a counted "+0" would read as "the set does nothing" instead of
+        // "nothing was recorded for this grade".
+        if (amount == null) return { kind: "half-unscored", grade };
+        return { kind: "half", grade, amount };
       }
       return { kind: "none" };
     }
@@ -8737,7 +8937,9 @@
       ARMOR_FILL_SLOTS.forEach(slot => {
         if (!slotHasBead(build, slot)) return;
         const grade = slotGradeNumber(build, slot);
-        const amount = grade == null ? 0 : (BEAD_AMOUNT_BY_GRADE[grade] || 0);
+        // No item in the slot: the empty-slot ledger line owns that case.
+        if (grade == null) return;
+        const amount = BEAD_AMOUNT_BY_GRADE[grade] || 0;
         if (amount) { scored.push({ slot, grade, amount }); add(amount); }
         else unscored.push({ slot, grade });
       });
@@ -9839,14 +10041,15 @@
     }
 
     function positionAllowsSkill(schedule, build) {
-      if (!schedule?.legacy_position) return true;
       const position = state.indexes.positionsByName.get(normalizeName(build.position));
-      if (!position) return false;
+      // An unrecognised job passes only skills that carry no gate at all —
+      // the same behaviour as before, extended to the branch mask.
+      if (!position) return branchGateAllows(schedule, new Set(), "");
       const allowed = new Set([
         String(position.po_azon),
         ...String(position.po_skills || "").split(",").map(value => value.trim()).filter(Boolean)
       ]);
-      return allowed.has(String(schedule.legacy_position));
+      return branchGateAllows(schedule, allowed, position.po_class);
     }
 
     function characterSkillRows(build) {
@@ -10499,20 +10702,36 @@
       const counted = [];
       const not = [];
 
+      emptySlotChoices(build).forEach(entry => not.push(`<b>${escapeHtml(entry.slot)}</b>
+        holds no item, so the ${entry.details.map(escapeHtml).join(", ")} stored on it
+        ${entry.details.length === 1 ? "adds" : "add"} nothing. Equipping an item there
+        brings ${entry.details.length === 1 ? "it" : "them"} back.`));
+
       const bead = beadVector(build);
       bead.scored.forEach(piece => counted.push(
         `<b>Bead of Fire</b> on ${escapeHtml(piece.slot)} (G${piece.grade}) — ${
           BEAD_STATS.map(name => `${name} +${piece.amount}`).join(" · ")}`));
-      if (bead.set.kind !== "none") {
+      if (bead.set.kind === "full" || bead.set.kind === "half") {
         counted.push(`<b>${bead.set.kind === "full" ? "Full" : "Half"} G${bead.set.grade
           } set bonus</b> — ${BEAD_STATS.map(name =>
             `${name} +${bead.set.amount}`).join(" · ")}${bead.set.kind === "half"
               ? " (Boots, Gloves and Shorts)" : ""}`);
+      } else if (bead.set.kind === "half-unscored") {
+        not.push(`<b>Half G${bead.set.grade} set bonus</b> — the source table records the
+          half-set amount for G46, G50, G55, G60, G65 and G70 only, so this grade has no
+          value to read. Not zero because the set does nothing; zero because nothing was
+          recorded.`);
       }
-      bead.unscored.forEach(piece => not.push(`<b>Bead of Fire</b> on ${
-        escapeHtml(piece.slot)}${piece.grade == null ? "" : ` (G${piece.grade})`} — the source
-        table has rows for G46, G50, G55, G60, G65 and G70 only, so this grade has no value to
-        read. Not zero because the bead does nothing; zero because nothing was recorded.`));
+      bead.unscored.forEach(piece => not.push(
+        piece.grade != null && piece.grade < BEAD_OF_FIRE_MIN_GRADE
+          ? `<b>Bead of Fire</b> on ${escapeHtml(piece.slot)} (G${piece.grade}) — the
+            original only offers a Bead of Fire from G46 up, so this piece cannot carry
+            one and it is ignored here.`
+          : `<b>Bead of Fire</b> on ${escapeHtml(piece.slot)}${
+              piece.grade == null ? "" : ` (G${piece.grade})`} — the source
+            table has rows for G46, G50, G55, G60, G65 and G70 only, so this grade has no
+            value to read. Not zero because the bead does nothing; zero because nothing was
+            recorded.`));
 
       const stones = stoneVector(build);
       stones.applied.forEach(entry => counted.push(`<b>${escapeHtml(entry.stone)} Lv${
@@ -10658,7 +10877,9 @@
       rows.sort((a, b) => a.monsterLevel - b.monsterLevel);
       if (!rows.length) {
         return emptyState(needle
-          ? `No monster with combat stats matches “${escapeHtml(query)}”.`
+          // emptyState escapes its whole message; escaping here as well
+          // rendered a search for "A&B" as "A&amp;B".
+          ? `No monster with combat stats matches “${query}”.`
           : "No monster resolves to a legacy row with combat stats.");
       }
       const shown = rows.slice(0, 60);
@@ -10710,91 +10931,10 @@
       }
     }
 
-    function threatTable(rows, showLevel = true) {
-      return `<div class="table-wrap"><table>
-        <thead><tr>
-          <th>Monster</th>${showLevel ? "<th>Lv</th>" : ""}
-          <th>You evade</th><th>It deals you</th><th>Per second</th><th>Swings to kill you</th>
-          <th>You hit</th><th>You deal (melee)</th><th>You deal (magic)</th>
-        </tr></thead>
-        <tbody>${rows.map(row => `<tr>
-          <td>${entityLink("monster", row.bango.message_id, row.label || row.bango.text)}</td>
-          ${showLevel ? `<td>${prettyNumber(row.monsterLevel)}</td>` : ""}
-          <td><strong>${prettyNumber(row.evasion)}%</strong></td>
-          <td>${prettyNumber(row.physicalMin)}–${prettyNumber(row.physicalMax)}
-            <br><small class="dim">avg ${row.perSwing.toFixed(1)}</small></td>
-          <td>${row.perSecond === null ? "<span class=\"dim\">—</span>" : row.perSecond.toFixed(1)}</td>
-          <td>${row.survivalSwings === null ? "<span class=\"dim\">never</span>" : Math.floor(row.survivalSwings)}</td>
-          <td>${prettyNumber(row.outgoingHit)}%</td>
-          <td>${prettyNumber(row.dealtPhysicalMin)}–${prettyNumber(row.dealtPhysicalMax)}
-            <br><small class="dim">avg ${row.dealtPhysicalExpected.toFixed(1)}</small></td>
-          <td>${row.bestMagicElement
-            ? `${prettyNumber(row.bestMagicMin)}–${prettyNumber(row.bestMagicMax)}
-               <br><small class="dim">${escapeHtml(row.bestMagicElement)}</small>`
-            : "<span class=\"dim\">—</span>"}</td>
-        </tr>`).join("")}</tbody></table></div>`;
-    }
-
-    function renderThreats() {
-      if (!simReady()) {
-        el.main.innerHTML = pageHeader({ eyebrow: "Simulator", title: "Monster threat table" })
-          + simMissing("The combat fixture was not found or is incomplete.");
-        return;
-      }
-      const build = currentBuild();
-      const sheet = simSheet(build);
-      const params = routeInfo().query;
-      const sort = params.get("sort") || "perSecond";
-      const search = (params.get("q") || "").trim().toLowerCase();
-      const maxLevel = Number(params.get("maxlv") || 0);
-
-      const { rows, unresolved, covered, names } = threatRows(sheet, build);
-      let visible = rows;
-      if (search) visible = visible.filter(row =>
-        `${row.bango.text} ${row.label || ""}`.toLowerCase().includes(search));
-      if (maxLevel > 0) visible = visible.filter(row => row.monsterLevel <= maxLevel);
-      const sorters = {
-        perSecond: (a, b) => (b.perSecond || 0) - (a.perSecond || 0),
-        perSwing: (a, b) => b.perSwing - a.perSwing,
-        evasion: (a, b) => b.evasion - a.evasion,
-        outgoing: (a, b) => b.outgoingHit - a.outgoingHit,
-        level: (a, b) => a.monsterLevel - b.monsterLevel,
-        survival: (a, b) => (a.survivalSwings ?? Infinity) - (b.survivalSwings ?? Infinity)
-      };
-      visible = visible.slice().sort(sorters[sort] || sorters.perSecond);
-
-      const sortLink = (key, label) => `<a class="button ${sort === key ? "" : "ghost"} small"
-        href="${routeHref("threats", "", new URLSearchParams({
-          sort: key, q: search, maxlv: maxLevel || ""
-        }).toString())}">${escapeHtml(label)}</a>`;
-
-      el.main.innerHTML = `
-        ${pageHeader({
-          eyebrow: "Simulator",
-          title: "Monster threat table",
-          lede: `${escapeHtml(build.cls)} level ${prettyNumber(build.level)} · ${prettyNumber(sheet.final.HP)} HP · ${prettyNumber(sheet.final.Evasion)} evasion · ${prettyNumber(sheet.final.Defense)} defence · ${prettyNumber(sheet.final.Absorb)}% absorb.`,
-          crumbs: [["Overview", "#/home"], ["Build simulator", "#/build"], ["Threat table", ""]],
-          actions: `<a class="button ghost" href="${routeHref("build")}">← Edit build</a>`
-        })}
-        ${simProvenanceBanner()}
-        ${section("Coverage", `<p>${prettyNumber(covered)} of ${prettyNumber(names)} Bango
-          monsters resolve to a legacy row carrying the fields this needs, listed as
-          ${prettyNumber(rows.length)} rows: where the legacy export records a monster at
-          several levels — three Gigantic Species Shock Troopers, four Warriors of Shadow
-          Troop — each level gets its own row rather than one being chosen for you. The other
-          ${prettyNumber(unresolved)} have <strong>no combat stats in any registered
-          source</strong> and are omitted rather than shown as zero.</p>`)}
-        ${section("Ranking", `
-          <div class="tag-row" style="margin-bottom:12px">
-            ${sortLink("perSecond", "Damage / second")}
-            ${sortLink("perSwing", "Damage / swing")}
-            ${sortLink("survival", "Swings to kill you")}
-            ${sortLink("evasion", "Your evasion")}
-            ${sortLink("outgoing", "Your hit chance")}
-            ${sortLink("level", "Level")}
-          </div>
-          ${visible.length ? threatTable(visible) : emptyState("No monster matches this filter.")}`)}`;
-    }
+    /* The old standalone threat-table page (#/threats) was never reachable —
+       the router always sent it to Character Creation, whose collapsible
+       comparison superseded it. The route stays as a redirect that opens the
+       comparison; the ~90-line renderer it pointed at is gone. */
 
     function monsterCombatPanel(bangoRow, variants, chosen = 0) {
       if (!simReady()) return simMissing("The combat fixture was not found.");
@@ -10827,7 +10967,7 @@
       return `
         <p class="dim" style="margin:-2px 0 10px;font-size:12px">Against
           <a href="${routeHref("build")}">${escapeHtml(build.cls)} level ${prettyNumber(build.level)}</a>
-          · <a href="${routeHref("threats")}">compare every monster</a></p>
+          · <a href="#/build?monsters=open">compare every monster</a></p>
         ${picker}
         <div class="versus-grid">
           <div>
@@ -10848,7 +10988,10 @@
               ["Attack type", escapeHtml(versus.attackType)],
               ["Damage per hit", `${prettyNumber(versus.dealtPhysicalMin)}–${prettyNumber(versus.dealtPhysicalMax)}`],
               ["Average per swing", versus.dealtPhysicalExpected.toFixed(1)],
-              ["Its defence", prettyNumber(Number(legacy.mon_def1) || 0)],
+              // The figure the damage above actually used: ranged attackers
+              // meet mon_def2, everyone else mon_def1 (simVersus).
+              ["Its defence", prettyNumber(Number(
+                versus.attackType === "ranged" ? legacy.mon_def2 : legacy.mon_def1) || 0)],
               ["Its absorb", `${prettyNumber(Number(legacy.mon_absorb) || 0)}%`]
             ])}
           </div>
@@ -10866,7 +11009,7 @@
       if (!row) return renderNotFound("monster", id);
       const definitions = state.indexes.monsterDefinitions.get(String(id)) || [];
       const drops = state.indexes.dropsByMonster.get(String(id)) || [];
-      const variants = legacyMonsterVariants(row.text);
+      const variants = legacyMonsterVariantsForRecord(id, row.text);
       const questRefs = state.indexes.monsterQuestsByMonster.get(String(id)) || [];
       const zones = state.indexes.monsterZones.get(String(id)) || [];
       const uniqueZones = [...new Map(zones.map(zone => [zone.id, zone])).values()];
@@ -10919,6 +11062,7 @@
             </div>
             ${panel("Stats", variants.length
               ? variants.map(variant => `${variants.length > 1
+                  || normalizeName(variant.mon_name) !== normalizeName(row.text)
                   ? `<h4 style="margin:14px 0 6px">${escapeHtml(variant.mon_name)}</h4>` : ""}
                 ${legacyMonsterStats(variant)}`).join("")
               : `<p class="dim" style="margin:0">No combat stats are recorded for this monster.</p>`)}
@@ -11289,7 +11433,7 @@
       }
       const unresolved = groups.filter(group => !group.matches.length);
       const shorthand = groups.filter(group => group.how === "shorthand");
-      const stats = monster => legacyMonsterVariants(monster.text);
+      const stats = monster => legacyMonsterVariantsForRecord(monster.message_id, monster.text);
       el.main.innerHTML = `
         ${pageHeader({
           eyebrow: "Hunting zone",
@@ -12748,7 +12892,9 @@
           case "monsters": renderMonsters(route.query); break;
           case "monster": renderMonster(route.id, route.query); break;
           case "build": renderBuild(); break;
-          case "threats": renderBuild(); break;
+          // Legacy bookmark: the standalone threat page became the build
+          // page's monster comparison, so the old route opens it expanded.
+          case "threats": state.threatOpen = true; renderBuild(); break;
           case "skills": renderSkills(route.query); break;
           case "skill": renderSkill(route.id); break;
           case "quests": renderQuests(route.query); break;
