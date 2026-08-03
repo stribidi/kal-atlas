@@ -1,0 +1,97 @@
+bango_item_id,bango_item_name,legacy_item_id,legacy_item_name,route,accepted,bango_class,legacy_class,bango_slot,legacy_slot,bango_grade,legacy_grade,grade_agrees,shared_drop_monsters,bango_drop_monsters,legacy_drop_monsters,jaccard,name_similarity,note
+31,Zamogeon,276,Geons,curated,yes,,,,Geons,,,unknown,211,221,251,0.808,0.615,money row; match variants by amount
+259,SinGak DooSukLin Shoes,93,SinGak DooSukLin Boots,structural,yes,Archer,Archer,Boots,Boots,G46,G46,yes,47,78,62,0.505,0.800,
+380,Diamond Shoes,111,Diamond Boots,structural,yes,Archer,Archer,Boots,Boots,G50,G50,yes,41,95,45,0.414,0.667,
+629,Shoes of Doggebi,129,Boots of Doggebi,structural,yes,Archer,Archer,Boots,Boots,G55,G55,yes,5,10,8,0.385,0.786,
+1486,Blood Dragon's Armor Shoes,147,Blood Dragon Boots,structural,no,Archer,Archer,Boots,Boots,G65,G65,yes,0,5,0,0.000,0.632,legacy item never drops
+1892,Heavenly Executioner Armor Shoes,673,Heavenly Executioner Boots,structural,no,Archer,Archer,Boots,Boots,G70,G70,yes,0,1,0,0.000,0.792,legacy item never drops
+1131,Golden Armor Gloves,470,Golden Gloves,structural,no,Archer,Archer,Gloves,Gloves,G60,G60,yes,0,3,0,0.000,0.828,legacy item never drops
+1485,Blood Dragon's Armor Gloves,148,Blood Dragon Gloves,structural,no,Archer,Archer,Gloves,Gloves,G65,G65,yes,0,5,0,0.000,0.850,legacy item never drops
+1891,Heavenly Executioner Armor Gloves,674,Heavenly Executioner Gloves,structural,no,Archer,Archer,Gloves,Gloves,G70,G70,yes,0,1,0,0.000,0.909,legacy item never drops
+378,Diamond Helmet,113,Diamond Hood,structural,yes,Archer,Archer,Helmet,Helmet,G50,G50,yes,34,95,37,0.347,0.667,
+627,Helmet of Doggebi,131,Hood of Doggebi,structural,yes,Archer,Archer,Helmet,Helmet,G55,G55,yes,5,10,8,0.385,0.714,
+1130,Golden Armor Helmet,471,Golden Helmet,structural,no,Archer,Archer,Helmet,Helmet,G60,G60,yes,0,3,0,0.000,0.828,legacy item never drops
+1890,Heavenly Executioner Armor Helmet,675,Heavenly Executioner Helmet,structural,no,Archer,Archer,Helmet,Helmet,G70,G70,yes,0,1,0,0.000,0.909,legacy item never drops
+1133,Golden Armor Skirts,472,Golden Shorts,structural,no,Archer,Archer,Shorts,Shorts,G60,G60,yes,0,2,0,0.000,0.690,legacy item never drops
+254,Intensified Steel Shoes,99,Intensified Steel Boots,structural,yes,Knight,Knight,Boots,Boots,G46,G46,yes,47,76,66,0.495,0.810,
+375,Diamond Scaled Shoes,117,Diamond Scaled Boots,structural,yes,Knight,Knight,Boots,Boots,G50,G50,yes,41,93,47,0.414,0.778,
+624,Scaled Shoes of Doggebi,135,Scaled Boots of Doggebi,structural,yes,Knight,Knight,Boots,Boots,G55,G55,yes,5,10,8,0.385,0.850,
+1481,Blood Dragon's Scaled Armor Shoes,153,Blood Dragon Scaled Boots,structural,no,Knight,Knight,Boots,Boots,G65,G65,yes,0,5,0,0.000,0.760,legacy item never drops
+1883,Heavenly Executioner Scaled Armor Shoes,679,Heavenly Executioner Boots,structural,no,Knight,Knight,Boots,Boots,G70,G70,yes,0,1,0,0.000,0.678,legacy item never drops
+1480,Blood Dragon's Scaled Armor Gloves,154,Blood Dragon Scaled Gloves,structural,no,Knight,Knight,Gloves,Gloves,G65,G65,yes,0,5,0,0.000,0.885,legacy item never drops
+1882,Heavenly Executioner Scaled Armor Gloves,680,Heavenly Executioner Gloves,structural,no,Knight,Knight,Gloves,Gloves,G70,G70,yes,0,1,0,0.000,0.820,legacy item never drops
+1881,Heavenly Executioner Scaled Armor Helmet,681,Heavenly Executioner Helmet,structural,no,Knight,Knight,Helmet,Helmet,G70,G70,yes,0,1,0,0.000,0.820,legacy item never drops
+30,Medium Steel Shield,165,Mid-Steel Shield,structural,no,Knight,Knight,Shield,Shield,G40,G40,yes,0,7,0,0.000,0.839,legacy item never drops
+60,JuckAh Big Steel Sword,181,Red Big Steel Sword,structural,yes,Knight,Knight,Sw.1H,Sw.1H,G29,G29,yes,7,7,7,1.000,0.743,
+127,MyungJoo DaeChangEau,86,MyungJoo DaeChangEau Clothes,structural,yes,Magician,Magician,Armor,Armor,G42,G42,yes,7,7,7,1.000,0.844,
+261,BeeDan DaeChangEau,104,BeeDan DaeChangEau Clothes,structural,yes,Magician,Magician,Armor,Armor,G46,G46,yes,47,78,62,0.505,0.829,
+382,White DaeChangEau,122,White DaeChangEau Clothes,structural,yes,Magician,Magician,Armor,Armor,G50,G50,yes,40,95,44,0.404,0.821,
+264,BeeDan DaeChangEau Shoes,105,BeeDan DaeChangEau Boots,structural,yes,Magician,Magician,Boots,Boots,G46,G46,yes,47,78,62,0.505,0.818,
+385,White DaeChangEau Shoes,123,White DaeChangEau Boots,structural,yes,Magician,Magician,Boots,Boots,G50,G50,yes,40,95,44,0.404,0.810,
+634,DaeChangEau Shoes of Doggebi,141,DaeChangEau Boots of Doggebi,structural,yes,Magician,Magician,Boots,Boots,G55,G55,yes,5,10,8,0.385,0.880,
+1491,Blood Dragon's DaeChangEau Shoes,159,Blood Dragon DeaChangEau Boots,structural,no,Magician,Magician,Boots,Boots,G65,G65,yes,0,5,0,0.000,0.800,legacy item never drops
+1901,Heavenly Executioner DaeChangEau Shoes,685,Heavenly Executioner Boots,structural,no,Magician,Magician,Boots,Boots,G70,G70,yes,0,1,0,0.000,0.678,legacy item never drops
+1490,Blood Dragon's DaeChangEau Gloves,160,Blood Dragon DeaChangEau Gloves,structural,no,Magician,Magician,Gloves,Gloves,G65,G65,yes,0,5,0,0.000,0.947,legacy item never drops
+1900,Heavenly Executioner DaeChangEau Gloves,686,Heavenly Executioner Gloves,structural,no,Magician,Magician,Gloves,Gloves,G70,G70,yes,0,1,0,0.000,0.820,legacy item never drops
+632,Hair Decoration of Doggebi,143,DaeChangEau Hair Decoration of Doggebi,structural,yes,Magician,Magician,Helmet,Helmet,G55,G55,yes,5,10,8,0.385,0.807,
+1899,Heavenly Executioner DaeChangEau Hair Decoration,687,Heavenly Executioner Helmet,structural,no,Magician,Magician,Helmet,Helmet,G70,G70,yes,0,1,0,0.000,0.638,legacy item never drops
+1550,MyungJoo suit of  low class thief,522,MyungJoo Suit of lcT,structural,no,Thief,Thief,Armor,Armor,G08,G08,yes,0,4,0,0.000,0.773,legacy item never drops
+1555,BeeDan suit of  low class thief,528,BeeDan suit of lcT,structural,no,Thief,Thief,Armor,Armor,G16,G16,yes,0,4,0,0.000,0.750,legacy item never drops
+1560,MyungJoo suit of thief,534,Myung Joo suit of T,structural,no,Thief,Thief,Armor,Armor,G24,G24,yes,0,2,0,0.000,0.882,legacy item never drops
+1565,BeeDan suit of thief,540,BeeDan suit of T,structural,no,Thief,Thief,Armor,Armor,G32,G32,yes,0,4,0,0.000,0.867,legacy item never drops
+1570,MyungJoo suit of  High class thief,546,Myung Joo suit of hcT,structural,no,Thief,Thief,Armor,Armor,G42,G42,yes,0,1,0,0.000,0.756,legacy item never drops
+1575,BeeDan suit of High class thief,552,BeeDan suit of hcT,structural,no,Thief,Thief,Armor,Armor,G46,G46,yes,0,47,0,0.000,0.732,legacy item never drops
+1580,Diamond suit of thief,558,Diamond suit of T,structural,no,Thief,Thief,Armor,Armor,G50,G50,yes,0,22,0,0.000,0.875,legacy item never drops
+1585,Doggebi suit of thief,564,Doggebi suit of T,structural,no,Thief,Thief,Armor,Armor,G55,G55,yes,0,14,0,0.000,0.875,legacy item never drops
+1553,MyungJoo Boots of low class thief,523,MyungJoo Suit of lcT Boots,structural,no,Thief,Thief,Boots,Boots,G08,G08,yes,0,3,0,0.000,0.520,legacy item never drops
+1558,BeeDan Boots of low class thief,529,BeeDan suit of lcT Boots,structural,no,Thief,Thief,Boots,Boots,G16,G16,yes,0,4,0,0.000,0.478,legacy item never drops
+1563,MyungJoo Boots of thief,535,Myung Joo suit of T Boots,structural,no,Thief,Thief,Boots,Boots,G24,G24,yes,0,1,0,0.000,0.650,legacy item never drops
+1568,BeeDan Boots of thief,541,BeeDan suit of T Boots,structural,no,Thief,Thief,Boots,Boots,G32,G32,yes,0,4,0,0.000,0.611,legacy item never drops
+1573,MyungJoo Boots of High class thief,547,Myung Joo suit of hcT Boots,structural,no,Thief,Thief,Boots,Boots,G42,G42,yes,0,1,0,0.000,0.510,legacy item never drops
+1578,BeeDan Boots of High class thief,553,BeeDan suit of hcT Boots,structural,no,Thief,Thief,Boots,Boots,G46,G46,yes,0,47,0,0.000,0.468,legacy item never drops
+1583,Diamond Boots of thief,559,Diamond suit of T Boots,structural,no,Thief,Thief,Boots,Boots,G50,G50,yes,0,22,0,0.000,0.632,legacy item never drops
+1588,Doggebi Boots of thief,565,Doggebi suit of T Boots,structural,no,Thief,Thief,Boots,Boots,G55,G55,yes,0,10,0,0.000,0.632,legacy item never drops
+1768,Blood Dragon's Boots of thief,637,Blood Dragon Suit of T Boots,structural,no,Thief,Thief,Boots,Boots,G65,G65,yes,0,5,0,0.000,0.723,legacy item never drops
+1910,Heavenly Executioner Boots of thief,700,Heavenly Executioner Suit of T Boots,structural,no,Thief,Thief,Boots,Boots,G70,G70,yes,0,1,0,0.000,0.774,legacy item never drops
+2618,Dagger of Darkness,610,Golden dagger (Imperial),structural,no,Thief,Thief,Dagger,Dagger,G62,G62,yes,0,4,0,0.000,0.389,legacy item never drops
+1552,MyungJoo Gloves of low class thief,524,MyungJoo Suit of lcT Gloves,structural,no,Thief,Thief,Gloves,Gloves,G08,G08,yes,0,3,0,0.000,0.538,legacy item never drops
+1557,BeeDan Gloves of low class thief,530,BeeDan suit of lcT Gloves,structural,no,Thief,Thief,Gloves,Gloves,G16,G16,yes,0,4,0,0.000,0.500,legacy item never drops
+1562,MyungJoo Gloves of thief,536,Myung Joo suit of T Gloves,structural,no,Thief,Thief,Gloves,Gloves,G24,G24,yes,0,1,0,0.000,0.667,legacy item never drops
+1567,BeeDan Gloves of thief,542,BeeDan suit of T Gloves,structural,no,Thief,Thief,Gloves,Gloves,G32,G32,yes,0,4,0,0.000,0.632,legacy item never drops
+1572,MyungJoo Gloves of High class thief,548,Myung Joo suit of hcT Gloves,structural,no,Thief,Thief,Gloves,Gloves,G42,G42,yes,0,1,0,0.000,0.528,legacy item never drops
+1577,BeeDan Gloves of High class thief,554,BeeDan suit of hcT Gloves,structural,no,Thief,Thief,Gloves,Gloves,G46,G46,yes,0,47,0,0.000,0.490,legacy item never drops
+1582,Diamond Gloves of thief,560,Diamond suit of T Gloves,structural,no,Thief,Thief,Gloves,Gloves,G50,G50,yes,0,22,0,0.000,0.650,legacy item never drops
+1587,Doggebi Gloves of thief,566,Doggebi suit of T Gloves,structural,no,Thief,Thief,Gloves,Gloves,G55,G55,yes,0,10,0,0.000,0.650,legacy item never drops
+1767,Blood Dragon's Gloves of thief,638,Blood Dragon Suit of T Gloves,structural,no,Thief,Thief,Gloves,Gloves,G65,G65,yes,0,5,0,0.000,0.735,legacy item never drops
+1909,Heavenly Executioner Gloves of thief,701,Heavenly Executioner Suit of T Gloves,structural,no,Thief,Thief,Gloves,Gloves,G70,G70,yes,0,1,0,0.000,0.781,legacy item never drops
+1551,MyungJoo Hood of low class thief,525,MyungJoo Suit of lcT Helmet,structural,no,Thief,Thief,Helmet,Helmet,G08,G08,yes,0,3,0,0.000,0.600,legacy item never drops
+1556,BeeDan Hood of low class thief,531,BeeDan suit of lcT Helmet,structural,no,Thief,Thief,Helmet,Helmet,G16,G16,yes,0,4,0,0.000,0.565,legacy item never drops
+1561,MyungJoo Hood of thief,537,Myung Joo suit of T Helmet,structural,no,Thief,Thief,Helmet,Helmet,G24,G24,yes,0,2,0,0.000,0.650,legacy item never drops
+1566,BeeDan Hood of thief,543,BeeDan suit of T Helmet,structural,no,Thief,Thief,Helmet,Helmet,G32,G32,yes,0,4,0,0.000,0.611,legacy item never drops
+1571,MyungJoo Hood of High class thief,549,Myung Joo suit of hcT Helmet,structural,no,Thief,Thief,Helmet,Helmet,G42,G42,yes,0,1,0,0.000,0.588,legacy item never drops
+1576,BeeDan Hood of High class thief,555,BeeDan suit of hcT Helmet,structural,no,Thief,Thief,Helmet,Helmet,G46,G46,yes,0,47,0,0.000,0.553,legacy item never drops
+1581,Diamond Hood of thief,561,Diamond suit of T Helmet,structural,no,Thief,Thief,Helmet,Helmet,G50,G50,yes,0,22,0,0.000,0.632,legacy item never drops
+1586,Doggebi Hood of thief,567,Doggebi suit of T Helmet,structural,no,Thief,Thief,Helmet,Helmet,G55,G55,yes,0,10,0,0.000,0.632,legacy item never drops
+1908,Heavenly Executioner Hood of thief,702,Heavenly Executioner Suit of T Helmet,structural,no,Thief,Thief,Helmet,Helmet,G70,G70,yes,0,1,0,0.000,0.774,legacy item never drops
+1554,MyungJoo suit Shorts of low class thief,526,MyungJoo Suit of lcT Shorts,structural,no,Thief,Thief,Shorts,Shorts,G08,G08,yes,0,3,0,0.000,0.643,legacy item never drops
+1559,BeeDan suit Shorts of low class thief,532,BeeDan suit of lcT Shorts,structural,no,Thief,Thief,Shorts,Shorts,G16,G16,yes,0,4,0,0.000,0.615,legacy item never drops
+1564,MyungJoo suit Shorts of thief,538,Myung Joo suit of T Shorts,structural,no,Thief,Thief,Shorts,Shorts,G24,G24,yes,0,1,0,0.000,0.783,legacy item never drops
+1569,BeeDan suit Shorts of thief,544,BeeDan suit of T Shorts,structural,no,Thief,Thief,Shorts,Shorts,G32,G32,yes,0,4,0,0.000,0.762,legacy item never drops
+1574,MyungJoo suit Shorts of High class thief,550,Myung Joo suit of hcT Shorts,structural,no,Thief,Thief,Shorts,Shorts,G42,G42,yes,0,1,0,0.000,0.632,legacy item never drops
+1579,BeeDan suit Shorts of High class thief,556,BeeDan suit of hcT Shorts,structural,no,Thief,Thief,Shorts,Shorts,G46,G46,yes,0,47,0,0.000,0.604,legacy item never drops
+1584,Diamond suit Shorts of thief,562,Diamond suit of T Shorts,structural,no,Thief,Thief,Shorts,Shorts,G50,G50,yes,0,22,0,0.000,0.773,legacy item never drops
+1589,Doggebi suit Shorts of thief,568,Doggebi suit of T Shorts,structural,no,Thief,Thief,Shorts,Shorts,G55,G55,yes,0,14,0,0.000,0.773,legacy item never drops
+104,Hwandoo Saehyung Big Sword with Pattern of Leaf,188,Hwandoo Saehyung Big Sword with PoL,spelling,yes,Knight,Knight,Sw.1H,Sw.1H,G45,G45,yes,32,60,50,0.410,0.857,
+428,Best Boilling Water,312,Best Boiling Water,spelling,yes,,,,Water,G64,G64,yes,14,15,15,0.875,0.970,
+901,Stone of Paralysis,429,Stone of Paralyzis,spelling,no,,,,Stone,,,unknown,0,75,0,0.000,0.938,below spelling gates
+1134,Golden DaeChangEau,481,Golden DaeChangEau Boots,spelling,no,Magician,Magician,Armor,Boots,G60,G60,yes,0,2,0,0.000,0.872,below spelling gates
+1137,Golden DaeChangEau Shoes,480,Golden DaeChangEau Clothes,spelling,no,Magician,Magician,Boots,Armor,G60,G60,yes,0,3,0,0.000,0.870,below spelling gates
+1485,Blood Dragon's Armor Gloves,148,Blood Dragon Gloves,spelling,no,Archer,Archer,Gloves,Gloves,G65,G65,yes,0,5,0,0.000,0.850,below spelling gates
+1565,BeeDan suit of thief,540,BeeDan suit of T,spelling,no,Thief,Thief,Armor,Armor,G32,G32,yes,0,4,0,0.000,0.867,below spelling gates
+1580,Diamond suit of thief,558,Diamond suit of T,spelling,no,Thief,Thief,Armor,Armor,G50,G50,yes,0,22,0,0.000,0.875,below spelling gates
+1585,Doggebi suit of thief,564,Doggebi suit of T,spelling,no,Thief,Thief,Armor,Armor,G55,G55,yes,0,14,0,0.000,0.875,below spelling gates
+1590,Golden suit of thief,570,Golden suit of T,spelling,no,Thief,Thief,Armor,Armor,G60,G60,yes,0,2,0,0.000,0.867,below spelling gates
+1890,Heavenly Executioner Armor Helmet,687,Heavenly Executioner Helmet,spelling,no,Archer,Magician,Helmet,Helmet,G70,G70,yes,0,1,0,0.000,0.909,below spelling gates
+1892,Heavenly Executioner Armor Shoes,697,Heavenly Executioner Shorts,spelling,no,Archer,Magician,Boots,Shorts,G70,G70b,differs,0,1,0,0.000,0.852,below spelling gates
+1910,Heavenly Executioner Boots of thief,685,Heavenly Executioner Boots,spelling,no,Thief,Magician,Boots,Boots,G70,G70,yes,0,1,0,0.000,0.873,below spelling gates
+2616,Bow of Darkness,511,Boots of Darkness,spelling,no,Archer,Magician,Bow,Boots,G62,G90,differs,0,4,0,0.000,0.857,below spelling gates
