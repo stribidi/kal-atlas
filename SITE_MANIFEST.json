@@ -1,8 +1,8 @@
 {
  "generated_by": "tools/knowledge_base_site/build_site_manifest.py",
  "note": "Published bundle. Regenerate with tools/knowledge_base_site/build_deploy.py.",
- "file_count": 3349,
- "total_bytes": 54157603,
+ "file_count": 3351,
+ "total_bytes": 54200606,
  "files": [
   "Detailed_World_Geography_and_Navigation.md",
   "Imperial_Mixing_System_Guide.md",
@@ -12,6 +12,8 @@
   "KalOnline_Simulator_Formulas.md",
   "Mage_Attacker_Skill_Progression.md",
   "analysis/combat_tables/COMBAT_FIXTURE.json",
+  "analysis/item_duplicate_records/ITEM_DUPLICATE_MAP.csv",
+  "analysis/item_duplicate_records/ITEM_DUPLICATE_REPORT.csv",
   "analysis/item_rename_join/ALIAS_CANDIDATE_REPORT.csv",
   "analysis/item_rename_join/ITEM_ALIAS_MAP.csv",
   "analysis/kalenc_stat_vectors/ITEM_STATS.csv",

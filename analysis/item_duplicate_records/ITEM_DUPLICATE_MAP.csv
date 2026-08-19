@@ -1,0 +1,419 @@
+item_name,canonical_item_id,member_item_id,is_canonical,member_name_id,member_drop_rows,group_size,group_drop_rows,source_line
+ChulTae Bow,108,108,y,363,15,2,15,348
+ChulTae Bow,108,941,n,2250,0,2,15,2789
+Stone of Chance,362,362,y,562,140,2,140,1127
+Stone of Chance,362,1158,n,562,0,2,140,3349
+Diamond Scaled Armor,372,372,y,572,81,3,81,1161
+Diamond Scaled Armor,372,715,n,2024,0,3,81,2075
+Diamond Scaled Armor,372,826,n,2135,0,3,81,2438
+Diamond Scaled Helmet,373,373,y,573,81,3,81,1164
+Diamond Scaled Helmet,373,716,n,2025,0,3,81,2078
+Diamond Scaled Helmet,373,827,n,2136,0,3,81,2441
+Diamond Scaled Gloves,374,374,y,574,81,3,81,1167
+Diamond Scaled Gloves,374,717,n,2026,0,3,81,2081
+Diamond Scaled Gloves,374,828,n,2137,0,3,81,2444
+Diamond Scaled Shoes,375,375,y,575,81,3,81,1170
+Diamond Scaled Shoes,375,718,n,2027,0,3,81,2084
+Diamond Scaled Shoes,375,829,n,2138,0,3,81,2447
+Diamond Scaled Shorts,376,376,y,576,81,3,81,1173
+Diamond Scaled Shorts,376,719,n,2028,0,3,81,2087
+Diamond Scaled Shorts,376,830,n,2139,0,3,81,2450
+Diamond Armor,377,377,y,577,80,3,80,1176
+Diamond Armor,377,720,n,2029,0,3,80,2090
+Diamond Armor,377,831,n,2140,0,3,80,2453
+Diamond Helmet,378,378,y,578,80,3,80,1179
+Diamond Helmet,378,721,n,2030,0,3,80,2093
+Diamond Helmet,378,832,n,2141,0,3,80,2456
+Diamond Gloves,379,379,y,579,80,3,80,1182
+Diamond Gloves,379,722,n,2031,0,3,80,2096
+Diamond Gloves,379,833,n,2142,0,3,80,2459
+Diamond Shoes,380,380,y,580,80,3,80,1185
+Diamond Shoes,380,723,n,2032,0,3,80,2099
+Diamond Shoes,380,834,n,2143,0,3,80,2462
+Diamond Shorts,381,381,y,581,80,3,80,1188
+Diamond Shorts,381,724,n,2033,0,3,80,2102
+Diamond Shorts,381,835,n,2144,0,3,80,2465
+White DaeChangEau,382,382,y,582,78,3,78,1191
+White DaeChangEau,382,725,n,2034,0,3,78,2105
+White DaeChangEau,382,836,n,2145,0,3,78,2468
+White DaeChangEau Hair Decoration,383,383,y,583,78,3,78,1194
+White DaeChangEau Hair Decoration,383,726,n,2035,0,3,78,2108
+White DaeChangEau Hair Decoration,383,837,n,2146,0,3,78,2471
+White DaeChangEau Gloves,384,384,y,584,78,3,78,1197
+White DaeChangEau Gloves,384,727,n,2036,0,3,78,2111
+White DaeChangEau Gloves,384,838,n,2147,0,3,78,2474
+White DaeChangEau Shoes,385,385,y,585,78,3,78,1200
+White DaeChangEau Shoes,385,728,n,2037,0,3,78,2114
+White DaeChangEau Shoes,385,839,n,2148,0,3,78,2477
+White DaeChangEau Shorts,386,386,y,586,78,3,78,1203
+White DaeChangEau Shorts,386,729,n,2038,0,3,78,2117
+White DaeChangEau Shorts,386,840,n,2149,0,3,78,2480
+Diamond Treasure Sword,457,457,y,657,66,2,66,1434
+Diamond Treasure Sword,457,691,n,2000,0,2,66,2003
+Diamond Sword of Pain,458,458,y,658,42,2,42,1437
+Diamond Sword of Pain,458,692,n,2001,0,2,42,2006
+Diamond Sword of Phantom,459,459,y,659,42,3,42,1440
+Diamond Sword of Phantom,459,693,n,2002,0,3,42,2009
+Diamond Sword of Phantom,459,804,n,2113,0,3,42,2370
+Diamond Giant Sword,460,460,y,660,67,3,67,1443
+Diamond Giant Sword,460,694,n,2003,0,3,67,2012
+Diamond Giant Sword,460,805,n,2114,0,3,67,2373
+Diamond Giant Sword of Pain,461,461,y,661,42,2,42,1446
+Diamond Giant Sword of Pain,461,695,n,2004,0,2,42,2015
+Diamond Giant Sword of Phantom,462,462,y,662,42,3,42,1449
+Diamond Giant Sword of Phantom,462,696,n,2005,0,3,42,2018
+Diamond Giant Sword of Phantom,462,807,n,2116,0,3,42,2379
+Diamond Bow,463,463,y,663,77,3,77,1452
+Diamond Bow,463,697,n,2006,0,3,77,2021
+Diamond Bow,463,808,n,2117,0,3,77,2382
+Diamond Bow of Pain,464,464,y,664,42,3,42,1455
+Diamond Bow of Pain,464,698,n,2007,0,3,42,2024
+Diamond Bow of Pain,464,809,n,2118,0,3,42,2385
+Diamond Bow of Phantom,465,465,y,665,42,3,42,1458
+Diamond Bow of Phantom,465,699,n,2008,0,3,42,2027
+Diamond Bow of Phantom,465,810,n,2119,0,3,42,2388
+Diamond Stick,466,466,y,666,75,3,75,1461
+Diamond Stick,466,700,n,2009,0,3,75,2030
+Diamond Stick,466,811,n,2120,0,3,75,2391
+Diamond Stick of Pain,467,467,y,667,42,3,42,1464
+Diamond Stick of Pain,467,701,n,2010,0,3,42,2033
+Diamond Stick of Pain,467,812,n,2121,0,3,42,2394
+Diamond Stick of Phantom,468,468,y,668,42,3,42,1467
+Diamond Stick of Phantom,468,702,n,2011,0,3,42,2036
+Diamond Stick of Phantom,468,813,n,2122,0,3,42,2397
+Stone of EXP - 1 day,469,469,y,669,0,3,0,1472
+Stone of EXP - 1 day,469,1169,n,669,0,3,0,3391
+Stone of EXP - 1 day,469,1294,n,669,0,3,0,3770
+Stone of EXP - 15 days,471,471,y,671,0,2,0,1478
+Stone of EXP - 15 days,471,1139,n,671,0,2,0,3290
+Stone of Wealth - 1 day,473,473,y,673,0,3,0,1484
+Stone of Wealth - 1 day,473,1170,n,673,0,3,0,3394
+Stone of Wealth - 1 day,473,1295,n,673,0,3,0,3773
+Stone of Wealth - 15 days,475,475,y,675,0,2,0,1490
+Stone of Wealth - 15 days,475,1140,n,675,0,2,0,3293
+Stone of Fishery - 15 days,479,479,y,679,0,2,0,1502
+Stone of Fishery - 15 days,479,1141,n,679,0,2,0,3296
+Saving Scroll of Location,509,509,y,709,0,3,0,1545
+Saving Scroll of Location,509,1148,n,709,0,3,0,3317
+Saving Scroll of Location,509,1290,n,709,0,3,0,3758
+Moving Scroll of Location,511,511,y,711,0,3,0,1548
+Moving Scroll of Location,511,1149,n,711,0,3,0,3320
+Moving Scroll of Location,511,1291,n,711,0,3,0,3761
+Horn of Spirit,515,515,y,715,0,3,0,1554
+Horn of Spirit,515,1160,n,715,0,3,0,3357
+Horn of Spirit,515,1292,n,715,0,3,0,3764
+Ancient Treasure Sword,560,560,y,760,45,4,47,1636
+Ancient Treasure Sword,560,703,n,2012,0,4,47,2039
+Ancient Treasure Sword,560,814,n,2123,1,4,47,2400
+Ancient Treasure Sword,560,1230,n,2502,1,4,47,3580
+General's Treasure Sword,561,561,y,761,47,4,49,1639
+General's Treasure Sword,561,704,n,2013,0,4,49,2042
+General's Treasure Sword,561,815,n,2124,1,4,49,2403
+General's Treasure Sword,561,1231,n,2503,1,4,49,3583
+Ancient Dynasty's Treasure Sword,562,562,y,762,42,4,44,1642
+Ancient Dynasty's Treasure Sword,562,705,n,2014,0,4,44,2045
+Ancient Dynasty's Treasure Sword,562,816,n,2125,1,4,44,2406
+Ancient Dynasty's Treasure Sword,562,1232,n,2504,1,4,44,3586
+Ancient Giant Sword,563,563,y,763,45,3,46,1645
+Ancient Giant Sword,563,706,n,2015,0,3,46,2048
+Ancient Giant Sword,563,817,n,2126,1,3,46,2409
+General's Giant Sword,564,564,y,764,47,4,49,1648
+General's Giant Sword,564,707,n,2016,0,4,49,2051
+General's Giant Sword,564,818,n,2127,1,4,49,2412
+General's Giant Sword,564,1234,n,2506,1,4,49,3592
+Ancient Dynasty's Giant Sword,565,565,y,765,42,3,43,1651
+Ancient Dynasty's Giant Sword,565,708,n,2017,0,3,43,2054
+Ancient Dynasty's Giant Sword,565,819,n,2128,1,3,43,2415
+Ancient Tribal Mac's Bow,566,566,y,766,45,4,47,1654
+Ancient Tribal Mac's Bow,566,709,n,2018,0,4,47,2057
+Ancient Tribal Mac's Bow,566,820,n,2129,1,4,47,2418
+Ancient Tribal Mac's Bow,566,1236,n,2508,1,4,47,3598
+General of Ancient Tribal Mac's Bow,567,567,y,767,48,4,50,1657
+General of Ancient Tribal Mac's Bow,567,710,n,2019,0,4,50,2060
+General of Ancient Tribal Mac's Bow,567,821,n,2130,1,4,50,2421
+General of Ancient Tribal Mac's Bow,567,1237,n,2509,1,4,50,3601
+Ancient Dynasty of Tribal Mac's Bow,568,568,y,768,42,4,44,1660
+Ancient Dynasty of Tribal Mac's Bow,568,711,n,2020,0,4,44,2063
+Ancient Dynasty of Tribal Mac's Bow,568,822,n,2131,1,4,44,2424
+Ancient Dynasty of Tribal Mac's Bow,568,1238,n,2510,1,4,44,3604
+Ancient Stick,569,569,y,769,45,4,47,1663
+Ancient Stick,569,712,n,2021,0,4,47,2066
+Ancient Stick,569,823,n,2132,1,4,47,2427
+Ancient Stick,569,1239,n,2511,1,4,47,3607
+General's Stick,570,570,y,770,46,4,48,1666
+General's Stick,570,713,n,2022,0,4,48,2069
+General's Stick,570,824,n,2133,1,4,48,2430
+General's Stick,570,1240,n,2512,1,4,48,3610
+Ancient Dynasty's Stick,571,571,y,771,42,4,44,1669
+Ancient Dynasty's Stick,571,714,n,2023,0,4,44,2072
+Ancient Dynasty's Stick,571,825,n,2134,1,4,44,2433
+Ancient Dynasty's Stick,571,1241,n,2513,1,4,44,3613
+Treasure Sword of Doggebi,584,584,y,784,5,4,7,1708
+Treasure Sword of Doggebi,584,745,n,2054,0,4,7,2167
+Treasure Sword of Doggebi,584,856,n,2165,1,4,7,2530
+Treasure Sword of Doggebi,584,1218,n,2490,1,4,7,3544
+Treasure Sword of High Class Doggebi,585,585,y,785,5,4,7,1711
+Treasure Sword of High Class Doggebi,585,746,n,2055,0,4,7,2170
+Treasure Sword of High Class Doggebi,585,857,n,2166,1,4,7,2533
+Treasure Sword of High Class Doggebi,585,1219,n,2491,1,4,7,3547
+Treasure Sword of Doggebi Lord,586,586,y,786,5,4,7,1714
+Treasure Sword of Doggebi Lord,586,747,n,2056,0,4,7,2173
+Treasure Sword of Doggebi Lord,586,858,n,2167,1,4,7,2536
+Treasure Sword of Doggebi Lord,586,1220,n,2492,1,4,7,3550
+Giant Sword of Doggebi,587,587,y,787,5,4,7,1717
+Giant Sword of Doggebi,587,748,n,2057,0,4,7,2176
+Giant Sword of Doggebi,587,859,n,2168,1,4,7,2539
+Giant Sword of Doggebi,587,1221,n,2493,1,4,7,3553
+Giant Sword of High Class Doggebi,588,588,y,788,5,4,7,1720
+Giant Sword of High Class Doggebi,588,749,n,2058,0,4,7,2179
+Giant Sword of High Class Doggebi,588,860,n,2169,1,4,7,2542
+Giant Sword of High Class Doggebi,588,1222,n,2494,1,4,7,3556
+Giant Sword of Doggebi Lord,589,589,y,789,5,4,7,1723
+Giant Sword of Doggebi Lord,589,750,n,2059,0,4,7,2182
+Giant Sword of Doggebi Lord,589,861,n,2170,1,4,7,2545
+Giant Sword of Doggebi Lord,589,1223,n,2495,1,4,7,3559
+Bow of Doggebi,590,590,y,790,5,4,7,1726
+Bow of Doggebi,590,751,n,2060,0,4,7,2185
+Bow of Doggebi,590,862,n,2171,1,4,7,2548
+Bow of Doggebi,590,1224,n,2496,1,4,7,3562
+Bow of High Class Doggebi,591,591,y,791,5,4,7,1729
+Bow of High Class Doggebi,591,752,n,2061,0,4,7,2188
+Bow of High Class Doggebi,591,863,n,2172,1,4,7,2551
+Bow of High Class Doggebi,591,1225,n,2497,1,4,7,3565
+Bow of Doggebi Lord,592,592,y,792,5,4,7,1732
+Bow of Doggebi Lord,592,753,n,2062,0,4,7,2191
+Bow of Doggebi Lord,592,864,n,2173,1,4,7,2554
+Bow of Doggebi Lord,592,1226,n,2498,1,4,7,3568
+Stick of Doggebi,593,593,y,793,5,4,7,1735
+Stick of Doggebi,593,754,n,2063,0,4,7,2194
+Stick of Doggebi,593,865,n,2174,1,4,7,2557
+Stick of Doggebi,593,1227,n,2499,1,4,7,3571
+Stick of High Class Doggebi,594,594,y,794,5,4,7,1738
+Stick of High Class Doggebi,594,755,n,2064,0,4,7,2197
+Stick of High Class Doggebi,594,866,n,2175,1,4,7,2560
+Stick of High Class Doggebi,594,1228,n,2500,1,4,7,3574
+Stick of Doggebi Lord,595,595,y,795,5,4,7,1741
+Stick of Doggebi Lord,595,756,n,2065,0,4,7,2200
+Stick of Doggebi Lord,595,867,n,2176,1,4,7,2563
+Stick of Doggebi Lord,595,1229,n,2501,1,4,7,3577
+Explosive Blow Improvement,601,601,y,801,0,2,0,1757
+Explosive Blow Improvement,601,1152,n,801,0,2,0,3329
+Scroll of Perfect Defense,617,617,y,817,0,2,0,1781
+Scroll of Perfect Defense,617,1155,n,817,0,2,0,3338
+Scroll of HP Absorption,618,618,y,818,0,2,0,1784
+Scroll of HP Absorption,618,1156,n,818,0,2,0,3341
+Scaled Armor of Doggebi,621,621,y,821,12,4,88,1789
+Scaled Armor of Doggebi,621,730,n,2039,0,4,88,2120
+Scaled Armor of Doggebi,621,841,n,2150,0,4,88,2483
+Scaled Armor of Doggebi,621,1504,n,821,76,4,88,4320
+Scaled Helmet of Doggebi,622,622,y,822,21,4,71,1792
+Scaled Helmet of Doggebi,622,731,n,2040,0,4,71,2123
+Scaled Helmet of Doggebi,622,842,n,2151,0,4,71,2486
+Scaled Helmet of Doggebi,622,1505,n,822,50,4,71,4323
+Scaled Gloves of Doggebi,623,623,y,823,21,4,71,1795
+Scaled Gloves of Doggebi,623,732,n,2041,0,4,71,2126
+Scaled Gloves of Doggebi,623,843,n,2152,0,4,71,2489
+Scaled Gloves of Doggebi,623,1506,n,823,50,4,71,4326
+Scaled Shoes of Doggebi,624,624,y,824,21,4,71,1798
+Scaled Shoes of Doggebi,624,733,n,2042,0,4,71,2129
+Scaled Shoes of Doggebi,624,844,n,2153,0,4,71,2492
+Scaled Shoes of Doggebi,624,1507,n,824,50,4,71,4329
+Scaled Shorts of Doggebi,625,625,y,825,12,4,88,1801
+Scaled Shorts of Doggebi,625,734,n,2043,0,4,88,2132
+Scaled Shorts of Doggebi,625,845,n,2154,0,4,88,2495
+Scaled Shorts of Doggebi,625,1508,n,825,76,4,88,4332
+Armor of Doggebi,626,626,y,826,12,5,89,1804
+Armor of Doggebi,626,735,n,2044,0,5,89,2135
+Armor of Doggebi,626,846,n,2155,0,5,89,2498
+Armor of Doggebi,626,1204,n,2476,1,5,89,3500
+Armor of Doggebi,626,1509,n,826,76,5,89,4335
+Helmet of Doggebi,627,627,y,827,21,5,72,1807
+Helmet of Doggebi,627,736,n,2045,0,5,72,2138
+Helmet of Doggebi,627,847,n,2156,0,5,72,2501
+Helmet of Doggebi,627,1205,n,2477,1,5,72,3503
+Helmet of Doggebi,627,1510,n,827,50,5,72,4338
+Gloves of Doggebi,628,628,y,828,21,5,72,1810
+Gloves of Doggebi,628,737,n,2046,0,5,72,2141
+Gloves of Doggebi,628,848,n,2157,0,5,72,2504
+Gloves of Doggebi,628,1206,n,2478,1,5,72,3506
+Gloves of Doggebi,628,1511,n,828,50,5,72,4341
+Shoes of Doggebi,629,629,y,829,21,5,72,1813
+Shoes of Doggebi,629,738,n,2047,0,5,72,2144
+Shoes of Doggebi,629,849,n,2158,0,5,72,2507
+Shoes of Doggebi,629,1207,n,2479,1,5,72,3509
+Shoes of Doggebi,629,1512,n,829,50,5,72,4344
+Shorts of Doggebi,630,630,y,830,12,5,89,1816
+Shorts of Doggebi,630,739,n,2048,0,5,89,2147
+Shorts of Doggebi,630,850,n,2159,0,5,89,2510
+Shorts of Doggebi,630,1208,n,2480,1,5,89,3512
+Shorts of Doggebi,630,1513,n,830,76,5,89,4347
+DaeChangEau of Doggebi,631,631,y,831,12,5,89,1819
+DaeChangEau of Doggebi,631,740,n,2049,0,5,89,2150
+DaeChangEau of Doggebi,631,851,n,2160,0,5,89,2513
+DaeChangEau of Doggebi,631,1209,n,2481,1,5,89,3515
+DaeChangEau of Doggebi,631,1514,n,831,76,5,89,4350
+Hair Decoration of Doggebi,632,632,y,832,21,5,72,1822
+Hair Decoration of Doggebi,632,741,n,2050,0,5,72,2153
+Hair Decoration of Doggebi,632,852,n,2161,0,5,72,2516
+Hair Decoration of Doggebi,632,1210,n,2482,1,5,72,3518
+Hair Decoration of Doggebi,632,1515,n,832,50,5,72,4353
+DaeChangEau Gloves of Doggebi,633,633,y,833,21,5,72,1825
+DaeChangEau Gloves of Doggebi,633,742,n,2051,0,5,72,2156
+DaeChangEau Gloves of Doggebi,633,853,n,2162,0,5,72,2519
+DaeChangEau Gloves of Doggebi,633,1211,n,2483,1,5,72,3521
+DaeChangEau Gloves of Doggebi,633,1516,n,833,50,5,72,4356
+DaeChangEau Shoes of Doggebi,634,634,y,834,21,5,72,1828
+DaeChangEau Shoes of Doggebi,634,743,n,2052,0,5,72,2159
+DaeChangEau Shoes of Doggebi,634,854,n,2163,0,5,72,2522
+DaeChangEau Shoes of Doggebi,634,1212,n,2484,1,5,72,3524
+DaeChangEau Shoes of Doggebi,634,1517,n,834,50,5,72,4359
+DaeChangEau Shorts of Doggebi,635,635,y,835,12,5,89,1831
+DaeChangEau Shorts of Doggebi,635,744,n,2053,0,5,89,2162
+DaeChangEau Shorts of Doggebi,635,855,n,2164,0,5,89,2525
+DaeChangEau Shorts of Doggebi,635,1213,n,2485,1,5,89,3527
+DaeChangEau Shorts of Doggebi,635,1518,n,835,76,5,89,4362
+Lucky Key,636,636,y,836,0,2,0,1836
+Lucky Key,636,1161,n,836,0,2,0,3360
+Lucky Stone,637,637,y,837,0,2,0,1839
+Lucky Stone,637,1162,n,837,0,2,0,3363
+Name List[Character],639,639,y,839,0,2,0,1845
+Name List[Character],639,1163,n,839,0,2,0,3366
+Name List[Guild],640,640,y,840,0,2,0,1848
+Name List[Guild],640,1164,n,840,0,2,0,3369
+Golden Sword,665,665,y,865,22,3,23,1918
+Golden Sword,665,1214,n,2486,1,3,23,3532
+Golden Sword,665,1257,n,2529,0,3,23,3665
+Golden Bow,667,667,y,867,22,3,23,1924
+Golden Bow,667,1216,n,2488,1,3,23,3538
+Golden Bow,667,1259,n,2531,0,3,23,3671
+Golden Stick,668,668,y,868,22,3,23,1927
+Golden Stick,668,1217,n,2489,1,3,23,3541
+Golden Stick,668,1260,n,2532,0,3,23,3674
+Stone of Mystery,904,904,y,2213,0,2,0,2680
+Stone of Mystery,904,1166,n,2213,0,2,0,3380
+Stone of Demon's Blood,905,905,y,2214,0,2,0,2683
+Stone of Demon's Blood,905,1167,n,2214,0,2,0,3383
+Demon's Sword,906,906,y,2215,0,3,0,2686
+Demon's Sword,906,1168,n,2215,0,3,0,3386
+Demon's Sword,906,1293,n,2215,0,3,0,3767
+Smile Pumpkin Head,994,994,y,2303,0,2,0,2852
+Smile Pumpkin Head,994,1009,n,2318,0,2,0,2901
+Sword Pumpkin Head,995,995,y,2304,0,2,0,2855
+Sword Pumpkin Head,995,1010,n,2319,0,2,0,2904
+Axe Pumpkin Head,996,996,y,2305,0,2,0,2858
+Axe Pumpkin Head,996,1011,n,2320,0,2,0,2907
+Purple Witch Hat,997,997,y,2306,0,2,0,2861
+Purple Witch Hat,997,1012,n,2321,0,2,0,2910
+Green Witch Hat,998,998,y,2307,0,2,0,2864
+Green Witch Hat,998,1013,n,2322,0,2,0,2913
+Blue Witch Hat,999,999,y,2308,0,2,0,2867
+Blue Witch Hat,999,1014,n,2323,0,2,0,2916
+Normal Ghost Cloth,1000,1000,y,2309,0,2,0,2870
+Normal Ghost Cloth,1000,1015,n,2324,0,2,0,2919
+Ghost Cloth with Bolts,1001,1001,y,2310,0,2,0,2873
+Ghost Cloth with Bolts,1001,1016,n,2325,0,2,0,2922
+Ghost Cloth with Straw,1002,1002,y,2311,0,2,0,2876
+Ghost Cloth with Straw,1002,1017,n,2326,0,2,0,2925
+Hermit's Water,1062,1062,y,2370,0,2,0,3068
+Hermit's Water,1062,1172,n,2370,0,2,0,3400
+Golden Scaled Armor,1124,1124,y,2432,16,4,18,3243
+Golden Scaled Armor,1124,1184,n,2456,2,4,18,3438
+Golden Scaled Armor,1124,1242,n,2514,0,4,18,3618
+Golden Scaled Armor,1124,1519,n,2432,0,4,18,4367
+Golden Scaled Armor Helmet,1125,1125,y,2433,22,4,42,3246
+Golden Scaled Armor Helmet,1125,1185,n,2457,0,4,42,3441
+Golden Scaled Armor Helmet,1125,1243,n,2515,0,4,42,3621
+Golden Scaled Armor Helmet,1125,1520,n,2433,20,4,42,4370
+Golden Scaled Armor Gloves,1126,1126,y,2434,22,5,42,3249
+Golden Scaled Armor Gloves,1126,1186,n,2458,0,5,42,3444
+Golden Scaled Armor Gloves,1126,1244,n,2516,0,5,42,3624
+Golden Scaled Armor Gloves,1126,1296,n,2434,0,5,42,3778
+Golden Scaled Armor Gloves,1126,1521,n,2434,20,5,42,4373
+Golden Scaled Armor Shoes,1127,1127,y,2435,11,4,31,3252
+Golden Scaled Armor Shoes,1127,1187,n,2459,0,4,31,3447
+Golden Scaled Armor Shoes,1127,1245,n,2517,0,4,31,3627
+Golden Scaled Armor Shoes,1127,1522,n,2435,20,4,31,4376
+Golden Scaled Armor Shorts,1128,1128,y,2436,16,4,18,3255
+Golden Scaled Armor Shorts,1128,1188,n,2460,2,4,18,3450
+Golden Scaled Armor Shorts,1128,1246,n,2518,0,4,18,3630
+Golden Scaled Armor Shorts,1128,1523,n,2436,0,4,18,4379
+Golden Armor Helmet,1130,1130,y,2438,22,4,42,3261
+Golden Armor Helmet,1130,1190,n,2462,0,4,42,3456
+Golden Armor Helmet,1130,1248,n,2520,0,4,42,3636
+Golden Armor Helmet,1130,1525,n,2438,20,4,42,4385
+Golden Armor Gloves,1131,1131,y,2439,22,5,42,3264
+Golden Armor Gloves,1131,1191,n,2463,0,5,42,3459
+Golden Armor Gloves,1131,1249,n,2521,0,5,42,3639
+Golden Armor Gloves,1131,1297,n,2439,0,5,42,3781
+Golden Armor Gloves,1131,1526,n,2439,20,5,42,4388
+Golden Armor Shoes,1132,1132,y,2440,11,4,31,3267
+Golden Armor Shoes,1132,1192,n,2464,0,4,31,3462
+Golden Armor Shoes,1132,1250,n,2522,0,4,31,3642
+Golden Armor Shoes,1132,1527,n,2440,20,4,31,4391
+Golden Armor Skirts,1133,1133,y,2441,16,4,18,3270
+Golden Armor Skirts,1133,1193,n,2465,2,4,18,3465
+Golden Armor Skirts,1133,1251,n,2523,0,4,18,3645
+Golden Armor Skirts,1133,1528,n,2441,0,4,18,4394
+Golden DaeChangEau,1134,1134,y,2442,16,4,18,3273
+Golden DaeChangEau,1134,1194,n,2466,2,4,18,3468
+Golden DaeChangEau,1134,1252,n,2524,0,4,18,3648
+Golden DaeChangEau,1134,1529,n,2442,0,4,18,4397
+Golden DaeChangEau Hair Decoration,1135,1135,y,2443,22,4,42,3276
+Golden DaeChangEau Hair Decoration,1135,1195,n,2467,0,4,42,3471
+Golden DaeChangEau Hair Decoration,1135,1253,n,2525,0,4,42,3651
+Golden DaeChangEau Hair Decoration,1135,1530,n,2443,20,4,42,4400
+Golden DaeChangEau Gloves,1136,1136,y,2444,22,5,42,3279
+Golden DaeChangEau Gloves,1136,1196,n,2468,0,5,42,3474
+Golden DaeChangEau Gloves,1136,1254,n,2526,0,5,42,3654
+Golden DaeChangEau Gloves,1136,1298,n,2444,0,5,42,3784
+Golden DaeChangEau Gloves,1136,1531,n,2444,20,5,42,4403
+Golden DaeChangEau Shoes,1137,1137,y,2445,11,4,31,3282
+Golden DaeChangEau Shoes,1137,1197,n,2469,0,4,31,3477
+Golden DaeChangEau Shoes,1137,1255,n,2527,0,4,31,3657
+Golden DaeChangEau Shoes,1137,1532,n,2445,20,4,31,4406
+Golden DaeChangEau Shorts,1138,1138,y,2446,16,4,18,3285
+Golden DaeChangEau Shorts,1138,1198,n,2470,2,4,18,3480
+Golden DaeChangEau Shorts,1138,1256,n,2528,0,4,18,3660
+Golden DaeChangEau Shorts,1138,1533,n,2446,0,4,18,4409
+Certificate of Son of the Sky[3Hr.],1179,1179,y,2451,0,2,0,3421
+Certificate of Son of the Sky[3Hr.],1179,1265,n,2451,0,2,0,3693
+Certificate of Son of the Sky[5Hr.],1180,1180,y,2452,0,2,0,3424
+Certificate of Son of the Sky[5Hr.],1180,1266,n,2452,0,2,0,3696
+Key,1182,1182,y,2454,0,2,0,3430
+Key,1182,1183,n,2455,0,2,0,3433
+Golden Giant sword,1215,1215,y,2487,1,2,1,3535
+Golden Giant sword,1215,1258,n,2530,0,2,1,3668
+Herring,1271,1271,y,2540,0,4,0,3701
+Herring,1271,1274,n,2540,0,4,0,3710
+Herring,1271,1277,n,2540,0,4,0,3719
+Herring,1271,1280,n,2540,0,4,0,3728
+Hairy Fish,1272,1272,y,2541,0,4,0,3704
+Hairy Fish,1272,1275,n,2541,0,4,0,3713
+Hairy Fish,1272,1278,n,2541,0,4,0,3722
+Hairy Fish,1272,1281,n,2541,0,4,0,3731
+Anchovy,1273,1273,y,2542,0,4,0,3707
+Anchovy,1273,1276,n,2542,0,4,0,3716
+Anchovy,1273,1279,n,2542,0,4,0,3725
+Anchovy,1273,1282,n,2542,0,4,0,3734
+True Firmamental Pillar,1455,1455,y,2648,0,2,0,4161
+True Firmamental Pillar,1455,1459,n,2648,0,2,0,4173
+Strengthening Magic Scroll,1456,1456,y,2649,0,2,0,4164
+Strengthening Magic Scroll,1456,1460,n,2649,0,2,0,4176
+Recall scroll [For Individual],1472,1472,y,2661,0,2,0,4216
+Recall scroll [For Individual],1472,1475,n,2661,0,2,0,4225
+Recall scroll [For Party],1473,1473,y,2662,0,2,0,4219
+Recall scroll [For Party],1473,1476,n,2662,0,2,0,4228
+Recall scroll [For Guild],1474,1474,y,2663,0,2,0,4222
+Recall scroll [For Guild],1474,1477,n,2663,0,2,0,4231
+Teleport Scroll ,1540,1540,y,2693,0,2,0,4431
+Teleport Scroll ,1540,1541,n,2693,0,2,0,4434
+Talisman of Transmigration,1611,1611,y,2763,0,2,9,4605
+Talisman of Transmigration,1611,1667,n,2763,9,2,9,4692
+Tri-Colored Drink,2173,2173,y,3288,0,2,0,5387
+Tri-Colored Drink,2173,2366,n,3434,0,2,0,5426
+Dried Fish,2174,2174,y,3289,0,2,0,5389
+Dried Fish,2174,2367,n,3435,0,2,0,5428
+Chicken Skewer,2175,2175,y,3290,0,2,0,5391
+Chicken Skewer,2175,2368,n,3436,0,2,0,5430
+Scroll of a New Start,2604,2604,y,13004,0,2,0,5481
+Scroll of a New Start,2604,2642,n,13004,0,2,0,5601
