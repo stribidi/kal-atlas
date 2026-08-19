@@ -6505,8 +6505,15 @@
 
     function formatPercent(value) {
       if (!Number.isFinite(value)) return "—";
+      // The rounding below already keeps five decimals for a sub-1% rate, but
+      // toLocaleString defaults to three and silently rounded the rest away:
+      // Demon Commander's Predictive mage set is 0.0002% and read as a flat
+      // "0%", as did every other rate under 0.0005%. The smallest real rate in
+      // the export is 0.0001%, so five decimals covers all of them — the
+      // formatter just has to be told to print them.
       const precision = value >= 10 ? 2 : value >= 1 ? 3 : 5;
-      return `${Number(value.toFixed(precision)).toLocaleString("en-US")}%`;
+      return `${Number(value.toFixed(precision)).toLocaleString("en-US",
+        { maximumFractionDigits: precision })}%`;
     }
 
     const LEGACY_TALISMAN_ALIASES = {
