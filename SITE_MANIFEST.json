@@ -1,8 +1,8 @@
 {
  "generated_by": "tools/knowledge_base_site/build_site_manifest.py",
  "note": "Published bundle. Regenerate with tools/knowledge_base_site/build_deploy.py.",
- "file_count": 3347,
- "total_bytes": 54141419,
+ "file_count": 3349,
+ "total_bytes": 54157603,
  "files": [
   "Detailed_World_Geography_and_Navigation.md",
   "Imperial_Mixing_System_Guide.md",
@@ -40,6 +40,8 @@
   "analysis/quest_route_101/SKILL_POINT_QUESTS.csv",
   "analysis/server_profile/README.md",
   "analysis/server_profile/SERVER_PROFILE.json",
+  "analysis/talisman_prefix_join/TALISMAN_ITEM_MAP.csv",
+  "analysis/talisman_prefix_join/TALISMAN_JOIN_REPORT.csv",
   "assets/icons/15mark.png",
   "assets/icons/18mark.png",
   "assets/icons/INDEX.csv",

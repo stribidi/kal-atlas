@@ -1,0 +1,59 @@
+bango_item_id,bango_item_name,legacy_item_id,legacy_item_name,legacy_family,prefix_a,prefix_a_name,prefix_b,prefix_b_name,bango_chance_a,legacy_chance_a,chance_a_agrees,bango_chance_b,legacy_chance_b,legacy_drop_rows,bango_drop_rows
+275,Talisman of Wonder,349,"""Harsh"" / ""Forced""",ToW,3,Harsh,1,Forced,34,34,y,80,46,21,21
+276,Talisman of Wonder,350,"""Strong Mans"" / ""Forced""",ToW,4,Strong mans,1,Forced,32,32,y,79,47,201,237
+277,Talisman of Wonder,351,"""Strongest Mans"" / ""Forced""",ToW,5,Strongest mans,1,Forced,30,30,y,78,48,84,91
+278,Talisman of Intensification,316,"""Melees"" / ""Unlawful""",ToI,6,Melees,2,Unlawful,24,24,y,61,37,14,14
+279,Talisman of Intensification,317,"""Bloody Fights"" / ""Unlawful""",ToI,7,Bloody fights,2,Unlawful,20,20,y,58,38,14,14
+281,Talisman of Intensification,332,"""Barbaric"" / ""Harsh""",ToI,9,Barbaric,3,Harsh,12,12,y,47,35,14,14
+282,Talisman of Intensification,337,"""Invincible"" / ""Harsh""",ToI,10,Invincible,3,Harsh,8,8,y,44,36,194,230
+283,Talisman of Wonder,355,"""Keen"" / ""Fictional""",ToW,23,Keen,21,Fictional,34,34,y,80,46,21,21
+284,Talisman of Wonder,356,"""Ordinary"" / ""Fictional""",ToW,24,Ordinary,21,Fictional,32,32,y,79,47,201,237
+285,Talisman of Wonder,357,"""Wise"" / ""Fictional""",ToW,25,Wise,21,Fictional,30,30,y,78,48,84,91
+286,Talisman of Intensification,318,"""Mystic"" / ""Sharp""",ToI,26,Mystic,22,Sharp,24,24,y,61,37,14,14
+287,Talisman of Intensification,319,"""Worshipful"" / ""Sharp""",ToI,27,Worshipful,22,Sharp,20,20,y,58,38,14,14
+288,Talisman of Intensification,326,"""Sublime"" / ""Sharp""",ToI,28,Sublime,22,Sharp,16,16,y,55,39,7,7
+289,Talisman of Intensification,333,"""Pure"" / ""Keen""",ToI,29,Pure,23,Keen,12,12,y,47,35,14,14
+290,Talisman of Intensification,338,"""Absolute"" / ""Keen""",ToI,30,Absolute,23,Keen,8,8,y,44,36,194,230
+291,Talisman of Wonder,352,"""Heroic"" / ""Healthy""",ToW,13,Heroic,11,Healthy,34,34,y,80,46,28,28
+292,Talisman of Wonder,353,"""Vital"" / ""Healthy""",ToW,14,Vital,11,Healthy,32,32,y,79,47,201,237
+293,Talisman of Wonder,354,"""Ablaze"" / ""Healthy""",ToW,15,Ablaze,11,Healthy,30,30,y,78,48,84,91
+294,Talisman of Intensification,320,"""Iron legs"" / ""Vigorous""",ToI,16,Iron legs,12,Vigorous,24,24,y,61,37,14,14
+295,Talisman of Intensification,321,"""Steels"" / ""Vigorous""",ToI,17,Steels,12,Vigorous,20,20,y,58,38,14,14
+296,Talisman of Intensification,327,"""Limitable"" / ""Vigorous""",ToI,18,Limitable,12,Vigorous,16,16,y,55,39,7,7
+297,Talisman of Intensification,334,"""Infinitely"" / ""Heroic""",ToI,19,Infinitely,13,Heroic,12,12,y,47,35,14,14
+298,Talisman of Intensification,339,"""Diamond"" / ""Heroic""",ToI,20,Diamond,13,Heroic,8,8,y,44,36,194,230
+299,Talisman of Wonder,358,"""Celebrated"" / ""Fixed""",ToW,33,Celebrated,31,Fixed,34,34,y,80,46,28,28
+300,Talisman of Wonder,359,"""Dignified"" / ""Fixed""",ToW,34,Dignified,31,Fixed,32,32,y,79,47,201,237
+301,Talisman of Wonder,360,"""Merciful"" / ""Fixed""",ToW,35,Merciful,31,Fixed,30,30,y,78,48,84,91
+302,Talisman of Intensification,322,"""Predictive"" / ""Confirmatory""",ToI,36,Predictive,32,Confirmatory,24,24,y,61,37,18,18
+303,Talisman of Intensification,323,"""Foreseeable"" / ""Confirmatory""",ToI,37,Foreseeable,32,Confirmatory,20,20,y,58,38,14,14
+304,Talisman of Intensification,328,"""War Leaders"" / ""Confirmatory""",ToI,38,Noble,32,Confirmatory,16,16,y,55,39,7,7
+305,Talisman of Intensification,335,"""Reverent"" / ""Celebrated""",ToI,39,Reverent,33,Celebrated,12,12,y,47,35,14,14
+306,Talisman of Intensification,340,"""Paradoxical"" / ""Celebrated""",ToI,40,Paradoxic,33,Celebrated,8,8,y,44,36,194,230
+307,Talisman of Wonder,361,"""Instant"" / ""Agile""",ToW,43,Instant,41,Agile,34,34,y,80,46,28,28
+308,Talisman of Wonder,362,"""Flexible"" / ""Agile""",ToW,44,Flexible,41,Agile,32,32,y,79,47,201,237
+309,Talisman of Wonder,363,"""Dashy"" / ""Agile""",ToW,45,Dashy,41,Agile,30,30,y,78,48,84,91
+310,Talisman of Intensification,324,"""Rush"" / ""Reflective""",ToI,46,Rush,42,Reflective,24,24,y,61,37,18,18
+311,Talisman of Intensification,325,"""Fierce"" / ""Reflective""",ToI,47,Fierce,42,Reflective,20,20,y,58,38,14,14
+312,Talisman of Intensification,329,"""Flashy"" / ""Reflective""",ToI,48,Flashy,42,Reflective,16,16,y,55,39,7,7
+313,Talisman of Intensification,336,"""Unlimited"" / ""Instant""",ToI,49,Unlimited,43,Instant,12,12,y,47,35,14,14
+314,Talisman of Intensification,341,"""Gliding"" / ""Instant""",ToI,50,Gliding,43,Instant,8,8,y,44,36,194,230
+315,Talisman of Intensification,314,"""Heavy Blows"" / ""Extreme""",ToI,51,Heavy blows,58,Extreme,56,56,y,70,14,28,27
+316,Talisman of Intensification,330,"""Explosive"" / ""Destructive""",ToI,53,Explosive,59,Destructive,37,46,n,46,17,215,254
+317,Talisman of Intensification,315,"""Fundamental"" / ""High Class""",ToI,60,Fundamental,66,High class,59,56,n,83,14,28,35
+318,Talisman of Intensification,331,"""Mighty"" / ""Absoluteness""",ToI,62,Mighty,67,Absoluteness,46,46,y,63,17,215,259
+319,Talisman of Protection,364,"""Feathery"" / ""Healthy""",ToP,56,Feathery,11,Healthy,36,36,y,78,42,32,32
+320,Talisman of Protection,365,"""Mans"" / ""Healthy""",ToP,57,Mans,11,Healthy,36,36,y,78,42,32,32
+321,Talisman of Protection,366,"""Wisdoms"" / ""Fixed""",ToP,65,Wisdoms,31,Fixed,36,36,y,78,42,32,32
+322,Talisman of Protection,367,"""Despotic"" / ""Forced""",ToP,83,Despotic,1,Forced,17,17,y,76,59,201,355
+323,Talisman of Protection,368,"""Revenges"" / ""Agile""",ToP,84,Revenges,41,Agile,17,17,y,76,59,201,352
+324,Talisman of Protection,369,"""Prideful"" / ""Healthy""",ToP,85,Prideful,11,Healthy,17,17,y,76,59,201,357
+325,Talisman of Protection,370,"""Ruinous"" / ""Fictional""",ToP,86,Ruinous,21,Fictional,17,17,y,76,59,201,365
+326,Talisman of Protection,371,"""Glorious"" / ""Fixed""",ToP,87,Glorious,31,Fixed,17,17,y,76,59,201,359
+327,Talisman of Intensification,342,"""Distinct"" / ""Merciful""",ToI,80,Distinct,35,Merciful,24,24,y,62,38,194,261
+328,Talisman of Intensification,343,"""Steely"" / ""Ablaze""",ToI,81,Steely,15,Ablaze,24,24,y,62,38,194,261
+329,Talisman of Intensification,344,"""Breakthroughs"" / ""Strongest Mans""",ToI,82,Breakthroughs,5,Strongest mans,24,24,y,62,38,194,261
+330,Talisman of Intensification,345,"""Decisional"" / ""Dashy""",ToI,88,Decisional,45,Dashy,24,24,y,62,38,194,264
+331,Talisman of Intensification,346,"""Magical Powers"" / ""Wise""",ToI,89,Magical Powers,25,Wise,24,24,y,62,38,194,297
+332,Talisman of Intensification,347,"""Legendary"" / ""Rash""",ToI,90,Legendary,91,Rash,29,29,y,85,56,105,252
+523,Talisman of Intensification,348,"""The King, GuhBalHans"" / ""Rash""",ToI,92,"The King, GuhBalHans",91,Rash,15,15,y,60,45,84,201
