@@ -1,0 +1,6 @@
+# Kept out of the Cloudflare upload. Same syntax as .gitignore.
+.git
+.gitignore
+wrangler.jsonc
+.assetsignore
+.nojekyll
