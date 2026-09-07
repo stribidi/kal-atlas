@@ -4370,7 +4370,7 @@
       });
       for (const article of state.articles) docs.push({
         type: "Article", title: article.title, subtitle: article.kind,
-        href: routeHref("article", article.path), search: `${article.title} ${article.path} ${article.text.slice(0, 16000)}`
+        href: routeHref("article", article.path), search: `${article.title} ${article.text.slice(0, 16000)}`
       });
       ix.searchDocs = docs.map(doc => ({ ...doc, normalized: normalizeName(doc.search) }));
     }
@@ -6511,7 +6511,7 @@
       const kind = query.get("kind") || "";
       const kinds = [...new Set(state.articles.map(article => article.kind))].sort();
       const rows = state.articles.filter(article =>
-        (!q || normalizeName(`${article.title} ${article.path} ${article.text}`).includes(q)) &&
+        (!q || normalizeName(`${article.title} ${article.text}`).includes(q)) &&
         (!kind || article.kind === kind)
       // The guides written for this atlas come first: they cover the whole
       // game, where an official page covers one system.
