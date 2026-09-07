@@ -1,17 +1,16 @@
-# KalOnline — Optimized Quest Progression Guide
+# Quest Route — Levels 1 to 101
 
-## How to Use This Guide
+The whole quest line in the order that wastes the least time. Quests are grouped into phases by level, and within a phase they are batched so that one trip to a hunting ground closes several at once. Where two quests need the same person, the order that unblocks them is given.
 
-Quests are grouped into **Phases** by level range. Within each phase, quests are batched into **Steps** that maximize simultaneous farming. NPC blocking chains (where two quests share an NPC, forcing sequential completion) are tracked throughout.
+---
 
-**Teleportation is free** between all villages (Narootuh, Cargo Station, Geuh Mine, Pub of Giant Bird, Fort). Travel time is only relevant when moving from a village to a hunting zone.
+## How to read this guide
 
-**Authority note (2026-07-25):** batching/order comes from the legacy route and
-the permitted player guide; current levels and rewards come from
-`bango_data\QUESTS.csv` wherever a name match exists. The `Q##` labels in the
-first six phases are legacy display numbers, not Bango IDs. The full 91-row
-translation and every disagreement are in
-`analysis\quest_route_101\QUEST_RECONCILIATION.csv`.
+Quests are grouped into **Phases** by level range. Within each phase they are batched into **Steps** that let you farm for several at the same time. Where two quests share an NPC, the lower one has to be finished before the higher one will open — those chains are listed below.
+
+**Teleporting between villages is free** (Narootuh, Cargo Station, Geuh Mine, Pub of Giant Bird, Fort), so travel time only matters on the walk from a village out to a hunting zone.
+
+The `Q##` labels in the first six phases are this guide's own numbering, not the numbers the game shows.
 
 ---
 
@@ -180,7 +179,7 @@ All four use different NPCs. No blocking. Activate all at once.
 |---|---|---|---|---|
 | Q10 | 14 | Demon Soldier | 20 Teeth | +3,534 XP |
 | Q11 | 15 | Big Handed Blue Warrior | 25 Rice Cake | **+1 SP** |
-| Q12 | 16 | Big Handed Red Warrior | Wa-Ryu's Talisman | **+2 SP (Bango)** |
+| Q12 | 16 | Big Handed Red Warrior | Wa-Ryu's Talisman | **+2 SP ** |
 | E05 | 1 | Big Handed Warriors (both) | 40 Heads | +1,000 XP |
 
 > **FARM CLUSTER: Q10 + Q11 + Q12 + E05 at Mine–Pub valley.** Every Blue/Red Warrior kill feeds Q11 or Q12 *and* E05. Demon Soldiers are mixed in for Q10. The **south approach to Mine** also has Blue/Red Warriors + Soldiers as overflow.
@@ -192,7 +191,7 @@ All four use different NPCs. No blocking. Activate all at once.
 | Quest | Lv | Monster | Items | Unlocked By | Reward |
 |---|---|---|---|---|---|
 | Q13 | 17 | Demon Infantry | 30 Gold | Q09 (Yea-Jin) + Q10 (Joo-Nong) | **+1 SP** |
-| Q14 | 18 | Demon Throwing Soldier | 30 Bamboo Poles | Q10 (Ok-Jin) | **+2 SP (Bango)** |
+| Q14 | 18 | Demon Throwing Soldier | 30 Bamboo Poles | Q10 (Ok-Jin) | **+2 SP ** |
 
 Both mobs present in **Mine–Pub valley**. Farm alongside any remaining Q11/Q12 items.
 
@@ -229,7 +228,7 @@ All three use different NPCs. No blocking between them.
 | Quest | Lv | Monster | Items | NPC | Reward |
 |---|---|---|---|---|---|
 | Q19 | 25 | Demon Drum | 40 Drums | Sae-Won (Cargo-4) | **+1 SP** |
-| Q20 | 26 | Demon Armoured Knight | 40 Armor | Guh-Sosun (Cargo-2) | **+21,750 XP (Bango)** |
+| Q20 | 26 | Demon Armoured Knight | 40 Armor | Guh-Sosun (Cargo-2) | **+21,750 XP ** |
 | Q21 | 27 | Hungry Demon Water Dragon | 40 Clothes | Won-Jung (Cargo-1) | **+1 SP** |
 
 > **FARM CLUSTER: Q19 + Q20 + Q21 at west of Pub / west of Fort.** Armored Knights and Hungry Water Dragons both spawn in these zones. Farm all three simultaneously.
@@ -272,10 +271,10 @@ Ghost quests each use **unique Fort NPCs** — no blocking between them, except 
 | Q24 | 30 | Cast of Baby Ghost | Mother Moon Hee (32) | +29,000 XP |
 | Q25 | 31 | Ghost of Young Man | Heung-Pae (30) | +35,000 XP |
 | Q26 | 32 | Ghost of Young Women | Duk-Yoon (41) + Mother Moon Hee (32) | +42,000 XP |
-| Q27 | 33 | Demon Commander | Yang-Do (Mine-19) | **+2 SP (Bango; current ID 24)** |
+| Q27 | 33 | Demon Commander | Yang-Do (Mine-19) | **+2 SP** |
 | Q28 | 34 | Ghost of Blacksmith | Soo-Go (37) | +62,000 XP |
 | Q29 | 35 | Ghost Of Ghost Guard | Dan-Bok (16) | +76,000 XP |
-| Q30 | 36 | Demon Dragon Commander | Gwee-Sik (Mine-3) | **+79,000 XP (Bango)** |
+| Q30 | 36 | Demon Dragon Commander | Gwee-Sik (Mine-3) | **+79,000 XP ** |
 | Q31 | 37 | Ghost Of Fellow Traveller | Ga-Gi (1) | +80,000 XP |
 | Q32 | 38 | Ghost of Sealed Troop | Soo-Sung (18) | **+1 SP** |
 
@@ -329,20 +328,13 @@ Companion story quests (Q35, Q37, Q39, Q41, Q43) run in parallel — they use di
 
 ## Skill Point Quest Checklist
 
-The legacy 12-point checklist was contradicted by Bango-current client data on
-2026-07-25. The authoritative 14-quest / 17-point checklist is at the end of
-the extended route below. This is a **`bango-modification`**: the 2012 player
-guide and legacy export agree with each other, while Bango changed the rewards.
+Older guides list 12 skill-point quests. Bango changed the rewards: there are **14 of them, worth 17 points**, and the full list is at the end of this guide.
 
 ---
 
 ## Extended Route — Levels 46–101
 
-**Authority:** route order and batching come from the permitted player-authored
-guide; current level/reward/step fields come from `bango_data\QUESTS.csv`
-where a name match exists. Bango wins every recorded disagreement. The complete
-91-row reconciliation, including unmatched/ambiguous event rows, is preserved
-in `analysis\quest_route_101\QUEST_RECONCILIATION.csv`.
+Levels, rewards and steps below are Bango's current values. Where an older guide disagrees, the figures here are the ones the game will actually give you.
 
 ### Route 46+ Stage 1 — Doggebi broom collection
 
@@ -351,12 +343,12 @@ in `analysis\quest_route_101\QUEST_RECONCILIATION.csv`.
 > **Farm cluster:** Quests 45-49 all need 5 "Blood of Big Handed" on top of
 > their unique drop — stockpile that material once for the whole chain.
 
-| Quest | Lv | Objective / route | Current Bango reward | Evidence |
+| Quest | Lv | Objective / route | Reward | Notes |
 |---|---:|---|---|---|
-| The Limper's Favor | 46 | Kill Doggebi Of Monster Face for its broom + 5x Blood of Big Handed | 491510 XP; 1 contribution; 0 SP | Bango Q47 |
-| The Blind Man's Favor | 47 | Kill Doggebi with Gong for its broom + 5x Blood of Big Handed | 590926 XP; 1 contribution; 0 SP | Bango Q48 |
-| The Coward | 48 | Kill Drunken Doggebi for its broom + 5x Blood of Big Handed | 710280 XP; 1 contribution; 0 SP | Bango Q49 |
-| The Hunchback's Favor | 49 | Kill Doggebi with Mask of Black Crow for its broom + 5x Blood of Big Handed | 853562 XP; 1 contribution; 0 SP | Bango Q50 |
+| The Limper's Favor | 46 | Kill Doggebi Of Monster Face for its broom + 5x Blood of Big Handed | 491510 XP; 1 contribution; 0 SP |  |
+| The Blind Man's Favor | 47 | Kill Doggebi with Gong for its broom + 5x Blood of Big Handed | 590926 XP; 1 contribution; 0 SP |  |
+| The Coward | 48 | Kill Drunken Doggebi for its broom + 5x Blood of Big Handed | 710280 XP; 1 contribution; 0 SP |  |
+| The Hunchback's Favor | 49 | Kill Doggebi with Mask of Black Crow for its broom + 5x Blood of Big Handed | 853562 XP; 1 contribution; 0 SP |  |
 
 ### Route 46+ Stage 2 — Lv 50 kickoff: 2nd Job Change + Doggebi grind
 
@@ -365,12 +357,12 @@ in `analysis\quest_route_101\QUEST_RECONCILIATION.csv`.
 > **Farm cluster:** Do Event Quest 20's permanent 2nd Job choice immediately.
 > Event Quests 21–22 both farm Doggebi outside the Fort near D1.
 
-| Quest | Lv | Objective / route | Current Bango reward | Evidence |
+| Quest | Lv | Objective / route | Reward | Notes |
 |---|---:|---|---|---|
-| The Deaf Man's Favor | 50 | Find the Black Panther Mask Doggebi broom + 5x Blood of Big Handed | 1025563 XP; 1 contribution; 0 SP | Bango Q51 |
-| [Event] New Government Position! | 50 | Return to Jae-Ga, receive the permanent 2nd Job position, and prepare for the level-70 continuation | 0 XP; 0 contribution; 0 SP | Bango Q9009; player route calls this Event 20 |
-| Event Quest 21 | 50 | Kill 50 Giant Doggebi | 500000 XP; 0 contribution; 0 SP | player route; no confident Bango name match |
-| Event Quest 22 | 50 | Kill 50 Guardian of Doggebi, then Angry Doggebi of Monster Face near D1 for Captured Doggebi | 500000 XP; 0 contribution; 0 SP | player route; no confident Bango name match |
+| The Deaf Man's Favor | 50 | Find the Black Panther Mask Doggebi broom + 5x Blood of Big Handed | 1025563 XP; 1 contribution; 0 SP |  |
+| [Event] New Government Position! | 50 | Return to Jae-Ga, receive the permanent 2nd Job position, and prepare for the level-70 continuation | 0 XP; 0 contribution; 0 SP | Also listed as Event 20 |
+| Event Quest 21 | 50 | Kill 50 Giant Doggebi | 500000 XP; 0 contribution; 0 SP | Reward taken from the walkthrough, not confirmed in game |
+| Event Quest 22 | 50 | Kill 50 Guardian of Doggebi, then Angry Doggebi of Monster Face near D1 for Captured Doggebi | 500000 XP; 0 contribution; 0 SP | Reward taken from the walkthrough, not confirmed in game |
 
 ### Route 46+ Stage 3 — Lv 51-52: One-armed Man + Forsaken Fort
 
@@ -379,22 +371,22 @@ in `analysis\quest_route_101\QUEST_RECONCILIATION.csv`.
 > **Farm cluster:** Event Quests 23–25 use the same Doggebi Master NPC. Farm
 > every required Doggebi spirit before turning them in.
 
-| Quest | Lv | Objective / route | Current Bango reward | Evidence |
+| Quest | Lv | Objective / route | Reward | Notes |
 |---|---:|---|---|---|
-| One-Armed Man's Favor | 51 | Find Giant Doggebi's Broom + 5x Blood of Big Handed | 1232024 XP; 1 contribution; 0 SP | Bango Q52 |
-| Event Quest 23 | 52 | Monster Face, Gong and Drunken Doggebi spirits | 681882 XP; 0 contribution; 0 SP | player route; no confident Bango name match |
-| Event Quest 24 | 52 | Black Crow and Black Panther Mask Doggebi spirits | 681882 XP; 0 contribution; 0 SP | player route; no confident Bango name match |
-| Event Quest 25 | 52 | Giant and Guardian Doggebi spirits | 681882 XP; 0 contribution; 0 SP | player route; no confident Bango name match |
-| Event Quest 26 | 52 | Kill 10 of each of the seven Doggebi types | 681882 XP; 0 contribution; 0 SP | player route; no confident Bango name match |
+| One-Armed Man's Favor | 51 | Find Giant Doggebi's Broom + 5x Blood of Big Handed | 1232024 XP; 1 contribution; 0 SP |  |
+| Event Quest 23 | 52 | Monster Face, Gong and Drunken Doggebi spirits | 681882 XP; 0 contribution; 0 SP | Reward taken from the walkthrough, not confirmed in game |
+| Event Quest 24 | 52 | Black Crow and Black Panther Mask Doggebi spirits | 681882 XP; 0 contribution; 0 SP | Reward taken from the walkthrough, not confirmed in game |
+| Event Quest 25 | 52 | Giant and Guardian Doggebi spirits | 681882 XP; 0 contribution; 0 SP | Reward taken from the walkthrough, not confirmed in game |
+| Event Quest 26 | 52 | Kill 10 of each of the seven Doggebi types | 681882 XP; 0 contribution; 0 SP | Reward taken from the walkthrough, not confirmed in game |
 
 ### Route 46+ Stage 4 — Lv 52-53: Manager's errand + first Pub visit
 
 **Level / location:** Lv 52-53 — Out of town, then Fort → Pub of the Giant Bird.
 
-| Quest | Lv | Objective / route | Current Bango reward | Evidence |
+| Quest | Lv | Objective / route | Reward | Notes |
 |---|---:|---|---|---|
-| Legend of the Oh-Do Canyon Bridge | 52 | Guardian of Doggebi's Stone + 5x Water Dragon Blood | 1479838 XP; 1 contribution; 0 SP | Bango Q53 |
-| The Dead People Around The Tomb(1) | 53 | 5x Skeleton Warrior's Head from Rotten Skeleton Warrior | 1777279 XP; 1 contribution; 0 SP | Bango Q58 |
+| Legend of the Oh-Do Canyon Bridge | 52 | Guardian of Doggebi's Stone + 5x Water Dragon Blood | 1479838 XP; 1 contribution; 0 SP |  |
+| The Dead People Around The Tomb(1) | 53 | 5x Skeleton Warrior's Head from Rotten Skeleton Warrior | 1777279 XP; 1 contribution; 0 SP |  |
 
 ### Route 46+ Stage 5 — Lv 54-57: Tomb Keeper grind chain
 
@@ -404,17 +396,17 @@ in `analysis\quest_route_101\QUEST_RECONCILIATION.csv`.
 > through Tomb Keeper [Gang-Man] (#13). Stack the Royal Tomb objectives across
 > the whole level range.
 
-| Quest | Lv | Objective / route | Current Bango reward | Evidence |
+| Quest | Lv | Objective / route | Reward | Notes |
 |---|---:|---|---|---|
-| The Dead People Around The Tomb(2) | 54 | 5x Skeleton Warrior's Ribs | 2134273 XP; 1 contribution; 0 SP | Bango Q59 |
-| Event Quest 28 | 54 | Kill 20 each of five D1 Doggebi types | 3013282 XP; 0 contribution; 0 SP | player route; no confident Bango name match |
-| The Dead People Around The Tomb(3) | 55 | 5x Royal Tomb Keeper's Book | 2562731 XP; 1 contribution; 0 SP | Bango Q60 |
-| Event Quest 30 | 55 | Get 5x Speed Up Medicine | 3289241 XP; 0 contribution; 0 SP | player route; no confident Bango name match |
-| Event Quest 31 | 55 | Kill 60 each Rotten Skeleton Warrior (Sword/Lance) | 5289241 XP; 0 contribution; 0 SP | player route; no confident Bango name match |
-| Event Quest 32 | 55 | Kill 100 Maid of Honor of the Royal Tomb | 12000000 XP; 0 contribution; 0 SP | player route; no confident Bango name match |
-| The Dead People Around The Tomb(4) | 56 | 5x Royal Tomb Keeper's Lute | 3076950 XP; 1 contribution; 0 SP | Bango Q61 |
-| Event Quest 33 | 57 | Kill 100 Minister of the Royal Tomb | 12975811 XP; 0 contribution; 0 SP | player route; no confident Bango name match |
-| The Dead People Around The Tomb(5) | 57 | 5x Royal Tomb Keeper's Sword | 3694082 XP; 1 contribution; 0 SP | Bango Q62 |
+| The Dead People Around The Tomb(2) | 54 | 5x Skeleton Warrior's Ribs | 2134273 XP; 1 contribution; 0 SP |  |
+| Event Quest 28 | 54 | Kill 20 each of five D1 Doggebi types | 3013282 XP; 0 contribution; 0 SP | Reward taken from the walkthrough, not confirmed in game |
+| The Dead People Around The Tomb(3) | 55 | 5x Royal Tomb Keeper's Book | 2562731 XP; 1 contribution; 0 SP |  |
+| Event Quest 30 | 55 | Get 5x Speed Up Medicine | 3289241 XP; 0 contribution; 0 SP | Reward taken from the walkthrough, not confirmed in game |
+| Event Quest 31 | 55 | Kill 60 each Rotten Skeleton Warrior (Sword/Lance) | 5289241 XP; 0 contribution; 0 SP | Reward taken from the walkthrough, not confirmed in game |
+| Event Quest 32 | 55 | Kill 100 Maid of Honor of the Royal Tomb | 12000000 XP; 0 contribution; 0 SP | Reward taken from the walkthrough, not confirmed in game |
+| The Dead People Around The Tomb(4) | 56 | 5x Royal Tomb Keeper's Lute | 3076950 XP; 1 contribution; 0 SP |  |
+| Event Quest 33 | 57 | Kill 100 Minister of the Royal Tomb | 12975811 XP; 0 contribution; 0 SP | Reward taken from the walkthrough, not confirmed in game |
+| The Dead People Around The Tomb(5) | 57 | 5x Royal Tomb Keeper's Sword | 3694082 XP; 1 contribution; 0 SP |  |
 
 ### Route 46+ Stage 6 — Lv 58: City of Priest
 
@@ -423,22 +415,22 @@ in `analysis\quest_route_101\QUEST_RECONCILIATION.csv`.
 > **Farm cluster:** Event Quests 35–37 share Priest [Ahn-Hyunsoo] (#11).
 > Event Quest 38 switches to High Priest [Sur-An] (#9).
 
-| Quest | Lv | Objective / route | Current Bango reward | Evidence |
+| Quest | Lv | Objective / route | Reward | Notes |
 |---|---:|---|---|---|
-| The Dead People Around The Tomb(6) | 58 | 5x Royal Tomb Keeper's Shield | 4434711 XP; 1 contribution; 0 SP | Bango Q63 |
-| Event Quest 35 | 58 | Get 5x Baked Mackerel in Soy Sauce | 10000000 XP; 0 contribution; 0 SP | player route; no confident Bango name match |
-| Event Quest 36 | 58 | Kill 60 each Royal Tomb Keeper (Sword/Shield) | 10000000 XP; 0 contribution; 0 SP | player route; no confident Bango name match |
-| Event Quest 37 | 58 | Kill 60 each Royal Tomb Keeper (Hammer/Spear) | 20835821 XP; 0 contribution; 0 SP | player route; no confident Bango name match |
-| Event Quest 38 | 58 | Kill 60 of all four Royal Tomb Keeper variants | 20000000 XP; 0 contribution; 0 SP | player route; no confident Bango name match |
+| The Dead People Around The Tomb(6) | 58 | 5x Royal Tomb Keeper's Shield | 4434711 XP; 1 contribution; 0 SP |  |
+| Event Quest 35 | 58 | Get 5x Baked Mackerel in Soy Sauce | 10000000 XP; 0 contribution; 0 SP | Reward taken from the walkthrough, not confirmed in game |
+| Event Quest 36 | 58 | Kill 60 each Royal Tomb Keeper (Sword/Shield) | 10000000 XP; 0 contribution; 0 SP | Reward taken from the walkthrough, not confirmed in game |
+| Event Quest 37 | 58 | Kill 60 each Royal Tomb Keeper (Hammer/Spear) | 20835821 XP; 0 contribution; 0 SP | Reward taken from the walkthrough, not confirmed in game |
+| Event Quest 38 | 58 | Kill 60 of all four Royal Tomb Keeper variants | 20000000 XP; 0 contribution; 0 SP | Reward taken from the walkthrough, not confirmed in game |
 
 ### Route 46+ Stage 7 — Lv 59-60: Tomb Keeper finale
 
 **Level / location:** Lv 59-60 — Pub of the Giant Bird.
 
-| Quest | Lv | Objective / route | Current Bango reward | Evidence |
+| Quest | Lv | Objective / route | Reward | Notes |
 |---|---:|---|---|---|
-| The Dead People Around The Tomb(7) | 59 | 5x Royal Tomb Keeper's Spear | 5323540 XP; 1 contribution; 0 SP | Bango Q64 |
-| The Dead People Around The Tomb(8) | 60 | 5x Royal Tomb Keeper's Iron Hammer | 6390210 XP; 1 contribution; 0 SP | Bango Q65 |
+| The Dead People Around The Tomb(7) | 59 | 5x Royal Tomb Keeper's Spear | 5323540 XP; 1 contribution; 0 SP |  |
+| The Dead People Around The Tomb(8) | 60 | 5x Royal Tomb Keeper's Iron Hammer | 6390210 XP; 1 contribution; 0 SP |  |
 
 ### Route 46+ Stage 8 — Lv 70: 3rd Job Change + Forest of Elements
 
@@ -446,21 +438,21 @@ in `analysis\quest_route_101\QUEST_RECONCILIATION.csv`.
 City of Priest.
 
 > **Farm cluster:** Farm the five element sets and the four endgame drop items
-> before returning to the altars. The current client splits this advancement
-> into multiple event rows, so the player guide's combined route has no safe
-> one-row Bango match.
+> before returning to the altars. The game splits this advancement into several
+> separate quests, so the combined route below will not line up one-to-one
+> with what you see in your quest log.
 
-| Quest | Lv | Objective / route | Current Bango reward | Evidence |
+| Quest | Lv | Objective / route | Reward | Notes |
 |---|---:|---|---|---|
-| [Event] Gateway to success | 70 | Collect 20 each of five low-level elements; purify them at the altars; collect the four D4/Highlands/D2/Emok items, Complete E-Moogy's Scale and Horn of Doggebi Lord | 0 XP; 0 contribution; 0 SP | Bango Q9010; player route calls this Event 40 |
-| Event Quest 41 | 70 | Collect five D5 essence types, 100 Essence of Undead and I'Lryer's Ring; obtain the Moving Trinket for Valley of Devah | 0 XP; 0 contribution; 0 SP | player route; composite, no safe one-row Bango match |
+| [Event] Gateway to success | 70 | Collect 20 each of five low-level elements; purify them at the altars; collect the four D4/Highlands/D2/Emok items, Complete E-Moogy's Scale and Horn of Doggebi Lord | 0 XP; 0 contribution; 0 SP | Also listed as Event 40 |
+| Event Quest 41 | 70 | Collect five D5 essence types, 100 Essence of Undead and I'Lryer's Ring; obtain the Moving Trinket for Valley of Devah | 0 XP; 0 contribution; 0 SP | Reward taken from the walkthrough, not confirmed in game |
 
-### Bango-only skill-point insertions — Levels 76–77
+### Two more skill points — Levels 76–77
 
-These current client quests are absent from the 2012-era route. Skipping either
+These two quests are missing from older route guides. Skipping either
 loses one permanent skill point.
 
-| Quest | Lv | Objective | Current Bango reward |
+| Quest | Lv | Objective | Reward |
 |---|---:|---|---|
 | Precious recovery | 76 | Recover Green Bead, Ancestor's Treasure Sword and Prophetic Book from Goblins / Goblin Conjurators | 70183730 XP; **1 SP** |
 | Guard of D'evah | 77 | Defeat Guard of D'evah and return to Dae-Gil | 84222881 XP; **1 SP** |
@@ -471,7 +463,7 @@ loses one permanent skill point.
 
 | Quest | Lv | Objective / route | Evidence |
 |---|---:|---|---|
-| Quest 63 | 81 | Receive Training; choose OTP, EVA or DEF. The chosen skill scales with character level up to grade 20 | player route; no confident Bango name match |
+| Quest 63 | 81 | Receive Training; choose OTP, EVA or DEF. The chosen skill scales with character level up to grade 20 | Reward taken from the walkthrough, not confirmed in game |
 
 ### Route 46+ Stage 10 — AWAKEN trilogy
 
@@ -484,9 +476,9 @@ Devah.
 
 | Quest | Lv | Objective / route | Evidence |
 |---|---:|---|---|
-| 1st AWAKEN | 91 | Kill 200 Twisted Demon Officer of Attack + 200 Twisted Imperial Demon Commander; collect 20 Mysterious Marble + 5 Piece of Shining Gold | player route; no confident Bango name match |
-| 2nd AWAKEN | 96 | Craft 2 Gold Ingots; collect 60 Mysterious Marble + 15 Piece of Shining Gold | player route; no confident Bango name match |
-| 3rd AWAKEN | 101 | Obtain Processing Awaken Lv3 from D'evah Boss; craft 1 Gold Ingot; collect 120 Mysterious Marble + 30 Piece of Shining Gold | player route; no confident Bango name match |
+| 1st AWAKEN | 91 | Kill 200 Twisted Demon Officer of Attack + 200 Twisted Imperial Demon Commander; collect 20 Mysterious Marble + 5 Piece of Shining Gold | Reward taken from the walkthrough, not confirmed in game |
+| 2nd AWAKEN | 96 | Craft 2 Gold Ingots; collect 60 Mysterious Marble + 15 Piece of Shining Gold | Reward taken from the walkthrough, not confirmed in game |
+| 3rd AWAKEN | 101 | Obtain Processing Awaken Lv3 from D'evah Boss; craft 1 Gold Ingot; collect 120 Mysterious Marble + 30 Piece of Shining Gold | Reward taken from the walkthrough, not confirmed in game |
 
 ## Extended NPC Blocking / Route-Order Chains
 
@@ -501,16 +493,11 @@ are the shared high-level chains that affect the extension:
 | Temporary Fort — Soldier [Jae-Ga] (#20) | Government Service /d → Green Crystal → Event 20 → Event 22 → Event 28 → Ceremony for elements2 | 30 → 40 → 50 → 50 → 54 → 70 |
 | Pub of the Giant Bird — Tomb Keeper [Gang-Man] (#13) | Tomb(1) → Tomb(2) → Tomb(3) → Events 30–32 → Tomb(4) → Event 33 → Tomb(5) → Tomb(6) → Tomb(7) → Tomb(8) | 53 → 54 → 55 → 55 → 56 → 57 → 58 → 59 → 60 |
 
-The full pair list and ordered step evidence are in
-`analysis\quest_route_101\NPC_CHAINS.csv` and
-`analysis\quest_route_101\FRIEND_QUEST_STEPS.csv`.
+## Skill-Point Quest Checklist
 
-## Current Bango Skill-Point Quest Checklist
+**14 quests award 17 skill points in total.** Twelve of them are reachable by level 65; the last two arrive at 76 and 77.
 
-**14 quests award 17 total SP.** These values come from
-`bango_data\QUESTS.csv`, including the level cutoff used by the Mage plan.
-
-| Bango ID | Quest | Lv | SP | XP |
+| Quest ID | Quest | Lv | SP | XP |
 |---:|---|---:|---:|---:|
 | 7 | Won-Jung and Yae-Jin's Love | 11 | **1** | 2500 |
 | 11 | Undelivered Rice Cake | 15 | **1** | 4000 |

@@ -1,31 +1,14 @@
-# KalOnline_Engine_Formulas.md — The Combat Engine
+# Combat Formulas
 
-**Version 3, 2026-07-25.** The original binary's critical path, lookup tables,
-PvP divisors and block tables have now been extracted and checked against the
-reference implementation.
+What the game actually computes when you hit something. Derived stats from Strength, Health, Intelligence, Wisdom and Agility; the HP and MP curves; the hit-or-miss equation; physical and magic damage end to end; criticals and attack speed; and the per-skill damage shapes.
 
-## Provenance and confidence
+**Read these as shapes, not as guarantees.** They come from the original 2006 engine. Bango descends from it and the structure is almost certainly intact, but individual constants may have been retuned and none of them has been measured on a live server. Anything marked below as unconfirmed is exactly that.
 
-| Tag | Meaning |
-|---|---|
-| `[ORIG]` | Read out of the Hex-Rays decompile of Inixsoft's own `MainSvrT.exe`, 2006 build. **Ground truth for the original engine.** |
-| `[REIMPL]` | From `Ollrogge/Bango`, a modern clean-room C++ reimplementation. The author reverse-engineered these; treat as a second opinion, not as authority. |
-| `[MOD]` | From private-server mod DLLs. Lowest confidence. |
-| `[CONTESTED]` | Two readings disagree and it is not settled. |
-
-**Everything here describes the original 2006 engine.** Rafael plays on **Bango**, a highrate private server of the 2009/2012 lineage running a patched descendant. Shapes are almost certainly intact; **every constant is unconfirmed for Bango until measured.** See `SOURCES.md` for the authority ranking and `KalOnline_Formula_Recovery_Plan.md` Phase 5 for the calibration.
-
-## Corrections incorporated since version 1
-
-1. **Magic does not ignore mitigation — it ignores *defence and absorb*, but resistance is applied, multiplicatively, one stage earlier in the pipeline.** v1 said magic had no mitigation at all. That was drawn from `GetFinalDamage` alone, which is only the last stage. `CMagic::Excute` applies resistance before it. This changes the calibration design: magic is still a clean probe of the attacker side, but only once the target's resistance is known or held constant.
-2. **The original critical-hit rule is additive and settled.** The body at
-   `0x0043EAC0` returns a bonus and its call site adds that bonus to the normal
-   hit. With no fatal-damage stat, the result is exactly **1.5×**. Whether
-   Bango retained that constant remains a live-calibration question.
+Where two readings of the engine disagree, both are shown. The two readings are the original server code itself and a community reimplementation of it — the original wins wherever it is legible, and the disagreement is named rather than quietly resolved.
 
 ---
 
-## 1. The stat storage pattern `[ORIG]`
+## 1. The stat storage pattern
 
 Every combat stat exists twice: a **point** value and a **percentage** value.
 
@@ -43,9 +26,9 @@ Note this differs from the reimplementation, which uses a flat `m_wXxxAdd` compa
 
 ---
 
-## 2. Derived stats from Str / Hea / Int / Wis / Agi `[REIMPL]`
+## 2. Derived stats from Str / Hea / Int / Wis / Agi
 
-> **Contradicted in play, 2026-07-25 — do not use the magic lines below.**
+> **Contradicted in play — do not use the magic lines below.**
 > A naked level-38 Magician (Str 8, Hea 70, Int 77, Wis 50, Agi 8) on the Bango
 > test server read **MDMin 47 and MDMax 56**. The formulas below give **50 and
 > 59** — high by exactly 3 at both ends. The KalEncyclopedia simulator's forms,
@@ -59,8 +42,8 @@ Note this differs from the reimplementation, which uses a flat `m_wXxxAdd` compa
 > below and beating KalEncyclopedia's, which is high by 1 at Strength 8 and 9.
 >
 > The measured set is `engine\bango_measured.py`; the observation is
-> `calibration\OBSERVED_SHEETS.csv`. Per standing rule 5 the original text is
-> left in place rather than overwritten.
+> The observed character sheet wins; the original values are kept here only
+> so the disagreement stays visible.
 
 ```
 OTP  (hit)   = Agi/8 + 15×Str/54            + gear
@@ -85,7 +68,7 @@ Readings:
 - Resistances come free with the caster stats at 1 per 9 points.
 - `GetAgi()` reads a member named `m_wDex`. Agility and Dexterity are the same stat under two names — relevant when reading `InitMonster.txt`, which calls it `dex`.
 
-### HP and MP `[REIMPL]`
+### HP and MP
 
 ```
 MaxHP = coeff_HP(Level) × Level / 3 + 115 + 2×Hea² / denoHP[class] + gear
@@ -103,11 +86,11 @@ class index: 0 Knight · 1 Mage · 2 Archer · 3 Thief · 4 Shaman
 Two subtleties worth keeping:
 
 - The HP coefficient literals are **doubles**, so `coeff × Level / 3` is floating-point and does *not* truncate; only the final return does. The MP coefficients are integers, so MP is integer arithmetic throughout. The `2×Hea²/denoHP` term truncates in both.
-- **The level bands are a later-episode change.** The 2006 build uses a flat `52×Level/3` and `8×Level + 140`. A server on the 2009/2012 lineage very likely has the bands. **Which one Bango uses is a high-priority calibration target** and is trivially checked: HP at level 72 either jumps or doesn't.
+- **The level bands are a later-episode change.** The 2006 build uses a flat `52×Level/3` and `8×Level + 140`. A server on the 2009/2012 lineage very likely has the bands. **Which one Bango uses still needs measuring in play** and is trivial to check: HP at level 72 either jumps or doesn't.
 
-**The quadratic term is the whole story.** Health does not add HP linearly. On a Knight, 10→20 Health adds ~60 HP; 90→100 Health adds ~3,800. That is why every saved build in `PL_SAVE.csv` runs Health at or near the top, and it means "how many points in Health" is never answerable by a linear rule of thumb.
+**The quadratic term is the whole story.** Health does not add HP linearly. On a Knight, 10→20 Health adds ~60 HP; 90→100 Health adds ~3,800. That is why almost every serious build runs Health at or near the top, and it means "how many points in Health" is never answerable by a linear rule of thumb.
 
-### Stat point costs `[REIMPL]`
+### Stat point costs
 
 Cost of raising a stat is the sum of a per-point table indexed by the stat's **current** value — buying N points costs `table[cur] + table[cur+1] + … + table[cur+N−1]`. Two tables exist; each class gets the cheaper one on exactly one stat:
 
@@ -165,7 +148,7 @@ g_nAddDefLv[0..99] =
  84 87 87 90 90 93 93 96 96 99  99 thereafter
 ```
 
-### PvP-only defender bonuses `[ORIG]`
+### PvP-only defender bonuses
 
 When the attacker is a player rather than a monster:
 
@@ -179,7 +162,7 @@ Against monsters: `FinalAbsorb = Absorb`, `FinalResist = Resist/10`, no level te
 
 ---
 
-## 4. Magic — corrected `[ORIG]`
+## 4. Magic — corrected
 
 This is `CMagic::Excute`, the shared path every offensive spell runs through:
 
@@ -223,7 +206,7 @@ Consequences:
 
 ## 5. Hit, criticals, attack speed
 
-### Hit / miss `[ORIG]`
+### Hit / miss
 
 ```
 diff      = attackerLevel − defenderLevel,  clamped ±100
@@ -256,7 +239,7 @@ The three arrays above were read directly from the original PE at
 51 and 100 integers; nearby extra zeroes are alignment padding. They match
 `engine/kal_engine.py` exactly.
 
-### Criticals `[ORIG]`
+### Criticals
 
 `CChar::GetFatalDamage` at `0x0043EAC0` returns:
 
@@ -271,10 +254,10 @@ Therefore a bare critical is **1.5×**, and each fatal-damage point adds another
 `GetFatalDamage` is a stub — but the original body and caller settle the 2006
 engine.
 
-This remains a Bango calibration target: a matched normal/critical pair should
+This still needs measuring on Bango: a matched normal/critical pair should
 be exactly 1.5× if the later server retained the rule.
 
-### Attack speed `[ORIG for the accessor, REIMPL for the gate]`
+### Attack speed
 
 Attack speed values — `mon_attspd`, a weapon's `aspeed` — are **per-swing cooldowns in milliseconds**, not rates.
 
@@ -287,17 +270,15 @@ speedPct > 0:   ASpeed = base × 100 / (speedPct + 100)
 
 A **positive** speed percentage **divides** the delay. +100% halves the cooldown; it does not double a rate. A 700 ms weapon swings 1.43×/s, and at +50% the C integer result is **466 ms**, or 2.146×/s.
 
-`[REIMPL]` adds a swing gate the decompile has not confirmed: a swing landing before **60% of the cooldown** has elapsed is dropped silently, and between 60% and 100% the damage is scaled linearly by the fraction elapsed. If that is faithful it means attack-speed gear is worth less than the nominal rate suggests whenever you are input-limited rather than cooldown-limited.
+The community reimplementation adds a swing gate the original code does not confirm: a swing landing before **60% of the cooldown** has elapsed is dropped silently, and between 60% and 100% the damage is scaled linearly by the fraction elapsed. If that is faithful it means attack-speed gear is worth less than the nominal rate suggests whenever you are input-limited rather than cooldown-limited.
 
 ---
 
-## 6. The skill system `[ORIG]`
+## 6. The skill system
 
 **There is no dispatch switch.** `CPlayerSkill::Open()` consumes a 152-entry
 map at `.data:0x4E21A8`, keyed by `(class << 16) + skillIndex`. The map is not
-flat data: `sub_4AE930` constructs its entries at startup. The passive
-initializer extractor in `research/extract_skill_map.py` recovered every key,
-constructor and vtable into `research/skill_map_2006.json`.
+flat data: `sub_4AE930` constructs its entries at startup.
 
 Every skill is a C++ class. The base carries:
 
@@ -317,7 +298,7 @@ final = <capped, grade-scaled, stat-scaled skill term> + <random base attack or 
 
 The skill term is capped; the weapon/gear roll is added **after** the cap, so gear damage is never capped by the skill.
 
-### The three magic masteries are not what they look like `[ORIG]`
+### The three magic masteries are not what they look like
 
 `GetResistNum()` is the element tag, and it selects which mastery passive applies:
 
@@ -331,7 +312,7 @@ Lightning Mastery is a straight `+20 damage per point`. That is a very different
 
 ---
 
-## 7. Magician skill formulas `[ORIG, verbatim]`
+## 7. Magician skill formulas
 
 `L` = skill grade (`m_nLevel`), `CL` = character level, `INT`/`WIS` = the character's stats. **Every `/` truncates.** Each result is capped as shown, then the random base roll is added.
 
@@ -358,7 +339,7 @@ Lightning Mastery is a straight `+20 damage per point`. That is a very different
 | Chain Lightning (`CChainLitning`, idx 41) | `3×CL/2 + 20×masteryPts + (7×L×INT/3)/2 + 360` | `3×CL/2 + 20×masteryPts + (10×L×INT/4)/2 + 700` | **700 / 1000 flat** |
 | Thunder (`CThunderLitning`, idx 42) | `3×CL/2 + 20×masteryPts + (5×L×(3×INT/2)/3)/2 + 360` | `3×CL/2 + 20×masteryPts + (10×L×(3×INT/2)/2)/2 + 700` | min `154×L+456` · max `300×L+900` |
 
-Two things stand out. **Lightning Blow calls Lightning Magic's `GetMagic` and adds it in** — if `m_pSkill[4]` is null it returns 0 outright. So Lightning Magic's grade feeds directly into Lightning Blow's damage, which makes the existing mage plan's heavy Lightning Magic investment correct for a reason the plan never states. And **Lightning Summons' min cap is `L + 450`**, coefficient 1 where every sibling has a two- or three-digit coefficient — almost certainly an Inixsoft typo that has been in the game for twenty years, and it means the skill's min damage is effectively pinned near 450.
+Two things stand out. **Lightning Blow calls Lightning Magic's `GetMagic` and adds it in** — if `m_pSkill[4]` is null it returns 0 outright. So Lightning Magic's grade feeds directly into Lightning Blow's damage, which is why the mage build guide's heavy Lightning Magic investment pays off twice over. And **Lightning Summons' min cap is `L + 450`**, coefficient 1 where every sibling has a two- or three-digit coefficient — almost certainly an Inixsoft typo that has been in the game for twenty years, and it means the skill's min damage is effectively pinned near 450.
 
 ### Area
 
@@ -405,7 +386,7 @@ Cure2.
 
 ---
 
-## 8. Buff and state flags `[ORIG]`
+## 8. Buff and state flags
 
 Two 64-bit words per character: `m_nBState` (buffs) and `m_nMState` (movement/control), tested by `IsBState` / `IsMState`.
 
@@ -428,7 +409,7 @@ Buff ids used by the Magician tree: 0 slow · 2 Meditation · 7 Stun · 8 Move-s
 
 ## 9. Monsters
 
-**Monsters use the *same* stat formulas as players** `[REIMPL]`, with the `InitMonster.txt` values as **additive offsets on top**, not as absolutes:
+**Monsters use the *same* stat formulas as players**, with the `InitMonster.txt` values as **additive offsets on top**, not as absolutes:
 
 ```
 MonsterMinAttack = 1 + (11×Str − 80)/30 + (Agi − 5)/11 + 7×Level/10 + macro.minAttack
@@ -445,15 +426,14 @@ exact matches to the formula above plus their raw macro. The calculator may use
 the CSV's `mon_hp` as final HP, but must never substitute a raw
 `InitMonster.txt (hp …)` token for it.
 
-### The other four columns are macros, and HP is the exception `[verified 2026-07-31]`
+### The other four columns are macros, and HP is the exception
 
 The paragraph above is right about `mon_hp` and the inference it invites — that
 the export materializes its values — is **wrong for every other combat column**.
 `mon_otp`, `mon_eva`, `mon_minatt` and `mon_maxatt` are the raw `(hit)`,
 `(dodge)` and `(attack)` tokens, copied unchanged.
 
-Evidence, generated by `tools\monster_stat_check\check_monster_macros.py` into
-`analysis\monster_stat_check\`: legacy rows were matched to 2006 records on a
+The check: monster records were matched to their 2006 originals on a
 signature of level and the five primary stats plus MP and attack speed — never
 on the columns being judged, and never by id, since `mon_azon` and the 2006
 `index` are unrelated spaces. Of **175 high-confidence pairs**:
@@ -478,7 +458,6 @@ Worked example — **Demon Vulgar**, Str 21, Agi 2, level 1, `(hit 0) (dodge 0)
 (attack 0 7 7)`. Its on-target point is `2/8 + 15×21/54 = 0 + 5 = 5`, not the
 stored **0**; its attack is `1 + 5 + 0 + 0 + 7 = 13` to `10 + 0 + 1 + 7 = 18`,
 not the stored **7–7**. Reading the macro as final is the defect that inflated
-Kal Atlas's evasion-versus-monster figure until 2026-07-31.
 
 `CMonster::GetHit` and `::GetDodge` carry an `//unsure` comment in the
 reimplementation's own source. Their shape is identical to `CPlayer::GetHit` /
@@ -502,7 +481,7 @@ AI: the reimplementation's state machine is `IDLE / WALK / CHASE / FORCEATTACK /
 
 ---
 
-## 10. Items → stats `[REIMPL]`
+## 10. Items → stats
 
 Equipping runs `ApplySpec`, which pushes every field of the item's shared macro through `UpdateProperty`; unequipping runs `FreeSpec`, identical with every value negated:
 
@@ -513,7 +492,7 @@ minAttack, maxAttack, minMagic, maxMagic, str, hth, int, wis, dex
 
 An item's stats live on the **shared type macro** (the `InitItem` row), not on the instance. Weapon attack speed and range are pure passthrough from the macro. Prefixes are a parallel `CPrefix::ApplySpec` / `FreeSpec` pair with the same add/subtract discipline, and prefix rerolling is driven by consumable charm items carrying a `(Changeprefix …)` specialty.
 
-### `InitItem.txt` record `[ORIG]`
+### `InitItem.txt` record
 
 ```lisp
 (item (name 256) (Index 1) (Image "Wea001") (Action 1 1) (class weapon sword) (code 1 1 1 1)
@@ -523,7 +502,7 @@ An item's stats live on the **shared type macro** (the `InitItem` row), not on t
 
 `specialty` sub-tokens: `aspeed`, `Attack min max`, `hit`, `defense`, `dodge`, `absorb`, `resistfire/ice/litning/curse/palsy`, `hp`, `mp`, `str/hth/int/wis/dex`, `Changeprefix`.
 
-### `InitMonster.txt` record `[ORIG]`
+### `InitMonster.txt` record
 
 ```lisp
 (monster (name 1) (index 1) (country 0 1 2) (race 0) (level 1) (ai 1) (range 20) (sight 160 240)
@@ -532,7 +511,7 @@ An item's stats live on the **shared type macro** (the `InitItem` row), not on t
          (mspeed 1600 800) (quest (2 1 901 1) (3 1 902 1)))
 ```
 
-This maps one-to-one onto `MONSTERS.csv`'s columns — confirmation that the CSVs are an export of exactly this table for some version.
+The monster records the game ships map one-to-one onto this structure.
 
 ---
 
@@ -540,7 +519,7 @@ This maps one-to-one onto `MONSTERS.csv`'s columns — confirmation that the CSV
 
 | Mechanic | Status |
 |---|---|
-| **Enhancement `+N` → stat gain** | **No source found anywhere.** Not a table, not a formula, not an item field. The reimplementation has no enhancement code at all. `EBS.csv` gives cost and revision requirement only. |
+| **Enhancement `+N` → stat gain** | **No source found anywhere.** Not a table, not a formula, not an item field. The known tables give the cost of an enhancement attempt and what it requires, but never the stat gain it produces. |
 | Upgrade cost `1500×(level+1)` and max upgrade level | Unverified — could not be confirmed or refuted |
 | Set bonuses | No set-detection code and no `(set …)` token in the 2006 data. May simply not exist in this era. |
 | Endurance loss and repair cost | Only the `CSpecRepair::Enchant` signature and the `(endurance N)` maximum |
@@ -549,15 +528,3 @@ This maps one-to-one onto `MONSTERS.csv`'s columns — confirmation that the CSV
 | `mon_ai` semantics | Unknown |
 | PvP constant arrays `{4,4,5,1,5,3}`, `{4,1,2}` | **Extracted from the original binary; Bango unverified** |
 | Non-Magician skill formulas | Class index exists (~350 classes, all named); bodies not yet extracted |
-
-## 12. Verification list carried to `MEMORY.md`
-
-- [x] Settle original critical body and caller — additive, bare critical 1.5×
-- [ ] Check in Bango whether a matched critical is exactly 1.5×
-- [ ] Does Bango use the level-banded HP coefficient or the flat 2006 one — check for a jump at level 72
-- [x] Extract the original three lookup tables and match the implementation
-- [ ] Are those three original lookup tables still stock on Bango
-- [ ] Resolve the `exp 200` vs `exp 2` factor of 100
-- [ ] Confirm the 60%-cooldown swing gate exists in the original
-- [x] Extract all 152 skill-map keys, constructors and vtables from the binary initializer
-- [ ] Find enhancement `+N` stat gain — the largest remaining hole

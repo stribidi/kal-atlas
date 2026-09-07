@@ -1,6 +1,6 @@
-# KAL Online — Imperial Mixing System Guide
+# Imperial Mixing System
 
-The **Imperial Mixing system** is a weapon enhancement mechanic that lets you upgrade weapons and add elemental effects through the **Mix Master NPC**, found in the city's **Pub of the Giant Bird**.
+How Mix Master weapon enhancement works: what you need before you start, the elemental-stone upgrade path that adds skills to a weapon, Imperial making for the tier jump, and what a failure actually costs you.
 
 ---
 
@@ -41,7 +41,7 @@ This path adds an elemental skill to your weapon across up to **3 levels** of po
 
 #### Lv. 3 Rare Stones (Item Shop / Special Drop)
 
-For **Lv. 3**, you must use two of the same rare stone. The stats on your server are:
+For **Lv. 3**, you must use two of the same rare stone. On Bango the stats are (other servers differ):
 
 | Stone | Stats Granted |
 |---|---|

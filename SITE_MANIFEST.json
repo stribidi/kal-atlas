@@ -1,16 +1,9 @@
 {
  "generated_by": "tools/knowledge_base_site/build_site_manifest.py",
  "note": "Published bundle. Regenerate with tools/knowledge_base_site/build_deploy.py.",
- "file_count": 3319,
- "total_bytes": 46877062,
+ "file_count": 3318,
+ "total_bytes": 46863959,
  "files": [
-  "Detailed_World_Geography_and_Navigation.md",
-  "Imperial_Mixing_System_Guide.md",
-  "KalOnline_Engine_Formulas.md",
-  "KalOnline_Knowledge_Base_v2.md",
-  "KalOnline_Quest_Progression_Guide.md",
-  "KalOnline_Simulator_Formulas.md",
-  "Mage_Attacker_Skill_Progression.md",
   "analysis/combat_tables/COMBAT_FIXTURE.json",
   "analysis/item_duplicate_records/ITEM_DUPLICATE_MAP.csv",
   "analysis/item_rename_join/ITEM_ALIAS_MAP.csv",
@@ -3300,7 +3293,6 @@
   "research/bango_gitbook/pages/areas/e-mok-island.md",
   "research/bango_gitbook/pages/areas/forest-of-elements.md",
   "research/bango_gitbook/pages/areas/tower-of-priest.md",
-  "research/bango_gitbook/pages/index.md",
   "research/bango_gitbook/pages/navigation/teleportation.md",
   "research/bango_gitbook/pages/player-skills/chairperson-of-joong-bang-cjb.md",
   "research/bango_gitbook/pages/player-skills/commander.md",
@@ -3322,6 +3314,13 @@
   "research/bango_gitbook/pages/systems/mission-announcer.md",
   "research/bango_gitbook/pages/systems/monster-summoning-scrolls.md",
   "research/bango_gitbook/pages/systems/new-drop-system.md",
-  "research/bango_gitbook/pages/systems/perfect-party.md"
+  "research/bango_gitbook/pages/systems/perfect-party.md",
+  "site_content/character-sheet.md",
+  "site_content/combat-formulas.md",
+  "site_content/kalonline-handbook.md",
+  "site_content/mage-build.md",
+  "site_content/mixing-guide.md",
+  "site_content/quest-route.md",
+  "site_content/world-guide.md"
  ]
 }

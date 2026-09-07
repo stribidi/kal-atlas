@@ -1,22 +1,18 @@
-# Attacker Mage — Optimal Skill Progression (Levels 2–69)
+# Attacker Mage — Skill Progression, Levels 2 to 69
 
-## Build Philosophy
+A Lightning-primary, Ice-secondary attacking mage, planned level by level to the last point, with a level-65 Stone of Birth reskill into the tri-element Storm kit.
 
-This is a **Lightning-primary, Ice-secondary attacker mage** build optimized for damage output and competitive server-launch scenarios. The strategy uses a **level-65 Stone of Birth (SoB) reskill package** to redistribute points into the full tri-element Storm kit for endgame.
+---
 
-> **Bango-current correction — 2026-07-25.** The previous version was
-> contradicted by `bango_data\QUESTS.csv` and by Heal's registered `7|5`
-> schedule. It understated the level-65 budget, treated two paid Heal grades as
-> free, undercounted the reset refund, and omitted three reset Lightning skills
-> from the rebuild. The figures below were recomputed by
-> `tools\mage_plan_recompute\recompute_mage_plan.py`; the audit ledger is in
-> `analysis\mage_plan_recompute\`.
+## Build philosophy
+
+This is a **Lightning-primary, Ice-secondary attacker mage** built for damage output. It uses a **level-65 Stone of Birth reskill** to redistribute points into the full tri-element Storm kit for the endgame.
 
 **Core principles:**
-- Lightning is the primary damage school (instant burst, no DoT complications)
-- Ice is secondary (Splashy Ice for AoE, Frost/Cold Binding for CC)
+- Lightning is the primary damage school (instant burst, no damage-over-time complications)
+- Ice is secondary (Splashy Ice for area damage, Frost and Cold Binding for crowd control)
 - Fire is skipped entirely until the level-65 reskill
-- Utility skills (Heal, Meditation, Speed Up) are picked up at minimum viable investment
+- Utility skills (Heal, Meditation, Speed Up) are taken at minimum viable investment
 - Support skills (Cure, Revival, Restore) get 1 point each for group utility
 
 ## Skill Point Budget
@@ -24,12 +20,10 @@ This is a **Lightning-primary, Ice-secondary attacker mage** build optimized for
 | Source | Points |
 |---|---|
 | Levels 2–65 | 64 |
-| Bango quest rewards at or below level 65 (12 quests) | 15 |
+| Quest rewards at or below level 65 (12 quests) | 15 |
 | **Total available by 65** | **79** |
 
-Bango has **14 skill-point quests worth 17 SP in total**; the final two points
-arrive at levels 76 and 77. This difference from the legacy export and the
-2012-era player guide is classified **`bango-modification`**.
+Bango has **14 skill-point quests worth 17 points in total**; the last two arrive at levels 76 and 77, which is why only 15 of them count toward the budget at 65. Older guides list fewer — they predate the change.
 
 Free upgrades (grades unlocked at level 50+ on pre-50 skills) do not cost points. Notably: Magic Mastery: Lightning and Ice grades 6–7 (free at 60–61), Meditation grades 4–5 (free at 60–61), and Revival (M) grade 2 (free at 60). Heal is `7|5`: all five grades unlock before level 50 and therefore all five cost SP.
 
@@ -59,7 +53,7 @@ Free upgrades (grades unlocked at level 50+ on pre-50 skills) do not cost points
 
 | Lv | Skill Change | Notes |
 |---|---|---|
-| 13–20 | — | Bank all points; the Bango ledger reaches **17 banked SP** after level 20 |
+| 13–20 | — | Bank all points; you reach **17 banked SP** after level 20 |
 
 **Rationale:** No worthwhile offensive skills unlock until Lightning Blow at 21. Lightning Magic (base skill, starts at grade 1 for free) does not need investment yet. All points are saved for the level 21 spike.
 
@@ -141,13 +135,9 @@ level 64. The level-65 point raises the pre-reset bank to **4 SP**.
 ## Level 65: Stone of Birth Reskill
 
 At level 65, reset **Ice Magic, Magic Mastery: Ice, Lightning Magic, and Heal**.
-Their dependents cascade from the current Bango prerequisite graph.
+Everything that depends on them is reset too.
 
-These are **four independent selected roots**. Under the documented
-selected-skill SoB rule, this exact package requires four reset selections; the
-registered files do not establish that one item resets all four. If Rafael's
-server supplies a full-tree event reset, confirm that behaviour in game. The
-allocation arithmetic below is valid for the stated four-root reset set.
+These are **four independent roots**, so the package needs four reset selections rather than one. If your server runs an event that resets a whole tree at once, check what it actually clears before committing — the arithmetic below assumes the four-root reset.
 
 ### What Gets Reset (Cascade)
 
@@ -263,10 +253,3 @@ The 61-SP refund plus the 4-SP bank gives **65 SP to reallocate**:
 4. **Level 43–46:** Support chain (Cure→Revival→Restore) — minimum investment for group utility
 5. **Level 65:** Four-root SoB reskill package — transforms from Lightning specialist into tri-element Storm mage
 6. **Post-65 trade-off:** No more Cure/Revival/Restore — pure attacker commitment
-
-## Verification
-
-The complete per-level bank, reset cascade, quest list, and final grades are
-machine-readable in `analysis\mage_plan_recompute\`. Tests lock the Bango
-cutoff (**15 quest SP by level 65**), the full reward total (**17 SP**), Heal
-3→5 (**2 SP**), the reset refund (**61 SP**), and the rebuild (**63 SP**).

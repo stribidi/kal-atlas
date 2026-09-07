@@ -1,8 +1,6 @@
-# KalOnline Encyclopedia - Complete Knowledge Base
+# KalOnline Handbook
 
-## Overview
-
-This document contains comprehensive information about **KalOnline**, a Korean MMORPG. This knowledge base is derived from the KalEncyclopedia program database and source code, enabling AI assistants to answer detailed questions about game mechanics, items, monsters, skills, and character building.
+Everything the game runs on, in one place: the classes and how they advance, what each stat actually does and what it costs, equipment grades and prefixes, enhancement, the experience and pet tables, drop chances, the skill system in full, and the build advice that follows from all of it.
 
 ---
 
@@ -327,11 +325,7 @@ Actual Rate = (drp_chance1 / 100) × (drp_chance2 / 100) × 100%
 
 Example: If chance1=60 and chance2=4, actual rate = 0.6 × 0.04 = 2.4%
 
-**Bango application (player-confirmed 2026-07-26):** Bango uses these
-KalEncyclopedia rates. First require the current monster-item association in
-`bango_data/DROPS.csv`, then join the normalized monster and item names to this
-table. Keep every matching row separate because each equipment `drp_rev`
-represents a different talisman/base variant with its own rate.
+**On Bango.** Bango uses these same rates. A monster drops an item only if the current game data pairs the two; where it does, every talisman and base variant of that item keeps its own separate chance rather than sharing one.
 
 ---
 
@@ -355,7 +349,7 @@ represents a different talisman/base variant with its own rate.
    - Levels 2-65 = 64 skill points total
 
 2. **Quest Rewards**: Some quests reward skill points
-   - Check the `que_rew` column in QUESTS.csv for "Skill point" or "Skill Point"
+   - Roughly a dozen quests hand out a skill point on completion
    - Approximately 12 quests between levels 11-38 reward 1 skill point each
 
 **Total by level 65: 76 skill points** (64 from levels + 12 from quests)
@@ -437,12 +431,7 @@ Skills have level requirements in format: `"LVL1 LVL2 LVL3|POINTS1 POINTS2 POINT
 
 **Skills that start at level 49 or below receive free grade upgrades for any grades unlocked at level 50+.**
 
-**Bango verification status:** This rule comes from the legacy
-KalEncyclopedia schedules. Bango's current client schedules reproduce every
-declared band on 156 class-scoped legacy twins, but omit the legacy level-60
-free band on 15 otherwise exact matches. Client files do not establish whether
-those automatic grades still occur on the live Bango server. Treat the rule as
-**to confirm in play for Bango**, not as a Bango-file fact.
+**One caveat.** Fifteen skills that granted a free grade at level 60 in the older game data no longer declare that band on Bango. Whether those grades still arrive automatically has not been confirmed in play, so budget as though they might not.
 
 **How it works:**
 1. Count the skill points needed for grades unlocked before level 50
@@ -585,30 +574,13 @@ Total = (Base + Int Bonus) × (1 + Enhancement Bonus)
 
 ---
 
-## Data Reference Notes
-
-When answering questions, reference the CSV data files:
-- **ITEMS.csv**: All equipment with stats
-- **MONSTERS.csv**: All monsters with stats and drops
-- **DROPS.csv**: Drop tables linking monsters to items
-- **SKILLS.csv**: All skills with formulas
-- **QUESTS.csv**: All quests
-- **PREFIXES.csv**: All item prefixes
-- **LVL_PLAYERS.csv**: XP table
-- **LVL_EGGS.csv**: Pet stat progression
-- **EBS.csv**: Enhancement costs
-- **POSITIONS.csv**: Class advancement paths
-- **CASTS.csv**: Base classes
-
----
-
 ## Common Player Questions
 
 **Q: What's the best armor for a level 50 Knight?**
 A: Look for G50 Diamond Scaled Armor set. Prioritize Health and Strength prefixes.
 
 **Q: Where do I farm Legendary prefix items?**
-A: Higher level monsters (60+) have better chances for rare prefixes. Check the DROPS table.
+A: Higher level monsters (60+) have better chances for rare prefixes. Each monster page lists exactly what it drops and at what rate.
 
 **Q: How much XP do I need for level 70?**
 A: 396,260,232 total XP.
@@ -617,11 +589,7 @@ A: 396,260,232 total XP.
 A: Start with basic attack magic, then Cure for healing. Fire Magic or Ice Magic for damage.
 
 **Q: How many skill points do I get per level?**
-A: You earn 1 skill point per level starting from level 2 (64 total by level 65). Additionally, some quests reward skill points - check the `que_rew` column in QUESTS.csv for entries containing "Skill point" or "Skill Point". Total available by level 65: approximately 76 points.
+A: You earn 1 skill point per level starting from level 2 (64 total by level 65). Some quests also reward skill points. Total available by level 65: approximately 76 points.
 
 **Q: Can I reset my skills?**
 A: Yes, using a Stone of Birth (SoB) item. This resets a selected skill and all dependent skills, refunding the skill points.
-
----
-
-*This knowledge base enables AI assistants to answer detailed questions about KalOnline game mechanics, items, monsters, character building, and more.*

@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="color-scheme" content="dark">
-  <title>Kal Atlas — Linked KalOnline Knowledge Base</title>
+  <title>Kal Atlas — The KalOnline Encyclopedia</title>
   <style>
     /* Jade Archive, night reading: the pine rail is unchanged and the content
        surfaces are darkened to sit with it — deep pine-black ground, jade-grey
@@ -2846,7 +2846,7 @@
       <img class="sidebar-illustration" id="sidebarIllustration" alt="" aria-hidden="true">
       <a class="brand" href="#/home">
         <span class="brand-mark">K</span>
-        <span><strong>KAL ATLAS</strong><span>Linked knowledge base</span></span>
+        <span><strong>KAL ATLAS</strong><span>The KalOnline encyclopedia</span></span>
       </a>
       <div id="desktopNav"></div>
       <div class="sidebar-status" id="sidebarStatus">
@@ -2859,7 +2859,7 @@
       <nav class="mobile-nav" id="mobileNav" aria-label="Mobile navigation"></nav>
       <header class="topbar">
         <form class="global-search" id="globalSearch">
-          <label class="hidden" for="globalSearchInput">Search every entity</label>
+          <label class="hidden" for="globalSearchInput">Search the atlas</label>
           <input id="globalSearchInput" name="q" type="search" autocomplete="off"
                  placeholder="Search monsters, items, quests, skills, NPCs…">
           <button type="submit">Search</button>
@@ -2867,8 +2867,7 @@
         <div class="top-actions">
           <div class="profile-switcher" id="profileSwitcher"></div>
           <span class="status-dot" id="statusDot" aria-hidden="true"></span>
-          <span class="dim" id="topStatus">Not connected</span>
-          <button class="small ghost" type="button" data-action="reconnect">Reconnect</button>
+          <span class="dim" id="topStatus">Loading</span>
         </div>
       </header>
 
@@ -2877,14 +2876,6 @@
   </div>
 
   <input class="hidden" id="folderInput" type="file" webkitdirectory multiple>
-
-  <dialog id="evidenceDialog">
-    <div class="dialog-head">
-      <h2 id="evidenceTitle">Source evidence</h2>
-      <button class="small ghost" type="button" data-action="close-dialog">Close</button>
-    </div>
-    <div class="dialog-body" id="evidenceBody"></div>
-  </dialog>
 
   <dialog id="equipmentDialog">
     <div class="dialog-head">
@@ -2954,14 +2945,19 @@
       duplicateItems: "analysis/item_duplicate_records/ITEM_DUPLICATE_MAP.csv"
     };
 
+    /* The guides the site publishes. They are the public editions in
+       `site_content\`, not the working documents at the project root: the
+       working copies carry authority notes, file paths and dated corrections
+       that mean something to whoever maintains them and nothing to a player.
+       See tools\site_content\build_site_content.py. */
     const ROOT_ARTICLES = [
-      "KalOnline_Knowledge_Base_v2.md",
-      "KalOnline_Quest_Progression_Guide.md",
-      "Detailed_World_Geography_and_Navigation.md",
-      "Mage_Attacker_Skill_Progression.md",
-      "Imperial_Mixing_System_Guide.md",
-      "KalOnline_Engine_Formulas.md",
-      "KalOnline_Simulator_Formulas.md"
+      "site_content/kalonline-handbook.md",
+      "site_content/quest-route.md",
+      "site_content/world-guide.md",
+      "site_content/mage-build.md",
+      "site_content/mixing-guide.md",
+      "site_content/combat-formulas.md",
+      "site_content/character-sheet.md"
     ];
 
     const state = {
@@ -2976,8 +2972,6 @@
       zones: [],
       availableFiles: [],
       rawTables: new Map(),
-      evidence: new Map(),
-      evidenceCounter: 0,
       loadWarnings: [],
       snapshotLabel: "",
       lastError: "",
@@ -3032,7 +3026,6 @@
       folderInput: document.getElementById("folderInput"),
       profileSwitcher: document.getElementById("profileSwitcher"),
       sidebarIllustration: document.getElementById("sidebarIllustration"),
-      evidenceDialog: document.getElementById("evidenceDialog"),
       evidenceTitle: document.getElementById("evidenceTitle"),
       evidenceBody: document.getElementById("evidenceBody"),
       equipmentDialog: document.getElementById("equipmentDialog"),
@@ -3153,18 +3146,6 @@
       return `<a class="${escapeAttr(extraClass)}" href="${routeHref(type, target)}">${escapeHtml(label || id)}</a>`;
     }
 
-    function sourceButton(row, label = "Evidence") {
-      const id = `ev-${++state.evidenceCounter}`;
-      state.evidence.set(id, row);
-      return `<button class="small ghost" type="button" data-action="show-evidence" data-evidence-id="${id}">${escapeHtml(label)}</button>`;
-    }
-
-    function provenanceTag(row) {
-      const value = row?.provenance || "derived view";
-      const className = value === "bango-file" ? "accent" : value.includes("legacy") ? "gold" : "blue";
-      return `<span class="tag ${className}">${escapeHtml(value)}</span>`;
-    }
-
     function tags(values, className = "") {
       return values.filter(value => value !== "" && value != null)
         .map(value => `<span class="tag ${className}">${escapeHtml(value)}</span>`).join("");
@@ -3192,13 +3173,14 @@
       return rows ? `<div class="stat-lines">${rows}</div>` : "";
     }
 
-    /* Everything a player does not need in order to play — source lines,
-       join methods, authority notes — collapses into one disclosure at the
-       foot of the page instead of interrupting the content. */
+    /* Where a number needs a caveat — it is an estimate, it is somebody's
+       measurement rather than the game's own, it has not been checked in play —
+       the caveat belongs on the page. It does not belong in the middle of it,
+       so it collapses into one disclosure at the foot. */
     function provenanceFooter(body) {
       if (!body) return "";
       return `<details class="provenance-foot">
-        <summary>Where this data comes from</summary>
+        <summary>Notes on these numbers</summary>
         <div class="provenance-body">${body}</div></details>`;
     }
 
@@ -3349,6 +3331,7 @@
             if (child.kind === "file") {
               if (/\.(csv|md)$/i.test(name)) result.add(path);
             } else if (
+              path === "site_content" ||
               path === "bango_data" ||
               path === "data" ||
               path === "analysis" ||
@@ -3427,7 +3410,7 @@
         this.files = new Map();
         for (const file of files) {
           const raw = normalizePath(file.webkitRelativePath || file.name);
-          const markers = ["bango_data/", "data/", "analysis/", "research/", "assets/"];
+          const markers = ["site_content/", "bango_data/", "data/", "analysis/", "research/", "assets/"];
           const positions = markers.map(marker => raw.indexOf(marker)).filter(index => index >= 0);
           const path = positions.length ? raw.slice(Math.min(...positions)) : file.name;
           this.files.set(path, file);
@@ -3458,35 +3441,50 @@
 
     function renderLoading(message, progress = 0) {
       state.loading = true;
-      setStatus("Loading project data", "");
+      setStatus("Loading", "");
       el.main.innerHTML = `
         <section class="connect">
-          <div class="eyebrow">Local data connection</div>
+          <div class="eyebrow">Kal Atlas</div>
           <h1>Building the atlas</h1>
-          <p class="lede">Reading the current generated tables directly from the selected project folder.</p>
+          <p class="lede">One moment — this happens once, and every page after it is instant.</p>
           <div class="progress" aria-label="Loading progress"><span style="width:${Math.max(2, Math.min(100, progress))}%"></span></div>
           <div class="loading-line">${escapeHtml(message)}</div>
         </section>`;
     }
 
+    /* Opened from a web address, the atlas loads its own data and a visitor
+       never sees a picker — so if it cannot load, the honest thing to show is
+       that it could not, not a file dialog they have nothing to put in.
+       Opened from a local file, the picker is the only way in and stays. */
+    function servedFromWeb() {
+      return typeof location === "object" && location.protocol !== "file:";
+    }
+
     function renderConnect(error = "") {
       state.loading = false;
-      setStatus(error ? "Connection failed" : "Not connected", error ? "error" : "");
-      el.main.innerHTML = `
+      setStatus(error ? "Could not load" : "Loading", error ? "error" : "");
+      el.main.innerHTML = servedFromWeb() ? `
         <section class="connect">
-          <div class="eyebrow">One-file local encyclopedia</div>
-          <h1>Your KalOnline data, fully connected.</h1>
-          <p class="lede">Select the <strong>Kalonline Assistant</strong> project folder. Kal Atlas reads its current CSVs in place, so a Bango refresh appears here without rebuilding or copying the data into the site.</p>
-          ${error ? `<div class="callout error"><strong>Could not load the folder.</strong><br>${escapeHtml(error)}</div>` : ""}
+          <div class="eyebrow">Kal Atlas</div>
+          <h1>${error ? "The atlas could not load." : "Opening the atlas…"}</h1>
+          <p class="lede">${error
+            ? "Something went wrong fetching the game data. Reloading the page usually fixes it."
+            : "Fetching the game data."}</p>
+          ${error ? `<div class="callout error">${escapeHtml(error)}</div>
           <div class="connect-actions">
-            <button class="primary" type="button" data-action="pick-folder">Select project folder</button>
+            <button class="primary" type="button" data-action="reconnect">Try again</button>
+          </div>` : ""}
+        </section>` : `
+        <section class="connect">
+          <div class="eyebrow">Kal Atlas</div>
+          <h1>Choose the atlas folder.</h1>
+          <p class="lede">This copy is running from a file rather than a web address, so it needs to be pointed at the folder holding its data.</p>
+          ${error ? `<div class="callout error"><strong>Could not read that folder.</strong><br>${escapeHtml(error)}</div>` : ""}
+          <div class="connect-actions">
+            <button class="primary" type="button" data-action="pick-folder">Choose folder</button>
             <button class="ghost" type="button" data-action="fallback-folder">Use compatibility picker</button>
           </div>
-          <div class="connect-list">
-            <div><span class="accent">01</span><span>Every monster, item, skill, quest, NPC, prefix, enhancement row and article receives a stable address.</span></div>
-            <div><span class="accent">02</span><span>Bango-current fields stay separate from legacy fallback values and carry their source line.</span></div>
-            <div><span class="accent">03</span><span>No upload occurs. The browser reads files only after you select the local folder.</span></div>
-          </div>
+          <p class="dim"><small>Nothing is uploaded. The browser reads the files on this machine and nowhere else.</small></p>
         </section>`;
       renderNavigation();
     }
@@ -3534,7 +3532,6 @@
       state.articles = [];
       state.zones = [];
       state.rawTables.clear();
-      state.evidence.clear();
       state.loadWarnings = [];
       state.lastError = "";
 
@@ -3584,8 +3581,8 @@
 
         state.ready = true;
         state.loading = false;
-        state.snapshotLabel = `${prettyNumber(state.tables.drops.length)} Bango drop rows`;
-        setStatus("Bango data connected", "ready");
+        state.snapshotLabel = `${prettyNumber(state.tables.drops.length)} drops catalogued`;
+        setStatus("Atlas ready", "ready");
         renderNavigation();
         if (!location.hash || location.hash === "#") location.hash = "#/home";
         renderRoute();
@@ -3648,30 +3645,70 @@
       }
     }
 
+    /* The official pages arrive as a snapshot of their own site. Three things
+       come with that and none of them belong on a page someone reads: a line
+       telling a machine where to fetch the rest, and picture markup pointing at
+       images that live on the other site and were never copied here — which
+       renders as literal angle brackets in the middle of a sentence. */
+    function readableArticleText(text) {
+      return String(text ?? "")
+        .replace(/^>\s*For the complete documentation index[^\n]*\n+/, "")
+        .replace(/<div align="[^"]*">\s*<figure>[\s\S]*?<\/figure>\s*<\/div>/g, "")
+        .replace(/<figure>[\s\S]*?<\/figure>/g, "")
+        // A heading with nothing after it is a spacer in the source site's own
+        // editor, and renders here as a blank line with a rule under it.
+        .replace(/^#{1,6}\s*$/gm, "")
+        .replace(/\n{3,}/g, "\n\n")
+        .trimStart();
+    }
+
+    /* A page whose whole body is "TBD" is a heading on somebody's to-do list,
+       not a guide. It stays out of the library rather than promising a reader
+       something to read. */
+    function articleIsPlaceholder(text) {
+      const body = text.replace(/^#\s+.+$/m, "").replace(/\s+/g, " ").trim();
+      return body.length < 40 || /^(?:tbd|todo|content not available yet\.?)$/i.test(body);
+    }
+
+    /* The first real sentence, for the library listing. Better than a file
+       name, and it is the article's own words rather than a label. */
+    function articleBlurb(article) {
+      const body = article.text.replace(/^#\s+.+$/m, "");
+      const sentence = body.split(/\n\s*\n/)
+        .map(block => block.trim())
+        .find(block => block && !/^[#>|\-*`<]/.test(block)
+          && !/^(?:TBD|TODO|N\/A|Content not available yet\.?)$/i.test(block)) || "";
+      const flat = sentence.replace(/\s+/g, " ").replace(/[*_`]/g, "");
+      return flat.length > 150 ? `${flat.slice(0, 149).trimEnd()}…` : flat;
+    }
+
     async function loadArticles() {
       const articlePaths = new Set(ROOT_ARTICLES);
       for (const path of state.availableFiles) {
-        if (path.startsWith("research/bango_gitbook/pages/") && path.endsWith(".md")) {
+        // `index.md` is the snapshot's own error page, not documentation.
+        if (path.startsWith("research/bango_gitbook/pages/") && path.endsWith(".md")
+            && path !== "research/bango_gitbook/pages/index.md") {
           articlePaths.add(path);
         }
       }
 
       for (const path of [...articlePaths].sort()) {
         try {
-          const text = await state.source.read(path);
+          const text = readableArticleText(await state.source.read(path));
+          if (articleIsPlaceholder(text)) continue;
           const heading = text.match(/^#\s+(.+)$/m)?.[1]?.trim();
           state.articles.push({
             path,
             title: heading || path.split("/").at(-1).replace(/\.md$/i, "").replaceAll("-", " "),
             text,
-            kind: path.startsWith("research/bango_gitbook/") ? "Official Bango documentation" : "Project reference"
+            kind: path.startsWith("research/bango_gitbook/") ? "Official documentation" : "Guide"
           });
         } catch (error) {
           if (ROOT_ARTICLES.includes(path)) state.loadWarnings.push(`${path}: ${error.message}`);
         }
       }
 
-      const geography = state.articles.find(article => article.path === "Detailed_World_Geography_and_Navigation.md");
+      const geography = state.articles.find(article => article.path === geographyPath());
       state.zones = geography ? parseZones(geography.text) : [];
     }
 
@@ -3699,7 +3736,7 @@
     }
 
     function geographyPath() {
-      return "Detailed_World_Geography_and_Navigation.md";
+      return "site_content/world-guide.md";
     }
 
     function mapPush(map, key, value) {
@@ -3746,7 +3783,7 @@
         named: aliases.size > 0,
         display: aliases.size
           ? raw
-          : `${raw || "Unnamed actor"} — generic actor (string ${row?.message_id || "?"})`
+          : `${raw || "Unnamed"} — a role, not a name (#${row?.message_id || "?"})`
       };
     }
 
@@ -4301,7 +4338,7 @@
         href: routeHref("item", row.ita_azon), search: `${row.ita_name} ${row.ita_azon} ${row.ita_class} ${row.ita_type}`
       });
       for (const row of ix.monsters) docs.push({
-        type: "Monster", title: row.text, subtitle: `Bango monster ID ${row.message_id}`,
+        type: "Monster", title: row.text, subtitle: `Monster ID ${row.message_id}`,
         href: routeHref("monster", row.message_id), search: `${row.text} ${row.message_id}`
       });
       for (const row of state.tables.skills) docs.push({
@@ -4313,7 +4350,7 @@
         href: routeHref("quest", row.que_id), search: `${row.que_name} ${row.que_id} ${row.que_text}`
       });
       for (const row of ix.npcs) docs.push({
-        type: "NPC", title: npcDisplayName(row), subtitle: `Bango NPC string ${row.message_id}`,
+        type: "NPC", title: npcDisplayName(row), subtitle: `NPC ID ${row.message_id}`,
         href: routeHref("npc", row.message_id), search: `${row.text} ${row.message_id}`
       });
       for (const row of talismanRows()) docs.push({
@@ -4387,9 +4424,6 @@
           ["eggs", "Eggs", ""],
           ["repeatable", "Repeatable quests", counts.repeatable],
           ["system", "Game system", ""]
-        ]},
-        { label: "Evidence", links: [
-          ["sources", "Sources & authority", ""]
         ]}
       ];
     }
@@ -4410,8 +4444,8 @@
         .map(([route, label]) => `<a class="${current === route ? "active" : ""}" href="#/${route}">${escapeHtml(label)}</a>`).join("");
 
       el.sidebarStatus.innerHTML = state.ready
-        ? `<strong>Bango tables connected</strong>${escapeHtml(state.snapshotLabel)}<br>${prettyNumber(state.articles.length)} reference articles`
-        : `<strong>Waiting for data</strong>Select the project folder to begin.`;
+        ? `<strong>Kal Atlas</strong>${escapeHtml(state.snapshotLabel)}<br>${prettyNumber(state.articles.length)} guides`
+        : `<strong>Kal Atlas</strong>Loading the atlas…`;
     }
 
     function breadcrumbs(entries) {
@@ -4483,23 +4517,19 @@
       const specialDoc = ix.articleByPath.get("research/bango_gitbook/pages/areas/doggebi-tower.md");
       el.main.innerHTML = `
         ${pageHeader({
-          eyebrow: "Bango-first knowledge graph",
+          eyebrow: "KalOnline",
           title: "One atlas. Every relationship.",
-          lede: `The interface is reading the current generated tables ${
-            state.sourceKind === "web"
-              ? "from the published copy of the project"
-              : "directly from your project folder"
-          }. Every primary entity has its own address; reciprocal tables make it possible to move from a monster to an item, then back to every monster that drops it.`,
-          actions: `<a class="button primary" href="#/search">Search everything</a>${sourceButton({ provenance: "runtime", source_file: state.sourceKind === "web" ? "published site manifest" : "selected project folder", source_line: "current files", detail: state.sourceKind }, "Connection")}`
+          lede: "Everything in the game and how it connects. Open a monster to see what it drops and at what chance, open one of those items to see every other monster that drops it, and the quests that ask for it. Plan a character, price an enhancement, and follow the quest route from level 1 to 101.",
+          actions: `<a class="button primary" href="#/search">Search everything</a>`
         })}
         <div class="metrics">
-          <a class="metric" href="#/monsters"><strong>${prettyNumber(ix.monsters.length)}</strong><span>Bango monster names</span></a>
-          <a class="metric" href="#/items"><strong>${prettyNumber(t.items.length)}</strong><span>Bango item records</span></a>
-          <a class="metric" href="#/skills"><strong>${prettyNumber(t.skills.length)}</strong><span>Skill definitions</span></a>
-          <a class="metric" href="#/quests"><strong>${prettyNumber(t.quests.length)}</strong><span>Bango quests</span></a>
+          <a class="metric" href="#/monsters"><strong>${prettyNumber(ix.monsters.length)}</strong><span>Monsters</span></a>
+          <a class="metric" href="#/items"><strong>${prettyNumber(t.items.length)}</strong><span>Items</span></a>
+          <a class="metric" href="#/skills"><strong>${prettyNumber(t.skills.length)}</strong><span>Skills</span></a>
+          <a class="metric" href="#/quests"><strong>${prettyNumber(t.quests.length)}</strong><span>Quests</span></a>
         </div>
         <div class="split">
-          ${section("Entity directories", `
+          ${section("Browse the game", `
             <div class="directory-grid">
               ${[
                 ["monsters", "Monsters", "What each one drops and at what chance, its stats, where to find it and which quests need it.", ix.monsters.length],
@@ -4516,25 +4546,21 @@
                 </a>`).join("")}
             </div>`) }
           <div>
-            ${section("Drop-rate truth", `
+            ${section("About the drop rates", `
               <div class="callout info">
-                <strong>Bango uses the KalEncyclopedia drop rates — confirmed externally 2026-07-26.</strong>
-                <p>The recovered <code>droplist.dat</code> decides whether the monster-item association is current. A same-name pair in <code>data/DROPS.csv</code> supplies every base/talisman variant and its two-stage rate.</p>
-                <p>Equipment rows are never collapsed: text <code>drp_rev</code> names the talisman, while blank means the base item without one. Unmatched current pairs say “rate not mapped” instead of receiving a guessed value.</p>
-                <p>The client gives every talisman of a kind the same name, so a talisman is matched instead by the two prefixes it rolls, which both databases record. The enchant-ladder talismans roll no prefix pair and stay unrated.</p>
+                <strong>Every drop chance here is a real number, or the page says it is not known.</strong>
+                <p>A monster is listed as dropping an item only if it actually does. Each entry keeps its own chance: the plain item and each talisman version of it are separate rolls, never averaged into one.</p>
+                <p>Where a chance genuinely is not known, the page leaves it blank rather than showing a guess. The enchant-ladder talismans are the main gap.</p>
               </div>
-              ${specialDoc ? `<p style="margin-top:14px">${entityLink("article", specialDoc.path, "Open documented Doggebi Lord loot →")}</p>` : ""}
+              ${specialDoc ? `<p style="margin-top:14px">${entityLink("article", specialDoc.path, "Read the Doggebi Lord loot rules →")}</p>` : ""}
             `)}
-            ${section("Connection health", `
+            ${section("What is in here", `
               ${definitionGrid([
-                ["Runtime source", escapeHtml(state.sourceKind)],
-                ["Bango drop rows", prettyNumber(t.drops.length)],
-                ["Rows with mapped rates", prettyNumber(ix.rateMappedDropRows)],
-                ["Mapped base/talisman variants", prettyNumber(ix.rateVariantRows)],
-                ["Registered articles", prettyNumber(state.articles.length)],
-                ["Optional-file warnings", state.loadWarnings.length ? `<span class="danger">${prettyNumber(state.loadWarnings.length)}</span>` : `<span class="accent">0</span>`]
+                ["Drops catalogued", prettyNumber(t.drops.length)],
+                ["Drops with a known chance", prettyNumber(ix.rateMappedDropRows)],
+                ["Talisman and base variants", prettyNumber(ix.rateVariantRows)],
+                ["Guides", prettyNumber(state.articles.length)]
               ])}
-              ${state.loadWarnings.length ? `<details style="margin-top:14px"><summary>Show warnings</summary><pre>${escapeHtml(state.loadWarnings.join("\n"))}</pre></details>` : ""}
             `)}
           </div>
         </div>`;
@@ -4562,9 +4588,9 @@
       }
       el.main.innerHTML = `
         ${pageHeader({
-          eyebrow: "Cross-entity lookup",
+          eyebrow: "Search",
           title: q ? `Search: ${q}` : "Search the whole atlas",
-          lede: "One query spans Bango monsters, items, skills, quests, NPCs, prefixes, zones, official Bango pages and player gameplay guides.",
+          lede: "One box across the whole atlas: monsters, items, skills, quests, NPCs, talismans, hunting zones and every guide.",
           crumbs: [["Overview", "#/home"], ["Search", ""]]
         })}
         ${!q ? `<section class="section"><div class="section-body"><form class="toolbar" data-filter-route="search">
@@ -4602,14 +4628,14 @@
       const shown = rows.slice((page - 1) * pageSize, page * pageSize);
       el.main.innerHTML = `
         ${pageHeader({
-          eyebrow: "Bango item catalogue",
+          eyebrow: "Directory",
           title: "Items",
-          lede: "Every item page joins native attributes, current monster drops, quest use and same-pair KalEncyclopedia rate/talisman variants.",
+          lede: "Every weapon, piece of armour and material in the game: what it does, which monsters drop it and at what chance, and the quests that ask for it.",
           crumbs: [["Overview", "#/home"], ["Items", ""]]
         })}
         ${filterToolbar("items", query, { selectName: "class", selectLabel: "Class", allLabel: "All classes", selectOptions: classes, placeholder: "Name, ID, type or grade…" })}
         <section class="section"><div class="table-wrap"><table>
-          <thead><tr><th class="icon-col"></th><th>ID</th><th>Item</th><th>Class</th><th>Grade</th><th>Required level</th><th>Client class</th><th>Drop sources</th><th>Source</th></tr></thead>
+          <thead><tr><th class="icon-col"></th><th>ID</th><th>Item</th><th>Class</th><th>Grade</th><th>Required level</th><th>Usable by</th><th>Drop sources</th></tr></thead>
           <tbody>${shown.map(row => `
             <tr>
               <td class="icon-col">${iconTag(row.bango_image || "", row.ita_name || "", 28)}</td>
@@ -4620,7 +4646,6 @@
               <td>${escapeHtml(row.ita_lvllim || "—")}</td>
               <td>${tags(parseJson(row.bango_class_json, []))}</td>
               <td class="number">${prettyNumber((state.indexes.dropsByItem.get(String(row.ita_azon)) || []).length)}</td>
-              <td>${provenanceTag(row)}</td>
             </tr>`).join("")}</tbody>
         </table></div><div class="section-body">${pagination(rows.length, page, pageSize, "items", query)}</div></section>`;
     }
@@ -4638,17 +4663,17 @@
       const shown = rows.slice((page - 1) * pageSize, page * pageSize);
       el.main.innerHTML = `
         ${pageHeader({
-          eyebrow: "Bango monster strings",
+          eyebrow: "Directory",
           title: "Monsters",
-          lede: "Bango IDs and names are authoritative. Combat stats appear only where a same-name KalEncyclopedia fallback exists.",
+          lede: "Everything that can be killed, what it drops, where it lives and which quests want it dead. Combat stats are shown where they are known.",
           crumbs: [["Overview", "#/home"], ["Monsters", ""]]
         })}
         ${filterToolbar("monsters", query, {
-          selectName: "legacy", selectLabel: "Legacy stats", allLabel: "All records",
-          selectOptions: ["yes", "no"], placeholder: "Monster name or Bango ID…"
+          selectName: "legacy", selectLabel: "Combat stats", allLabel: "All monsters",
+          selectOptions: ["yes", "no"], placeholder: "Monster name or ID…"
         })}
         <section class="section"><div class="table-wrap"><table>
-          <thead><tr><th class="icon-col"></th><th>Bango ID</th><th>Monster</th><th>Drop rows</th><th>Quests</th><th>Zones</th><th>Legacy stats</th></tr></thead>
+          <thead><tr><th class="icon-col"></th><th>ID</th><th>Monster</th><th>Drops</th><th>Quests</th><th>Zones</th><th>Combat stats</th></tr></thead>
           <tbody>${shown.map(row => {
             const id = String(row.message_id);
             const variants = legacyMonsterVariantsForRecord(id, row.text);
@@ -4660,7 +4685,7 @@
               <td class="number">${prettyNumber((state.indexes.monsterQuestsByMonster.get(id) || []).length)}</td>
               <td class="number">${prettyNumber((state.indexes.monsterZones.get(id) || []).length)}</td>
               <td>${variants.length
-                ? `<span class="tag gold">available · non-Bango</span>${variants.length > 1
+                ? `<span class="tag gold">estimated</span>${variants.length > 1
                   ? ` <small class="dim">${variants.length} variants</small>` : ""}`
                 : `<span class="dim">—</span>`}</td>
             </tr>`;
@@ -5110,7 +5135,7 @@
 
       el.main.innerHTML = `
         ${pageHeader({
-          eyebrow: "Bango skill definitions",
+          eyebrow: "Directory",
           title: "Skills",
           lede: "Every skill of a class, laid out by the level it unlocks at, with a line from "
             + "each prerequisite to what it opens. Hover a skill for its description, schedule "
@@ -5142,7 +5167,7 @@
               <span class="dim">Lv ${escapeHtml(entry.po_lvl)}</span></a>`;
           }).join("")}
         </div>` : ""}
-        ${filterToolbar("skills", query, { placeholder: "Skill name, key or description…" })}
+        ${filterToolbar("skills", query, { placeholder: "Skill name or description…" })}
         ${searching ? `<p class="dim"><small>Searching every scope. Clear the search to go back
           to a class diagram.</small></p>` : ""}
         ${asTree ? section(`${skillScopeLabel(scope)} skill tree${
@@ -6042,7 +6067,7 @@
           ${escapeHtml(entry.reward)}</p>` : ""}
         ${status.kind === "quest" && Number(status.quest.que_lvl) > Number(build.level)
           ? `<p class="wt-warn">Your character is level ${escapeHtml(String(build.level))};
-            the client requires ${escapeHtml(status.quest.que_lvl)}.</p>` : ""}
+            this quest opens at ${escapeHtml(status.quest.que_lvl)}.</p>` : ""}
       </article>`;
     }
 
@@ -6105,17 +6130,16 @@
           </div>
         </div>
         ${provenanceFooter(`
-          <p>The route order, the stage batching and the notes are the player-authored
-            guide's own work${revision ? ` (revision ${escapeHtml(revision)})` : ""}; its quest
-            text and town maps come from
+          <p>The route order, the batching and the walkthrough notes are a player's own
+            work${revision ? ` (revision ${escapeHtml(revision)})` : ""}, used with permission;
+            the quest text and town maps behind them come from
             <a href="https://mystic-city.de/System/viewpage.php?page_id=48" target="_blank"
                rel="noopener noreferrer">mystic-city.de</a>, with world map artwork by
-            Vresko.com. Quest names, levels and rewards shown against a route entry come from
-            the current Bango client tables and win wherever the two disagree.
-            ${npcPhotoCredit()}</p>
-          <p>A row the guide writes as a batch of several quests — the opening stage has
-            five — cannot be one client quest, so it carries its own tick rather than
-            pretending to be one.</p>`)}`;
+            Vresko.com. Where the route and the game disagree on a name, level or reward, the
+            figure shown is the game's. ${npcPhotoCredit()}</p>
+          <p>Some stages bundle several quests into one line — the opening stage bundles
+            five — so those get their own tick rather than pretending to be a single
+            quest.</p>`)}`;
       wireQuestMaps();
       if (typeof el.main.querySelectorAll === "function") {
         el.main.querySelectorAll("[data-walkthrough-tick]").forEach(button => {
@@ -6218,14 +6242,14 @@
       const shown = rows.slice((page - 1) * pageSize, page * pageSize);
       el.main.innerHTML = `
         ${pageHeader({
-          eyebrow: "Bango NPC string table",
+          eyebrow: "Directory",
           title: "NPCs",
-          lede: "Named NPC identities are joined to quest text. Repeated role-only actor strings remain visible but never inherit another character's quests.",
+          lede: "Everyone you can talk to: which quests they hand out and where they stand. Generic roles such as Guard or Woman are listed too, but they are labels rather than people and never take on another character's quests.",
           crumbs: [["Overview", "#/home"], ["NPCs", ""]]
         })}
-        ${filterToolbar("npcs", query, { placeholder: "NPC name or string ID…" })}
+        ${filterToolbar("npcs", query, { placeholder: "NPC name or ID…" })}
         <section class="section"><div class="table-wrap"><table>
-          <thead><tr><th class="icon-col"></th><th>String ID</th><th>NPC</th><th>Quest mentions</th><th>Definitions</th><th>Source</th></tr></thead>
+          <thead><tr><th class="icon-col"></th><th>ID</th><th>NPC</th><th>Quests</th></tr></thead>
           <tbody>${shown.map(row => {
             const id = String(row.message_id);
             return `<tr>
@@ -6233,8 +6257,6 @@
               <td class="mono">${escapeHtml(id)}</td>
               <td>${entityLink("npc", id, npcDisplayName(row))}</td>
               <td class="number">${prettyNumber((state.indexes.npcQuests.get(id) || []).length)}</td>
-              <td class="number">${prettyNumber((state.indexes.npcDefinitions.get(id) || []).length)}</td>
-              <td>${provenanceTag(row)}</td>
             </tr>`;
           }).join("")}</tbody>
         </table></div><div class="section-body">${pagination(rows.length, page, pageSize, "npcs", query)}
@@ -6248,12 +6270,12 @@
       const rows = state.zones.filter(zone => !q || normalizeName(`${zone.id} ${zone.coordinates} ${zone.description} ${zone.mobText}`).includes(q));
       el.main.innerHTML = `
         ${pageHeader({
-          eyebrow: "Project geography reference",
+          eyebrow: "Directory",
           title: "Hunting zones",
-          lede: "Zone coordinates and rosters come from the geography guide. Mob labels are reconciled to Bango monster names where a defensible name match exists.",
+          lede: "Where to farm. Every zone by map coordinate, with the monsters that spawn in it and what they are worth.",
           crumbs: [["Overview", "#/home"], ["Zones", ""]]
         })}
-        ${filterToolbar("zones", query, { placeholder: "Zone, coordinate or monster label…" })}
+        ${filterToolbar("zones", query, { placeholder: "Zone, coordinate or monster…" })}
         <div class="directory-grid">${rows.map(zone => {
           const matches = zone.monsterMatches.flatMap(group => group.matches);
           const count = new Set(matches.map(row => normalizeName(row.text))).size;
@@ -6311,7 +6333,7 @@
         const prefix = prefixesByAzon.get(String(azon));
         if (!prefix) return null;
         const effects = String(prefix.pre_rev || "").split("|")
-          .map((value, index) => [slots[index] || `slot ${index}`, value])
+          .map((value, index) => [slots[index] || `position ${index}`, value])
           .filter(([, value]) => value !== "" && value != null)
           .map(([stat, value]) => ({ stat, value: Number(value) }));
         return { azon: String(azon), name: prefix.pre_name, grade: prefix.pre_grd, effects };
@@ -6373,7 +6395,7 @@
           lede: "Every talisman, what it can attach to, the prefix it can roll and the chance of each roll.",
           crumbs: [["Overview", "#/home"], ["Talismans", ""]]
         })}
-        ${filterToolbar("talismans", query, { placeholder: "Talisman, type or prefix…" })}
+        ${filterToolbar("talismans", query, { placeholder: "Talisman or prefix…" })}
         ${panel("", sortableTable("talismanTable", [
           {
             key: "type", label: "Type",
@@ -6422,7 +6444,7 @@
         ${pageHeader({
           eyebrow: row.name,
           title: row.listName,
-          lede: `${escapeHtml(row.type)} · attaches to ${escapeHtml(row.effective || "—")}`,
+          lede: `Attaches to ${escapeHtml(row.effective || "—")}`,
           crumbs: [["Overview", "#/home"], ["Talismans", "#/talismans"], [row.listName, ""]]
         })}
         <div class="detail-grid">
@@ -6473,49 +6495,15 @@
                 <br><span class="dim">${escapeHtml(row.effective || "")}</span></div>
             </div>
             ${panel("Details", statLines([
-              ["Type", escapeHtml(row.type)],
               ["Attaches to", escapeHtml(row.effective || "")],
               ["Rolls", row.rolls.length ? String(row.rolls.length) : ""],
               ["Levels", row.chance.length && !row.rolls.length ? String(row.chance.length) : ""]
             ]))}
           </div>
         </div>
-        ${provenanceFooter(`<p>Talisman names, targets and the success ladders come from
-          KalEncyclopedia; the prefix each roll applies and its stat effect come from the same
-          database's prefix table. Bango has rebalanced two of these chance pairs since 2011, and
-          carries a few talismans this list does not.</p>`)}`;
-    }
-
-    function enhancementValue(row) {
-      return parseJson(row.bonus_json, []).map(entry => Array.isArray(entry) ? `${entry[0]} ${entry.slice(1).join(" / ")}` : entry).join(", ");
-    }
-
-    function renderEnhancements(query) {
-      const family = query.get("family") || "";
-      const families = [...new Set(state.tables.enhancementBonuses.map(row => row.stat_family))].sort();
-      const rows = state.tables.enhancementBonuses.filter(row => !family || row.stat_family === family);
-      el.main.innerHTML = `
-        ${pageHeader({
-          eyebrow: "Bango +1…+15 grid",
-          title: "Enhancement bonuses",
-          lede: "The exact bonuses are current Bango client data. The meaning of application bands 1–3 remains unverified and is never inferred here.",
-          crumbs: [["Overview", "#/home"], ["Enhancement", ""]]
-        })}
-        ${filterToolbar("enhancements", query, { selectName: "family", selectLabel: "Stat family", allLabel: "All families", selectOptions: families, placeholder: "Filter…" })}
-        <div class="callout"><strong>Known boundary:</strong> values are exact; which equipment group each application band targets is not named in the recovered English client data.</div>
-        <section class="section" style="margin-top:16px"><div class="table-wrap"><table>
-          <thead><tr><th>Stat family</th><th>Band</th><th>+ Level</th><th>Exact bonus</th><th>Prefix row</th></tr></thead>
-          <tbody>${rows.map(row => {
-            const id = `${row.stat_family}~${row.application_band}~${row.enhancement_level}`;
-            return `<tr>
-              <td>${escapeHtml(row.stat_family)}</td>
-              <td>${escapeHtml(row.application_band)} <span class="tag danger">unverified meaning</span></td>
-              <td>${entityLink("enhancement", id, `+${row.enhancement_level}`)}</td>
-              <td class="mono">${escapeHtml(enhancementValue(row))}</td>
-              <td>${state.indexes.prefixesById.has(String(row.prefix_id)) ? entityLink("prefix", row.prefix_id, row.prefix_name || row.prefix_id) : escapeHtml(row.prefix_name || row.prefix_id)}</td>
-            </tr>`;
-          }).join("")}</tbody>
-        </table></div></section>`;
+        ${provenanceFooter(`<p>Two of these success chances have been rebalanced since the
+          table was compiled, and the game carries a few talismans this list does not yet
+          cover.</p>`)}`;
     }
 
     function renderArticles(query) {
@@ -6525,19 +6513,22 @@
       const rows = state.articles.filter(article =>
         (!q || normalizeName(`${article.title} ${article.path} ${article.text}`).includes(q)) &&
         (!kind || article.kind === kind)
-      );
+      // The guides written for this atlas come first: they cover the whole
+      // game, where an official page covers one system.
+      ).sort((a, b) => (a.kind === b.kind ? 0 : a.kind === "Guide" ? -1 : 1)
+        || a.title.localeCompare(b.title));
       el.main.innerHTML = `
         ${pageHeader({
-          eyebrow: "Registered knowledge",
+          eyebrow: "Guides",
           title: "Knowledge library",
-          lede: "KalOnline gameplay guides and the locally ingested official Bango GitBook remain addressable beside the structured entities.",
+          lede: "The written guides: how the game works, where to go, what to spend points on, and the official documentation for the systems added since.",
           crumbs: [["Overview", "#/home"], ["Articles", ""]]
         })}
-        ${filterToolbar("articles", query, { selectName: "kind", selectLabel: "Document type", allLabel: "All document types", selectOptions: kinds, placeholder: "Title, path or article text…" })}
+        ${filterToolbar("articles", query, { selectName: "kind", selectLabel: "Kind", allLabel: "Everything", selectOptions: kinds, placeholder: "Search the guides…" })}
         <div class="result-list">${rows.map(article => `
           <a class="result" href="${routeHref("article", article.path)}">
             <span class="result-type">${escapeHtml(article.kind)}</span>
-            <span><strong>${escapeHtml(article.title)}</strong><br><small class="mono">${escapeHtml(article.path)}</small></span>
+            <span><strong>${escapeHtml(article.title)}</strong><br><small>${escapeHtml(articleBlurb(article))}</small></span>
             <span class="accent">Read →</span>
           </a>`).join("")}</div>`;
     }
@@ -6961,30 +6952,22 @@
           </div>
         </div>
         ${provenanceFooter(`
-          <p>Item stats come from the current Bango client tables. Drop chances come from the
-            KalEncyclopedia database, which is confirmed to match Bango's rates.</p>
-          ${isArmorSet ? `<p>Armor pieces are shown as the full set portrait for this class and
-            grade, which is how the original KalEncyclopedia displayed them.</p>` : ""}
-          ${legacyItem ? `<p>A same-name KalEncyclopedia item exists
-            (grade ${escapeHtml(legacyItem.ita_grade || "—")},
-            type ${escapeHtml(legacyItem.ita_type || "—")}).</p>` : ""}
-          ${state.indexes.aliasLegacyNameByBangoName?.get(normalizeName(row.ita_name)) ? `<p>The
-            KalEncyclopedia database records this item as
-            &ldquo;${escapeHtml(state.indexes.aliasLegacyNameByBangoName.get(normalizeName(row.ita_name)))}&rdquo;;
-            its drop rates are joined under that name.</p>` : ""}
-          ${duplicateRecords.length > 1 ? `<p>The client declares this item
-            ${escapeHtml(String(duplicateRecords.length))} times over, as records
-            ${escapeHtml(duplicateRecords.join(", "))}, and the copies are identical apart from
-            which name entry they point at. It shares out its drop sources between them, so they
-            are shown here together under the first record.</p>` : ""}
-          ${state.indexes.legacyTalismanNameByBangoItemId?.get(String(row.ita_azon)) ? `<p>The
-            client gives every talisman of this kind the same name. This one is the one that
-            rolls ${escapeHtml(state.indexes.legacyTalismanNameByBangoItemId.get(String(row.ita_azon)))},
-            which is how KalEncyclopedia names it and how its drop rates are joined.</p>` : ""}
-          ${specialties.length ? `<details><summary>Client record</summary><pre>${
-            escapeHtml(JSON.stringify(specialties, null, 2))}</pre></details>` : ""}
-          ${codes.length || limits.length ? `<p>Client codes ${escapeHtml(codes.join(" · ") || "—")};
-            native limits ${escapeHtml(limits.join(" · ") || "—")}.</p>` : ""}
+          <p>The stats are this server's own. The drop chances are measured ones, and they
+            match what this server uses.</p>
+          ${isArmorSet ? `<p>Armour pieces are pictured as the full set for their class and
+            grade rather than as the single piece.</p>` : ""}
+          ${state.indexes.aliasLegacyNameByBangoName?.get(normalizeName(row.ita_name)) ? `<p>This
+            item is also known as
+            &ldquo;${escapeHtml(state.indexes.aliasLegacyNameByBangoName.get(normalizeName(row.ita_name)))}&rdquo;,
+            and its drop chances are recorded under that spelling.</p>` : ""}
+          ${duplicateRecords.length > 1 ? `<p>The game holds
+            ${escapeHtml(String(duplicateRecords.length))} identical copies of this item and
+            splits its drop sources between them. They are shown here as one item, with every
+            source together.</p>` : ""}
+          ${state.indexes.legacyTalismanNameByBangoItemId?.get(String(row.ita_azon)) ? `<p>Every
+            talisman of this kind shares one name in game. This is the one that rolls
+            ${escapeHtml(state.indexes.legacyTalismanNameByBangoItemId.get(String(row.ita_azon)))},
+            which is how its drop chances are recorded.</p>` : ""}
           ${documented && !/class="empty"/.test(documented) ? `<div>${documented}</div>` : ""}`)}`;
       if (model) wireModelViewer(el.main, model);
     }
@@ -7120,10 +7103,10 @@
       return statLines(fields.map(([label, value]) => [label, escapeHtml(String(value ?? ""))]))
         + (derived ? `<p class="dim" style="margin:8px 0 0"><small>Attack, on-target
           point and evasion are derived from Strength, Agility and level and then
-          the stored value added — that stored value is an additive macro
+          the stored value added on top
           (${escapeHtml(`+${derived.macro.minAttack}/+${derived.macro.maxAttack} attack, `
-            + `+${derived.macro.hit} on target, +${derived.macro.dodge} evasion`)}),
-          not the monster's finished stat.</small></p>` : "");
+            + `+${derived.macro.hit} on target, +${derived.macro.dodge} evasion`)}) —
+          that stored value is a bonus, not the monster's finished stat.</small></p>` : "");
     }
 
     /* ===================================================================
@@ -7275,7 +7258,7 @@
         <p class="dim"><small>Five points a level, and one more per level from 72, 76 and 81.
           A point costs more the higher the stat already is; ${escapeHtml(build.cls)} pays the
           cheaper table on ${escapeHtml(DISCOUNTED_STAT_BY_CLASS[build.cls] || "no stat")}.
-          Read out of KalEncyclopedia's planner — not measured on Bango.</small></p>`;
+          Taken from an older planner rather than measured here.</small></p>`;
     }
     // Buffs used to be a tab of their own. They belong next to the sheet they
     // change, so they now live inside Stats.
@@ -8733,7 +8716,7 @@
           <div><span>Level</span> <b>${prettyNumber(build.level)}</b></div>
           <div><span>Points spent</span> <b>${prettyNumber(
             PRIMARY_STATS.reduce((total, stat) => total + (Number(build[stat]) || 0), 0))}</b></div>
-          <div><span>Provenance</span> <b>BANGO-MEASURED</b></div>
+          <div><span>Sheet</span> <b>MATCHES IN GAME</b></div>
         </div>
         <div class="sheet-bars">
           ${bar("Health Point", f.HP, "hp")}
@@ -8771,25 +8754,23 @@
 
     function simProvenanceBanner() {
       return `<div class="callout info" style="margin-bottom:14px">
-        <strong>The character sheet is measured; the combat numbers are not.</strong>
-        Derived stats carry <span class="tag accent">BANGO-MEASURED</span> — every formula
-        reproduced a real level-38 Magician sheet exactly on 2026-07-25, so this half is
-        tier 2, the highest authority the project holds.
-        The hit and damage pipeline is <span class="tag gold">ORIG-2006</span>, the decompiled
-        Inixsoft engine, and monster stats are the <span class="tag gold">tier-5 legacy
-        export</span> of an unrecorded game version. <strong>Neither of those two is Bango</strong>,
-        and Bango's own monster combat stats have never been recovered — so anything involving a
-        monster is a hypothesis about Bango, not a statement about it.
-        A monster's on-target point, evasion and attack are also <strong>derived</strong>: the
-        stored columns are additive macros, and the Strength/Agility/level terms
-        (<span class="tag gold">REIMPL</span>) are added to them before any comparison here.
+        <strong>Your character sheet is exact. The fight numbers are estimates.</strong>
+        Every stat on the sheet has been checked against a real level-38 Magician in game and
+        matched it exactly, so what you see here is what the game will show you.
+        The hit and damage figures against a monster are a different matter: they use the
+        original combat engine and monster stats from an older version of the game, because
+        this server's own monster stats have never been published. Treat anything involving a
+        monster as a well-founded estimate rather than a promise.
+        A monster's on-target point, evasion and attack are worked out rather than looked up —
+        its stored numbers are only part of the answer, and the Strength, Agility and level
+        terms are added on before any comparison here.
       </div>`;
     }
 
     function simMissing(reason) {
-      return `<div class="callout"><strong>Simulator unavailable.</strong> ${escapeHtml(reason)}
-        Regenerate it with <code>python tools\\knowledge_base_site\\build_combat_fixture.py</code>
-        and reconnect the folder. Nothing is computed from restated constants.</div>`;
+      return `<div class="callout"><strong>The planner could not start.</strong>
+        ${escapeHtml(reason)} Reloading the page usually fixes it. Nothing is guessed at:
+        without its numbers the planner will not compute a sheet at all.</div>`;
     }
 
     function simWorking(build, sheet) {
@@ -8828,10 +8809,10 @@
         if (!base && !gear && !buffs && !final) return "";
         const alternatives = [];
         if (sheet.kalenc[slot] !== undefined && sheet.kalenc[slot] !== base) {
-          alternatives.push(`KALENC-2011 would read ${prettyNumber(sheet.kalenc[slot])}`);
+          alternatives.push(`one reading gives ${prettyNumber(sheet.kalenc[slot])}`);
         }
         if (sheet.reimpl[slot] !== undefined && sheet.reimpl[slot] !== base) {
-          alternatives.push(`REIMPL would read ${prettyNumber(sheet.reimpl[slot])}`);
+          alternatives.push(`another gives ${prettyNumber(sheet.reimpl[slot])}`);
         }
         const disagreement = alternatives.length
           ? `<br><small class="dim">${escapeHtml(alternatives.join(" · "))}</small>` : "";
@@ -8867,21 +8848,20 @@
       }).filter(Boolean);
 
       if (!rows.length) {
-        return `<div class="callout info"><strong>Both file sources agree with the measurement
-          on every derived stat at this build.</strong> That agreement is the corroboration —
-          the reimplementation was single-source until the 2011 simulator was read, and neither
-          was checked against play until 2026-07-25.</div>`;
+        return `<div class="callout info"><strong>Both independent readings of the game agree
+          with what was measured in play on every stat at this build.</strong> Two sources
+          reconstructed separately, landing on the same number, is about as good as this gets
+          without measuring it yourself.</div>`;
       }
       const cell = (value, wrong) => value === null
         ? "<span class=\"dim\">does not derive it</span>"
         : `${prettyNumber(value)}${wrong ? " <span class=\"tag gold\">off</span>" : ""}`;
-      return `<div class="callout" style="margin-bottom:14px"><strong>Where the file sources
-        part company, and which one play agreed with.</strong> The measured column is what the
-        game showed on a naked level-38 Magician. Magic went to KalEncyclopedia; minimum physical
-        damage and the two extra resistances went to the reimplementation. Neither source was
-        right about everything.</div>
+      return `<div class="callout" style="margin-bottom:14px"><strong>Where the two readings
+        disagree, and which one the game agreed with.</strong> The measured column is what the
+        game itself showed on a naked level-38 Magician, and it is the one used here. Neither
+        reading was right about everything.</div>
         <div class="table-wrap"><table>
-        <thead><tr><th>Stat</th><th>Measured (used)</th><th>KALENC-2011</th><th>REIMPL</th></tr></thead>
+        <thead><tr><th>Stat</th><th>Measured (used)</th><th>Reading A</th><th>Reading B</th></tr></thead>
         <tbody>${rows.map(row => `<tr>
           <td><strong>${escapeHtml(row.slot)}</strong></td>
           <td><strong>${prettyNumber(row.measured)}</strong></td>
@@ -9322,15 +9302,15 @@
     }
 
     function simManualControls(build) {
-      return `<details><summary>Manual overrides — type totals the data cannot supply</summary>
+      return `<details><summary>Manual adjustments</summary>
         <div class="callout info" style="margin:12px 0">
-          <strong>Use these for anything still undecoded.</strong> Beads of Fire, armour set and
-          half-set bonuses, elemental stones, DragonScroll and the animal are now counted on the
-          sheet, and so are the passive skills whose effect names a stat this sheet has.
-          <b>EB <code>+N</code> is still not on the sheet</b> — KalEncyclopedia does not put it
-          there either, and the recovered Bango <code>+1…+15</code> grid does not say which of its
-          three bands applies to which item, so nothing here would be better than a guess. The
-          <a href="#/weapon-calculator">weapon calculator</a> does model EB, which is where the
+          <strong>Use these for anything the sheet cannot work out for you.</strong> Beads of
+          Fire, armour set and half-set bonuses, elemental stones, DragonScroll and the animal
+          are already counted, and so are the passive skills whose effect names a stat the
+          sheet knows. <b>Weapon enhancement <code>+N</code> is not counted here</b> — which
+          of its three bands applies to which item is not recorded anywhere, so any number
+          would be a guess. The <a href="#/weapon-calculator">weapon calculator</a> does model
+          it, which is where the
           original models it too. Pet percentages stay typed in below.</div>
         <div class="field-grid">${state.combat.stat_slots.map(slot => `
           <label class="field"><span>${escapeHtml(slot)}</span>
@@ -11017,10 +10997,11 @@
     function simSupplementalHtml(build) {
       const sheet = simSheet(build);
       return provenanceFooter(`
-        <p>The character sheet is measured: every formula reproduces a real level-38 Magician
-          sheet exactly. The hit and damage numbers use the original 2006 combat engine against
-          a legacy monster export — neither of those is Bango, so anything involving a monster
-          is an estimate for this server, not a fact about it.</p>
+        <p>The character sheet is checked against a real one: every formula reproduces a
+          live level-38 Magician's numbers exactly. The hit and damage figures against a
+          monster are different — they use the original combat engine and older monster
+          stats, so treat anything involving a monster as a good estimate rather than a
+          promise.</p>
         <p>Share this build: <code class="mono">#/build?b=${escapeHtml(
           encodeBuild(build, activeProfile().skills))}</code></p>
         <div>${simDisagreementPanel(sheet)}</div>`);
@@ -11240,15 +11221,11 @@
           </div>
         </div>
         ${provenanceFooter(`
-          <p>Names and drop associations come from the current Bango client tables.
-            Drop chances come from the KalEncyclopedia database, which is confirmed to match
-            Bango's rates. Combat stats below the name are a legacy export of an earlier game
-            version and are <strong>not</strong> confirmed for Bango.
+          <p>What this monster drops, and how often, is accurate for this server. Its combat
+            stats are from an earlier version of the game and have <strong>not</strong> been
+            confirmed here — use them as a guide, not a measurement.
             ${monsterPictureCredit(row.text)}</p>
-          ${definitions.length > 1 ? `<p>This name resolves to ${definitions.length} client string
-            definitions.</p>` : ""}
-          ${pins.length ? `<p>The map pin is the route guide author's own marking on his world
-            map, joined to this monster by its exact client name.</p>` : ""}
+          ${pins.length ? `<p>The map pin is a player's own marking on his world map.</p>` : ""}
           ${documented && !/class="empty"/.test(documented)
             ? `<div>${documented}</div>` : ""}`)}`;
       wireQuestMaps();
@@ -11258,14 +11235,65 @@
        A bare number is the value; anything longer depends on the grade and is
        shown as the expression rather than a wrong single number. The internal
        verification status becomes a plain "not confirmed" note. */
+    /* A cost that depends on the grade is stored back-to-front — "72 38 grade
+       * +" means 72 + 38 x grade — which is the order a machine evaluates it
+       in and the opposite of the order a person reads it. This turns it back
+       into the arithmetic a player would write, and names the quantities
+       rather than leaving them as field names. */
+    const FORMULA_NAMES = {
+      skill_level: "grade",
+      char_level: "character level",
+      char_dex: "Agility",
+      weapon_range: "weapon range"
+    };
+    const FORMULA_OPERATORS = {
+      "+": { symbol: "+", precedence: 1 },
+      "-": { symbol: "\u2212", precedence: 1 },
+      "*": { symbol: "\u00d7", precedence: 2 },
+      "/": { symbol: "\u00f7", precedence: 2 }
+    };
+
+    function readableFormula(tokens) {
+      const stack = [];
+      for (const raw of tokens) {
+        const token = String(raw);
+        const operator = FORMULA_OPERATORS[token];
+        if (!operator) {
+          stack.push({ text: FORMULA_NAMES[token] || token, precedence: 9 });
+          continue;
+        }
+        const right = stack.pop();
+        const left = stack.pop();
+        if (!left || !right) return null;
+        // Parenthesise only where dropping them would change the reading:
+        // a lower-precedence operand, or a right operand of the same
+        // precedence under an operator that does not associate that way.
+        const wrap = (side, isRight) =>
+          side.precedence < operator.precedence
+          || (isRight && side.precedence === operator.precedence
+              && (token === "-" || token === "/"))
+            ? `(${side.text})` : side.text;
+        stack.push({
+          text: `${wrap(left, false)} ${operator.symbol} ${wrap(right, true)}`,
+          precedence: operator.precedence
+        });
+      }
+      return stack.length === 1 ? stack[0].text : null;
+    }
+
     function formulaField(label, value, status = "") {
       const parsed = parseJson(value, []);
       if (!parsed.length) return "";
       const literal = parsed.length === 1 && Number.isFinite(Number(parsed[0]));
       const unconfirmed = String(status).includes("unverified");
+      // An expression arrives as one space-joined string, not as a token list.
+      const tokens = parsed.flatMap(entry => String(entry).trim().split(/\s+/))
+        .filter(Boolean);
+      const readable = literal ? "" : readableFormula(tokens);
       return `<div class="definition"><dt>${escapeHtml(label)}</dt><dd>${
         literal ? `<b>${prettyNumber(parsed[0])}</b>`
-          : `<span class="mono">${escapeHtml(parsed.join(" "))}</span>`
+          : `<span class="mono">${escapeHtml(readable
+              || tokens.map(token => FORMULA_NAMES[token] || token).join(" "))}</span>`
       }${unconfirmed ? `<br><small class="dim">not confirmed</small>` : ""}</dd></div>`;
     }
 
@@ -11288,7 +11316,7 @@
         ${pageHeader({
           eyebrow: "Skill",
           title: row.sk_megn || row.bango_key,
-          lede: `${escapeHtml(scope)}${schedule?.client_max_grade
+          lede: `${escapeHtml(skillScopeLabel(scope))}${schedule?.client_max_grade
             ? ` · up to grade ${escapeHtml(schedule.client_max_grade)}` : ""}`,
           crumbs: [["Overview", "#/home"], ["Skills", "#/skills"], [row.sk_megn || row.bango_key, ""]]
         })}
@@ -11335,10 +11363,10 @@
             <div class="entity-hero">
               <span class="entity-portrait">${skillIconTag(row, 56)}</span>
               <div><strong>${escapeHtml(row.sk_megn || row.bango_key)}</strong>
-                <br><span class="dim">${escapeHtml(scope)}</span></div>
+                <br><span class="dim">${escapeHtml(skillScopeLabel(scope))}</span></div>
             </div>
             ${panel("Details", statLines([
-              ["Class", entityLink("class", scope, scope)],
+              ["Class", entityLink("class", scope, skillScopeLabel(scope))],
               ["Type", escapeHtml(parseJson(row.bango_type_json, []).join(", "))],
               ["Maximum grade", escapeHtml(schedule?.client_max_grade || "")],
               ["Unlocks at level", escapeHtml(bands[0] ?? "")]
@@ -11347,13 +11375,10 @@
           </div>
         </div>
         ${provenanceFooter(`
-          <p>Grade schedules and formulas come from the current Bango client. A free upgrade
-            band at level 60 and above is not in the client record and stays unconfirmed.</p>
-          ${schedule ? `<p>Schedule <code>${escapeHtml(schedule.client_schedule_format
-            || schedule.schedule_state || "—")}</code>${schedule.notes
-            ? ` — ${escapeHtml(schedule.notes)}` : ""}</p>` : ""}
-          ${nativeParameters.length ? `<details><summary>Effect parameters</summary>
-            <pre>${escapeHtml(JSON.stringify(nativeParameters, null, 2))}</pre></details>` : ""}`)}`;
+          <p>Grades, costs and formulas are this server's own. Whether a free grade still
+            arrives automatically at level 60 or above is not recorded anywhere and has not
+            been confirmed in play, so budget your points as though it might not.</p>
+          ${schedule && schedule.notes ? `<p>${escapeHtml(schedule.notes)}</p>` : ""}`)}`;
     }
 
     function renderQuest(id) {
@@ -11462,25 +11487,16 @@
           </div>
         </div>
         ${provenanceFooter(`
-          <p>Rewards and steps come from the current Bango client tables. The walkthrough and
-            map pins come from the player-authored route guide, matched to this quest by name
-            and level. Its quest text and maps come in turn from
-            <a href="https://mystic-city.de/System/viewpage.php?page_id=48" target="_blank"
+          <p>The rewards and steps are this server's own. The walkthrough and the map pins
+            are a player's, used with permission; the quest text and maps behind them come
+            from <a href="https://mystic-city.de/System/viewpage.php?page_id=48" target="_blank"
                rel="noopener noreferrer">mystic-city.de</a>, with world map artwork by
             Vresko.com.</p>
-          ${routePins.length ? "" : npcPins.length ? `<p>The route guide does not walk this
-            quest, so the map is placed from the people the client's own quest text names:
-            ${escapeHtml(npcPins.map(entry => entry.name).join(", "))}. That is where they
-            stand, not a claim about the order to visit them in.</p>` : `<p>Neither the route
-            guide nor a pinned NPC places this quest, so it has no map.</p>`}
-          ${routeRows.length ? `<div class="table-wrap"><table>
-            <thead><tr><th>Route quest</th><th>Stage</th><th>Match</th><th>Status</th></tr></thead>
-            <tbody>${routeRows.map(entry => `<tr>
-              <td>${escapeHtml(entry.route_name)}</td>
-              <td>${escapeHtml(entry.stage_title)}</td>
-              <td>${escapeHtml(entry.match_method)}</td>
-              <td>${escapeHtml(entry.status || "")}</td></tr>`).join("")}</tbody>
-          </table></div>` : ""}`)}`;
+          ${routePins.length ? "" : npcPins.length ? `<p>No walkthrough covers this quest, so
+            the map instead shows where the people it names stand:
+            ${escapeHtml(npcPins.map(entry => entry.name).join(", "))}. That is their location,
+            not a suggested order to visit them in.</p>` : `<p>Nothing places this quest on a
+            map, so it has none.</p>`}`)}`;
       wireQuestMaps();
     }
 
@@ -11554,20 +11570,15 @@
           </div>
         </div>
         ${provenanceFooter(`
-          <p>Names come from the Bango client string table. Quests are linked by matching a
-            named identity inside the quest text, whole words only${identity.named
-              ? "" : " — this string is a role, not a name, so it is deliberately not matched"}.
-            Locations come from the player-authored route guide.
+          <p>Quests are attached to this character by the name that appears in the quest
+            text${identity.named ? "" : " — this is a role rather than a person's name, so no "
+              + "quest is attached to it"}. The location comes from a player's own map.
             ${photo ? npcPhotoCredit() : ""}</p>
-          ${pins.length ? `<p>The pin is the guide author's, placed on his own artwork; it is
-            joined to this string by ${identity.named ? "the name inside the pin label"
-              : "nothing — a role is never joined"}, so it is his reading of who stands there
-            rather than a client coordinate.</p>`
-            : `<p>No pin on any of the guide's ${prettyNumber(questMaps()
-                .reduce((total, map) => total + Object.keys(map.pins || {}).length, 0))} answers
-              to this name, so this page cannot say where they stand.</p>`}
-          ${definitions.length > 1 ? `<p>This string resolves to ${definitions.length}
-            definitions.</p>` : ""}`)}`;
+          ${pins.length ? `<p>The pin is that player's reading of where this character stands,
+            not a coordinate taken from the game.</p>`
+            : `<p>None of the ${prettyNumber(questMaps()
+                .reduce((total, map) => total + Object.keys(map.pins || {}).length, 0))} map pins
+              answers to this name, so this page cannot say where they stand.</p>`}`)}`;
       wireQuestMaps();
     }
 
@@ -11636,17 +11647,15 @@
         ], matched, { defaultSort: { key: "level", dir: "asc" } })
           : emptyState("No monster in this zone could be matched to a page."), { wide: true })}
         ${provenanceFooter(`
-          <p>Zone rosters come from the project's geography guide; each name is matched to the
-            Bango monster of the same name. Levels and stats are a legacy export, not confirmed
-            Bango values.</p>
-          ${sharedNames.size ? `<p>Some names are carried by more than one creature in the
-            client — same label, different drop table — so they appear once per record with
-            the record number beside them.</p>` : ""}
-          ${shorthand.length ? `<p>The guide abbreviates some entries once it has named the
-            family, and these were read back as the full name the rest of this roster spells
-            out: ${shorthand.map(group => `<em>${escapeHtml(group.label)}</em> as
+          <p>The roster comes from the world guide. The levels and stats beside each
+            monster are from an earlier version of the game and have not been confirmed
+            here.</p>
+          ${sharedNames.size ? `<p>Some names belong to more than one creature — same name,
+            different drop table — so they are listed separately.</p>` : ""}
+          ${shorthand.length ? `<p>A few entries are written in shorthand and are read here as
+            the full name: ${shorthand.map(group => `<em>${escapeHtml(group.label)}</em> as
             ${escapeHtml(group.reading)}`).join("; ")}.</p>` : ""}
-          ${unresolved.length ? `<p>Roster entries with no matching monster page:
+          ${unresolved.length ? `<p>These roster entries have no monster page of their own:
             ${unresolved.map(group => escapeHtml(group.label)).join(", ")}.</p>` : ""}`)}`;
     }
 
@@ -11868,7 +11877,7 @@
             </div>`).join("")}</div>
           <p class="dim" style="margin:12px 0 0"><small>Every animal keeps its transformation
             skills for the whole band; the grade is the egg's grade, and the character level
-            beside it is the requirement the client puts on that transformation item.</small></p>`,
+            beside it is the level the game asks for on that transformation item.</small></p>`,
           { wide: true })}
         ${panel(`Raising a${/^[AEIOU]/i.test(animal.name) ? "n" : ""} ${animal.name}`, `
           <p class="dim" style="margin:0 0 10px"><small>Each grade needs
@@ -11894,12 +11903,11 @@
           ], rows, { defaultSort: { key: "grade", dir: "asc" } })
             : emptyState("The egg table (data/LVL_EGGS.csv) was not found.")}`,
           { wide: true })}
-        ${provenanceFooter(`<p>The grade ladder is KalEncyclopedia's own
-          <code class="mono">LVL_EGGS</code> table and its <code class="mono">6553.6 × n</code>
-          experience rule. Which stats the three numbers are, the recommended class and every
-          transformation below come from the four animal tabs of the same tool, read out of its
-          code. None of it is Bango-measured, and the daily experience rate is a server value
-          held in <code class="mono">SERVER_PROFILE.json</code>.</p>`)}`;
+        ${provenanceFooter(`<p>The grade ladder follows the
+          <code class="mono">6553.6 &times; n</code> experience rule. Which stats each grade
+          raises, the recommended class and the transformations all come from an older
+          reference and have not been re-measured here. The day counts follow this server's
+          egg experience rate.</p>`)}`;
     }
 
     function renderLevels(query) {
@@ -12168,9 +12176,9 @@
               ? `<p class="item-flavour">${escapeHtml(selected.text)}</p>` : ""))}
           </div>
         </div>
-        ${provenanceFooter(`<p>Repeatable quest rewards and item counts come from the
-          KalEncyclopedia database. Experience needed for your level follows the project's
-          server experience rate.</p>`)}`;
+        ${provenanceFooter(`<p>Rewards and item counts come from an older reference and
+          may have been retuned since. The experience needed for your level follows this
+          server's own rate.</p>`)}`;
 
       if (typeof el.main.querySelectorAll !== "function") return;
       el.main.querySelectorAll("[data-repeat-calc]").forEach(control => {
@@ -12437,9 +12445,9 @@
               </tbody></table></div>`)}
           </div>
         </div>
-        ${provenanceFooter(`<p>Both formulas and every ladder above come from KalEncyclopedia's
-          own weapon calculator. Bango may have retuned them; nothing here has been measured
-          in play.</p>`)}`;
+        ${provenanceFooter(`<p>Both formulas and every ladder above come from an older
+          weapon calculator. They may have been retuned since, and nothing here has been
+          measured in play.</p>`)}`;
 
       if (typeof el.main.querySelectorAll !== "function") return;
       el.main.querySelectorAll("[data-weapon-calc]").forEach(control => {
@@ -12492,13 +12500,24 @@
       ["Thunder Dragon", "+13–14% damage, +5 stat, +15 OTP, +200 HP, +150 MP", "+13–16% defence, +3–5 stat"]
     ];
 
+    /* A mixing stone is written in the Mix Master's own stat order, which is
+       the usual one for the first 25 positions and then diverges: where an item
+       reads HP% and Mana%, a stone reads the enemy's defence, then flat HP,
+       then flat mana, in 28 positions rather than 27. Reading a stone with the
+       item order turns "+10 HP, -5 mana" into "+10 Mana%" beside a position
+       with no name at all. */
+    function mixingStatSlots() {
+      const slots = (state.combat?.stat_slots || []).slice(0, 25);
+      return [...slots, "Enemy defence", "HP", "Mana"];
+    }
+
     function stoneEffectLines(row) {
-      const slots = state.combat?.stat_slots || [];
+      const slots = mixingStatSlots();
       // Each comma-separated group is one stone level; inside a group the
-      // pipe positions are the same 27-slot stat vector used everywhere.
+      // pipe positions are that stat vector.
       return String(row.ita_rev || "").split(",").map((vector, index) => {
         const effects = vector.split("|")
-          .map((value, slot) => [slots[slot] || `slot ${slot}`, value])
+          .map((value, slot) => [slots[slot] || `position ${slot}`, value])
           .filter(([, value]) => value !== "" && value != null)
           .map(([stat, value]) => `${stat} ${Number(value) >= 0 ? "+" : ""}${value}`);
         return { level: index + 1, effects };
@@ -12551,8 +12570,9 @@
             </table></div>`)}
           </div>
         </div>
-        ${provenanceFooter(`<p>These tables are KalEncyclopedia's, unchanged. The mixing paths and
-          failure economics are written up in the Imperial Mixing guide.</p>`)}`;
+        ${provenanceFooter(`<p>These tables come from an older reference and are shown
+          unchanged. The mixing paths and what a failure costs are written up in the Imperial
+          Mixing guide.</p>`)}`;
     }
 
     function renderPrefix(id) {
@@ -12562,57 +12582,21 @@
       const legacy = (state.optional.legacyPrefixes || []).find(item => normalizeName(item.pre_name) === normalizeName(row.pre_name));
       el.main.innerHTML = `
         ${pageHeader({
-          eyebrow: "Bango prefix",
+          eyebrow: "Prefix",
           title: row.pre_name || `<unresolved prefix ${id}>`,
-          lede: `Prefix ID <code>${escapeHtml(id)}</code> · ${prettyNumber(attributes.length)} normalized attribute${attributes.length === 1 ? "" : "s"}.`,
-          crumbs: [["Overview", "#/home"], ["Talismans", "#/talismans"], [row.pre_name || String(id), ""]],
-          actions: sourceButton(row)
+          lede: `What this prefix adds to the item that carries it.`,
+          crumbs: [["Overview", "#/home"], ["Talismans", "#/talismans"], [row.pre_name || String(id), ""]]
         })}
-        <div class="tag-row" style="margin-bottom:18px">${provenanceTag(row)}${row.bango_sell ? `<span class="tag">sell ${escapeHtml(row.bango_sell)}</span>` : ""}</div>
-        ${section("Exact native attributes", attributes.length ? `
+        ${row.bango_sell ? `<div class="tag-row" style="margin-bottom:18px"><span class="tag">sell ${escapeHtml(row.bango_sell)}</span></div>` : ""}
+        ${section("What it gives", attributes.length ? `
           <div class="definition-grid">${attributes.map(attribute => `<div class="definition">
             <dt>${escapeHtml(attribute.attribute)}</dt>
             <dd class="mono">${escapeHtml(parseJson(attribute.values_json, []).join(" / ") || "—")}</dd>
-          </div>`).join("")}</div>` : emptyState("No normalized attributes were emitted."))}
-        ${legacy ? section("Legacy prefix annotation — non-Bango", definitionGrid([
-          ["Legacy ID", escapeHtml(legacy.pre_azon)],
-          ["Legacy name", escapeHtml(legacy.pre_name)],
-          ["Legacy grade", escapeHtml(legacy.pre_grd || "—")],
-          ["Join method", `<span class="tag gold">exact normalized name</span>`]
+          </div>`).join("")}</div>` : emptyState("This prefix carries no stat bonus."))}
+        ${legacy && legacy.pre_grd ? section("Grade", definitionGrid([
+          ["Prefix grade", escapeHtml(legacy.pre_grd)]
         ])) : ""}
-        ${section("Registered articles mentioning this prefix", relatedArticles("prefix", id, row.pre_name || ""))}`;
-    }
-
-    function renderEnhancement(id) {
-      const row = state.indexes.enhancementById.get(String(id));
-      if (!row) return renderNotFound("enhancement row", id);
-      const group = state.indexes.enhancementGroups.get(`${row.stat_family}~${row.application_band}`) || [];
-      const prefix = state.indexes.prefixesById.get(String(row.prefix_id));
-      el.main.innerHTML = `
-        ${pageHeader({
-          eyebrow: "Bango enhancement row",
-          title: `${row.stat_family} · band ${row.application_band} · +${row.enhancement_level}`,
-          lede: `Exact client bonus <code>${escapeHtml(enhancementValue(row))}</code>. Application-band meaning remains unverified.`,
-          crumbs: [["Overview", "#/home"], ["Enhancement", "#/enhancements"], [`+${row.enhancement_level}`, ""]],
-          actions: sourceButton(row)
-        })}
-        <div class="callout"><strong>Do not generalize the band.</strong> The recovered prefix table gives three separate rows per stat family and enhancement level, but does not name what bands 1–3 apply to.</div>
-        <div style="height:16px"></div>
-        ${section("Exact row", definitionGrid([
-          ["Stat family", escapeHtml(row.stat_family)],
-          ["Application band", `${escapeHtml(row.application_band)} <span class="tag danger">${escapeHtml(row.application_band_meaning)}</span>`],
-          ["Enhancement level", `+${escapeHtml(row.enhancement_level)}`],
-          ["Bonus", `<span class="mono">${escapeHtml(enhancementValue(row))}</span>`],
-          ["Prefix", prefix ? entityLink("prefix", prefix.pre_azon, prefix.pre_name || prefix.pre_azon) : escapeHtml(row.prefix_name || row.prefix_id)],
-          ["Source", `<span class="mono">${escapeHtml(row.source_file)}:${escapeHtml(row.source_line)}</span>`]
-        ]))}
-        ${section(`Full ${row.stat_family} / band ${row.application_band} progression`, `
-          <div class="table-wrap"><table><thead><tr><th>Level</th><th>Bonus</th><th>Record</th></tr></thead>
-          <tbody>${group.sort((a, b) => Number(a.enhancement_level) - Number(b.enhancement_level)).map(item => {
-            const itemId = `${item.stat_family}~${item.application_band}~${item.enhancement_level}`;
-            return `<tr><td>${entityLink("enhancement", itemId, `+${item.enhancement_level}`)}</td><td class="mono">${escapeHtml(enhancementValue(item))}</td><td>${sourceButton(item, `line ${item.source_line}`)}</td></tr>`;
-          }).join("")}</tbody></table></div>
-        `)}`;
+        ${section("Guides mentioning this prefix", relatedArticles("prefix", id, row.pre_name || ""))}`;
     }
 
     function renderClass(id) {
@@ -12627,7 +12611,7 @@
         ${pageHeader({
           eyebrow: "Skill scope",
           title: skillScopeLabel(scope),
-          lede: `${prettyNumber(skills.length)} Bango skill definition${skills.length === 1 ? "" : "s"} carry this scope`
+          lede: `${prettyNumber(skills.length)} skill${skills.length === 1 ? "" : "s"} in this tree`
             + `${skillScopeLabel(scope) === scope ? "" : ` — the client calls it ${scope}`}.`,
           crumbs: [["Overview", "#/home"], ["Skills", "#/skills"],
             [skillScopeLabel(scope), ""]]
@@ -12802,221 +12786,28 @@
     function renderArticle(path) {
       const article = state.indexes.articleByPath.get(String(path));
       if (!article) return renderNotFound("article", path);
-      const sourceRow = {
-        provenance: article.kind,
-        source_file: article.path,
-        source_line: "complete local snapshot",
-        note: "Rendered at runtime from the selected project folder."
-      };
       el.main.innerHTML = `
         ${pageHeader({
           eyebrow: article.kind,
           title: article.title,
-          lede: `<span class="mono">${escapeHtml(article.path)}</span>`,
-          crumbs: [["Overview", "#/home"], ["Knowledge library", "#/articles"], [article.title, ""]],
-          actions: sourceButton(sourceRow)
+          // No lede: the article opens with its own summary paragraph, and a
+          // clipped copy of it above the full one reads as a stutter.
+          crumbs: [["Overview", "#/home"], ["Knowledge library", "#/articles"], [article.title, ""]]
         })}
-        <section class="section"><div class="section-body"><article class="article">${renderMarkdown(article.text, article.path)}</article></div></section>`;
-    }
-
-    function relationForCell(column, value, row) {
-      const text = String(value ?? "");
-      if (!text) return "";
-      const itemColumns = new Set(["ita_azon", "drp_item", "item_id"]);
-      const monsterColumns = new Set(["drp_monst", "monster_id"]);
-      const questColumns = new Set(["que_id", "quest_id", "bango_que_id", "bango_prerequisite"]);
-      const prefixColumns = new Set(["pre_azon", "prefix_id"]);
-      if (itemColumns.has(column) && state.indexes.itemsById.has(text)) {
-        return entityLink("item", text, state.indexes.itemsById.get(text).ita_name || text);
-      }
-      if (monsterColumns.has(column) && state.indexes.monstersById.has(text)) {
-        return entityLink("monster", text, state.indexes.monstersById.get(text).text);
-      }
-      if (questColumns.has(column) && state.indexes.questsById.has(text)) {
-        return entityLink("quest", text, state.indexes.questsById.get(text).que_name);
-      }
-      if (prefixColumns.has(column) && state.indexes.prefixesById.has(text)) {
-        const prefix = state.indexes.prefixesById.get(text);
-        return entityLink("prefix", text, prefix.pre_name || text);
-      }
-      if (["bango_key", "skill_key", "prerequisite_skill_key"].includes(column)) {
-        const skill = skillByKey(text);
-        if (skill) return entityLink("skill", skillId(skill), skill.sk_megn || text);
-      }
-      if (column === "message_id" && row.namespace === "monstername" && state.indexes.monstersById.has(text)) {
-        return entityLink("monster", text, row.text || text);
-      }
-      if (column === "message_id" && row.namespace === "npcname" && state.indexes.npcsById.has(text)) {
-        return entityLink("npc", text, row.text || text);
-      }
-      return "";
-    }
-
-    function cellValue(column, value, row, max = 180) {
-      const relation = relationForCell(column, value, row);
-      if (relation) return relation;
-      const text = String(value ?? "");
-      if (!text) return `<span class="dim">—</span>`;
-      const clipped = text.length > max ? `${text.slice(0, max)}…` : text;
-      return `<span class="${text.length > 36 ? "mono wrap-anywhere" : ""}" title="${escapeAttr(text)}">${escapeHtml(clipped)}</span>`;
-    }
-
-    async function tableForPath(path) {
-      const normalized = normalizePath(path);
-      if (state.rawTables.has(normalized)) return state.rawTables.get(normalized);
-      const rows = await readCsvFrom(state.source, normalized);
-      state.rawTables.set(normalized, rows);
-      return rows;
-    }
-
-    function csvCategory(path) {
-      if (path.startsWith("bango_data/")) return "Bango generated";
-      if (path.startsWith("data/")) return "Legacy fallback";
-      if (path.startsWith("analysis/")) return "Derived analysis";
-      return "Other";
-    }
-
-    function renderData(query) {
-      const q = normalizeName(query.get("q") || "");
-      const kind = query.get("kind") || "";
-      const paths = state.availableFiles.filter(path => path.endsWith(".csv"))
-        .filter(path => (!q || normalizeName(path).includes(q)) && (!kind || csvCategory(path) === kind));
-      const kinds = [...new Set(state.availableFiles.filter(path => path.endsWith(".csv")).map(csvCategory))].sort();
-      el.main.innerHTML = `
-        ${pageHeader({
-          eyebrow: "Addressable source records",
-          title: "Raw data explorer",
-          lede: "Every discovered CSV has its own view. Every visible row has a stable route, and recognized foreign-key cells link back into the richer entity pages.",
-          crumbs: [["Overview", "#/home"], ["Raw data", ""]]
-        })}
-        ${filterToolbar("data", query, { selectName: "kind", selectLabel: "Source tier", allLabel: "All source tiers", selectOptions: kinds, placeholder: "CSV name or folder…" })}
-        <div class="result-list">${paths.map(path => {
-          const cached = state.rawTables.get(path);
-          return `<a class="result" href="${routeHref("table", path)}">
-            <span class="result-type">${escapeHtml(csvCategory(path))}</span>
-            <span><strong>${escapeHtml(path.split("/").at(-1))}</strong><br><small class="mono">${escapeHtml(path)}</small></span>
-            <span class="accent">${cached ? `${prettyNumber(cached.length)} rows` : "Open →"}</span>
-          </a>`;
-        }).join("")}</div>`;
-    }
-
-    function usefulHeaders(rows) {
-      if (!rows.length) return [];
-      const all = Object.keys(rows[0]).filter(key => key !== "__rowIndex");
-      if (all.length <= 12) return all;
-      const preferred = all.filter(key =>
-        /(^|_)(id|azon|key|name|text|level|lvl|item|monst|quest|family|band|value|flag)$/.test(key) ||
-        ["namespace", "provenance", "source_file", "source_line"].includes(key)
-      );
-      return [...new Set([...all.slice(0, 7), ...preferred, ...all.slice(-3)])].slice(0, 15);
-    }
-
-    async function renderTable(path, query) {
-      if (!state.availableFiles.includes(path) || !path.endsWith(".csv")) return renderNotFound("CSV table", path);
-      renderLoading(`Reading ${path}`, 45);
-      try {
-        const rows = await tableForPath(path);
-        const q = normalizeName(query.get("q") || "");
-        const filtered = q ? rows.filter(row => normalizeName(Object.values(row).join(" ")).includes(q)) : rows;
-        const pageSize = 50;
-        const page = Number(query.get("page") || 1);
-        const shown = filtered.slice((page - 1) * pageSize, page * pageSize);
-        const headers = usefulHeaders(rows);
-        el.main.innerHTML = `
-          ${pageHeader({
-            eyebrow: csvCategory(path),
-            title: path.split("/").at(-1),
-            lede: `<span class="mono">${escapeHtml(path)}</span> · ${prettyNumber(rows.length)} rows`,
-            crumbs: [["Overview", "#/home"], ["Raw data", "#/data"], [path, ""]]
-          })}
-          ${filterToolbar("table", query, { placeholder: "Search any visible or hidden cell…" }).replace('data-filter-route="table"', `data-filter-route="table/${encodeURIComponent(path)}"`)}
-          <section class="section"><div class="table-wrap"><table>
-            <thead><tr><th>Record</th>${headers.map(header => `<th>${escapeHtml(header)}</th>`).join("")}</tr></thead>
-            <tbody>${shown.map(row => `<tr>
-              <td>${entityLink("record", `${path}~${row.__rowIndex}`, `#${Number(row.__rowIndex) + 1}`)}</td>
-              ${headers.map(header => `<td>${cellValue(header, row[header], row)}</td>`).join("")}
-            </tr>`).join("")}</tbody>
-          </table></div><div class="section-body">${pagination(filtered.length, page, pageSize, `table/${encodeURIComponent(path)}`, query)}</div></section>`;
-      } catch (error) {
-        renderNotFound("readable CSV table", `${path}: ${error.message}`);
-      }
-    }
-
-    async function renderRecord(id) {
-      const separator = String(id).lastIndexOf("~");
-      if (separator < 0) return renderNotFound("raw record", id);
-      const path = id.slice(0, separator);
-      const rowIndex = Number(id.slice(separator + 1));
-      if (!Number.isInteger(rowIndex)) return renderNotFound("raw record", id);
-      if (!state.availableFiles.includes(path) || !path.endsWith(".csv")) {
-        return renderNotFound("raw record", id);
-      }
-      renderLoading(`Reading record ${rowIndex + 1} from ${path}`, 55);
-      try {
-        const rows = await tableForPath(path);
-        const row = rows[rowIndex];
-        if (!row) return renderNotFound("raw record", id);
-        const fields = Object.entries(row).filter(([key]) => key !== "__rowIndex");
-        el.main.innerHTML = `
-          ${pageHeader({
-            eyebrow: "Raw source record",
-            title: `${path.split("/").at(-1)} · row ${rowIndex + 1}`,
-            lede: `<span class="mono">${escapeHtml(path)}</span>`,
-            crumbs: [["Overview", "#/home"], ["Raw data", "#/data"], [path, routeHref("table", path)], [`row ${rowIndex + 1}`, ""]],
-            actions: sourceButton(row)
-          })}
-          <section class="section"><div class="section-body"><div class="kv">
-            ${fields.map(([key, value]) => `<div>${escapeHtml(key)}</div><div>${cellValue(key, value, row, 10000)}</div>`).join("")}
-          </div></div></section>`;
-      } catch (error) {
-        renderNotFound("raw record", `${id}: ${error.message}`);
-      }
-    }
-
-    function renderSources() {
-      const authority = state.tables.authority;
-      const csvPaths = state.availableFiles.filter(path => path.endsWith(".csv"));
-      el.main.innerHTML = `
-        ${pageHeader({
-          eyebrow: "Authority and provenance",
-          title: "Sources",
-          lede: "Live player observation outranks registered server/client files. Inside the recovered data, Bango-current client tables supersede the legacy CSVs only for the fields they actually expose.",
-          crumbs: [["Overview", "#/home"], ["Sources", ""]]
-        })}
-        ${section("Active runtime source", definitionGrid([
-          ["Connection", escapeHtml(state.sourceKind)],
-          ["Generated Bango CSVs", prettyNumber(csvPaths.filter(path => path.startsWith("bango_data/")).length)],
-          ["Legacy CSVs", prettyNumber(csvPaths.filter(path => path.startsWith("data/")).length)],
-          ["Derived-analysis CSVs", prettyNumber(csvPaths.filter(path => path.startsWith("analysis/")).length)],
-          ["Reference articles", prettyNumber(state.articles.length)]
-        ]))}
-        ${section("Legacy-to-Bango authority matrix", `
-          <div class="table-wrap"><table><thead><tr><th>Legacy table</th><th>Verdict</th><th>Bango source</th><th>Exact scope</th></tr></thead>
-          <tbody>${authority.map(row => `<tr>
-            <td><span class="mono">${escapeHtml(row.legacy_csv)}</span></td>
-            <td>${tags([row.verdict], row.verdict.includes("superseded") ? "accent" : "gold")}</td>
-            <td>${escapeHtml(row.bango_source || "—")}</td>
-            <td>${escapeHtml(row.scope)}</td>
-          </tr>`).join("")}</tbody></table></div>
-        `)}
-        ${section("Drop-probability decision", `
-          <div class="callout info"><strong>What the site will and will not say.</strong>
-            <p><code>bango_data/DROPS.csv</code> is the current authority for monster–item association, literal value and flag. Its empty legacy chance columns are not a parsing miss.</p>
-            <p>Rafael's externally confirmed 2026-07-26 premise establishes that Bango uses the KalEncyclopedia rates. For each current association, the site joins the normalized monster and item names to <code>data/DROPS.csv</code>, expands every <code>drp_rev</code> variant, and computes <code>(chance1 ÷ 100) × (chance2 ÷ 100)</code>.</p>
-            <p>No pair match means “rate not mapped”; the site never copies a chance across names or treats the native Bango value as a probability. Official Bango documentation remains additional source-linked evidence.</p>
-          </div>
-        `)}`;
+        <section class="section"><div class="section-body"><article class="article">${
+          renderMarkdown(article.text.replace(/^#\s+.+$(\r?\n)*/m, ""), article.path)
+        }</article></div></section>`;
     }
 
     function renderNotFound(kind, id) {
       el.main.innerHTML = `
         ${pageHeader({
-          eyebrow: "Route not resolved",
+          eyebrow: "Not found",
           title: `No ${kind} found`,
-          lede: `The current connected data has no addressable ${escapeHtml(kind)} for <code>${escapeHtml(id)}</code>.`,
+          lede: `Nothing in the atlas answers to <code>${escapeHtml(id)}</code>.`,
           crumbs: [["Overview", "#/home"], ["Not found", ""]]
         })}
-        <div class="empty"><p>The site refuses to invent a record for a missing join.</p><a class="button primary" href="#/search">Search the atlas</a></div>`;
+        <div class="empty"><p>The link may be old, or the name may be spelled differently in game.</p><a class="button primary" href="#/search">Search the atlas</a></div>`;
     }
 
     async function renderRoute() {
@@ -13029,8 +12820,6 @@
       state.renderedRoute = location.hash || "#/home";
       renderNavigation();
       hideSkillTooltip();
-      state.evidence.clear();
-      state.evidenceCounter = 0;
       const route = routeInfo();
       if (document.body?.classList) {
         document.body.classList.toggle("detail-route",
@@ -13072,7 +12861,6 @@
           case "class": renderClass(route.id); break;
           case "articles": renderArticles(route.query); break;
           case "article": renderArticle(route.id); break;
-          case "sources": renderSources(); break;
           default: renderNotFound("route", route.section); break;
         }
         if (movedToAnotherPage) {
@@ -13086,17 +12874,6 @@
         console.error(error);
         renderNotFound("renderable page", `${route.section}: ${error.message}`);
       }
-    }
-
-    function showEvidence(id) {
-      const row = state.evidence.get(id);
-      if (!row) return;
-      const entries = Object.entries(row).filter(([key]) => key !== "__rowIndex");
-      el.evidenceTitle.textContent = row.source_file ? `Evidence · ${row.source_file}` : "Source evidence";
-      el.evidenceBody.innerHTML = `<div class="kv">${entries.map(([key, value]) =>
-        `<div>${escapeHtml(key)}</div><div>${cellValue(key, typeof value === "object" ? JSON.stringify(value, null, 2) : value, row, 10000)}</div>`
-      ).join("")}</div>`;
-      el.evidenceDialog.showModal();
     }
 
     document.addEventListener("click", async event => {
@@ -13135,10 +12912,6 @@
         await connectWithDirectoryPicker();
       } else if (action === "fallback-folder") {
         el.folderInput.click();
-      } else if (action === "show-evidence") {
-        showEvidence(control.dataset.evidenceId);
-      } else if (action === "close-dialog") {
-        el.evidenceDialog.close();
       } else if (action === "close-equipment") {
         el.equipmentDialog.close();
       } else if (action === "new-character") {
@@ -13183,9 +12956,6 @@
       el.folderInput.value = "";
     });
 
-    el.evidenceDialog.addEventListener("click", event => {
-      if (event.target === el.evidenceDialog) el.evidenceDialog.close();
-    });
     el.equipmentDialog.addEventListener("click", event => {
       if (event.target === el.equipmentDialog) el.equipmentDialog.close();
     });

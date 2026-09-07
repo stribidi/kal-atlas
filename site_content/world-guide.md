@@ -1,4 +1,8 @@
-# Kalonline World Geography & Navigation Data
+# World Geography & Navigation
+
+Where everything is. The world on an A–W by 1–18 grid, the six village hubs and the roads out of each, four measured routes between them with their walking times, and every hunting zone by coordinate with the monsters that live in it.
+
+---
 
 ## 1. Global Parameters
 
