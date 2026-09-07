@@ -2,7 +2,7 @@
  "generated_by": "tools/knowledge_base_site/build_site_manifest.py",
  "note": "Published bundle. Regenerate with tools/knowledge_base_site/build_deploy.py.",
  "file_count": 3318,
- "total_bytes": 46863959,
+ "total_bytes": 46863573,
  "files": [
   "analysis/combat_tables/COMBAT_FIXTURE.json",
   "analysis/item_duplicate_records/ITEM_DUPLICATE_MAP.csv",

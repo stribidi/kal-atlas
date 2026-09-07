@@ -41,7 +41,6 @@ Note this differs from the reimplementation, which uses a flat `m_wXxxAdd` compa
 > `+140 + Wis` constants and `52×Level/3`. `PDMin` read 27, matching the form
 > below and beating KalEncyclopedia's, which is high by 1 at Strength 8 and 9.
 >
-> The measured set is `engine\bango_measured.py`; the observation is
 > The observed character sheet wins; the original values are kept here only
 > so the disagreement stays visible.
 
@@ -236,8 +235,7 @@ g_nAddOTPLv[0..100] =
 
 The three arrays above were read directly from the original PE at
 `0x004D8130`, `0x004D82C8` and `0x004D8398`. Their canonical lengths are 101,
-51 and 100 integers; nearby extra zeroes are alignment padding. They match
-`engine/kal_engine.py` exactly.
+51 and 100 integers; nearby extra zeroes are alignment padding.
 
 ### Criticals
 
@@ -468,8 +466,8 @@ over the 97 pairs that carry both numbers, `coeff(Level)×Level/3 + 115 +
 Health²/5 + macro.hp` is exact on **93**, where the reimplementation's
 `2×Health²/14` is exact on **3** — and those three only because both truncate to
 the same value at Health ≤ 3. Since the reimplementation marks that denominator
-`?` itself, both are kept in `engine\kal_engine.py` (`monster_max_hp` and
-`monster_max_hp_kalenc_fit`) rather than one replacing the other. Neither is
+`?` itself, both readings are carried side by side rather than one
+replacing the other. Neither is
 confirmed on Bango, and it changes nothing downstream while `mon_hp` is used as
 a final value.
 

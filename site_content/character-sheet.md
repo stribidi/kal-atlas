@@ -8,9 +8,8 @@ These are the formulas the site's own character planner uses.
 
 ## 1. The stat vector — 27 slots
 
-The assembly's `modGlobal::strStats` array names 27 stat slots in a fixed order.
-This is the order that decodes the packed stat string an item or a prefix
-carries.
+An item or a prefix stores its bonuses as a packed string of 27 positions,
+always in this order.
 
 | # | Stat | # | Stat | # | Stat |
 |---|---|---|---|---|---|
@@ -24,31 +23,31 @@ carries.
 | 7 | PDMin | 16 | Ice | 25 | HP% |
 | 8 | PDMax | 17 | Lightening | 26 | Mana% |
 
-A second array, `strStatsMix`, holds **28** slots for the Mix Master context and
-differs at the tail: **25 = Enemy Defense, 26 = HP, 27 = Mana**. Do not use the
-27-slot order to read a mixing stone.
+A mixing stone uses a different order: **28** positions, the same up to 24 and then
+**25 = enemy defence, 26 = HP, 27 = mana**. Read a stone with the item order and
+every one of its effects comes out as the wrong stat.
 
 Decoding it yields **3,537** item stat rows across 704 items and **229**
 prefix stat rows across 102 prefixes — which is where the stats on every item
 and talisman page come from.
 
-Worked example — `Intensified Steel Armor`, `ita_rev = "||||||||||||15|36|4"`:
-slots 12, 13, 14 are populated, so the item gives **Evasion 15, Defense 36,
+Worked example — Intensified Steel Armor stores `||||||||||||15|36|4`:
+positions 12, 13 and 14 are filled, so the item gives **Evasion 15, Defense 36,
 Absorb 4**.
 
 ### The one encoding exception, recorded rather than guessed
 
 Thirty-one positions across **nine Mix Master stones** (Stone of Flame, Ice,
 Lightening, Poison, Paralyzis, Strength, Skill, Mystery, Demons Blood) run past
-slot 26 and contain commas. Those rows carry **two comma-separated vectors in
-the 28-slot Mix order**, not one. The decoder flags them and reports the count
-rather than silently truncating; what the two vectors mean is **not confirmed**.
+position 26 and contain commas. Those carry **two comma-separated sets of
+effects in the mixing order**, not one. They are read as two rather than cut down
+to one; what the second set means is **not confirmed**.
 
 ---
 
 ## 2. Class ordering
 
-The simulator's class combo box is indexed `0 Archer · 1 Knight · 2 Magician ·
+Classes are numbered `0 Archer · 1 Knight · 2 Magician ·
 3 Thief`. That is alphabetical, and the game's own class table agrees with it. Every
 per-class constant below is resolved through this ordering, and all eight
 HP and MP denominators land on known values under it and under no other
@@ -58,8 +57,8 @@ ordering, which is what confirms it.
 
 ## 3. Derived stats
 
-`Lv` is character level. `Gear`, `Misc`, `Quest%` and `Pet%` are the simulator's
-input boxes.
+`Lv` is character level. `Gear`, `Misc`, `Quest%` and `Pet%` are what your
+equipment, buffs, quest bonuses and pet contribute.
 
 ```
 OTP      = Fix(0.2777778 × Str) + Fix(Agi / 8) + gearOTP + miscOTP
@@ -91,8 +90,8 @@ mpBand:   Lv ≥ 81 → 3     · ≥ 76 → 2   · ≥ 72 → 1     · else 0
 | Magician | 1/7 | deno 14 | 1/5 | deno 10 |
 | Thief | 2/13 | deno 13 | 1/6 | deno 12 |
 
-**This confirms the community reimplementation on all eight denominators**, which were previously
-single-source. It also confirms the level bands:
+**All eight denominators are confirmed twice over**, by two readings that were made
+independently of each other. It also confirms the level bands:
 
 - `52 × 1.305 = 67.86` against the community reimplementation's `67.8162` at level ≥ 72
 - `52 × 1.5 = 78` against `78` at level ≥ 76 — **exact**
@@ -115,12 +114,11 @@ lateHeaBonus  = Fix( Fix(Hea² × qHP[class]) × (0.14 + 0.1 × band) )
 
 So from level 50 the Health quadratic is paid **again**, at 24% at levels 50–54,
 rising 10 points per five levels to **64% from level 70 onward**. On a
-Health-stacked build this is a large amount of HP that no document in this
-project currently accounts for.
+Health-stacked build this is a large amount of HP, and most guides leave it
+out.
 
 **An HP-doubling flag.** The whole pre-bonus HP term is multiplied by
-`chkFlag.CheckState + 1`, i.e. **×1 or ×2**. What the simulator's checkbox
-represents is **not confirmed** — it is not labelled in the metadata.
+either **×1 or ×2**. What turns it on is **not confirmed**: nothing names it.
 
 ---
 
@@ -133,11 +131,10 @@ if <high-level gate>:                                   # gate not confirmed
 Defense = Fix( Defense × (100 + Quest%) / 100 × (100 + Pet%def) / 100 )
 ```
 
-**Defense has no stat-derived base at all** in this simulator — it comes
-entirely from gear and buffs. That contradicts
-`KalOnline_Knowledge_Base_v2.md`, which says Health "increases HP and defense".
-On this evidence the defense half of that sentence is wrong, or at least is not
-modelled. Flagged under standing rule 5 rather than edited.
+**Defence has no stat-derived base at all** here — it comes entirely from gear and
+buffs. That contradicts the common advice that Health raises defence as well as HP.
+On this evidence it does not, or at least nothing models it that way. The
+disagreement is left standing rather than quietly resolved.
 
 The same two multipliers close every offensive stat:
 
@@ -146,8 +143,8 @@ final = Fix( Fix( (base + gear) × (100 + Quest%) / 100 ) × (100 + Pet%) / 100 
 ```
 
 with `Pet%` slot 0 applied to PDMin, PDMax, MDMin and MDMax, slot 1 to Defense,
-and slot 2 to Evasion. **Pets giving a percentage bonus to damage, defense and
-evasion is not in any project document.**
+and slot 2 to Evasion. **A pet giving a percentage bonus to damage, defence and evasion is something
+most guides never mention.**
 
 A second conditional appears in Evasion, gated the same opaque way:
 
@@ -155,8 +152,7 @@ A second conditional appears in Evasion, gated the same opaque way:
 if <gate>:  Evasion += Fix( Evasion × (Lv / 2) / 400 )
 ```
 
-Both gates are read from hidden form fields whose meaning the metadata does not
-name. Left **unconfirmed** rather than guessed at.
+What switches either gate on is not recorded anywhere. Left **unconfirmed** rather than guessed at.
 
 ---
 
