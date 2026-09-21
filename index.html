@@ -12935,7 +12935,10 @@ const AtlasWorld = (()=>{
     }
     async loadVersion(){
       const epoch=++this.epoch;this.gl?.dispose();this.preview?.dispose();this.gl=null;this.preview=null;this.modelIndex=null;this.indexPending=null;this.sectionCache.clear();this.imageNeeded.clear();this.images.forEach(i=>i.close?.());this.images.clear();
-      const record=this.registry.versions.find(v=>v.id===this.s.version);const catalog=await this.json(record.path);if(this.dead||epoch!==this.epoch)return;this.catalog=catalog;
+      const record=this.registry.versions.find(v=>v.id===this.s.version);const catalog=await this.json(record.path);if(this.dead||epoch!==this.epoch)return;
+      // Keep the extracted catalogue and its coverage intact; destructible boxes
+      // are not useful hunting locations, including in searches or shared links.
+      this.catalog={...catalog,entities:catalog.entities.filter(e=>!(e.type==='monster'&&e.name.trim().toLowerCase()==='wooden box'))};
       const reset=!this.catalog.scenes.some(p=>p.id===this.s.place);if(reset)this.s.place=this.catalog.scenes[0]?.id||'outdoors';
       for(const [name,key,rows] of [['questName','quest',this.catalog.quests],['dropName','drop',this.catalog.items]]){if(this.s[name]){const hits=rows.filter(r=>r.name.toLowerCase()===this.s[name].toLowerCase());if(hits.length&&(key==='drop'||hits.length===1))this.s[key]=String(hits[0].id);}if(this.s[key]&&!rows.some(r=>String(r.id)===this.s[key]))this.s[key]='';}
       this.imageFailures.clear();if(this.s.selection&&!this.catalog.entities.some(e=>e.id===this.s.selection))this.s.selection='';
@@ -12959,7 +12962,7 @@ const AtlasWorld = (()=>{
       $('[data-cut]').oninput=e=>{this.s.cut=Number(e.target.value);this.save();this.schedule();};$('[data-share]').onclick=async()=>{this.save();try{await navigator.clipboard.writeText(location.href);this.notice('View link copied.');}catch{this.notice('The address bar contains this view’s shareable link.');}};
       $('[data-panel]').onclick=()=>this.info.classList.toggle('collapsed');$('[data-fit]').onclick=()=>{this.fit();this.save();this.schedule();};
       for(const b of this.host.querySelectorAll('[data-zoom]'))b.onclick=()=>{this.s.radius=clamp(this.s.radius*(b.dataset.zoom==='in'?.65:1.55),25,450000);this.save();this.schedule();};
-      this.bindPointers();this.observer?.disconnect();this.observer=new ResizeObserver(()=>this.schedule());this.observer.observe(this.stage);
+      this.bindPointers();this.bindKeyboard();this.observer?.disconnect();this.observer=new ResizeObserver(()=>this.schedule());this.observer.observe(this.stage);
     }
     async loadPlace(reset){
       const epoch=++this.serial;this.geometry=[];this.sectionCache.clear();const place=this.catalog.scenes.find(p=>p.id===this.s.place),data=await this.json(place.path);if(this.dead||epoch!==this.serial)return;this.place=place;this.data=data;
@@ -13014,7 +13017,28 @@ const AtlasWorld = (()=>{
         this.pointers.set(e.pointerId,{x:e.clientX,y:e.clientY});this.drag.moved+=Math.abs(dx)+Math.abs(dy);this.schedule();});
       const up=e=>{this.pointers.delete(e.pointerId);if(this.drag?.moved<7){const rect=this.stage.getBoundingClientRect();this.pick(e.clientX-rect.left,e.clientY-rect.top);}this.save();};this.stage.addEventListener('pointerup',up);this.stage.addEventListener('pointercancel',e=>this.pointers.delete(e.pointerId));
       this.stage.addEventListener('wheel',e=>{e.preventDefault();this.s.radius=clamp(this.s.radius*Math.exp(e.deltaY*.001),25,450000);this.save();this.schedule();},{passive:false});
-      this.stage.addEventListener('keydown',e=>{if(e.ctrlKey||e.metaKey||e.altKey||e.target?.closest('input,textarea,select,[contenteditable=true]'))return;const step=this.stage.clientHeight*.075,key=e.key.toLowerCase();if(['arrowleft','a'].includes(key))this.pan(step,0);else if(['arrowright','d'].includes(key))this.pan(-step,0);else if(['arrowup','w'].includes(key))this.pan(0,step);else if(['arrowdown','s'].includes(key))this.pan(0,-step);else if(['+','='].includes(e.key))this.s.radius*=.8;else if(e.key==='-')this.s.radius*=1.25;else return;e.preventDefault();this.s.radius=clamp(this.s.radius,25,450000);this.s.y=this.elevation(this.s.x,this.s.z);this.save();this.schedule();});
+    }
+    bindKeyboard(){
+      if(this.keyHandler)return;
+      // Atlas focuses its main page after mounting; toolbar and result buttons
+      // also retain focus. Listen for the lifetime of this route, not the canvas.
+      this.keyDocument=this.host.ownerDocument;
+      this.keyHandler=e=>{
+        if(this.dead||!this.data||!this.stage?.clientHeight||e.defaultPrevented||e.isComposing||e.ctrlKey||e.metaKey||e.altKey)return;
+        const step=this.stage.clientHeight*.075,key=e.key.toLowerCase();
+        if(e.target?.isContentEditable||e.target?.closest?.('textarea,select,[contenteditable]:not([contenteditable="false"]),[role="textbox"],[role="combobox"],dialog,[role="dialog"]'))return;
+        const input=e.target?.closest?.('input');
+        if(input&&(!['checkbox','radio','range','button','submit','reset'].includes(input.type)||!['w','a','s','d'].includes(key)))return;
+        if(['arrowleft','a'].includes(key))this.pan(step,0);
+        else if(['arrowright','d'].includes(key))this.pan(-step,0);
+        else if(['arrowup','w'].includes(key))this.pan(0,step);
+        else if(['arrowdown','s'].includes(key))this.pan(0,-step);
+        else if(['+','='].includes(key))this.s.radius*=.8;
+        else if(key==='-')this.s.radius*=1.25;
+        else return;
+        e.preventDefault();this.s.radius=clamp(this.s.radius,25,450000);this.s.y=this.elevation(this.s.x,this.s.z);this.save();this.schedule();
+      };
+      this.keyDocument.addEventListener('keydown',this.keyHandler);
     }
     schedule(){if(this.dead||this.frame)return;this.frame=requestAnimationFrame(()=>{this.frame=0;this.paint();});}
     screen(x,y,z){if(this.s.view==='3d'&&this.gl?.viewMatrix){const p=this.gl.project([x,y,z]);return {...p,x:p.x/this.ratio,y:p.y/this.ratio};}const scale=this.stage.clientHeight/(2*this.s.radius);return {x:this.stage.clientWidth/2+(x-this.s.x)*scale,y:this.stage.clientHeight/2-(z-this.s.z)*scale,visible:true};}
@@ -13081,7 +13105,7 @@ const AtlasWorld = (()=>{
       for(const b of this.info.querySelectorAll('[data-connection]'))b.onclick=()=>this.showConnection(connections.find(c=>c.id===b.dataset.connection));
     }
     showConnection(c){this.info.innerHTML=`<h2>${escape(c.name)}</h2><p>${escape(c.condition||'Configured travel connection.')}</p><button data-travel>Follow connection →</button>`;this.info.querySelector('[data-travel]').onclick=async()=>{this.s.selection='';this.s.place=c.to.scene;this.host.querySelector('[data-place]').value=c.to.scene;this.s.x=c.to.x;this.s.z=c.to.y;this.s.radius=700;await this.loadPlace(false);this.s.y=this.elevation(this.s.x,this.s.z);this.save(true);this.showResults();this.schedule();};}
-    dispose(){this.dead=true;this.epoch++;this.serial++;cancelAnimationFrame(this.frame);this.observer?.disconnect();this.gl?.dispose();this.preview?.dispose();this.images.forEach(im=>im.close());this.images.clear();this.imageNeeded.clear();this.sectionCache.clear();}
+    dispose(){this.dead=true;this.epoch++;this.serial++;this.keyDocument?.removeEventListener('keydown',this.keyHandler);this.keyHandler=null;cancelAnimationFrame(this.frame);this.observer?.disconnect();this.gl?.dispose();this.preview?.dispose();this.images.forEach(im=>im.close());this.images.clear();this.imageNeeded.clear();this.sectionCache.clear();}
   }
   return {mount:(host,source,link)=>new World(host,source,link),parseState,stateHash};
 })();
