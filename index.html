@@ -2838,7 +2838,16 @@
     }
     .model-viewer canvas { border-color: #7c6647; }
     .monster-icon { background: #cfc7b6; }
-  </style>
+  /* WORLD_MAP_STYLE_BEGIN */
+.world-header{display:flex;align-items:flex-end;justify-content:space-between;gap:1rem;margin-bottom:1rem}.world-header h1{margin:.1rem 0;font-size:clamp(1.8rem,3vw,2.8rem)}.world-kicker{font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;color:#bda773}.world-header p{margin:0;color:var(--muted,#a3afa6);max-width:44rem}.world-toolbar{display:flex;gap:.55rem;flex-wrap:wrap;align-items:end;padding:.75rem;background:#17221e;border:1px solid #394b3e;border-radius:10px 10px 0 0}.world-toolbar label{display:flex;flex-direction:column;gap:.25rem;font-size:.74rem;color:#c7cbbd}.world-toolbar select,.world-toolbar input{min-width:120px;background:#0f1815;color:#edeede;border:1px solid #455244;border-radius:5px;padding:.5rem}.world-toolbar .world-search{flex:1;min-width:170px}.world-toolbar .world-search input{width:100%}.world-toolbar button,.world-info button,.world-actions button{background:#233d31;color:#ecedde;border:1px solid #5a6d50;padding:.5rem .8rem;border-radius:5px;cursor:pointer}.world-toolbar button[aria-pressed=true]{background:#cfb97b;color:#17221e;border-color:#cfb97b}.world-shell{display:grid;grid-template-columns:minmax(0,1fr) 290px;min-height:620px;border:1px solid #394b3e;border-top:0;border-radius:0 0 10px 10px;overflow:hidden}.world-stage{position:relative;min-width:0;min-height:620px;background:#0e1915;touch-action:none;overflow:hidden}.world-stage canvas{position:absolute;inset:0;width:100%;height:100%;display:block}.world-stage canvas[hidden]{display:none}.world-info{background:#121e19;padding:1rem;overflow:auto;max-height:76vh;border-left:1px solid #394b3e}.world-info h2{font-size:1.15rem;margin:.3rem 0 .7rem;color:#efe9cf}.world-info h3{font-size:.88rem;color:#d8c18e;margin:1.2rem 0 .5rem}.world-info p{font-size:.83rem;line-height:1.55;color:#c0c9bb}.world-info dl{display:grid;grid-template-columns:1fr 1fr;gap:.4rem;font-size:.8rem}.world-info dt{color:#a9b9a5}.world-info dd{margin:0;text-align:right}.world-info a{color:#d8c18e}.world-info .world-result{display:block;width:100%;text-align:left;margin:.35rem 0;padding:.6rem;background:#1c2d24;border-color:#344b3b}.world-result small{display:block;color:#acbaa4;margin-top:.2rem}.world-tag{display:inline-block;font-size:.68rem;padding:.15rem .4rem;border:1px solid #5d6343;border-radius:3px;color:#d4c594;margin:.2rem .25rem .2rem 0}.world-controls{position:absolute;left:12px;top:12px;display:flex;flex-direction:column;gap:4px;z-index:2}.world-controls button{width:35px;height:35px;font-size:20px;background:#132219e8;color:#ede5bc;border:1px solid #647059;border-radius:5px;cursor:pointer}.world-hud{position:absolute;left:10px;bottom:10px;background:#111d18de;color:#cbd4c0;border:1px solid #40503c;padding:.35rem .65rem;font-size:.73rem;border-radius:4px;max-width:calc(100% - 20px);pointer-events:none}.world-notice{padding:.6rem .8rem;color:#ddc699;background:#332d1f;border:1px solid #6b5b38;margin:.7rem 0;font-size:.84rem}.world-options{display:flex;flex-wrap:wrap;align-items:center;gap:1rem;margin:.7rem 0;font-size:.83rem}.world-options label{display:flex;align-items:center;gap:.3rem}.world-options input[type=range]{width:120px}.world-legend{display:flex;gap:1rem;font-size:.75rem;color:#b9c7b0;margin:.6rem 0}.world-legend span:before{content:'●';margin-right:.35rem;color:#e5c96d}.world-legend span:nth-child(2):before{color:#e38372}.world-legend span:nth-child(3):before{color:#67bccc}.world-notes{font-size:.83rem;margin-top:1rem;color:#b5c0b0}.world-notes summary{cursor:pointer;color:#ccbb86}.world-error{padding:1rem;background:#33251e;border:1px solid #795341;color:#edcab0}.world-help{font-size:.78rem;color:#aebda7;margin:.5rem 0}.world-model-preview{width:100%;height:190px;display:block;border:1px solid #354b3c;border-radius:6px;background:#101b16}.world-actions{display:flex;gap:.4rem;flex-wrap:wrap}.world-mobile-panel{display:none}
+@media(min-width:1400px){body.world-route .main{max-width:none}.world-stage{min-height:72vh}.world-shell{grid-template-columns:minmax(0,1fr) 310px}}
+@media(max-width:760px){.world-header{align-items:start;flex-direction:column}.world-header p{font-size:.85rem}.world-shell{display:flex;flex-direction:column;min-height:0}.world-stage{min-height:58vh}.world-info{max-height:36vh;border-left:0;border-top:1px solid #394b3e;padding:.7rem}.world-info.collapsed{display:none}.world-toolbar{padding:.5rem;gap:.4rem}.world-toolbar label{flex:1;min-width:120px}.world-toolbar .world-search{order:5;flex-basis:100%}.world-toolbar select{width:100%;min-width:0}.world-options{gap:.6rem}.world-mobile-panel{display:inline-block}.world-model-preview{height:160px}.world-help{font-size:.7rem}.world-header h1{font-size:1.8rem}}
+
+.world-filter-panel{margin:.6rem 0}.world-filter-panel summary{cursor:pointer;color:#dac58d;font-size:.82rem}.world-options select{max-width:330px}.world-filter-panel .world-options{margin:.5rem 0}
+@media(max-width:760px){.world-header h1{font-size:1.55rem}.world-header p{display:none}.world-header{gap:.4rem;margin-bottom:.6rem}.world-options label:has(select){width:100%}.world-options select{min-width:0;width:100%}.world-stage{min-height:60vh}}
+
+/* WORLD_MAP_STYLE_END */
+</style>
 </head>
 <body>
   <div class="app-shell">
@@ -3364,13 +3373,13 @@
       }
 
       async read(path) {
-        const response = await fetch(this.url(path), { cache: "no-store" });
+        const response = await fetch(this.url(path), { cache: /^assets\/world_map\/[0-9a-f]{24}\./.test(normalizePath(path)) ? "force-cache" : "no-store" });
         if (!response.ok) throw new Error(`${response.status} ${response.statusText}`);
         return response.text();
       }
 
       async file(path) {
-        const response = await fetch(this.url(path), { cache: "no-store" });
+        const response = await fetch(this.url(path), { cache: /^assets\/world_map\/[0-9a-f]{24}\./.test(normalizePath(path)) ? "force-cache" : "no-store" });
         if (!response.ok) throw new Error(`${response.status} ${response.statusText}`);
         return response.blob();
       }
@@ -4405,6 +4414,7 @@
       return [
         { label: "Explore", links: [
           ["home", "Overview", ""],
+          ["world", "World map", ""],
           ["search", "Global search", ""],
           ["articles", "Knowledge library", state.ready ? state.articles.length : ""]
         ]},
@@ -4440,7 +4450,7 @@
             </a>`).join("")}
         </nav>`).join("");
       el.mobileNav.innerHTML = navGroups().flatMap(group => group.links)
-        .filter(([route]) => ["home", "monsters", "items", "skills", "quests", "npcs", "search"].includes(route))
+        .filter(([route]) => ["home", "world", "monsters", "items", "skills", "quests", "npcs", "search"].includes(route))
         .map(([route, label]) => `<a class="${current === route ? "active" : ""}" href="#/${route}">${escapeHtml(label)}</a>`).join("");
 
       el.sidebarStatus.innerHTML = state.ready
@@ -6910,6 +6920,7 @@
           lede: headline,
           crumbs: [["Overview", "#/home"], ["Items", "#/items"], [row.ita_name || String(id), ""]]
         })}
+        ${showOnWorld("item", row.ita_name)}
         <div class="detail-grid">
           <div>
             ${panel("Stats", `${statLines([
@@ -11177,6 +11188,7 @@
             .filter(Boolean).join(" · "),
           crumbs: [["Overview", "#/home"], ["Monsters", "#/monsters"], [row.text, ""]]
         })}
+        ${showOnWorld("monster", row.text)}
         <div class="detail-grid">
           <div>
             ${panel("Drops", bangoDropTable(drops, "monster"),
@@ -11418,6 +11430,7 @@
           crumbs: [["Overview", "#/home"], ["Quests", "#/quests"], [row.que_name, ""]],
           actions: questStatusButton(activeProfile(), row, true)
         })}
+        ${showOnWorld("quest", row.que_name)}
         <div class="detail-grid">
           <div>
             ${panel("Rewards", statLines([
@@ -11531,6 +11544,7 @@
               uniqueQuests.length === 1 ? "" : "s"}` : ""].filter(Boolean).join(" · "),
           crumbs: [["Overview", "#/home"], ["NPCs", "#/npcs"], [identity.display, ""]]
         })}
+        ${identity.named ? showOnWorld("npc", row.text) : ""}
         <div class="detail-grid">
           <div>
             ${panel("Quests", uniqueQuests.length ? `<ul class="link-list">${uniqueQuests.map(quest =>
@@ -12810,7 +12824,291 @@
         <div class="empty"><p>The link may be old, or the name may be spelled differently in game.</p><a class="button primary" href="#/search">Search the atlas</a></div>`;
     }
 
+/* WORLD_MAP_MODULE_BEGIN */
+/* Atlas world renderer: dependency-free WebGL, shared by the viewer and baker. */
+const WorldGL = (() => {
+  const identity=()=>[1,0,0,0,0,1,0,0,0,0,1,0,0,0,0,1];
+  function multiply(a,b){const o=new Float32Array(16);for(let c=0;c<4;c++)for(let r=0;r<4;r++)for(let k=0;k<4;k++)o[c*4+r]+=a[k*4+r]*b[c*4+k];return o;}
+  const sub=(a,b)=>a.map((x,i)=>x-b[i]);
+  const dot=(a,b)=>a.reduce((s,x,i)=>s+x*b[i],0);
+  const cross=(a,b)=>[a[1]*b[2]-a[2]*b[1],a[2]*b[0]-a[0]*b[2],a[0]*b[1]-a[1]*b[0]];
+  const norm=a=>{const n=Math.hypot(...a);return a.map(x=>x/n);};
+  // Native geometry uses a left-handed X/elevation/Y basis. Keep east right
+  // and north up rather than mirroring the 2D map relative to its 3D scene.
+  function lookAt(eye,target,up=[0,1,0]){const z=norm(sub(eye,target)),x=norm(cross(z,up)),y=cross(x,z);return [x[0],y[0],z[0],0,x[1],y[1],z[1],0,x[2],y[2],z[2],0,-dot(x,eye),-dot(y,eye),-dot(z,eye),1];}
+  function ortho(l,r,b,t,n,f){return [2/(r-l),0,0,0,0,2/(t-b),0,0,0,0,-2/(f-n),0,-(r+l)/(r-l),-(t+b)/(t-b),-(f+n)/(f-n),1];}
+  function perspective(fov,aspect,n,f){const s=1/Math.tan(fov/2);return [s/aspect,0,0,0,0,s,0,0,0,0,(f+n)/(n-f),-1,0,0,2*f*n/(n-f),0];}
+  function transform(m,p){return [0,1,2,3].map(r=>m[r]*p[0]+m[4+r]*p[1]+m[8+r]*p[2]+m[12+r]);}
+  function instance(model,x,y,z,angle=0){const c=Math.cos(angle),s=Math.sin(angle);return {model,matrix:[c,0,-s,0,0,1,0,0,s,0,c,0,x,y,z,1]};}
+  class Renderer {
+    constructor(canvas,reader,index){
+      this.canvas=canvas;this.reader=reader;this.index=index;this.meshes=new Map();this.textures=new Map();this.pending=new Map();this.disposed=false;this.loaded=0;this.errors=[];
+      const gl=this.gl=canvas.getContext('webgl',{alpha:false,antialias:true,preserveDrawingBuffer:true});if(!gl)throw new Error('3D is unavailable in this browser. The overhead map remains available.');
+      const vs=`attribute vec3 position;attribute vec3 normal;attribute vec2 uv;uniform mat4 matrix;uniform mat4 model;varying vec2 texcoord;varying float light;varying float altitude;void main(){vec4 world=model*vec4(position,1.);altitude=world.y;vec3 n=normalize(mat3(model)*normal);light=.65+.35*abs(dot(n,normalize(vec3(.35,.85,.3))));texcoord=uv;gl_Position=matrix*world;}`;
+      const fs=`precision mediump float;varying vec2 texcoord;varying float light;varying float altitude;uniform sampler2D texture;uniform sampler2D mask;uniform sampler2D tint;uniform vec2 repeat;uniform float layered;uniform float cutoff;uniform float lighting;void main(){if(altitude>cutoff)discard;vec4 color=texture2D(texture,texcoord*repeat);if(layered>.5){color.rgb*=texture2D(tint,texcoord).rgb*1.18;color.a*=texture2D(mask,texcoord).r;}else if(color.a<.35)discard;gl_FragColor=vec4(color.rgb*mix(1.,light,lighting),color.a);}`;
+      function shader(type,source){const s=gl.createShader(type);gl.shaderSource(s,source);gl.compileShader(s);if(!gl.getShaderParameter(s,gl.COMPILE_STATUS))throw new Error(gl.getShaderInfoLog(s));return s;}
+      const v=shader(gl.VERTEX_SHADER,vs),f=shader(gl.FRAGMENT_SHADER,fs);this.program=gl.createProgram();gl.attachShader(this.program,v);gl.attachShader(this.program,f);gl.linkProgram(this.program);gl.deleteShader(v);gl.deleteShader(f);
+      if(!gl.getProgramParameter(this.program,gl.LINK_STATUS))throw new Error(gl.getProgramInfoLog(this.program));
+      this.attributes=Object.fromEntries(['position','normal','uv'].map(k=>[k,gl.getAttribLocation(this.program,k)]));this.uniforms=Object.fromEntries(['matrix','model','texture','mask','tint','repeat','layered','cutoff','lighting'].map(k=>[k,gl.getUniformLocation(this.program,k)]));
+      this.white=gl.createTexture();gl.bindTexture(gl.TEXTURE_2D,this.white);gl.texImage2D(gl.TEXTURE_2D,0,gl.RGBA,1,1,0,gl.RGBA,gl.UNSIGNED_BYTE,new Uint8Array([180,185,175,255]));
+      this.opaque=gl.createTexture();gl.bindTexture(gl.TEXTURE_2D,this.opaque);gl.texImage2D(gl.TEXTURE_2D,0,gl.RGBA,1,1,0,gl.RGBA,gl.UNSIGNED_BYTE,new Uint8Array([255,255,255,255]));
+      gl.enable(gl.DEPTH_TEST);gl.depthFunc(gl.LEQUAL);gl.disable(gl.CULL_FACE);gl.blendFunc(gl.SRC_ALPHA,gl.ONE_MINUS_SRC_ALPHA);
+    }
+    async acquire(path,kind){
+      const cache=kind==='mesh'?this.meshes:this.textures;
+      if(cache.has(path))return cache.get(path);
+      if(this.pending.has(path))return this.pending.get(path);
+      const promise=(async()=>{
+        const blob=await this.reader(path);if(this.disposed)return;
+        const gl=this.gl;let value;
+        if(kind==='mesh'){
+          let buffer=await blob.arrayBuffer();if(new Uint8Array(buffer,0,2)[0]===31&&new Uint8Array(buffer,0,2)[1]===139){if(typeof DecompressionStream==='undefined')throw new Error('Mesh decompression unavailable');buffer=await new Response(new Blob([buffer]).stream().pipeThrough(new DecompressionStream('gzip'))).arrayBuffer();}const header=new DataView(buffer);if(header.getUint32(0,true)!==0x31504d57)throw new Error('Unsupported model');
+          const nv=header.getUint32(4,true),ni=header.getUint32(8,true);if(buffer.byteLength!==16+nv*32+ni*2)throw new Error('Incomplete model');
+          const vertices=gl.createBuffer(),indices=gl.createBuffer();gl.bindBuffer(gl.ARRAY_BUFFER,vertices);gl.bufferData(gl.ARRAY_BUFFER,new Float32Array(buffer,16,nv*8),gl.STATIC_DRAW);gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER,indices);gl.bufferData(gl.ELEMENT_ARRAY_BUFFER,new Uint16Array(buffer,16+nv*32,ni),gl.STATIC_DRAW);value={vertices,indices,count:ni};
+        }else{
+          const bitmap=await createImageBitmap(blob);if(this.disposed){bitmap.close();return;}
+          const texture=gl.createTexture();gl.bindTexture(gl.TEXTURE_2D,texture);gl.pixelStorei(gl.UNPACK_FLIP_Y_WEBGL,false);gl.texImage2D(gl.TEXTURE_2D,0,gl.RGBA,gl.RGBA,gl.UNSIGNED_BYTE,bitmap);
+          const power=n=>(n&(n-1))===0;const repeat=power(bitmap.width)&&power(bitmap.height);gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_WRAP_S,repeat?gl.REPEAT:gl.CLAMP_TO_EDGE);gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_WRAP_T,repeat?gl.REPEAT:gl.CLAMP_TO_EDGE);if(repeat)gl.generateMipmap(gl.TEXTURE_2D);gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_MIN_FILTER,repeat?gl.LINEAR_MIPMAP_LINEAR:gl.LINEAR);gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_MAG_FILTER,gl.LINEAR);bitmap.close();value={texture};
+        }
+        if(this.disposed)return;cache.set(path,value);this.loaded++;return value;
+      })().finally(()=>this.pending.delete(path));this.pending.set(path,promise);return promise;
+    }
+    async prepare(objects){
+      const tasks=new Map();for(const obj of objects){const m=this.index[obj.model];if(!m)continue;for(const p of m.parts){tasks.set(p.mesh,'mesh');for(const key of ['texture','mask','tint'])if(p[key])tasks.set(p[key],'texture');}}
+      const list=[...tasks];let at=0;await Promise.all(Array.from({length:6},async()=>{while(at<list.length&&!this.disposed){const [path,kind]=list[at++];try{await this.acquire(path,kind);}catch(e){this.errors.push({path,error:String(e)});}}}));
+      return tasks;
+    }
+    trim(needed){
+      const gl=this.gl;for(const [path,m] of this.meshes)if(!needed.has(path)){gl.deleteBuffer(m.vertices);gl.deleteBuffer(m.indices);this.meshes.delete(path);}
+      for(const [path,t] of this.textures)if(!needed.has(path)){gl.deleteTexture(t.texture);this.textures.delete(path);}
+    }
+    camera({x,y,z,radius=1800,yaw=0,pitch=.7,overhead=false,aspect=1}){
+      const target=[x,y,z];let view,projection;
+      if(overhead){view=lookAt([x,y+30000,z],target,[0,0,1]);projection=ortho(-radius*aspect,radius*aspect,-radius,radius,1,60000);}
+      else{const eye=[x+Math.sin(yaw)*Math.cos(pitch)*radius,y+Math.sin(pitch)*radius,z+Math.cos(yaw)*Math.cos(pitch)*radius];view=lookAt(eye,target);projection=perspective(.75,aspect,Math.max(.3,radius/3000),Math.max(60000,radius*10));}
+      this.viewMatrix=multiply(projection,view);return this.viewMatrix;
+    }
+    project(point){const p=transform(this.viewMatrix,point);return {x:(p[0]/p[3]+1)*this.canvas.width/2,y:(1-p[1]/p[3])*this.canvas.height/2,visible:p[3]>0&&p[2]/p[3]<1};}
+    draw(objects,camera,cutoff=1e7){
+      if(this.disposed)return;const gl=this.gl;gl.viewport(0,0,this.canvas.width,this.canvas.height);gl.clearColor(.055,.085,.077,1);gl.clear(gl.COLOR_BUFFER_BIT|gl.DEPTH_BUFFER_BIT);gl.useProgram(this.program);
+      this.camera({...camera,aspect:this.canvas.width/this.canvas.height});gl.uniformMatrix4fv(this.uniforms.matrix,false,this.viewMatrix);gl.uniform1f(this.uniforms.cutoff,cutoff);gl.uniform1i(this.uniforms.texture,0);let draws=0;
+      for(const obj of objects){const m=this.index[obj.model];if(!m)continue;gl.uniform1f(this.uniforms.cutoff,obj.keepWhole?1e7:cutoff);gl.uniformMatrix4fv(this.uniforms.model,false,obj.matrix);gl.uniform1f(this.uniforms.lighting,m.terrain?0:1);
+        for(const p of m.parts){const mesh=this.meshes.get(p.mesh);if(!mesh)continue;gl.bindBuffer(gl.ARRAY_BUFFER,mesh.vertices);gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER,mesh.indices);
+          for(const [key,size,offset] of [['position',3,0],['normal',3,12],['uv',2,24]]){const loc=this.attributes[key];gl.enableVertexAttribArray(loc);gl.vertexAttribPointer(loc,size,gl.FLOAT,false,32,offset);}
+          gl.uniform2fv(this.uniforms.repeat,p.repeat||[1,1]);gl.uniform1f(this.uniforms.layered,p.terrainLayer?1:0);
+          if(p.mask)gl.enable(gl.BLEND);else gl.disable(gl.BLEND);
+          for(const [unit,key] of ['texture','mask','tint'].entries()){gl.activeTexture(gl.TEXTURE0+unit);gl.bindTexture(gl.TEXTURE_2D,this.textures.get(p[key])?.texture||(unit?this.opaque:this.white));gl.uniform1i(this.uniforms[key],unit);}
+          gl.drawElements(gl.TRIANGLES,mesh.count,gl.UNSIGNED_SHORT,0);draws++;
+        }
+      }this.draws=draws;
+    }
+    dispose(){if(this.disposed)return;this.disposed=true;this.trim(new Map());this.gl.deleteTexture(this.white);this.gl.deleteTexture(this.opaque);this.gl.deleteProgram(this.program);this.gl.getExtension('WEBGL_lose_context')?.loseContext();}
+    stats(){return {meshes:this.meshes.size,textures:this.textures.size,pending:this.pending.size,draws:this.draws,loaded:this.loaded,errors:this.errors.length};}
+  }
+  return {Renderer,identity,multiply,transform,instance};
+})();
+
+/* Shared route, controls and selection for the 2D / 3D world map. */
+const AtlasWorld = (()=>{
+  const escape=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+  const clamp=(v,a,b)=>Math.max(a,Math.min(b,v));
+  const finite=(v,d,a=-1e7,b=1e7)=>Number.isFinite(Number(v))&&v!==null?clamp(Number(v),a,b):d;
+  const distance=(b,x,z)=>Math.hypot(Math.max(b[0]-x,0,x-b[2]),Math.max(b[1]-z,0,z-b[3]));
+  function parseState(hash){const q=new URLSearchParams(hash.split('?')[1]||'');return {version:['classic','sinkkal','bango'].includes(q.get('v'))?q.get('v'):'classic',place:q.get('place')||'outdoors',view:q.get('view')==='3d'?'3d':'2d',selection:q.get('select')||'',search:q.get('q')||'',quest:q.get('quest')||'',drop:q.get('drop')||'',service:q.get('service')||'',questName:q.get('questName')||'',dropName:q.get('dropName')||'',special:q.get('special')==='1',cut:finite(q.get('cut'),20,0,100),npc:q.get('npc')!=='0',monster:q.get('monster')!=='0',travel:q.get('travel')!=='0',blocked:q.get('blocked')==='1',roof:q.get('roof')!=='0',x:finite(q.get('x'),257556,0,524288),y:finite(q.get('y'),1614,-10000,60000),z:finite(q.get('z'),258207,0,524288),radius:finite(q.get('r'),2100,25,450000),yaw:finite(q.get('yaw'),Math.PI,-100,100),pitch:finite(q.get('pitch'),.78,.15,1.5)};}
+  function stateHash(s){const q=new URLSearchParams();for(const [key,value] of Object.entries({v:s.version,place:s.place,view:s.view,select:s.selection,q:s.search,quest:s.quest,drop:s.drop,service:s.service,questName:s.questName,dropName:s.dropName,special:s.special?1:0,cut:s.cut,npc:s.npc?1:0,monster:s.monster?1:0,travel:s.travel?1:0,blocked:s.blocked?1:0,roof:s.roof?1:0,x:Math.round(s.x),y:Math.round(s.y),z:Math.round(s.z),r:Math.round(s.radius),yaw:s.yaw.toFixed(3),pitch:s.pitch.toFixed(3)}))if(value!=='')q.set(key,value);return '#/world?'+q;}
+  class World {
+    constructor(host,source,link){this.host=host;this.source=source;this.link=link;this.s=parseState(location.hash);const cameraQuery=new URLSearchParams(location.hash.split('?')[1]||'');this.cameraFromLink=['x','z','r'].every(k=>cameraQuery.has(k)&&Number.isFinite(Number(cameraQuery.get(k))));this.dead=false;this.images=new Map();this.imagePending=new Map();this.imageQueue=[];this.imageFailures=new Set();this.imageWorkers=0;this.imageNeeded=new Set();this.sectionCache=new Map();this.serial=0;this.pointers=new Map();this.epoch=0;this.geometry=[];this.modelIndex=null;this.lastNotice='';this.ready=this.start();}
+    async json(path){return JSON.parse(await this.source.read(path));}
+    async index(){
+      if(this.modelIndex)return this.modelIndex;
+      const epoch=this.epoch,path=this.catalog.modelIndex;
+      if(this.indexPending?.path!==path)this.indexPending={path,promise:this.json(path)};
+      const result=await this.indexPending.promise;if(this.dead||epoch!==this.epoch)return null;
+      this.modelIndex=result;return result;
+    }
+    async start(){
+      this.host.innerHTML='<p class="world-help">Opening the world map…</p>';
+      try{this.registry=await this.json('assets/world_map/catalogue.json');if(this.dead)return;await this.loadVersion();}
+      catch(e){if(!this.dead)this.host.innerHTML=`<div class="world-error">The world map could not be loaded. Please try again. <button data-world-retry>Try again</button></div>`;this.host.querySelector('[data-world-retry]')?.addEventListener('click',()=>this.start());}
+    }
+    async loadVersion(){
+      const epoch=++this.epoch;this.gl?.dispose();this.preview?.dispose();this.gl=null;this.preview=null;this.modelIndex=null;this.indexPending=null;this.sectionCache.clear();this.imageNeeded.clear();this.images.forEach(i=>i.close?.());this.images.clear();
+      const record=this.registry.versions.find(v=>v.id===this.s.version);const catalog=await this.json(record.path);if(this.dead||epoch!==this.epoch)return;this.catalog=catalog;
+      const reset=!this.catalog.scenes.some(p=>p.id===this.s.place);if(reset)this.s.place=this.catalog.scenes[0]?.id||'outdoors';
+      for(const [name,key,rows] of [['questName','quest',this.catalog.quests],['dropName','drop',this.catalog.items]]){if(this.s[name]){const hits=rows.filter(r=>r.name.toLowerCase()===this.s[name].toLowerCase());if(hits.length&&(key==='drop'||hits.length===1))this.s[key]=String(hits[0].id);}if(this.s[key]&&!rows.some(r=>String(r.id)===this.s[key]))this.s[key]='';}
+      this.imageFailures.clear();if(this.s.selection&&!this.catalog.entities.some(e=>e.id===this.s.selection))this.s.selection='';
+      this.dropFamilies=new Map();for(const i of this.catalog.items){if(i.identified===false)continue;const key=i.name.toLowerCase();if(!this.dropFamilies.has(key))this.dropFamilies.set(key,[]);this.dropFamilies.get(key).push(i.id);}
+      this.renderShell();await this.loadPlace(reset||(!this.cameraFromLink&&this.s.place!=='outdoors'));if(this.s.selection)await this.select(this.s.selection,!this.cameraFromLink);this.cameraFromLink=true;
+    }
+    renderShell(){
+      const s=this.s,cat=this.catalog;this.host.innerHTML=`<div class="world-header"><div><div class="world-kicker">Kal Atlas · Explore</div><h1>The world of Kal</h1><p>Find a place, a person, or your next hunt.</p></div><div class="world-actions"><button data-share>Copy view link</button><button class="world-mobile-panel" data-panel>Details</button></div></div>
+      <div class="world-toolbar"><label>World<select data-version>${this.registry.versions.map(v=>`<option value="${v.id}" ${v.id===s.version?'selected':''}>${escape(v.name)}</option>`).join('')}</select></label><label>Place & floor<select data-place>${cat.scenes.map(p=>`<option value="${escape(p.id)}" ${p.id===s.place?'selected':''}>${escape(p.name)} · ${escape(p.floor)}</option>`).join('')}</select></label><label class="world-search">Find NPCs, monsters or services<input data-search type="search" placeholder="Try Merchant or Demon…" value="${escape(s.search)}"></label><div><button data-view="2d" aria-pressed="${s.view==='2d'}">Overhead</button> <button data-view="3d" aria-pressed="${s.view==='3d'}">3D</button></div></div>
+      <details class="world-filter-panel" ${matchMedia('(min-width:761px)').matches?'open':''}><summary>Layers & objectives</summary><div class="world-options"><label><input type="checkbox" data-filter="npc" ${s.npc?'checked':''}> NPCs</label><label><input type="checkbox" data-filter="monster" ${s.monster?'checked':''}> Monster areas</label><label><input type="checkbox" data-filter="travel" ${s.travel?'checked':''}> Travel</label><label><input type="checkbox" data-filter="special" ${s.special?'checked':''}> Conditional / inactive</label><label><input type="checkbox" data-filter="blocked" ${s.blocked?'checked':''}> Rejected cells (overhead)</label><label><input type="checkbox" data-filter="roof" ${s.roof?'checked':''}> Cutaway</label><label>Cut height <input type="range" data-cut min="0" max="100" value="${s.cut}"></label><label>Quest <select data-quest><option value="">All quests</option>${cat.quests.map(q=>`<option value="${q.id}" ${String(q.id)===s.quest?'selected':''}>${escape(q.name)}</option>`).join('')}</select></label><label>Drop <select data-drop><option value="">All drops</option>${cat.items.filter((q,i,all)=>q.identified!==false&&all.findIndex(a=>a.name===q.name)===i).map(q=>`<option value="${q.id}" ${String(q.id)===s.drop?'selected':''}>${escape(q.name)}</option>`).join('')}</select></label></div></details>
+      <div data-notice></div><div class="world-shell"><div class="world-stage" tabindex="0" aria-label="Interactive world map. Arrow keys pan; plus and minus zoom. Drag to pan, or orbit in 3D. Shift drag pans in 3D."><canvas data-ground></canvas><canvas data-three hidden></canvas><canvas data-overlay></canvas><div class="world-controls"><button data-zoom="in" aria-label="Zoom in">+</button><button data-zoom="out" aria-label="Zoom out">−</button><button data-fit aria-label="Fit this place">⌖</button></div><div class="world-hud" aria-live="polite">Loading map…</div></div><aside class="world-info ${matchMedia('(max-width:760px)').matches?'collapsed':''}" aria-label="Map selection"></aside></div>
+      <div class="world-legend"><span>NPC</span><span>Monster region</span><span>Travel connection</span></div><p class="world-help">Drag to pan · scroll or pinch to zoom · in 3D, drag to orbit and Shift-drag to pan · click a marker or area to inspect it.</p>
+      <details class="world-notes"><summary>Notes on these numbers and map coverage</summary>${cat.notes.map(n=>`<p>${escape(n)}</p>`).join('')}<p>${cat.coverage.npcRecords||0} NPC placements · ${cat.coverage.acceptedSpawns||0} accepted monster groups · ${cat.coverage.terrainSections||0} outdoor sections · ${cat.coverage.floors||0} dungeon floors. ${cat.coverage.assetFailures||0} conversion gaps are recorded. Missing appearances are marked in the selection panel.</p></details>`;
+      const $=q=>this.host.querySelector(q);this.stage=$('.world-stage');this.info=$('.world-info');this.ground=$('[data-ground]');this.three=$('[data-three]');this.overlay=$('[data-overlay]');this.hud=$('.world-hud');
+      $('[data-version]').onchange=e=>{this.s.version=e.target.value;this.s.selection='';this.s.quest='';this.s.drop='';this.s.search='';this.s.questName='';this.s.dropName='';this.save(true);this.ready=this.loadVersion();};
+      $('[data-place]').onchange=e=>{this.s.place=e.target.value;this.s.selection='';this.ready=this.loadPlace(true);};
+      $('[data-search]').oninput=e=>{this.s.search=e.target.value;this.s.selection='';this.save();this.showResults();this.schedule();};
+      for(const input of this.host.querySelectorAll('[data-filter]'))input.onchange=e=>{this.s[input.dataset.filter]=input.checked;this.save();this.showResults();this.schedule();};
+      for(const key of ['quest','drop'])$('[data-'+key+']').onchange=e=>{this.s[key]=e.target.value;this.s[key+'Name']='';this.s.selection='';this.save();this.showResults();this.schedule();};
+      for(const b of this.host.querySelectorAll('[data-view]'))b.onclick=()=>{this.s.view=b.dataset.view;this.save();for(const t of this.host.querySelectorAll('[data-view]'))t.setAttribute('aria-pressed',t.dataset.view===this.s.view);this.schedule();};
+      $('[data-cut]').oninput=e=>{this.s.cut=Number(e.target.value);this.save();this.schedule();};$('[data-share]').onclick=async()=>{this.save();try{await navigator.clipboard.writeText(location.href);this.notice('View link copied.');}catch{this.notice('The address bar contains this view’s shareable link.');}};
+      $('[data-panel]').onclick=()=>this.info.classList.toggle('collapsed');$('[data-fit]').onclick=()=>{this.fit();this.save();this.schedule();};
+      for(const b of this.host.querySelectorAll('[data-zoom]'))b.onclick=()=>{this.s.radius=clamp(this.s.radius*(b.dataset.zoom==='in'?.65:1.55),25,450000);this.save();this.schedule();};
+      this.bindPointers();this.observer?.disconnect();this.observer=new ResizeObserver(()=>this.schedule());this.observer.observe(this.stage);
+    }
+    async loadPlace(reset){
+      const epoch=++this.serial;this.geometry=[];this.sectionCache.clear();const place=this.catalog.scenes.find(p=>p.id===this.s.place),data=await this.json(place.path);if(this.dead||epoch!==this.serial)return;this.place=place;this.data=data;
+      if(reset)this.fit();this.save(reset);this.showResults();this.notice(this.place.available?'': 'Scenery is unavailable for this floor. Configured locations remain searchable.');this.schedule();
+    }
+    fit(){
+      const b=this.place.contentBounds||this.place.bounds,s=this.s,aspect=Math.max(.2,this.stage.clientWidth/this.stage.clientHeight);s.x=(b[0]+b[2])/2;s.z=(b[1]+b[3])/2;s.y=this.place.groundHeight??this.elevation(s.x,s.z);
+      if(s.view==='3d'){
+        const sy=Math.sin(s.yaw),cy=Math.cos(s.yaw),sp=Math.sin(s.pitch),cp=Math.cos(s.pitch),t=Math.tan(.75/2);let radius=25;
+        for(const x of [b[0]-s.x,b[2]-s.x])for(const z of [b[1]-s.z,b[3]-s.z]){const towards=(sy*x+cy*z)*cp,right=cy*x-sy*z,up=-(sy*x+cy*z)*sp;radius=Math.max(radius,towards+Math.max(Math.abs(right)/(t*aspect),Math.abs(up)/t));}
+        s.radius=clamp(radius*1.1,25,450000);
+      }else s.radius=clamp(Math.max((b[2]-b[0])/aspect,b[3]-b[1])*.53,25,450000);
+    }
+    elevation(x,z){const sec=this.data?.sections.find(t=>distance(t.bounds,x,z)===0);if(sec?.height){const h=sec.height,n=h.length;return h[clamp(Math.round((sec.bounds[3]-z)/8192*(n-1)),0,n-1)][clamp(Math.round((x-sec.bounds[0])/8192*(n-1)),0,n-1)];}return this.place?.groundHeight||2047;}
+    save(push=false){const hash=stateHash(this.s);if(location.hash!==hash)history[push?'pushState':'replaceState'](null,'',hash);}
+    notice(text){this.lastNotice=text;const n=this.host.querySelector('[data-notice]');if(n)n.innerHTML=text?`<div class="world-notice">${escape(text)}</div>`:'';}
+    matching(e){const s=this.s;if(e.type==='monster'&&!s.special&&(e.active===false||e.conditional))return false;if(e.type==='npc'&&!s.npc||e.type==='monster'&&!s.monster)return false;if(s.quest&&!e.quests.includes(Number(s.quest)))return false;if(s.drop){const item=this.catalog.items.find(i=>i.id===Number(s.drop));const ids=item&&item.identified!==false?this.dropFamilies.get(item.name.toLowerCase())||[]:[Number(s.drop)];if(!ids.some(i=>e.drops.includes(i)))return false;}if(s.service&&!e.services.includes(s.service))return false;const text=(e.name+' '+e.services.join(' ')).toLowerCase();return !s.search||text.includes(s.search.toLowerCase());}
+    showResults(overlap=null){
+      if(this.dead||!this.data)return;const filtering=this.s.search||this.s.quest||this.s.drop||this.s.service;const summary=this.host.querySelector('.world-filter-panel summary');if(summary)summary.textContent='Layers & objectives'+(this.s.quest||this.s.drop?' · filtered':'');
+      const list=overlap||this.catalog.entities.filter(e=>this.matching(e)&&(filtering||e.scene===this.s.place));
+      const inPlace=list.filter(e=>e.scene===this.s.place);const all=overlap||filtering?list:inPlace;
+      this.info.innerHTML=`<div class="world-kicker">${escape(this.registry.versions.find(v=>v.id===this.s.version).name)}</div><h2>${overlap?'Overlapping locations':escape(this.place.name)}</h2><p>${escape(this.place.floor)} · ${all.length} matching locations${filtering?' across this world':''}.</p>${this.catalog.placementNotice?`<p>${escape(this.catalog.placementNotice)}</p>`:''}${all.slice(0,150).map(e=>`<button class="world-result" data-entity="${escape(e.id)}">${escape(e.name)}<small>${e.type==='npc'?escape(e.services.join(' · ')):'Level '+(e.level??'?')+' · limit '+e.limit}${e.scene!==this.s.place?' · '+escape(this.catalog.scenes.find(p=>p.id===e.scene)?.name||'Location unresolved'):''}</small></button>`).join('')}${all.length>150?'<p>Refine your search to see the remaining locations.</p>':''}${!all.length?'<p>No matching placements are available here. Try another filter or place.</p>':''}`;
+      this.preview?.dispose();this.preview=null;for(const b of this.info.querySelectorAll('[data-entity]'))b.onclick=()=>this.select(b.dataset.entity,true);
+    }
+    async select(id,focus=true){
+      const epoch=this.epoch,e=this.catalog.entities.find(e=>e.id===id);if(!e)return;this.s.selection=id;
+      if(e.scene&&e.scene!==this.s.place){this.s.place=e.scene;this.host.querySelector('[data-place]').value=e.scene;await this.loadPlace(false);}
+      if(this.dead||epoch!==this.epoch)return;
+      if(focus){this.s.x=e.position[0];this.s.y=e.position[1]||this.elevation(e.position[0],e.position[2]);this.s.z=e.position[2];this.s.radius=e.rect?Math.max(300,e.rect[2]-e.rect[0],e.rect[3]-e.rect[1])*1.1:(this.s.view==='3d'?95:380);}
+      this.save();this.preview?.dispose();this.preview=null;
+      const link=this.link?.(e.type,e.name,this.s.version);const quests=e.quests.map(id=>this.catalog.quests.find(q=>q.id===id)).filter(Boolean);const drops=e.drops.map(id=>this.catalog.items.find(q=>q.id===id)).filter(Boolean).filter((q,i,all)=>all.findIndex(a=>a.name===q.name)===i);
+      this.info.innerHTML=`<button data-back>← Locations</button><h2>${escape(e.name)}</h2>${e.services.map(v=>`<span class="world-tag">${escape(v)}</span>`).join('')}${e.model?'<canvas class="world-model-preview" width="270" height="210" aria-label="Character appearance"></canvas>':'<p>Character appearance unavailable for this version.</p>'}<dl><dt>Coordinates</dt><dd>${Math.round(e.position[0])}, ${Math.round(e.position[2])}</dd>${e.coordinates?`<dt>Elevation</dt><dd>${e.coordinates[2]}</dd>`:''}${e.type==='monster'?`<dt>Area X</dt><dd>${e.rect[0]}–${e.rect[2]}</dd><dt>Area Y</dt><dd>${e.rect[1]}–${e.rect[3]}</dd><dt>Level</dt><dd>${e.level??'Unconfirmed'}</dd><dt>Population limit</dt><dd>${e.limit}</dd><dt>Group cycle</dt><dd>${e.cycle} s</dd>`:''}</dl>${e.active===false?'<p>This group is disabled or has no matching creature definition. Its limit is excluded from ordinary populations.</p>':''}${e.partialAppearance?'<p>The available character parts are shown. Some declared appearance parts are unavailable.</p>':''}${e.missingTextures?'<p>Some appearance textures are unavailable for this version.</p>':''}${e.modelPlacementUnavailable?'<p>A reliable point on the dungeon floor is unavailable; the spawn region remains shown.</p>':''}${e.type==='monster'?`<p>The group attempts to refill towards its limit every ${e.cycle} ${e.cycle===1?'second':'seconds'}. Individual spawn positions are random within this region. The shown model is illustrative.</p>${e.conditional?'<p>Additional conditions apply; this group is excluded from ordinary population totals.</p>':''}`:''}${!e.scene?'<p>The configured map and coordinates do not resolve to a known floor. The position has not been moved to another floor.</p>':''}${link?`<p><a href="${escape(link)}">${this.s.version==='bango'?'Open Atlas entry':'Open matching Bango Atlas entry'} →</a></p>`:''}<div class="world-actions"><button data-focus>Centre here</button>${e.model?'<button data-closeup>Inspect in 3D</button>':''}</div><h3>Related quests</h3>${quests.length?quests.map(q=>`<button class="world-result" data-objective="${q.id}">${escape(q.name)}</button>`).join(''):'<p>No verified quest link is available.</p>'}<h3>Drops</h3>${drops.length?drops.map(d=>d.identified===false?'<p>Additional unidentified loot</p>':`<button class="world-result" data-item="${d.id}">${escape(d.name)}${e.questDrops?.[d.id]?'<small>Quest / event loot</small>':''}</button>`).join(''):'<p>No verified drop link is available for this version.</p>'}`;
+      this.info.querySelector('[data-back]').onclick=()=>{this.s.selection='';this.save();this.showResults();this.schedule();};this.info.querySelector('[data-focus]').onclick=()=>this.select(id,true);
+      this.info.querySelector('[data-closeup]')?.addEventListener('click',async()=>{this.s.view='3d';await this.select(id,true);const b=this.modelIndex?.[e.model]?.bounds;if(b)this.s.radius=Math.max(70,(b[1][1]-b[0][1])*5);this.save();this.schedule();for(const b of this.host.querySelectorAll('[data-view]'))b.setAttribute('aria-pressed',b.dataset.view===this.s.view);});
+      for(const b of this.info.querySelectorAll('[data-objective]'))b.onclick=()=>{this.s.quest=b.dataset.objective;this.host.querySelector('[data-quest]').value=this.s.quest;this.s.selection='';this.save();this.showResults();this.schedule();};
+      for(const b of this.info.querySelectorAll('[data-item]'))b.onclick=()=>{this.s.drop=b.dataset.item;this.host.querySelector('[data-drop]').value=this.s.drop;this.s.selection='';this.save();this.showResults();this.schedule();};
+      this.info.classList.remove('collapsed');this.schedule();if(e.model)await this.modelPreview(e);
+    }
+    async modelPreview(e){
+      const canvas=this.info.querySelector('canvas');if(!canvas)return;try{const index=await this.index();if(!index||this.dead||!canvas.isConnected)return;
+        const p=this.preview=new WorldGL.Renderer(canvas,path=>this.source.file(path),this.modelIndex);const obj=WorldGL.instance(e.model,0,0,0);await p.prepare([obj]);if(this.dead||p!==this.preview)return;
+        const b=this.modelIndex[e.model].bounds,dy=b[1][1]-b[0][1];p.draw([obj],{x:(b[1][0]+b[0][0])/2,y:(b[1][1]+b[0][1])/2,z:(b[1][2]+b[0][2])/2,radius:Math.max(dy,b[1][0]-b[0][0],b[1][2]-b[0][2])*2.2,yaw:Math.PI+.3,pitch:.16});
+      }catch(e){canvas.replaceWith(document.createTextNode('3D preview is unavailable.'));}}
+    pan(dx,dy){const units=2*this.s.radius/this.stage.clientHeight,yaw=this.s.view==='3d'?this.s.yaw:Math.PI;this.s.x+=(Math.cos(yaw)*dx-Math.sin(yaw)*dy)*units;this.s.z-=(Math.sin(yaw)*dx+Math.cos(yaw)*dy)*units;this.s.y=this.elevation(this.s.x,this.s.z);}
+    bindPointers(){
+      this.stage.addEventListener('contextmenu',e=>e.preventDefault());
+      this.stage.addEventListener('pointerdown',e=>{if(e.target.closest('button'))return;this.stage.setPointerCapture(e.pointerId);this.pointers.set(e.pointerId,{x:e.clientX,y:e.clientY});this.drag={x:e.clientX,y:e.clientY,moved:0};});
+      this.stage.addEventListener('pointermove',e=>{const old=this.pointers.get(e.pointerId);if(!old)return;const dx=e.clientX-old.x,dy=e.clientY-old.y;
+        if(this.pointers.size===2){const other=[...this.pointers.entries()].find(([id])=>id!==e.pointerId)[1];const before=Math.hypot(old.x-other.x,old.y-other.y),after=Math.hypot(e.clientX-other.x,e.clientY-other.y);if(after>0)this.s.radius=clamp(this.s.radius*before/after,25,450000);this.pan(dx/2,dy/2);}
+        else if(this.s.view==='3d'&&!e.shiftKey&&e.buttons!==2){this.s.yaw-=dx*.006;this.s.pitch=clamp(this.s.pitch+dy*.005,.15,1.5);}
+        else{this.pan(dx,dy);}
+        this.pointers.set(e.pointerId,{x:e.clientX,y:e.clientY});this.drag.moved+=Math.abs(dx)+Math.abs(dy);this.schedule();});
+      const up=e=>{this.pointers.delete(e.pointerId);if(this.drag?.moved<7){const rect=this.stage.getBoundingClientRect();this.pick(e.clientX-rect.left,e.clientY-rect.top);}this.save();};this.stage.addEventListener('pointerup',up);this.stage.addEventListener('pointercancel',e=>this.pointers.delete(e.pointerId));
+      this.stage.addEventListener('wheel',e=>{e.preventDefault();this.s.radius=clamp(this.s.radius*Math.exp(e.deltaY*.001),25,450000);this.save();this.schedule();},{passive:false});
+      this.stage.addEventListener('keydown',e=>{const step=this.s.radius*.15;if(e.key==='ArrowLeft')this.s.x-=step;else if(e.key==='ArrowRight')this.s.x+=step;else if(e.key==='ArrowUp')this.s.z+=step;else if(e.key==='ArrowDown')this.s.z-=step;else if(['+','='].includes(e.key))this.s.radius*=.8;else if(e.key==='-')this.s.radius*=1.25;else return;e.preventDefault();this.s.radius=clamp(this.s.radius,25,450000);this.s.y=this.elevation(this.s.x,this.s.z);this.save();this.schedule();});
+    }
+    schedule(){if(this.dead||this.frame)return;this.frame=requestAnimationFrame(()=>{this.frame=0;this.paint();});}
+    screen(x,y,z){if(this.s.view==='3d'&&this.gl?.viewMatrix){const p=this.gl.project([x,y,z]);return {...p,x:p.x/this.ratio,y:p.y/this.ratio};}const scale=this.stage.clientHeight/(2*this.s.radius);return {x:this.stage.clientWidth/2+(x-this.s.x)*scale,y:this.stage.clientHeight/2-(z-this.s.z)*scale,visible:true};}
+    bitmap(path){
+      if(this.images.has(path)||this.imagePending.has(path)||this.imageFailures.has(path))return;
+      this.imagePending.set(path,true);this.imageQueue.push(path);this.pumpImages();
+    }
+    pumpImages(){
+      while(this.imageWorkers<6&&this.imageQueue.length&&!this.dead){
+        const path=this.imageQueue.shift();if(!this.imageNeeded.has(path)){this.imagePending.delete(path);continue;}
+        this.imageWorkers++;(async()=>{try{const im=await createImageBitmap(await this.source.file(path));if(this.dead||!this.imageNeeded.has(path))im.close();else{this.images.set(path,im);this.schedule();}}catch{this.imageFailures.add(path);if(!this.dead)this.notice('Some map imagery could not be loaded. Locations remain available.');}finally{this.imagePending.delete(path);this.imageWorkers--;this.pumpImages();}})();
+      }
+    }
+    async sectionObjects(sec){
+      if(sec.objects)return sec.objects;if(!sec.objectsPath)return [];
+      if(!this.sectionCache.has(sec.objectsPath))this.sectionCache.set(sec.objectsPath,this.json(sec.objectsPath).then(d=>d.objects));
+      return this.sectionCache.get(sec.objectsPath);
+    }
+    async paint(){
+      if(this.dead||!this.data)return;const ratio=this.ratio=Math.min(2,devicePixelRatio||1),w=this.stage.clientWidth,h=this.stage.clientHeight;
+      for(const c of [this.ground,this.three,this.overlay])if(c.width!==Math.round(w*ratio)||c.height!==Math.round(h*ratio)){c.width=Math.round(w*ratio);c.height=Math.round(h*ratio);}
+      const ctx=this.ground.getContext('2d');ctx.setTransform(ratio,0,0,ratio,0,0);ctx.fillStyle='#0e1915';ctx.fillRect(0,0,w,h);
+      const sections=this.data.sections.filter(sec=>distance(sec.bounds,this.s.x,this.s.z)<this.s.radius*Math.hypot(w/h,1)*1.1);
+      this.three.hidden=this.s.view!=='3d';this.ground.hidden=this.s.view==='3d';
+      if(this.s.view==='3d'){this.imageNeeded.clear();for(const im of this.images.values())im.close();this.images.clear();this.render3d(sections);}
+      else{
+        this.gl?.trim(new Map());this.sectionCache.clear();this.stage.dataset.renderStats=JSON.stringify({...this.gl?.stats(),sections:0,images:this.images.size});const used=this.imageNeeded=new Set();for(const sec of sections){const path=(this.s.radius>9000?sec.overview:null)||sec.overhead||sec.ground;if(!path)continue;used.add(path);const im=this.images.get(path);if(im){const a=this.screen(sec.bounds[0],0,sec.bounds[3]),b=this.screen(sec.bounds[2],0,sec.bounds[1]);ctx.drawImage(im,a.x,a.y,b.x-a.x,b.y-a.y);}else this.bitmap(path);
+          if(this.s.blocked&&sec.blocked){used.add(sec.blocked);const mask=this.images.get(sec.blocked);if(mask){const a=this.screen(sec.bounds[0],0,sec.bounds[3]),b=this.screen(sec.bounds[2],0,sec.bounds[1]);ctx.globalAlpha=.45;ctx.drawImage(mask,a.x,a.y,b.x-a.x,b.y-a.y);ctx.globalAlpha=1;}else this.bitmap(sec.blocked);}}
+        for(const [path,im] of this.images)if(!used.has(path)){im.close();this.images.delete(path);}
+      }
+      this.drawOverlay();this.hud.textContent=`${Math.round(this.s.x)}, ${Math.round(this.s.z)} · ${this.s.view==='3d'?'3D':'Overhead'}${sections.some(s=>s.missingTextures)?' · Some terrain textures unavailable':''}`;
+    }
+    async render3d(sections){
+      if(this.rendering){this.redraw=true;return;}this.rendering=true;const epoch=this.epoch,serial=this.serial;
+      try{
+        const index=await this.index();if(!index||this.dead||epoch!==this.epoch||serial!==this.serial)return;
+        this.gl ||=new WorldGL.Renderer(this.three,path=>this.source.file(path),this.modelIndex);
+        const reach=Math.max(250,Math.min(9000,this.s.radius*2.6));const unique=new Set();const objects=[];
+        const detail=this.s.radius<9000?sections.filter(s=>distance(s.bounds,this.s.x,this.s.z)<reach).sort((a,b)=>distance(a.bounds,this.s.x,this.s.z)-distance(b.bounds,this.s.x,this.s.z)).slice(0,9):[];
+        const wanted=new Set(detail.map(s=>s.objectsPath));for(const key of this.sectionCache.keys())if(!wanted.has(key))this.sectionCache.delete(key);
+        for(const sec of sections){
+          if(!detail.includes(sec)&&sec.distant){objects.push(sec.distant);continue;}
+          for(const obj of await this.sectionObjects(sec)){if(obj.instance&&unique.has(obj.instance))continue;if(obj.instance)unique.add(obj.instance);const m=this.modelIndex[obj.model];if(!m)continue;const b=m.bounds,center=WorldGL.transform(obj.matrix,[(b[0][0]+b[1][0])/2,(b[0][1]+b[1][1])/2,(b[0][2]+b[1][2])/2]);const radius=Math.hypot(b[1][0]-b[0][0],b[1][2]-b[0][2]);if(m.terrain||Math.hypot(center[0]-this.s.x,center[2]-this.s.z)<reach+radius)objects.push(obj);}
+        }
+        for(const e of this.catalog.entities)if(this.s.radius<4500&&e.scene===this.s.place&&e.model&&!e.modelPlacementUnavailable&&this.matching(e)&&Math.hypot(e.position[0]-this.s.x,e.position[2]-this.s.z)<reach)objects.push({...WorldGL.instance(e.model,e.position[0],e.position[1]||this.elevation(e.position[0],e.position[2]),e.position[2],e.facing||0),keepWhole:true});
+        const gl=this.gl;const needed=await gl.prepare(objects);if(this.dead||gl!==this.gl||epoch!==this.epoch||serial!==this.serial||this.s.view!=='3d'){gl.trim(new Map());return;}gl.trim(needed);this.geometry=objects;const cut=this.s.roof&&this.place.kind==='dungeon'?this.s.y+10+this.s.cut*3:1e7;gl.draw(objects,this.s,cut);if(gl.errors.length)this.notice('Some 3D artwork could not be loaded. The overhead map and configured locations remain available.');this.stage.dataset.renderStats=JSON.stringify({...gl.stats(),sections:this.sectionCache.size});this.drawOverlay();
+      }catch(e){this.s.view='2d';this.three.hidden=true;this.ground.hidden=false;this.notice('3D is unavailable. The overhead map remains usable.');for(const b of this.host.querySelectorAll('[data-view]'))b.setAttribute('aria-pressed',b.dataset.view==='2d');this.save();this.schedule();}
+      finally{this.rendering=false;if(this.redraw){this.redraw=false;this.schedule();}}
+    }
+    drawOverlay(){
+      if(!this.data||this.dead)return;const ctx=this.overlay.getContext('2d');ctx.setTransform(this.ratio,0,0,this.ratio,0,0);const w=this.stage.clientWidth,h=this.stage.clientHeight;ctx.clearRect(0,0,w,h);this.hits=[];
+      for(const e of this.catalog.entities){if(e.scene!==this.s.place||!this.matching(e))continue;const selected=e.id===this.s.selection;let p=this.screen(...e.position);if(!p.visible)continue;
+        if(e.rect){const r=e.rect,points=[[r[0],r[1]],[r[2],r[1]],[r[2],r[3]],[r[0],r[3]]].map(([x,z])=>this.screen(x,this.elevation(x,z)+2,z));if(points.every(p=>p.x<0)||points.every(p=>p.x>w)||points.every(p=>p.y<0)||points.every(p=>p.y>h))continue;ctx.beginPath();points.forEach((p,i)=>i?ctx.lineTo(p.x,p.y):ctx.moveTo(p.x,p.y));ctx.closePath();ctx.fillStyle=selected?(this.s.view==='3d'?'#f5c55d0a':'#f5c55d2a'):(this.s.view==='3d'?'#e6796203':e.conditional?'#be85d011':'#e6796211');ctx.strokeStyle=selected?'#ffe28a':e.conditional?'#ba8dcc':'#d78270';ctx.lineWidth=selected?2:1;ctx.fill();ctx.stroke();this.hits.push({e,points});}
+        else if(p.x>-10&&p.x<w+10&&p.y>-10&&p.y<h+10){ctx.beginPath();ctx.arc(p.x,p.y,selected?7:4,0,Math.PI*2);ctx.fillStyle=selected?'#fff0ac':'#e4c973';ctx.fill();ctx.strokeStyle='#102419';ctx.lineWidth=2;ctx.stroke();this.hits.push({e,p});}
+        if(selected||this.s.radius<900&&!e.rect){ctx.font='12px system-ui';ctx.fillStyle='#fff3c9';ctx.strokeStyle='#0b1714';ctx.lineWidth=3;ctx.strokeText(e.name,p.x+9,p.y-7);ctx.fillText(e.name,p.x+9,p.y-7);}
+      }
+      if(this.s.travel)for(const c of this.catalog.connections||[]){if(c.from.scene!==this.s.place)continue;const p=this.screen(c.from.x,this.elevation(c.from.x,c.from.y)+3,c.from.y);if(!p.visible)continue;ctx.fillStyle='#73c8d4';ctx.fillRect(p.x-5,p.y-5,10,10);this.hits.push({connection:c,p});}
+      let angle=0;if(this.s.view==='3d'){const a=this.screen(this.s.x,this.s.y,this.s.z),b=this.screen(this.s.x,this.s.y,this.s.z+100);angle=Math.atan2(b.x-a.x,a.y-b.y);}ctx.save();ctx.translate(w-25,28);ctx.rotate(angle);ctx.strokeStyle='#ccd1ab';ctx.lineWidth=2;ctx.beginPath();ctx.moveTo(0,8);ctx.lineTo(0,-11);ctx.lineTo(-4,-5);ctx.moveTo(0,-11);ctx.lineTo(4,-5);ctx.stroke();ctx.fillStyle='#e6e4c4';ctx.font='11px system-ui';ctx.fillText('N',-4,-16);ctx.restore();
+    }
+    pick(x,y){const inside=(p,points)=>{let yes=false;for(let i=0,j=points.length-1;i<points.length;j=i++){const a=points[i],b=points[j];if((a.y>p.y)!==(b.y>p.y)&&p.x<(b.x-a.x)*(p.y-a.y)/(b.y-a.y)+a.x)yes=!yes;}return yes;};const hits=this.hits.filter(h=>h.p?Math.hypot(h.p.x-x,h.p.y-y)<12:inside({x,y},h.points));const travel=hits.filter(h=>h.connection);if(travel.length){this.showConnections(travel.map(h=>h.connection));return;}const entities=hits.filter(h=>h.e).map(h=>h.e);if(entities.length===1)this.select(entities[0].id,false);else if(entities.length>1)this.showResults(entities);}
+    showConnections(connections){
+      this.info.classList.remove('collapsed');if(connections.length===1){this.showConnection(connections[0]);return;}
+      this.info.innerHTML='<h2>Travel connections</h2><p>Choose a destination at this location.</p>'+connections.map(c=>{const p=this.catalog.scenes.find(s=>s.id===c.to.scene);return `<button class="world-result" data-connection="${escape(c.id)}">${escape(c.name)}<small>${escape(p?.name)} · ${escape(p?.floor)}</small></button>`;}).join('');
+      for(const b of this.info.querySelectorAll('[data-connection]'))b.onclick=()=>this.showConnection(connections.find(c=>c.id===b.dataset.connection));
+    }
+    showConnection(c){this.info.innerHTML=`<h2>${escape(c.name)}</h2><p>${escape(c.condition||'Configured travel connection.')}</p><button data-travel>Follow connection →</button>`;this.info.querySelector('[data-travel]').onclick=async()=>{this.s.selection='';this.s.place=c.to.scene;this.host.querySelector('[data-place]').value=c.to.scene;this.s.x=c.to.x;this.s.z=c.to.y;this.s.radius=700;await this.loadPlace(false);this.s.y=this.elevation(this.s.x,this.s.z);this.save(true);this.showResults();this.schedule();};}
+    dispose(){this.dead=true;this.epoch++;this.serial++;cancelAnimationFrame(this.frame);this.observer?.disconnect();this.gl?.dispose();this.preview?.dispose();this.images.forEach(im=>im.close());this.images.clear();this.imageNeeded.clear();this.sectionCache.clear();}
+  }
+  return {mount:(host,source,link)=>new World(host,source,link),parseState,stateHash};
+})();
+
+let activeWorld = null;
+    function worldEntityEntry(kind, name, version) {
+      // Full unique names only. No substring, generic-actor or numeric-ID join.
+      const key=normalizeName(name);
+      const rows=kind==="npc"?state.indexes.npcs:state.indexes.monsters;
+      const hits=rows.filter(r=>normalizeName(r.text)===key && (kind!=="npc"||npcIdentity(r).named));
+      return hits.length===1?routeHref(kind,hits[0].message_id):null;
+    }
+    async function renderWorld() {
+      el.main.innerHTML='<div data-atlas-world></div>';
+      const host=el.main.querySelector('[data-atlas-world]');
+      if(!host)return;
+      activeWorld=AtlasWorld.mount(host,state.source,worldEntityEntry);
+      await activeWorld.ready;
+    }
+    function showOnWorld(kind, name) {
+      const q=new URLSearchParams({v:"bango"});
+      q.set(kind==="quest"?"questName":kind==="item"?"dropName":"q",name);
+      return `<p><a class="button" href="#/world?${escapeAttr(q.toString())}">Show on map →</a></p>`;
+    }
+
+/* WORLD_MAP_MODULE_END */
     async function renderRoute() {
+      activeWorld?.dispose(); activeWorld = null;
+      document.body?.classList?.toggle("world-route", routeInfo().section === "world");
       /* Landing on a new page starts you at the top of it. Re-rendering the
          page you are already on — ticking a quest, opening a card — must leave
          the scroll exactly where it was, or every tick throws the reader back
@@ -12833,6 +13131,7 @@
       try {
         switch (route.section) {
           case "home": renderHome(); break;
+          case "world": await renderWorld(); break;
           case "search": renderSearch(route.query); break;
           case "items": renderItems(route.query); break;
           case "item": renderItem(route.id); break;
