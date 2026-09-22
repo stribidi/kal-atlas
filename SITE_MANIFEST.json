@@ -1,8 +1,8 @@
 {
  "generated_by": "tools/knowledge_base_site/build_site_manifest.py",
  "note": "Published bundle. Regenerate with tools/knowledge_base_site/build_deploy.py.",
- "file_count": 18815,
- "total_bytes": 915888568,
+ "file_count": 18816,
+ "total_bytes": 918482920,
  "files": [
   "analysis/combat_tables/COMBAT_FIXTURE.json",
   "analysis/item_duplicate_records/ITEM_DUPLICATE_MAP.csv",
@@ -3262,6 +3262,7 @@
   "assets/npc_photos/wildcargo-p4.jpg",
   "assets/npc_photos/wildcargo-p5.jpg",
   "assets/npc_photos/wildcargo-p6.jpg",
+  "assets/quest_navigation/QUEST_NAVIGATION.json",
   "assets/theme/jade-archive-dragon.png",
   "assets/world_map/00038eb9a0b7b2c0d7a75a28.mdl",
   "assets/world_map/00045625e46bff9cd8026aa1.webp",

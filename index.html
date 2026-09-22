@@ -2847,6 +2847,31 @@
 @media(max-width:760px){.world-header h1{font-size:1.55rem}.world-header p{display:none}.world-header{gap:.4rem;margin-bottom:.6rem}.world-options label:has(select){width:100%}.world-options select{min-width:0;width:100%}.world-stage{min-height:60vh}}
 
 /* WORLD_MAP_STYLE_END */
+/* QUEST_NAVIGATION_CSS_BEGIN */
+    .quest-rewards{display:flex;flex-wrap:wrap;gap:12px 30px;margin:0 0 24px;padding:14px 18px;border:1px solid var(--line);border-radius:8px;background:rgba(14,30,23,.65)}
+    .quest-rewards strong{color:var(--gold)}
+    .quest-navigation{display:grid;grid-template-columns:minmax(290px,.85fr) minmax(0,1.6fr);gap:22px;align-items:start;margin-bottom:24px}
+    .quest-walkthrough{padding:18px}.quest-walkthrough>.dim{margin:8px 0 16px}
+    .quest-navigation .panel-head{display:flex;align-items:baseline;justify-content:space-between;gap:12px}.quest-navigation .panel-head h3{margin:0}.quest-navigation .panel-aside{font-size:12px;color:var(--muted)}
+    .quest-map-toolbar[hidden]{display:none}
+    .quest-step-list{list-style:none;margin:0;padding:0;display:grid;gap:10px}
+    .quest-step{border:1px solid var(--line);border-radius:8px;overflow:hidden;background:rgba(8,22,16,.42)}
+    .quest-step.selected{border-color:#d9b969;background:rgba(122,96,42,.15);box-shadow:inset 3px 0 #d9b969}
+    .quest-step>button{display:flex;align-items:center;gap:12px;width:100%;padding:14px;text-align:left;background:transparent;border:0;border-radius:0;color:inherit;white-space:normal;line-height:1.45}
+    .quest-step>button:hover{background:rgba(222,191,117,.09)}.quest-step>button:focus-visible{outline:2px solid #ffe28a;outline-offset:-3px}
+    .quest-step-number{flex:0 0 28px;height:28px;display:grid;place-items:center;border:1px solid #847247;border-radius:50%;color:#e8d398;font-variant-numeric:tabular-nums}
+    .quest-step small{display:block;letter-spacing:.08em;text-transform:uppercase;font-size:10px;color:#b7bea8;margin-bottom:2px}
+    .quest-step strong{display:block;font-size:14px;font-weight:600}.quest-step-detail{padding:0 14px 10px 54px;font-size:12px}
+    .quest-step-detail p{margin:0 0 8px}.quest-step-description{display:none;color:#c9cdbb;line-height:1.6}.quest-step.selected .quest-step-description{display:block}
+    .quest-step-items{display:flex;flex-wrap:wrap;gap:4px 10px;margin:0 0 7px}.quest-monster-links{line-height:1.6}
+    .quest-map-panel{position:sticky;top:80px;padding:18px;min-width:0;scroll-margin-top:145px}.quest-map-caption>strong{display:block;font-size:17px;line-height:1.4;margin-top:8px}.quest-map-caption p{font-size:12px;color:#b7bea8;margin:7px 0 12px}
+    .quest-map-toolbar{display:flex;justify-content:space-between;align-items:end;gap:12px;margin-bottom:12px}.quest-map-toolbar label{display:grid;gap:4px;font-size:11px;min-width:0}.quest-map-toolbar select{max-width:100%;font-size:12px}.quest-map-toolbar>a{font-size:12px;white-space:nowrap}
+    .quest-map-panel .world-stage{height:clamp(350px,54vh,590px);width:100%;min-height:0;border:1px solid #3c5141;border-radius:6px;touch-action:none}.quest-map-panel .world-stage[hidden]{display:none}
+    .quest-map-panel .world-controls{z-index:2}.quest-map-help{font-size:12px;color:#bdc6b4;line-height:1.6;margin:10px 0 0}.quest-map-help span{display:block}
+    @media(max-width:950px){.quest-navigation{grid-template-columns:minmax(260px,1fr) minmax(0,1.3fr);gap:14px}.quest-map-toolbar{align-items:start;flex-direction:column}.quest-map-panel,.quest-walkthrough{padding:12px}}
+    @media(max-width:700px){.quest-navigation{grid-template-columns:1fr}.quest-map-panel{position:static;grid-row:1}.quest-map-panel .world-stage{height:330px}.quest-map-toolbar{flex-direction:row;align-items:end}.quest-map-toolbar>a{white-space:normal}.quest-step-detail{padding-left:52px}.quest-rewards{gap:8px 20px}}
+
+/* QUEST_NAVIGATION_CSS_END */
 </style>
 </head>
 <body>
@@ -3579,6 +3604,7 @@
         await loadCombatFixture();
         await loadServerProfile();
         await loadQuestMaps();
+        await loadQuestNavigation();
         await loadMonsterIcons();
         await loadModelCatalogue();
         renderLoading("Reading registered reference articles…", 81);
@@ -11393,125 +11419,70 @@
           ${schedule && schedule.notes ? `<p>${escapeHtml(schedule.notes)}</p>` : ""}`)}`;
     }
 
+/* QUEST_NAVIGATION_BEGIN */
+    let activeQuestMap = null;
+    async function loadQuestNavigation() {
+      state.questNavigation = null;
+      try { state.questNavigation = JSON.parse(await state.source.read('assets/quest_navigation/QUEST_NAVIGATION.json')); }
+      catch (error) { state.loadWarnings.push('Quest navigation unavailable: ' + error.message); }
+    }
+
+    function questStepItems(items) {
+      if (!items?.length) return '';
+      return `<div class="quest-step-items">${items.map(item => `<span>${entityLink('item', item.id, item.name)} × ${escapeHtml(item.count)}</span>`).join('')}</div>`;
+    }
+
     function renderQuest(id) {
       const row = state.indexes.questsById.get(String(id));
-      if (!row) return renderNotFound("quest", id);
-      const steps = state.indexes.questSteps.get(String(id)) || [];
-      const items = state.indexes.questItems.get(String(id)) || [];
-      const monsters = state.indexes.monsterQuestsByQuest.get(String(id)) || [];
-      const npcs = state.indexes.questNpcs.get(String(id)) || [];
-      const routeRows = state.indexes.routeByBangoQuest.get(String(id)) || [];
+      if (!row) return renderNotFound('quest', id);
+      const navigation = state.questNavigation?.quests[String(id)];
+      const steps = navigation?.steps || [];
       const prerequisite = state.indexes.questsById.get(String(row.bango_prerequisite));
-      const route = routeQuestForBango(row);
-      const routeSteps = route?.quest.steps || [];
-      const uniqueNpcs = [...new Map(npcs.map(npc => [String(npc.message_id), npc])).values()];
-      /* Where the quest happens. The route guide places 63 of the 116 quests
-         by walking them; the rest — every event quest, and everything above
-         the level the guide stops at — carry no pin at all, which is why
-         [Event] Appointment of General In-Pill had no map while Sae-Ryu and
-         General In-Pill both stand on one. So the quest's own NPCs are looked
-         up on the maps as well, and the union is what the page shows: the
-         route's stops where there are any, the people it names where there
-         are not. Both sets are highlighted against the rest of the town. */
-      const routePins = routeSteps.filter(step => step.city && step.pin)
-        .map(step => ({ city: step.city, pin: step.pin }));
-      const npcPins = uniqueNpcs.flatMap(npc => pinsForEntity("npc", npc.message_id));
-      const questPins = [...new Map([...routePins, ...npcPins]
-        .map(entry => [`${entry.city}-${entry.pin}`, entry])).entries()];
-      const questCities = new Set(questPins.map(([, entry]) => entry.city));
-      const articles = relatedArticles("quest", id, row.que_name || "");
-
+      const requested = Number(routeInfo().query.get('step') || 1) - 1;
+      const selected = Number.isInteger(requested) && requested >= 0 && requested < steps.length ? requested : 0;
+      const articles = relatedArticles('quest', id, row.que_name || '');
       el.main.innerHTML = `
-        ${pageHeader({
-          eyebrow: "Quest",
-          title: row.que_name,
-          lede: `Level ${escapeHtml(row.que_lvl || "—")}${
-            prerequisite ? ` · after ${escapeHtml(prerequisite.que_name)}` : ""}`,
-          crumbs: [["Overview", "#/home"], ["Quests", "#/quests"], [row.que_name, ""]],
-          actions: questStatusButton(activeProfile(), row, true)
-        })}
-        ${showOnWorld("quest", row.que_name)}
-        <div class="detail-grid">
-          <div>
-            ${panel("Rewards", statLines([
-              ["Experience", prettyNumber(row.bango_experience)],
-              ["Skill points", prettyNumber(row.bango_skill_points)],
-              ["Contribution", prettyNumber(row.bango_contribution)],
-              ["Required level", escapeHtml(row.que_lvl || "")],
-              ["Requires", prerequisite
-                ? entityLink("quest", prerequisite.que_id, prerequisite.que_name) : ""]
-            ]))}
-            ${cleanText(row.que_text) ? panel("What it asks",
-              `<p style="white-space:pre-line;margin:0">${escapeHtml(cleanText(row.que_text))}</p>
-               ${animalChoiceHtml(questAnimalChoices(row))}`) : ""}
-            ${routeSteps.length ? panel("Walkthrough", `
-              <ol class="route-steps">${routeSteps.map(step => {
-                if (step.type === "talk") {
-                  return `<li>${questPinTag(step.city, step.pin)}
-                    <span>${escapeHtml(step.label)} — ${
-                      questPinNameHtml(step.city, step.pin)}</span></li>`;
-                }
-                if (step.type === "field") {
-                  return `<li><span class="pin-tag field">${escapeHtml(step.label)}</span>
-                    <span>${escapeHtml(step.name)}</span></li>`;
-                }
-                return `<li><span class="pin-tag action">do</span>
-                  <span>${escapeHtml(step.text)}</span></li>`;
-              }).join("")}</ol>
-              ${route.quest.reward ? `<p class="dim" style="margin:10px 0 0"><small>Route notes:
-                ${escapeHtml(route.quest.reward)}</small></p>` : ""}`,
-              { aside: `<span class="panel-aside">${escapeHtml(route.stage.title)}</span>` }) : ""}
-            ${steps.length ? panel("Steps", `<ol class="route-steps plain">${steps.map(step => {
-              const stepItems = items.filter(item =>
-                String(item.step_index) === String(step.step_index));
-              return `<li><span>${escapeHtml(step.step_text)}
-                ${stepItems.length ? `<span class="tag-row">${stepItems.map(item => {
-                  const target = state.indexes.itemsById.get(String(item.item_id));
-                  return `<span class="tag accent">${target
-                    ? entityLink("item", target.ita_azon, target.ita_name)
-                    : escapeHtml(item.item_name || `Item ${item.item_id}`)} × ${escapeHtml(item.count)}</span>`;
-                }).join("")}</span>` : ""}</span></li>`;
-            }).join("")}</ol>`) : ""}
-          </div>
-          <div class="detail-side">
-            ${questCities.size ? questMapPanel([...questCities][0], {
-              title: "Where to go",
-              onlyMaps: questCities,
-              highlight: new Set(questPins.map(([key]) => key)),
-              aside: `<span class="panel-aside">${
-                routePins.length ? "The route's own stops" : "Where this quest's people stand"
-              }</span>`
-            }) : ""}
-            ${monsters.length ? panel("Kill", `<ul class="link-list">${monsters.map(ref => {
-              const monster = state.indexes.monstersById.get(String(ref.monster_id));
-              return `<li>${monster
-                ? entityLink("monster", monster.message_id, monster.text)
-                : escapeHtml(ref.monster_name || `Monster ${ref.monster_id}`)}</li>`;
-            }).join("")}</ul>`) : ""}
-            ${uniqueNpcs.length ? panel("Talk to", `<ul class="link-list">${
-              uniqueNpcs.map(npc => {
-                const where = pinsForEntity("npc", npc.message_id);
-                return `<li>${npcPhotoTag(npc, 30, true)}${
-                  entityLink("npc", npc.message_id, npcDisplayName(npc))}
-                  ${where.map(entry => questPinTag(entry.city, entry.pin)).join("")}</li>`;
-              }).join("")
-            }</ul>`) : ""}
-            ${articles ? panel("Guides", articles) : ""}
-          </div>
+        ${pageHeader({eyebrow:'Quest', title:row.que_name,
+          lede:`Level ${escapeHtml(row.que_lvl || '—')}${prerequisite ? ` · after ${escapeHtml(prerequisite.que_name)}` : ''}`,
+          crumbs:[['Overview','#/home'],['Quests','#/quests'],[row.que_name,'']],
+          actions:questStatusButton(activeProfile(), row, true)})}
+        <div class="quest-rewards" aria-label="Quest rewards"><span><strong>${prettyNumber(row.bango_experience)}</strong> experience</span><span><strong>${prettyNumber(row.bango_skill_points)}</strong> skill points</span><span><strong>${prettyNumber(row.bango_contribution)}</strong> contribution</span>${prerequisite ? `<span>Requires ${entityLink('quest', prerequisite.que_id, prerequisite.que_name)}</span>` : ''}</div>
+        <div class="quest-navigation">
+          <section class="panel quest-walkthrough" aria-label="Quest walkthrough"><div class="panel-head"><h3>Walkthrough</h3><span class="panel-aside">${steps.length} steps</span></div>
+            <p class="dim">Choose a step to see where to go.</p>
+            ${navigation && !navigation.startRecorded ? '<p class="dim">No separate acceptance conversation is recorded; begin with the first conversation below.</p>' : ''}
+            <ol class="quest-step-list">${steps.map((step,i) => `<li class="quest-step${i===selected?' selected':''}" data-step-row="${i}">
+              <button type="button" data-quest-step="${i}" aria-pressed="${i===selected}" aria-controls="quest-step-map"><span class="quest-step-number">${i+1}</span><span><small>${step.kind==='talk'?'Conversation':step.kind==='hunt'?'Hunting':'Field objective'}</small><strong>${escapeHtml(step.title)}</strong></span></button>
+              <div class="quest-step-detail">${step.npc?.entry ? `<p>${entityLink('npc',step.npc.entry,step.npc.name)}</p>` : ''}${step.npc?.generic && step.npc.position?.length ? `<p class="dim">${escapeHtml(step.npc.position.join(', '))} · the marked NPC</p>`:''}
+                ${questStepItems(step.items)}${step.monsters?.length ? `<p class="quest-monster-links">${step.monsters.map(m=>entityLink('monster',m.id,m.name)).join(' · ')}</p>`:''}
+                <p class="quest-step-description">${escapeHtml(step.text)}</p>
+              </div></li>`).join('')}</ol>
+            ${!steps.length ? '<p>Step navigation is unavailable. Reopen this quest to try again.</p>':''}
+          </section>
+          <section class="panel quest-map-panel" id="quest-step-map" aria-label="Where to go"><div class="panel-head"><h3>Where to go</h3><span class="panel-aside">2D map</span></div><div data-quest-map>${steps.length?'Opening the quest map…':'No step selected.'}</div></section>
         </div>
-        ${provenanceFooter(`
-          <p>The rewards and steps are this server's own. The walkthrough and the map pins
-            are a player's, used with permission; the quest text and maps behind them come
-            from <a href="https://mystic-city.de/System/viewpage.php?page_id=48" target="_blank"
-               rel="noopener noreferrer">mystic-city.de</a>, with world map artwork by
-            Vresko.com.</p>
-          ${routePins.length ? "" : npcPins.length ? `<p>No walkthrough covers this quest, so
-            the map instead shows where the people it names stand:
-            ${escapeHtml(npcPins.map(entry => entry.name).join(", "))}. That is their location,
-            not a suggested order to visit them in.</p>` : `<p>Nothing places this quest on a
-            map, so it has none.</p>`}`)}`;
-      wireQuestMaps();
+        ${panel('Quest details',`<p>${escapeHtml(navigation?.description||'')}</p><details><summary>Full quest directions</summary><p style="white-space:pre-line">${escapeHtml(cleanText(row.que_text))}</p></details>${animalChoiceHtml(questAnimalChoices(row))}`)}
+        ${articles?panel('Guides',articles):''}
+        ${provenanceFooter('<p>Quest conversations and objectives follow Bango’s detailed quest directions. Classic locations use the matching named characters and all ordinary hunting groups for the selected monsters. Separate floors are listed individually. Where Classic locations are unavailable, Bango’s marked quest areas are shown on its own terrain; these markers are not a verified live spawn census. Unknown locations remain unmarked.</p>')}`;
+      const host = el.main.querySelector?.('[data-quest-map]');
+      if (!host || !steps.length) return;
+      activeQuestMap = AtlasWorld.mountQuest(host, state.source, steps[selected]);
+      for (const button of el.main.querySelectorAll('[data-quest-step]')) button.onclick = async () => {
+        const index=Number(button.dataset.questStep);
+        for(const other of el.main.querySelectorAll('[data-quest-step]')) other.setAttribute('aria-pressed',String(other===button));
+        for(const item of el.main.querySelectorAll('[data-step-row]')) item.classList.toggle('selected',Number(item.dataset.stepRow)===index);
+        // Keep the page, scroll position and profile status intact. Sharing or
+        // returning to this address restores the selected objective.
+        history.replaceState(null,'',`#/quest/${encodeURIComponent(id)}?step=${index+1}`);
+        state.renderedRoute=location.hash;
+        const map=activeQuestMap;await map.ready;
+        if(map!==activeQuestMap||map.dead)return;
+        await map.setStep(steps[index]);
+        if(matchMedia('(max-width:700px)').matches) host.closest('.quest-map-panel').scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'instant':'smooth',block:'start'});
+      };
     }
+
+/* QUEST_NAVIGATION_END */
 
     function routeNpcMatches(npc) {
       const aliases = npcAliases(npc, state.indexes.npcNameCounts);
@@ -13107,7 +13078,80 @@ const AtlasWorld = (()=>{
     showConnection(c){this.info.innerHTML=`<h2>${escape(c.name)}</h2><p>${escape(c.condition||'Configured travel connection.')}</p><button data-travel>Follow connection →</button>`;this.info.querySelector('[data-travel]').onclick=async()=>{this.s.selection='';this.s.place=c.to.scene;this.host.querySelector('[data-place]').value=c.to.scene;this.s.x=c.to.x;this.s.z=c.to.y;this.s.radius=700;await this.loadPlace(false);this.s.y=this.elevation(this.s.x,this.s.z);this.save(true);this.showResults();this.schedule();};}
     dispose(){this.dead=true;this.epoch++;this.serial++;this.keyDocument?.removeEventListener('keydown',this.keyHandler);this.keyHandler=null;cancelAnimationFrame(this.frame);this.observer?.disconnect();this.gl?.dispose();this.preview?.dispose();this.images.forEach(im=>im.close());this.images.clear();this.imageNeeded.clear();this.sectionCache.clear();}
   }
-  return {mount:(host,source,link)=>new World(host,source,link),parseState,stateHash};
+  // An automatic quest view retains at least 4,400 units in both directions.
+  // Padding is measured in pixels too, so labels and rectangles stay in view
+  // on a narrow phone as well as on a wide desktop.
+  function fitTargets(entities,width,height){
+    const boxes=entities.map(e=>e.rect||[e.position[0],e.position[2],e.position[0],e.position[2]]);
+    if(!boxes.length)return null;
+    const b=[Math.min(...boxes.map(b=>b[0])),Math.min(...boxes.map(b=>b[1])),Math.max(...boxes.map(b=>b[2])),Math.max(...boxes.map(b=>b[3]))];
+    const aspect=Math.max(.2,width/Math.max(1,height)),padding=Math.min(64,Math.min(width,height)*.15);
+    const radius=Math.max(2200,2200/aspect,(b[2]-b[0])*height/Math.max(1,width-2*padding)/2,(b[3]-b[1])*height/Math.max(1,height-2*padding)/2);
+    return {x:(b[0]+b[2])/2,z:(b[1]+b[3])/2,radius:radius*1.06};
+  }
+  class QuestWorld extends World {
+    async start(){
+      // The parent's constructor starts this asynchronously; the initial step
+      // is set immediately by mountQuest, before this first read resolves.
+      this.host.innerHTML='<p class="world-help">Opening the quest map…</p>';
+      this.catalogues=new Map();this.focusSerial=0;
+      try{this.registry=await this.json('assets/world_map/catalogue.json');if(!this.dead)await this.setStep(this.initialStep);}
+      catch{if(!this.dead)this.host.innerHTML='<p class="world-error">The map could not be loaded. Reopen this quest to try again.</p>';}
+    }
+    async setStep(step){
+      if(!step||this.dead)return;this.step=step;const serial=++this.focusSerial,point=step.npc||step;
+      this.targets=point.locations||[];this.targetIds=new Set(this.targets.map(e=>e.id));
+      this.s={...parseState('#/world'),version:point.version||'classic',view:'2d',travel:false};
+      const version=this.s.version;
+      if(!this.catalogues.has(version))this.catalogues.set(version,this.json(this.registry.versions.find(v=>v.id===version).path));
+      const catalog=await this.catalogues.get(version);if(this.dead||serial!==this.focusSerial)return;
+      this.catalog={...catalog,entities:[...catalog.entities.filter(e=>e.type==='npc'&&!this.targetIds.has(e.id)),...this.targets]};
+      this.scenes=[...new Set(this.targets.map(e=>e.scene).filter(Boolean))];
+      this.renderShell();
+      if(!this.scenes.length){this.data=null;this.stage.hidden=true;this.host.querySelector('[data-quest-unmapped]').hidden=false;return;}
+      this.s.place=this.scenes[0];await this.loadPlace(false);if(this.dead||serial!==this.focusSerial)return;this.fit();this.schedule();
+    }
+    renderShell(){
+      const point=this.step.npc||this.step;
+      this.host.innerHTML=`<div class="quest-map-caption"><strong>${escape(this.step.title)}</strong><p>${this.s.version==='classic'?'Classic locations':'Bango quest markers · live positions unconfirmed'}</p></div>
+        <div class="quest-map-toolbar" ${this.scenes.length?'':'hidden'}><label>Area / floor<select data-quest-place aria-label="Quest map area or floor">${this.scenes.map(id=>{const p=this.catalog.scenes.find(s=>s.id===id);return `<option value="${escape(id)}">${escape(p?.name||id)} · ${escape(p?.floor||'')} (${this.targets.filter(e=>e.scene===id).length})</option>`;}).join('')}</select></label><a data-quest-full>${this.s.version==='classic'?'Open full 2D map':'Explore this area in 2D'} →</a></div>
+        <p data-quest-unmapped hidden class="world-notice">${escape(point.name||'This objective')}: a reliable location is not available yet.</p>
+        <div class="world-stage" tabindex="0" aria-label="Quest map in 2D. Drag to pan, scroll or use buttons to zoom."><canvas data-ground></canvas><canvas data-three hidden></canvas><canvas data-overlay></canvas><div class="world-controls"><button data-zoom="in" aria-label="Zoom in">+</button><button data-zoom="out" aria-label="Zoom out">−</button><button data-fit aria-label="Show all step locations">⌖</button></div><div class="world-hud" aria-live="polite"></div></div>
+        <div data-notice></div><p class="quest-map-help">Gold marks the selected step. Drag to pan · scroll or pinch to zoom. <span data-quest-count></span></p>`;
+      const $=q=>this.host.querySelector(q);this.stage=$('.world-stage');this.ground=$('[data-ground]');this.three=$('[data-three]');this.overlay=$('[data-overlay]');this.hud=$('.world-hud');
+      $('[data-quest-place]').onchange=async e=>{this.s.place=e.target.value;await this.loadPlace(false);this.fit();this.schedule();};
+      $('[data-fit]').onclick=()=>{this.fit();this.schedule();};
+      for(const b of this.host.querySelectorAll('[data-zoom]'))b.onclick=()=>{this.s.radius=clamp(this.s.radius*(b.dataset.zoom==='in'?.65:1.55),25,450000);this.schedule();};
+      this.pointers.clear();this.bindPointers();this.observer?.disconnect();this.observer=new ResizeObserver(()=>{this.fit();this.schedule();});this.observer.observe(this.stage);
+    }
+    fit(){
+      const targets=this.targets.filter(e=>e.scene===this.s.place),camera=fitTargets(targets,this.stage.clientWidth,this.stage.clientHeight);
+      if(camera)Object.assign(this.s,camera,{y:0,view:'2d'});
+      const count=this.host.querySelector('[data-quest-count]');if(count)count.textContent=`${targets.length} ${this.step.kind==='talk'?'NPC location(s)':'marked area(s)'} here${this.scenes.length>1?` · ${this.targets.length} across ${this.scenes.length} maps/floors`:''}.`;
+      this.save();
+    }
+    save(){
+      const link=this.host.querySelector('[data-quest-full]');if(!link)return;
+      if(!this.targets.length){link.removeAttribute('href');return;}
+      const target=this.targets.find(e=>e.scene===this.s.place),s={...this.s,view:'2d',selection:this.s.version==='classic'?target?.id||'':'',locate:false};
+      link.href=stateHash(s);
+    }
+    showResults(){}
+    matching(e){return e.type==='npc'||this.targetIds.has(e.id);}
+    pick(x,y){const hit=this.hits?.find(h=>h.p&&Math.hypot(h.p.x-x,h.p.y-y)<12);if(hit?.e)this.notice(hit.e.name);}
+    drawOverlay(){
+      // Paint context first, then every objective in gold, not just one group.
+      const selected=this.s.selection;this.s.selection='';super.drawOverlay();this.s.selection=selected;
+      if(!this.data||this.dead)return;
+      const ctx=this.overlay.getContext('2d');ctx.setTransform(this.ratio,0,0,this.ratio,0,0);
+      for(const e of this.targets.filter(e=>e.scene===this.s.place)){
+        const p=this.screen(...e.position);ctx.fillStyle='#ffe28a38';ctx.strokeStyle='#ffe28a';ctx.lineWidth=2.5;
+        if(e.rect){const a=this.screen(e.rect[0],0,e.rect[3]),b=this.screen(e.rect[2],0,e.rect[1]);ctx.fillRect(a.x,a.y,b.x-a.x,b.y-a.y);ctx.strokeRect(a.x,a.y,b.x-a.x,b.y-a.y);}
+        else{ctx.beginPath();ctx.arc(p.x,p.y,10,0,Math.PI*2);ctx.fillStyle='#ffe28a';ctx.fill();ctx.strokeStyle='#102419';ctx.stroke();ctx.font='bold 13px system-ui';ctx.lineWidth=4;ctx.strokeText(e.name,p.x+14,p.y-8);ctx.fillStyle='#fff1ba';ctx.fillText(e.name,p.x+14,p.y-8);}
+      }
+    }
+  }
+  return {mount:(host,source,link)=>new World(host,source,link),mountQuest:(host,source,step)=>{const map=new QuestWorld(host,source,()=>null);map.initialStep=step;return map;},fitTargets,parseState,stateHash};
 })();
 
 let activeWorld = null;
@@ -13133,6 +13177,7 @@ let activeWorld = null;
 
 /* WORLD_MAP_MODULE_END */
     async function renderRoute() {
+      activeQuestMap?.dispose(); activeQuestMap = null;
       activeWorld?.dispose(); activeWorld = null;
       document.body?.classList?.toggle("world-route", routeInfo().section === "world");
       /* Landing on a new page starts you at the top of it. Re-rendering the
