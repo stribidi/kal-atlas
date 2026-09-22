@@ -2863,7 +2863,12 @@
     .quest-step small{display:block;letter-spacing:.08em;text-transform:uppercase;font-size:10px;color:#b7bea8;margin-bottom:2px}
     .quest-step strong{display:block;font-size:14px;font-weight:600}.quest-step-detail{padding:0 14px 10px 54px;font-size:12px}
     .quest-step-detail p{margin:0 0 8px}.quest-step-description{display:none;color:#c9cdbb;line-height:1.6}.quest-step.selected .quest-step-description{display:block}
-    .quest-step-items{display:flex;flex-wrap:wrap;gap:4px 10px;margin:0 0 7px}.quest-monster-links{line-height:1.6}
+    .quest-step-items{display:flex;flex-wrap:wrap;gap:4px 10px;margin:0 0 7px}
+    .quest-monster-cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(88px,1fr));gap:8px;margin:10px 0 12px}
+    .quest-monster-card{display:flex;flex-direction:column;align-items:center;gap:7px;min-width:0;padding:8px 5px;border:1px solid var(--line);border-radius:6px;text-align:center;font-size:11px;line-height:1.35;background:rgba(8,22,16,.55);text-decoration:none}
+    .quest-monster-card:hover{border-color:#d9b969;background:rgba(122,96,42,.18)}.quest-monster-card:focus-visible{outline:2px solid #ffe28a;outline-offset:2px}
+    .quest-monster-picture{height:80px;width:100%;display:grid;place-items:center}.quest-monster-picture .monster-icon{height:80px;max-width:100%;width:auto;object-fit:contain}.quest-monster-picture .dim{font-size:10px}
+    .npc-summary{min-width:0}.npc-summary .entity-hero{margin-bottom:20px}.npc-summary .entity-hero .entity-portrait{flex-shrink:0}.npc-summary .panel{padding:18px}
     .quest-map-panel{position:sticky;top:80px;padding:18px;min-width:0;scroll-margin-top:145px}.quest-map-caption>strong{display:block;font-size:17px;line-height:1.4;margin-top:8px}.quest-map-caption p{font-size:12px;color:#b7bea8;margin:7px 0 12px}
     .quest-map-toolbar{display:flex;justify-content:space-between;align-items:end;gap:12px;margin-bottom:12px}.quest-map-toolbar label{display:grid;gap:4px;font-size:11px;min-width:0}.quest-map-toolbar select{max-width:100%;font-size:12px}.quest-map-toolbar>a{font-size:12px;white-space:nowrap}
     .quest-map-panel .world-stage{height:clamp(350px,54vh,590px);width:100%;min-height:0;border:1px solid #3c5141;border-radius:6px;touch-action:none}.quest-map-panel .world-stage[hidden]{display:none}
@@ -11432,6 +11437,14 @@
       return `<div class="quest-step-items">${items.map(item => `<span>${entityLink('item', item.id, item.name)} × ${escapeHtml(item.count)}</span>`).join('')}</div>`;
     }
 
+    function questStepMonsters(monsters) {
+      if (!monsters?.length) return '';
+      return `<div class="quest-monster-cards" aria-label="Monsters to hunt">${monsters.map(monster => {
+        const hasPicture = monsterPortraitName(monster.id, monster.name) || monsterFallbackPicture(monster.name);
+        return `<a class="quest-monster-card" href="${escapeAttr(routeHref('monster',monster.id))}" aria-label="${escapeAttr(monster.name)}"><span class="quest-monster-picture">${hasPicture ? monsterIconTag(monster.id,monster.name,80) : '<span class="dim">Image unavailable</span>'}</span><span>${escapeHtml(monster.name)}</span></a>`;
+      }).join('')}</div>`;
+    }
+
     function renderQuest(id) {
       const row = state.indexes.questsById.get(String(id));
       if (!row) return renderNotFound('quest', id);
@@ -11454,7 +11467,7 @@
             <ol class="quest-step-list">${steps.map((step,i) => `<li class="quest-step${i===selected?' selected':''}" data-step-row="${i}">
               <button type="button" data-quest-step="${i}" aria-pressed="${i===selected}" aria-controls="quest-step-map"><span class="quest-step-number">${i+1}</span><span><small>${step.kind==='talk'?'Conversation':step.kind==='hunt'?'Hunting':'Field objective'}</small><strong>${escapeHtml(step.title)}</strong></span></button>
               <div class="quest-step-detail">${step.npc?.entry ? `<p>${entityLink('npc',step.npc.entry,step.npc.name)}</p>` : ''}${step.npc?.generic && step.npc.position?.length ? `<p class="dim">${escapeHtml(step.npc.position.join(', '))} · the marked NPC</p>`:''}
-                ${questStepItems(step.items)}${step.monsters?.length ? `<p class="quest-monster-links">${step.monsters.map(m=>entityLink('monster',m.id,m.name)).join(' · ')}</p>`:''}
+                ${questStepItems(step.items)}${questStepMonsters(step.monsters)}
                 <p class="quest-step-description">${escapeHtml(step.text)}</p>
               </div></li>`).join('')}</ol>
             ${!steps.length ? '<p>Step navigation is unavailable. Reopen this quest to try again.</p>':''}
@@ -11463,7 +11476,7 @@
         </div>
         ${panel('Quest details',`<p>${escapeHtml(navigation?.description||'')}</p><details><summary>Full quest directions</summary><p style="white-space:pre-line">${escapeHtml(cleanText(row.que_text))}</p></details>${animalChoiceHtml(questAnimalChoices(row))}`)}
         ${articles?panel('Guides',articles):''}
-        ${provenanceFooter('<p>Quest conversations and objectives follow Bango’s detailed quest directions. Classic locations use the matching named characters and all ordinary hunting groups for the selected monsters. Separate floors are listed individually. Where Classic locations are unavailable, Bango’s marked quest areas are shown on its own terrain; these markers are not a verified live spawn census. Unknown locations remain unmarked.</p>')}`;
+        ${provenanceFooter('<p>Quest conversations and objectives follow Bango’s detailed quest directions. Classic locations use the matching named characters and all ordinary hunting groups for the selected monsters. Separate floors are listed individually. Where Classic locations are unavailable, Bango’s marked quest areas are shown on its own terrain; these markers are not a verified live spawn census. Unknown locations remain unmarked.</p>' + monsterPictureCredit(steps.flatMap(step => (step.monsters || []).map(monster => monster.name))))}`;
       const host = el.main.querySelector?.('[data-quest-map]');
       if (!host || !steps.length) return;
       activeQuestMap = AtlasWorld.mountQuest(host, state.source, steps[selected]);
@@ -11492,80 +11505,43 @@
       });
     }
 
+/* NPC_NAVIGATION_BEGIN */
     function renderNpc(id) {
       const row = state.indexes.npcsById.get(String(id));
-      if (!row) return renderNotFound("NPC", id);
-      const definitions = state.indexes.npcDefinitions.get(String(id)) || [];
-      const quests = state.indexes.npcQuests.get(String(id)) || [];
-      const routeMatches = routeNpcMatches(row);
+      if (!row) return renderNotFound('NPC', id);
       const identity = npcIdentity(row);
       const photo = npcPhotoFor(row);
-      const uniqueQuests = [...new Map(quests.map(quest => [quest.que_id, quest])).values()];
-      const articles = relatedArticles("npc", id, row.text || "");
-      const pins = pinsForEntity("npc", id);
+      const quests = [...new Map((state.indexes.npcQuests.get(String(id)) || [])
+        .map(quest => [quest.que_id, quest])).values()];
+      const routeMatches = routeNpcMatches(row);
+      const pins = pinsForEntity('npc', id);
       const towns = [...new Set([...pins.map(entry => entry.mapName),
         ...routeMatches.map(route => route.town)].filter(Boolean))];
+      const articles = relatedArticles('npc', id, row.text || '');
+      const locationStep = state.questNavigation?.npcs?.[String(id)] || {
+        kind:'talk', context:'npc', title:row.text, name:row.text, version:'classic', locations:[]
+      };
 
       el.main.innerHTML = `
-        ${pageHeader({
-          eyebrow: "NPC",
-          title: identity.display,
-          lede: [towns.join(", "),
-            uniqueQuests.length ? `${prettyNumber(uniqueQuests.length)} quest${
-              uniqueQuests.length === 1 ? "" : "s"}` : ""].filter(Boolean).join(" · "),
-          crumbs: [["Overview", "#/home"], ["NPCs", "#/npcs"], [identity.display, ""]]
-        })}
-        ${identity.named ? showOnWorld("npc", row.text) : ""}
-        <div class="detail-grid">
-          <div>
-            ${panel("Quests", uniqueQuests.length ? `<ul class="link-list">${uniqueQuests.map(quest =>
-              `<li>${entityLink("quest", quest.que_id, quest.que_name)}
-                <small class="dim">level ${escapeHtml(quest.que_lvl || "—")}</small></li>`).join("")}
-              </ul>` : `<p class="dim" style="margin:0">${identity.named
-                ? "No quest names this NPC."
-                : "This is a generic role rather than a named character, so it is not linked to quests."}</p>`)}
-            ${pins.length ? questMapPanel(pins[0].city, {
-              title: "Where they stand",
-              onlyMaps: new Set(pins.map(entry => entry.city)),
-              highlight: new Set(pins.map(entry => `${entry.city}-${entry.pin}`)),
-              aside: `<span class="panel-aside">${pins.map(entry =>
-                `${escapeHtml(entry.cityLabel)} #${escapeHtml(entry.pin)}`).join(" · ")}</span>`
-            }) : ""}
-            ${routeMatches.length ? panel("On the route", `
-              <ul class="link-list">${routeMatches.map(route =>
-                `<li>${escapeHtml(route.npc_name)} <small class="dim">${escapeHtml(route.town)}
-                  · ${escapeHtml(route.route_names)}</small></li>`).join("")}</ul>`,
-              { aside: `<span class="panel-aside">Which route quests stop here</span>` }) : ""}
+        ${pageHeader({eyebrow:'NPC', title:identity.display,
+          lede:[towns.join(', '),quests.length ? `${prettyNumber(quests.length)} quest${quests.length===1?'':'s'}` : ''].filter(Boolean).join(' · '),
+          crumbs:[['Overview','#/home'],['NPCs','#/npcs'],[identity.display,'']]})}
+        <div class="quest-navigation npc-navigation">
+          <div class="npc-summary">
+            ${photo ? `<div class="entity-hero npc-hero"><span class="entity-portrait"><img class="npc-photo large" data-project-file="${escapeAttr(photo.file)}" alt="${escapeAttr(photo.label)}"></span><div><strong>${escapeHtml(photo.label)}</strong><br><span class="dim">${escapeHtml(towns.join(', '))}</span></div></div>` : ''}
+            ${panel('Quests', quests.length ? `<ul class="link-list">${quests.map(quest => `<li>${entityLink('quest',quest.que_id,quest.que_name)}<small class="dim">level ${escapeHtml(quest.que_lvl || '—')}</small></li>`).join('')}</ul>` : `<p class="dim" style="margin:0">${identity.named ? 'No quest names this NPC.' : 'This is a generic role rather than a named character, so it is not linked to quests.'}</p>`)}
+            ${panel('Details',statLines([['Name',escapeHtml(identity.display)],['Town',escapeHtml(towns.join(', '))],['Quests',quests.length?String(quests.length):'']]))}
+            ${routeMatches.length ? panel('On the route',`<ul class="link-list">${routeMatches.map(route => `<li>${escapeHtml(route.npc_name)} <small class="dim">${escapeHtml(route.town)} · ${escapeHtml(route.route_names)}</small></li>`).join('')}</ul>`) : ''}
+            ${articles ? panel('Guides',articles) : ''}
           </div>
-          <div class="detail-side">
-            ${photo ? `<div class="entity-hero npc-hero">
-              <span class="entity-portrait"><img class="npc-photo large"
-                data-project-file="${escapeAttr(photo.file)}"
-                alt="${escapeAttr(photo.label)}"></span>
-              <div><strong>${escapeHtml(photo.label)}</strong>
-                <br><span class="dim">${escapeHtml(photo.cityLabel)} #${escapeHtml(photo.pin)}</span>
-              </div>
-            </div>` : ""}
-            ${panel("Details", statLines([
-              ["Name", escapeHtml(identity.display)],
-              ["Town", escapeHtml(towns.join(", "))],
-              ["Quests", uniqueQuests.length ? String(uniqueQuests.length) : ""]
-            ]))}
-            ${articles ? panel("Guides", articles) : ""}
-          </div>
+          <section class="panel quest-map-panel npc-map-panel" aria-label="Where to find this NPC"><div class="panel-head"><h3>Where to find them</h3><span class="panel-aside">2D map</span></div><div data-npc-map>Opening the map…</div></section>
         </div>
-        ${provenanceFooter(`
-          <p>Quests are attached to this character by the name that appears in the quest
-            text${identity.named ? "" : " — this is a role rather than a person's name, so no "
-              + "quest is attached to it"}. The location comes from a player's own map.
-            ${photo ? npcPhotoCredit() : ""}</p>
-          ${pins.length ? `<p>The pin is that player's reading of where this character stands,
-            not a coordinate taken from the game.</p>`
-            : `<p>None of the ${prettyNumber(questMaps()
-                .reduce((total, map) => total + Object.keys(map.pins || {}).length, 0))} map pins
-              answers to this name, so this page cannot say where they stand.</p>`}`)}`;
-      wireQuestMaps();
+        ${provenanceFooter(`<p>Classic locations use matching named characters. Where Classic placements are unavailable, a matching Bango quest marker may be shown on Bango terrain; its live position remains unconfirmed. Repeated role names do not identify a particular NPC and receive no guessed location.</p><p>Quest links follow the named character in the quest directions. ${photo ? npcPhotoCredit() : ''}</p>`)}`;
+      const host = el.main.querySelector?.('[data-npc-map]');
+      if (host) activeQuestMap = AtlasWorld.mountQuest(host,state.source,locationStep);
     }
+
+/* NPC_NAVIGATION_END */
 
     function renderZone(id) {
       const zone = state.zones.find(candidate => candidate.id === String(id));
@@ -13093,10 +13069,10 @@ const AtlasWorld = (()=>{
     async start(){
       // The parent's constructor starts this asynchronously; the initial step
       // is set immediately by mountQuest, before this first read resolves.
-      this.host.innerHTML='<p class="world-help">Opening the quest map…</p>';
+      this.host.innerHTML='<p class="world-help">Opening the map…</p>';
       this.catalogues=new Map();this.focusSerial=0;
       try{this.registry=await this.json('assets/world_map/catalogue.json');if(!this.dead)await this.setStep(this.initialStep);}
-      catch{if(!this.dead)this.host.innerHTML='<p class="world-error">The map could not be loaded. Reopen this quest to try again.</p>';}
+      catch{if(!this.dead)this.host.innerHTML='<p class="world-error">The map could not be loaded. Reopen this page to try again.</p>';}
     }
     async setStep(step){
       if(!step||this.dead)return;this.step=step;const serial=++this.focusSerial,point=step.npc||step;
@@ -13113,11 +13089,12 @@ const AtlasWorld = (()=>{
     }
     renderShell(){
       const point=this.step.npc||this.step;
-      this.host.innerHTML=`<div class="quest-map-caption"><strong>${escape(this.step.title)}</strong><p>${this.s.version==='classic'?'Classic locations':'Bango quest markers · live positions unconfirmed'}</p></div>
-        <div class="quest-map-toolbar" ${this.scenes.length?'':'hidden'}><label>Area / floor<select data-quest-place aria-label="Quest map area or floor">${this.scenes.map(id=>{const p=this.catalog.scenes.find(s=>s.id===id);return `<option value="${escape(id)}">${escape(p?.name||id)} · ${escape(p?.floor||'')} (${this.targets.filter(e=>e.scene===id).length})</option>`;}).join('')}</select></label><a data-quest-full>${this.s.version==='classic'?'Open full 2D map':'Explore this area in 2D'} →</a></div>
+      const npcPage=this.step.context==='npc';
+      this.host.innerHTML=`<div class="quest-map-caption"><strong>${escape(this.step.title)}</strong><p>${!this.scenes.length?'Location unconfirmed':this.s.version==='classic'?'Classic locations':'Bango quest markers · live positions unconfirmed'}</p></div>
+        <div class="quest-map-toolbar" ${this.scenes.length?'':'hidden'}><label>Area / floor<select data-quest-place aria-label="${npcPage?'NPC':'Quest'} map area or floor">${this.scenes.map(id=>{const p=this.catalog.scenes.find(s=>s.id===id);return `<option value="${escape(id)}">${escape(p?.name||id)} · ${escape(p?.floor||'')} (${this.targets.filter(e=>e.scene===id).length})</option>`;}).join('')}</select></label><a data-quest-full>${this.s.version==='classic'?'Open full 2D map':'Explore this area in 2D'} →</a></div>
         <p data-quest-unmapped hidden class="world-notice">${escape(point.name||'This objective')}: a reliable location is not available yet.</p>
-        <div class="world-stage" tabindex="0" aria-label="Quest map in 2D. Drag to pan, scroll or use buttons to zoom."><canvas data-ground></canvas><canvas data-three hidden></canvas><canvas data-overlay></canvas><div class="world-controls"><button data-zoom="in" aria-label="Zoom in">+</button><button data-zoom="out" aria-label="Zoom out">−</button><button data-fit aria-label="Show all step locations">⌖</button></div><div class="world-hud" aria-live="polite"></div></div>
-        <div data-notice></div><p class="quest-map-help">Gold marks the selected step. Drag to pan · scroll or pinch to zoom. <span data-quest-count></span></p>`;
+        <div class="world-stage" tabindex="0" aria-label="${npcPage?'NPC':'Quest'} map in 2D. Drag to pan, scroll or use buttons to zoom."><canvas data-ground></canvas><canvas data-three hidden></canvas><canvas data-overlay></canvas><div class="world-controls"><button data-zoom="in" aria-label="Zoom in">+</button><button data-zoom="out" aria-label="Zoom out">−</button><button data-fit aria-label="${npcPage?'Show NPC locations':'Show all step locations'}">⌖</button></div><div class="world-hud" aria-live="polite"></div></div>
+        <div data-notice></div><p class="quest-map-help" ${this.scenes.length?'':'hidden'}>Gold marks ${npcPage?'this NPC':'the selected step'}. Drag to pan · scroll or pinch to zoom. <span data-quest-count></span></p>`;
       const $=q=>this.host.querySelector(q);this.stage=$('.world-stage');this.ground=$('[data-ground]');this.three=$('[data-three]');this.overlay=$('[data-overlay]');this.hud=$('.world-hud');
       $('[data-quest-place]').onchange=async e=>{this.s.place=e.target.value;await this.loadPlace(false);this.fit();this.schedule();};
       $('[data-fit]').onclick=()=>{this.fit();this.schedule();};
