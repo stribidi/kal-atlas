@@ -2875,6 +2875,15 @@
     .quest-map-panel .world-controls{z-index:2}.quest-map-help{font-size:12px;color:#bdc6b4;line-height:1.6;margin:10px 0 0}.quest-map-help span{display:block}
     @media(max-width:950px){.quest-navigation{grid-template-columns:minmax(260px,1fr) minmax(0,1.3fr);gap:14px}.quest-map-toolbar{align-items:start;flex-direction:column}.quest-map-panel,.quest-walkthrough{padding:12px}}
     @media(max-width:700px){.quest-navigation{grid-template-columns:1fr}.quest-map-panel{position:static;grid-row:1}.quest-map-panel .world-stage{height:330px}.quest-map-toolbar{flex-direction:row;align-items:end}.quest-map-toolbar>a{white-space:normal}.quest-step-detail{padding-left:52px}.quest-rewards{gap:8px 20px}}
+    .quest-directory-layout{grid-template-columns:minmax(0,1.2fr) minmax(320px,1fr);gap:20px}.quest-directory-layout>div{min-width:0}
+    .directory-map-panel{position:sticky;top:80px;grid-row:auto}.directory-map-panel .panel-head{display:flex;align-items:baseline;justify-content:space-between;gap:10px}.directory-map-panel h3{margin:0}.directory-map-owner{margin:12px 0;color:var(--muted);font-size:12px;line-height:1.5;border-bottom:1px solid var(--line);padding-bottom:12px}.directory-map-return{display:none}
+    [data-directory-target]{scroll-margin-top:150px}.directory-quest-steps{gap:12px}.directory-quest-steps .quest-step{scroll-margin-top:150px}.directory-quest-steps .quest-step-detail{padding-left:14px}.directory-quest-steps .quest-step-detail>p,.directory-quest-steps .quest-step-items{margin-left:40px}
+    .directory-monsters{grid-template-columns:repeat(auto-fit,minmax(108px,1fr));margin:12px 0}.directory-monsters .quest-monster-card>a{display:flex;flex-direction:column;align-items:center;gap:7px;width:100%}.directory-monsters .quest-monster-card.selected{border-color:#d9b969;background:rgba(122,96,42,.18);box-shadow:inset 0 -3px #d9b969}
+    .directory-monster-map{width:100%;display:grid;gap:7px;padding:5px;border:0;background:transparent;white-space:normal;font-size:11px;line-height:1.4;color:var(--gold)}.directory-monster-map.small{margin-top:auto;padding:6px 3px;border:1px solid var(--line)}
+    .quest-directory-layout .wt-step{flex-wrap:wrap;gap:5px;padding:9px 8px;scroll-margin-top:150px;border-bottom:1px solid var(--line)}.quest-directory-layout .wt-step>a{margin-left:42px;font-size:11px}.quest-directory-layout .wt-step.selected{background:rgba(122,96,42,.17);box-shadow:inset 3px 0 #d9b969;border-radius:5px}.quest-directory-layout .wt-step>.wt-step-text{flex:1}
+    .walkthrough-map-stop{display:flex;align-items:center;gap:12px;flex:1 1 100%;text-align:left;padding:3px 0;border:0;background:transparent;white-space:normal;line-height:1.5;font-size:13px}.walkthrough-map-stop>span:last-child{display:grid;gap:3px;min-width:0}.walkthrough-map-stop small,.directory-teleport small{display:block;color:var(--gold);font-size:11px;font-weight:normal}
+    .directory-teleport{border:0;background:transparent;text-align:left;padding:5px 0;white-space:normal;font-size:12px;min-width:95px}.directory-teleport[aria-pressed=true]{color:var(--gold)}.directory-monster-map:focus-visible,.walkthrough-map-stop:focus-visible,.directory-teleport:focus-visible{outline:2px solid #ffe28a;outline-offset:3px}
+    @media(max-width:1000px){.quest-directory-layout{grid-template-columns:1fr}.directory-map-panel{position:static;grid-row:1}.directory-map-panel .world-stage{height:330px}.directory-map-return{display:block;margin-top:14px}.directory-map-return[hidden]{display:none}.directory-map-panel .quest-map-toolbar{flex-direction:row;align-items:end}}
 
 /* QUEST_NAVIGATION_CSS_END */
 </style>
@@ -5829,43 +5838,7 @@
       return questState(profile, id) !== "finished";
     }
 
-    function questCardHtml(profile, quest, build) {
-      const id = String(quest.que_id);
-      const finished = questState(profile, id) === "finished";
-      const open = questCardIsOpen(profile, quest);
-      const rewards = [
-        Number(quest.bango_experience) ? `${prettyNumber(quest.bango_experience)} XP` : "",
-        Number(quest.bango_skill_points) ? `${prettyNumber(quest.bango_skill_points)} SP` : "",
-        Number(quest.bango_contribution)
-          ? `${prettyNumber(quest.bango_contribution)} contribution` : ""
-      ].filter(Boolean).join(" · ");
-      const prerequisite = state.indexes.questsById.get(String(quest.bango_prerequisite));
-      const diagram = open ? questDiagramHtml(quest) : "";
-      return `<article class="qcard${finished ? " done" : ""}${open ? " open" : ""}"
-          data-quest-card="${escapeAttr(id)}">
-        <div class="qcard-head">
-          ${questStatusButton(profile, quest, true)}
-          <h4>${entityLink("quest", quest.que_id, quest.que_name)}</h4>
-          <span class="qcard-lvl">Lv ${escapeHtml(quest.que_lvl || "—")}</span>
-          ${rewards ? `<span class="qcard-rewards">${escapeHtml(rewards)}</span>` : ""}
-          <button type="button" class="qcard-toggle" data-quest-toggle="${escapeAttr(id)}"
-            aria-expanded="${open ? "true" : "false"}"
-            aria-label="${open ? "Collapse" : "Expand"} ${escapeAttr(quest.que_name || "quest")}"
-            >${open ? "▾" : "▸"}</button>
-        </div>
-        ${open ? `<div class="qcard-body">
-          ${diagram || emptyState("No route or client steps are recorded for this quest.")}
-          ${animalChoiceHtml(questAnimalChoices(quest))}
-          <div class="qcard-foot">
-            ${prerequisite ? `<span class="tag gold">after ${
-              entityLink("quest", prerequisite.que_id, prerequisite.que_name)}</span>` : ""}
-            ${Number(quest.que_lvl) > Number(build.level)
-              ? `<span class="tag danger">needs level ${escapeHtml(quest.que_lvl)}</span>` : ""}
-            <a class="button small ghost" href="${routeHref("quest", quest.que_id)}">Full quest page</a>
-          </div>
-        </div>` : ""}
-      </article>`;
-    }
+
 
     function toggleQuestCard(questId) {
       const id = String(questId);
@@ -6036,32 +6009,7 @@
       return routeQuestForBango(quest)?.quest.choices || [];
     }
 
-    function walkthroughStepHtml(step) {
-      if (step.type === "talk") {
-        const name = questPinName(step.city, step.pin);
-        const pin = questMapById(step.city)?.pins?.[step.pin] || {};
-        return `<li class="wt-step talk">
-          ${questPinTag(step.city, step.pin)
-            || `<span class="pin-tag field">${escapeHtml(step.city || "?")}</span>`}
-          ${pin.photo ? zoomFrame(`<img class="npc-photo"
-            data-project-file="${escapeAttr(pin.photoThumb || pin.photo)}"
-            alt="" title="${escapeAttr(name)}">`, "photo") : ""}
-          <span class="wt-step-text"><strong>${escapeHtml(step.label || "Talk")}</strong>
-            ${name ? ` — ${questPinNameHtml(step.city, step.pin)}` : ""}${pin.teleport
-              ? ` <small class="dim">${escapeHtml(pin.teleport)}</small>` : ""}</span>
-        </li>`;
-      }
-      if (step.type === "field") {
-        return `<li class="wt-step field">
-          <span class="pin-tag field">🌲 ${escapeHtml(step.label || "Out of town")}</span>
-          <span class="wt-step-text">${escapeHtml(step.name || "")}</span>
-        </li>`;
-      }
-      return `<li class="wt-step action">
-        <span class="pin-tag action">⚔</span>
-        <span class="wt-step-text">${escapeHtml(step.text || "")}</span>
-      </li>`;
-    }
+
 
     /* A route row is one quest most of the time, and sometimes a batch of
        several ("Step 0 — Accept everything first" covers seven). Only a row
@@ -6078,116 +6026,9 @@
       return { kind: "batch", key, done: Boolean(profile.walkthrough?.[key]) };
     }
 
-    function walkthroughQuestHtml(profile, stage, entry, build) {
-      const status = walkthroughRowStatus(profile, stage.id, entry);
-      const tick = status.kind === "quest"
-        ? questStatusButton(profile, status.quest, true)
-        : `<button type="button" class="quest-status${status.done ? " finished" : ""}"
-            data-walkthrough-tick="${escapeAttr(status.key)}"
-            title="Several quests at once — ticked here only"
-            aria-pressed="${status.done ? "true" : "false"}">${status.done ? "✓" : "○"}</button>`;
-      const title = status.kind === "quest"
-        ? entityLink("quest", status.quest.que_id, status.quest.que_name)
-        : escapeHtml(entry.name);
-      return `<article class="wt-quest${status.done ? " done" : ""}">
-        <div class="wt-quest-head">
-          ${tick}
-          <h5>${title}</h5>
-          ${entry.level ? `<span class="qcard-lvl">${escapeHtml(entry.level)}</span>` : ""}
-          ${status.kind === "quest" ? `<span class="wt-route-name"
-            title="What the route guide calls it">${escapeHtml(entry.name)}</span>` : ""}
-        </div>
-        ${entry.note ? `<p class="wt-note">${escapeHtml(entry.note)}</p>` : ""}
-        ${entry.startCity ? `<p class="wt-start">Start from
-          <strong>${escapeHtml(questMapById(entry.startCity)?.name || entry.startCity)}</strong></p>` : ""}
-        <ol class="wt-steps">${(entry.steps || []).map(walkthroughStepHtml).join("")}</ol>
-        ${guideAssetsHtml(entry.mobs, "monster")}
-        ${guideAssetsHtml(entry.items, "item")}
-        ${animalChoiceHtml(entry.choices)}
-        ${entry.reward ? `<p class="wt-reward"><span>Reward</span>
-          ${escapeHtml(entry.reward)}</p>` : ""}
-        ${status.kind === "quest" && Number(status.quest.que_lvl) > Number(build.level)
-          ? `<p class="wt-warn">Your character is level ${escapeHtml(String(build.level))};
-            this quest opens at ${escapeHtml(status.quest.que_lvl)}.</p>` : ""}
-      </article>`;
-    }
 
-    function renderQuestWalkthrough(query) {
-      const profile = activeProfile();
-      const build = currentBuild();
-      const stages = state.questMaps?.stages || [];
-      const mapFilter = query.get("map") || "";
-      const rows = stages.flatMap(stage => stage.quests.map(entry => ({ stage, entry })));
-      const done = rows.filter(({ stage, entry }) =>
-        walkthroughRowStatus(profile, stage.id, entry).done).length;
-      const usedMaps = new Set();
-      stages.forEach(stage => stage.quests.forEach(entry => (entry.steps || [])
-        .forEach(step => { if (step.city) usedMaps.add(step.city); })));
-      const teleports = (state.questMaps?.teleports || []);
-      const percent = rows.length ? Math.round((done / rows.length) * 100) : 0;
-      const revision = state.questMaps?.source_revision || "";
 
-      el.main.innerHTML = `
-        ${pageHeader({
-          eyebrow: "Quests",
-          title: "Walkthrough",
-          lede: "The efficient route in the order it is played. Each stage says where "
-            + "you are, what stacks with what, and every stop on the way.",
-          crumbs: [["Overview", "#/home"], ["Quests", "#/quests"], ["Walkthrough", ""]]
-        })}
-        ${questViewSwitch("walkthrough", query)}
-        <div class="wt-progress">
-          <div class="wt-bar"><span style="width:${percent}%"></span></div>
-          <span class="dim"><b>${prettyNumber(done)}</b> of ${prettyNumber(rows.length)}
-            route entries done</span>
-          <button type="button" class="small ghost" data-action="reset-quests">Reset</button>
-        </div>
-        <div class="quest-layout">
-          <div>
-            ${teleports.length ? section("Useful teleports",
-              `<ul class="wt-teleports">${teleports.map(row => `<li>
-                ${questPinTag(row.city, row.pin) || ""}
-                <span>${questPinNameHtml(row.city, row.pin)}
-                  — ${escapeHtml(row.dest || "")}</span></li>`).join("")}</ul>`) : ""}
-            ${stages.length ? stages.map(stage => `
-              <section class="wt-stage">
-                <div class="wt-stage-head">
-                  <h4>${escapeHtml(stage.title || stage.id)}</h4>
-                  ${stage.level ? `<span class="wt-stage-lvl">${escapeHtml(stage.level)}</span>` : ""}
-                </div>
-                ${stage.where ? `<p class="wt-where">${escapeHtml(stage.where)}</p>` : ""}
-                ${stage.combo ? `<div class="callout info wt-combo">
-                  <strong>Farm cluster.</strong> ${cleanHtmlText(stage.combo)}</div>` : ""}
-                ${stage.quests.map(entry =>
-                  walkthroughQuestHtml(profile, stage, entry, build)).join("")}
-              </section>`).join("")
-            : emptyState("The player route guide is not loaded, so there is no walkthrough.")}
-          </div>
-          <div class="quest-map-column">
-            ${questMapPanel(mapFilter || [...usedMaps][0], {
-              title: "Where the quests are",
-              aside: `<span class="panel-aside">Click a pin or a tag</span>`
-            })}
-          </div>
-        </div>
-        ${provenanceFooter(`
-          <p>The route order, the batching and the walkthrough notes are a player's own
-            work${revision ? ` (revision ${escapeHtml(revision)})` : ""}, used with permission;
-            the quest text and town maps behind them come from
-            <a href="https://mystic-city.de/System/viewpage.php?page_id=48" target="_blank"
-               rel="noopener noreferrer">mystic-city.de</a>, with world map artwork by
-            Vresko.com. Where the route and the game disagree on a name, level or reward, the
-            figure shown is the game's. ${npcPhotoCredit()}</p>
-          <p>Some stages bundle several quests into one line — the opening stage bundles
-            five — so those get their own tick rather than pretending to be a single
-            quest.</p>`)}`;
-      wireQuestMaps();
-      if (typeof el.main.querySelectorAll === "function") {
-        el.main.querySelectorAll("[data-walkthrough-tick]").forEach(button => {
-          button.onclick = () => toggleWalkthroughTick(button.dataset.walkthroughTick);
-        });
-      }
-    }
+
 
     function toggleWalkthroughTick(key) {
       const profile = activeProfile();
@@ -6198,82 +6039,7 @@
       renderRoute();
     }
 
-    function renderQuests(query) {
-      if (questView(query) === "walkthrough" && state.questMaps?.stages?.length) {
-        return renderQuestWalkthrough(query);
-      }
-      const q = normalizeName(query.get("q") || "");
-      const level = query.get("level") || "";
-      const mapFilter = query.get("map") || "";
-      const levels = [...new Set(state.tables.quests.map(row => row.que_lvl).filter(Boolean))]
-        .sort((a, b) => Number(a) - Number(b));
-      const rows = state.tables.quests.filter(row => {
-        if (q && !normalizeName(`${row.que_name} ${row.que_id} ${row.que_text}`).includes(q)) return false;
-        if (level && row.que_lvl !== level) return false;
-        if (mapFilter) {
-          const route = routeQuestForBango(row);
-          if (!route?.quest.steps.some(step => step.city === mapFilter)) return false;
-        }
-        return true;
-      });
-      // Level order, because that is the order the quests are actually played.
-      rows.sort((a, b) => (Number(a.que_lvl) || 0) - (Number(b.que_lvl) || 0)
-        || Number(a.que_id) - Number(b.que_id));
-      const pageSize = 20;
-      const page = Number(query.get("page") || 1);
-      const shown = rows.slice((page - 1) * pageSize, page * pageSize);
-      const profile = activeProfile();
-      const build = currentBuild();
-      const done = rows.filter(row => questState(profile, row.que_id) === "finished").length;
-      const usedMaps = new Set();
-      shown.forEach(row => routeQuestForBango(row)?.quest.steps
-        .forEach(step => { if (step.city) usedMaps.add(step.city); }));
 
-      el.main.innerHTML = `
-        ${pageHeader({
-          eyebrow: "Quests",
-          title: "Quests",
-          lede: "Every quest as a route: who to talk to, where, and what to kill. "
-            + "Tick one off and it folds away.",
-          crumbs: [["Overview", "#/home"], ["Quests", ""]],
-          actions: `<span class="quest-progress"><b>${prettyNumber(done)}</b>
-            of ${prettyNumber(rows.length)} done</span>`
-        })}
-        ${questViewSwitch("list", query)}
-        ${filterToolbar("quests", query, { selectName: "level", selectLabel: "Level", allLabel: "All levels", selectOptions: levels, placeholder: "Quest name or text…" })}
-        ${questMaps().length ? `<div class="map-filter-row">
-          <span class="dim">Map</span>
-          <a class="filter-chip${mapFilter ? "" : " active"}" href="#/quests${
-            query.get("q") || level ? `?${new URLSearchParams([
-              ...(query.get("q") ? [["q", query.get("q")]] : []),
-              ...(level ? [["level", level]] : [])])}` : ""}">All</a>
-          ${questMaps().map(entry => {
-            const params = new URLSearchParams();
-            if (query.get("q")) params.set("q", query.get("q"));
-            if (level) params.set("level", level);
-            params.set("map", entry.id);
-            return `<a class="filter-chip${mapFilter === entry.id ? " active" : ""}"
-              href="#/quests?${params}" title="${escapeAttr(entry.name)}">${escapeHtml(entry.label)}</a>`;
-          }).join("")}
-        </div>` : ""}
-        <div class="quest-layout">
-          <div>
-            <div class="quest-cards">${shown.length
-              ? shown.map(row => questCardHtml(profile, row, build)).join("")
-              : emptyState("No quest matches this filter.")}</div>
-            ${pagination(rows.length, page, pageSize, "quests", query)}
-          </div>
-          <div class="quest-map-column">
-            ${questMapPanel(mapFilter || [...usedMaps][0], {
-              title: "Where the quests are",
-              // Every map stays available even when the list is filtered, so
-              // a tag for another map still has somewhere to jump to.
-              aside: `<span class="panel-aside">Click a pin or a tag</span>`
-            })}
-          </div>
-        </div>`;
-      wireQuestMaps();
-    }
 
     function renderNpcs(query) {
       const q = normalizeName(query.get("q") || "");
@@ -11196,9 +10962,7 @@
       const uniqueZones = [...new Map(zones.map(zone => [zone.id, zone])).values()];
       const documented = documentedDropEvidence(row.text);
       const articles = relatedArticles("monster", id, row.text);
-      // The guide's world maps mark where eight named bosses stand. Seven of
-      // them are a client monster by exact name, so those pages get the same
-      // map an NPC page gets; every other monster is placed by zone, not pin.
+      // Keep the existing named-boss map surface on the shared 2D renderer.
       const pins = pinsForEntity("monster", id);
 
       // Ranges, not a pick: several rows can sit behind one Bango name.
@@ -11226,12 +10990,7 @@
               { aside: `<span class="panel-aside">Click a column to sort</span>` })}
             ${panel("Against your build",
               monsterCombatPanel(row, variants, query.get("variant") || 0))}
-            ${pins.length ? questMapPanel(pins[0].city, {
-              title: "Where it stands",
-              onlyMaps: new Set(pins.map(entry => entry.city)),
-              highlight: new Set(pins.map(entry => `${entry.city}-${entry.pin}`)),
-              aside: `<span class="panel-aside">The guide marks this one by hand</span>`
-            }) : ""}
+            ${pins.length ? `<section class="panel quest-map-panel"><h3>Hunting areas</h3><div data-monster-map></div></section>` : ""}
           </div>
           <div class="detail-side">
             <div class="entity-hero${monsterFallbackPicture(row.text)
@@ -11268,10 +11027,11 @@
             stats are from an earlier version of the game and have <strong>not</strong> been
             confirmed here — use them as a guide, not a measurement.
             ${monsterPictureCredit(row.text)}</p>
-          ${pins.length ? `<p>The map pin is a player's own marking on his world map.</p>` : ""}
+          ${pins.length ? `<p>The map shows matching Classic hunting areas; an unconfirmed location stays unmarked.</p>` : ""}
           ${documented && !/class="empty"/.test(documented)
             ? `<div>${documented}</div>` : ""}`)}`;
-      wireQuestMaps();
+      const mapHost=el.main.querySelector?.('[data-monster-map]');
+      if(mapHost)activeQuestMap=AtlasWorld.mountQuest(mapHost,state.source,directoryMonsterTarget(row));
     }
 
     /* Skill costs are stored as reverse-Polish expressions over the grade.
@@ -11423,6 +11183,215 @@
             been confirmed in play, so budget your points as though it might not.</p>
           ${schedule && schedule.notes ? `<p>${escapeHtml(schedule.notes)}</p>` : ""}`)}`;
     }
+
+/* QUEST_DIRECTORY_BEGIN */
+    let directoryTargets = new Map();
+    let directoryView = 'list';
+    const directorySelections = new Map();
+
+    function beginQuestDirectory(view) {
+      directoryTargets = new Map();
+      directoryView = view;
+    }
+
+    function registerDirectoryTarget(key, target, owner) {
+      directoryTargets.set(key, {target, owner});
+      return `data-directory-target="${escapeAttr(key)}" aria-controls="quest-directory-map" aria-pressed="false"`;
+    }
+
+    function directoryMapPanel() {
+      return `<section class="panel quest-map-panel directory-map-panel" id="quest-directory-map" aria-label="Where to go"><div class="panel-head"><h3>Where to go</h3><span class="panel-aside">2D map</span></div><p class="directory-map-owner" data-directory-owner>Choose a step or a monster to see where to go.</p><div data-directory-map>Opening the map…</div><button type="button" class="small ghost directory-map-return" data-directory-return>Back to selected step</button></section>`;
+    }
+
+    function unknownDirectoryTarget(name, kind = 'talk') {
+      return {kind, title:name, name, version:'classic', locations:[]};
+    }
+
+    function directoryMonsterFor(label, questId) {
+      // The guide omits the article on these three registered Forest names.
+      // Resolve the spelling before the quest's Forest/D1 record selection.
+      const aliases={'Doggebi with Gong':'Doggebi with a Gong','Doggebi with Mask of Black Crow':'Doggebi with a Mask of Black Crow','Doggebi with Mask of Black Panther':'Doggebi with a Mask of Black Panther'};
+      const base = guideMonsterFor(aliases[label] || label);
+      const matches = (state.questNavigation?.quests?.[String(questId)]?.steps || [])
+        .flatMap(step => step.monsters || []).filter(monster =>
+          normalizeName(monster.name) === normalizeName(base?.text || label));
+      const unique = [...new Map(matches.map(monster => [String(monster.id), monster])).values()];
+      if (unique.length === 1) return state.indexes.monstersById.get(String(unique[0].id))
+        || {message_id:unique[0].id, text:unique[0].name};
+      return base;
+    }
+
+    function directoryMonsterTarget(monster, questId) {
+      if (!monster) return unknownDirectoryTarget('Hunting areas', 'hunt');
+      const matches = (state.questNavigation?.quests?.[String(questId)]?.steps || [])
+        .filter(step => step.monsters?.some(m => String(m.id) === String(monster.message_id)));
+      const versions = [...new Set(matches.filter(step => step.locations?.length).map(step => step.version))];
+      if (versions.length === 1) {
+        const version = versions[0];
+        const locations = matches.filter(step => step.version === version).flatMap(step => step.locations || [])
+          .filter(entity => version !== 'classic' || normalizeName(entity.name) === normalizeName(monster.text));
+        if (locations.length) return {kind:'hunt', title:`Hunt ${monster.text}`, name:monster.text, version,
+          locations:[...new Map(locations.map(entity => [entity.id,entity])).values()]};
+      }
+      return state.questNavigation?.monsters?.[String(monster.message_id)]
+        || unknownDirectoryTarget(monster.text, 'hunt');
+    }
+
+    function directoryPinTarget(city, pin, questId) {
+      const label = questPinName(city,pin) || 'NPC';
+      const entity = pinEntityFor(city,pin);
+      let target;
+      if (entity?.kind === 'npc') target = state.questNavigation?.npcs?.[entity.id];
+      else if (entity?.kind === 'monster') target = directoryMonsterTarget(entity.row,questId);
+      if (!target) {
+        // A generic role may resolve only inside one registered quest, and
+        // only when all its recorded conversations identify the same actor.
+        const role = normalizeName(label.replace(/\([^)]*\)/g,''));
+        const candidates = (state.questNavigation?.quests?.[String(questId)]?.steps || [])
+          .filter(step => step.npc?.generic && normalizeName(step.npc.name) === role).map(step => step.npc);
+        const unique = new Map(candidates.flatMap(npc => npc.locations.map(location =>
+          [`${npc.version}:${location.id}`,{npc,location}])));
+        if (unique.size === 1) {
+          const {npc,location} = [...unique.values()][0];
+          target = {kind:'talk',title:label,name:label,version:npc.version,locations:[location]};
+        }
+      }
+      return {...(target || unknownDirectoryTarget(label)),city};
+    }
+
+    function directoryMonsterCards(entries, questId, baseKey, owner, mapPictures = false) {
+      if (!entries?.length) return '';
+      return `<div class="quest-monster-cards directory-monsters">${entries.map((entry,index) => {
+        const monster = entry.message_id ? entry : directoryMonsterFor(entry.name,questId);
+        const name = monster?.text || entry.name;
+        const key = `${baseKey}:mob:${index}`;
+        const target = monster ? directoryMonsterTarget(monster,questId) : unknownDirectoryTarget(name,'hunt');
+        const control = registerDirectoryTarget(key,target,owner);
+        const picture = monster && (monsterPortraitName(monster.message_id,monster.text) || monsterFallbackPicture(monster.text))
+          ? monsterIconTag(monster.message_id,monster.text,80) : '<span class="dim">Image unavailable</span>';
+        const link = monster ? entityLink('monster',monster.message_id,name) : escapeHtml(name);
+        const image = mapPictures
+          ? `<button type="button" class="directory-monster-map" ${control} aria-label="Show hunting areas for ${escapeAttr(name)}"><span class="quest-monster-picture">${picture}</span><span>Show hunting areas</span></button>${link}`
+          : `${monster ? `<a href="${escapeAttr(routeHref('monster',monster.message_id))}" aria-label="${escapeAttr(name)}"><span class="quest-monster-picture">${picture}</span><span>${escapeHtml(name)}</span></a>` : `<span class="quest-monster-picture">${picture}</span>${link}`}<button type="button" class="directory-monster-map small ghost" ${control} aria-label="Show hunting areas for ${escapeAttr(name)}">Show hunting areas</button>`;
+        return `<div class="quest-monster-card" data-directory-row="${escapeAttr(key)}">${image}</div>`;
+      }).join('')}</div>`;
+    }
+
+    function directoryQuestSteps(quest) {
+      const steps = state.questNavigation?.quests?.[String(quest.que_id)]?.steps || [];
+      return `<ol class="quest-step-list directory-quest-steps">${steps.map((step,index) => {
+        const key = `q:${quest.que_id}:${index}`;
+        const control = registerDirectoryTarget(key,step,quest.que_name);
+        return `<li class="quest-step" data-directory-row="${escapeAttr(key)}"><button type="button" ${control}><span class="quest-step-number">${index+1}</span><span><small>${step.kind==='talk'?'Conversation':step.kind==='hunt'?'Hunting':'Field objective'}</small><strong>${escapeHtml(step.title)}</strong></span></button><div class="quest-step-detail">${step.npc?.entry ? `<p>${entityLink('npc',step.npc.entry,'NPC details →')}</p>` : ''}${questStepItems(step.items)}${directoryMonsterCards((step.monsters||[]).map(m=>({message_id:m.id,text:m.name})),quest.que_id,key,quest.que_name)}<p class="quest-step-description">${escapeHtml(step.text)}</p></div></li>`;
+      }).join('')}</ol>${steps.length?'':'<p class="dim">The steps for this quest are unavailable.</p>'}`;
+    }
+
+    function questCardHtml(profile, quest, build) {
+      const id = String(quest.que_id), finished = questState(profile,id)==='finished', open = questCardIsOpen(profile,quest);
+      const rewards = [Number(quest.bango_experience)?`${prettyNumber(quest.bango_experience)} XP`:'',Number(quest.bango_skill_points)?`${prettyNumber(quest.bango_skill_points)} SP`:'',Number(quest.bango_contribution)?`${prettyNumber(quest.bango_contribution)} contribution`:''].filter(Boolean).join(' · ');
+      const prerequisite = state.indexes.questsById.get(String(quest.bango_prerequisite));
+      return `<article class="qcard${finished?' done':''}${open?' open':''}" data-quest-card="${escapeAttr(id)}"><div class="qcard-head">${questStatusButton(profile,quest,true)}<h4>${entityLink('quest',id,quest.que_name)}</h4><span class="qcard-lvl">Lv ${escapeHtml(quest.que_lvl||'—')}</span>${rewards?`<span class="qcard-rewards">${escapeHtml(rewards)}</span>`:''}<button type="button" class="qcard-toggle" data-quest-toggle="${escapeAttr(id)}" aria-expanded="${open}" aria-label="${open?'Collapse':'Expand'} ${escapeAttr(quest.que_name||'quest')}">${open?'▾':'▸'}</button></div>${open?`<div class="qcard-body">${directoryQuestSteps(quest)}${animalChoiceHtml(questAnimalChoices(quest))}<div class="qcard-foot">${prerequisite?`<span class="tag gold">after ${entityLink('quest',prerequisite.que_id,prerequisite.que_name)}</span>`:''}${Number(quest.que_lvl)>Number(build.level)?`<span class="tag danger">needs level ${escapeHtml(quest.que_lvl)}</span>`:''}<a class="button small ghost" href="${routeHref('quest',id)}">Full quest page</a></div></div>`:''}</article>`;
+    }
+
+    function walkthroughStepHtml(step, context, index) {
+      const key = `${context.key}:step:${index}`;
+      if (step.type === 'talk') {
+        const name = questPinName(step.city,step.pin), entity = pinEntityFor(step.city,step.pin);
+        const target = directoryPinTarget(step.city,step.pin,context.questId);
+        const control = registerDirectoryTarget(key,target,context.owner);
+        return `<li class="wt-step talk" data-directory-row="${escapeAttr(key)}"><button type="button" class="walkthrough-map-stop" ${control}><span class="quest-step-number">${index+1}</span><span><strong>${escapeHtml(step.label||'Talk')}</strong><span>${escapeHtml(name||'NPC')}</span><small>Show on map</small></span></button>${entity?entityLink(entity.kind,entity.id,entity.kind==='npc'?'NPC details →':'Monster details →'):''}</li>`;
+      }
+      const text = step.text || step.name || step.label || '';
+      const actions = context.entry.steps.filter(s=>s.type!=='talk');
+      const words = new Set(monsterNameWords(text));
+      const monsters = context.monsters.filter(monster=>actions.length===1 || monsterNameWords(monster.text).every(word=>words.has(word))
+        || stepItemIds(step).some(item=>monstersDroppingItem(item,[monster]).length));
+      const targets = monsters.map(monster=>directoryMonsterTarget(monster,context.questId));
+      const versions = [...new Set(targets.map(target=>target.version))];
+      let control = '';
+      if (targets.length && versions.length===1) {
+        control = registerDirectoryTarget(key,{kind:'hunt',title:'Hunt '+monsters.map(m=>m.text).join(', '),name:'Hunting areas',version:versions[0],entityIds:[...new Set(targets.flatMap(t=>t.entityIds||[]))],locations:[...new Map(targets.flatMap(t=>t.locations||[]).map(e=>[e.id,e])).values()],unmappedNames:targets.filter(t=>!t.entityIds?.length&&!t.locations?.length).map(t=>t.name)},context.owner);
+      }
+      return `<li class="wt-step ${step.type==='field'?'field':'action'}" data-directory-row="${escapeAttr(key)}">${control?`<button type="button" class="walkthrough-map-stop" ${control}><span class="quest-step-number">${index+1}</span><span>${escapeHtml(text)}<small>Show hunting areas</small></span></button>`:`<span class="quest-step-number">${index+1}</span><span class="wt-step-text">${escapeHtml(text)}</span>`}</li>`;
+    }
+
+    function walkthroughQuestHtml(profile, stage, entry, build, index) {
+      const status = walkthroughRowStatus(profile,stage.id,entry);
+      const questId = status.kind==='quest'?status.quest.que_id:'';
+      const key = `w:${stage.id}:${index}`;
+      const owner = `${stage.title || stage.id} · ${status.kind==='quest'?status.quest.que_name:entry.name}`;
+      const monsters = (entry.mobs||[]).map(m=>directoryMonsterFor(m.name,questId)).filter(Boolean);
+      const context = {key,owner,questId,entry,monsters};
+      const tick = status.kind==='quest'?questStatusButton(profile,status.quest,true):`<button type="button" class="quest-status${status.done?' finished':''}" data-walkthrough-tick="${escapeAttr(status.key)}" title="Several quests at once — ticked here only" aria-pressed="${status.done}">${status.done?'✓':'○'}</button>`;
+      const title = status.kind==='quest'?entityLink('quest',questId,status.quest.que_name):escapeHtml(entry.name);
+      return `<article class="wt-quest${status.done?' done':''}"><div class="wt-quest-head">${tick}<h5>${title}</h5>${entry.level?`<span class="qcard-lvl">${escapeHtml(entry.level)}</span>`:''}${status.kind==='quest'?`<span class="wt-route-name" title="What the route guide calls it">${escapeHtml(entry.name)}</span>`:''}</div>${entry.note?`<p class="wt-note">${escapeHtml(entry.note)}</p>`:''}${entry.startCity?`<p class="wt-start">Start from <strong>${escapeHtml(questMapById(entry.startCity)?.name||entry.startCity)}</strong></p>`:''}<ol class="wt-steps">${(entry.steps||[]).map((step,i)=>walkthroughStepHtml(step,context,i)).join('')}</ol>${directoryMonsterCards(entry.mobs,questId,key,owner,true)}${guideAssetsHtml(entry.items,'item')}${animalChoiceHtml(entry.choices)}${entry.reward?`<p class="wt-reward"><span>Reward</span> ${escapeHtml(entry.reward)}</p>`:''}${status.kind==='quest'&&Number(status.quest.que_lvl)>Number(build.level)?`<p class="wt-warn">Your character is level ${escapeHtml(build.level)}; this quest opens at ${escapeHtml(status.quest.que_lvl)}.</p>`:''}</article>`;
+    }
+
+    async function selectDirectoryTarget(key, reveal = true) {
+      const entry = directoryTargets.get(key);
+      if (!entry) return;
+      directorySelections.set(directoryView,key);
+      for (const row of el.main.querySelectorAll('[data-directory-row]')) row.classList.toggle('selected',key===row.dataset.directoryRow||key.startsWith(row.dataset.directoryRow+':mob:'));
+      for (const button of el.main.querySelectorAll('[data-directory-target]')) button.setAttribute('aria-pressed',String(key===button.dataset.directoryTarget));
+      const owner = el.main.querySelector('[data-directory-owner]');
+      if (owner) owner.textContent = entry.owner;
+      if (reveal) {
+        const params = new URLSearchParams(routeInfo().query);params.set('view',directoryView);params.set('focus',key);
+        history.replaceState(null,'',`#/quests?${params}`);state.renderedRoute=location.hash;
+      }
+      const host = el.main.querySelector('[data-directory-map]');
+      let map = activeQuestMap;
+      if (!map) activeQuestMap = map = AtlasWorld.mountQuest(host,state.source,entry.target);
+      else {await map.ready;if(map!==activeQuestMap||map.dead||directorySelections.get(directoryView)!==key)return;await map.setStep(entry.target);}
+      if (map!==activeQuestMap||map.dead) return;
+      if (reveal && matchMedia('(max-width:1000px)').matches) host.closest('.directory-map-panel').scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'instant':'smooth',block:'start'});
+    }
+
+    function wireDirectoryMap(query) {
+      const host = el.main.querySelector?.('[data-directory-map]');
+      if (!host) return;
+      const requested = query.get('focus') || directorySelections.get(directoryView);
+      const preferred = [...directoryTargets.keys()].find(key=>key.startsWith(directoryView==='list'?'q:':'w:'));
+      const mapTarget = query.get('map') && [...directoryTargets].find(([,entry])=>entry.target.city===query.get('map'))?.[0];
+      const selected = directoryTargets.has(requested)?requested:mapTarget||preferred||directoryTargets.keys().next().value;
+      if (selected) selectDirectoryTarget(selected,false);
+      else host.innerHTML='<p class="dim">Expand a quest to choose a step.</p>';
+      for (const button of el.main.querySelectorAll('[data-directory-target]')) button.onclick=()=>selectDirectoryTarget(button.dataset.directoryTarget);
+      const back = el.main.querySelector('[data-directory-return]');
+      back.hidden=!selected;
+      back.onclick=()=>{
+        const button=[...el.main.querySelectorAll('[data-directory-target]')].find(b=>b.dataset.directoryTarget===directorySelections.get(directoryView));
+        button?.scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'instant':'smooth',block:'start'});button?.focus({preventScroll:true});
+      };
+    }
+
+    function renderQuestWalkthrough(query) {
+      beginQuestDirectory('walkthrough');
+      const profile=activeProfile(),build=currentBuild(),stages=state.questMaps?.stages||[];
+      const rows=stages.flatMap(stage=>stage.quests.map(entry=>({stage,entry})));
+      const done=rows.filter(({stage,entry})=>walkthroughRowStatus(profile,stage.id,entry).done).length;
+      const percent=rows.length?Math.round(done/rows.length*100):0;
+      const teleports=state.questMaps?.teleports||[];
+      el.main.innerHTML=`${pageHeader({eyebrow:'Quests',title:'Walkthrough',lede:'The efficient route in the order it is played. Choose an NPC stop or a monster to update the map.',crumbs:[['Overview','#/home'],['Quests','#/quests'],['Walkthrough','']]})}${questViewSwitch('walkthrough',query)}<div class="wt-progress"><div class="wt-bar"><span style="width:${percent}%"></span></div><span class="dim"><b>${prettyNumber(done)}</b> of ${prettyNumber(rows.length)} route entries done</span><button type="button" class="small ghost" data-action="reset-quests">Reset</button></div><div class="quest-layout quest-directory-layout"><div>${teleports.length?section('Useful teleports',`<ul class="wt-teleports">${teleports.map((row,index)=>{const name=questPinName(row.city,row.pin),entity=pinEntityFor(row.city,row.pin),key=`teleport:${index}`;return `<li data-directory-row="${key}"><button type="button" class="directory-teleport" ${registerDirectoryTarget(key,directoryPinTarget(row.city,row.pin),'Useful teleports')} aria-label="Show ${escapeAttr(name)} on map">${escapeHtml(name)}<small>Show on map</small></button><span>${escapeHtml(row.dest||'')}${entity?` · ${entityLink(entity.kind,entity.id,'Details →')}`:''}</span></li>`;}).join('')}</ul>`):''}${stages.map(stage=>`<section class="wt-stage"><div class="wt-stage-head"><h4>${escapeHtml(stage.title||stage.id)}</h4>${stage.level?`<span class="wt-stage-lvl">${escapeHtml(stage.level)}</span>`:''}</div>${stage.where?`<p class="wt-where">${escapeHtml(stage.where)}</p>`:''}${stage.combo?`<div class="callout info wt-combo"><strong>Farm cluster.</strong> ${cleanHtmlText(stage.combo.replace('marked with gold pins','with locations still to be confirmed'))}</div>`:''}${stage.quests.map((entry,index)=>walkthroughQuestHtml(profile,stage,entry,build,index)).join('')}</section>`).join('')||emptyState('The player route guide is not loaded, so there is no walkthrough.')}</div>${directoryMapPanel()}</div>${provenanceFooter(`<p>The route order, batching and notes are a player's own work, used with permission. Quest text comes from <a href="https://mystic-city.de/System/viewpage.php?page_id=48" target="_blank" rel="noopener noreferrer">mystic-city.de</a>. A route entry matching one quest shares its completion; batches retain their own tick.</p><p>The map uses matching Classic placements or explicitly labelled Bango quest markers. Unknown positions remain unmarked. Hunting areas retain the full region and enough surrounding land for orientation.</p>${monsterPictureCredit(stages.flatMap(stage=>stage.quests.flatMap(entry=>(entry.mobs||[]).map(m=>directoryMonsterFor(m.name,bangoQuestIdForRouteName(entry.name))?.text||m.name))))}`)}`;
+      wireDirectoryMap(query);
+      for (const button of el.main.querySelectorAll?.('[data-walkthrough-tick]')||[]) button.onclick=()=>toggleWalkthroughTick(button.dataset.walkthroughTick);
+    }
+
+    function renderQuests(query) {
+      if(questView(query)==='walkthrough'&&state.questMaps?.stages?.length){renderQuestWalkthrough(query);return;}
+      beginQuestDirectory('list');
+      const q=normalizeName(query.get('q')||''),level=query.get('level')||'',mapFilter=query.get('map')||'';
+      const levels=[...new Set(state.tables.quests.map(row=>row.que_lvl).filter(Boolean))].sort((a,b)=>Number(a)-Number(b));
+      const rows=state.tables.quests.filter(row=>(!q||normalizeName(`${row.que_name} ${row.que_id} ${row.que_text}`).includes(q))&&(!level||row.que_lvl===level)&&(!mapFilter||routeQuestForBango(row)?.quest.steps.some(step=>step.city===mapFilter))).sort((a,b)=>(Number(a.que_lvl)||0)-(Number(b.que_lvl)||0)||Number(a.que_id)-Number(b.que_id));
+      const pageSize=20,page=Math.max(1,Math.min(Math.ceil(rows.length/pageSize)||1,Number(query.get('page'))||1));
+      const shown=rows.slice((page-1)*pageSize,page*pageSize),profile=activeProfile(),build=currentBuild();
+      const done=rows.filter(row=>questState(profile,row.que_id)==='finished').length;
+      const mapHref=map=>{const params=new URLSearchParams(query);params.set('view','list');params.delete('page');params.delete('focus');if(map)params.set('map',map);else params.delete('map');return '#/quests?'+params;};
+      el.main.innerHTML=`${pageHeader({eyebrow:'Quests',title:'Quests',lede:'Expand a quest, then choose a step to see its NPC or hunting areas on the map.',crumbs:[['Overview','#/home'],['Quests','']],actions:`<span class="quest-progress"><b>${prettyNumber(done)}</b> of ${prettyNumber(rows.length)} done</span>`})}${questViewSwitch('list',query)}${filterToolbar('quests',query,{selectName:'level',selectLabel:'Level',allLabel:'All levels',selectOptions:levels,placeholder:'Quest name or text…'})}${questMaps().length?`<div class="map-filter-row"><span class="dim">Location</span><a class="filter-chip${mapFilter?'':' active'}" href="${mapHref('')}">All</a>${questMaps().map(map=>`<a class="filter-chip${mapFilter===map.id?' active':''}" href="${mapHref(map.id)}" title="${escapeAttr(map.name)}">${escapeHtml(map.label)}</a>`).join('')}</div>`:''}<div class="quest-layout quest-directory-layout"><div><div class="quest-cards">${shown.map(row=>questCardHtml(profile,row,build)).join('')||emptyState('No quest matches this filter.')}</div>${pagination(rows.length,page,pageSize,'quests',query)}</div>${directoryMapPanel()}</div>${provenanceFooter(`<p>Steps follow the same conversations and objectives as each quest's full page. Classic placements and Bango quest markers remain separate; locations not yet identified stay unmarked.</p>${monsterPictureCredit(shown.flatMap(q=>(state.questNavigation?.quests?.[String(q.que_id)]?.steps||[]).flatMap(step=>(step.monsters||[]).map(m=>m.name))))}`)}`;
+      wireDirectoryMap(query);
+    }
+
+/* QUEST_DIRECTORY_END */
 
 /* QUEST_NAVIGATION_BEGIN */
     let activeQuestMap = null;
@@ -13065,6 +13034,10 @@ const AtlasWorld = (()=>{
     const radius=Math.max(2200,2200/aspect,(b[2]-b[0])*height/Math.max(1,width-2*padding)/2,(b[3]-b[1])*height/Math.max(1,height-2*padding)/2);
     return {x:(b[0]+b[2])/2,z:(b[1]+b[3])/2,radius:radius*1.06};
   }
+  function resolveTargets(point,catalog){
+    const ids=new Set(point.entityIds||[]);
+    return [...new Map([...(point.locations||[]),...catalog.entities.filter(e=>ids.has(e.id)&&e.scene)].map(e=>[e.id,e])).values()];
+  }
   class QuestWorld extends World {
     async start(){
       // The parent's constructor starts this asynchronously; the initial step
@@ -13075,12 +13048,12 @@ const AtlasWorld = (()=>{
       catch{if(!this.dead)this.host.innerHTML='<p class="world-error">The map could not be loaded. Reopen this page to try again.</p>';}
     }
     async setStep(step){
-      if(!step||this.dead)return;this.step=step;const serial=++this.focusSerial,point=step.npc||step;
-      this.targets=point.locations||[];this.targetIds=new Set(this.targets.map(e=>e.id));
+      if(!step||this.dead)return;this.step=step;++this.serial;const serial=++this.focusSerial,point=step.npc||step;
       this.s={...parseState('#/world'),version:point.version||'classic',view:'2d',travel:false};
       const version=this.s.version;
       if(!this.catalogues.has(version))this.catalogues.set(version,this.json(this.registry.versions.find(v=>v.id===version).path));
       const catalog=await this.catalogues.get(version);if(this.dead||serial!==this.focusSerial)return;
+      this.targets=resolveTargets(point,catalog);this.targetIds=new Set(this.targets.map(e=>e.id));
       this.catalog={...catalog,entities:[...catalog.entities.filter(e=>e.type==='npc'&&!this.targetIds.has(e.id)),...this.targets]};
       this.scenes=[...new Set(this.targets.map(e=>e.scene).filter(Boolean))];
       this.renderShell();
@@ -13092,7 +13065,7 @@ const AtlasWorld = (()=>{
       const npcPage=this.step.context==='npc';
       this.host.innerHTML=`<div class="quest-map-caption"><strong>${escape(this.step.title)}</strong><p>${!this.scenes.length?'Location unconfirmed':this.s.version==='classic'?'Classic locations':'Bango quest markers · live positions unconfirmed'}</p></div>
         <div class="quest-map-toolbar" ${this.scenes.length?'':'hidden'}><label>Area / floor<select data-quest-place aria-label="${npcPage?'NPC':'Quest'} map area or floor">${this.scenes.map(id=>{const p=this.catalog.scenes.find(s=>s.id===id);return `<option value="${escape(id)}">${escape(p?.name||id)} · ${escape(p?.floor||'')} (${this.targets.filter(e=>e.scene===id).length})</option>`;}).join('')}</select></label><a data-quest-full>${this.s.version==='classic'?'Open full 2D map':'Explore this area in 2D'} →</a></div>
-        <p data-quest-unmapped hidden class="world-notice">${escape(point.name||'This objective')}: a reliable location is not available yet.</p>
+        <p data-quest-unmapped hidden class="world-notice">${escape(point.name||'This objective')}: a reliable location is not available yet.</p>${point.unmappedNames?.length&&this.scenes.length?`<p class="world-notice">Locations unconfirmed for ${point.unmappedNames.map(escape).join(', ')}.</p>`:''}
         <div class="world-stage" tabindex="0" aria-label="${npcPage?'NPC':'Quest'} map in 2D. Drag to pan, scroll or use buttons to zoom."><canvas data-ground></canvas><canvas data-three hidden></canvas><canvas data-overlay></canvas><div class="world-controls"><button data-zoom="in" aria-label="Zoom in">+</button><button data-zoom="out" aria-label="Zoom out">−</button><button data-fit aria-label="${npcPage?'Show NPC locations':'Show all step locations'}">⌖</button></div><div class="world-hud" aria-live="polite"></div></div>
         <div data-notice></div><p class="quest-map-help" ${this.scenes.length?'':'hidden'}>Gold marks ${npcPage?'this NPC':'the selected step'}. Drag to pan · scroll or pinch to zoom. <span data-quest-count></span></p>`;
       const $=q=>this.host.querySelector(q);this.stage=$('.world-stage');this.ground=$('[data-ground]');this.three=$('[data-three]');this.overlay=$('[data-overlay]');this.hud=$('.world-hud');
@@ -13128,7 +13101,7 @@ const AtlasWorld = (()=>{
       }
     }
   }
-  return {mount:(host,source,link)=>new World(host,source,link),mountQuest:(host,source,step)=>{const map=new QuestWorld(host,source,()=>null);map.initialStep=step;return map;},fitTargets,parseState,stateHash};
+  return {mount:(host,source,link)=>new World(host,source,link),mountQuest:(host,source,step)=>{const map=new QuestWorld(host,source,()=>null);map.initialStep=step;return map;},fitTargets,resolveTargets,parseState,stateHash};
 })();
 
 let activeWorld = null;
