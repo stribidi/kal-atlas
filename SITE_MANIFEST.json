@@ -1,8 +1,8 @@
 {
  "generated_by": "tools/knowledge_base_site/build_site_manifest.py",
  "note": "Published bundle. Regenerate with tools/knowledge_base_site/build_deploy.py.",
- "file_count": 18816,
- "total_bytes": 919059112,
+ "file_count": 18818,
+ "total_bytes": 921147676,
  "files": [
   "analysis/combat_tables/COMBAT_FIXTURE.json",
   "analysis/item_duplicate_records/ITEM_DUPLICATE_MAP.csv",
@@ -10,6 +10,8 @@
   "analysis/kalenc_stat_vectors/ITEM_STATS.csv",
   "analysis/kalenc_stat_vectors/PREFIX_STATS.csv",
   "analysis/monster_icons/MONSTER_ICONS.json",
+  "analysis/native_drop_rates/BANGO_ORIGINAL_MAP.csv",
+  "analysis/native_drop_rates/ORIGINAL_DROPS.csv",
   "analysis/quest_maps/QUEST_MAPS.json",
   "analysis/quest_maps/map-cop.jpg",
   "analysis/quest_maps/map-forest.jpg",

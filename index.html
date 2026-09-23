@@ -2963,6 +2963,8 @@
     };
 
     const OPTIONAL_CSV_FILES = {
+      originalDrops: "analysis/native_drop_rates/ORIGINAL_DROPS.csv",
+      originalDropMap: "analysis/native_drop_rates/BANGO_ORIGINAL_MAP.csv",
       legacyItems: "data/ITEMS.csv",
       legacyMonsters: "data/MONSTERS.csv",
       legacyDrops: "data/DROPS.csv",
@@ -4086,6 +4088,9 @@
         "drp_item"
       );
       ix.dropsByMonster = groupedBy(t.drops, "drp_monst");
+      ix.originalDropsById = new Map((o.originalDrops || []).map(r => [String(r.rate_id), r]));
+      ix.originalDropsByMonster = groupedBy(o.originalDrops || [], "monster_id");
+      ix.originalDropMap = groupedBy(o.originalDropMap || [], "bango_drop_id");
 
       const monsterMessages = t.messages.filter(row => row.namespace === "monstername");
       const npcMessages = t.messages.filter(row => row.namespace === "npcname");
@@ -6371,6 +6376,7 @@
     }
 
     function legacyRate(row) {
+      if (row.original2006) return Number(row.chance_pct);
       const chance1 = Number(row.drp_chance1);
       const chance2 = Number(row.drp_chance2);
       if (!Number.isFinite(chance1) || !Number.isFinite(chance2)) return null;
@@ -6405,6 +6411,7 @@
     }
 
     function dropVariantCell(rateRow) {
+      if (rateRow.original2006) return `${escapeHtml(rateRow.prefix)}<br><small class="dim">Lv ${escapeHtml(rateRow.monster_level)}${Number(rateRow.quantity)>1 ? ` · ×${escapeHtml(rateRow.quantity)}` : ""}</small>`;
       const raw = String(rateRow.drp_rev || "").trim();
       if (!raw) return `<span class="dim">plain</span>`;
 
@@ -6518,21 +6525,35 @@
     /* One row per drop variant. The Bango table proves the association and the
        matched KalEncyclopedia pair supplies each base/talisman variant's rate
        (AGENTS.md standing rule 11). */
+    function displayRateRows(drop) {
+      const legacy = currentRateRows(drop);
+      if (legacy.length) return legacy;
+      return (state.indexes.originalDropMap?.get(String(drop.drp_azon)) || [])
+        .map(link => state.indexes.originalDropsById.get(String(link.native_rate_id)))
+        .filter(Boolean).map(row => ({...row, original2006:true, drp_rev:row.prefix === "Plain" ? "" : row.prefix}));
+    }
+
     function bangoDropTable(rows, perspective) {
       if (!rows.length) return emptyState("Nothing is known to drop here.");
+      const seenOriginal = new Set();
       const entries = rows.flatMap(row => {
-        const rateRows = currentRateRows(row);
+        const rateRows = displayRateRows(row);
         return rateRows.length
           ? rateRows.map(rateRow => ({ row, rateRow, rate: legacyRate(rateRow) }))
           : [{ row, rateRow: null, rate: null }];
+      }).filter(entry => {
+        if (!entry.rateRow?.original2006) return true;
+        const key = entry.rateRow.rate_id;
+        if (seenOriginal.has(key)) return false;
+        seenOriginal.add(key); return true;
       });
 
       const rateColumn = {
         key: "rate", label: "Chance", align: true,
         sort: entry => (Number.isFinite(entry.rate) ? entry.rate : ""),
         cell: entry => entry.rate === null
-          ? `<span class="dim" title="This pairing has no confirmed rate.">—</span>`
-          : `<b>${formatPercent(entry.rate)}</b>`
+          ? `<span class="dim" title="No matching rate is available for this item and monster.">Unknown</span>`
+          : `<b>${formatPercent(entry.rate)}</b>${entry.rateRow?.original2006 ? '<br><small class="dim">Original 2006 · per loot draw</small>' : ''}`
       };
       const talismanColumn = {
         key: "talisman", label: "Talisman",
@@ -6763,8 +6784,7 @@
           </div>
         </div>
         ${provenanceFooter(`
-          <p>The stats are this server's own. The drop chances are measured ones, and they
-            match what this server uses.</p>
+          <p>The stats describe Bango. Drop chances labelled Original 2006 are older reference values per loot draw, not confirmed Bango rates. Unknown means no defensible matching rate is available. Separate levels and prefixes retain separate rates.</p>
           ${isArmorSet ? `<p>Armour pieces are pictured as the full set for their class and
             grade rather than as the single piece.</p>` : ""}
           ${state.indexes.aliasLegacyNameByBangoName?.get(normalizeName(row.ita_name)) ? `<p>This
@@ -11026,7 +11046,7 @@
           </div>
         </div>
         ${provenanceFooter(`
-          <p>What this monster drops, and how often, is accurate for this server. Its combat
+          <p>The drop list describes Bango. Rates labelled Original 2006 are older reference values per loot draw, not confirmed Bango rates. Each monster level and equipment prefix stays separate. Unknown means no defensible matching rate is available. Ordinary SinKKal items use three times the original draw count; money keeps the original draw count and uses reduced amounts. Buffs, events and quest conditions can change the outcome. Its combat
             stats are from an earlier version of the game and have <strong>not</strong> been
             confirmed here — use them as a guide, not a measurement.
             ${monsterPictureCredit(row.text)}</p>
@@ -12867,12 +12887,12 @@ const WorldSearch = (() => {
   }
   const percent = v => Number(v.toFixed(v >= 10 ? 2 : v >= 1 ? 3 : 5)).toLocaleString('en-US', {maximumFractionDigits:5}) + '%';
   function rateSummary(rows) {
-    if (!rows?.length) return {label:'Rate unknown', detail:'No matching Bango reference rate.'};
+    if (!rows?.length) return {label:'Rate unknown', detail:'No matching rate for this version.'};
     const rates = rows.filter(r => Number.isFinite(r.rate)).map(r => r.rate);
-    if (!rates.length) return {label:'Rate unknown', detail:'No matching Bango reference rate.'};
+    if (!rates.length) return {label:'Rate unknown', detail:'No matching rate for this version.'};
     const low = Math.min(...rates), high = Math.max(...rates);
     return {label:(low === high ? percent(low) : percent(low)+'–'+percent(high)) + (rows.length > 1 ? ' / variant' : '') + (rates.length < rows.length ? ' · partly unknown' : ''),
-      detail:rows.map(r => (r.variant || 'Plain')+': '+(Number.isFinite(r.rate) ? percent(r.rate) : 'unknown')).join(' · ')};
+      detail:rows.map(r => (r.variant || 'Plain')+': '+(Number.isFinite(r.rate) ? percent(r.rate) : 'unknown')+(r.basis?' ('+r.basis+(r.rolls?' · '+r.rolls+' draws per kill':'')+')':'')).join(' · ')};
   }
   function placeLabels(candidates,width,height) {
     const occupied=[];
@@ -12958,7 +12978,7 @@ const AtlasWorld = (()=>{
       if(!this.hasTarget()){host.hidden=true;return;}host.hidden=false;
       const matches=this.catalog.entities.filter(e=>this.matching(e)),scenes=[...new Set(matches.map(e=>e.scene).filter(Boolean))];
       const item=this.catalog.items.find(i=>String(i.id)===this.s.drop),title=this.s.targetName||item?.name||this.s.dropName||this.catalog.quests.find(q=>String(q.id)===this.s.quest)?.name||this.s.questName;
-      host.innerHTML=`<div class="world-target-heading"><strong>${escape(title)}</strong><span>${matches.filter(e=>e.scene===this.s.place).length} areas here · ${matches.filter(e=>e.scene).length} across ${scenes.length} maps / floors${matches.some(e=>!e.scene)?' · some locations unconfirmed':''}</span><button data-fit-target>Show all areas</button><button data-clear-target aria-label="Clear map selection">Clear</button></div><div class="world-target-floors">${scenes.map(id=>{const p=this.catalog.scenes.find(p=>p.id===id);return `<button data-target-place="${escape(id)}" aria-pressed="${id===this.s.place}">${escape(p?.name||id)} · ${escape(p?.floor||'')} (${matches.filter(e=>e.scene===id).length})</button>`;}).join('')}</div>${this.s.drop?'<p class="world-rate-note">Rates on boxes: Bango reference rates, not confirmed for this world. ? means unknown. Ranges show the recorded variants separately; quest loot needs its quest. Zoom in to separate overlapping labels; point at an area for its full rate.</p>':''}${!scenes.length?'<p>No mapped locations are available for this selection.</p>':''}`;
+      host.innerHTML=`<div class="world-target-heading"><strong>${escape(title)}</strong><span>${matches.filter(e=>e.scene===this.s.place).length} areas here · ${matches.filter(e=>e.scene).length} across ${scenes.length} maps / floors${matches.some(e=>!e.scene)?' · some locations unconfirmed':''}</span><button data-fit-target>Show all areas</button><button data-clear-target aria-label="Clear map selection">Clear</button></div><div class="world-target-floors">${scenes.map(id=>{const p=this.catalog.scenes.find(p=>p.id===id);return `<button data-target-place="${escape(id)}" aria-pressed="${id===this.s.place}">${escape(p?.name||id)} · ${escape(p?.floor||'')} (${matches.filter(e=>e.scene===id).length})</button>`;}).join('')}</div>${this.s.drop?`<p class="world-rate-note">${this.s.version==='bango'?'Rates on boxes are Bango references unless labelled Original 2006.':'Rates on boxes are the original probabilities per loot draw. SinKKal uses three times the ordinary item draws; money keeps the original draw count with reduced amounts.'} ? means unknown. Ranges keep variants separate; quest loot needs its quest. Buffs and events may change the outcome. Zoom in to separate overlapping labels; point at an area for its full rate.</p>`:''}${!scenes.length?'<p>No mapped locations are available for this selection.</p>':''}`;
       host.querySelector('[data-clear-target]').onclick=()=>this.clearTarget();
       host.querySelector('[data-fit-target]').onclick=()=>this.focusMatches(true);
       for(const b of host.querySelectorAll('[data-target-place]'))b.onclick=async()=>{this.s.place=b.dataset.targetPlace;this.s.selection='';this.host.querySelector('[data-place]').value=this.s.place;await this.loadPlace(false);this.fitMatching();this.save();this.schedule();};
@@ -12967,8 +12987,8 @@ const AtlasWorld = (()=>{
       const item=this.catalog.items.find(i=>String(i.id)===this.s.drop);if(!item)return null;
       const ids=this.dropFamilies.get(nameKey(item.name))||[item.id];
       if(ids.filter(id=>e.drops.includes(id)).every(id=>e.questDrops?.[id]))return {label:'Quest loot · rate unknown',detail:'Requires the corresponding quest or event.'};
-      const key=nameKey(e.name)+'|'+nameKey(item.name);this.rateCache ||=new Map();
-      if(!this.rateCache.has(key))this.rateCache.set(key,WorldSearch.rateSummary(this.rateLookup?.(e.name,item.name)||[]));
+      const key=this.s.version+'|'+e.nativeId+'|'+nameKey(e.name)+'|'+nameKey(item.name);this.rateCache ||=new Map();
+      if(!this.rateCache.has(key))this.rateCache.set(key,WorldSearch.rateSummary(this.rateLookup?.(e.name,item.name,this.s.version,e.nativeId,ids)||[]));
       return this.rateCache.get(key);
     }
     async index(){
@@ -13303,7 +13323,12 @@ let activeWorld = null;
       const hits=rows.filter(r=>normalizeName(r.text)===key && (kind!=="npc"||npcIdentity(r).named));
       return hits.length===1?routeHref(kind,hits[0].message_id):null;
     }
-    function worldDropRates(monsterName, itemName) {
+    function worldDropRates(monsterName, itemName, version, nativeMonsterId, nativeItemIds) {
+      if (version === "classic" || version === "sinkkal") {
+        return (state.indexes.originalDropsByMonster?.get(String(nativeMonsterId)) || [])
+          .filter(r => nativeItemIds?.includes(Number(r.item_id)) && Number(r.millionths)>0 && Number(r.rolls)>0)
+          .map(r => ({rate:Number(r.chance_pct),variant:r.prefix + (Number(r.quantity)>1 ? ' ×'+(version==='sinkkal' && Number(r.item_id)===31 ? Math.max(1,Math.floor(Number(r.quantity)/100)) : r.quantity) : ''),basis:'per loot draw',rolls:Number(r.rolls)*(version==='sinkkal' && Number(r.item_id)!==31 ? 3 : 1)}));
+      }
       // Reuse the Atlas resolver and its registered aliases/variant boundaries.
       // These are Bango reference rates, never native Classic/SinKKal rates.
       const monsters=state.indexes.monsters.filter(r=>normalizeName(r.text)===normalizeName(monsterName));
@@ -13311,11 +13336,12 @@ let activeWorld = null;
         .filter(d=>normalizeName(d.bango_item_name)===normalizeName(itemName));
       const seen=new Set(),result=[];
       for(const drop of rows){
-        const matches=currentRateRows(drop);
+        const matches=displayRateRows(drop);
         if(!matches.length){result.push({rate:null,variant:'Unmapped variant'});continue;}
         for(const row of matches){
-          if(seen.has(row))continue;seen.add(row);
-          result.push({rate:legacyRate(row),variant:talismanForRateRow(row)?.pre_name||String(row.drp_rev||'').trim()||'Plain'});
+          const identity=row.original2006?'original:'+row.rate_id:row;
+          if(seen.has(identity))continue;seen.add(identity);
+          result.push({rate:legacyRate(row),variant:row.original2006 ? row.prefix+' · Lv '+row.monster_level : talismanForRateRow(row)?.pre_name||String(row.drp_rev||'').trim()||'Plain',basis:row.original2006 ? 'Original 2006 · per loot draw' : 'Bango reference'});
         }
       }
       return result;
